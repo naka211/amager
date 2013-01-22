@@ -22,45 +22,45 @@ jQuery(document).ready(function() {
 " ;
 
 		$document = JFactory::getDocument();
-		$document->addScriptDeclaration($js);?>
-<div class="cate">
-<ul class="VMmenu<?php echo $class_sfx ?>" id="<?php echo "VMmenu".$ID ?>" >
-<?php foreach ($categories as $category) {
-		 $active_menu = 'class="VmClose"';
-		$caturl = JRoute::_('index.php?option=com_virtuemart&view=category&virtuemart_category_id='.$category->virtuemart_category_id);
-		$cattext = $category->category_name;
-		//if ($active_category_id == $category->virtuemart_category_id) $active_menu = 'class="active"';
-		if (in_array( $category->virtuemart_category_id, $parentCategories)) $active_menu = 'class="VmOpen"';
-
-		?>
-
-<li <?php echo $active_menu ?>>
-	<div >
-		<?php echo JHTML::link($caturl, $cattext);
-		if ($category->childs) {
-			?>
-			<span class="VmArrowdown"> </span>
-			<?php
+		$document->addScriptDeclaration($js);
+		$document->addScriptDeclaration($js);
+		$categories = $categoryModel->getCategoryTree();
+	function mapTree($dataset, $parent=0) {
+		$tree = array();
+		foreach ($dataset as $node){
+			if ($node->category_parent_id != $parent) continue;
+			$node->category_child_id = mapTree($dataset, $node->virtuemart_category_id);
+			$tree[] = $node;
 		}
-		?>
-	</div>
-<?php if ($category->childs) { ?>
-<ul class="menu<?php echo $class_sfx; ?>">
-<?php
-		foreach ($category->childs as $child) {
 
-		$caturl = JRoute::_('index.php?option=com_virtuemart&view=category&virtuemart_category_id='.$child->virtuemart_category_id);
-		$cattext = $child->category_name;
-		?>
+		return $tree;
+	}
+	function treeRender($tree, $padding=0, $menuname=''){
+		global $Itemid;
+		if(!$padding)
+			echo '<ul '.$menuname.'>';
+		else
+			echo '<ul class="cate-sub'.$padding.'">';
 
-<li>
-	<div ><?php echo JHTML::link($caturl, $cattext); ?></div>
-</li>
-<?php		} ?>
-</ul>
-<?php 	} ?>
-</li>
+		foreach($tree as $leaf){
+			$leaf->link=JRoute::_('index.php?option=com_virtuemart&view=category&virtuemart_category_id='.$leaf->virtuemart_category_id);
+			if($leaf->virtuemart_category_id == $Itemid)
+				$curpage='class="current-page"';
+			else
+				$curpage='';
+			if(empty($leaf->category_child_id))
+				echo '<li>';
+			else
+				echo '<li>';
+			echo '<a '.$curpage.' href="'.$leaf->link."&Itemid=".$leaf->virtuemart_category_id.'">'.$leaf->category_name.'</a>';
+			if(!empty($leaf->virtuemart_category_id))
+				treeRender($leaf->category_child_id,$padding+1);
+			echo '</li>';
+		}
+		echo "</ul>";
+	}?>
+<div class="cate">
 <?php
-	} ?>
-</ul>
+	treeRender(mapTree($categories),0);
+?>
 </div>
