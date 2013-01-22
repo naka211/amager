@@ -31,6 +31,8 @@
 	<positions>
 		<position>debug</position>
 		<position>menu</position>
+		<position>cart</position>
+		<position>search</position>
 		<position>left</position>
 		<position>above</position>
 		<position>below</position>
