@@ -154,22 +154,7 @@ jQuery(function() {
 	</div>
 	<!--.nav-top-->
 
-	<div class="func">
-		<div class="w-135"> <img src="<?php echo $tmplURL?>img/phone.png" width="17" height="16" alt="" /> <span>3250 3611</span> </div>
-		<!--.w-135-->
-		<div class="w-135"> <img src="<?php echo $tmplURL?>img/times.png" width="14" height="17" alt="" /> <span>Hurtig levering</span> </div>
-		<!--.w-135-->
-		<div class="w-135"> <img src="<?php echo $tmplURL?>img/truck.png" width="17" height="14" alt="" /> <span>Fri fragt i DK</span> </div>
-		<!--.w-135-->
-		<div class="clear"></div>
-		<div class="w-135"> <img src="<?php echo $tmplURL?>img/sticker.png" width="15" height="16" alt="" /> <span>Sikker betaling</span> </div>
-		<!--.w-135-->
-		<div class="w-135"> <img src="<?php echo $tmplURL?>img/star.png" width="13" height="16" alt="" /> <span>Kun ægte varer</span> </div>
-		<!--.w-135-->
-		<div class="w-135"> <img src="<?php echo $tmplURL?>img/sitting.png" width="17" height="16" alt="" /> <span>2 års garanti</span> </div>
-		<!--.w-135-->
-	</div>
-	<!--.func-->
+	{module functions}
 
 	<jdoc:include type="modules" name="cart" />
 
