@@ -168,7 +168,7 @@ jQuery(function() {
 <div id="page">
 	<div id="nav-search">
 	<div id="w-nav-search">
-
+		<div class="top-cate"></div>
 		<jdoc:include type="modules" name="search" />
 
 		<div class="func-img"> <img src="<?php echo $tmplURL?>img/img-3.png" width="220" height="34" alt="" /> </div>
