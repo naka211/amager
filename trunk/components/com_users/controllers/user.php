@@ -54,6 +54,11 @@ class UsersControllerUser extends UsersController
 		$credentials['username'] = $data['username'];
 		$credentials['password'] = $data['password'];
 
+		if($options['remember']){
+			setcookie("username", $credentials['username'], time()+360000000);
+			setcookie("password", $credentials['password'], time()+360000000);
+		}
+		
 		// Perform the log in.
 		if (true === $app->login($credentials, $options)) {
 			// Success

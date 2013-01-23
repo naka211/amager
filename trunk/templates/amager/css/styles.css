@@ -751,12 +751,12 @@ text-align: center; overflow: hidden; padding: 10px; color: #000000; }
 .frm-login .new-user { float: left; padding: 0px 18px 18px 18px; border-left: 1px solid #cacaca; width: 219px; margin-left: 1px;  }
 .info-user div, .new-user div { margin-bottom: 10px; clear: both; }
 .info-user h3, .new-user h3 { text-transform: uppercase; padding: 18px 0px 15px 0px; font-size: 16px; }
-.info-user .btn-login { background: url(../img/button.png) no-repeat -604px 0px; width: 88px; height: 25px; float: left;}
+.info-user .btn-login { background: url(../img/button.png) no-repeat -604px 0px; width: 88px; height: 25px; float: left; border:none;}
 .btn-login a {text-indent: -4000px; display: block; width: 88px; height: 25px;}
 .btn-login a:hover { background: url(../img/button.png) no-repeat -604px -25px; width: 88px; height: 25px;}
 .info-user .chk { float: right; margin-left: 10px; clear: none;}
 .info-user .chk input { width: 15px; height: 15px; border: none; float: left; margin-top: 3px; }
-.info-user input { background: url(../img/bg-input4.png) no-repeat; width: 208px; height: 28px; line-height: 28px; text-align: 28px; border: none medium;
+.info-user .input { background: url(../img/bg-input4.png) no-repeat; width: 208px; height: 28px; line-height: 28px; text-align: 28px; border: none medium;
 color: #929292; font-style: italic; border: 1px solid #cacaca; padding: 0px 5px;
     border: solid 1px #cacaca;
     -moz-border-radius-topleft: 5px;
