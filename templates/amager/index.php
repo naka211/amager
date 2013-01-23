@@ -153,7 +153,45 @@ jQuery(function() {
 		</ul>
 	</div>
 	<!--.nav-top-->
-
+	<div class="w-frm-login reveal-modal" id="myModal">    
+    <a href="#" class="close-reveal-modal"></a>
+    	<?php 
+		$username = JRequest::getString('username','','cookie');
+		$password = JRequest::getString('password','','cookie');
+		?>
+    	<form class="frm-login" method="post" action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>">
+        	<fieldset>
+            	<h1>Log ind eller opret konto</h1>
+                <div class="info-user">
+                	<h3>Eksisterende bruger</h3>
+                    <div>
+                    	<input type="text" class="input" name="username" id="modlgn-username" value="<?php echo $username?$username:'Indtast din email';?>" />
+                    </div>
+                    <div>
+                    	<input type="password" class="input" name="password" id="modlgn-passwd" value="<?php echo $password;?>" />
+                    </div>
+                    <!--<div class="btn-login">-->
+                    	<!--<a href="index2.php">Login</a>-->
+                        <input type="submit" name="Submit" value=" " class="btn-login" />
+                    <!--</div>--><!--.bnt-login-->
+                    <div class="chk">
+                    	<input type="checkbox" name="remember" value="yes" /><span>Husk mig</span>
+                    </div>
+                    <div class="forgot-pass"><a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">Har du glemt dit kodeord, tryk her</a></div>
+                </div><!--.info-user-->
+                
+                <div class="new-user">
+                	<h3>Ny bruger</h3>
+                    <p>Vil du registere dig som bruger ? Tryk venligst tilmeld.</p>
+                    <div class="bnt-sub">
+                    	<a href="index.php?option=com_users&view=registration&Itemid=121">Tilmeld</a>
+                    </div><!--.bnt-sub-->
+                </div><!--.new-user-->
+                
+            </fieldset>
+        </form>
+    </div><!--#w-frm-login-->
+    
 	{module functions}
 
 	<jdoc:include type="modules" name="cart" />
