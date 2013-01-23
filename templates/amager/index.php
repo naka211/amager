@@ -149,7 +149,7 @@ jQuery(function() {
 		<jdoc:include type="modules" name="menu" />
 		<ul class="login">
 		<li><a href="#" data-reveal-id="myModal">Login</a></li>
-		<li class="no-li"><a href="sign-up.php">Registrer</a></li>
+		<li class="no-li"><a href="index.php?option=com_users&view=registration&Itemid=121">Registrer</a></li>
 		</ul>
 	</div>
 	<!--.nav-top-->
