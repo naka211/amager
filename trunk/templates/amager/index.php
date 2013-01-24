@@ -41,6 +41,7 @@ $tmplURL=$this->baseurl.'/templates/'.$this->template."/";
 }
 </style>
 <jdoc:include type="head" />
+
 <!--Script-->
 <script type="text/javascript" src="<?php echo $tmplURL?>js/webfont.js"></script>
 <script type="text/javascript" src="<?php echo $tmplURL?>js/jquery-1.8.3.min.js"></script>
@@ -161,6 +162,9 @@ jQuery(function() {
 		?>
     	<form class="frm-login" method="post" action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>">
         	<fieldset>
+            	<div class="logo2">
+                	<a href="index.php"><img src="<?php echo $tmplURL?>img/logo2.png" width="196" height="97" alt="" /></a>
+                </div><!--.logo2-->
             	<h1>Log ind eller opret konto</h1>
                 <div class="info-user">
                 	<h3>Eksisterende bruger</h3>
