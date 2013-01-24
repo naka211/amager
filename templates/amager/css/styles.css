@@ -159,7 +159,7 @@ border: none; padding: 3px 0px; background: none; margin-left: -5px; }
 .cate ul li ul.cate-sub1 li:hover { cursor: pointer; }
 .cate ul li ul.cate-sub1 li.active-sub1 {margin: 1px 0px 1px -5px; background: none; }
 .cate ul li ul.cate-sub1 li.active-sub1 a { color: #00b2ea; }
-.cate ul li ul.cate-sub1 li a{/*color: #8a8a8a;*/ padding-left: 10px; text-decoration: none; }
+.cate ul li ul.cate-sub1 li a{color: #8a8a8a; padding-left: 10px; text-decoration: none; }
 .cate ul li ul.cate-sub1 li.n-b-b { border-bottom: 0px; padding-bottom: -5px; }
 .cate ul li ul.cate-sub1 li:hover a{ color: #00b2ea;}
 /*.cate ul li:hover ul.cate-sub1 { display: block; }*/

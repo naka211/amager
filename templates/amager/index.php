@@ -10,7 +10,7 @@ defined('_JEXEC') or die;
 //JHtml::_('behavior.framework', true);
 
 // get params
-//$doc				= JFactory::getDocument();
+$doc				= JFactory::getDocument();
 //$app				= JFactory::getApplication();
 //$color				= $this->params->get('templatecolor');
 //$logo				= $this->params->get('logo');
@@ -22,7 +22,11 @@ $tmplURL=$this->baseurl.'/templates/'.$this->template."/";
 //$doc->addStyleSheet($this->baseurl.'/templates/'.$this->template.'/css/print.css', $type = 'text/css', $media = 'print');
 
 //$doc->addScript($this->baseurl.'/templates/'.$this->template.'/javascript/hide.js', 'text/javascript');
-
+unset($doc->_scripts[$this->baseurl . '/media/system/js/mootools-core.js']);
+unset($doc->_scripts[$this->baseurl . '/media/system/js/modal.js']);
+unset($doc->_scripts[$this->baseurl . '/media/system/js/core.js']);
+unset($doc->_scripts[$this->baseurl . '/media/system/js/caption.js']);
+$doc->_script=array();
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
