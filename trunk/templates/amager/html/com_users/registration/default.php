@@ -14,45 +14,98 @@ JHtml::_('behavior.keepalive');
 //JHtml::_('behavior.formvalidation');
 JHtml::_('behavior.noframes');
 ?>
-<div class="registration<?php echo $this->pageclass_sfx?>">
-<?php if ($this->params->get('show_page_heading')) : ?>
-	<h1><?php echo $this->escape($this->params->get('page_heading')); ?></h1>
-<?php endif; ?>
+<script language="javascript">
+jQuery(document).ready(function()
+{
+	var private = '';
+	var company = '<div><input type="text" value="Firmanavn" name="company" class="required" /></div><div><input type="text" value="CVR-nr." name="cvr" class="required" /></div>';
+	var public = '<div><input type="text" value="EAN-nr. *" name="ean" class="required" /></div><div><input type="text" value="Myndighed/Institution *" name="authority" class="required" /></div><div><input type="text" value="Ordre- el. rekvisitionsnr. *" name="order" class="required" /></div><div><input type="text" value="Personreference *" name="person" class="required" />';
+	jQuery("#choicemaker").change(function () {
+    value = jQuery("#choicemaker").val();
+      // You can also use $("#ChoiceMaker").val(); and change the case 0,1,2: to the values of the html select options elements
 
-	<form id="member-registration" action="<?php echo JRoute::_('index.php?option=com_users&task=registration.register'); ?>" method="post" class="form-validate">
-<?php foreach ($this->form->getFieldsets() as $fieldset): // Iterate through the form fieldsets and display each one.?>
-	<?php $fields = $this->form->getFieldset($fieldset->name);?>
-	<?php if (count($fields)):?>
-		<fieldset>
-		<?php if (isset($fieldset->label)):// If the fieldset has a label set, display it as the legend.
-		?>
-			<legend><?php echo JText::_($fieldset->label);?></legend>
-		<?php endif;?>
-			<dl>
-		<?php foreach($fields as $field):// Iterate through the fields in the set and display them.?>
-			<?php if ($field->hidden):// If the field is hidden, just display the input.?>
-				<?php echo $field->input;?>
-			<?php else:?>
-				<dt>
-					<?php echo $field->label; ?>
-					<?php if (!$field->required && $field->type!='Spacer'): ?>
-						<span class="optional"><?php echo JText::_('COM_USERS_OPTIONAL'); ?></span>
-					<?php endif; ?>
-				</dt>
-				<dd><?php echo ($field->type!='Spacer') ? $field->input : "&#160;"; ?></dd>
-			<?php endif;?>
-		<?php endforeach;?>
-			</dl>
-		</fieldset>
-	<?php endif;?>
-<?php endforeach;?>
-		<div>
-			<button type="submit" class="validate"><?php echo JText::_('JREGISTER');?></button>
-			<?php echo JText::_('COM_USERS_OR');?>
-			<a href="<?php echo JRoute::_('');?>" title="<?php echo JText::_('JCANCEL');?>"><?php echo JText::_('JCANCEL');?></a>
-			<input type="hidden" name="option" value="com_users" />
-			<input type="hidden" name="task" value="registration.register" />
-			<?php echo JHtml::_('form.token');?>
-		</div>
-	</form>
+	if(value == 1){
+		jQuery("#companyadd").html('');
+		jQuery("#publicadd").html('');
+	} else if(value == 2){
+		jQuery("#companyadd").html(company);
+		jQuery("#publicadd").html('');
+	} else {
+		jQuery("#companyadd").html('');
+		jQuery("#publicadd").html(public);
+	}
+    });
+});
+</script>
+<div id="signup-page">
+    <div id="w-signup-page">
+    <div class="signup-title">
+        <h2>Opret konto</h2>
+        <div class="come-back"><a href="#">Tilbage</a></div><!--.come-back-->
+    </div><!--.signup-title-->
+    <form method="post" action="<?php echo JRoute::_('index.php?option=com_users&task=registration.register'); ?>" name="member-registration" class="info-per" id="member-registration">
+        <fieldset>
+            <p>Felter markeret med * skal udfyldes (kodeord skal være minimum 4 tegn)</p>
+            <h3>Personlig information</h3>
+            <div>
+                <label>Vælg kundetype *</label>
+            </div>
+            <div>
+                <select name="type" id="choicemaker">
+                    <option value="1">Privat</option>
+                    <option value="2">Erhverv</option>
+                    <option value="3">Offentlig instans</option>
+                </select>
+            </div>
+            
+            <div id="w-privat">
+            	<div id="companyadd"></div>
+                <div>
+                  <input type="text" value="E-mail *" name="email" class="required" />
+                </div>
+                <div id="publicadd"></div>
+                <div>
+                  <input type="text" value="Fornavn *" name="firstname" class="required" />
+                </div>
+                <div>
+                  <input type="text" value="Efternavn *" name="lastname" class="required" />
+                </div>
+                <div>
+                  <input type="text" value="Adresse *" name="address" class="required" />
+                </div>
+                <div>
+                  <input type="text" value="Postnr. *" name="zipcode" class="required" />
+                </div>
+                <div>
+                  <input type="text" value="By *" name="city" class="required" />
+                </div>
+                <div>
+                  <input type="text" value="Telefon *" name="phone" class="required" />
+                </div>
+            </div><!--.w-privat-->
+            
+            <h3>LOG-IND INFORMATION</h3>
+            <div>
+                <input type="text" value="Kodeord (skal være min 4 tegn) *">
+            </div>
+            <div>
+                <input type="text" value="Bekræft kodeord *">
+            </div>
+             <div>
+                    <label>Bemærk! E-mail bruges til login</label>
+                </div>
+            <div class="chk2">
+                <input type="checkbox">
+                <p>Ved registering husk tilmelding nyhedsbrev samtidig </p>
+            </div>
+            <!--<div class="bnt-subs-now n-m-b">-->
+                <!--<a href="index2.php">Tilmeld nu</a>-->
+                <button type="submit" class="validate bnt-subs-now n-m-b" style="border:none; cursor:pointer;"> </button>
+                <input type="hidden" name="option" value="com_users" />
+                <input type="hidden" name="task" value="registration.register" />
+                <?php echo JHtml::_('form.token');?>
+            <!--</div>--><!--.bnt-subs-now-->
+        </fieldset>
+    </form>
+    </div><!--#w-signup-page-->
 </div>
