@@ -45,31 +45,36 @@ foreach ( $productList as $product ) {
 					</h3>
 
 					<div class="price">
-					<p class="new-price">
+						<p class="new-price">
 					<?php
 					if (VmConfig::get ( 'show_prices' ) == '1') {
 						echo $this->currency->priceDisplay($product->prices['salesPrice'],0,1.0,false,$this->currency->_priceConfig['salesPrice'][1] );
 					} ?>
-					</p>
+						</p>
 					</div>
-
+				<?php if(!empty($product->prices['discountAmount'])){?>
+					<div class="sale-off"><img src="templates/<?php echo $template?>/img/tilbud.png" width="67" height="67" alt=""></div>
+				<?php }?>
 					<div class="pro-larg fadeIn">
 						<div class="img-pro-larg"><a href="<?php echo $link?>"><?php echo $product->images[0]->displayMediaThumb( 'border="0"', false, '' )?></a></div>
 						
 						<p class="title"><a href="<?php echo $link?>"><?php echo $product->product_name?></a></p>
 						<p class="num"><a href="<?php echo $link?>">Varenr. <?php echo $product->product_sku?></a></p>
 						<div class="price">
-						<?php if(!empty($product->prices['discountAmount'])){?>
+					<?php if(!empty($product->prices['discountAmount'])){?>
 						<p class="old-price-larg"><?php echo $this->currency->priceDisplay($product->prices['basePrice'],0,1.0,false,$this->currency->_priceConfig['basePrice'][1] );?></p>
 
 						<span class="sale">(SPAR <?php echo $this->currency->priceDisplay($product->prices['discountAmount'],0,1.0,false,$this->currency->_priceConfig['discountAmount'][1] );?>)</span>
-						<?php }?>
+					<?php }?>
 
 						<p class="price-red"><?php echo $this->currency->priceDisplay($product->prices['salesPrice'],0,1.0,false,$this->currency->_priceConfig['salesPrice'][1] );?></p>
 
 						<p class="v-detail"><a href="<?php echo $link?>">Vis detaljer</a></p>
 						</div>
 						<div class="add-cart"> <a href="#ADDCART">Læg i Kurv</a> </div>
+					<?php if(!empty($product->prices['discountAmount'])){?>
+						<div class="sale-off"><img src="templates/<?php echo $template?>/img/tilbud.png" width="67" height="67" alt=""></div>
+					<?php }?>
 					</div>
 
 		</li>

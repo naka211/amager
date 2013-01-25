@@ -448,7 +448,6 @@ input#mod-login-username,input#mod-login-password,select#lang{float:right;clear:
 #menu li:hover li:hover li a{background-color:transparent;border-color:transparent}
 a.icon-16-menu span img{vertical-align:bottom}
 #submenu{list-style:none;line-height:115%;margin:0;padding:0}
-#submenu li{float:left;margin:0;padding:0}
 #submenu li a,#submenu span.nolink{cursor:pointer;border-right:1px solid #ccc;font-size:1.1em;font-weight:700;color:gray;line-height:14px;height:12px;padding:0 15px}
 #submenu a:hover,#submenu a.active,#submenu span.nolink.active{color:#146295;background:#FFF}
 div.message{text-align:center;font-family:Arial, Helvetica, sans-serif;font-size:1.091em;border:1px solid #e0e0e0;margin-bottom:10px;font-weight:700;color:#333;padding:3px}
@@ -480,7 +479,6 @@ fieldset#buttonbar{border:0;text-align:right}
 fieldset#buttonbar li{margin:0;padding:5px}
 div#config #submenu{list-style-image:none;list-style-position:outside;list-style-type:none;margin:0;padding:0}
 div#config div.m{border-left:1px solid #CCC;border-right:1px solid #CCC;padding:0 8px}
-div#config #submenu li{float:left;margin:0;padding:0}
 div#config #submenu li a,div#config #submenu span.nolink{border-right:1px solid #CCC;color:#0B55C4;cursor:pointer;font-weight:700;height:12px;line-height:12px;padding:0 15px}
 div#config #submenu li:last-child a{border-right:none}
 div#config #submenu a.active,div#config #submenu span.nolink.active{color:#000;text-decoration:underline}
@@ -626,3 +624,4 @@ span.icon-16-unset,a.icon-16-denyinactive{background:url(../images/menu/sprite-1
 span.icon-16-allowed,a.icon-16-allow{background:url(../images/menu/sprite-16.png) no-repeat 0 -16px}
 span.icon-16-denied,a.icon-16-deny{background:url(../images/menu/sprite-16.png) no-repeat 0 -378px}
 label#jform_rules-lbl,label#jform_filters-lbl{display:none;float:none;white-space:nowrap}
+#submenu li,div#config #submenu li{float:left;margin:0;padding:0}

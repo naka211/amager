@@ -17,7 +17,7 @@ jQuery(document).ready(function(){
 	
 	// Show shopcart when mouse over the shopcart menu
 	// active  autoHide after mouse leaving
-	jQuery(".img-cart").on("click", function(){
+	jQuery(".img-cart, .info-cart, .bnt-see-cart").on("click", function(){
 		$bgCart.fadeIn('fast');
 		$shopcart.stop(true,true).fadeIn('fast').addClass(active);
 		$scrollbar.tinyscrollbar();
@@ -68,14 +68,14 @@ jQuery(document).ready(function(){
 
 function autoHide(e){
 
-	var $this		   = jQuery('.list-cart'),
-		$bgCart		 = jQuery('#bg-cart'),
+	var $this			= jQuery('.list-cart'),
+		$bgCart			= jQuery('#bg-cart'),
 		$thisCor		= $this.offset(),
-		XX			  = $thisCor.left + $this.width(),
-		YY			  = $thisCor.top + $this.height(),
-		active		  = "active";
-		window.mouseX   = e.pageX;
-		window.mouseY   = e.pageY;
+		XX				= $thisCor.left + $this.width(),
+		YY				= $thisCor.top + $this.height(),
+		active			= "active";
+		window.mouseX	= e.pageX;
+		window.mouseY	= e.pageY;
 
 
 	if( !((window.mouseX > $thisCor.left && window.mouseX < XX) &&
