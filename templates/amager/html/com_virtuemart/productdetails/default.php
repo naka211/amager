@@ -10,6 +10,7 @@ if (empty($this->product)) {
 }
 ?>
 <div id="produkter-page" class="productdetails-view productdetails">
+	{module Breadcrumbs}
 	<div class="w-pro">
 	<?php
 	// Product Navigation
@@ -47,7 +48,7 @@ if (empty($this->product)) {
 ?>
 	<?php // Product Title ?>
 <div class="pro-title">
-	<h1><?php echo $this->product->product_name ?></h1>
+	<h2><?php echo $this->product->product_name ?></h2>
 	<div class="share-pro-onface">
 		<a href="#">Del Produkt på facebook</a>
 	</div>
