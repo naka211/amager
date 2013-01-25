@@ -14,36 +14,27 @@ JHtml::_('behavior.keepalive');
 //JHtml::_('behavior.formvalidation');
 JHtml::_('behavior.noframes');
 ?>
-<script language="javascript">
-jQuery(document).ready(function()
-{
-	var private = '';
-	var company = '<div><input type="text" value="Firmanavn" name="company" class="required" /></div><div><input type="text" value="CVR-nr." name="cvr" class="required" /></div>';
-	var public = '<div><input type="text" value="EAN-nr. *" name="ean" class="required" /></div><div><input type="text" value="Myndighed/Institution *" name="authority" class="required" /></div><div><input type="text" value="Ordre- el. rekvisitionsnr. *" name="order" class="required" /></div><div><input type="text" value="Personreference *" name="person" class="required" />';
-	jQuery("#choicemaker").change(function () {
-    value = jQuery("#choicemaker").val();
-      // You can also use $("#ChoiceMaker").val(); and change the case 0,1,2: to the values of the html select options elements
-
-	if(value == 1){
-		jQuery("#companyadd").html('');
-		jQuery("#publicadd").html('');
-	} else if(value == 2){
-		jQuery("#companyadd").html(company);
-		jQuery("#publicadd").html('');
-	} else {
-		jQuery("#companyadd").html('');
-		jQuery("#publicadd").html(public);
-	}
-    });
-});
-</script>
+<style>
+/*em.success {
+  background:url("images/pass.png") no-repeat 0px 0px;
+  padding-left: 16px;
+  margin-left:5px;
+}
+em.error {
+  background:url("images/fail.png") no-repeat 0px 0px;
+  padding-left: 16px;
+  margin-left:5px;
+}*/
+</style>
+<script language="javascript" src="templates/amager/js/jquery.validate.js"></script>
+<script language="javascript" src="templates/amager/js/trung.js"></script>
 <div id="signup-page">
     <div id="w-signup-page">
     <div class="signup-title">
         <h2>Opret konto</h2>
         <div class="come-back"><a href="#">Tilbage</a></div><!--.come-back-->
     </div><!--.signup-title-->
-    <form method="post" action="<?php echo JRoute::_('index.php?option=com_users&task=registration.register'); ?>" name="member-registration" class="info-per" id="member-registration">
+    <form method="post" action="<?php echo JRoute::_('index.php?option=com_users&task=registration.register'); ?>" name="registrationForm" class="info-per" id="registrationForm">
         <fieldset>
             <p>Felter markeret med * skal udfyldes (kodeord skal være minimum 4 tegn)</p>
             <h3>Personlig information</h3>
@@ -51,7 +42,7 @@ jQuery(document).ready(function()
                 <label>Vælg kundetype *</label>
             </div>
             <div>
-                <select name="type" id="choicemaker">
+                <select name="mwctype" id="choicemaker">
                     <option value="1">Privat</option>
                     <option value="2">Erhverv</option>
                     <option value="3">Offentlig instans</option>
@@ -61,35 +52,41 @@ jQuery(document).ready(function()
             <div id="w-privat">
             	<div id="companyadd"></div>
                 <div>
-                  <input type="text" value="E-mail *" name="email" class="required" />
+                  <input value="E-mail *" name="email" type="text" id="email" />
                 </div>
                 <div id="publicadd"></div>
                 <div>
-                  <input type="text" value="Fornavn *" name="firstname" class="required" />
+                  <input type="text" value="Fornavn *" name="firstname" id="firstname"  />
                 </div>
                 <div>
-                  <input type="text" value="Efternavn *" name="lastname" class="required" />
+                  <input type="text" value="Efternavn *" name="lastname" id="lastname" />
                 </div>
                 <div>
-                  <input type="text" value="Adresse *" name="address" class="required" />
+                  <input type="text" value="Adresse *" name="address" id="address" />
                 </div>
                 <div>
-                  <input type="text" value="Postnr. *" name="zipcode" class="required" />
+                  <input type="text" value="Postnr. *" name="zipcode" id="zipcode" maxlength="4" />
                 </div>
                 <div>
-                  <input type="text" value="By *" name="city" class="required" />
+                  <input type="text" value="By *" name="city" id="city" />
                 </div>
                 <div>
-                  <input type="text" value="Telefon *" name="phone" class="required" />
+                  <input type="text" value="Telefon *" name="phone" id="phone" />
                 </div>
             </div><!--.w-privat-->
             
             <h3>LOG-IND INFORMATION</h3>
             <div>
-                <input type="text" value="Kodeord (skal være min 4 tegn) *">
+                <label>Kodeord (skal være min 4 tegn) *</label>
             </div>
             <div>
-                <input type="text" value="Bekræft kodeord *">
+                <input type="password" minlength="4" name="password" id="password">
+            </div>
+            <div>
+                <label>Bekræft kodeord *</label>
+            </div>
+            <div>
+                <input type="password" name="confirmpassword" id="confirmpassword">
             </div>
              <div>
                     <label>Bemærk! E-mail bruges til login</label>
