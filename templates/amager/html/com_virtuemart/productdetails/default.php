@@ -10,14 +10,6 @@ if (empty($this->product)) {
 }
 ?>
 <div id="produkter-page" class="productdetails-view productdetails">
-	<div id="main-title">
-		<ul>
-			<li class="n-bg"><a href="kategorier.php">Kategorier</a></li>
-			<li><a href="#">Grandfather</a></li>
-			<li><a href="#">Father</a></li>
-			<li><a href="#">Product</a></li>
-		</ul>
-	</div>
 	<div class="w-pro">
 	<?php
 	// Product Navigation
@@ -53,9 +45,15 @@ if (empty($this->product)) {
 		<a href="<?php echo $catURL ?>" class="product-details" title="<?php echo $categoryName ?>"><?php echo JText::sprintf('COM_VIRTUEMART_CATEGORY_BACK_TO',$categoryName) ?></a>
 	</div>*/
 ?>
-	<?php // Product Title   ?>
+	<?php // Product Title ?>
 <div class="pro-title">
 	<h1><?php echo $this->product->product_name ?></h1>
+	<div class="share-pro-onface">
+		<a href="#">Del Produkt på facebook</a>
+	</div>
+	<div class="tell">
+		<a href="#" data-reveal-id="myModal2">Tip en ven</a>
+	</div>
 </div>
 	<?php // Product Title END   ?>
 
