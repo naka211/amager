@@ -1,12 +1,10 @@
-<?php defined('_JEXEC') or die('Restricted access');
-
-// Separator
-$verticalseparator = " vertical-separator";
+<?php
+defined('_JEXEC') or die('Restricted access');
 ?>
 <div class="product">
 <ul>
 <?php
-foreach ($this->products as $type => $productList ){
+foreach ($this->products as $type => $productList ) {
 // Calculating Products Per Row
 $products_per_row = VmConfig::get ( 'homepage_products_per_row', 3 ) ;
 $cellwidth = ' width'.floor ( 100 / $products_per_row );
@@ -15,97 +13,76 @@ $cellwidth = ' width'.floor ( 100 / $products_per_row );
 $col = 1;
 $nb = 1;
 
-$productTitle = JText::_('COM_VIRTUEMART_'.$type.'_PRODUCT')
-
-?>
-<?php // Start the Output
+// Start the Output
 
 foreach ( $productList as $product ) {
 
+	$link=JRoute::_ ( 'index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=' . $product->virtuemart_product_id . '&virtuemart_category_id=' . $product->virtuemart_category_id );
+	$endrow='';
+
+	if($col == 1){
+		echo '<div>';
+	}
+
+		// Show Products
 	// this is an indicator wether a row needs to be opened or not
-	if ($col == 1) {
-	
-		// Show the horizontal seperator
-		if ($col == 1 && $nb > $products_per_row)
-			echo '<li class="no-mar">';
-		else
-			echo '<li>';
-	}
+	if ($col == 4)
+		$endrow=' class="no-mar"';
+		?>
+		<li<?php echo $endrow?>>
 
-	// Show the vertical seperator
-	if ($nb == $products_per_row or $nb % $products_per_row == 0) {
-		$show_vertical_separator = ' ';
-	} else {
-		$show_vertical_separator = $verticalseparator;
-	}
-
-		// Show Products ?>
-		<div class="product floatleft<?php echo $cellwidth . $show_vertical_separator ?>">
-			<div class="spacer">
-
-
-					<h3>
-					<?php // Product Name
-					echo JHTML::link ( JRoute::_ ( 'index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=' . $product->virtuemart_product_id . '&virtuemart_category_id=' . $product->virtuemart_category_id ), $product->product_name, array ('title' => $product->product_name ) ); ?>
-					</h3>
-
-					<div>
+					<div class="img-pro">
 					<?php // Product Image
 					if ($product->images) {
-						echo JHTML::_ ( 'link', JRoute::_ ( 'index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=' . $product->virtuemart_product_id . '&virtuemart_category_id=' . $product->virtuemart_category_id ), $product->images[0]->displayMediaThumb( 'class="featuredProductImage" border="0"',true,'class="modal"' ) );
+						echo '<a href="'.$link.'">'.$product->images[0]->displayMediaThumb( 'border="0"', false, '' ).'</a>';
 					}
 					?>
 					</div>
 
+					<h3 style="text-align: center">
+					<?php // Product Name
+					echo JHTML::link ( $link, $product->product_name, array ('title' => $product->product_name ) ); ?>
+					</h3>
 
-					<div class="product-price">
+					<div class="price">
+					<p class="new-price">
 					<?php
 					if (VmConfig::get ( 'show_prices' ) == '1') {
-					//				if( $featProduct->product_unit && VmConfig::get('vm_price_show_packaging_pricelabel')) {
-					//						echo "<strong>". JText::_('COM_VIRTUEMART_CART_PRICE_PER_UNIT').' ('.$featProduct->product_unit."):</strong>";
-					//					} else echo "<strong>". JText::_('COM_VIRTUEMART_CART_PRICE'). ": </strong>";
-
-					if ($this->showBasePrice) {
-						echo $this->currency->createPriceDiv( 'basePrice', 'COM_VIRTUEMART_PRODUCT_BASEPRICE', $product->prices );
-						echo $this->currency->createPriceDiv( 'basePriceVariant', 'COM_VIRTUEMART_PRODUCT_BASEPRICE_VARIANT', $product->prices );
-					}
-					echo $this->currency->createPriceDiv( 'variantModification', 'COM_VIRTUEMART_PRODUCT_VARIANT_MOD', $product->prices );
-					echo $this->currency->createPriceDiv( 'basePriceWithTax', 'COM_VIRTUEMART_PRODUCT_BASEPRICE_WITHTAX', $product->prices );
-					echo $this->currency->createPriceDiv( 'discountedPriceWithoutTax', 'COM_VIRTUEMART_PRODUCT_DISCOUNTED_PRICE', $product->prices );
-					echo $this->currency->createPriceDiv( 'salesPrice', 'COM_VIRTUEMART_PRODUCT_SALESPRICE', $product->prices );
-					echo $this->currency->createPriceDiv( 'priceWithoutTax', 'COM_VIRTUEMART_PRODUCT_SALESPRICE_WITHOUT_TAX', $product->prices );
-					echo $this->currency->createPriceDiv( 'discountAmount', 'COM_VIRTUEMART_PRODUCT_DISCOUNT_AMOUNT', $product->prices );
-					echo $this->currency->createPriceDiv( 'taxAmount', 'COM_VIRTUEMART_PRODUCT_TAX_AMOUNT', $product->prices );
+						echo $this->currency->priceDisplay($product->prices['salesPrice'],0,1.0,false,$this->currency->_priceConfig['salesPrice'][1] );
 					} ?>
+					</p>
 					</div>
 
-					<div>
-					<?php // Product Details Button
-					echo JHTML::link ( JRoute::_ ( 'index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=' . $product->virtuemart_product_id . '&virtuemart_category_id=' . $product->virtuemart_category_id ), JText::_ ( 'COM_VIRTUEMART_PRODUCT_DETAILS' ), array ('title' => $product->product_name, 'class' => 'product-details' ) );
-					?>
+					<div class="pro-larg fadeIn">
+						<div class="img-pro-larg"><a href="<?php echo $link?>"><?php echo $product->images[0]->displayMediaThumb( 'border="0"', false, '' )?></a></div>
+						
+						<p class="title"><a href="<?php echo $link?>"><?php echo $product->product_name?></a></p>
+						<p class="num"><a href="<?php echo $link?>">Varenr. <?php echo $product->product_sku?></a></p>
+						<div class="price">
+						<?php if(!empty($product->prices['discountAmount'])){?>
+						<p class="old-price-larg"><?php echo $this->currency->priceDisplay($product->prices['basePrice'],0,1.0,false,$this->currency->_priceConfig['basePrice'][1] );?></p>
+
+						<span class="sale">(SPAR <?php echo $this->currency->priceDisplay($product->prices['discountAmount'],0,1.0,false,$this->currency->_priceConfig['discountAmount'][1] );?>)</span>
+						<?php }?>
+
+						<p class="price-red"><?php echo $this->currency->priceDisplay($product->prices['salesPrice'],0,1.0,false,$this->currency->_priceConfig['salesPrice'][1] );?></p>
+
+						<p class="v-detail"><a href="<?php echo $link?>">Vis detaljer</a></p>
+						</div>
+						<div class="add-cart"> <a href="#ADDCART">Læg i Kurv</a> </div>
 					</div>
-			</div>
-		</div>
+
+		</li>
 	<?php
 	$nb ++;
 
 	// Do we need to close the current row now?
-	if ($col == $products_per_row) { ?>
-	<div class="clear"></div>
-		<?php
+	if ($col == $products_per_row){
 		$col = 1;
-	} else {
+		echo '<div class="clear"></div></div>';
+	}else
 		$col ++;
-	}
-	
 }
-// Do we need a final closing row tag?
-if ($col != 1) { ?>
-	<div class="clear"></div>
-	</div>
-<?php
-}
-?>
-<?php }?>
+}?>
 </ul>
 </div>
