@@ -47,9 +47,7 @@ $doc->_script=array();*/
 <jdoc:include type="head" />
 
 <!--Script-->
-<script type="text/javascript" src="<?php echo $tmplURL?>js/webfont.js"></script>
-<script type="text/javascript" src="<?php echo $tmplURL?>js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript">$.noConflict()</script>
+<script type="text/javascript" src="<?php echo $tmplURL?>js/webfont.js" async="async"></script>
 <script type="text/javascript" src="<?php echo $tmplURL?>js/jquery.carouFredSel-6.0.1-packed.js"></script>
 <script type="text/javascript" src="<?php echo $tmplURL?>js/jquery.easing.min.1.3.js"></script>
 <script type="text/javascript" src="<?php echo $tmplURL?>js/jquery.reveal.js"></script>

@@ -108,8 +108,8 @@ if (empty($this->product)) {
 	} // Product Custom ontop end
 	?>
 
-	<div>
-	<div class="width60 floatleft">
+	<div class="pro-content">
+	<div class="pro-content-left">
 <?php
 echo $this->loadTemplate('images');
 ?>
