@@ -27,8 +27,7 @@ jQuery(document).ready(function()
 				required: true,
 				minlength: 4
 			},
-			confirm_password: {
-				required: true,
+			confirmpassword: {
 				equalTo: "#password"
 			},
 			address: {
@@ -63,7 +62,7 @@ jQuery(document).ready(function()
 			},
 			confirm_password: {
 				required: "",
-				equalTo: ""
+				equalTo: " "
 			},
 			address: "",
 			zipcode: "",
