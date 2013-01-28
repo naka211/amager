@@ -28,7 +28,8 @@ jQuery(document).ready(function()
 				minlength: 4
 			},
 			confirmpassword: {
-				equalTo: "#password"
+				equalTo: "#password",
+				required: true
 			},
 			address: {
 				requireDefault: true,
@@ -49,7 +50,7 @@ jQuery(document).ready(function()
 			phone: {
 				requireDefault: true,
 				required: true,
-			
+				number: true
 			}
 		},
 		messages: {
@@ -60,9 +61,9 @@ jQuery(document).ready(function()
 				required: "",
 				minlength: ""
 			},
-			confirm_password: {
+			confirmpassword: {
 				required: "",
-				equalTo: " "
+				equalTo: ""
 			},
 			address: "",
 			zipcode: "",
@@ -113,4 +114,10 @@ jQuery(document).ready(function()
 		jQuery("#person").rules("add", newRule);
 	}
     });
+	jQuery("#email").bind("blur",function(){
+		jQuery("#username").val(jQuery("#email").val());
+	});
+	jQuery("#lastname").bind("blur",function(){
+		jQuery("#name").val(jQuery("#firstname").val()+' '+jQuery("#lastname").val());
+	});
 });// JavaScript Document

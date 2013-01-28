@@ -209,7 +209,23 @@ class JUser extends JObject
 	 * @since  11.3
 	 */
 	protected static $instances = array();
-
+	/*T.Trung*/
+	public $mwctype = null;
+	public $firstname = null;
+	public $lastname = null;
+	public $address = null;
+	public $zipcode = null;
+	public $city = null;
+	public $phone = null;
+	
+	public $company = null;
+	public $cvr = null;
+	
+	public $ean = null;
+	public $authority = null;
+	public $order = null;
+	public $person = null;
+	public $newsletter = null;
 	/**
 	 * Constructor activating the default information of the language
 	 *
