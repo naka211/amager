@@ -110,10 +110,31 @@ class UsersControllerRegistration extends UsersController
 		$model	= $this->getModel('Registration', 'UsersModel');
 
 		// Get the user data.
-		$requestData = JRequest::getVar('jform', array(), 'post', 'array');
-
+		$requestData = JRequest::getVar('jform', array(), 'post', 'array');//print_r($requestData);exit;
+		$data['mwctype'] = JRequest::getVar('mwctype');
+		$data['email'] = JRequest::getVar('email');
+		$data['firstname'] = JRequest::getVar('firstname');
+		$data['lastname'] = JRequest::getVar('lastname');
+		$data['address'] = JRequest::getVar('address');
+		$data['zipcode'] = JRequest::getVar('zipcode');
+		$data['city'] = JRequest::getVar('city');
+		$data['phone'] = JRequest::getVar('phone');
+		$data['password'] = JRequest::getVar('password');
+		$data['confirmpassword'] = JRequest::getVar('confirmpassword');
+		
+		$data['company'] = JRequest::getVar('conpany');
+		$data['cvr'] = JRequest::getVar('cvr');
+		
+		$data['ean'] = JRequest::getVar('ean');
+		$data['authority'] = JRequest::getVar('authority');
+		$data['order'] = JRequest::getVar('order');
+		$data['person'] = JRequest::getVar('person');
+		
+		$data['username'] = JRequest::getVar('username');
+		$data['name'] = JRequest::getVar('name');
+		$data['newsletter'] = JRequest::getVar('newsletter');
 		// Validate the posted data.
-		$form	= $model->getForm();
+		/*$form	= $model->getForm();
 		if (!$form) {
 			JError::raiseError(500, $model->getError());
 			return false;
@@ -140,7 +161,7 @@ class UsersControllerRegistration extends UsersController
 			// Redirect back to the registration screen.
 			$this->setRedirect(JRoute::_('index.php?option=com_users&view=registration', false));
 			return false;
-		}
+		}*/
 
 		// Attempt to save the data.
 		$return	= $model->register($data);

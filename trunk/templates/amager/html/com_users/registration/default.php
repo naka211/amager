@@ -92,11 +92,13 @@ em.error {
                     <label>Bemærk! E-mail bruges til login</label>
                 </div>
             <div class="chk2">
-                <input type="checkbox">
+                <input type="checkbox" name="newsletter">
                 <p>Ved registering husk tilmelding nyhedsbrev samtidig </p>
             </div>
             <!--<div class="bnt-subs-now n-m-b">-->
                 <!--<a href="index2.php">Tilmeld nu</a>-->
+                <input type="hidden" name="username" value="" id="username" />
+                <input type="hidden" name="name" value="" id="name" />
                 <button type="submit" class="validate bnt-subs-now n-m-b" style="border:none; cursor:pointer;"> </button>
                 <input type="hidden" name="option" value="com_users" />
                 <input type="hidden" name="task" value="registration.register" />

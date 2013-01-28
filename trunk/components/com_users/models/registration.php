@@ -299,6 +299,7 @@ class UsersModelRegistration extends JModelForm
 	 */
 	public function register($temp)
 	{
+		//print_r($temp);exit;
 		$config = JFactory::getConfig();
 		$db		= $this->getDbo();
 		$params = JComponentHelper::getParams('com_users');
@@ -311,10 +312,10 @@ class UsersModelRegistration extends JModelForm
 		foreach ($temp as $k => $v) {
 			$data[$k] = $v;
 		}
-
+		//print_r($data);exit;
 		// Prepare the data for the user object.
-		$data['email']		= $data['email1'];
-		$data['password']	= $data['password1'];
+		//$data['email']		= $data['email1'];
+		//$data['password']	= $data['password1'];
 		$useractivation = $params->get('useractivation');
 		$sendpassword = $params->get('sendpassword', 1);
 
@@ -323,7 +324,7 @@ class UsersModelRegistration extends JModelForm
 			$data['activation'] = JApplication::getHash(JUserHelper::genRandomPassword());
 			$data['block'] = 1;
 		}
-
+		
 		// Bind the data.
 		if (!$user->bind($data)) {
 			$this->setError(JText::sprintf('COM_USERS_REGISTRATION_BIND_FAILED', $user->getError()));
@@ -332,7 +333,7 @@ class UsersModelRegistration extends JModelForm
 
 		// Load the users plugin group.
 		JPluginHelper::importPlugin('user');
-
+		//print_r($user);exit;
 		// Store the data.
 		if (!$user->save()) {
 			$this->setError(JText::sprintf('COM_USERS_REGISTRATION_SAVE_FAILED', $user->getError()));
