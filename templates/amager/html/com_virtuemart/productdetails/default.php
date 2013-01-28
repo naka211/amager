@@ -30,10 +30,10 @@ if (empty($this->product)) {
 		?>
 		<div class="clear"></div>
 		</div>
-	<?php } // Product Navigation END
-	?>
+	<?php }?>
 
-	<?php // Back To Category Button
+	<?php
+	// Back To Category Button
 	/*if ($this->product->virtuemart_category_id) {
 		$catURL =  JRoute::_('index.php?option=com_virtuemart&view=category&virtuemart_category_id='.$this->product->virtuemart_category_id);
 		$categoryName = $this->product->category_name ;
@@ -56,7 +56,6 @@ if (empty($this->product)) {
 		<a href="#" data-reveal-id="myModal2">Tip en ven</a>
 	</div>
 </div>
-	<?php // Product Title END   ?>
 
 	<?php // afterDisplayTitle Event
 	echo $this->product->event->afterDisplayTitle ?>
@@ -85,27 +84,15 @@ if (empty($this->product)) {
 		?>
 		<div class="clear"></div>
 		</div>
-	<?php } // PDF - Print - Email Icon END
-	?>
-
-	<?php
-	// Product Short Description
-	if (!empty($this->product->product_s_desc)) {
-	?>
-		<div class="product-short-description">
-		<?php
-		/** @todo Test if content plugins modify the product description */
-		echo nl2br($this->product->product_s_desc);
-		?>
-		</div>
-	<?php
-	} // Product Short Description END
-
+	<?php }
 
 	if (!empty($this->product->customfieldsSorted['ontop'])) {
 	$this->position = 'ontop';
 	echo $this->loadTemplate('customfields');
 	} // Product Custom ontop end
+
+	// event onContentBeforeDisplay
+	echo $this->product->event->beforeDisplayContent;
 	?>
 
 	<div class="pro-content">
@@ -115,19 +102,16 @@ echo $this->loadTemplate('images');
 ?>
 	</div>
 
-	<div class="width40 floatright">
-		<div class="spacer-buy-area">
-
-		<?php
+	<div class="pro-content-right">
+		<h3>Varenr. <?php echo $this->product->product_sku?></h3>
+<?php
 		// TODO in Multi-Vendor not needed at the moment and just would lead to confusion
 		/* $link = JRoute::_('index2.php?option=com_virtuemart&view=virtuemart&task=vendorinfo&virtuemart_vendor_id='.$this->product->virtuemart_vendor_id);
 		  $text = JText::_('COM_VIRTUEMART_VENDOR_FORM_INFO_LBL');
 		  echo '<span class="bold">'. JText::_('COM_VIRTUEMART_PRODUCT_DETAILS_VENDOR_LBL'). '</span>'; ?><a class="modal" href="<?php echo $link ?>"><?php echo $text ?></a><br />
 		 */
-		?>
 
-		<?php
-		if ($this->showRating) {
+		if ($this->showRating){
 			$maxrating = VmConfig::get('vm_maximum_rating_scale', 5);
 
 			if (empty($this->rating)) {
@@ -147,92 +131,85 @@ echo $this->loadTemplate('images');
 			<?php
 			}
 		}
-		if (is_array($this->productDisplayShipments)) {
+		if (is_array($this->productDisplayShipments)){
 			foreach ($this->productDisplayShipments as $productDisplayShipment) {
 			echo $productDisplayShipment . '<br />';
 			}
 		}
-		if (is_array($this->productDisplayPayments)) {
+		if (is_array($this->productDisplayPayments)){
 			foreach ($this->productDisplayPayments as $productDisplayPayment) {
 			echo $productDisplayPayment . '<br />';
 			}
 		}
-		// Product Price
+
+	// Product Description
+	if (!empty($this->product->product_desc)) {
+		echo $this->product->product_desc;
+	}
+
+	// Availability Image
+	$stockhandle = VmConfig::get('stockhandle', 'none');
+	if (($this->product->product_in_stock - $this->product->product_ordered) < 1){
+		if (VmConfig::get('rised_availability') and empty($this->product->product_availability)) {?>
+		<div class="bnt-outofstock" style="margin-top: 17px">
+<?php echo (file_exists(JPATH_BASE . DS . VmConfig::get('assets_general_path') . 'images/availability/' . VmConfig::get('rised_availability'))) ? JHTML::image(JURI::root() . VmConfig::get('assets_general_path') . 'images/availability/' . VmConfig::get('rised_availability', '7d.gif'), VmConfig::get('rised_availability', '7d.gif'), array('class' => 'availability')) : VmConfig::get('rised_availability'); ?>
+		</div>
+		<?php
+		} else if (!empty($this->product->product_availability)){?>
+		<div class="bnt-ready-ship"></div>
+		<?php
+		}
+	}
+
+	// Product Price?>
+<div class="w-price">
+	<div class="w-price-left">
+<?php
 			// the test is done in show_prices
 		//if ($this->show_prices and (empty($this->product->images[0]) or $this->product->images[0]->file_is_downloadable == 0)) {
 			echo $this->loadTemplate('showprices');
 		//}
-		?>
 
-		<?php
+$model		= VmModel::getModel("shipmentmethod");
+$shipment	= $model->getShipments()[1];
+?>
+	</div>
+	<div class="w-price-right">
+		<div class="bnt-see-price">
+			<a href="#" class="tooltip">
+			<span><?php echo $shipment->shipment_desc?></span></a>
+		</div><!--.bnt-see-price-->
+	</div>
+</div>
+<?php
 		// Add To Cart Button
 // 			if (!empty($this->product->prices) and !empty($this->product->images[0]) and $this->product->images[0]->file_is_downloadable==0 ) {
 //		if (!VmConfig::get('use_as_catalog', 0) and !empty($this->product->prices['salesPrice'])) {
+		if(!empty($this->product->product_availability))
 			echo $this->loadTemplate('addtocart');
-//		}  // Add To Cart Button END
-		?>
+//		}
 
-		<?php
-		// Availability Image
-		$stockhandle = VmConfig::get('stockhandle', 'none');
-		if (($this->product->product_in_stock - $this->product->product_ordered) < 1) {
-			if ($stockhandle == 'risetime' and VmConfig::get('rised_availability') and empty($this->product->product_availability)) {
-			?>	<div class="availability">
-				<?php echo (file_exists(JPATH_BASE . DS . VmConfig::get('assets_general_path') . 'images/availability/' . VmConfig::get('rised_availability'))) ? JHTML::image(JURI::root() . VmConfig::get('assets_general_path') . 'images/availability/' . VmConfig::get('rised_availability', '7d.gif'), VmConfig::get('rised_availability', '7d.gif'), array('class' => 'availability')) : VmConfig::get('rised_availability'); ?>
-			</div>
-			<?php
-			} else if (!empty($this->product->product_availability)) {
-			?>
-			<div class="availability">
-			<?php echo (file_exists(JPATH_BASE . DS . VmConfig::get('assets_general_path') . 'images/availability/' . $this->product->product_availability)) ? JHTML::image(JURI::root() . VmConfig::get('assets_general_path') . 'images/availability/' . $this->product->product_availability, $this->product->product_availability, array('class' => 'availability')) : $this->product->product_availability; ?>
-			</div>
-			<?php
-			}
-		}
-		?>
-
-<?php
 // Ask a question about this product
-if (VmConfig::get('ask_question', 1) == 1) {
+if (VmConfig::get('ask_question', 1) == 1){
 	?>
 			<div class="ask-a-question">
 				<a class="ask-a-question" href="<?php echo $this->askquestion_url ?>" ><?php echo JText::_('COM_VIRTUEMART_PRODUCT_ENQUIRY_LBL') ?></a>
 				<!--<a class="ask-a-question modal" rel="{handler: 'iframe', size: {x: 700, y: 550}}" href="<?php echo $this->askquestion_url ?>"><?php echo JText::_('COM_VIRTUEMART_PRODUCT_ENQUIRY_LBL') ?></a>-->
 			</div>
 		<?php }
-		?>
 
-		<?php
 		// Manufacturer of the Product
 		if (VmConfig::get('show_manufacturers', 1) && !empty($this->product->virtuemart_manufacturer_id)) {
 			echo $this->loadTemplate('manufacturer');
 		}
 		?>
-
-		</div>
 	</div>
-	<div class="clear"></div>
 	</div>
-
-	<?php // event onContentBeforeDisplay
-	echo $this->product->event->beforeDisplayContent; ?>
-
 	<?php
-	// Product Description
-	if (!empty($this->product->product_desc)) {
-		?>
-		<div class="product-description">
-	<?php /** @todo Test if content plugins modify the product description */ ?>
-		<span class="title"><?php echo JText::_('COM_VIRTUEMART_PRODUCT_DESC_TITLE') ?></span>
-	<?php echo $this->product->product_desc; ?>
-		</div>
-	<?php
-	} // Product Description END
-
-	if (!empty($this->product->customfieldsSorted['normal'])) {
+	if (!empty($this->product->customfieldsSorted['normal'])){
 	$this->position = 'normal';
 	echo $this->loadTemplate('customfields');
-	} // Product custom_fields END
+	}
 	// Product Packaging
 	$product_packaging = '';
 	if ($this->product->product_box) {
@@ -244,7 +221,10 @@ if (VmConfig::get('ask_question', 1) == 1) {
 		</div>
 	<?php } // Product Packaging END
 	?>
-
+<?php
+	// onContentAfterDisplay event
+	echo $this->product->event->afterDisplayContent; ?>
+	</div>
 	<?php
 	// Product Files
 	// foreach ($this->product->images as $fkey => $file) {
@@ -261,24 +241,9 @@ if (VmConfig::get('ask_question', 1) == 1) {
 	echo $this->loadTemplate('relatedproducts');
 	} // Product customfieldsRelatedProducts END
 
-	if (!empty($this->product->customfieldsRelatedCategories)) {
-	echo $this->loadTemplate('relatedcategories');
-	} // Product customfieldsRelatedCategories END
-	// Show child categories
-	if (VmConfig::get('showCategory', 1)) {
-	echo $this->loadTemplate('showcategory');
-	}
 	if (!empty($this->product->customfieldsSorted['onbot'])) {
 		$this->position='onbot';
 		echo $this->loadTemplate('customfields');
 	} // Product Custom ontop end
 	?>
-
-<?php // onContentAfterDisplay event
-echo $this->product->event->afterDisplayContent; ?>
-
-<?php
-echo $this->loadTemplate('reviews');
-?>
-	</div>
 </div>
