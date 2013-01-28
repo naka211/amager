@@ -34,6 +34,15 @@ em.error {
         <h2>Opret konto</h2>
         <div class="come-back"><a href="#">Tilbage</a></div><!--.come-back-->
     </div><!--.signup-title-->
+    <?php if(JRequest::getVar('complete')){?>
+		<p style="margin-left:10px; margin-top:10px;">Kære kunde, <br />Din konto er oprettet.<br /><br />
+        Med venlig hilsen<br />
+        Amager Isenkram
+        </p>
+        <div class="bnt-gohome" style="float:none; margin-left:10px;">
+        <a href="index.php">TIL FORSIDEN</a>
+        </div>
+	<?php }else {?>
     <form method="post" action="<?php echo JRoute::_('index.php?option=com_users&task=registration.register'); ?>" name="registrationForm" class="info-per" id="registrationForm">
         <fieldset>
             <p>Felter markeret med * skal udfyldes (kodeord skal være minimum 4 tegn)</p>
@@ -106,5 +115,6 @@ em.error {
             <!--</div>--><!--.bnt-subs-now-->
         </fieldset>
     </form>
+    <?php }?>
     </div><!--#w-signup-page-->
 </div>

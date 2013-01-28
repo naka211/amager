@@ -6,7 +6,6 @@ jQuery(document).ready(function()
 	});
 	
 	jQuery("#registrationForm").validate({
-		errorElement: "em",
 		rules: {
 			email: {
 				requireDefault: true,
@@ -74,45 +73,56 @@ jQuery(document).ready(function()
 	
 	
 	var private = '';
-	var company = '<div><input type="text" value="Firmanavn" name="company" /></div><div><input type="text" value="CVR-nr." name="cvr" /></div>';
-	var public = '<div><input type="text" value="EAN-nr. *" name="ean" id="ean" /></div><div><input type="text" value="Myndighed/Institution *" name="authority" id="authority" /></div><div><input type="text" value="Ordre- el. rekvisitionsnr. *" name="order" id="order" /></div><div><input type="text" value="Personreference *" name="person" id="person" />';
+	var company = '<div><input type="text" value="Firmanavn" name="company" id="company" /></div><div><input type="text" value="CVR-nr." name="cvr" id="cvr" /></div>';
+	var public = '<div><input type="text" value="EAN-nr. *" name="ean" id="ean" maxlength="13" /></div><div><input type="text" value="Myndighed/Institution *" name="authority" id="authority" /></div><div><input type="text" value="Ordre- el. rekvisitionsnr. *" name="order" id="order" /></div><div><input type="text" value="Personreference *" name="person" id="person" />';
 	jQuery("#choicemaker").change(function () {
-    value = jQuery("#choicemaker").val();
-      // You can also use $("#ChoiceMaker").val(); and change the case 0,1,2: to the values of the html select options elements
-
-	if(value == 1){
-		jQuery("#companyadd").html('');
-		jQuery("#publicadd").html('');
 		
-		jQuery("#ean").rules("remove");
-		jQuery("#authority").rules("remove");
-		jQuery("#order").rules("remove");
-		jQuery("#person").rules("remove");
-	} else if(value == 2){
-		jQuery("#companyadd").html(company);
-		jQuery("#publicadd").html('');
-		
-		jQuery("#ean").rules("remove");
-		jQuery("#authority").rules("remove");
-		jQuery("#order").rules("remove");
-		jQuery("#person").rules("remove");
-	} else {
-		jQuery("#companyadd").html('');
-		jQuery("#publicadd").html(public);
-		
-		var newRule = {
-			requireDefault: true,
-		 	required: true,
-			messages: {
-				requireDefault: "",
-				required: ""
+		value = jQuery("#choicemaker").val();
+		  // You can also use $("#ChoiceMaker").val(); and change the case 0,1,2: to the values of the html select options elements
+	
+		if(value == 1){
+			if(jQuery("#ean").val()){
+				jQuery("#ean").rules("remove");
+				jQuery("#authority").rules("remove");
+				jQuery("#order").rules("remove");
+				jQuery("#person").rules("remove");
 			}
-		};
-		jQuery("#ean").rules("add", newRule);
-		jQuery("#authority").rules("add", newRule);
-		jQuery("#order").rules("add", newRule);
-		jQuery("#person").rules("add", newRule);
-	}
+			jQuery("#companyadd").html('');
+			jQuery("#publicadd").html('');
+			focusInput();
+			
+			
+		} else if(value == 2){
+			if(jQuery("#ean").val()){
+				jQuery("#ean").rules("remove");
+				jQuery("#authority").rules("remove");
+				jQuery("#order").rules("remove");
+				jQuery("#person").rules("remove");
+			}
+			jQuery("#companyadd").html(company);
+			jQuery("#publicadd").html('');
+			focusInput();
+			
+			
+		} else {
+			jQuery("#companyadd").html('');
+			jQuery("#publicadd").html(public);
+			focusInput();
+			
+			var newRule = {
+				requireDefault: true,
+				required: true,
+				messages: {
+					requireDefault: "",
+					required: ""
+				}
+			};
+			jQuery("#ean").rules("add", newRule);
+			jQuery("#authority").rules("add", newRule);
+			jQuery("#order").rules("add", newRule);
+			jQuery("#person").rules("add", newRule);
+		}
+		
     });
 	jQuery("#email").bind("blur",function(){
 		jQuery("#username").val(jQuery("#email").val());
