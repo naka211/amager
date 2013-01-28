@@ -94,7 +94,7 @@ function autoHide(e){
 }
 
 function changeThumnail(){
-	var $imgLarge = jQuery('#btnLargeImage'),
+	var $imgLarge = jQuery('#btnLargeImage');
 		$imgLarge_icon = jQuery('#btnZoomIcon');
 	jQuery('#thumblist img').each( function(){
 		var $this = jQuery(this),
@@ -106,5 +106,4 @@ function changeThumnail(){
 			$imgLarge_icon.attr('href',imgLink);
 		});
 	});
-
 }

@@ -14,7 +14,6 @@ $doc				= JFactory::getDocument();
 //$app				= JFactory::getApplication();
 //$color				= $this->params->get('templatecolor');
 //$logo				= $this->params->get('logo');
-//$navposition		= $this->params->get('navposition');
 //$templateparams		= $app->getTemplate(true)->params;
 $tmplURL=$this->baseurl.'/templates/'.$this->template."/";
 
@@ -22,11 +21,6 @@ $tmplURL=$this->baseurl.'/templates/'.$this->template."/";
 //$doc->addStyleSheet($this->baseurl.'/templates/'.$this->template.'/css/print.css', $type = 'text/css', $media = 'print');
 
 //$doc->addScript($this->baseurl.'/templates/'.$this->template.'/javascript/hide.js', 'text/javascript');
-/*unset($doc->_scripts[$this->baseurl . '/media/system/js/mootools-core.js']);
-unset($doc->_scripts[$this->baseurl . '/media/system/js/modal.js']);
-unset($doc->_scripts[$this->baseurl . '/media/system/js/core.js']);
-unset($doc->_scripts[$this->baseurl . '/media/system/js/caption.js']);
-$doc->_script=array();*/
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
@@ -48,31 +42,18 @@ $doc->_script=array();*/
 
 <!--Script-->
 <script type="text/javascript" src="<?php echo $tmplURL?>js/webfont.js" async="async"></script>
-<script type="text/javascript" src="<?php echo $tmplURL?>js/jquery.carouFredSel-6.0.1-packed.js"></script>
+
 <script type="text/javascript" src="<?php echo $tmplURL?>js/jquery.easing.min.1.3.js"></script>
 <script type="text/javascript" src="<?php echo $tmplURL?>js/jquery.reveal.js"></script>
 <script type="text/javascript" src="<?php echo $tmplURL?>js/jquery.prettyPhoto.js"></script>
 <script type='text/javascript' src="<?php echo $tmplURL?>js/jquery.tinyscrollbar.min.js"></script>
-<script type='text/javascript' src="<?php echo $tmplURL?>js/duc.js"></script>
-
+<script type='text/javascript' src="<?php echo $tmplURL?>js/duc.js" async="async"></script>
+<?php
+$menu = &JSite::getMenu();
+if($menu->getActive()->id == $menu->getDefault()->id){
+?>
+<script type="text/javascript" src="<?php echo $tmplURL?>js/jquery.carouFredSel-6.0.1-packed.js"></script>
 <script type="text/javascript">
-jQuery(function(){
-	/* Hide form input values on focus*/
-	jQuery('input:text').each(function(){
-		var txtval = jQuery(this).val();
-		jQuery(this).focus(function(){
-			if(jQuery(this).val() == txtval){
-				jQuery(this).val('')
-			}
-		});
-		jQuery(this).blur(function(){
-			if(jQuery(this).val() == ""){
-				jQuery(this).val(txtval);
-			}
-		});
-	});
-});
-
 jQuery(document).ready( function(){
 	jQuery('#foo1').carouFredSel({
 		circular		:true,
@@ -92,13 +73,12 @@ jQuery(document).ready( function(){
 		auto			:true
 	});
 
-	jQuery("#foo3").carouFredSel
-	({
+	jQuery("#foo3").carouFredSel({
 		responsive	: true,
 		scroll		:
 		{
-			duration	:1200,
-			fx			: "crossfade"
+			duration:1200,
+			fx		: "crossfade"
 		},
 		items		:
 		{
@@ -107,7 +87,26 @@ jQuery(document).ready( function(){
 			height		: "240"
 		}
 	});
+});
 
+jQuery(function() {
+	jQuery('#callout').find('a').click(function(e){
+		e.preventDefault();
+		if ( e.target.nodeName == 'SPAN'){
+			jQuery(this).parent().animate({'height':0},400, 'easeOutQuint',
+		function(){
+			jQuery(this).remove();});
+		}
+		else
+			window.location = "http://www.milla-petit.dk";
+	});
+});
+</script>
+<?php
+}
+?>
+<script type="text/javascript">
+jQuery(document).ready( function(){
 	jQuery(function () {
 		jQuery('.reveal').click(function() {
 			jQuery(this).children('.cate-sub1').slideToggle();
@@ -119,18 +118,20 @@ jQuery(document).ready( function(){
 	});
 });
 
-jQuery(function() {
-	jQuery('#callout').find('a').click(function(e){
-		e.preventDefault();
-		if ( e.target.nodeName == 'SPAN')
-		{jQuery(this).parent().animate({'height':0},400, 'easeOutQuint',
-		function(){
-			jQuery(this).remove();});
-		}
-		else
-		{
-			window.location = "http://www.milla-petit.dk";
-		}
+jQuery(function(){
+	/* Hide form input values on focus*/
+	jQuery('input:text').each(function(){
+		var txtval = jQuery(this).val();
+		jQuery(this).focus(function(){
+			if(jQuery(this).val() == txtval){
+				jQuery(this).val("")
+			}
+		});
+		jQuery(this).blur(function(){
+			if(jQuery(this).val() == ""){
+				jQuery(this).val(txtval);
+			}
+		});
 	});
 });
 
