@@ -16,7 +16,7 @@ $doc				= JFactory::getDocument();
 //$logo				= $this->params->get('logo');
 //$templateparams		= $app->getTemplate(true)->params;
 $tmplURL=$this->baseurl.'/templates/'.$this->template."/";
-
+$user = JFactory::getUser();print_r($user);//exit;
 //$doc->addStyleSheet($this->baseurl.'/templates/'.$this->template.'/css/layout.css', $type = 'text/css', $media = 'screen,projection');
 //$doc->addStyleSheet($this->baseurl.'/templates/'.$this->template.'/css/print.css', $type = 'text/css', $media = 'print');
 
@@ -116,9 +116,10 @@ jQuery(document).ready( function(){
 			event.stopPropagation();
 		});
 	});
+	focusInput();
 });
 
-jQuery(function(){
+focusInput = function(){
 	/* Hide form input values on focus*/
 	jQuery('input:text').each(function(){
 		var txtval = jQuery(this).val();
@@ -133,7 +134,7 @@ jQuery(function(){
 			}
 		});
 	});
-});
+}
 
 	jQuery('.cart').hover(
 	function(){
@@ -151,10 +152,12 @@ jQuery(function(){
 	<!--.logo-->
 	<div class="nav-top">
 		<jdoc:include type="modules" name="menu" />
+        <?php if($user->guest){?>
 		<ul class="login">
 		<li><a href="#" data-reveal-id="myModal">Login</a></li>
 		<li class="no-li"><a href="index.php?option=com_users&view=registration&Itemid=121">Registrer</a></li>
 		</ul>
+        <?php }?>
 	</div>
 	<!--.nav-top-->
 	<div class="w-frm-login reveal-modal" id="myModal">    
@@ -194,13 +197,21 @@ jQuery(function(){
                     	<a href="index.php?option=com_users&view=registration&Itemid=121">Tilmeld</a>
                     </div><!--.bnt-sub-->
                 </div><!--.new-user-->
-                
+            <?php echo JHtml::_('form.token'); ?>
             </fieldset>
         </form>
     </div><!--#w-frm-login-->
     
 	{module functions}
-
+    <?php if(!$user->guest){?>
+	<div class="welcome">
+    	<ul>
+        	<li>Velkommen, <span><?php echo $user->name?></span></li>
+            <li><a href="#">Min konto</a></li>
+            <li class="n-bg-r"><a href="index.php?option=com_users&task=user.logout">Log ud</a></li>
+        </ul>
+    </div><!--.welcome-->
+    <?php }?>
 	<jdoc:include type="modules" name="cart" />
 
 	<div class="clear"></div>
