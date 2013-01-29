@@ -11,6 +11,32 @@ if (empty($this->product)) {
 ?>
 <div id="produkter-page" class="productdetails-view productdetails">
 	{module Breadcrumbs}
+	<div class="w-tell-friend reveal-modal" id="myModal2">
+	<a href="#" class="close-reveal-modal"></a>
+	<form name="f1" class="tell-friend" action="" method="get">
+		<fieldset>
+		<h2>Tip en ven</h2>
+			<div>
+			<label>Din e-mail <span>*</span></label>
+			<input type="text" value="" />
+			</div>
+			<div>
+			<label>Din ven’s e-mail<span>*</span></label>
+			<input type="text" value="" />
+			</div>
+			<div>
+			<label>Besked</label>
+			<textarea name="" cols="" rows=""><?php echo JURI::current()?></textarea>
+			</div>
+			<div class="bnt-send3">
+			<a href="#">SEND</a>
+			</div><!--.bnt-send3-->
+			<div class="bnt-reset">
+			<a href="#">nulstil</a>
+			</div><!--.bnt-reset-->
+		</fieldset>
+	</form>
+	</div>
 	<div class="w-pro">
 	<?php
 	// Product Navigation
@@ -149,17 +175,15 @@ echo $this->loadTemplate('images');
 
 	// Availability Image
 	$stockhandle = VmConfig::get('stockhandle', 'none');
-	if (($this->product->product_in_stock - $this->product->product_ordered) < 1){
-		if (VmConfig::get('rised_availability') and empty($this->product->product_availability)) {?>
+	if (($this->product->product_in_stock - $this->product->product_ordered) < 1){?>
 		<div class="bnt-outofstock" style="margin-top: 17px">
 <?php echo (file_exists(JPATH_BASE . DS . VmConfig::get('assets_general_path') . 'images/availability/' . VmConfig::get('rised_availability'))) ? JHTML::image(JURI::root() . VmConfig::get('assets_general_path') . 'images/availability/' . VmConfig::get('rised_availability', '7d.gif'), VmConfig::get('rised_availability', '7d.gif'), array('class' => 'availability')) : VmConfig::get('rised_availability'); ?>
 		</div>
 		<?php
-		} else if (!empty($this->product->product_availability)){?>
+		}else{?>
 		<div class="bnt-ready-ship"></div>
 		<?php
 		}
-	}
 
 	// Product Price?>
 <div class="w-price">
@@ -185,7 +209,7 @@ $shipment	= $model->getShipments()[1];
 		// Add To Cart Button
 // 			if (!empty($this->product->prices) and !empty($this->product->images[0]) and $this->product->images[0]->file_is_downloadable==0 ) {
 //		if (!VmConfig::get('use_as_catalog', 0) and !empty($this->product->prices['salesPrice'])) {
-		if(!empty($this->product->product_availability))
+		if(($this->product->product_in_stock - $this->product->product_ordered) > 0)
 			echo $this->loadTemplate('addtocart');
 //		}
 
