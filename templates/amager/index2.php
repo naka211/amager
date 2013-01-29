@@ -1,6 +1,5 @@
 <?php
 // No direct access.
-
 defined('_JEXEC') or die;
 
 //jimport('joomla.filesystem.file');
@@ -22,9 +21,6 @@ $user = JFactory::getUser();
 //$doc->addStyleSheet($this->baseurl.'/templates/'.$this->template.'/css/print.css', $type = 'text/css', $media = 'print');
 
 //$doc->addScript($this->baseurl.'/templates/'.$this->template.'/javascript/hide.js', 'text/javascript');
-if(JRequest::getVar('option')=='com_users' && JRequest::getVar('view')=='profile'){
-	require_once('index2.php');
-} else {
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
@@ -120,7 +116,7 @@ jQuery(document).ready( function(){
 			event.stopPropagation();
 		});
 	});
-	focusInput();
+	//focusInput();
 });
 
 focusInput = function(){
@@ -228,7 +224,6 @@ focusInput = function(){
 <div id="page">
 	<div id="nav-search">
 	<div id="w-nav-search">
-		<div class="top-cate"></div>
 		<jdoc:include type="modules" name="search" />
 
 		<div class="func-img"> <img src="<?php echo $tmplURL?>img/img-3.png" width="220" height="34" alt="" /> </div>
@@ -242,32 +237,8 @@ focusInput = function(){
 	<div class="clear"></div>
 	<div id="main">
 	<div id="w-main">
-		<div id="nav-left">
-			<jdoc:include type="modules" name="left" />
-		</div>
-		<!--#nav-left-->
-
-		<div id="main-content">
-			<jdoc:include type="modules" name="above" />
-			<jdoc:include type="message" />
-			<jdoc:include type="component" />
-			<div class="clear"></div>
-			<div class="main-brand">
-                <div class="image_carousel">
-                <div id="foo1">
-                <jdoc:include type="modules" name="below" />
-				</div>
-                <!--foo1-->
-                <div class="clear"></div>
-                <a class="prev" id="foo1_prev" href="#"><span>prev</span></a> <a class="next" id="foo1_next" href="#"><span>next</span></a> </div>
-                <!--.image_carousel-->
-            </div>
-			<!--.main-brand-->
-			<div class="clear"></div>
-			<div class="main-brand-shadow"> </div>
-			<!--.main-brand-shadow-->
-		</div>
-		<!--#main-content-->
+        <jdoc:include type="message" />
+        <jdoc:include type="component" />
 	</div>
 	<!--#w-main-->
 	</div>
@@ -299,4 +270,3 @@ focusInput = function(){
 <jdoc:include type="modules" name="debug" />
 </body>
 </html>
-<?php }?>
