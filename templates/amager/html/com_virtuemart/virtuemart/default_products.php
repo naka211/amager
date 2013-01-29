@@ -41,7 +41,7 @@ foreach ( $productList as $product ) {
 
 					<h3 style="text-align: center">
 					<?php // Product Name
-					echo JHTML::link ( $link, $product->product_name, array ('title' => $product->product_name ) ); ?>
+					echo $product->product_name?>
 					</h3>
 
 					<div class="price">
