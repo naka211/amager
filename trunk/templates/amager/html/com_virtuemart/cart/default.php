@@ -1,11 +1,11 @@
 <?php
 // Check to ensure this file is included in Joomla!
 defined ('_JEXEC') or die('Restricted access');
-vmJsApi::js ('facebox');
-vmJsApi::css ('facebox');
+//vmJsApi::js ('facebox');
+//vmJsApi::css ('facebox');
 JHtml::_ ('behavior.formvalidation');
-$document = JFactory::getDocument ();
-$document->addScriptDeclaration ("
+//$document = JFactory::getDocument ();
+/*$document->addScriptDeclaration ("
 
 //<![CDATA[
 	jQuery(document).ready(function($) {
@@ -17,8 +17,8 @@ $document->addScriptDeclaration ("
 	});
 
 //]]>
-");
-$document->addScriptDeclaration ("
+");*/
+/*$document->addScriptDeclaration ("
 
 //<![CDATA[
 	jQuery(document).ready(function($) {
@@ -40,34 +40,23 @@ $document->addScriptDeclaration ("
 
 //]]>
 
-");
-$document->addStyleDeclaration ('#facebox .content {display: block !important; height: 480px !important; overflow: auto; width: 560px !important; }');
+");*/
+//$document->addStyleDeclaration ('#facebox .content {display: block !important; height: 480px !important; overflow: auto; width: 560px !important; }');
 
 //vmdebug('car7t pricesUnformatted',$this->cart->pricesUnformatted);
 //vmdebug('cart cart',$this->cart->pricesUnformatted );
 ?>
-
-<div class="cart-view">
-	<div>
-		<div class="width50 floatleft">
-			<h1><?php echo JText::_ ('COM_VIRTUEMART_CART_TITLE'); ?></h1>
-		</div>
-		<?php if (VmConfig::get ('oncheckout_show_steps', 1) && $this->checkout_task === 'confirm') {
-		vmdebug ('checkout_task', $this->checkout_task);
-		echo '<div class="checkoutStep" id="checkoutStep4">' . JText::_ ('COM_VIRTUEMART_USER_FORM_CART_STEP4') . '</div>';
-	} ?>
-		<div class="width50 floatleft right">
-			<?php // Continue Shopping Button
-			if ($this->continue_link_html != '') {
-				echo $this->continue_link_html;
-			} ?>
-		</div>
-		<div class="clear"></div>
+<div id="cart-page">
+<div class="w-cart-page">
+	<div class="title-cart">
+		<h1><?php echo JText::_ ('COM_VIRTUEMART_CART_TITLE'); ?></h1>
 	</div>
+	<?php // Continue Shopping Button
+	/*if ($this->continue_link_html != '') {
+		echo $this->continue_link_html;
+	}*/
 
-
-
-	<?php echo shopFunctionsF::getLoginForm ($this->cart, FALSE);
+	//echo shopFunctionsF::getLoginForm ($this->cart, FALSE);
 
 	// This displays the pricelist MUST be done with tables, because it is also used for the emails
 	echo $this->loadTemplate ('pricelist');
@@ -155,4 +144,5 @@ $document->addStyleDeclaration ('#facebox .content {display: block !important; h
 		<input type='hidden' name='option' value='com_virtuemart'/>
 		<input type='hidden' name='view' value='cart'/>
 	</form>
+</div>
 </div>

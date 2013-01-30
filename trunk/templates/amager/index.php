@@ -22,7 +22,9 @@ $user = JFactory::getUser();
 //$doc->addStyleSheet($this->baseurl.'/templates/'.$this->template.'/css/print.css', $type = 'text/css', $media = 'print');
 
 //$doc->addScript($this->baseurl.'/templates/'.$this->template.'/javascript/hide.js', 'text/javascript');
-if(JRequest::getVar('option')=='com_users' && JRequest::getVar('view')=='profile'){
+$opt=JRequest::getVar('option');
+$view=JRequest::getVar('view');
+if($opt.$view==in_array($opt.$view,array('com_usersprofile','com_virtuemartcart'))){
 	require_once('index2.php');
 } else {
 ?>
@@ -156,66 +158,66 @@ focusInput = function(){
 	<!--.logo-->
 	<div class="nav-top">
 		<jdoc:include type="modules" name="menu" />
-        <?php if($user->guest){?>
+		<?php if($user->guest){?>
 		<ul class="login">
 		<li><a href="#" data-reveal-id="myModal">Login</a></li>
 		<li class="no-li"><a href="index.php?option=com_users&view=registration&Itemid=121">Registrer</a></li>
 		</ul>
-        <?php }?>
+		<?php }?>
 	</div>
 	<!--.nav-top-->
-	<div class="w-frm-login reveal-modal" id="myModal">    
-    <a href="#" class="close-reveal-modal"></a>
-    	<?php 
+	<div class="w-frm-login reveal-modal" id="myModal">	
+	<a href="#" class="close-reveal-modal"></a>
+		<?php 
 		$username = JRequest::getString('username','','cookie');
 		$password = JRequest::getString('password','','cookie');
 		?>
-    	<form class="frm-login" method="post" action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>">
-        	<fieldset>
-            	<div class="logo2">
-                	<a href="index.php"><img src="<?php echo $tmplURL?>img/logo2.png" width="196" height="97" alt="" /></a>
-                </div><!--.logo2-->
-            	<h1>Log ind eller opret konto</h1>
-                <div class="info-user">
-                	<h3>Eksisterende bruger</h3>
-                    <div>
-                    	<input type="text" class="input" name="username" id="modlgn-username" value="<?php echo $username?$username:'Indtast din email';?>" />
-                    </div>
-                    <div>
-                    	<input type="password" class="input" name="password" id="modlgn-passwd" value="<?php echo $password;?>" />
-                    </div>
-                    <!--<div class="btn-login">-->
-                    	<!--<a href="index2.php">Login</a>-->
-                        <input type="submit" name="Submit" value=" " class="btn-login" />
-                    <!--</div>--><!--.bnt-login-->
-                    <div class="chk">
-                    	<input type="checkbox" name="remember" value="yes" /><span>Husk mig</span>
-                    </div>
-                    <div class="forgot-pass"><a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">Har du glemt dit kodeord, tryk her</a></div>
-                </div><!--.info-user-->
-                
-                <div class="new-user">
-                	<h3>Ny bruger</h3>
-                    <p>Vil du registere dig som bruger ? Tryk venligst tilmeld.</p>
-                    <div class="bnt-sub">
-                    	<a href="index.php?option=com_users&view=registration&Itemid=121">Tilmeld</a>
-                    </div><!--.bnt-sub-->
-                </div><!--.new-user-->
-            <?php echo JHtml::_('form.token'); ?>
-            </fieldset>
-        </form>
-    </div><!--#w-frm-login-->
-    
+		<form class="frm-login" method="post" action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>">
+			<fieldset>
+				<div class="logo2">
+					<a href="index.php"><img src="<?php echo $tmplURL?>img/logo2.png" width="196" height="97" alt="" /></a>
+				</div><!--.logo2-->
+				<h1>Log ind eller opret konto</h1>
+				<div class="info-user">
+					<h3>Eksisterende bruger</h3>
+					<div>
+						<input type="text" class="input" name="username" id="modlgn-username" value="<?php echo $username?$username:'Indtast din email';?>" />
+					</div>
+					<div>
+						<input type="password" class="input" name="password" id="modlgn-passwd" value="<?php echo $password;?>" />
+					</div>
+					<!--<div class="btn-login">-->
+						<!--<a href="index2.php">Login</a>-->
+						<input type="submit" name="Submit" value=" " class="btn-login" />
+					<!--</div>--><!--.bnt-login-->
+					<div class="chk">
+						<input type="checkbox" name="remember" value="yes" /><span>Husk mig</span>
+					</div>
+					<div class="forgot-pass"><a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">Har du glemt dit kodeord, tryk her</a></div>
+				</div><!--.info-user-->
+				
+				<div class="new-user">
+					<h3>Ny bruger</h3>
+					<p>Vil du registere dig som bruger ? Tryk venligst tilmeld.</p>
+					<div class="bnt-sub">
+						<a href="index.php?option=com_users&view=registration&Itemid=121">Tilmeld</a>
+					</div><!--.bnt-sub-->
+				</div><!--.new-user-->
+			<?php echo JHtml::_('form.token'); ?>
+			</fieldset>
+		</form>
+	</div><!--#w-frm-login-->
+	
 	{module functions}
-    <?php if(!$user->guest){?>
+	<?php if(!$user->guest){?>
 	<div class="welcome">
-    	<ul>
-        	<li>Velkommen, <span><?php echo $user->name?></span></li>
-            <li><a href="index.php?option=com_users&task=profile.edit&user_id=<?php echo $user->id;?>">Min konto</a></li>
-            <li class="n-bg-r"><a href="index.php?option=com_users&task=user.logout">Log ud</a></li>
-        </ul>
-    </div><!--.welcome-->
-    <?php }?>
+		<ul>
+			<li>Velkommen, <span><?php echo $user->name?></span></li>
+			<li><a href="index.php?option=com_users&task=profile.edit&user_id=<?php echo $user->id;?>">Min konto</a></li>
+			<li class="n-bg-r"><a href="index.php?option=com_users&task=user.logout">Log ud</a></li>
+		</ul>
+	</div><!--.welcome-->
+	<?php }?>
 	<jdoc:include type="modules" name="cart" />
 
 	<div class="clear"></div>
@@ -253,15 +255,15 @@ focusInput = function(){
 			<jdoc:include type="component" />
 			<div class="clear"></div>
 			<div class="main-brand">
-                <div class="image_carousel">
-                <div id="foo1">
-                <jdoc:include type="modules" name="below" />
+				<div class="image_carousel">
+				<div id="foo1">
+				<jdoc:include type="modules" name="below" />
 				</div>
-                <!--foo1-->
-                <div class="clear"></div>
-                <a class="prev" id="foo1_prev" href="#"><span>prev</span></a> <a class="next" id="foo1_next" href="#"><span>next</span></a> </div>
-                <!--.image_carousel-->
-            </div>
+				<!--foo1-->
+				<div class="clear"></div>
+				<a class="prev" id="foo1_prev" href="#"><span>prev</span></a> <a class="next" id="foo1_next" href="#"><span>next</span></a> </div>
+				<!--.image_carousel-->
+			</div>
 			<!--.main-brand-->
 			<div class="clear"></div>
 			<div class="main-brand-shadow"> </div>
