@@ -1,26 +1,6 @@
 <?php
 // No direct access.
 defined('_JEXEC') or die;
-
-//jimport('joomla.filesystem.file');
-
-// check modules
-//$showRightColumn	= ($this->countModules('position-3') or $this->countModules('position-6') or $this->countModules('position-8'));
-
-//JHtml::_('behavior.framework', true);
-
-// get params
-$doc				= JFactory::getDocument();
-//$app				= JFactory::getApplication();
-//$color				= $this->params->get('templatecolor');
-//$logo				= $this->params->get('logo');
-//$templateparams		= $app->getTemplate(true)->params;
-$tmplURL=$this->baseurl.'/templates/'.$this->template."/";
-$user = JFactory::getUser();
-//$doc->addStyleSheet($this->baseurl.'/templates/'.$this->template.'/css/layout.css', $type = 'text/css', $media = 'screen,projection');
-//$doc->addStyleSheet($this->baseurl.'/templates/'.$this->template.'/css/print.css', $type = 'text/css', $media = 'print');
-
-//$doc->addScript($this->baseurl.'/templates/'.$this->template.'/javascript/hide.js', 'text/javascript');
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
@@ -152,66 +132,66 @@ focusInput = function(){
 	<!--.logo-->
 	<div class="nav-top">
 		<jdoc:include type="modules" name="menu" />
-        <?php if($user->guest){?>
+		<?php if($user->guest){?>
 		<ul class="login">
 		<li><a href="#" data-reveal-id="myModal">Login</a></li>
 		<li class="no-li"><a href="index.php?option=com_users&view=registration&Itemid=121">Registrer</a></li>
 		</ul>
-        <?php }?>
+		<?php }?>
 	</div>
 	<!--.nav-top-->
-	<div class="w-frm-login reveal-modal" id="myModal">    
-    <a href="#" class="close-reveal-modal"></a>
-    	<?php 
+	<div class="w-frm-login reveal-modal" id="myModal">	
+	<a href="#" class="close-reveal-modal"></a>
+		<?php 
 		$username = JRequest::getString('username','','cookie');
 		$password = JRequest::getString('password','','cookie');
 		?>
-    	<form class="frm-login" method="post" action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>">
-        	<fieldset>
-            	<div class="logo2">
-                	<a href="index.php"><img src="<?php echo $tmplURL?>img/logo2.png" width="196" height="97" alt="" /></a>
-                </div><!--.logo2-->
-            	<h1>Log ind eller opret konto</h1>
-                <div class="info-user">
-                	<h3>Eksisterende bruger</h3>
-                    <div>
-                    	<input type="text" class="input" name="username" id="modlgn-username" value="<?php echo $username?$username:'Indtast din email';?>" />
-                    </div>
-                    <div>
-                    	<input type="password" class="input" name="password" id="modlgn-passwd" value="<?php echo $password;?>" />
-                    </div>
-                    <!--<div class="btn-login">-->
-                    	<!--<a href="index2.php">Login</a>-->
-                        <input type="submit" name="Submit" value=" " class="btn-login" />
-                    <!--</div>--><!--.bnt-login-->
-                    <div class="chk">
-                    	<input type="checkbox" name="remember" value="yes" /><span>Husk mig</span>
-                    </div>
-                    <div class="forgot-pass"><a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">Har du glemt dit kodeord, tryk her</a></div>
-                </div><!--.info-user-->
-                
-                <div class="new-user">
-                	<h3>Ny bruger</h3>
-                    <p>Vil du registere dig som bruger ? Tryk venligst tilmeld.</p>
-                    <div class="bnt-sub">
-                    	<a href="index.php?option=com_users&view=registration&Itemid=121">Tilmeld</a>
-                    </div><!--.bnt-sub-->
-                </div><!--.new-user-->
-            <?php echo JHtml::_('form.token'); ?>
-            </fieldset>
-        </form>
-    </div><!--#w-frm-login-->
-    
+		<form class="frm-login" method="post" action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>">
+			<fieldset>
+				<div class="logo2">
+					<a href="index.php"><img src="<?php echo $tmplURL?>img/logo2.png" width="196" height="97" alt="" /></a>
+				</div><!--.logo2-->
+				<h1>Log ind eller opret konto</h1>
+				<div class="info-user">
+					<h3>Eksisterende bruger</h3>
+					<div>
+						<input type="text" class="input" name="username" id="modlgn-username" value="<?php echo $username?$username:'Indtast din email';?>" />
+					</div>
+					<div>
+						<input type="password" class="input" name="password" id="modlgn-passwd" value="<?php echo $password;?>" />
+					</div>
+					<!--<div class="btn-login">-->
+						<!--<a href="index2.php">Login</a>-->
+						<input type="submit" name="Submit" value=" " class="btn-login" />
+					<!--</div>--><!--.bnt-login-->
+					<div class="chk">
+						<input type="checkbox" name="remember" value="yes" /><span>Husk mig</span>
+					</div>
+					<div class="forgot-pass"><a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">Har du glemt dit kodeord, tryk her</a></div>
+				</div><!--.info-user-->
+				
+				<div class="new-user">
+					<h3>Ny bruger</h3>
+					<p>Vil du registere dig som bruger ? Tryk venligst tilmeld.</p>
+					<div class="bnt-sub">
+						<a href="index.php?option=com_users&view=registration&Itemid=121">Tilmeld</a>
+					</div><!--.bnt-sub-->
+				</div><!--.new-user-->
+			<?php echo JHtml::_('form.token'); ?>
+			</fieldset>
+		</form>
+	</div><!--#w-frm-login-->
+	
 	{module functions}
-    <?php if(!$user->guest){?>
+	<?php if(!$user->guest){?>
 	<div class="welcome">
-    	<ul>
-        	<li>Velkommen, <span><?php echo $user->name?></span></li>
-            <li><a href="index.php?option=com_users&task=profile.edit&user_id=<?php echo $user->id;?>">Min konto</a></li>
-            <li class="n-bg-r"><a href="index.php?option=com_users&task=user.logout">Log ud</a></li>
-        </ul>
-    </div><!--.welcome-->
-    <?php }?>
+		<ul>
+			<li>Velkommen, <span><?php echo $user->name?></span></li>
+			<li><a href="index.php?option=com_users&task=profile.edit&user_id=<?php echo $user->id;?>">Min konto</a></li>
+			<li class="n-bg-r"><a href="index.php?option=com_users&task=user.logout">Log ud</a></li>
+		</ul>
+	</div><!--.welcome-->
+	<?php }?>
 	<jdoc:include type="modules" name="cart" />
 
 	<div class="clear"></div>
@@ -237,8 +217,8 @@ focusInput = function(){
 	<div class="clear"></div>
 	<div id="main">
 	<div id="w-main">
-        <jdoc:include type="message" />
-        <jdoc:include type="component" />
+		<jdoc:include type="message" />
+		<jdoc:include type="component" />
 	</div>
 	<!--#w-main-->
 	</div>
