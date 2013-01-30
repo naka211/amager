@@ -89,19 +89,19 @@ em.error {
                 <label>Kodeord (skal være min 4 tegn) *</label>
             </div>
             <div>
-                <input type="password" minlength="4" name="password" id="password">
+                <input type="password" minlength="4" name="password1" id="password1">
             </div>
             <div>
                 <label>Bekræft kodeord *</label>
             </div>
             <div>
-                <input type="password" name="confirmpassword" id="confirmpassword">
+                <input type="password" name="password2" id="password2">
             </div>
              <div>
                     <label>Bemærk! E-mail bruges til login</label>
                 </div>
             <div class="chk2">
-                <input type="checkbox" name="newsletter">
+                <input type="checkbox" name="newsletter" value="1">
                 <p>Ved registering husk tilmelding nyhedsbrev samtidig </p>
             </div>
             <!--<div class="bnt-subs-now n-m-b">-->

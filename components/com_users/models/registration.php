@@ -315,7 +315,7 @@ class UsersModelRegistration extends JModelForm
 		//print_r($data);exit;
 		// Prepare the data for the user object.
 		//$data['email']		= $data['email1'];
-		//$data['password']	= $data['password1'];
+		$data['password']	= $data['password1'];
 		$useractivation = $params->get('useractivation');
 		$sendpassword = $params->get('sendpassword', 1);
 

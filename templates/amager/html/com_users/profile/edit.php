@@ -17,6 +17,7 @@ JHtml::_('behavior.noframes');
 /*$lang = JFactory::getLanguage();
 $lang->load( 'plg_user_profile', JPATH_ADMINISTRATOR );*/
 $user = JFactory::getUser();
+$user =& JUser::getInstance($user->id);
 $mwctypeArr = array(1 => 'Privat', 2 => 'Erhverv', 3 => 'Offentlig instans');
 ?>
 <script language="javascript" src="templates/amager/js/jquery.validate.js"></script>
@@ -46,8 +47,8 @@ jQuery(document).ready(function()
 			lastname: {
 				required: true,
 			},
-			confirmpassword: {
-				equalTo: "#password",
+			password2: {
+				equalTo: "#password1",
 			},
 			address: {
 				required: true,
@@ -160,12 +161,12 @@ jQuery(document).ready(function()
             <h3>LOG-IND INFORMATION</h3>
             <div>
             	<label>Kodeord <span>*</span></label>
-                <input type="password" name="password" id="password" value="" />
+                <input type="password" name="password1" id="password1" value="" />
                 <span>(skal være min 4 tegn)</span>
             </div>
             <div>
             	<label>Bekræft kodeord <span>*</span></label>
-                <input type="password" name="conformpassword" id="conformpassword" value="" />
+                <input type="password" name="password2" id="password2" value="" />
             </div>
             <div class="m-l-114"><label><span>* </span>Skal udfyldes</label></div>
             <!--<div class="bnt-save">

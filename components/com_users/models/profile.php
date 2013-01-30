@@ -233,8 +233,8 @@ class UsersModelProfile extends JModelForm
 		$user = new JUser($userId);
 
 		// Prepare the data for the user object.
-		//$data['email']		= $data['email1'];
-		//$data['password']	= $data['password1'];
+		$data['email']		= $data['email1'];
+		$data['password']	= $data['password1'];
 
 		// Unset the username so it does not get overwritten
 		unset($data['username']);
@@ -244,7 +244,7 @@ class UsersModelProfile extends JModelForm
 
 		// Unset the sendEmail so it does not get overwritten
 		unset($data['sendEmail']);
-print_r($user);exit;
+//print_r($user);exit;
 		// Bind the data.
 		if (!$user->bind($data)) {
 			$this->setError(JText::sprintf('USERS PROFILE BIND FAILED', $user->getError()));
@@ -256,7 +256,7 @@ print_r($user);exit;
 
 		// Null the user groups so they don't get overwritten
 		$user->groups = null;
-		print_r($user);exit;
+		//print_r($user);exit;
 		// Store the data.
 		if (!$user->save()) {
 			$this->setError($user->getError());

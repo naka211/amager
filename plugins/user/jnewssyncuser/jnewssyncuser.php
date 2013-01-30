@@ -30,7 +30,7 @@ class plgUserjNewssyncuser extends JPlugin {
 	//joomla 15
 	function onAfterStoreUser($user, $isnew, $success, $msg){
 		if($success===false) return false;
-		if(!$user->newsletter) return false;
+		if($user['newsletter'] == 0) return false;
 		
 		if ( strtolower( substr( JPATH_ROOT, strlen(JPATH_ROOT)-13 ) ) =='administrator' ) {
 			$adminPath = strtolower( substr( JPATH_ROOT, strlen(JPATH_ROOT)-13 ) );
