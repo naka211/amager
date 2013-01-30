@@ -1,22 +1,4 @@
 <?php
-
-/**
- *
- * Controller for the cart
- *
- * @package	VirtueMart
- * @subpackage Cart
- * @author RolandD
- * @author Max Milbers
- * @link http://www.virtuemart.net
- * @copyright Copyright (c) 2004 - 2010 VirtueMart Team. All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
- * VirtueMart is free software. This version may have been modified pursuant
- * to the GNU General Public License, and as distributed it includes or
- * is derivative of works licensed under the GNU General Public License or
- * other free or open source software licenses.
- * @version $Id: cart.php 6502 2012-10-04 13:19:26Z Milbo $
- */
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -54,7 +36,6 @@ class VirtueMartControllerCart extends JController {
 		$this->useXHTML = true;
 	}
 
-
 	/**
 	 * Add the product to the cart
 	 *
@@ -83,6 +64,39 @@ class VirtueMartControllerCart extends JController {
 
 			$mainframe->enqueueMessage($msg, $type);
 			$mainframe->redirect(JRoute::_('index.php?option=com_virtuemart&view=cart'));
+
+		} else {
+			$mainframe->enqueueMessage('Cart does not exist?', 'error');
+		}
+	}
+
+	/**
+	 * Add the product to the cart using Ajax
+	 *
+	 * @author RolandD
+	 * @author Max Milbers
+	 * @access public
+	 */
+	public function addAJAX() {
+		$mainframe = JFactory::getApplication();
+		if (VmConfig::get('use_as_catalog', 0)) {
+			$msg = JText::_('COM_VIRTUEMART_PRODUCT_NOT_ADDED_SUCCESSFULLY');
+			$type = 'error';
+			$mainframe->redirect('index.php', $msg, $type);
+		}
+		$cart = VirtueMartCart::getCart();
+		if ($cart) {
+			$virtuemart_product_ids = JRequest::getVar('virtuemart_product_id', array(), 'default', 'array');
+			$success = true;
+			if ($cart->add($virtuemart_product_ids,$success)) {
+				$msg = JText::_('COM_VIRTUEMART_PRODUCT_ADDED_SUCCESSFULLY');
+				$type = '';
+			} else {
+				$msg = JText::_('COM_VIRTUEMART_PRODUCT_NOT_ADDED_SUCCESSFULLY');
+				$type = 'error';
+			}
+
+			$mainframe->enqueueMessage($msg, $type);
 
 		} else {
 			$mainframe->enqueueMessage('Cart does not exist?', 'error');
@@ -161,8 +175,21 @@ class VirtueMartControllerCart extends JController {
 			$taskRoute = '';
 			$linkName = JText::_('COM_VIRTUEMART_CART_SHOW');
 		}
-		$this->data->cart_show = '<a class="floatright" href="' . JRoute::_("index.php?option=com_virtuemart&view=cart" . $taskRoute, $this->useXHTML, $this->useSSL) . '">' . $linkName . '</a>';
-		$this->data->billTotal = $lang->_('COM_VIRTUEMART_CART_TOTAL') . ' : <strong>' . $this->data->billTotal . '</strong>';
+		$this->data->cart_show = JRoute::_("index.php?option=com_virtuemart&view=cart" . $taskRoute, $this->useXHTML, $this->useSSL);
+		if($this->data->totalProduct)
+			$this->data->billTotal = " ".str_replace(",00","",$this->data->billTotal);
+		else
+			$this->data->billTotal = "";
+		$prod_buff=$cart->products;
+		$c=0;
+		while(isset($this->data->products[$c])){
+			$prod=current($prod_buff);
+			$this->data->products[$c]["product_thumb"]='<img src="'.JURI::base().DS.$prod->image->file_url_thumb.'" width="45" alt="" />';
+			$this->data->products[$c]["quantity"]="x ".$this->data->products[$c]["quantity"];
+			$this->data->products[$c]["no"]=$prod->virtuemart_product_id;
+			next($prod_buff);
+			$c++;
+		}
 		echo json_encode($this->data);
 		Jexit();
 	}
