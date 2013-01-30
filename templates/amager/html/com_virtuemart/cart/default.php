@@ -50,6 +50,9 @@ JHtml::_ ('behavior.formvalidation');
 <div class="w-cart-page">
 	<div class="title-cart">
 		<h1><?php echo JText::_ ('COM_VIRTUEMART_CART_TITLE'); ?></h1>
+		<div class="bnt-secure-payment m-t">
+			<a href="#CHECKOUT">Gå til sikker betaling</a>
+		</div>
 	</div>
 	<?php // Continue Shopping Button
 	/*if ($this->continue_link_html != '') {
