@@ -22,12 +22,12 @@ jQuery(document).ready(function()
 				required: true,
 			
 			},
-			password: {
+			password1: {
 				required: true,
 				minlength: 4
 			},
-			confirmpassword: {
-				equalTo: "#password",
+			password2: {
+				equalTo: "#password1",
 				required: true
 			},
 			address: {
@@ -56,11 +56,11 @@ jQuery(document).ready(function()
 			email: "",
 			firstname: "",
 			lastname: "",
-			password: {
+			password1: {
 				required: "",
 				minlength: ""
 			},
-			confirmpassword: {
+			password2: {
 				required: "",
 				equalTo: ""
 			},

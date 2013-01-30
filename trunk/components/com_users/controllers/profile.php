@@ -87,8 +87,8 @@ class UsersControllerProfile extends UsersController
 		$data['zipcode'] = JRequest::getVar('zipcode');
 		$data['city'] = JRequest::getVar('city');
 		$data['phone'] = JRequest::getVar('phone');
-		$data['password'] = JRequest::getVar('password');
-		$data['confirmpassword'] = JRequest::getVar('confirmpassword');
+		$data['password1'] = JRequest::getVar('password1');
+		$data['password2'] = JRequest::getVar('password2');
 		
 		$data['company'] = JRequest::getVar('conpany');
 		$data['cvr'] = JRequest::getVar('cvr');
@@ -176,7 +176,8 @@ class UsersControllerProfile extends UsersController
 
 				// Redirect to the list screen.
 				$this->setMessage(JText::_('COM_USERS_PROFILE_SAVE_SUCCESS'));
-				$this->setRedirect(JRoute::_(($redirect = $app->getUserState('com_users.edit.profile.redirect')) ? $redirect : 'index.php?option=com_users&view=profile&user_id='.$return, false));
+				//$this->setRedirect(JRoute::_(($redirect = $app->getUserState('com_users.edit.profile.redirect')) ? $redirect : 'index.php?option=com_users&view=profile&user_id='.$return, false));
+				$this->setRedirect('index.php?option=com_users&view=profile&layout=edit&ran='.rand(), false);
 				break;
 		}
 

@@ -45,6 +45,20 @@
 			size="30"
 			validate="email"
 		/>
+		
+		<field name="firstname" type="text"
+			class="inputbox"
+			description="Firstname"
+			label="Firstname"
+			required="true"
+		/>
+		
+		<field name="lastname" type="text"
+			class="inputbox"
+			description="Lastname"
+			label="Lastname"
+			required="true"
+		/>
 
 		<field
 			name="registerDate"

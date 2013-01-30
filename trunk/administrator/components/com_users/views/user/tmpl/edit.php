@@ -18,6 +18,9 @@ $canDo = UsersHelper::getActions();
 
 // Get the form fieldsets.
 $fieldsets = $this->form->getFieldsets();
+
+$user =& JUser::getInstance(JRequest::getVar('id'));
+$customerArr = array(1=>"Privat", 2=>"Erhverv", 3=>"Offentlig instans");
 ?>
 
 <script type="text/javascript">
@@ -34,7 +37,10 @@ $fieldsets = $this->form->getFieldsets();
 		<fieldset class="adminform">
 			<legend><?php echo JText::_('COM_USERS_USER_ACCOUNT_DETAILS'); ?></legend>
 			<ul class="adminformlist">
-			<?php foreach($this->form->getFieldset('user_details') as $field) :?>
+            <label>Customer type</label>
+            <input type="text" readonly="readonly" class="readonly" size="22" value="<?php echo $customerArr[$user->mwctype];?>">
+            <input type="hidden" value="<?php echo $user->mwctype;?>" id="jform_mwctype" name="jform[mwctype]">
+			<?php foreach($this->form->getFieldset('user_details') as $field) ://print_r($this->form->getFieldset('user_details'));exit;?>
 				<li><?php echo $field->label; ?>
 				<?php echo $field->input; ?></li>
 			<?php endforeach; ?>

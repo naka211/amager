@@ -119,8 +119,8 @@ class UsersControllerRegistration extends UsersController
 		$data['zipcode'] = JRequest::getVar('zipcode');
 		$data['city'] = JRequest::getVar('city');
 		$data['phone'] = JRequest::getVar('phone');
-		$data['password'] = JRequest::getVar('password');
-		$data['confirmpassword'] = JRequest::getVar('confirmpassword');
+		$data['password1'] = JRequest::getVar('password1');
+		$data['password2'] = JRequest::getVar('password2');
 		
 		$data['company'] = JRequest::getVar('conpany');
 		$data['cvr'] = JRequest::getVar('cvr');
