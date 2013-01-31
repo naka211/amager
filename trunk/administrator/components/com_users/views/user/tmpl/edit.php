@@ -30,6 +30,15 @@ $customerArr = array(1=>"Privat", 2=>"Erhverv", 3=>"Offentlig instans");
 			Joomla.submitform(task, document.getElementById('user-form'));
 		}
 	}
+	window.addEvent('domready', function() {
+		$("jform_firstname").addEvent('keyup', function(){
+			$("jform_name").set("value", $("jform_firstname").get("value") +' '+$("jform_lastname").get("value"));
+		})
+		$("jform_lastname").addEvent("keyup", function(){
+			$("jform_name").set("value", $("jform_firstname").get("value") +' '+$("jform_lastname").get("value"));
+		})
+	});
+	
 </script>
 
 <form action="<?php echo JRoute::_('index.php?option=com_users&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="user-form" class="form-validate" enctype="multipart/form-data">
@@ -40,9 +49,14 @@ $customerArr = array(1=>"Privat", 2=>"Erhverv", 3=>"Offentlig instans");
             <label>Customer type</label>
             <input type="text" readonly="readonly" class="readonly" size="22" value="<?php echo $customerArr[$user->mwctype];?>">
             <input type="hidden" value="<?php echo $user->mwctype;?>" id="jform_mwctype" name="jform[mwctype]">
-			<?php foreach($this->form->getFieldset('user_details') as $field) ://print_r($this->form->getFieldset('user_details'));exit;?>
+			<?php foreach($this->form->getFieldset('user_details') as $field) ://print_r($field->fieldname);exit;
+				if(($user->mwctype != 2 && $field->fieldname != "company" && $field->fieldname != "cvr") || ($user->mwctype != 3 && $field->fieldname != "ean" && $field->fieldname != "authority" && $field->fieldname != "order" && $field->fieldname != "person")){
+			?>
 				<li><?php echo $field->label; ?>
 				<?php echo $field->input; ?></li>
+                <?php 
+				}
+				?>
 			<?php endforeach; ?>
 			</ul>
 		</fieldset>
