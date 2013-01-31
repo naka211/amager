@@ -287,7 +287,7 @@ switch ($action) {
 
 	case ('subscribe'):
 	
-		JRequest::checkToken() or die( 'Invalid Token' );
+		//JRequest::checkToken() or die( 'Invalid Token' );
 		
 		$userid = intval( JRequest::getVar('userid', 0) );
 		if ( $userid>0 ) {
@@ -519,5 +519,5 @@ switch ($action) {
 echo $message;
 
 if ($showPanel) frontEnd::introduction( $subscriberId, $listId, $lisType );
-frontHTML::_footer();
-echo "\n\r".'<!--  End : '.jnews::version().'   -->'."\n\r";
+//frontHTML::_footer();
+//echo "\n\r".'<!--  End : '.jnews::version().'   -->'."\n\r";
