@@ -184,7 +184,7 @@ class VirtueMartControllerCart extends JController {
 		$c=0;
 		while(isset($this->data->products[$c])){
 			$prod=current($prod_buff);
-			$this->data->products[$c]["product_thumb"]='<img src="'.JURI::base().DS.$prod->image->file_url_thumb.'" width="45" alt="" />';
+			$this->data->products[$c]["product_thumb"]='<img src="'.JURI::base().$prod->image->file_url_thumb.'" width="45" alt="" />';
 			$this->data->products[$c]["quantity"]="x ".$this->data->products[$c]["quantity"];
 			$this->data->products[$c]["no"]=$prod->virtuemart_product_id;
 			next($prod_buff);

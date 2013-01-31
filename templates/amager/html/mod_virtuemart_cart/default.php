@@ -50,6 +50,7 @@ $data->billTotal = str_replace(",00","",preg_replace("/.*?<strong>([^<]*?)<\/str
 					foreach ($data->products as $product){
 						$price=str_replace(",00","",$product["prices"]);
 						$prod=current($prod_buff);
+						//print_r($prod->image->file_url_thumb);exit;
 						?>
 						<li>
 							<div class="list-cart-img"><img src="<?php echo $prod->image->file_url_thumb?>" width="45" alt="" /></div>
