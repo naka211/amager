@@ -45,13 +45,16 @@ JHtml::_ ('behavior.formvalidation');
 
 //vmdebug('car7t pricesUnformatted',$this->cart->pricesUnformatted);
 //vmdebug('cart cart',$this->cart->pricesUnformatted );
+$tmplURL=JURI::base()."templates/".$template;
 ?>
 <div id="cart-page">
 <div class="w-cart-page">
 	<div class="title-cart">
-		<h1><?php echo JText::_ ('COM_VIRTUEMART_CART_TITLE'); ?></h1>
+		<h2><?php echo JText::_ ('COM_VIRTUEMART_CART_TITLE'); ?></h2>
 		<div class="bnt-secure-payment m-t">
-			<a href="#CHECKOUT">Gå til sikker betaling</a>
+		<?php
+			echo $this->checkout_link_html;
+		?>
 		</div>
 	</div>
 	<?php // Continue Shopping Button
@@ -69,83 +72,57 @@ JHtml::_ ('behavior.formvalidation');
 	else {
 		$taskRoute = '';
 	}
-
-
-	// added in 2.0.8
 	?>
-	<div id="checkout-advertise-box">
-		<?php
-		if (!empty($this->checkoutAdvertise)) {
-			foreach ($this->checkoutAdvertise as $checkoutAdvertise) {
-				?>
-				<div class="checkout-advertise">
-					<?php echo $checkoutAdvertise; ?>
-				</div>
-				<?php
-			}
-		}
-		?>
+	<div class="info-payment">
+		<div class="info-payment-top">
+		<div class="func">
+		<div class="w-135"> <img src="<?php echo $tmplURL?>/img/phone.png" width="17" height="16" alt=""> <span>3250 3611</span> </div>
+		<div class="w-135"> <img src="<?php echo $tmplURL?>/img/times.png" width="14" height="17" alt=""> <span>Hurtig levering</span> </div>
+		<div class="w-135"> <img src="<?php echo $tmplURL?>/img/truck.png" width="17" height="14" alt=""> <span>Fri fragt i DK</span> </div>
+		<div class="clear"></div>
+		<div class="w-135"> <img src="<?php echo $tmplURL?>/img/sticker.png" width="15" height="16" alt=""> <span>Sikker betaling</span> </div>
+		<div class="w-135"> <img src="<?php echo $tmplURL?>/img/star.png" width="13" height="16" alt=""> <span>Kun ægte varer</span> </div>
+		<div class="w-135"> <img src="<?php echo $tmplURL?>/img/sitting.png" width="17" height="16" alt=""> <span>2 års garanti</span> </div>
+		</div>
+		</div>
+		<div class="info-payment-bot">
+		<h3>Du kan betale med følgende betalingskort: </h3>
+		<ul>
+		<li><a href="#"><img src="<?php echo $tmplURL?>/img/icon-dk.png" width="37" height="19" alt=""></a></li>
+		<li><a href="#"><img src="<?php echo $tmplURL?>/img/icon-mastercard.png" width="37" height="19" alt=""></a></li>
+		<li><a href="#"><img src="<?php echo $tmplURL?>/img/icon-card2.png" width="37" height="19" alt=""></a></li>
+		<li><a href="#"><img src="<?php echo $tmplURL?>/img/icon-visa.png" width="37" height="19" alt=""></a></li>
+		<li><a href="#"><img src="<?php echo $tmplURL?>/img/visa2.png" width="37" height="19" alt=""></a></li>
+		<li><a href="#"><img src="<?php echo $tmplURL?>/img/icon-ean.png" width="95" height="19" alt=""></a></li>
+		</ul>
+		</div>
 	</div>
 
+	<div class="total-vat">
+	<?php
+	$finalprice=$this->currencyDisplay->priceDisplay($this->cart->pricesUnformatted['salesPrice'],0,1.0,false,$this->cart->pricesUnformatted['salesPrice'][1]);
+	?>
+		<div>
+		<label>Subtotal inkl. moms:</label><span><?php echo $finalprice?></span>
+		</div>
+		<div>
+		<label>Heraf moms:</label><span><?php echo $this->currencyDisplay->priceDisplay($this->cart->pricesUnformatted['salesPrice']*.25,0,1.0,false,$this->cart->pricesUnformatted['salesPrice'][1])?></span>
+		</div>
+		<div class="n-b-b2">
+		<label class="black">TOTAL INKL. MOMS:</label><span class="black"><?php echo $finalprice?></span>
+		</div>
+	</div>
 	<form method="post" id="checkoutForm" name="checkoutForm" action="<?php echo JRoute::_ ('index.php?option=com_virtuemart&view=cart' . $taskRoute, $this->useXHTML, $this->useSSL); ?>">
 
-		<?php // Leave A Comment Field ?>
-		<div class="customer-comment marginbottom15">
-			<span class="comment"><?php echo JText::_ ('COM_VIRTUEMART_COMMENT_CART'); ?></span><br/>
-			<textarea class="customer-comment" name="customer_comment" cols="60" rows="1"><?php echo $this->cart->customer_comment; ?></textarea>
-		</div>
-		<?php // Leave A Comment Field END ?>
-
-
-
-		<?php // Continue and Checkout Button ?>
-		<div class="checkout-button-top">
-
-			<?php // Terms Of Service Checkbox
-			if (!class_exists ('VirtueMartModelUserfields')) {
-				require(JPATH_VM_ADMINISTRATOR . DS . 'models' . DS . 'userfields.php');
-			}
-			$userFieldsModel = VmModel::getModel ('userfields');
-			if ($userFieldsModel->getIfRequired ('agreed')) {
-				?>
-				<label for="tosAccepted">
-					<?php
-					if (!class_exists ('VmHtml')) {
-						require(JPATH_VM_ADMINISTRATOR . DS . 'helpers' . DS . 'html.php');
-					}
-					echo VmHtml::checkbox ('tosAccepted', $this->cart->tosAccepted, 1, 0, 'class="terms-of-service"');
-
-					if (VmConfig::get ('oncheckout_show_legal_info', 1)) {
-						?>
-						<div class="terms-of-service">
-
-							<a href="<?php JRoute::_ ('index.php?option=com_virtuemart&view=vendor&layout=tos&virtuemart_vendor_id=1') ?>" class="terms-of-service" id="terms-of-service" rel="facebox"
-							   target="_blank">
-								<span class="vmicon vm2-termsofservice-icon"></span>
-								<?php echo JText::_ ('COM_VIRTUEMART_CART_TOS_READ_AND_ACCEPTED'); ?>
-							</a>
-
-							<div id="full-tos">
-								<h2><?php echo JText::_ ('COM_VIRTUEMART_CART_TOS'); ?></h2>
-								<?php echo $this->cart->vendor->vendor_terms_of_service; ?>
-							</div>
-
-						</div>
-						<?php
-					} // VmConfig::get('oncheckout_show_legal_info',1)
-					//echo '<span class="tos">'. JText::_('COM_VIRTUEMART_CART_TOS_READ_AND_ACCEPTED').'</span>';
-					?>
-				</label>
-				<?php
-			}
-			echo $this->checkout_link_html;
-			?>
-		</div>
-		<?php // Continue and Checkout Button END ?>
 		<input type='hidden' id='STsameAsBT' name='STsameAsBT' value='<?php echo $this->cart->STsameAsBT; ?>'/>
 		<input type='hidden' name='task' value='<?php echo $this->checkout_task; ?>'/>
 		<input type='hidden' name='option' value='com_virtuemart'/>
 		<input type='hidden' name='view' value='cart'/>
 	</form>
 </div>
+	<div class="bnt-secure-payment">
+<?php
+	echo $this->checkout_link_html;
+?>
+	</div>
 </div>
