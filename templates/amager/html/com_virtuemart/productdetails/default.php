@@ -195,7 +195,7 @@ echo $this->loadTemplate('images');
 		//}
 
 $model		= VmModel::getModel("shipmentmethod");
-$shipment	= $model->getShipments()[1];
+$shipment	= $model->getShipments();$shipment=$shipment[1];
 ?>
 	</div>
 	<div class="w-price-right">
