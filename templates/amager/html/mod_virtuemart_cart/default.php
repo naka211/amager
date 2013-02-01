@@ -78,7 +78,7 @@ $data->billTotal = str_replace(",00","",preg_replace("/.*?<strong>([^<]*?)<\/str
 			<div class="price2 s_billtotal"><p><?php echo $data->billTotal?></p></div>
 		</div>
 		<div class="bnt-view-basket"> <a href="<?php echo JRoute::_("index.php?option=com_virtuemart&view=cart".$taskRoute,$useXHTML,$useSSL)?>">SE VAREKURV</a> </div>
-		<div class="bnt-checkout"> <a href="">GÅ TIL KASSEN</a> </div>
+		<div class="bnt-checkout"> <a href="<?php echo JRoute::_ ('index.php?option=com_virtuemart&view=cart&task=checkout')?>">GÅ TIL KASSEN</a> </div>
 		</div>
 	<div class="clear"></div>
 	</li>

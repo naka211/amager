@@ -51,11 +51,14 @@ $tmplURL=JURI::base()."templates/".$template;
 <div class="w-cart-page">
 	<div class="title-cart">
 		<h2><?php echo JText::_ ('COM_VIRTUEMART_CART_TITLE'); ?></h2>
+		<?php if(!$this->cart->products) echo '<a href="javascript:history.back()" style="display:block;float:right">Tilbage</a>';
+		else{?>
 		<div class="bnt-secure-payment m-t">
 		<?php
 			echo $this->checkout_link_html;
 		?>
 		</div>
+		<?php }?>
 	</div>
 	<?php // Continue Shopping Button
 	/*if ($this->continue_link_html != '') {
@@ -120,9 +123,11 @@ $tmplURL=JURI::base()."templates/".$template;
 		<input type='hidden' name='view' value='cart'/>
 	</form>
 </div>
+		<?php if($this->cart->products){?>
 	<div class="bnt-secure-payment">
 <?php
 	echo $this->checkout_link_html;
 ?>
 	</div>
+	<?php }?>
 </div>
