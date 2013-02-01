@@ -4,6 +4,7 @@
 // jimport( 'joomla.application.component.view');
 // $viewEscape = new JView();
 // $viewEscape->setEscape('htmlspecialchars');
+$tmplURL=JURI::base()."templates/".$template;
 ?>
 <div class="title-cart-item">
 	<div class="title-pro-item">

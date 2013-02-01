@@ -72,10 +72,6 @@ class VirtueMartControllerCart extends JController {
 
 	/**
 	 * Add the product to the cart using Ajax
-	 *
-	 * @author RolandD
-	 * @author Max Milbers
-	 * @access public
 	 */
 	public function addAJAX() {
 		$mainframe = JFactory::getApplication();
@@ -397,10 +393,19 @@ class VirtueMartControllerCart extends JController {
 	 */
 	public function checkout() {
 		//Tests step for step for the necessary data, redirects to it, when something is lacking
-
 		$cart = VirtueMartCart::getCart();
-		if ($cart && !VmConfig::get('use_as_catalog', 0)) {
-			$cart->checkout();
+		if ($cart->products && !VmConfig::get('use_as_catalog', 0)) {
+			if(JRequest::getInt('tosAccepted', $this->tosAccepted))
+				$cart->checkout();
+			else{
+				$view = $this->getView('user', 'html');
+				$view->setLayout('edit_address');
+				$task='savecheckoutuser';
+				$view->assignRef('fTask', $task);
+
+				// Display it all
+				$view->display();
+			}
 		}
 	}
 
