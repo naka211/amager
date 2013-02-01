@@ -69,6 +69,7 @@ class BannersModelBanners extends JModelList
 			'a.id as id,'.
 			'a.type as type,'.
 			'a.name as name,'.
+			'a.description as description,'.
 			'a.clickurl as clickurl,'.
 			'a.cid as cid,'.
 			'a.params as params,'.
