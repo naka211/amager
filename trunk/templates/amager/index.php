@@ -254,16 +254,8 @@ focusInput = function(){
 			<jdoc:include type="message" />
 			<jdoc:include type="component" />
 			<div class="clear"></div>
-			<div class="main-brand">
-				<div class="image_carousel">
-				<div id="foo1">
-				<jdoc:include type="modules" name="below" />
-				</div>
-				<!--foo1-->
-				<div class="clear"></div>
-				<a class="prev" id="foo1_prev" href="#"><span>prev</span></a> <a class="next" id="foo1_next" href="#"><span>next</span></a> </div>
-				<!--.image_carousel-->
-			</div>
+            <jdoc:include type="modules" name="below" />
+			
 			<!--.main-brand-->
 			<div class="clear"></div>
 			<div class="main-brand-shadow"> </div>
