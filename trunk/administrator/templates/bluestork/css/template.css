@@ -278,6 +278,7 @@ input#mod-login-username,input#mod-login-password,select#lang{float:right;clear:
 .jgrid span.published{background-image:url(../images/admin/publish_g.png)}
 .jgrid span.expired{background-image:url(../images/admin/publish_r.png)}
 .jgrid span.protected{background:url(../images/menu/sprite-16.png) no-repeat 0 -1260px}
+.icon-16-boutique{background:url(../images/menu/icon-16-boutique.png) no-repeat 0 0}
 .icon-16-alert{background:url(../images/menu/sprite-16.png) no-repeat 0 0}
 .icon-16-article{background:url(../images/menu/sprite-16.png) no-repeat 0 -78px}
 .icon-16-banners{background:url(../images/menu/sprite-16.png) no-repeat 0 -179px}

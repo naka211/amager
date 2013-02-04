@@ -430,15 +430,15 @@ filter: alpha(opacity=80); opacity: 0.8; filter: alpha(opacity=80); }
 /***********butikker-page*****************/
 .m-b-15 {margin-bottom: 10px; }
 #butikker-page .store-main{ padding: 15px; border: 1px solid #cacaca; overflow: hidden; margin-top: 14px; background: #fff; }
-.store .store-img { float: left; width: 333px; height: 204; background: #2e3033; }
+.store .store-img { float: left; width: 333px; height: 204px; background: #2e3033; }
 .store .store-content { background: #2e3033; color: #d2d2d2; padding: 15px; float: right; width: 360px; height: 174px; }
 .store-content h2{ border-bottom: 1px solid #58595c; padding-bottom: 10px; margin-bottom: 10px; }
 .store-content .store-info{ float: left; }
 .store-content .store-info h3, .store-open h3 { color: #fff; font-weight: bold; }
 .store-info p a { color: #00b2ea; text-decoration: none;}
-.store-content .store-open { float: right; width: 120px; }
+.store-content .store-open { float: right;}
 .store-open div { clear: both;}
-.store-open div label { width: 11px; float: left; }
+.store-open div label { width: 116px; float: left; }
 .store-open div span { float: right; }
 .bnt-seemore { margin-top: 10px; cursor: pointer; }
 

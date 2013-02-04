@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Shops list">
+		<message>
+			<![CDATA[TYPEROKDOWNLOADSFILE]]>
+		</message>
+	</layout>
+	<state>
+		<name>Shops list</name>
+		<description><![CDATA[TYPECATEGORY]]></description>
+	</state>
+</metadata>
