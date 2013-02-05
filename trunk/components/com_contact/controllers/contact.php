@@ -21,7 +21,7 @@ class ContactControllerContact extends JControllerForm
 	{
 		// Check for request forgeries.
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-
+//print_r($_POST);exit;
 		// Initialise variables.
 		$app	= JFactory::getApplication();
 		$model	= $this->getModel('contact');
@@ -30,7 +30,11 @@ class ContactControllerContact extends JControllerForm
 		$id		= (int)$stub;
 
 		// Get the data from POST
-		$data = JRequest::getVar('jform', array(), 'post', 'array');
+		//$data = JRequest::getVar('jform', array(), 'post', 'array');
+		$data['name'] = JRequest::getVar('name');
+		$data['phone'] = JRequest::getVar('phone');
+		$data['email'] = JRequest::getVar('email');
+		$data['message'] = JRequest::getVar('message');
 
 		$contact = $model->getItem($id);
 
@@ -56,7 +60,7 @@ class ContactControllerContact extends JControllerForm
 		$dispatcher	= JDispatcher::getInstance();
 
 		// Validate the posted data.
-		$form = $model->getForm();
+		/*$form = $model->getForm();
 		if (!$form) {
 			JError::raiseError(500, $model->getError());
 			return false;
@@ -82,7 +86,7 @@ class ContactControllerContact extends JControllerForm
 			// Redirect back to the contact form.
 			$this->setRedirect(JRoute::_('index.php?option=com_contact&view=contact&id='.$stub, false));
 			return false;
-		}
+		}*/
 
 		// Validation succeeded, continue with custom handlers
 		$results	= $dispatcher->trigger('onValidateContact', array(&$contact, &$data));
@@ -116,7 +120,7 @@ class ContactControllerContact extends JControllerForm
 		if ($contact->params->get('redirect')) {
 			$this->setRedirect($contact->params->get('redirect'), $msg);
 		} else {
-			$this->setRedirect(JRoute::_('index.php?option=com_contact&view=contact&id='.$stub, false), $msg);
+			$this->setRedirect(JRoute::_('index.php?option=com_contact&view=contact&id='.$stub.'&success=1', false), $msg);
 		}
 
 		return true;

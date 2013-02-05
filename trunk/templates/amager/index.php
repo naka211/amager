@@ -273,8 +273,8 @@ focusInput = function(){
 
 <div id="footer">
 	<div id="w-footer">
-	<jdoc:include type="modules" name="user1" />
-	<jdoc:include type="modules" name="user2" />
+	<jdoc:include type="modules" name="user1" style="amageruser1" />
+	<jdoc:include type="modules" name="user2" style="amageruser2"  />
 	<jdoc:include type="modules" name="user3" />
 	</div>
 	<!--#w-footer-->

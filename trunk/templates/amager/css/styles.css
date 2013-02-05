@@ -267,6 +267,7 @@ a.prev span, a.next span {display: none; }
 
 #footer { background: #404246; overflow: hidden;}
 #footer #w-footer{ width: 970px; margin: 0 auto; overflow: hidden; padding: 26px 0px;}
+#w-footer ul li { background: url(../img/bg-li5.png) no-repeat left center; padding-left: 10px; }
 #footer #w-footer h2 { margin-bottom: 18px;}
 #w-footer ul { list-style: none; float: left; font-size: 12px; }
 #w-footer ul li a { text-decoration: none; color: #e2e2e2; }
@@ -477,13 +478,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', end
 #contact-page .contact-info { margin-top: 24px; width: 330px; float: left;}
 .contact-info ul { list-style: none; }
 .contact-info ul li { background: #f6f6f3; margin-bottom: 10px; padding: 15px; }
-.contact-info ul li h3 { text-transform: uppercase; color: #74b117; font-size: 16px; font-weight: bold; }
-.contact-info ul li h4 { font-weight: bold; }
+.contact-info ul li h2 { text-transform: uppercase; color: #74b117; font-size: 16px; font-weight: bold; }
+.contact-info ul li h3 { font-weight: bold; }
 .contact-info ul li a{ color: #00b2ea; text-decoration: none; }
 #contact-page .contact-frm { float: left; width: 300px;  margin: 24px 0px 0px 17px; }
 .contact-frm div { margin-bottom: 10px;}
-.contact-frm input { background: url(../img/bg-input-contact.png) no-repeat; width: 290px; height: 30px; line-height: 30px; border: none medium;
+/*.contact-frm input { background: url(../img/bg-input-contact.png) no-repeat; width: 290px; height: 30px; line-height: 30px; border: none medium;
+color: #505050; font-style: italic; font-size: 12px; padding: 0px 5px; }*/
+
+.contact-frm input { background: url(../img/bg-input06.png) no-repeat 0 0; width: 326px; height: 30px; line-height: 30px; border: none medium;
 color: #505050; font-style: italic; font-size: 12px; padding: 0px 5px; }
+.contact-frm input.valid { background: url(../img/bg-input06.png) no-repeat 0px -30px; width: 326px; height: 30px; line-height: 30px; border: none medium;
+color: #505050; font-style: italic; font-size: 12px; padding: 0px 5px; }
+.contact-frm input.error { background: url(../img/bg-input06.png) no-repeat 0px -60px; width: 326px; height: 30px; line-height: 30px; border: none medium;
+color: #505050; font-style: italic; font-size: 12px; padding: 0px 5px; }
+
 .contact-frm textarea { background: url(../img/bg-textarea.png) no-repeat; width: 290px; height: 86px; border: none medium;
 color: #505050; font-style: italic; font-family: Arial, Helvetica, sans-serif; font-size:12px; padding: 0px 5px; line-height: 30px; }
 .contact-frm p { font-size: 16px; color: #000000; margin-bottom: 10px; }
