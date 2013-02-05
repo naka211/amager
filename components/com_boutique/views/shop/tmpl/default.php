@@ -28,13 +28,16 @@ function initialize<?php echo $i;?>() {
 		map: map<?php echo $i;?>
 	});
 	
+	google.maps.event.addListenerOnce(map<?php echo $i;?>, 'idle', function(){
+		jQuery("#me<?php echo $i;?>").css("display","none");
+	});
 }
 <?php $i++;}?>
 jQuery(document).ready(function() {
 	initialize1();
 	initialize2();
 	initialize3();
-	
+
 	jQuery('#clickme1').click(function() 
 	 {
           jQuery('#me1').animate(

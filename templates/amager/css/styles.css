@@ -442,7 +442,7 @@ filter: alpha(opacity=80); opacity: 0.8; filter: alpha(opacity=80); }
 .store-open div span { float: right; }
 .bnt-seemore { margin-top: 10px; cursor: pointer; }
 
-.store-map { margin-top: 15px; display: none; }
+.store-map { margin-top: 15px;}
 .store-map .bnt-fa-facebook { margin-top: 15px; }
 .store-map .store-map-detail { margin-top: 10px; background: #fff; border: 1px solid #cacaca; padding: 4px; }
 .store-map .bnt-luk { margin-top: 10px; cursor: pointer; }
