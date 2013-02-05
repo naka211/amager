@@ -14,18 +14,6 @@ JHtml::_('behavior.keepalive');
 //JHtml::_('behavior.formvalidation');
 JHtml::_('behavior.noframes');
 ?>
-<style>
-/*em.success {
-  background:url("images/pass.png") no-repeat 0px 0px;
-  padding-left: 16px;
-  margin-left:5px;
-}
-em.error {
-  background:url("images/fail.png") no-repeat 0px 0px;
-  padding-left: 16px;
-  margin-left:5px;
-}*/
-</style>
 <script language="javascript" src="templates/amager/js/jquery.validate.js"></script>
 <script language="javascript" src="templates/amager/js/trung.js"></script>
 <div id="signup-page">
