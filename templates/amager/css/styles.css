@@ -1023,4 +1023,4 @@ div#bg-cart{
     z-index: 0;
     display: none;
 }
-
+#myModal { position: fixed; top: 40px !important;}
