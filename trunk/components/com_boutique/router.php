@@ -1,6 +1,6 @@
 <?php
 
-function ecommerceBuildRoute(&$query)
+function BoutiqueBuildRoute(&$query)
 {	//$query['Itemid']=20;
 	$segments = array();
 	unset($query['component']);
@@ -20,7 +20,7 @@ function ecommerceBuildRoute(&$query)
 	return $segments;
 }
 
-function ecommerceParseRoute($segments)
+function BoutiqueParseRoute($segments)
 {
 	$vars = array();
 	

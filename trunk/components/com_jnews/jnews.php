@@ -83,9 +83,9 @@ $showPanel = false;
 echo '<!--  Beginning : '.jnews::version().'   -->'."\n\r";
 
 //added this line so that if the action show is used the subscribe action will be executed
-if ($userId <= 0){
+/*if ($userId <= 0){
 	if($action=='show') $action='subscribe';
-}
+}*/
 
 switch ($action) {
 
@@ -149,9 +149,9 @@ switch ($action) {
 		$showPanel = true;
 		break;
 
-	case ('save'):
+	case ('save'): 
 		JRequest::checkToken() or die( 'Invalid Token' );
-		$message = jnews::printYN( jNews_Subscribers::updateCBFESubscriber() ,  _JNEWS_UPDATED_SUCCESSFULLY , _JNEWS_ERROR );
+		$message = jnews::printYN( jNews_Subscribers::updateCBFESubscriber() ,  _JNEWS_UPDATED_SUCCESSFULLY , _JNEWS_ERROR );print_r($message);exit;
 		$showPanel = true;
 		break;
 
