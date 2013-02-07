@@ -21,7 +21,9 @@ $images = json_decode($this->item->images);
 ?>
 <div id="profile-page">
     <h2><?php echo $this->escape($this->item->title); ?></h2>
+    <?php if($images->image_intro){?>
     <a href="#"><img width="343" height="227" alt="" src="<?php echo $images->image_intro; ?>"></a>
+    <?php }?>
     <?php echo $this->item->text; ?>
     <div class="btn-back">
         <a href="javascript:void(0);" onclick="history.back();">Tilbage</a>
