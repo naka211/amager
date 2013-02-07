@@ -14,44 +14,105 @@ else {
 	$url = JRoute::_ ('index.php?option=com_virtuemart&view=cart&task=checkout', $this->useXHTML, $this->useSSL);
 }
 ?>
+<script language="javascript" src="templates/amager/js/jquery.validate.js"></script>
+<script language="javascript" src="templates/amager/js/trung.js"></script>
 <div id="checkout-page">
+<form method="post" id="registrationForm" name="userForm" class="form-validate info-per">
 <div class="w-checkout">
-
 	<div class="checkout-content">
-	<h1><?php echo $this->page_title ?></h1>
-<script language="javascript">
-	function myValidator(f, t) {
-		f.task.value = t; //this is a method to set the task of the form on the fTask.
-		if (document.formvalidator.isValid(f)) {
-			f.submit();
-			return true;
-		} else {
-			var msg = '<?php echo addslashes (JText::_ ('COM_VIRTUEMART_USER_FORM_MISSING_REQUIRED_JS')); ?>';
-			alert(msg + ' ');
-		}
-		return false;
-	}
-
-	function callValidatorForRegister(f) {
-
-		var elem = jQuery('#username_field');
-		elem.attr('class', "required");
-
-		var elem = jQuery('#name_field');
-		elem.attr('class', "required");
-
-		var elem = jQuery('#password_field');
-		elem.attr('class', "required");
-
-		var elem = jQuery('#password2_field');
-		elem.attr('class', "required");
-
-		var elem = jQuery('#userForm');
-
-		return myValidator(f, '<?php echo $rtask ?>');
-
-	}
+		<div class="nav-left">
+		<h2><div><img src="<?php echo JURI::base()."templates/".$template?>/img/step1.png" width="24" height="24" alt=""></div>Kundeoplysninger</h2>
+		<div class="frm-cus-info">
+		<div><label>Vælg kundetype *</label></div>
+		<div>
+		<select name="mwctype" id="choicemaker">
+			<option value="1">Privat</option>
+			<option value="2">Erhverv</option>
+			<option value="3">Offentlig instans</option>
+		</select>
+		</div>
+		<div id="w-privat">
+				<div id="companyadd"></div>
+				<div>
+				<input value="E-mail *" name="email" type="text" id="email" />
+				</div>
+				<div id="publicadd"></div>
+				<div>
+				<input type="text" value="Fornavn *" name="firstname" id="firstname"  />
+				</div>
+				<div>
+				<input type="text" value="Efternavn *" name="lastname" id="lastname" />
+				</div>
+				<div>
+				<input type="text" value="Adresse *" name="address" id="address" />
+				</div>
+				<div>
+				<input type="text" value="Postnr. *" name="zipcode" id="zipcode" maxlength="4" />
+				</div>
+				<div>
+				<input type="text" value="By *" name="city" id="city" />
+				</div>
+				<div>
+				<input type="text" value="Telefon *" name="phone" id="phone" />
+				</div>
+				<button type="submit">xxx</button>
+		</div>
+		<div>* Skal udfyldes</div>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	
+	jQuery(".w-create-acc").hide();
+	jQuery(".bnt-create-acc").show();
+	
+	jQuery('.bnt-create-acc').click(function(){
+	jQuery(".w-create-acc").slideToggle();
+	});
+	
+	jQuery(".w-another-add").hide();
+	jQuery(".bnt-another-add").show();
+	
+	jQuery('.bnt-another-add').click(function(){
+	jQuery(".w-another-add").slideToggle();
+	});
+});
 </script>
+		<div class="bnt-create-acc" style=""></div>
+		<div class="w-create-acc">
+			<div>
+				<label>Kodeord (skal være min 4 tegn) *</label>
+			</div>
+			<div>
+				<input type="password" minlength="4" name="password1" id="password1">
+			</div>
+			<div>
+				<label>Bekræft kodeord *</label>
+			</div>
+			<div>
+				<input type="password" name="password2" id="password2">
+			</div>
+		</div>
+
+		<div class="bnt-another-add" style=""></div>
+		<div class="w-another-add" style="display: none; ">
+			<div>
+			<input type="text" value="Fornavn *">
+			</div>
+			<div>
+			<input type="text" value="Efternavn *">
+			</div>
+			<div>
+			<input type="text" value="Adresse *">
+			</div>
+			<div>
+			<input type="text" value="Postnr. *">
+			</div>
+			<div>
+			<input type="text" value="By *">
+			</div>
+			<div>
+			<input type="text" value="Telefon *">
+			</div>
+		</div>
 
 <fieldset>
 	<h2><?php
@@ -64,7 +125,7 @@ else {
 		?>
 	</h2>
 
-	<form method="post" id="userForm" name="userForm" class="form-validate">
+
 		<!--<form method="post" id="userForm" name="userForm" action="<?php echo JRoute::_ ('index.php'); ?>" class="form-validate">-->
 		<div class="control-buttons">
 			<?php
@@ -94,13 +155,13 @@ else {
 				?>
 
 				<button class="<?php echo $buttonclass ?>" type="submit" onclick="javascript:return callValidatorForRegister(userForm);"
-				        title="<?php echo JText::_ ('COM_VIRTUEMART_REGISTER_AND_CHECKOUT'); ?>"><?php echo JText::_ ('COM_VIRTUEMART_REGISTER_AND_CHECKOUT'); ?></button>
+						title="<?php echo JText::_ ('COM_VIRTUEMART_REGISTER_AND_CHECKOUT'); ?>"><?php echo JText::_ ('COM_VIRTUEMART_REGISTER_AND_CHECKOUT'); ?></button>
 				<?php if (!VmConfig::get ('oncheckout_only_registered', 0)) { ?>
 					<button class="<?php echo $buttonclass ?>" title="<?php echo JText::_ ('COM_VIRTUEMART_CHECKOUT_AS_GUEST'); ?>" type="submit"
-					        onclick="javascript:return myValidator(userForm, '<?php echo $this->fTask; ?>');"><?php echo JText::_ ('COM_VIRTUEMART_CHECKOUT_AS_GUEST'); ?></button>
+							onclick="javascript:return myValidator(userForm, '<?php echo $this->fTask; ?>');"><?php echo JText::_ ('COM_VIRTUEMART_CHECKOUT_AS_GUEST'); ?></button>
 					<?php } ?>
 				<button class="default" type="reset"
-				        onclick="window.location.href='<?php echo JRoute::_ ('index.php?option=com_virtuemart&view=' . $rview); ?>'"><?php echo JText::_ ('COM_VIRTUEMART_CANCEL'); ?></button>
+						onclick="window.location.href='<?php echo JRoute::_ ('index.php?option=com_virtuemart&view=' . $rview); ?>'"><?php echo JText::_ ('COM_VIRTUEMART_CANCEL'); ?></button>
 
 
 				<?php
@@ -109,9 +170,9 @@ else {
 				?>
 
 				<button class="<?php echo $buttonclass ?>" type="submit"
-				        onclick="javascript:return myValidator(userForm, '<?php echo $this->fTask; ?>');"><?php echo JText::_ ('COM_VIRTUEMART_SAVE'); ?></button>
+						onclick="javascript:return myValidator(userForm, '<?php echo $this->fTask; ?>');"><?php echo JText::_ ('COM_VIRTUEMART_SAVE'); ?></button>
 				<button class="default" type="reset"
-				        onclick="window.location.href='<?php echo JRoute::_ ('index.php?option=com_virtuemart&view=' . $rview); ?>'"><?php echo JText::_ ('COM_VIRTUEMART_CANCEL'); ?></button>
+						onclick="window.location.href='<?php echo JRoute::_ ('index.php?option=com_virtuemart&view=' . $rview); ?>'"><?php echo JText::_ ('COM_VIRTUEMART_CANCEL'); ?></button>
 
 				<?php } ?>
 		</div>
@@ -146,7 +207,8 @@ if ($this->userDetails->JUser->get ('id')) {
 }
 echo JHTML::_ ('form.token');
 ?>
-</form>
+		</div><!--frm-cus-info-->
+	</div>
 </div>
 
 <!--temp html-->
@@ -163,4 +225,5 @@ echo JHTML::_ ('form.token');
 <!--//temp html-->
 
 </div>
+</form>
 </div>
