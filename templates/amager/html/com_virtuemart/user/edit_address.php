@@ -15,9 +15,8 @@ else {
 }
 ?>
 <script language="javascript" src="templates/amager/js/jquery.validate.js"></script>
-<script language="javascript" src="templates/amager/js/trung.js"></script>
 <div id="checkout-page">
-<form method="post" id="registrationForm" name="userForm" class="form-validate info-per">
+<form method="post" id="checkoutForm" name="userForm" class="form-validate info-per" style="padding:0;border-top:none">
 <div class="w-checkout">
 	<div class="checkout-content">
 		<div class="nav-left">
@@ -25,6 +24,7 @@ else {
 		<div class="frm-cus-info">
 		<div><label>Vælg kundetype *</label></div>
 		<div>
+		<?php //$this->userId?>
 		<select name="mwctype" id="choicemaker">
 			<option value="1">Privat</option>
 			<option value="2">Erhverv</option>
@@ -55,27 +55,8 @@ else {
 				<div>
 				<input type="text" value="Telefon *" name="phone" id="phone" />
 				</div>
-				<button type="submit">xxx</button>
 		</div>
 		<div>* Skal udfyldes</div>
-<script type="text/javascript">
-jQuery(document).ready(function(){
-	
-	jQuery(".w-create-acc").hide();
-	jQuery(".bnt-create-acc").show();
-	
-	jQuery('.bnt-create-acc').click(function(){
-	jQuery(".w-create-acc").slideToggle();
-	});
-	
-	jQuery(".w-another-add").hide();
-	jQuery(".bnt-another-add").show();
-	
-	jQuery('.bnt-another-add').click(function(){
-	jQuery(".w-another-add").slideToggle();
-	});
-});
-</script>
 		<div class="bnt-create-acc" style=""></div>
 		<div class="w-create-acc">
 			<div>
@@ -95,121 +76,222 @@ jQuery(document).ready(function(){
 		<div class="bnt-another-add" style=""></div>
 		<div class="w-another-add" style="display: none; ">
 			<div>
-			<input type="text" value="Fornavn *">
+			<input type="text" name="firstname2" id="firstname2" value="Fornavn *">
 			</div>
 			<div>
-			<input type="text" value="Efternavn *">
+			<input type="text" name="lastname2" id="lastname2" value="Efternavn *">
 			</div>
 			<div>
-			<input type="text" value="Adresse *">
+			<input type="text" name="address2" id="address2" value="Adresse *">
 			</div>
 			<div>
-			<input type="text" value="Postnr. *">
+			<input type="text" name="zipcode2" id="zipcode2" value="Postnr. *">
 			</div>
 			<div>
-			<input type="text" value="By *">
+			<input type="text" name="city2" id="city2" value="By *">
 			</div>
 			<div>
-			<input type="text" value="Telefon *">
+			<input type="text" name="phone2" id="phone2" value="Telefon *">
 			</div>
 		</div>
-
-<fieldset>
-	<h2><?php
-		if ($this->address_type == 'BT') {
-			echo JText::_ ('COM_VIRTUEMART_USER_FORM_EDIT_BILLTO_LBL');
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	jQuery.validator.addMethod("requireDefault", function(value, element) 
+	{	
+		return !(element.value == element.defaultValue);
+	});
+	
+	jQuery("#checkoutForm").validate({
+		rules: {
+			email: {
+				requireDefault: true,
+				required: true,
+				email: true
+			},
+			firstname: {
+				requireDefault: true,
+				required: true,
+			
+			},
+			lastname: {
+				requireDefault: true,
+				required: true,
+			
+			},
+			password1: {
+				required: true,
+				minlength: 4
+			},
+			password2: {
+				equalTo: "#password1",
+				required: true
+			},
+			address: {
+				requireDefault: true,
+				required: true,
+			
+			},
+			zipcode: {
+				requireDefault: true,
+				required: true,
+				number: true,
+				minlength: 4
+			},
+			city: {
+				requireDefault: true,
+				required: true,
+			
+			},
+			phone: {
+				requireDefault: true,
+				required: true,
+				number: true
+			}
+		},
+		messages: {
+			email: "",
+			firstname: "",
+			lastname: "",
+			password1: {
+				required: "",
+				minlength: ""
+			},
+			password2: {
+				required: "",
+				equalTo: ""
+			},
+			address: "",
+			zipcode: "",
+			city: "",
+			phone: ""
 		}
-		else {
-			echo JText::_ ('COM_VIRTUEMART_USER_FORM_ADD_SHIPTO_LBL');
+	});
+	
+	
+	var private = '';
+	var company = '<div><input type="text" value="Firmanavn" name="company" id="company" /></div><div><input type="text" value="CVR-nr." name="cvr" id="cvr" /></div>';
+	var public = '<div><input type="text" value="EAN-nr. *" name="ean" id="ean" maxlength="13" /></div><div><input type="text" value="Myndighed/Institution *" name="authority" id="authority" /></div><div><input type="text" value="Ordre- el. rekvisitionsnr. *" name="order" id="order" /></div><div><input type="text" value="Personreference *" name="person" id="person" />';
+	jQuery("#choicemaker").change(function () {
+		
+		value = jQuery("#choicemaker").val();
+		  // You can also use $("#ChoiceMaker").val(); and change the case 0,1,2: to the values of the html select options elements
+	
+		if(value == 1){
+			if(jQuery("#ean").val()){
+				jQuery("#ean").rules("remove");
+				jQuery("#authority").rules("remove");
+				jQuery("#order").rules("remove");
+				jQuery("#person").rules("remove");
+			}
+			jQuery("#companyadd").html('');
+			jQuery("#publicadd").html('');
+			focusInput();
+			
+			
+		} else if(value == 2){
+			if(jQuery("#ean").val()){
+				jQuery("#ean").rules("remove");
+				jQuery("#authority").rules("remove");
+				jQuery("#order").rules("remove");
+				jQuery("#person").rules("remove");
+			}
+			jQuery("#companyadd").html(company);
+			jQuery("#publicadd").html('');
+			focusInput();
+			
+			
+		} else {
+			jQuery("#companyadd").html('');
+			jQuery("#publicadd").html(public);
+			focusInput();
+			
+			var newRule = {
+				requireDefault: true,
+				required: true,
+				messages: {
+					requireDefault: "",
+					required: ""
+				}
+			};
+			jQuery("#ean").rules("add", newRule);
+			jQuery("#authority").rules("add", newRule);
+			jQuery("#order").rules("add", newRule);
+			jQuery("#person").rules("add", newRule);
 		}
-		?>
-	</h2>
+		
+	});
+	jQuery("#email").bind("blur",function(){
+		jQuery("#username").val(jQuery("#email").val());
+	});
+	jQuery("#lastname").bind("blur",function(){
+		jQuery("#name").val(jQuery("#firstname").val()+' '+jQuery("#lastname").val());
+	});
+	//isST process
+	STo = function(){
+		var newRule = {
+				requireDefault: true,
+				required: true,
+				messages: {
+					requireDefault: "",
+					required: ""
+				}
+			};
+		jQuery("#firstname2").rules("add", newRule);
+		jQuery("#lastname2").rules("add", newRule);
+		jQuery("#zipcode2").rules("add", newRule);
+		jQuery("#address2").rules("add", newRule);
+		jQuery("#city2").rules("add", newRule);
+		jQuery("#phone2").rules("add", newRule);
+		jQuery("#address_val").val("ST");
+	}
+	STx = function(){
+		console.log("x");
+		jQuery("#firstname2").rules("remove");
+		jQuery("#lastname2").rules("remove");
+		jQuery("#zipcode2").rules("remove");
+		jQuery("#address2").rules("remove");
+		jQuery("#city2").rules("remove");
+		jQuery("#phone2").rules("remove");
+		jQuery("#address_val").val("BT");
+	}
 
+	if(jQuery(".w-another-add").css("display")=="block")
+		STo();
 
-		<!--<form method="post" id="userForm" name="userForm" action="<?php echo JRoute::_ ('index.php'); ?>" class="form-validate">-->
-		<div class="control-buttons">
-			<?php
-			if (strpos ($this->fTask, 'cart') || strpos ($this->fTask, 'checkout')) {
-				$rview = 'cart';
-			}
-			else {
-				$rview = 'user';
-			}
-// echo 'rview = '.$rview;
+	jQuery('.bnt-create-acc').click(function(){
+	jQuery(".w-create-acc").slideToggle();
+	});
 
-			if (strpos ($this->fTask, 'checkout') || $this->address_type == 'ST') {
-				$buttonclass = 'default';
-			}
-			else {
-				$buttonclass = 'button vm-button-correct';
-			}
-
-
-			if (VmConfig::get ('oncheckout_show_register', 1) && $this->userId == 0 && !VmConfig::get ('oncheckout_only_registered', 0) && $this->address_type == 'BT' and $rview == 'cart') {
-				echo JText::sprintf ('COM_VIRTUEMART_ONCHECKOUT_DEFAULT_TEXT_REGISTER', JText::_ ('COM_VIRTUEMART_REGISTER_AND_CHECKOUT'), JText::_ ('COM_VIRTUEMART_CHECKOUT_AS_GUEST'));
-			}
-			else {
-				//echo JText::_('COM_VIRTUEMART_REGISTER_ACCOUNT');
-			}
-			if (VmConfig::get ('oncheckout_show_register', 1) && $this->userId == 0 && $this->address_type == 'BT' and $rview == 'cart') {
-				?>
-
-				<button class="<?php echo $buttonclass ?>" type="submit" onclick="javascript:return callValidatorForRegister(userForm);"
-						title="<?php echo JText::_ ('COM_VIRTUEMART_REGISTER_AND_CHECKOUT'); ?>"><?php echo JText::_ ('COM_VIRTUEMART_REGISTER_AND_CHECKOUT'); ?></button>
-				<?php if (!VmConfig::get ('oncheckout_only_registered', 0)) { ?>
-					<button class="<?php echo $buttonclass ?>" title="<?php echo JText::_ ('COM_VIRTUEMART_CHECKOUT_AS_GUEST'); ?>" type="submit"
-							onclick="javascript:return myValidator(userForm, '<?php echo $this->fTask; ?>');"><?php echo JText::_ ('COM_VIRTUEMART_CHECKOUT_AS_GUEST'); ?></button>
-					<?php } ?>
-				<button class="default" type="reset"
-						onclick="window.location.href='<?php echo JRoute::_ ('index.php?option=com_virtuemart&view=' . $rview); ?>'"><?php echo JText::_ ('COM_VIRTUEMART_CANCEL'); ?></button>
-
-
-				<?php
-			}
-			else {
-				?>
-
-				<button class="<?php echo $buttonclass ?>" type="submit"
-						onclick="javascript:return myValidator(userForm, '<?php echo $this->fTask; ?>');"><?php echo JText::_ ('COM_VIRTUEMART_SAVE'); ?></button>
-				<button class="default" type="reset"
-						onclick="window.location.href='<?php echo JRoute::_ ('index.php?option=com_virtuemart&view=' . $rview); ?>'"><?php echo JText::_ ('COM_VIRTUEMART_CANCEL'); ?></button>
-
-				<?php } ?>
-		</div>
-
-
-		<?php
-		if (!class_exists ('VirtueMartCart')) {
+	jQuery('.bnt-another-add').click(function(){
+	if(jQuery(".w-another-add").css("display")=="block"){
+		STx();
+		jQuery(".w-another-add").hide();
+	}else{
+		jQuery(".w-another-add").show();
+		STo();
+	}
+	});
+});
+</script>
+<?php
+/*
+if (!class_exists ('VirtueMartCart')) {
 			require(JPATH_VM_SITE . DS . 'helpers' . DS . 'cart.php');
 		}
+		*/
+?>
+<input type="hidden" id="name" name="name" value=""/>
+<input type="hidden" id="username" name="username" value=""/>
 
-		if (count ($this->userFields['functions']) > 0) {
-			echo '<script language="javascript">' . "\n";
-			echo join ("\n", $this->userFields['functions']);
-			echo '</script>' . "\n";
-		}
-		echo $this->loadTemplate ('userfields');
-
-		?>
-</fieldset>
-<?php // }
-if ($this->userDetails->JUser->get ('id')) {
-	echo $this->loadTemplate ('addshipto');
-} ?>
 <input type="hidden" name="option" value="com_virtuemart"/>
 <input type="hidden" name="view" value="user"/>
 <input type="hidden" name="controller" value="user"/>
 <input type="hidden" name="task" value="<?php echo $this->fTask; // I remember, we removed that, but why?   ?>"/>
 <input type="hidden" name="layout" value="<?php echo $this->getLayout (); ?>"/>
-<input type="hidden" name="address_type" value="<?php echo $this->address_type; ?>"/>
-<?php if (!empty($this->virtuemart_userinfo_id)) {
-	echo '<input type="hidden" name="shipto_virtuemart_userinfo_id" value="' . (int)$this->virtuemart_userinfo_id . '" />';
-}
+<input type="hidden" name="address_type" id="address_val" value="<?php echo $this->address_type; ?>"/>
+<?php
 echo JHTML::_ ('form.token');
 ?>
-		</div><!--frm-cus-info-->
-	</div>
-</div>
 
 <!--temp html-->
 	<div class="w-payment">
@@ -224,6 +306,33 @@ echo JHTML::_ ('form.token');
 	</div>
 <!--//temp html-->
 
+		</div>
+		</div>
+
+		<div class="nav-right" name="f2" action="" method="get">
+			<div class="w-step2-3">
+				<div class="step2">
+					<h2><div><img src="<?php echo JURI::base()."templates/".$template?>/img/step2.png" width="24" height="24" alt=""></div>Levering</h2>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. </p>
+					<div>
+					<input name="choose" type="radio" value="pickup" checked="checked">
+					<span>Forsendelse 49,00 DKK</span>
+					</div>
+					<div>
+					<input name="choose" type="radio" value="pickup">
+					<span>Afhentning 0,00 DKK</span>
+					</div>
+					<div>
+						<select>
+						<option selected="selected">Amager Isenkram</option>
+						<option>Gør Tet Selv Shop</option>
+						<option>Tåmby Torv Isenkram</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 </form>
 </div>
