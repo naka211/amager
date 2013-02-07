@@ -96,7 +96,7 @@ jQuery(document).ready( function(){
 			event.stopPropagation();
 		});
 	});
-	//focusInput();
+	focusInput();
 });
 
 focusInput = function(){
