@@ -83,9 +83,9 @@ $showPanel = false;
 echo '<!--  Beginning : '.jnews::version().'   -->'."\n\r";
 
 //added this line so that if the action show is used the subscribe action will be executed
-/*if ($userId <= 0){
+if ($userId <= 0){
 	if($action=='show') $action='subscribe';
-}*/
+}
 
 switch ($action) {
 

@@ -41,7 +41,7 @@ ul.login li { border-right: none; padding: 0px 2px 0px 0px; background: url(../i
 ul.login li a { padding:  0px 5px 0px 0px; }
 ul.login li.no-li { background: none; padding: 0px 0px 0px 1px; }
 
-.func { float: left; width: 405px; color: #fff; margin: 12px 0px 0px 20px; }
+.func { float: left; width: 505px; color: #fff; margin: 12px 0px 0px 20px; }
 .func .w-135 { float: left; width: 135px; margin-bottom: 5px;}
 .func-img { float: left; margin-left: 63px;}
 .func-img2 { float: left; margin-left: 280px;}
