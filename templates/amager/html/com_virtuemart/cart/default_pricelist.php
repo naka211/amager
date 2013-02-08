@@ -26,7 +26,7 @@ $tmplURL=JURI::base()."templates/".$template;
 <?php
 //$i = 1;
 // vmdebug('$this->cart->products',$this->cart->products);
-
+//print_r($this->cart);exit;
 foreach ($this->cart->products as $pkey => $prow) {
 ?>
 <div class="pro-item">
@@ -61,12 +61,12 @@ foreach ($this->cart->products as $pkey => $prow) {
 	<div class="col4">
 		<p><?php
 		// vmdebug('$this->cart->pricesUnformatted[$pkey]',$this->cart->pricesUnformatted[$pkey]['priceBeforeTax']);
-		echo $this->currencyDisplay->priceDisplay($this->cart->pricesUnformatted[$pkey]['salesPrice'],0,1.0,false,$this->cart->pricesUnformatted[$pkey]['salesPrice'][1]);
+		echo $this->currencyDisplay->priceDisplay($this->cart->pricesUnformatted[$pkey]['salesPrice'],0,1.0,false,2);
 		// echo $prow->salesPrice ;
 		?></p>
 	</div>
 <div class="col5">
-	<p><?php echo $this->currencyDisplay->priceDisplay($this->cart->pricesUnformatted[$pkey]['salesPrice'],0,$prow->quantity,false,$this->cart->pricesUnformatted[$pkey]['salesPrice'][1]);?></p>
+	<p><?php echo $this->currencyDisplay->priceDisplay($this->cart->pricesUnformatted[$pkey]['salesPrice'],0,$prow->quantity,false,2);?></p>
 </div>
 
 	

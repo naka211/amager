@@ -103,13 +103,13 @@ $tmplURL=JURI::base()."templates/".$template;
 
 	<div class="total-vat">
 	<?php
-	$finalprice=$this->currencyDisplay->priceDisplay($this->cart->pricesUnformatted['salesPrice'],0,1.0,false,$this->cart->pricesUnformatted['salesPrice'][1]);
+	$finalprice=$this->currencyDisplay->priceDisplay($this->cart->pricesUnformatted['salesPrice'],0,1.0,false,2);
 	?>
 		<div>
 		<label>Subtotal inkl. moms:</label><span><?php echo $finalprice?></span>
 		</div>
 		<div>
-		<label>Heraf moms:</label><span><?php echo $this->currencyDisplay->priceDisplay($this->cart->pricesUnformatted['salesPrice']*.25,0,1.0,false,$this->cart->pricesUnformatted['salesPrice'][1])?></span>
+		<label>Heraf moms:</label><span><?php echo $this->currencyDisplay->priceDisplay($this->cart->pricesUnformatted['salesPrice']*.25,0,1.0,false,2)?></span>
 		</div>
 		<div class="n-b-b2">
 		<label class="black">TOTAL INKL. MOMS:</label><span class="black"><?php echo $finalprice?></span>
