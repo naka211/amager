@@ -26,6 +26,7 @@ $tmplURL=JURI::base()."templates/".$template;
 <?php
 //$i = 1;
 // vmdebug('$this->cart->products',$this->cart->products);
+
 foreach ($this->cart->products as $pkey => $prow) {
 ?>
 <div class="pro-item">
