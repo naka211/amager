@@ -1,6 +1,7 @@
 <?php
 // No direct access.
 defined('_JEXEC') or die;
+//$tmplURL=$this->baseurl.'/templates/'.$this->template."/";
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
@@ -230,8 +231,8 @@ focusInput = function(){
 
 <div id="footer">
 	<div id="w-footer">
-	<jdoc:include type="modules" name="user1" />
-	<jdoc:include type="modules" name="user2" />
+	<jdoc:include type="modules" name="user1" style="amageruser1" />
+	<jdoc:include type="modules" name="user2" style="amageruser2" />
 	<jdoc:include type="modules" name="user3" />
 	</div>
 	<!--#w-footer-->

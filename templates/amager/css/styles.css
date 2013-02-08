@@ -815,12 +815,22 @@ border-left: 2px solid #fff; overflow: hidden; }
 .info-per p { padding-bottom: 12px; border-bottom: 1px solid #cacaca;}
 .info-per h3 { padding: 13px 0px; text-transform: uppercase; color: #000000; font-size: 16px; }
 .info-per div { margin-bottom: 10px;}
+
 .info-per input { background: url(../img/bg-input05.png) no-repeat 0px 0px ; width: 264px; height: 27px; line-height: 27px; border: none medium;
 font-style: italic; color: #909090; padding: 0px 5px; }
 .info-per input.error { background: url(../img/bg-input05.png) no-repeat 0px -52px ; width: 264px; height: 27px; line-height: 27px; border: none medium;
 font-style: italic; color: #909090; padding: 0px 5px; }
 .info-per input.valid { background: url(../img/bg-input05.png) no-repeat 0px -26px ; width: 264px; height: 27px; line-height: 27px; border: none medium;
 font-style: italic; color: #909090; padding: 0px 5px; }
+
+.frm-cus-info input { background: url(../img/bg-input05.png) no-repeat 0px 0px ; width: 264px; height: 27px; line-height: 27px; border: none medium;
+font-style: italic; color: #909090; padding: 0px 5px; }
+.frm-cus-info input.error { background: url(../img/bg-input05.png) no-repeat 0px -52px ; width: 264px; height: 27px; line-height: 27px; border: none medium;
+font-style: italic; color: #909090; padding: 0px 5px; }
+.frm-cus-info input.valid { background: url(../img/bg-input05.png) no-repeat 0px -26px ; width: 264px; height: 27px; line-height: 27px; border: none medium;
+font-style: italic; color: #909090; padding: 0px 5px; }
+
+
 .info-per select { width: 243px; height: 24px; border: 1px solid #cacaca; }
 .chk2 { overflow: hidden;  width: 460px; border-bottom: 1px solid #cacaca; padding-bottom: 10px; }
 .chk2 input { width: 13px; height: 13px; float: left; background: none; }

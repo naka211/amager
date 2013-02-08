@@ -16,7 +16,7 @@ else {
 ?>
 <script language="javascript" src="templates/amager/js/jquery.validate.js"></script>
 <div id="checkout-page">
-<form method="post" id="checkoutForm" name="userForm" class="form-validate info-per" style="padding:0;border-top:none">
+<form method="post" id="checkoutForm" name="userForm" class="form-validate" style="padding:0;border-top:none">
 <div class="w-checkout">
 	<div class="checkout-content">
 		<div class="nav-left">
@@ -265,12 +265,14 @@ jQuery(document).ready(function(){
 	jQuery('.bnt-another-add').click(function(){
 	if(jQuery(".w-another-add").css("display")=="block"){
 		STx();
-		jQuery(".w-another-add").hide();
+		jQuery(".w-another-add").slideToggle();
 	}else{
-		jQuery(".w-another-add").show();
+		jQuery(".w-another-add").slideToggle();
 		STo();
 	}
 	});
+	
+	
 });
 </script>
 <?php
@@ -294,16 +296,7 @@ echo JHTML::_ ('form.token');
 ?>
 
 <!--temp html-->
-	<div class="w-payment">
-		<div><input name="" type="checkbox" value=""></div><p>Jeg accepterer <a href="handelsbetingelser.php">handelsbetingelser</a></p>
-		<div class="bnt-payment">
-			<a href="relay-payment.php">betaling</a>
-		</div>
-	</div>
-
-	<div class="bnt-edit-order">
-		<a href="cart.php">Rediger din ordre</a>
-	</div>
+	
 <!--//temp html-->
 
 		</div>
@@ -313,25 +306,168 @@ echo JHTML::_ ('form.token');
 			<div class="w-step2-3">
 				<div class="step2">
 					<h2><div><img src="<?php echo JURI::base()."templates/".$template?>/img/step2.png" width="24" height="24" alt=""></div>Levering</h2>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. </p>
+                    <?php 
+					$model		= VmModel::getModel("shipmentmethod");
+					$shipment	= $model->getShipments();
+					$shipment = $shipment[1];
+					?>
+					<?php echo $shipment->shipment_desc;?>
 					<div>
-					<input name="choose" type="radio" value="pickup" checked="checked">
+					<input name="virtuemart_shipmentmethod_id" type="radio" value="2" checked="checked">
 					<span>Forsendelse 49,00 DKK</span>
 					</div>
 					<div>
-					<input name="choose" type="radio" value="pickup">
+					<input name="virtuemart_shipmentmethod_id" type="radio" value="1">
 					<span>Afhentning 0,00 DKK</span>
 					</div>
 					<div>
-						<select>
-						<option selected="selected">Amager Isenkram</option>
-						<option>Gør Tet Selv Shop</option>
-						<option>Tåmby Torv Isenkram</option>
+						<select name="location" id="location">
+						<option selected="selected" value="Amager Isenkram">Amager Isenkram</option>
+						<option value="Gør Tet Selv Shop">Gør Tet Selv Shop</option>
+						<option value="Tåmby Torv Isenkram">Tåmby Torv Isenkram</option>
 						</select>
 					</div>
 				</div>
+                
+                <div class="step3">
+                  <h2><div><img width="24" height="24" alt="" src="templates/amager/img/step3.png"></div>Betalingsmetode</h2>
+                  <p>Du kan betale med følgende betalingskort: </p>
+                  <ul>
+                    <li><a href="#"><img width="37" height="19" alt="" src="templates/amager/img/icon-dk.png"></a></li>
+                    <li><a href="#"><img width="37" height="19" alt="" src="templates/amager/img/icon-mastercard.png"></a></li>
+                    <li><a href="#"><img width="37" height="19" alt="" src="templates/amager/img/icon-card2.png"></a></li>
+                    <li><a href="#"><img width="37" height="19" alt="" src="templates/amager/img/icon-visa.png"></a></li>
+                    <li><a href="#"><img width="37" height="19" alt="" src="templates/amager/img/visa2.png"></a></li>
+                    <li><a href="#"><img width="95" height="19" alt="" src="templates/amager/img/icon-ean.png"></a></li>
+                  </ul>
+                </div>
+                
 			</div>
+            <?php 
+			require(JPATH_VM_ADMINISTRATOR . DS . 'helpers' . DS . 'currencydisplay.php');
+			$cart = VirtueMartCart::getCart();
+			$cart->prepareCartViewData();
+			$currencyDisplay = CurrencyDisplay::getInstance($cart->pricesCurrency);
+			?>
+            <input type="hidden" id="subtotal" value="<?php echo $cart->pricesUnformatted['salesPrice']?>" />
+            <div class="step4">
+                <h2><div><img width="24" height="24" alt="" src="templates/amager/img/step4.png"></div>Ordreoversigt</h2>
+                <div class="w-list-pro">
+                  <div class="w-list-pro-title">
+                    <div class="name-pro">
+                      <p>Produkt</p>
+                    </div>
+                    <!--.name-pro-->
+                    <div class="no-pro">
+                      <p>Vare-nr</p>
+                    </div>
+                    <!--.no-pro-->
+                    <div class="num-pro">
+                      <p>Antal</p>
+                    </div>
+                    <!--.num-pro-->
+                    <div class="total-prices">
+                      <p>Pris i alt</p>
+                    </div>
+                    <!--.total-prices--> 
+                  </div>
+                  <!--.w-list-pro-title-->
+                  
+                  <?php foreach($cart->products as $pkey => $item){?>
+                  <div class="list-pro-item">
+                    <div class="col1-">
+                      <div class="list-pro-item-img"> <a href="#"><img width="89" height="72" alt="" src="<?php echo $item->image->file_url_thumb;?>"></a> </div>
+                      <!--.list-pro-item-img-->
+                      <div class="list-pro-item-content">
+                        <p><?php echo $item->product_name;?><br>
+                          <?php echo $item->customfields;?></p>
+                      </div>
+                      <!--.list-pro-item-content--> 
+                    </div>
+                    <!--.col1- -->
+                    <div class="col2-">
+                      <p><?php echo $item->product_sku;?></p>
+                    </div>
+                    <!--.col2- -->
+                    <div class="col3-">
+                      <p><?php echo $item->quantity;?></p>
+                    </div>
+                    <!--.col3- -->
+                    <div class="col4-">
+                      <p>
+                      <?php echo $currencyDisplay->priceDisplay($cart->pricesUnformatted[$pkey]['salesPrice'],0,$item->quantity,false,$cart->pricesUnformatted[$pkey]['salesPrice'][1]);?>
+                      </p>
+                    </div>
+                    <!--.col4- --> 
+                  </div>
+                  <!--.list-pro-item-->
+                  <?php }?>
+                 
+                  
+                </div>
+                <!--.w-list-pro--> 
+                
+                <div class="checkout-payment">
+                	<div class="checkout-payment-left">
+                    	<div class="func">
+                          <div class="w-135"> <img width="17" height="16" alt="" src="templates/amager/img/phone.png"> <span>3250 3611</span> </div>
+                          <!--.w-135-->
+                          <div class="w-135"> <img width="14" height="17" alt="" src="templates/amager/img/times.png"> <span>Hurtig levering</span> </div>
+                          <!--.w-135-->
+                          <div class="w-135"> <img width="17" height="14" alt="" src="templates/amager/img/truck.png"> <span>Fri fragt i DK</span> </div>
+                          <!--.w-135-->
+                          <div class="clear"></div>
+                          <div class="w-135"> <img width="15" height="16" alt="" src="templates/amager/img/sticker.png"> <span>Sikker betaling</span> </div>
+                          <!--.w-135-->
+                          <div class="w-135"> <img width="13" height="16" alt="" src="templates/amager/img/star.png"> <span>Kun ægte varer</span> </div>
+                          <!--.w-135-->
+                          <div class="w-135"> <img width="17" height="16" alt="" src="templates/amager/img/sitting.png"> <span>2 års garanti</span> </div>
+                          <!--.w-135--> 
+                        </div>
+                      <!--.func-->
+                      
+                          <div class="checkout-payment-bot">
+                            <h3>Du kan betale med følgende betalingskort: </h3>
+                            <ul>
+                                <li><a href="#"><img width="37" height="19" alt="" src="templates/amager/img/icon-dk.png"></a></li>
+                                <li><a href="#"><img width="37" height="19" alt="" src="templates/amager/img/icon-mastercard.png"></a></li>
+                                <li><a href="#"><img width="37" height="19" alt="" src="templates/amager/img/icon-card2.png"></a></li>
+                                <li><a href="#"><img width="37" height="19" alt="" src="templates/amager/img/icon-visa.png"></a></li>
+                                <li><a href="#"><img width="37" height="19" alt="" src="templates/amager/img/visa2.png"></a></li>
+                                 <li><a href="#"><img width="95" height="19" alt="" src="templates/amager/img/icon-ean.png"></a></li>
+                            </ul>
+        				</div><!--.checkout-payment-bot-->
+                        
+                    </div><!--.checkout-payment-left-->
+                    
+                    <div class="checkout-payment-right">
+                    	<div class="gray">
+                        	<label>Forsendelse:</label><span id="shipPrice">49,00 DKK</span>
+                        </div>
+                        <div class="m-20">
+                        	<label>Subtotal inkl. moms:</label><span>799,80 DKK</span>
+                        </div>
+                        <div class="m-20">
+                        	<label>Heraf moms:</label><span>199,95 DKK</span>
+                        </div>
+                        <div class="n-b-b3 m-20 black">
+                        	<label>TOTAL INKL. MOMS:</label><span>848,80 DKK</span>
+                        </div>
+                    </div><!--.checkout-payment-right-->
+                </div><!--.checkout-payment-->
+                
+              </div>
 		</div>
+	</div>
+    <div class="w-payment">
+		<div><input name="" type="checkbox" value=""></div><p>Jeg accepterer <a href="index.php?option=com_content&view=article&id=1&Itemid=119" target="_blank">handelsbetingelser</a></p>
+		<div class="bnt-payment">
+			<a href="relay-payment.php">betaling</a>
+		</div>
+	</div>
+
+	<div class="bnt-edit-order">
+		<a href="index.php?option=com_virtuemart&view=cart">Rediger din ordre</a>
 	</div>
 </div>
 </form>
