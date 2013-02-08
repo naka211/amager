@@ -73,7 +73,7 @@ function cart_update(){
 	jQuery.ajaxSetup({ cache: false })
 	jQuery.getJSON(window.vmSiteurl+"index.php?option=com_virtuemart&nosef=1&view=cart&task=viewJS&format=json"+window.vmLang,
 		function(datas, textStatus){
-			console.log(datas);
+			//console.log(datas);
 			//if (datas.totalProduct){
 				mod.find("#list-item").html("");
 				jQuery.each(datas.products, function(key, val) {
@@ -85,7 +85,8 @@ function cart_update(){
 							jQuery.ajax( {
 							type: "POST",
 							url: "index.php",
-							data: "option=com_virtuemart&view=cart&cart_virtuemart_product_id="+val+"&task=delete",success: function( response ){cart_update()}
+							data: "option=com_virtuemart&view=cart&cart_virtuemart_product_id="+val+"&task=delete",
+							success: function( response ){cart_update()}
 							});
 						});
 					});
@@ -97,7 +98,7 @@ function cart_update(){
 	);
 }
 jQuery("form.js-recalculate").submit(function(){
-	console.log(jQuery(this).serialize());
+	//console.log(jQuery(this).serialize());
 	jQuery.ajax( {
 	type: "POST",
 	url: "",

@@ -1,7 +1,7 @@
 <?php // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-$data->billTotal = str_replace(",00","",preg_replace("/.*?<strong>([^<]*?)<\/strong>/","$1",$data->billTotal));
+//$data->billTotal = str_replace(",00","",preg_replace("/.*?<strong>([^<]*?)<\/strong>/","$1",$data->billTotal));
 //echo '<pre>',print_r($cart),'</pre>';
 // Ajax is displayed in vm_cart_products
 // ALL THE DISPLAY IS Done by Ajax using "hiddencontainer" ?>
