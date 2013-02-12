@@ -13,7 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 		<div class="img-cart"><a href="#"><img src="templates/<?php echo $document->template?>/img/img-cart.png" width="38" height="37" alt=""></a></div>
 		<div class="info-cart">
 			<p><a href="#">Din indkøbskurven</a></p>
-			<span class="s_billtotal"><?php echo $data->totalProductTxt ?> <?php if ($data->totalProduct and $show_price) echo $data->billTotal; ?></span>
+			<span class="s_billtotal"><?php echo $data->totalProductTxt ?> <?php if ($data->totalProduct and $show_price) echo $data->products[0]['prices']; ?></span>
 		</div>
 		<div class="bnt-see-cart">
 			<a href="#"><img src="templates/<?php echo $document->template?>/img/bnt-sekurv.png" width="56" height="23" alt=""></a>
@@ -77,6 +77,7 @@ defined('_JEXEC') or die('Restricted access');
 			<div class="title-total"><p>TOTAL INKL. MOMS</p></div>
 			<div class="price2 s_billtotal"><p><?php echo $data->billTotal?></p></div>
 		</div>
+        <div class="free-shipping">Fri fragt! Ved køb for minimum 500 DKK</div>
 		<div class="bnt-view-basket"> <a href="<?php echo JRoute::_("index.php?option=com_virtuemart&view=cart".$taskRoute,$useXHTML,$useSSL)?>">SE VAREKURV</a> </div>
 		<div class="bnt-checkout"> <a href="<?php echo JRoute::_ ('index.php?option=com_virtuemart&view=cart&task=checkout')?>">GÅ TIL KASSEN</a> </div>
 		</div>

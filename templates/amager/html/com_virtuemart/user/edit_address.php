@@ -272,7 +272,28 @@ jQuery(document).ready(function(){
 	}
 	});
 	
+	formatMoney = function(num){
+		var p = num.toFixed(2).split(".");
+		return p[0].split("").reverse().reduce(function(acc, num, i, orig) {
+			return  num + (i && !(i % 3) ? "." : "") + acc;
+		}, "") + "," + p[1];
+	}
 	
+	changeDelivery = function(val){
+		if(val == 1){
+			jQuery("#shipPrice").html("0,00 DKK");
+			var total = formatMoney(parseFloat(jQuery("#subtotal").val()));
+			jQuery("#payTotal").html(total+" DKK");
+			jQuery("#shippingfee").val(0);
+			jQuery("#location").removeAttr("disabled", "disabled");
+		} else {
+			jQuery("#shipPrice").html("49,00 DKK");
+			var total = formatMoney(parseFloat(Number(jQuery("#subtotal").val()) + Number("49")));
+			jQuery("#payTotal").html(total+" DKK");
+			jQuery("#shippingfee").val(49);
+			jQuery("#location").attr( "disabled", "disabled" );
+		}
+	}
 });
 </script>
 <?php
@@ -285,12 +306,14 @@ if (!class_exists ('VirtueMartCart')) {
 <input type="hidden" id="name" name="name" value=""/>
 <input type="hidden" id="username" name="username" value=""/>
 
+
 <input type="hidden" name="option" value="com_virtuemart"/>
 <input type="hidden" name="view" value="user"/>
 <input type="hidden" name="controller" value="user"/>
 <input type="hidden" name="task" value="<?php echo $this->fTask; // I remember, we removed that, but why?   ?>"/>
 <input type="hidden" name="layout" value="<?php echo $this->getLayout (); ?>"/>
 <input type="hidden" name="address_type" id="address_val" value="<?php echo $this->address_type; ?>"/>
+<input type="hidden" name="shippingfee" id="shippingfee" value=""/>
 <?php
 echo JHTML::_ ('form.token');
 ?>
@@ -313,15 +336,15 @@ echo JHTML::_ ('form.token');
 					?>
 					<?php echo $shipment->shipment_desc;?>
 					<div>
-					<input name="virtuemart_shipmentmethod_id" type="radio" value="2" checked="checked">
+					<input name="virtuemart_shipmentmethod_id" type="radio" value="2" checked="checked" onchange="changeDelivery(this.value)" />
 					<span>Forsendelse 49,00 DKK</span>
 					</div>
 					<div>
-					<input name="virtuemart_shipmentmethod_id" type="radio" value="1">
+					<input name="virtuemart_shipmentmethod_id" type="radio" value="1" onchange="changeDelivery(this.value)" />
 					<span>Afhentning 0,00 DKK</span>
 					</div>
 					<div>
-						<select name="location" id="location">
+						<select name="location" id="location" disabled="disabled">
 						<option selected="selected" value="Amager Isenkram">Amager Isenkram</option>
 						<option value="Gør Tet Selv Shop">Gør Tet Selv Shop</option>
 						<option value="Tåmby Torv Isenkram">Tåmby Torv Isenkram</option>
@@ -445,13 +468,13 @@ echo JHTML::_ ('form.token');
                         	<label>Forsendelse:</label><span id="shipPrice">49,00 DKK</span>
                         </div>
                         <div class="m-20">
-                        	<label>Subtotal inkl. moms:</label><span>799,80 DKK</span>
+                        	<label>Subtotal inkl. moms:</label><span><?php echo number_format($cart->pricesUnformatted['salesPrice'],2,',','.').' DKK'; ?></span>
                         </div>
                         <div class="m-20">
-                        	<label>Heraf moms:</label><span>199,95 DKK</span>
+                        	<label>Heraf moms:</label><span><?php echo number_format($cart->pricesUnformatted['salesPrice']*0.25,2,',','.');?> DKK</span>
                         </div>
                         <div class="n-b-b3 m-20 black">
-                        	<label>TOTAL INKL. MOMS:</label><span>848,80 DKK</span>
+                        	<label>TOTAL INKL. MOMS:</label><span id="payTotal"><?php echo number_format($cart->pricesUnformatted['salesPrice']+49,2,',','.').' DKK'; ?></span>
                         </div>
                     </div><!--.checkout-payment-right-->
                 </div><!--.checkout-payment-->
