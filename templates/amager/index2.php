@@ -187,9 +187,9 @@ focusInput = function(){
 	<?php if(!$user->guest){?>
 	<div class="welcome">
 		<ul>
-			<li>Velkommen, <span><?php echo $user->name?></span></li>
-			<li><a href="index.php?option=com_users&task=profile.edit&user_id=<?php echo $user->id;?>">Min konto</a></li>
-			<li class="n-bg-r"><a href="index.php?option=com_users&task=user.logout">Log ud</a></li>
+			<li style="background:none;">Velkommen, <span><?php echo $user->name?></span></li>
+			<li style="float:left;"><a href="index.php?option=com_users&task=profile.edit&user_id=<?php echo $user->id;?>">Min konto</a></li>
+			<li class="n-bg-r" style="float:left;"><a href="index.php?option=com_users&task=user.logout">Log ud</a></li>
 		</ul>
 	</div><!--.welcome-->
 	<?php }?>
@@ -202,7 +202,7 @@ focusInput = function(){
 </div>
 <!--#header-->
 
-<div id="page">
+<div id="page" <?php if($user->guest == 1) echo 'style="margin-top:120px;"';?>>
 	<div id="nav-search">
 	<div id="w-nav-search">
 		<jdoc:include type="modules" name="search" />

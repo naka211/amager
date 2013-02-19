@@ -13,6 +13,8 @@ else {
 	$rtask = 'registercheckoutuser';
 	$url = JRoute::_ ('index.php?option=com_virtuemart&view=cart&task=checkout', $this->useXHTML, $this->useSSL);
 }
+$user = JFactory::getUser();
+//print_r($user);exit;
 ?>
 <script language="javascript" src="templates/amager/js/jquery.validate.js"></script>
 <div id="checkout-page">
@@ -22,6 +24,7 @@ else {
 		<div class="nav-left">
 		<h2><div><img src="<?php echo JURI::base()."templates/".$template?>/img/step1.png" width="24" height="24" alt=""></div>Kundeoplysninger</h2>
 		<div class="frm-cus-info">
+        <?php if($user->guest == 1){?>
 		<div><label>Vælg kundetype *</label></div>
 		<div>
 		<?php //$this->userId?>
@@ -57,22 +60,58 @@ else {
 				</div>
 		</div>
 		<div>* Skal udfyldes</div>
+        <?php } else {?>
+			<div><label class="lb">Kundetype:</label><span><?php if($user->mwctype == 1) echo "Privat"; else if($user->mwctype == 2) echo "Erhverv"; else echo "Offentlig instans";?></span></div>
+            <div><label class="lb">E-mail:</label><span><?php echo $user->email;?></span></div>
+            <?php if($user->mwctype == 3){?>
+            	<div><input type="text" value="<?php echo $user->ean;?>" name="ean" id="ean" maxlength="13" disabled="disabled" /></div>
+                <div><input type="text" value="<?php echo $user->authority;?>" name="authority" id="authority" disabled="disabled" /></div>
+                <div><input type="text" value="<?php echo $user->order;?>" name="order" id="order" disabled="disabled" /></div>
+                <div><input type="text" value="<?php echo $user->person;?>" name="person" id="person" disabled="disabled" /></div>
+            <?php } else if($user->mwctype == 2){?>
+            	<div><input type="text" value="<?php echo $user->company;?>" name="company" id="company" /></div>
+                <div><input type="text" value="<?php echo $user->cvr;?>" name="cvr" id="cvr" /></div>
+            <?php }?>
+            <div>
+            <input type="text" value="<?php echo $user->firstname;?>" name="firstname" id="firstname" disabled="disabled" />
+            </div>
+            <div>
+            <input type="text" value="<?php echo $user->lastname;?>" name="lastname" id="lastname" disabled="disabled" />
+            </div>
+            <div>
+            <input type="text" value="<?php echo $user->address;?>" name="address" id="address" disabled="disabled" />
+            </div>
+            <div>
+            <input type="text" value="<?php echo $user->zipcode;?>" name="zipcode" id="zipcode" maxlength="4" disabled="disabled" />
+            </div>
+            <div>
+            <input type="text" value="<?php echo $user->city;?>" name="city" id="city" disabled="disabled" />
+            </div>
+            <div>
+            <input type="text" value="<?php echo $user->phone;?>" name="phone" id="phone" disabled="disabled" />
+            </div>
+            
+		<?php }?>
+        <?php if($user->guest == 1){?>
 		<div class="bnt-create-acc" style=""></div>
 		<div class="w-create-acc">
-			<div>
+			
 				<label>Kodeord (skal være min 4 tegn) *</label>
-			</div>
+			
 			<div>
 				<input type="password" minlength="4" name="password1" id="password1">
 			</div>
-			<div>
+			
 				<label>Bekræft kodeord *</label>
-			</div>
+			
 			<div>
 				<input type="password" name="password2" id="password2">
 			</div>
+            
+                <label>Bemærk! E-mail bruges til login</label>
+            
 		</div>
-
+		<?php }?>
 		<div class="bnt-another-add" style=""></div>
 		<div class="w-another-add" style="display: none; ">
 			<div>
@@ -305,7 +344,7 @@ if (!class_exists ('VirtueMartCart')) {
 ?>
 <input type="hidden" id="name" name="name" value=""/>
 <input type="hidden" id="username" name="username" value=""/>
-
+<input type="hidden" id="userid" name="userid" value="<?php echo $user->id;?>"/>
 
 <input type="hidden" name="option" value="com_virtuemart"/>
 <input type="hidden" name="view" value="user"/>
@@ -437,14 +476,14 @@ echo JHTML::_ ('form.token');
                           <!--.w-135-->
                           <div class="w-135"> <img width="14" height="17" alt="" src="templates/amager/img/times.png"> <span>Hurtig levering</span> </div>
                           <!--.w-135-->
-                          <div class="w-135"> <img width="17" height="14" alt="" src="templates/amager/img/truck.png"> <span>Fri fragt i DK</span> </div>
+                          <div class="w-135"> <img width="17" height="14" alt="" src="templates/amager/img/truck.png"> <span>Gratis fragt ved køb over 500 DKK</span> </div>
                           <!--.w-135-->
                           <div class="clear"></div>
                           <div class="w-135"> <img width="15" height="16" alt="" src="templates/amager/img/sticker.png"> <span>Sikker betaling</span> </div>
                           <!--.w-135-->
-                          <div class="w-135"> <img width="13" height="16" alt="" src="templates/amager/img/star.png"> <span>Kun ægte varer</span> </div>
+                          <div class="w-135"> <img width="13" height="16" alt="" src="templates/amager/img/star.png"> <span>14 dages returret</span> </div>
                           <!--.w-135-->
-                          <div class="w-135"> <img width="17" height="16" alt="" src="templates/amager/img/sitting.png"> <span>2 års garanti</span> </div>
+                          <div class="w-135"> <img width="17" height="16" alt="" src="templates/amager/img/sitting.png"> <span>2 års reklamationsret</span> </div>
                           <!--.w-135--> 
                         </div>
                       <!--.func-->
