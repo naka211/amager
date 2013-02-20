@@ -25,7 +25,7 @@ $user = JFactory::getUser();
 		<h2><div><img src="<?php echo JURI::base()."templates/".$template?>/img/step1.png" width="24" height="24" alt=""></div>Kundeoplysninger</h2>
 		<div class="frm-cus-info">
         <?php if($user->guest == 1){?>
-		<div><label>Vælg kundetype *</label></div>
+		<div><label>Vælg kundetype *</label><label style="font-size:12px; margin-left:5px;">Allerede kunde? <a href="#" data-reveal-id="myModal">Tryk her >></a></label></div>
 		<div>
 		<?php //$this->userId?>
 		<select name="mwctype" id="choicemaker">
@@ -284,7 +284,6 @@ jQuery(document).ready(function(){
 		jQuery("#address_val").val("ST");
 	}
 	STx = function(){
-		console.log("x");
 		jQuery("#firstname2").rules("remove");
 		jQuery("#lastname2").rules("remove");
 		jQuery("#zipcode2").rules("remove");
@@ -305,9 +304,11 @@ jQuery(document).ready(function(){
 	if(jQuery(".w-another-add").css("display")=="block"){
 		STx();
 		jQuery(".w-another-add").slideToggle();
+		jQuery("#STsameAsBT").val("0");
 	}else{
 		jQuery(".w-another-add").slideToggle();
 		STo();
+		jQuery("#STsameAsBT").val("1");
 	}
 	});
 	
@@ -333,6 +334,16 @@ jQuery(document).ready(function(){
 			jQuery("#location").attr( "disabled", "disabled" );
 		}
 	}
+	
+	jQuery("#checkoutBtn").bind("click",function(){
+		if(jQuery("#tosAccepted").is(':checked')){
+			jQuery("#checkoutForm").submit();
+		} else {
+			alert('Bedes acceptere vilkår og betingelser');
+			jQuery("#term").focus();
+			return false;
+		}
+	});
 });
 </script>
 <?php
@@ -347,12 +358,13 @@ if (!class_exists ('VirtueMartCart')) {
 <input type="hidden" id="userid" name="userid" value="<?php echo $user->id;?>"/>
 
 <input type="hidden" name="option" value="com_virtuemart"/>
-<input type="hidden" name="view" value="user"/>
-<input type="hidden" name="controller" value="user"/>
-<input type="hidden" name="task" value="<?php echo $this->fTask; // I remember, we removed that, but why?   ?>"/>
-<input type="hidden" name="layout" value="<?php echo $this->getLayout (); ?>"/>
+<input type="hidden" name="view" value="cart"/>
+<!--<input type="hidden" name="controller" value="user"/>-->
+<input type="hidden" name="task" value="confirm"/>
+<!--<input type="hidden" name="layout" value="<?php echo $this->getLayout (); ?>"/>-->
 <input type="hidden" name="address_type" id="address_val" value="<?php echo $this->address_type; ?>"/>
 <input type="hidden" name="shippingfee" id="shippingfee" value=""/>
+<input type='hidden' id='STsameAsBT' name='STsameAsBT' value='1'/>
 <?php
 echo JHTML::_ ('form.token');
 ?>
@@ -522,9 +534,9 @@ echo JHTML::_ ('form.token');
 		</div>
 	</div>
     <div class="w-payment">
-		<div><input name="" type="checkbox" value=""></div><p>Jeg accepterer <a href="index.php?option=com_content&view=article&id=1&Itemid=119" target="_blank">handelsbetingelser</a></p>
+		<div><input name="tosAccepted" id="tosAccepted" type="checkbox" value="1"></div><p>Jeg accepterer <a href="index.php?option=com_content&view=article&id=1&Itemid=119" target="_blank">handelsbetingelser</a></p>
 		<div class="bnt-payment">
-			<a href="relay-payment.php">betaling</a>
+			<a href="javascript:void(0)" id="checkoutBtn">betaling</a>
 		</div>
 	</div>
 

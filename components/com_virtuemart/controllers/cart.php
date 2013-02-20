@@ -393,66 +393,10 @@ class VirtueMartControllerCart extends JController {
 	 */
 	public function checkout() {
 		//Tests step for step for the necessary data, redirects to it, when something is lacking
+
 		$cart = VirtueMartCart::getCart();
-		if ($cart->products && !VmConfig::get('use_as_catalog', 0)) {
-			if(JRequest::getInt('tosAccepted', $this->tosAccepted)){
-				$mainframe = JFactory::getApplication();
-				$currentUser = JFactory::getUser();
-				$msg = '';
-				$data = JRequest::get('post');
-
-				$data['address_type'] = JRequest::getWord('addrtype','BT');
-				if($currentUser->guest!=1 || $register){
-					$this->addModelPath( JPATH_VM_ADMINISTRATOR.DS.'models' );
-					$userModel = VmModel::getModel('user');
-
-					if(!$cart){
-						// Store multiple selectlist entries as a ; separated string
-						if (key_exists('vendor_accepted_currencies', $data) && is_array($data['vendor_accepted_currencies'])) {
-							$data['vendor_accepted_currencies'] = implode(',', $data['vendor_accepted_currencies']);
-						}
-
-						$data['vendor_store_name'] = JRequest::getVar('vendor_store_name','','post','STRING',JREQUEST_ALLOWHTML);
-						$data['vendor_store_desc'] = JRequest::getVar('vendor_store_desc','','post','STRING',JREQUEST_ALLOWHTML);
-						$data['vendor_terms_of_service'] = JRequest::getVar('vendor_terms_of_service','','post','STRING',JREQUEST_ALLOWHTML);
-					}
-
-					//It should always be stored
-					if($onlyAddress){
-						$ret = $userModel->storeAddress($data);
-					} else {
-						$ret = $userModel->store($data);
-					}
-					if($currentUser->guest==1){
-						$msg = (is_array($ret)) ? $ret['message'] : $ret;
-						$usersConfig = JComponentHelper::getParams( 'com_users' );
-						$useractivation = $usersConfig->get( 'useractivation' );
-						if (is_array($ret) and $ret['success'] and !$useractivation) {
-							// Username and password must be passed in an array
-							$credentials = array('username' => $ret['user']->username,
-					  					'password' => $ret['user']->password_clear
-							);
-							$return = $mainframe->login($credentials);
-						}
-					}
-
-				}
-
-				$this->saveToCart($data);
-				return $msg;
-	
-				$cart->checkout();
-			}
-			else{
-				$view = $this->getView('user', 'html');
-				$view->setLayout('edit_address');
-				$task='savecheckoutuser';
-				$view->assignRef('fTask', $task);
-				$task='saveAddressST';
-
-				// Display it all
-				$view->display();
-			}
+		if ($cart && !VmConfig::get('use_as_catalog', 0)) {
+			$cart->checkout();
 		}
 	}
 
@@ -468,6 +412,7 @@ class VirtueMartControllerCart extends JController {
 
 		//Use false to prevent valid boolean to get deleted
 		$cart = VirtueMartCart::getCart();
+		
 		if ($cart) {
 			$cart->confirmDone();
 			$view = $this->getView('cart', 'html');
