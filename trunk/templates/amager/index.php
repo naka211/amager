@@ -24,7 +24,7 @@ $user = JFactory::getUser();
 //$doc->addScript($this->baseurl.'/templates/'.$this->template.'/javascript/hide.js', 'text/javascript');
 $opt=JRequest::getVar('option');
 $view=JRequest::getVar('view');
-if($opt.$view==in_array($opt.$view,array('com_usersprofile','com_virtuemartcart'))){
+if($opt.$view==in_array($opt.$view,array('com_usersprofile','com_virtuemartuser'))){
 	require_once('index2.php');
 } else {
 ?>
