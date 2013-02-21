@@ -37,5 +37,5 @@ $manufacturers = $model->getManufacturers(true, true,true);
 $model->addImages($manufacturers);
 if(empty($manufacturers)) return false;
 /* load the template */
-require(JModuleHelper::getLayoutPath('mod_virtuemart_manufacturer'));
+require(JModuleHelper::getLayoutPath('mod_virtuemart_manufacturer_images'));
 ?>

@@ -275,9 +275,9 @@ a.prev span, a.next span {display: none; }
 #w-footer .terms { float: left; border-right: 1px solid #535559; padding-right: 42px; }
 #w-footer .customer-ser { float: left; margin-left: 30px; border-right: 1px solid #535559; padding-right: 42px; height: 129px; }
 #w-footer .brand-we-sell { float: left; padding-left: 30px; }
-.brand-we-sell ul{ float: left; margin-right: 50px;}
+.brand-we-sell ul{ width: 516px;}
 .brand-we-sell ul.no-r { margin-right: 0px;}
-
+#w-footer .brand-we-sell ul li { float: left; width: 119px;}
 #footer-bottom {background: #2e3033; overflow: hidden; color: #fff; }
 #footer-bottom #w-footer-bottom{ width: 970px; margin: 0 auto;  padding: 12px 0px; }
 #w-footer-bottom .copyright{ float: left; }
