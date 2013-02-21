@@ -411,8 +411,42 @@ class VirtueMartControllerCart extends JController {
 	public function confirm() {
 
 		//Use false to prevent valid boolean to get deleted
+		//T.Trung
+		
+		if(JRequest::getVar('userid')){
+			
+		} else {
+			$model	= & JModel::getInstance('Registration', 'UsersModel');var_dump($model);exit;
+			$data['mwctype'] = JRequest::getVar('mwctype');
+			$data['email'] = JRequest::getVar('email');
+			$data['firstname'] = JRequest::getVar('firstname');
+			$data['lastname'] = JRequest::getVar('lastname');
+			$data['address'] = JRequest::getVar('address');
+			$data['zipcode'] = JRequest::getVar('zipcode');
+			$data['city'] = JRequest::getVar('city');
+			$data['phone'] = JRequest::getVar('phone');
+			$data['password1'] = JRequest::getVar('password1');
+			$data['password2'] = JRequest::getVar('password2');
+			
+			$data['company'] = JRequest::getVar('conpany');
+			$data['cvr'] = JRequest::getVar('cvr');
+			
+			$data['ean'] = JRequest::getVar('ean');
+			$data['authority'] = JRequest::getVar('authority');
+			$data['order'] = JRequest::getVar('order');
+			$data['person'] = JRequest::getVar('person');
+			
+			$data['username'] = JRequest::getVar('username');
+			$data['name'] = JRequest::getVar('name');
+			$data['newsletter'] = 1;
+			
+			$return	= $model->register($data);
+		}
+		die('ok');
+		//T.Trung end
 		$cart = VirtueMartCart::getCart();
 		
+		//print_r($cart);exit;
 		if ($cart) {
 			$cart->confirmDone();
 			$view = $this->getView('cart', 'html');

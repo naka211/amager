@@ -54,8 +54,9 @@ $tmplURL=JURI::base()."templates/".$template;
 		<?php if(!$this->cart->products) echo '<a href="javascript:history.back()" style="display:block;float:right">Tilbage</a>';
 		else{?>
 		<div class="bnt-secure-payment m-t">
+        	<a href="<?php echo JRoute::_ ('index.php?option=com_virtuemart&view=user&layout=editaddresscheckoutBT')?>">Gå til sikker betaling</a>
 		<?php
-			echo $this->checkout_link_html;
+			//echo $this->checkout_link_html;
 		?>
 		</div>
 		<?php }?>
@@ -81,11 +82,11 @@ $tmplURL=JURI::base()."templates/".$template;
 		<div class="func">
 		<div class="w-135"> <img src="<?php echo $tmplURL?>/img/phone.png" width="17" height="16" alt=""> <span>3250 3611</span> </div>
 		<div class="w-135"> <img src="<?php echo $tmplURL?>/img/times.png" width="14" height="17" alt=""> <span>Hurtig levering</span> </div>
-		<div class="w-135"> <img src="<?php echo $tmplURL?>/img/truck.png" width="17" height="14" alt=""> <span>Fri fragt i DK</span> </div>
+		<div class="w-135" style="width:235px;"> <img src="<?php echo $tmplURL?>/img/truck.png" width="17" height="14" alt=""> <span>Gratis fragt ved køb over 500 DKK</span> </div>
 		<div class="clear"></div>
 		<div class="w-135"> <img src="<?php echo $tmplURL?>/img/sticker.png" width="15" height="16" alt=""> <span>Sikker betaling</span> </div>
-		<div class="w-135"> <img src="<?php echo $tmplURL?>/img/star.png" width="13" height="16" alt=""> <span>Kun ægte varer</span> </div>
-		<div class="w-135"> <img src="<?php echo $tmplURL?>/img/sitting.png" width="17" height="16" alt=""> <span>2 års garanti</span> </div>
+		<div class="w-135"> <img src="<?php echo $tmplURL?>/img/star.png" width="13" height="16" alt=""> <span>14 dages returret</span> </div>
+		<div class="w-135" style="width:235px;"> <img src="<?php echo $tmplURL?>/img/sitting.png" width="17" height="16" alt=""> <span>2 års reklamationsret</span> </div>
 		</div>
 		</div>
 		<div class="info-payment-bot">
@@ -125,8 +126,9 @@ $tmplURL=JURI::base()."templates/".$template;
 </div>
 		<?php if($this->cart->products){?>
 	<div class="bnt-secure-payment">
+    	<a href="<?php echo JRoute::_ ('index.php?option=com_virtuemart&view=user&layout=editaddresscheckoutBT')?>">Gå til sikker betaling</a>
 <?php
-	echo $this->checkout_link_html;
+	//echo $this->checkout_link_html;
 ?>
 	</div>
 	<?php }?>

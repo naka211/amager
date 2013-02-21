@@ -98,6 +98,8 @@ jQuery(document).ready( function(){
 		});
 	});
 	focusInput();
+	jQuery('.item-115').append(jQuery('#add_menu').html());
+	jQuery('.func-img').css('margin-left','280px');
 });
 
 focusInput = function(){
@@ -184,6 +186,7 @@ focusInput = function(){
 	</div><!--#w-frm-login-->
 	
 	{module functions}
+    {module Category menu}
 	<?php if(!$user->guest){?>
 	<div class="welcome">
 		<ul>
@@ -233,7 +236,7 @@ focusInput = function(){
 	<div id="w-footer">
 	<jdoc:include type="modules" name="user1" style="amageruser1" />
 	<jdoc:include type="modules" name="user2" style="amageruser2" />
-	<jdoc:include type="modules" name="user3" />
+	<jdoc:include type="modules" name="user3" style="amageruser3" />
 	</div>
 	<!--#w-footer-->
 </div>

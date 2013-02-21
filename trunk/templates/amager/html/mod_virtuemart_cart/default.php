@@ -79,7 +79,7 @@ defined('_JEXEC') or die('Restricted access');
 		</div>
         <div class="free-shipping">Fri fragt! Ved køb for minimum 500 DKK</div>
 		<div class="bnt-view-basket"> <a href="<?php echo JRoute::_("index.php?option=com_virtuemart&view=cart".$taskRoute,$useXHTML,$useSSL)?>">SE VAREKURV</a> </div>
-		<div class="bnt-checkout"> <a href="<?php echo JRoute::_ ('index.php?option=com_virtuemart&view=user&layout=edit_address')?>">GÅ TIL KASSEN</a> </div>
+		<div class="bnt-checkout"> <a href="<?php echo JRoute::_ ('index.php?option=com_virtuemart&view=user&layout=editaddresscheckoutBT')?>">GÅ TIL KASSEN</a> </div>
 		</div>
 	<div class="clear"></div>
 	</li>
