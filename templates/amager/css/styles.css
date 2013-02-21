@@ -30,7 +30,7 @@ border-bottom-left-radius:0px; border-bottom-right-radius:5px; padding-right: 18
 .nav-top ul li ul.main-sub { background: #dbe3e3; color: #2e3033; width: 970px; font-size: 11px; position: absolute; top: 26px; left: -216px; 
 overflow: hidden; z-index: 999999; display: none; padding-bottom: 10px; border: 2px solid #cacaca; }
 .nav-top ul li:hover ul.main-sub { display: block; }
-ul.main-sub ul.sub-menu { float: left; width: 151px; padding: 10px 0px 0px 10px;}
+ul.main-sub ul.sub-menu { float: left; width: 151px; padding: 10px 0px 0px 10px; height:205px;}
 ul.main-sub ul.sub-menu h3 { text-transform: uppercase; font-size: 13px; }
 ul.main-sub ul.sub-menu li { background: none; padding: 5px 0px 0px 5px; width: 151px; background: url(../img/arrow-circle.png) no-repeat center left; }
 ul.main-sub ul.sub-menu li a { color: #7a7f7f; text-transform: none; background: none; font-size: 11px; padding-left: 0px; }

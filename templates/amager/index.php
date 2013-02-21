@@ -123,6 +123,7 @@ jQuery(document).ready( function(){
 		});
 	});
 	focusInput();
+	jQuery('.item-115').append(jQuery('#add_menu').html());
 });
 
 focusInput = function(){
@@ -209,6 +210,7 @@ focusInput = function(){
 	</div><!--#w-frm-login-->
 	
 	{module functions}
+    {module Category menu}
 	<?php if(!$user->guest){?>
 	<div class="welcome">
 		<ul>
