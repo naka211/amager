@@ -125,6 +125,7 @@ jQuery(document).ready( function(){
 	});
 	focusInput();
 	jQuery('.item-115').append(jQuery('#add_menu').html());
+	jQuery('.search2').css('margin-left','218px');
 });
 
 focusInput = function(){

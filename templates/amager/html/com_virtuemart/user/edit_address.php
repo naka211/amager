@@ -281,7 +281,6 @@ jQuery(document).ready(function(){
 		jQuery("#address2").rules("add", newRule);
 		jQuery("#city2").rules("add", newRule);
 		jQuery("#phone2").rules("add", newRule);
-		jQuery("#address_val").val("ST");
 	}
 	STx = function(){
 		jQuery("#firstname2").rules("remove");
@@ -290,7 +289,6 @@ jQuery(document).ready(function(){
 		jQuery("#address2").rules("remove");
 		jQuery("#city2").rules("remove");
 		jQuery("#phone2").rules("remove");
-		jQuery("#address_val").val("BT");
 	}
 
 	if(jQuery(".w-another-add").css("display")=="block")
@@ -346,24 +344,13 @@ jQuery(document).ready(function(){
 	});
 });
 </script>
-<?php
-/*
-if (!class_exists ('VirtueMartCart')) {
-			require(JPATH_VM_SITE . DS . 'helpers' . DS . 'cart.php');
-		}
-		*/
-?>
 <input type="hidden" id="name" name="name" value=""/>
 <input type="hidden" id="username" name="username" value=""/>
 <input type="hidden" id="userid" name="userid" value="<?php echo $user->id;?>"/>
 
 <input type="hidden" name="option" value="com_virtuemart"/>
 <input type="hidden" name="view" value="cart"/>
-<!--<input type="hidden" name="controller" value="user"/>-->
 <input type="hidden" name="task" value="confirm"/>
-<!--<input type="hidden" name="layout" value="<?php echo $this->getLayout (); ?>"/>-->
-<input type="hidden" name="address_type" id="address_val" value="<?php echo $this->address_type; ?>"/>
-<input type="hidden" name="shippingfee" id="shippingfee" value=""/>
 <input type='hidden' id='STsameAsBT' name='STsameAsBT' value='1'/>
 <?php
 echo JHTML::_ ('form.token');
