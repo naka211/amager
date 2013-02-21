@@ -131,3 +131,13 @@ function modChrome_amageruser2($module, &$params, &$attribs)
         </div>
 <?php };
 }
+
+function modChrome_amageruser3($module, &$params, &$attribs)
+{
+	if (!empty ($module->content)) { ?>
+    	<div class="brand-we-sell">
+          <h2><?php echo $module->title; ?></h2>
+          <?php echo $module->content; ?>
+        </div>
+<?php };
+}
