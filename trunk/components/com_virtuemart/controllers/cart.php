@@ -450,7 +450,10 @@ class VirtueMartControllerCart extends JController {
 		$cart = VirtueMartCart::getCart();
 		//T.Trung
 		$cart->virtuemart_shipmentmethod_id = JRequest::getVar('virtuemart_shipmentmethod_id');
-		if(JRequest::getVar('STsameAsBT'))
+		
+		if(JRequest::getVar('STsameAsBT')){
+			
+		}
 		print_r($cart);exit;
 		//T.Trung end
 		//print_r($cart);exit;
