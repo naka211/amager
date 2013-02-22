@@ -413,10 +413,11 @@ class VirtueMartControllerCart extends JController {
 		//Use false to prevent valid boolean to get deleted
 		//T.Trung
 		
-		if(JRequest::getVar('userid')){
-			
-		} else {
-			$model	= & JModel::getInstance('Registration', 'UsersModel');var_dump($model);exit;
+		if(!JRequest::getVar('userid')){
+			$mainframe = JFactory::getApplication();
+			$this->addModelPath( JPATH_VM_ADMINISTRATOR.DS.'models' );
+			$userModel = VmModel::getModel('user');//print_r($userModel);exit;
+
 			$data['mwctype'] = JRequest::getVar('mwctype');
 			$data['email'] = JRequest::getVar('email');
 			$data['firstname'] = JRequest::getVar('firstname');
@@ -425,7 +426,7 @@ class VirtueMartControllerCart extends JController {
 			$data['zipcode'] = JRequest::getVar('zipcode');
 			$data['city'] = JRequest::getVar('city');
 			$data['phone'] = JRequest::getVar('phone');
-			$data['password1'] = JRequest::getVar('password1');
+			$data['password'] = JRequest::getVar('password1');
 			$data['password2'] = JRequest::getVar('password2');
 			
 			$data['company'] = JRequest::getVar('conpany');
@@ -436,16 +437,22 @@ class VirtueMartControllerCart extends JController {
 			$data['order'] = JRequest::getVar('order');
 			$data['person'] = JRequest::getVar('person');
 			
-			$data['username'] = JRequest::getVar('username');
+			$data['username'] = JRequest::getVar('username1');
 			$data['name'] = JRequest::getVar('name');
 			$data['newsletter'] = 1;
 			
-			$return	= $model->register($data);
+			$ret = $userModel->store($data);
+			$credentials = array('username' => $ret['user']->username,'password' => $ret['user']->password_clear);
+			$mainframe->login($credentials);
 		}
-		die('ok');
+		$user = JFactory::getUser();
 		//T.Trung end
 		$cart = VirtueMartCart::getCart();
-		
+		//T.Trung
+		$cart->virtuemart_shipmentmethod_id = JRequest::getVar('virtuemart_shipmentmethod_id');
+		if(JRequest::getVar('STsameAsBT'))
+		print_r($cart);exit;
+		//T.Trung end
 		//print_r($cart);exit;
 		if ($cart) {
 			$cart->confirmDone();

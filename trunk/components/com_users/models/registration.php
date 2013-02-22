@@ -299,7 +299,7 @@ class UsersModelRegistration extends JModelForm
 	 */
 	public function register($temp)
 	{
-		print_r($temp);exit;
+		//print_r($temp);exit;
 		$config = JFactory::getConfig();
 		$db		= $this->getDbo();
 		$params = JComponentHelper::getParams('com_users');
