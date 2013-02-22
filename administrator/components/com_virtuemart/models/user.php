@@ -491,7 +491,7 @@ class VirtueMartModelUser extends VmModel {
 		//The constructor sets automatically the right id.
 		$new = ($this->_id < 1);
 		if(empty($this->_id)){
-			$user = JFactory::getUser();
+			$user = JUser::getInstance();
 		} else {
 			$user = JFactory::getUser($this->_id);
 		}
@@ -570,7 +570,7 @@ class VirtueMartModelUser extends VmModel {
 			$message = 'Couldnt bind data to joomla user';
 			array('user'=>$user,'password'=>$data['password'],'message'=>$message,'newId'=>$newId,'success'=>false);
 		}
-
+		
 		if($new){
 			// If user registration is not allowed, show 403 not authorized.
 			// But it is possible for admins and storeadmins to save
@@ -622,7 +622,7 @@ class VirtueMartModelUser extends VmModel {
 			{
 				jimport('joomla.user.helper');
 				$user->set('activation', JUtility::getHash( JUserHelper::genRandomPassword()) );
-				$user->set('block', '1');
+				$user->set('block', '0');
 				//$user->set('lastvisitDate', '0000-00-00 00:00:00');
 			}
 		}

@@ -191,7 +191,7 @@ jQuery(document).ready(function(){
 			email: "",
 			firstname: "",
 			lastname: "",
-			password1: {
+			password: {
 				required: "",
 				minlength: ""
 			},
@@ -260,7 +260,7 @@ jQuery(document).ready(function(){
 		
 	});
 	jQuery("#email").bind("blur",function(){
-		jQuery("#username").val(jQuery("#email").val());
+		jQuery("#username1").val(jQuery("#email").val());
 	});
 	jQuery("#lastname").bind("blur",function(){
 		jQuery("#name").val(jQuery("#firstname").val()+' '+jQuery("#lastname").val());
@@ -345,7 +345,7 @@ jQuery(document).ready(function(){
 });
 </script>
 <input type="hidden" id="name" name="name" value=""/>
-<input type="hidden" id="username" name="username" value=""/>
+<input type="hidden" id="username1" name="username1" value=""/>
 <input type="hidden" id="userid" name="userid" value="<?php echo $user->id;?>"/>
 
 <input type="hidden" name="option" value="com_virtuemart"/>
