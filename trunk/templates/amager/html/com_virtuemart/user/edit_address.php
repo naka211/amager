@@ -124,7 +124,7 @@ $user = JFactory::getUser();
 			<input type="text" name="address2" id="address2" value="Adresse *">
 			</div>
 			<div>
-			<input type="text" name="zipcode2" id="zipcode2" value="Postnr. *">
+			<input type="text" name="zipcode2" id="zipcode2" value="Postnr. *" maxlength="4">
 			</div>
 			<div>
 			<input type="text" name="city2" id="city2" value="By *">
@@ -291,7 +291,7 @@ jQuery(document).ready(function(){
 		jQuery("#phone2").rules("remove");
 	}
 
-	if(jQuery(".w-another-add").css("display")=="block")
+	if(jQuery(".w-another-add").css("display")!="none")
 		STo();
 
 	jQuery('.bnt-create-acc').click(function(){
@@ -302,11 +302,11 @@ jQuery(document).ready(function(){
 	if(jQuery(".w-another-add").css("display")=="block"){
 		STx();
 		jQuery(".w-another-add").slideToggle();
-		jQuery("#STsameAsBT").val("0");
+		jQuery("#STsameAsBT").val("1");
 	}else{
 		jQuery(".w-another-add").slideToggle();
 		STo();
-		jQuery("#STsameAsBT").val("1");
+		jQuery("#STsameAsBT").val("0");
 	}
 	});
 	
