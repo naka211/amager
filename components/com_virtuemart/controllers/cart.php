@@ -450,11 +450,31 @@ class VirtueMartControllerCart extends JController {
 		$cart = VirtueMartCart::getCart();
 		//T.Trung
 		$cart->virtuemart_shipmentmethod_id = JRequest::getVar('virtuemart_shipmentmethod_id');
+		$cart->STsameAsBT = JRequest::getVar('STsameAsBT');
 		
-		if(JRequest::getVar('STsameAsBT')){
-			
+		$cart->BT = array();
+		$cart->BT['email'] = $user->email;
+		$cart->BT['ean'] = $user->ean;
+		$cart->BT['authority'] = $user->authority;
+		$cart->BT['order'] = $user->order;
+		$cart->BT['person'] = $user->person;
+		$cart->BT['firstname'] = $user->firstname;
+		$cart->BT['lastname'] = $user->lastname;
+		$cart->BT['address'] = $user->address;
+		$cart->BT['zipcode'] = $user->zipcode;
+		$cart->BT['city'] = $user->city;
+		$cart->BT['phone'] = $user->phone;
+
+		if(!JRequest::getVar('STsameAsBT')){
+			$cart->ST = array();
+			$cart->ST['firstname'] = $user->firstname;
+			$cart->ST['lastname'] = $user->lastname;
+			$cart->ST['address'] = $user->address;
+			$cart->ST['zipcode'] = $user->zipcode;
+			$cart->ST['city'] = $user->city;
+			$cart->ST['phone'] = $user->phone;
 		}
-		print_r($cart);exit;
+		//print_r($cart);exit;
 		//T.Trung end
 		//print_r($cart);exit;
 		if ($cart) {
