@@ -451,28 +451,38 @@ class VirtueMartControllerCart extends JController {
 		//T.Trung
 		$cart->virtuemart_shipmentmethod_id = JRequest::getVar('virtuemart_shipmentmethod_id');
 		$cart->STsameAsBT = JRequest::getVar('STsameAsBT');
+		$cart->tosAccepted = 1;
 		
 		$cart->BT = array();
 		$cart->BT['email'] = $user->email;
 		$cart->BT['ean'] = $user->ean;
 		$cart->BT['authority'] = $user->authority;
-		$cart->BT['order'] = $user->order;
+		$cart->BT['order1'] = $user->order;
 		$cart->BT['person'] = $user->person;
-		$cart->BT['firstname'] = $user->firstname;
-		$cart->BT['lastname'] = $user->lastname;
-		$cart->BT['address'] = $user->address;
-		$cart->BT['zipcode'] = $user->zipcode;
+		$cart->BT['first_name'] = $user->firstname;
+		$cart->BT['last_name'] = $user->lastname;
+		$cart->BT['address_1'] = $user->address;
+		$cart->BT['address_2'] = JRequest::getVar('location');
+		$cart->BT['zip'] = $user->zipcode;
 		$cart->BT['city'] = $user->city;
-		$cart->BT['phone'] = $user->phone;
+		$cart->BT['phone_1'] = $user->phone;
 
-		if(!JRequest::getVar('STsameAsBT')){
+		if(JRequest::getVar('STsameAsBT')){
 			$cart->ST = array();
-			$cart->ST['firstname'] = $user->firstname;
-			$cart->ST['lastname'] = $user->lastname;
-			$cart->ST['address'] = $user->address;
-			$cart->ST['zipcode'] = $user->zipcode;
+			$cart->ST['first_name'] = $user->firstname;
+			$cart->ST['last_name'] = $user->lastname;
+			$cart->ST['address_1'] = $user->address;
+			$cart->ST['zip'] = $user->zipcode;
 			$cart->ST['city'] = $user->city;
-			$cart->ST['phone'] = $user->phone;
+			$cart->ST['phone_1'] = $user->phone;
+		} else {
+			$cart->ST = array();
+			$cart->ST['first_name'] = JRequest::getVar('firstname2');
+			$cart->ST['last_name'] = JRequest::getVar('lastname2');
+			$cart->ST['address_1'] = JRequest::getVar('address2');
+			$cart->ST['zip'] = JRequest::getVar('zipcode2');
+			$cart->ST['city'] = JRequest::getVar('city2');
+			$cart->ST['phone_1'] = JRequest::getVar('phone2');
 		}
 		//print_r($cart);exit;
 		//T.Trung end
