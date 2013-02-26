@@ -68,9 +68,9 @@ $amount = $cart->pricesUnformatted['billTotal']*100;
 		if (document.forms['epay'].cardno.value.replace(" ", "").length > 0) {
 			if (luhn_check(document.forms['epay'].cardno.value.replace(" ", "")) || validTestCardNumber(document.forms['epay'].cardno.value.replace(" ", ""))) {
 				// credit card is valid
-				document.getElementById("cardnoValidation").innerHTML = "<img src='<?php echo $siteURL?>templates/skoledu/src/images/accept.png' border='0' alt='Korrekt kortnummer indtastet!'>";
+				document.getElementById("cardnoValidation").innerHTML = "<img src='<?php echo $siteURL?>templates/amager/img/icon-validate-failed.png' border='0' alt='Korrekt kortnummer indtastet!'>";
 			} else{
-				document.getElementById("cardnoValidation").innerHTML = "<img src='<?php echo $siteURL?>templates/skoledu/src/images/exclamation.png' border='0' alt='Forkert kortnummer indtastet!'>";
+				document.getElementById("cardnoValidation").innerHTML = "<img src='<?php echo $siteURL?>templates/amager/img/icon-validate-pass.png' border='0' alt='Forkert kortnummer indtastet!'>";
 			}
 			//getFee();
 		}
@@ -112,27 +112,27 @@ $amount = $cart->pricesUnformatted['billTotal']*100;
 	function onchangeExpmonth() {
 			var expmonth = document.forms["epay"].expmonth;
 		if (expmonth.value.length != 2) {
-			insertImageInLabelHtml("expmonthValidation", "<?php echo $siteURL?>templates/skoledu/src/images/exclamation.png", "Udløbsmåned skal indtastes!");
+			insertImageInLabelHtml("expmonthValidation", "<?php echo $siteURL?>templates/amager/img/icon-validate-failed.png", "Udløbsmåned skal indtastes!");
 		} else {
-			insertImageInLabelHtml("expmonthValidation", "<?php echo $siteURL?>templates/skoledu/src/images/accept.png", "");
+			insertImageInLabelHtml("expmonthValidation", "<?php echo $siteURL?>templates/amager/img/icon-validate-pass.png", "");
 		}
 	}
 	
 	function onchangeExpyear() {
-			var expmonth = document.forms["epay"].expyear;
-		if (expmonth.value.length != 2) {
-			insertImageInLabelHtml("expmonthValidation", "<?php echo $siteURL?>templates/skoledu/src/images/exclamation.png", "Udløbsår skal indtastes!");
+			var expyear = document.forms["epay"].expyear;
+		if (expyear.value.length != 2) {
+			insertImageInLabelHtml("expyearValidation", "<?php echo $siteURL?>templates/amager/img/icon-validate-failed.png", "Udløbsår skal indtastes!");
 		} else {
-			insertImageInLabelHtml("expmonthValidation", "<?php echo $siteURL?>templates/skoledu/src/images/accept.png", "");
+			insertImageInLabelHtml("expyearValidation", "<?php echo $siteURL?>templates/amager/img/icon-validate-pass.png", "");
 		}
 	}
 	
 	function onchangeCVC() {
 			var expmonth = document.forms["epay"].cvc;
 		if (expmonth.value.length != 3) {
-			insertImageInLabelHtml("cvcValidation", "<?php echo $siteURL?>templates/skoledu/src/images/exclamation.png", "Kontrolciffer skal indtastes!");
+			insertImageInLabelHtml("cvcValidation", "<?php echo $siteURL?>templates/amager/img/icon-validate-failed.png", "Kontrolciffer skal indtastes!");
 		} else {
-			insertImageInLabelHtml("cvcValidation", "<?php echo $siteURL?>templates/skoledu/src/images/accept.png", "");
+			insertImageInLabelHtml("cvcValidation", "<?php echo $siteURL?>templates/amager/img/icon-validate-pass.png", "");
 		}
 	}
 	function insertImageInLabelHtml(labelID, imageSrc, altTxt)
@@ -145,7 +145,7 @@ $amount = $cart->pricesUnformatted['billTotal']*100;
 			
 <div id="header">
   <div id="w-header">
-    <div class="logo3"> <a href="index2.php">Logo</a> </div>
+    <div class="logo3"> <a href="">Logo</a> </div>
     <!--.logo-->   
        
     <div class="clear"></div>
@@ -221,27 +221,39 @@ $amount = $cart->pricesUnformatted['billTotal']*100;
         	<fieldset>
             	<div class="left-content">
                 <h2>Indtast dine kortoplysninger</h2>
-                <p class="fon17">AT BETALE:  848,80 DKK</p>
+                <p class="fon17">AT BETALE:  <?php echo number_format($cart->pricesUnformatted['billTotal'],2,',','.').' DKK'; ?></p>
                 <div>
                 	<p><img src="<?php echo $siteURL?>templates/amager/img/icon-1.png" width="24" height="24" alt="" /></p>
                     <label>Kortnummer <span>*</span></label><br />
-                    <input class="w200" type="text" />
+                    <input class="w200" type="text" id="cardno" name="cardno" onblur="validateCard()" value="" maxlength="16" />
+                    <span id="cardnoValidation" class="icon">
+                        <!--span class="img-right">Right</span-->
+                    </span>
                 </div>
                 <div>
                 	<p><img src="<?php echo $siteURL?>templates/amager/img/icon-2.png" width="24" height="24" alt="" /></p>
                     <label>Udløbsmåned <span>*</span></label><br />
-                    <input type="text" />
+                    <input type="text" id="expmonth" name="expmonth" onchange="onchangeExpmonth();" value="" maxlength="2" />
+                    <span id="expmonthValidation" class="icon">
+                        <!--span class="img-right">Right</span-->
+                    </span>
                 </div>
                 <div>
                 	<p><img src="<?php echo $siteURL?>templates/amager/img/icon-3.png" width="24" height="24" alt="" /></p>
                     <label>Udløbsår <span>*</span></label><br />
-                    <input type="text" />
-                    <br />
+                    <input id="expyear" name="expyear" onchange="onchangeExpyear();" type="text" value="" maxlength="2" />
+                    <span id="expyearValidation" class="icon">
+                        <!--span class="img-right">Right</span-->
+                    </span>
+                    
                 </div>
                 <div>
                 	<p><img src="<?php echo $siteURL?>templates/amager/img/icon-4.png" width="24" height="24" alt="" /></p>
                     <label>Kontrolcifre <span>*</span></label><br />
-                    <input type="text" />
+                    <input id="cvc" name="cvc" onchange="onchangeCVC();" type="text" value="" maxlength="3" />
+                    <span id="cvcValidation" class="icon">
+                        <!--span class="img-wrong">Wrong</span-->
+                    </span>
                 </div>
                 <div>
                 	<div>Du kan betale med følgende betalingskort:</div>
@@ -263,7 +275,6 @@ $amount = $cart->pricesUnformatted['billTotal']*100;
                     <img style="margin-left: 40px; " src="<?php echo $siteURL?>templates/amager/img/img-creditcard2.png" width="277" height="157" alt="" />
                 </div><!--.right-content-->
             </fieldset>
-            <button style="display: none;" class="button validate" id="bt-send" type="submit"><?php echo JText::_('Payment'); ?></button>
     
             <input type="hidden" name="merchantnumber" value="<?php echo $merchantnumber; ?>"/>
             <input type="hidden" name="accepturl" value="<?php echo $accepturl; ?>"/>
