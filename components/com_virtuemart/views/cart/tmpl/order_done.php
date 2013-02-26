@@ -25,9 +25,8 @@ defined('_JEXEC') or die('');
 //echo $this->html;
 ?>
 <?php // no direct access
-defined('_JEXEC') or die('Restricted access'); 
-//print_r($this->cart);exit;
 $cart = $this->cart;
+//print_r($amount);exit;
 $siteURL = JURI::base();
 
 //LDC EPAY for form submit data
