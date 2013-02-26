@@ -494,7 +494,7 @@ class VirtueMartControllerCart extends JController {
 			//$view = $this->getView('cart', 'html');
 			//$view->setLayout('order_done');
 			// Display it all
-			$view->display();
+			//$view->display();
 		} else {
 			$mainframe = JFactory::getApplication();
 			$mainframe->redirect(JRoute::_('index.php?option=com_virtuemart&view=cart'), JText::_('COM_VIRTUEMART_CART_DATA_NOT_VALID'));
