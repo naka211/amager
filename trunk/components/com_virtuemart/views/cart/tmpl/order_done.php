@@ -26,6 +26,7 @@ defined('_JEXEC') or die('');
 ?>
 <?php // no direct access
 $cart = $this->cart;
+$amount = $cart->pricesUnformatted['billTotal']*100;
 //print_r($amount);exit;
 $siteURL = JURI::base();
 
@@ -52,7 +53,6 @@ $currency = 208;
 
 
 $authemail = $cart->BT['email'];
-$amount = $cart->pricesUnformatted['billTotal']*100;
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $siteURL?>templates/amager/css/reset.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo $siteURL?>templates/amager/css/styles.css"/>
@@ -221,7 +221,7 @@ $amount = $cart->pricesUnformatted['billTotal']*100;
         	<fieldset>
             	<div class="left-content">
                 <h2>Indtast dine kortoplysninger</h2>
-                <p class="fon17">AT BETALE:  <?php echo number_format($cart->pricesUnformatted['billTotal'],2,',','.').' DKK'; ?></p>
+                <p class="fon17">AT BETALE:  <?php echo number_format($amount,2,',','.').' DKK'; ?></p>
                 <div>
                 	<p><img src="<?php echo $siteURL?>templates/amager/img/icon-1.png" width="24" height="24" alt="" /></p>
                     <label>Kortnummer <span>*</span></label><br />
