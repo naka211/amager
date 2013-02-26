@@ -276,7 +276,7 @@ $authemail = $cart->BT['email'];
                 </div><!--.right-content-->
             </fieldset>
     
-            <input type="hidden" name="merchantnumber" value="<?php echo $merchantnumber; ?>"/>
+            <input type="hidden" name="merchantnumber" value="<?php echo $merchantid; ?>"/>
             <input type="hidden" name="accepturl" value="<?php echo $accepturl; ?>"/>
             <input type="hidden" name="declineurl" value="<?php echo $declineurl; ?>"/>
             <input type="hidden" name="callbackurl" value="<?php echo $callbackurl; ?>"/>
