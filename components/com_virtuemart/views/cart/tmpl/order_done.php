@@ -25,44 +25,42 @@ defined('_JEXEC') or die('');
 //echo $this->html;
 ?>
 <?php // no direct access
-defined('_JEXEC') or die('Restricted access'); ?>
-<script language="javascript">
-	jQuery(document).ready(function() {	
-		//jQuery.updnWatermark.attachAll();
-		jQuery("#epay").validate({
-			errorPlacement: function(error, element) {			
-			},
-			invalidHandler: function(form, validator) {
-			  var errors = validator.numberOfInvalids();
-			  if (errors) {
-				jQuery('#alert').html(validator['errorList'][0]['message']);
-				jQuery('#backoverlay').show();
-				jQuery('#show_popup').show();
-				jQuery('#f_focus').html(validator['errorList'][0]['element'].name);
-				validator['errorList'][0]['element'].focus();
-			  } else {
-			  }
-			},
-			rules: {
-				checkok : "required"
-				
-			},
-			messages: {
-				checkok: "<?php echo JText::_( 'Udfyld venligst ja, jeg accepterer salgsbetingelserne' ); ?>"
-			}
-		});
-		close_popup=function(){		
-			var fel=jQuery('#f_focus').html();
-			jQuery('#backoverlay').hide();
-			jQuery('#show_popup').hide();
-			jQuery('#' + fel ).focus();
-		}
-	});
-	
-	function send_register(){
-		 document.getElementById('bt-send').click();
-	}
-</script>
+defined('_JEXEC') or die('Restricted access'); 
+//print_r($this->cart);exit;
+$siteURL = JURI::base();
+
+//LDC EPAY for form submit data
+$accepturl = $siteURL . 'index.php?option=com_virtuemart&view=pluginresponse&task=pluginresponsereceived&pm=1';
+$callbackurl = $siteURL . 'index.php?callback=1&option=com_virtuemart&view=pluginresponse&task=pluginresponsereceived&pm=1';
+$declineurl = $siteURL . 'index.php?option=com_virtuemart&view=pluginresponse&task=pluginUserPaymentCancel&on='.$cart->order_number . '&pm=1&HTTP_COOKIE='.getenv("HTTP_COOKIE");
+
+$orderid = $cart->order_number;
+$merchantid = '8010648';
+$customerfee = intval('');
+$authsms = $cms = 'Joomla';
+$instantcapture = 0;
+$group = "";
+$splitpayment = 0;
+$transfee = 0;
+$language = 1;
+$HTTP_COOKIE = getenv("HTTP_COOKIE");
+$instantcallback = 1;
+$httpaccepturl = 0;
+$redirectmethod = "POST";
+$subscription=1;
+$currency = 208;
+
+
+$authemail = $cart->BT['email'];
+$amount = $cart->pricesUnformatted['billTotal']*100;
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $siteURL?>templates/amager/css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo $siteURL?>templates/amager/css/styles.css"/>
+<style>
+#page{
+	margin-top:120px;
+}
+</style>
 <script>
 	<?php $siteURL = JURI::base();?>
 	function validateCard(cardnoObj) {
@@ -143,124 +141,187 @@ defined('_JEXEC') or die('Restricted access'); ?>
 	}
 
 </script>
-<form action="https://ssl.ditonlinebetalingssystem.dk/auth/default.aspx" method="post" autocomplete="off" name="epay" id="epay">
-			
-<div class="template clear-fix">
-	<div id="forgot-wrapper" class="clear-fix">
-		<div class="heading clear-fix">
-			<div id="forgot-wrapper" class="clear-fix">
-				<!--div class="heading clear-fix">
-					<h2>Aliquam tincidunt mauris eu risus.</h2>
-					<h3>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</h3>
-				</div>
-				<p>
-					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-				</p-->
-				
-				<div class="clear-fix" style="margin-bottom:10px; padding-bottom: 10px; font-size:14px;color: #787878;font-weight: bold;line-height: 20px;">
-					<p>Du benytter nu sikker forbindelse, der gør brug af Secure Sockets Layer-teknologien (SSL) til at kryptere transaktionen. Udfyld dine kortinformationer - vores system finder selv ud af, hvilket kort du har.</p>
-				</div>
-				
-				<div class="form-wrapper clear-fix">
-					
-						<div id="relay-wrapper">
-							<div class="each-input-block">
-								<div class="each-input clear-fix">
-									<label class="input-label">Vare :</label>
-									<p class="text-label">Privat abonnement - 1 år</p>
-								</div>
-								<div class="each-input clear-fix">
-									<label class="input-label">Ordrenummer :</label>
-									<p class="text-label"><?php echo $this->orderid; ?></p>
-								</div>
-								<div class="each-input clear-fix">
-									<label class="input-label">Beløb :</label>
-									<p class="text-label c-blue">DKK <?php echo $this->price; ?></p>
-								</div>
-								<div class="each-input clear-fix">
-									<label class="input-label">Kortnummer :</label>
-									<input id="cardno" name="cardno" onchange="validateCard()" type="text" value="" maxlength="16" class="input-input input-card-number"/>
-								
-									<div id="cardnoValidation" class="input-question-wrapper">
-										<!--span class="img-right">Right</span-->
-									</div>
-								</div>
-								<div class="each-input clear-fix">
-									<label class="input-label">Udløbsdato (mm/åå) :</label>
-									<input id="expmonth" name="expmonth" onchange="onchangeExpmonth();" type="text" value="" maxlength="2" class="input-input input-month"/>
-									<span class="t-connect">/</span>
-									<input id="expyear" name="expyear" onchange="onchangeExpyear();" type="text" value="" maxlength="2" class="input-input input-year"/>
-									<div id="expmonthValidation" class="input-question-wrapper">
-										<!--span class="img-right">Right</span-->
-									</div>
-								</div>
-								<div class="each-input clear-fix">
-									<label class="input-label">Kontrolcifre :</label>
-									<input id="cvc" name="cvc" onchange="onchangeCVC();" type="text" value="" maxlength="3" class="input-input input-digit"/>
-									<div id="cvcValidation" class="input-question-wrapper">
-										<!--span class="img-wrong">Wrong</span-->
-									</div>
-								</div>
-								
-								<p id="t-cc">Sikker betaling:</p>
-								<img id="img-cc" src="templates/skoledu/images/cc.png" alt=""/>
-								<div class="form-submit form-relay clear-fix">
-									<a href="javascript:history.go(-1)" class="link-back mt10">Tilbage</a>
-									<div class="form-register-submit clear-fix">
-										<div class="eachGrade relayGrade">
-											<input name="checkok" id="checkok" type="checkbox" class="input-checkbox"/>
-											<span id="link-2-temp">Ja, jeg accepterer <a target="_blank" data-reveal-id="term-popup" href="javascript:void(0);">salgsbetingelserne</a></span>
-										</div>
-										
-										<a href="javascript:void(0);" onclick="send_register();" id="accept-buy">Accepter købet</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="pay-temp clear-fix">
-							<p>Hvad er kontrolcifre?</p>
-							<img src="templates/skoledu/images/cvc_dk.gif.jpg" alt="CKC"/>
-							<img src="templates/skoledu/images/cvc_master.gif" alt="CKC"/>
-							<br />
-							<span id="span-cc-1">Kontrolcifre på Dankort</span>
-							<span id="span-cc-2">Kontrolcifre på MasterCard</span>
-						</div>
-					
-				</div>
-			</div>
 
-			<input type="hidden" name="merchantnumber" value="<?php echo $this->merchantnumber; ?>"/>
-			<input type="hidden" name="accepturl" value="<?php echo $this->accepturl; ?>"/>
-			<input type="hidden" name="declineurl" value="<?php echo $this->declineurl; ?>"/>
-			<input type="hidden" name="callbackurl" value="<?php echo $this->callbackurl; ?>"/>
-			<input type="hidden" name="orderid" value="<?php echo $this->orderid; ?>"/>
-			<input type="hidden" name="authemail" value="<?php echo $this->authemail; ?>"/>
-			<input type="hidden" name="authsms" value=""/>
-			<input type="hidden" name="instantcapture" value="0"/>
-			<input type="hidden" name="group" value=""/>
-			<input type="hidden" name="amount" value="<?php echo $this->amount; ?>"/>
-			<input type="hidden" name="MD5Key" value=""/>
-			<input type="hidden" name="currency" value="<?php echo $this->currency; ?>"/>
-			<input type="hidden" name="subscription" value="<?php echo $this->subscription; ?>"/>
-			<input type="hidden" name="splitpayment" value="0"/>
-			<input type="hidden" name="transfee" value="0"/>
-			<input type="hidden" name="language" value="1"/>
-			<input type="hidden" name="HTTP_COOKIE" value="<?php echo $this->HTTP_COOKIE; ?>"/>
-			<input type="hidden" name="instantcallback" value="1"/>
-			<input type="hidden" name="httpaccepturl" value="0"/>
-			<input type="hidden" name="redirectmethod" value="POST"/>
-			<input type="hidden" name="cms" value="<?php echo $this->cms; ?>"/>
 			
-		</div>
-	</div>
+<div id="header">
+  <div id="w-header">
+    <div class="logo3"> <a href="index2.php">Logo</a> </div>
+    <!--.logo-->   
+       
+    <div class="clear"></div>
+  </div>
+  <!--#w-header--> 
+  
 </div>
-<script type="text/javascript" src="https://relay.ditonlinebetalingssystem.dk/relay/v2/replace_relay_urls.js"></script>
+<!--#header-->
+<div id="page">
+<div id="nav-search">
+  <div id="w-nav-search">
+  	<div class="secure-payment">
+    	<div class="sp-icon">
+        	<img src="<?php echo $siteURL?>templates/amager/img/icon-lock.png" width="25" height="34" alt="" />
+        </div>
+        <p>Sikker betaling</p>
+    </div><!--.secure-payment-->
+    <div class="func-img3"> <img src="<?php echo $siteURL?>templates/amager/img/img-3.png" width="220" height="34" alt="" /> </div>
+    <!--.func-img-->    
+  </div>
+  <!--#w-nav-search--> 
+</div>
+<!--#header-->
+<div class="clear"></div>
+<div id="main">
+<div id="w-main">
+  <div class="relay-payment-page">
+  	<div class="relay-payment-left">
+  		<div class="top-info">
+  			<ul>
+            	<li>
+                	<div><img src="<?php echo $siteURL?>templates/amager/img/phone.png" width="17" height="16" alt="" /></div>
+                    <p>3250 3611</p>
+                </li>
+                <li>
+                	<div><img src="<?php echo $siteURL?>templates/amager/img/sticker.png" width="17" height="16" alt="" /></div>
+                    <p>Sikker betaling</p>
+                </li>
+                <li>
+                	<div><img src="<?php echo $siteURL?>templates/amager/img/times.png" width="14" height="17" alt="" /></div>
+                    <p>Hurtig levering </p>
+                </li>
+                <li>
+                	<div><img src="<?php echo $siteURL?>templates/amager/img/star.png" width="13" height="16" alt="" /></div>
+                    <p>Kun ægte varer</p>
+                </li>
+                <li>
+                	<div><img src="<?php echo $siteURL?>templates/amager/img/truck.png" width="17" height="14" alt="" /></div>
+                    <p>Fri fragt i DK</p>
+                </li>
+                <li>
+                	<div><img src="<?php echo $siteURL?>templates/amager/img/sitting.png" width="17" height="16" alt="" /></div>
+                    <p>2 års garanti</p>
+                </li>
+            </ul>
+  		</div><!--.top-info-->
+        
+        <div class="brand">
+          <h1>Butiksinfo</h1>
+          <p>Tåmby Torv Isenkram<br />
+            Tåmby Torv 9<br />
+            2770 Kastrup<br/>
+            <br/>
+            Tlf: 3250 3611<br />
+            Fax: 3252 1536<br />
+            <a href="mailto:info@amagerisenkram.dk">info@amagerisenkram.dk</a> </p>
+        </div>
+        <!--.brand-->
+        
+  	</div><!--.relay-payment-left-->
+  	<div id="main-content">
+    		<form action="https://ssl.ditonlinebetalingssystem.dk/auth/default.aspx" method="post" autocomplete="off" name="epay" id="epay" class="relay-payment-content">
+        	<fieldset>
+            	<div class="left-content">
+                <h2>Indtast dine kortoplysninger</h2>
+                <p class="fon17">AT BETALE:  848,80 DKK</p>
+                <div>
+                	<p><img src="<?php echo $siteURL?>templates/amager/img/icon-1.png" width="24" height="24" alt="" /></p>
+                    <label>Kortnummer <span>*</span></label><br />
+                    <input class="w200" type="text" />
+                </div>
+                <div>
+                	<p><img src="<?php echo $siteURL?>templates/amager/img/icon-2.png" width="24" height="24" alt="" /></p>
+                    <label>Udløbsmåned <span>*</span></label><br />
+                    <input type="text" />
+                </div>
+                <div>
+                	<p><img src="<?php echo $siteURL?>templates/amager/img/icon-3.png" width="24" height="24" alt="" /></p>
+                    <label>Udløbsår <span>*</span></label><br />
+                    <input type="text" />
+                    <br />
+                </div>
+                <div>
+                	<p><img src="<?php echo $siteURL?>templates/amager/img/icon-4.png" width="24" height="24" alt="" /></p>
+                    <label>Kontrolcifre <span>*</span></label><br />
+                    <input type="text" />
+                </div>
+                <div>
+                	<div>Du kan betale med følgende betalingskort:</div>
+                    <ul>
+                        <li><img src="<?php echo $siteURL?>templates/amager/img/icon-dk.png" width="36" height="20" alt="" /></li>
+                        <li><img src="<?php echo $siteURL?>templates/amager/img/icon-mastercard.png" width="36" height="20" alt="" /></li>
+                        <li><img src="<?php echo $siteURL?>templates/amager/img/icon-card2.png" width="36" height="20" alt="" /></li>
+                        <li><img src="<?php echo $siteURL?>templates/amager/img/icon-visa.png" width="36" height="20" alt="" /></li>
+                        <li><img src="<?php echo $siteURL?>templates/amager/img/visa2.png" width="34" height="19" alt="" /></li>
+                        <li class="n-m-r"><img src="img/icon-ean.png" width="95" height="19" alt="" /></li>
+                      </ul>
+                </div>
+                <div>
+                	<input class="bnt-com-payment" type="submit" value=" " />
+                </div>
+                </div><!--.left-content-->
+                <div class="right-content">
+                	<img src="<?php echo $siteURL?>templates/amager/img/img-creditcard1.png" width="324" height="204" alt="" />
+                    <img style="margin-left: 40px; " src="<?php echo $siteURL?>templates/amager/img/img-creditcard2.png" width="277" height="157" alt="" />
+                </div><!--.right-content-->
+            </fieldset>
+            <button style="display: none;" class="button validate" id="bt-send" type="submit"><?php echo JText::_('Payment'); ?></button>
+    
+            <input type="hidden" name="merchantnumber" value="<?php echo $merchantnumber; ?>"/>
+            <input type="hidden" name="accepturl" value="<?php echo $accepturl; ?>"/>
+            <input type="hidden" name="declineurl" value="<?php echo $declineurl; ?>"/>
+            <input type="hidden" name="callbackurl" value="<?php echo $callbackurl; ?>"/>
+            <input type="hidden" name="orderid" value="<?php echo $orderid; ?>"/>
+            <input type="hidden" name="authemail" value="<?php echo $authemail; ?>"/>
+            <input type="hidden" name="authsms" value=""/>
+            <input type="hidden" name="instantcapture" value="0"/>
+            <input type="hidden" name="group" value=""/>
+            <input type="hidden" name="amount" value="<?php echo $amount; ?>"/>
+            <input type="hidden" name="MD5Key" value=""/>
+            <input type="hidden" name="currency" value="<?php echo $currency; ?>"/>
+            <input type="hidden" name="subscription" value="<?php echo $subscription; ?>"/>
+            <input type="hidden" name="splitpayment" value="0"/>
+            <input type="hidden" name="transfee" value="0"/>
+            <input type="hidden" name="language" value="1"/>
+            <input type="hidden" name="HTTP_COOKIE" value="<?php echo $HTTP_COOKIE; ?>"/>
+            <input type="hidden" name="instantcallback" value="1"/>
+            <input type="hidden" name="httpaccepturl" value="0"/>
+            <input type="hidden" name="redirectmethod" value="POST"/>
+            <input type="hidden" name="cms" value="<?php echo $cms; ?>"/>
+                    
+            
+        </form>
+    </div><!--#main-content-->
+  		
+    
+  </div><!--.relay-payment-page-->
+  </div><!--#w-main-->
+</div>
+<!--#main-->
 
-	<input type="hidden" name="types" value="<?php echo $this->types;?>" />
+</div><!--#page-->
+<div class="clear"></div>
 
-	<button style="display: none;" class="button validate" id="bt-send" type="submit"><?php echo JText::_('Payment'); ?></button>
-	<input type="hidden" name="task" value="accept" />
-	<input type="hidden" name="id" value="0" />
-	<input type="hidden" name="gid" value="0" />
-	<?php echo JHTML::_( 'form.token' ); ?>
-</form>
+<div id="footer-bottom">
+  <div id="w-footer-bottom">
+    <div class="copyright">
+      <p>Copyright © 2013 - Amager Din Isenkræmmer</p>
+    </div>
+    <!--.copyright-->
+    <div class="payment">
+      <ul>
+        <li><a href="#"><img src="<?php echo $siteURL?>templates/amager/img/icon-dk.gif" width="36" height="20" alt="" /></a></li>
+        <li><a href="#"><img src="<?php echo $siteURL?>templates/amager/img/icon-mastercard.gif" width="36" height="20" alt="" /></a></li>
+        <li><a href="#"><img src="<?php echo $siteURL?>templates/amager/img/icon-card2.gif" width="36" height="20" alt="" /></a></li>
+        <li><a href="#"><img src="<?php echo $siteURL?>templates/amager/img/icon-visa.gif" width="36" height="20" alt="" /></a></li>
+        <li><a href="#"><img src="<?php echo $siteURL?>templates/amager/img/visa2.png" width="34" height="19" alt="" /></a></li>
+      </ul>
+      <div class="ean"><a href="#"><img src="<?php echo $siteURL?>templates/amager/img/img-ean-faktura.png" width="115" height="19" alt="" /></a></div><!--.ean-->
+    </div>
+    <!--.payment-->
+    <div class="design-by">
+    	<p><a target="_blank" href="http://www.mywebcreations.dk/">Design af My Web Creations</a></p>
+    </div><!--design-by-->
+    <div class="clear"></div>
+  </div>
+  <!--#w-footer-bottom--> 
+</div>
+<script type="text/javascript" src="https://relay.ditonlinebetalingssystem.dk/relay/v2/replace_relay_urls.js"></script>	
