@@ -25,7 +25,7 @@ $user = JFactory::getUser();
 $opt=JRequest::getVar('option');
 $view=JRequest::getVar('view');
 
-if($opt.$view==in_array($opt.$view,array('com_usersprofile','com_virtuemartuser',"com_virtuemartcart"))){
+if($opt.$view==in_array($opt.$view,array('com_usersprofile','com_virtuemartuser',"com_virtuemartcart","com_virtuemartpluginresponse"))){
 	require_once('index2.php');
 } else {
 ?>
