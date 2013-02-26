@@ -491,10 +491,10 @@ class VirtueMartControllerCart extends JController {
 			$cart->confirmDone();
 			$siteURL = JURI::base();
    			$this->setRedirect('https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/'. $siteURL . 'index.php?option=com_virtuemart&view=cart&layout=order_done&tmpl=component&forcerelay=1&HTTP_COOKIE='.getenv("HTTP_COOKIE"));
-			//$view = $this->getView('cart', 'html');
-			//$view->setLayout('order_done');
+			/*$view = $this->getView('cart', 'html');
+			$view->setLayout('order_done');
 			// Display it all
-			//$view->display();
+			$view->display();*/
 		} else {
 			$mainframe = JFactory::getApplication();
 			$mainframe->redirect(JRoute::_('index.php?option=com_virtuemart&view=cart'), JText::_('COM_VIRTUEMART_CART_DATA_NOT_VALID'));
