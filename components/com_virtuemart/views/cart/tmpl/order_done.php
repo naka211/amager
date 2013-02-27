@@ -221,7 +221,7 @@ $authemail = $cart->BT['email'];
         	<fieldset>
             	<div class="left-content">
                 <h2>Indtast dine kortoplysninger</h2>
-                <p class="fon17">AT BETALE:  <?php echo number_format($amount,2,',','.').' DKK'; ?></p>
+                <p class="fon17">AT BETALE:  <?php echo number_format($cart->pricesUnformatted['billTotal'],2,',','.').' DKK'; ?></p>
                 <div>
                 	<p><img src="<?php echo $siteURL?>templates/amager/img/icon-1.png" width="24" height="24" alt="" /></p>
                     <label>Kortnummer <span>*</span></label><br />

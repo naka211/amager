@@ -849,16 +849,16 @@ font-style: italic; color: #909090; padding: 0px 5px; }
 #tak-page .order-list { overflow: hidden; border-top: 1px dotted #cacaca; padding-top: 10px; margin-top: 10px; font-size: 14px; }
 .order-list .main-info { font-weight: bold; color: black; }
 .main-info label { width: 123px; float: left; }
-.order-list .cus-info, .delivery-address { float: left; width: 317px; margin-top: 10px; }
-.cus-info label, .delivery-address label { width: 82px; float: left;}
+.order-list .cus-info, .delivery-address { float: left; width: 355px; margin-top: 10px; }
+.cus-info label, .delivery-address label { width: 175px; float: left;}
 .table-pro { background: #fff; border: 1px solid #cacaca; margin-top: 18px;}
 .table-pro .table-pro-title { overflow: hidden; padding: 14px 17px 10px; border-top: 2px solid #fff; border-right: 2px solid #fff; 
 border-left: 2px solid #fff; background: #efefef; }
 .table-pro-title .col-1, .col-2, .col-3, .col-4 { float: left; color: black; text-align: center;}
-.col-1, .col-1-content { width: 533px; text-align: left !important; }
+.col-1, .col-1-content { width: 440px; text-align: left !important; }
 .col-2, .col-2-content { width: 138px; }
 .col-3, .col-3-content { width: 96px; }
-.col-4, .col-4-content { width: 97px; text-align: right !important; float: right !important; }
+.col-4, .col-4-content { width: 97px; text-align: right !important; float: left !important; }
 .table-pro-content { padding: 14px 17px; border-top: 1px solid #cacaca; overflow: hidden; }
 .col-1-content, .col-2-content, .col-3-content, .col-4-content { float: left; text-align: center; }
 .table-pro-content .pick{ float: left; width: 533px; color: red; font-size: 22px; }
