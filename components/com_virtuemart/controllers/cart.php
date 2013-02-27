@@ -455,6 +455,7 @@ class VirtueMartControllerCart extends JController {
 		
 		$cart->BT = array();
 		$cart->BT['email'] = $user->email;
+		$cart->BT['address_type_name'] = $user->mwctype;
 		$cart->BT['ean'] = $user->ean;
 		$cart->BT['authority'] = $user->authority;
 		$cart->BT['order1'] = $user->order;
