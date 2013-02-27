@@ -29,16 +29,41 @@ if ($this->paymentResponseHtml) {
 }*/
 
 // add something???
-if (!class_exists('VirtueMartCart'))
-	require(JPATH_VM_SITE . DS . 'helpers' . DS . 'cart.php');
-$cart = VirtueMartCart::getCart();
-print_r($cart);exit;
+$db = JFactory::getDBO();
+$orderid = JRequest::getVar('orderid');
+$query = "SELECT virtuemart_order_id, order_shipment, order_total, order_salesPrice, order_number FROM #__virtuemart_orders WHERE order_number = '".$orderid."'";
+$db->setQuery($query);
+$order_info = $db->loadObject();
+
+$query = "SELECT * FROM #__virtuemart_order_userinfos WHERE address_type = 'BT' AND virtuemart_order_id = ".$order_info->virtuemart_order_id;
+$db->setQuery($query);
+$BT_info = $db->loadObject();
+
+$query = "SELECT * FROM #__virtuemart_order_userinfos WHERE address_type = 'ST' AND virtuemart_order_id = ".$order_info->virtuemart_order_id;
+$db->setQuery($query);
+$ST_info = $db->loadObject();
+
+$query = "SELECT * FROM #__virtuemart_order_items WHERE virtuemart_order_id = ".$order_info->virtuemart_order_id;
+$db->setQuery($query);
+$items = $db->loadObjectList();
+
+if($BT_info->address_type_name == 1 ){
+	$type = "Privat";
+} else if($BT_info->delimiter_userinfo == 2 ){
+	$type = "Erhverv";
+} else {
+	$type = "Offentlig instans";
+}
+
+$query = "SELECT email FROM #__users WHERE id = ".$BT_info->virtuemart_user_id;
+$db->setQuery($query);
+$email = $db->loadResult();
 ?>
 <div id="tak-page">
   	<div id="w-tak-page">
   	<h2>Tak for din ordre</h2>
-    <h4>Ordrenummer: 1200294508</h4>
-    <p>En ordrebekræftelse vil blive sendt til <a href="mailto:kim@graphit.dk">kim@mywebcreations.dk</a><br>
+    <h4>Ordrenummer: <?php echo $orderid;?></h4>
+    <p>En ordrebekræftelse vil blive sendt til <a href="mailto:<?php echo $email;?>"><?php echo $email;?></a><br>
 Har du spørgsmål, kan du kontakte os på +45 99 42 19 60<br>
 Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
 		<h4>Sporing af ordre online</h4>
@@ -46,30 +71,39 @@ Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
         <div class="order-list">
         <h2>ORDREOVERSIGT</h2>
         	<div class="main-info">
-                <label>Kundetype:</label><span>Privat</span><br>
-                <label>E-mail: </label><span><a href="mailto:kim@graphit.dk">kim@graphit.dk</a></span>
+                <label>Kundetype:</label><span><?php echo $type;?></span><br>
+                <label>E-mail: </label><span><a href="mailto:<?php echo $email;?>"><?php echo $email;?></a></span>
             </div><!--.main-info-->
             <div class="cus-info">
             	<h4>Kundeoplysninger:</h4>
-            	<label>Fornavn:</label><span>Kim Hau</span><br>
-                <label>Efternavn:</label><span>Tran</span><br>
-                <label>Adresse:</label><span>Rosenfeldtvej 30</span><br>
-                <label>Postnr.:</label><span>2665</span><br>
-                <label>By:</label><span>Rødovre</span><br>
-                <label>Telefon:</label><span>123456780</span><br><br>
+                <?php if($BT_info->address_type_name == 2){?>
+                <label>Firmanavn:</label><span><?php echo $BT_info->company;?></span><br>
+                <label>CVR-nr.:</label><span><?php echo $BT_info->cvr;?></span><br>
+                <?php } else if($BT_info->address_type_name == 3){?>
+                <label>EAN-nr.:</label><span><?php echo $BT_info->ean;?></span><br>
+                <label>Myndighed/Institution:</label><span><?php echo $BT_info->authority;?></span><br>
+                <label>Ordre- el. rekvisitionsnr.:</label><span><?php echo $BT_info->order1;?></span><br>
+                <label>Personreference:</label><span><?php echo $BT_info->person;?></span><br>
+                <?php }?>
+            	<label>Fornavn:</label><span><?php echo $ST_info->first_name;?></span><br>
+                <label>Efternavn:</label><span><?php echo $ST_info->last_name;?></span><br>
+                <label>Adresse:</label><span><?php echo $ST_info->address_1;?></span><br>
+                <label>Postnr.:</label><span><?php echo $ST_info->zip;?></span><br>
+                <label>By:</label><span><?php echo $ST_info->city;?></span><br>
+                <label>Telefon:</label><span><?php echo $ST_info->phone_1;?></span><br><br>
                 <h4>Betaling: </h4>
                 <label>Kortbetaling</label>
             </div><!--.cus-info-->
             <div class="delivery-address">
             	<h4>Leveringsadresse:</h4>
-            	<label>Fornavn:</label><span>Kim Hau</span><br>
-                <label>Efternavn:</label><span>Tran</span><br>
-                <label>Adresse:</label><span>Rosenfeldtvej 30</span><br>
-                <label>Postnr.:</label><span>2665</span><br>
-                <label>By:</label><span>Rødovre</span><br>
-                <label>Telefon:</label><span>123456780</span><br><br>
+            	<label>Fornavn:</label><span><?php echo $BT_info->first_name;?></span><br>
+                <label>Efternavn:</label><span><?php echo $BT_info->last_name;?></span><br>
+                <label>Adresse:</label><span><?php echo $BT_info->address_1;?></span><br>
+                <label>Postnr.:</label><span><?php echo $BT_info->zip;?></span><br>
+                <label>By:</label><span><?php echo $BT_info->city;?></span><br>
+                <label>Telefon:</label><span><?php echo $BT_info->phone_1;?></span><br><br>
                 <h4>Leveringsservice:</h4>
-                <span>Afhentning: Tårnby Torv Isenkram</span>
+                <span>Afhentning: <?php echo $BT_info->address_2;?></span>
             </div><!--.delivery-address-->
         </div><!--.order-list-->
         <div class="table-pro">
@@ -84,67 +118,49 @@ Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
                 	<p>Antal</p>
                 </div><!--.col-3-->
                 <div class="col-4">
+                	<p>Pris pr. enhed</p>
+                </div>
+                <div class="col-4">
                 	<p>Pris i alt</p>
                 </div><!--.col-4-->
             </div><!--.table-pro-title-->
+           <?php foreach($items as $item){?>
             <div class="table-pro-content">
             <div class="col-1-content">
-            	<p>Conzept Electric varme fleeceplaid 160x120cm, 100W</p>
+            	<p><?php echo $item->order_item_name;?></p>
             </div><!--.col-1-content-->
             <div class="col-2-content">
-            	<p> 001538</p>
+            	<p><?php echo $item->order_item_sku;?></p>
             </div><!--.col-2-content-->
             <div class="col-3-content">
-            	<p>1</p>
+            	<p><?php echo $item->product_quantity;?></p>
             </div><!--.col-3-content-->
             <div class="col-4-content">
-            	<p>199,95 DKK</p>
+            	<p><?php echo number_format($item->product_final_price,2,',','.');?> DKK</p>
             </div><!--.col-4-content-->
-            </div><!--.table-pro-content-->
-            <div class="table-pro-content">
-            <div class="col-1-content">
-            	<p>Conzept Electric varme fleeceplaid 160x120cm, 100W</p>
-            </div><!--.col-1-content-->
-            <div class="col-2-content">
-            	<p> 001538</p>
-            </div><!--.col-2-content-->
-            <div class="col-3-content">
-            	<p>1</p>
-            </div><!--.col-3-content-->
             <div class="col-4-content">
-            	<p>199,95 DKK</p>
+            	<p><?php echo number_format($item->product_subtotal_with_tax,2,',','.');?> DKK</p>
             </div><!--.col-4-content-->
             </div><!--.table-pro-content--> 
-            <div class="table-pro-content">
-            <div class="col-1-content">
-            	<p>Conzept Electric varme fleeceplaid 160x120cm, 100W</p>
-            </div><!--.col-1-content-->
-            <div class="col-2-content">
-            	<p>001538</p>
-            </div><!--.col-2-content-->
-            <div class="col-3-content">
-            	<p>1</p>
-            </div><!--.col-3-content-->
-            <div class="col-4-content">
-            	<p>199,95 DKK</p>
-            </div><!--.col-4-content-->
-            </div><!--.table-pro-content--> 
+            <?php }?>
             <div class="table-pro-content b-t-2">
             	<div class="pick">
-                	<p>Afhentning: Tårnby Torv Isenkram</p>                    
+                	<?php if($BT_info->address_2){?>
+                	<p>Afhentning: <?php echo $BT_info->address_2;?></p>  
+                    <?php }?>                  
                 </div><!--.pick-->
                 <div class="sum-total">
                 	<div>
-                		<label>Forsendelse:</label><span>49,00 DKK</span>
+                		<label>Forsendelse:</label><span><?php echo number_format($order_info->order_shipment,2,',','.');?> DKK</span>
                     </div>
                     <div>
-                    	<label>Subtotal inkl. moms:</label><span>799,80 DKK</span>
+                    	<label>Subtotal inkl. moms:</label><span><?php echo number_format($order_info->order_salesPrice,2,',','.');?> DKK</span>
                     </div>
                     <div>
-                    <label>Heraf moms:</label><span>199,95 DKK</span>
+                    <label>Heraf moms:</label><span><?php echo number_format($order_info->order_salesPrice*0.25,2,',','.');?> DKK</span>
                     </div>
                     <div class="black">
-                    <label>TOTAL INKL. MOMS:</label><span>848,80 DKK</span>
+                    <label>TOTAL INKL. MOMS:</label><span><?php echo number_format($order_info->order_total,2,',','.');?> DKK</span>
                     </div>
                 </div><!--.sum-total-->
             </div><!--.table-pro-content-->
@@ -176,7 +192,7 @@ Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
         </div><!--.note-shipment-->
       </div><!--#w-tak-page-->
       <div class="bnt-gohome">
-      	<a href="index2.php">TIL FORSIDEN</a>
+      	<a href="">TIL FORSIDEN</a>
       </div><!--.bnt-gohome-->
       <div class="bnt-print-receipt">
       	<a href="#">PRINT KVITTERING</a>
