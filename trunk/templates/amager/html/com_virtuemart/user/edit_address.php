@@ -368,14 +368,18 @@ echo JHTML::_ ('form.token');
 				<div class="step2">
 					<h2><div><img src="<?php echo JURI::base()."templates/".$template?>/img/step2.png" width="24" height="24" alt=""></div>Levering</h2>
                     <?php 
+					require(JPATH_VM_ADMINISTRATOR . DS . 'helpers' . DS . 'currencydisplay.php');
+					$cart = VirtueMartCart::getCart();
+					$cart->prepareCartViewData();
+					if($cart->pricesUnformatted['salesPrice'] <= 500) $fee = 49; else $fee = 0;
+					
 					$model		= VmModel::getModel("shipmentmethod");
 					$shipment	= $model->getShipments();
-					$shipment = $shipment[1];
 					?>
-					<?php echo $shipment->shipment_desc;?>
+					<?php echo $shipment[1]->shipment_desc;?>
 					<div>
 					<input name="virtuemart_shipmentmethod_id" type="radio" value="2" checked="checked" onchange="changeDelivery(this.value)" />
-					<span>Forsendelse 49,00 DKK</span>
+					<span>Forsendelse <?php echo number_format($fee,2,',','.').' DKK'; ?></span>
 					</div>
 					<div>
 					<input name="virtuemart_shipmentmethod_id" type="radio" value="1" onchange="changeDelivery(this.value)" />
@@ -389,7 +393,25 @@ echo JHTML::_ ('form.token');
 						</select>
 					</div>
 				</div>
-                
+      			<script language="javascript">
+				jQuery(document).ready(function(){
+					changeDelivery = function(val){
+						if(val == 1){
+							jQuery("#shipPrice").html("0,00 DKK");
+							var total = formatMoney(parseFloat(jQuery("#subtotal").val()));
+							jQuery("#payTotal").html(total+" DKK");
+							jQuery("#shippingfee").val(0);
+							jQuery("#location").removeAttr("disabled", "disabled");
+						} else {
+							jQuery("#shipPrice").html("<?php echo $fee;?>,00 DKK");
+							var total = formatMoney(parseFloat(Number(jQuery("#subtotal").val()) + Number("<?php echo $fee;?>")));
+							jQuery("#payTotal").html(total+" DKK");
+							jQuery("#shippingfee").val(<?php echo $fee;?>);
+							jQuery("#location").attr( "disabled", "disabled" );
+						}
+					}
+				});
+				</script>          
                 <div class="step3">
                   <h2><div><img width="24" height="24" alt="" src="templates/amager/img/step3.png"></div>Betalingsmetode</h2>
                   <p>Du kan betale med følgende betalingskort: </p>
@@ -405,9 +427,7 @@ echo JHTML::_ ('form.token');
                 
 			</div>
             <?php 
-			require(JPATH_VM_ADMINISTRATOR . DS . 'helpers' . DS . 'currencydisplay.php');
-			$cart = VirtueMartCart::getCart();
-			$cart->prepareCartViewData();
+			
 			$currencyDisplay = CurrencyDisplay::getInstance($cart->pricesCurrency);
 			?>
             <input type="hidden" id="subtotal" value="<?php echo $cart->pricesUnformatted['salesPrice']?>" />
@@ -440,7 +460,7 @@ echo JHTML::_ ('form.token');
                   <?php foreach($cart->products as $pkey => $item){?>
                   <div class="list-pro-item">
                     <div class="col1-">
-                      <div class="list-pro-item-img"> <a href="#"><img width="89" height="72" alt="" src="<?php echo $item->image->file_url_thumb;?>"></a> </div>
+                      <div class="list-pro-item-img"><img width="89" height="72" alt="" src="<?php echo $item->image->file_url_thumb;?>"></div>
                       <!--.list-pro-item-img-->
                       <div class="list-pro-item-content">
                         <p><?php echo $item->product_name;?><br>
@@ -509,7 +529,7 @@ echo JHTML::_ ('form.token');
                     
                     <div class="checkout-payment-right">
                     	<div class="gray">
-                        	<label>Forsendelse:</label><span id="shipPrice">49,00 DKK</span>
+                        	<label>Forsendelse:</label><span id="shipPrice"><?php echo number_format($fee,2,',','.').' DKK'; ?></span>
                         </div>
                         <div class="m-20">
                         	<label>Subtotal inkl. moms:</label><span><?php echo number_format($cart->pricesUnformatted['salesPrice'],2,',','.').' DKK'; ?></span>
@@ -518,7 +538,7 @@ echo JHTML::_ ('form.token');
                         	<label>Heraf moms:</label><span><?php echo number_format($cart->pricesUnformatted['salesPrice']*0.25,2,',','.');?> DKK</span>
                         </div>
                         <div class="n-b-b3 m-20 black">
-                        	<label>TOTAL INKL. MOMS:</label><span id="payTotal"><?php echo number_format($cart->pricesUnformatted['salesPrice']+49,2,',','.').' DKK'; ?></span>
+                        	<label>TOTAL INKL. MOMS:</label><span id="payTotal"><?php echo number_format($cart->pricesUnformatted['salesPrice']+$fee,2,',','.').' DKK'; ?></span>
                         </div>
                     </div><!--.checkout-payment-right-->
                 </div><!--.checkout-payment-->
