@@ -49,7 +49,7 @@ $items = $db->loadObjectList();
 
 if($BT_info->address_type_name == 1 ){
 	$type = "Privat";
-} else if($BT_info->delimiter_userinfo == 2 ){
+} else if($BT_info->address_type_name == 2 ){
 	$type = "Erhverv";
 } else {
 	$type = "Offentlig instans";
