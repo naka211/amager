@@ -49,7 +49,7 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
   </tr>
   <tr height="30">
   	<td><strong>Ordrenummer:</strong></td>
-    <td width="285"><strong><?php echo $this->orderDetails['details']['BT']->order_number;?></strong></td>
+    <td width="305"><strong><?php echo $this->orderDetails['details']['BT']->order_number;?></strong></td>
   </tr>
   <tr height="30">
   	<td width="107"><strong>Kundetype:</strong></td>
@@ -152,7 +152,7 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 
     </td>
   </tr>
-  <tr height="10" style="color: #3A3A3A;">
+  <tr height="0" style="color: #3A3A3A;">
   	
   </tr>
   <tr>
@@ -162,32 +162,32 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
     <td height="30"> <strong>Betaling: </strong></td>
   </tr>
   <tr>
-    <td valign="top" height="50">Kortbetaling</td>
+    <td valign="top" height="30">Kortbetaling</td>
   </tr>
 </table>
 
     </td>
-    <td height="30" colspan="2">
+    <td colspan="2">
     	<table border="0" cellspacing="0" cellpadding="0" width="100%">
   <tr>
     <td height="30"><strong>Leveringsservice:</strong></td>
   </tr>
   <tr>
-    <td valign="top" height="50"><?php if($this->orderDetails['details']['BT']->address_2){?>Afhentning: <?php echo $this->orderDetails['details']['BT']->address_2;?><?php }else{?>Forsendelse<?php }?></td>
+    <td valign="top" height="30"><?php if($this->orderDetails['details']['BT']->address_2){?>Afhentning: <?php echo $this->orderDetails['details']['BT']->address_2;?><?php }else{?>Forsendelse<?php }?></td>
   </tr>
 </table>
 
     </td>
   </tr>
-  <tr height="30">
+  <tr height="10">
   	<td colspan="4">
    	  <table width="970" border="0" cellspacing="0" cellpadding="0" style="border: 1px solid #CACACA;">
   <tr align="right" style="background: #EFEFEF; padding: 0 10px; text-align: center;">
     <td height="50" width="481" style="padding: 0 10px; text-align: left;">Produkt</td>
     <td width="155">Vare-nr</td>
     <td width="40">Antal</td>
-    <td width="110">Pris i alt</td>
-    <td align="right" width="182" style="padding: 0 10px;">Pris i alt</td>
+    <td width="140">Pris i alt</td>
+    <td align="right" width="152" style="padding: 0 10px;">Pris i alt</td>
   </tr>
   <?php foreach($this->orderDetails['items'] as $item){?>
   <tr height="30" style="padding: 0 10px; text-align: center;">
