@@ -28,6 +28,14 @@
  */
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
+//print_r($this->orderDetails['details']['BT']->order_number);exit;
+if($this->orderDetails['details']['BT']->address_type_name == 1 ){
+	$type = "Privat";
+} else if($this->orderDetails['details']['BT']->address_type_name == 2 ){
+	$type = "Erhverv";
+} else {
+	$type = "Offentlig instans";
+}
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -37,55 +45,115 @@ defined('_JEXEC') or die('Restricted access');
     	<td style="text-align: center; border-bottom: 1px dotted #CACACA; padding: 10px 0;" colspan="4"><img src="<?php echo JURI::base();?>templates/amager/img/logo.png" width="196" height="97" /></td>
     </tr>
   <tr>
-    <td colspan="4" width="375"><h2 style="color: #00b2ea; font-size: 20px; border-bottom: 1px dotted #CACACA; padding: 10px 0; margin: 0;">ORDREOVERSIGT</h2></td>
+    <td colspan="4"><h2 style="color: #00b2ea; font-size: 20px; border-bottom: 1px dotted #CACACA; padding: 10px 0; margin: 0;">ORDREOVERSIGT</h2></td>
   </tr>
   <tr height="30">
-  	<td><strong>Kundetype:</strong></td>
-    <td width="285"><strong>Privat</strong></td>
+  	<td><strong>Ordrenummer:</strong></td>
+    <td width="285"><strong><?php echo $this->orderDetails['details']['BT']->order_number;?></strong></td>
+  </tr>
+  <tr height="30">
+  	<td width="107"><strong>Kundetype:</strong></td>
+    <td width="305"><strong><?php echo $type;?></strong></td>
   </tr>
   <tr height="30">
   	<td><strong>E-mail:</strong></td>
-    <td width="285"><strong>kim@graphit.dk</strong></td>
+    <td width="305"><strong><?php echo $this->orderDetails['details']['BT']->email;?></strong></td>
   </tr>
   <tr height="30">
-  	<td colspan="2"><strong>Kundeoplysninger:</strong></td>
-    <td colspan="2" width="285"><strong>Leveringsadresse:</strong></td>
+  	<td colspan="2">
+   	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td colspan="2" height="30"><strong>Kundeoplysninger:</strong></td>
+          </tr>
+          <?php if($this->orderDetails['details']['BT']->address_type_name == 2){?>
+             <tr>
+                <td width="50%" height="30">Firmanavn:</td>
+                <td width="50%" height="30"><?php echo $this->orderDetails['details']['BT']->company;?></td>
+              </tr>
+               <tr>
+                <td width="50%" height="30">CVR-nr.:</td>
+                <td width="50%" height="30"><?php echo $this->orderDetails['details']['BT']->cvr;?></td>
+              </tr>
+            <?php } else if($this->orderDetails['details']['BT']->address_type_name == 3){?>
+            <tr>
+                <td width="50%" height="30">EAN-nr.:</td>
+                <td width="50%" height="30"><?php echo $this->orderDetails['details']['BT']->ean;?></td>
+              </tr>
+               <tr>
+                <td width="50%" height="30">Myndighed/Institution:</td>
+                <td width="50%" height="30"><?php echo $this->orderDetails['details']['BT']->authority;?></td>
+              </tr>
+              <tr>
+                <td width="50%" height="30">Ordre- el. rekvisitionsnr.:</td>
+                <td width="50%" height="30"><?php echo $this->orderDetails['details']['BT']->order1;?></td>
+              </tr>
+               <tr>
+                <td width="50%" height="30">Personreference:</td>
+                <td width="50%" height="30"><?php echo $this->orderDetails['details']['BT']->person;?></td>
+              </tr>
+            <?php }?>
+          <tr>
+            <td width="50%" height="30">Fornavn:</td>
+            <td width="50%" height="30"><?php echo $this->orderDetails['details']['BT']->first_name;?></td>
+          </tr>
+          <tr>
+            <td height="30">Efternavn:</td>
+            <td height="30"><?php echo $this->orderDetails['details']['BT']->last_name;?></td>
+          </tr>
+          <tr>
+            <td height="30">Adresse:</td>
+            <td height="30"><?php echo $this->orderDetails['details']['BT']->address_1;?></td>
+          </tr>
+          <tr>
+            <td height="30">Postnr.:</td>
+            <td height="30"><?php echo $this->orderDetails['details']['BT']->zip;?></td>
+          </tr>
+          <tr>
+            <td height="30">By:</td>
+            <td height="30"><?php echo $this->orderDetails['details']['BT']->city;?></td>
+          </tr>
+          <tr>
+            <td height="30">Telefon:</td>
+            <td height="30"><?php echo $this->orderDetails['details']['BT']->phone_1;?></td>
+          </tr>
+        </table>
+
+    </td>
+    <td colspan="2" width="558" valign="top">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td colspan="2" height="30"><strong>Leveringsadresse:</strong></td>
+            </tr>
+          <tr>
+            <td width="50%" height="30">Fornavn:</td>
+            <td width="50%" height="30"><?php echo $this->orderDetails['details']['ST']->first_name;?></td>
+          </tr>
+          <tr>
+            <td height="30">Efternavn:</td>
+            <td height="30"><?php echo $this->orderDetails['details']['ST']->last_name;?></td>
+          </tr>
+          <tr>
+            <td height="30">Adresse:</td>
+            <td height="30"><?php echo $this->orderDetails['details']['ST']->address_1;?></td>
+          </tr>
+          <tr>
+            <td height="30">Postnr.:</td>
+            <td height="30"><?php echo $this->orderDetails['details']['ST']->zip;?></td>
+          </tr>
+          <tr>
+            <td height="30">By:</td>
+            <td height="30"><?php echo $this->orderDetails['details']['ST']->city;?></td>
+          </tr>
+          <tr>
+            <td height="30">Telefon:</td>
+            <td height="30"><?php echo $this->orderDetails['details']['ST']->phone_1;?></td>
+          </tr>
+        </table>
+
+    </td>
   </tr>
-  <tr height="30" style="color: #3A3A3A;">
-  	<td>Fornavn:</td>
-    <td>Kim Hau</td>
-    <td width="175">Fornavn:</td>
-    <td width="375">Kim Hau</td>
-  </tr>
-  <tr height="30" style="color: #3A3A3A;">
-  	<td>Efternavn:</td>
-    <td>Tran</td>
-    <td width="175">Efternavn:</td>
-    <td width="375">Tran</td>
-  </tr>
-  <tr height="30" style="color: #3A3A3A;">
-  	<td>Adresse:</td>
-    <td>Rosenfeldtvej 30</td>
-    <td width="175">Adresse:</td>
-    <td width="375">Rosenfeldtvej 30</td>
-  </tr>
-  <tr height="30" style="color: #3A3A3A;">
-  	<td>Postnr.:</td>
-    <td>2665</td>
-    <td width="175">Postnr.:</td>
-    <td width="375">2665</td>
-  </tr>
-  <tr height="30" style="color: #3A3A3A;">
-  	<td>By:</td>
-    <td>Rødovre</td>
-    <td width="175">By:</td>
-    <td width="375">Rødovre</td>
-  </tr>
-  <tr valign="top" height="30" style="color: #3A3A3A;">
-  	<td height="50">Telefon:</td>
-    <td>123456780</td>
-    <td width="175">Telefon:</td>
-    <td width="375">123456780</td>
+  <tr height="10" style="color: #3A3A3A;">
+  	
   </tr>
   <tr>
   	<td colspan="2">
@@ -105,7 +173,7 @@ defined('_JEXEC') or die('Restricted access');
     <td height="30"><strong>Leveringsservice:</strong></td>
   </tr>
   <tr>
-    <td valign="top" height="50">Afhentning: Tårnby Torv Isenkram</td>
+    <td valign="top" height="50"><?php if($this->orderDetails['details']['BT']->address_2){?>Afhentning: <?php echo $this->orderDetails['details']['BT']->address_2;?><?php }else{?>Forsendelse<?php }?></td>
   </tr>
 </table>
 
@@ -121,29 +189,17 @@ defined('_JEXEC') or die('Restricted access');
     <td width="110">Pris i alt</td>
     <td align="right" width="182" style="padding: 0 10px;">Pris i alt</td>
   </tr>
+  <?php foreach($this->orderDetails['items'] as $item){?>
   <tr height="30" style="padding: 0 10px; text-align: center;">
-    <td style="padding: 0 10px; border-bottom: 1px solid #CACACA; color: #3A3A3A; text-align: left; ">Conzept Electric varme fleeceplaid 160x120cm, 100W</td>
-    <td style="border-bottom: 1px solid #CACACA; color: #3A3A3A; text-align: center;">001538</td>
-    <td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;">1</td>
-    <td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;">199,95 DKK</td>
-    <td style="border-bottom: 1px solid #CACACA; text-align: right; padding: 0 10px; color: #3A3A3A;">199,95 DKK</td>
+    <td style="padding: 0 10px; border-bottom: 1px solid #CACACA; color: #3A3A3A; text-align: left; "><?php echo $item->order_item_name;?></td>
+    <td style="border-bottom: 1px solid #CACACA; color: #3A3A3A; text-align: center;"><?php echo $item->order_item_sku;?></td>
+    <td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;"><?php echo $item->product_quantity;?></td>
+    <td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;"><?php echo number_format($item->product_final_price,2,',','.');?> DKK</td>
+    <td style="border-bottom: 1px solid #CACACA; text-align: right; padding: 0 10px; color: #3A3A3A;"><?php echo number_format($item->product_subtotal_with_tax,2,',','.');?> DKK</td>
   </tr>
-  <tr height="30" style="padding: 0 10px; text-align: center;">
-    <td style="padding: 0 10px; border-bottom: 1px solid #CACACA; color: #3A3A3A; text-align: left;">Conzept Electric varme fleeceplaid 160x120cm, 100W</td>
-    <td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;">001538</td>
-    <td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;">1</td>
-    <td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;">199,95 DKK</td>
-    <td style="border-bottom: 1px solid #CACACA; text-align: right; padding: 0 10px; color: #3A3A3A;">199,95 DKK</td>
-  </tr>
-  <tr height="30" style="padding: 0 10px; text-align: center;">
-    <td style="padding: 0 10px; border-bottom: 1px solid #CACACA; color: #3A3A3A; text-align: left;">Conzept Electric varme fleeceplaid 160x120cm, 100W</td>
-    <td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;">001538</td>
-    <td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;">1</td>
-    <td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;">199,95 DKK</td>
-    <td style="border-bottom: 1px solid #CACACA; text-align: right; padding: 0 10px; color: #3A3A3A;">199,95 DKK</td>
-  </tr>
+  <?php }?>
   <tr height="30" style="padding: 0 10px;">
-    <td style="text-transform: uppercase; color: red; padding: 0 10px; font-size: 20px;"><strong>Afhentning: Tårnby Torv Isenkram</strong></td>
+    <td style="text-transform: uppercase; color: red; padding: 0 10px; font-size: 20px;"><strong><?php if($this->orderDetails['details']['BT']->address_2){?>Afhentning: <?php echo $this->orderDetails['details']['BT']->address_2;?><?php }else{?>Forsendelse<?php }?></strong></td>
     <td colspan="2"><table width="260" border="0" cellpadding="0" cellspacing="0" align="right">
       <tr height="30" style="padding: 0 10px;">
         <td width="260" style="color: #3A3A3A;">Forsendelse:</td>
@@ -160,16 +216,16 @@ defined('_JEXEC') or die('Restricted access');
     </table></td>
     <td colspan="2"><table width="136" border="0" cellpadding="0" cellspacing="0" align="right" style="text-align: right;" >
       <tr height="30" style="padding: 0 10px;">
-        <td width="146" style="padding: 0 10px; color: #3A3A3A;">49,00 DKK</td>
+        <td width="146" style="padding: 0 10px; color: #3A3A3A;"><?php echo number_format($this->orderDetails['details']['BT']->order_shipment,2,',','.');?> DKK</td>
       </tr>
       <tr height="30" style="padding: 0 10px;">
-        <td style="padding: 0 10px; color: #3A3A3A;" >799,80 DKK</td>
+        <td style="padding: 0 10px; color: #3A3A3A;" ><?php echo number_format($this->orderDetails['details']['BT']->order_total,2,',','.');?> DKK</td>
       </tr>
       <tr height="30" style="padding: 0 10px;">
-        <td style="padding: 0 10px; color: #3A3A3A;">199,95 DKK</td>
+        <td style="padding: 0 10px; color: #3A3A3A;"><?php echo number_format($this->orderDetails['details']['BT']->order_total*0.25,2,',','.');?> DKK</td>
       </tr>
       <tr height="30" style="padding: 0 10px;">
-        <td style="padding: 0 10px;"><strong>848,80 DKK</strong></td>
+        <td style="padding: 0 10px;"><strong><?php echo number_format($this->orderDetails['details']['BT']->order_subtotal,2,',','.');?> DKK</strong></td>
       </tr>
     </table></td>
     </tr>
