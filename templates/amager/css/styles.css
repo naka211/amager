@@ -708,6 +708,8 @@ padding: 0px 5px; font-style: italic; color: #919191; font-size: 13px; }
 .bnt-another-add a { text-indent: -4000px; display: block; width: 243px; height: 30px;}
 .bnt-another-add:hover { background: url(../img/button.png) no-repeat -478px -336px; width: 243px; height: 30px;}
 
+.w-list-pro .w-list-pro-title { background: #efefef; border-top: 2px solid #fff; border-right: 2px solid #fff; border-left: 2px solid #fff;
+text-align: center; overflow: hidden; padding: 10px; color: #000000; }
 .nav-right .w-step2-3 { border-bottom: 1px solid #cacaca; overflow: hidden; }
 .w-step2-3 .step2 { float: left; width: 300px; border-right: 1px solid #cacaca; padding-bottom: 13px;}
 .nav-left h2, .step2 h2, .step3 h2, .step4 h2 {color: #00b2ea; font-size: 18px; text-transform: none; margin-bottom: 10px; }

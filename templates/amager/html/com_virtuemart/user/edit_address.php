@@ -427,6 +427,9 @@ echo JHTML::_ ('form.token');
                       <p>Antal</p>
                     </div>
                     <!--.num-pro-->
+                    <div style=" width: 100px; float: left; text-align:center;">
+                      <p>Pris pr. enhed</p>
+                    </div>
                     <div class="total-prices">
                       <p>Pris i alt</p>
                     </div>
@@ -454,9 +457,12 @@ echo JHTML::_ ('form.token');
                       <p><?php echo $item->quantity;?></p>
                     </div>
                     <!--.col3- -->
+                    <div class="col4-2">
+                      <p><?php echo $currencyDisplay->priceDisplay($cart->pricesUnformatted[$pkey]['salesPrice'],0,1,false,-1);?></p>
+                    </div>
                     <div class="col4-">
                       <p>
-                      <?php echo $currencyDisplay->priceDisplay($cart->pricesUnformatted[$pkey]['salesPrice'],0,$item->quantity,false,$cart->pricesUnformatted[$pkey]['salesPrice'][1]);?>
+                      <?php echo $currencyDisplay->priceDisplay($cart->pricesUnformatted[$pkey]['salesPrice'],0,$item->quantity,false,-1);?>
                       </p>
                     </div>
                     <!--.col4- --> 
