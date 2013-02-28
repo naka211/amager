@@ -269,7 +269,7 @@ class shopFunctionsF {
 
 		ob_start();
 		$view->renderMailLayout($noVendorMail, $recipient);
-		$body = ob_get_contents();print_r($body);exit;
+		$body = ob_get_contents();
 		ob_end_clean();
 
 		$subject = (isset($view->subject)) ? $view->subject : JText::_('COM_VIRTUEMART_DEFAULT_MESSAGE_SUBJECT');

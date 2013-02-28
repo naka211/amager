@@ -28,7 +28,7 @@
  */
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
-
+print_r($_GET);exit;
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
