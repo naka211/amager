@@ -95,8 +95,9 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 		if ($iCol != 1) {
 ?>
 	<div class="clear"></div>
+<?php	}?>
 </ul></div>
-<?php	}
+<?php
 	}else{
 
 /* Show products */
@@ -104,7 +105,7 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 		if (!empty($this->products)){
 ?>
 <div class="orderby-displaynumber">
-	<div>
+	<div class="sorter">
 		<?php echo $this->orderByList['orderby']; ?>
 		<?php echo $this->orderByList['manufacturer']; ?>
 	</div>
@@ -187,12 +188,12 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 	if ($iBrowseCol != 1) {
 ?>
 	<div class="clear"></div>
-</ul></div>
 <?php
 	}
 ?>
+</ul></div>
 
-<div class="vm-pagination"><?php echo $this->vmPagination->getPagesLinks (); ?><span style="float:right"><?php echo $this->vmPagination->getPagesCounter (); ?></span></div>
+<div class="pagination"><?php echo $this->vmPagination->getPagesLinks (); ?></div>
 
 	<?php
 		}
