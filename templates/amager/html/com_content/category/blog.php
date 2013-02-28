@@ -13,12 +13,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
 ?>
 <style>
-.pagination { overflow: hidden; float: right; }
-.pagination ul { list-style: none; }
-.pagination ul li{ width: auto; float: left; margin: 0 0 0 5px; padding: 5px 10px !important;}
-.pagination ul li:hover a { color: #00b2ea;}
-.pagination ul li a { color: #3a3a3a; text-decoration: none; }
-.pagination ul li a.pagenav { color: #00b2ea;}
+
 </style>
 <div id="news-page">
     <ul>

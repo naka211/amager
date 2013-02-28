@@ -467,6 +467,9 @@ class VirtueMartControllerCart extends JController {
 		$cart->BT['zip'] = $user->zipcode;
 		$cart->BT['city'] = $user->city;
 		$cart->BT['phone_1'] = $user->phone;
+		
+		$cart->BT['company'] = $user->company;
+		$cart->BT['cvr'] = $user->cvr;
 
 		if(JRequest::getVar('STsameAsBT')){
 			$cart->ST = array();

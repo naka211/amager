@@ -719,20 +719,19 @@ padding: 0px 5px; font-style: italic; color: #919191; font-size: 13px; }
 .step3 ul li { float: left; margin-right: 5px; }
 .step4 { margin-top: 15px; overflow: hidden; }
 .step4 .w-list-pro { border: 1px solid #cacaca; background: #fff; }
-.w-list-pro .w-list-pro-title { background: #efefef; border-top: 2px solid #fff; border-right: 2px solid #fff; border-left: 2px solid #fff;
-text-align: center; overflow: hidden; padding: 10px; color: #000000; }
-.w-list-pro-title .name-pro { float: left; width: 307px; text-align: left; }
-.w-list-pro-title .no-pro {float: left; width: 100px; margin-left: 10px; }
-.w-list-pro-title .num-pro {float: left; width: 50px; margin-left: 10px; }
-.w-list-pro-title .total-prices {float: right; width: 116px; text-align: right; }
+
+.w-list-pro-title .name-pro { float: left; width: 250px; text-align: left; }
+.w-list-pro-title .no-pro {float: left; width: 100px;}
+.w-list-pro-title .num-pro {float: left; width: 50px;}
+.w-list-pro-title .total-prices {float: right; width: 100px; text-align: right; }
 .list-pro-item { padding: 10px 15px; border-top: 1px solid #cacaca; overflow: hidden; }
 .list-pro-item p { margin-top: 20px;}
-.list-pro-item .col1- { float: left; width: 306px; }
+.list-pro-item .col1- { float: left; width: 251px; }
 .col1- .list-pro-item-img { border: 1px solid #cacaca; width: 89px; height: 72px; float: left;}
-.col1- .list-pro-item-content { float: left; margin-left: 10px; width: 205px;}
-.col2- { float: left; width: 100px; margin-left: 10px; text-align: center; }
-.col3- { float: left; width: 40px; margin-left: 10px; padding-right: 10px; text-align: center; }
-.col4- { float: left; width: 116px; margin-left: 2px; text-align: right; }
+.col1- .list-pro-item-content { float: left; margin-left: 10px; width: 150px;}
+.col2- { float: left; width: 100px; text-align: center; }
+.col3- { float: left; width: 40px; text-align: center; }
+.col4- { float: left; width: 100px; margin-left: 2px; text-align: right; }
 
 .checkout-payment { border: 1px solid #cacaca; overflow: hidden; }
 .checkout-payment .checkout-payment-left { float: left; background: #faffdb; padding: 18px 10px; width: 342px; border-right: 1px solid #cacaca;}
@@ -1036,3 +1035,12 @@ div#bg-cart{
 #myModal { position: fixed; top: 40px !important;}
 .lb{ width: 100px; float: left; }
 span.icon { width: 14px; height: 12px;}
+.col4-2 { float: left; width: 100px; margin-left: 2px; text-align: center; }
+.n-m-t { margin-top: 0px !important;}
+
+.pagination { overflow: hidden; float: right; }
+.pagination ul { list-style: none; }
+.pagination ul li{ width: auto; float: left; margin: 0 0 0 5px; padding: 5px 10px !important;}
+.pagination ul li:hover a { color: #00b2ea;}
+.pagination ul li a { color: #3a3a3a; text-decoration: none; }
+.pagination ul li a.pagenav { color: #00b2ea;}
