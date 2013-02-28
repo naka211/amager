@@ -1,21 +1,4 @@
 <?php
-/**
- *
- * Description
- *
- * @package    VirtueMart
- * @subpackage
- * @author RolandD, Max Milbers, Patrick Kohl, Valerie Isaksen
- * @link http://www.virtuemart.net
- * @copyright Copyright (c) 2004 - 2012 VirtueMart Team. All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
- * VirtueMart is free software. This version may have been modified pursuant
- * to the GNU General Public License, and as distributed it includes or
- * is derivative of works licensed under the GNU General Public License or
- * other free or open source software licenses.
- * @version $Id: product.php 6585 2012-10-25 15:35:07Z Milbo $
- */
-
 // Check to ensure this file is included in Joomla!
 defined ('_JEXEC') or die('Restricted access');
 
@@ -1826,6 +1809,7 @@ class VirtueMartModelProduct extends VmModel {
 		$manufacturerTxt = '';
 		$manufacturerLink = '';
 		if (VmConfig::get ('show_manufacturers')) {
+			//[V] mod in this scope
 			$tmp = $this->_noLimit;
 			$this->_noLimit = TRUE;
 
@@ -1853,7 +1837,7 @@ class VirtueMartModelProduct extends VmModel {
 			// 		vmdebug('my manufacturers',$this->_db->getQuery());
 			$manufacturerLink = '';
 			if (count ($manufacturers) > 0) {
-				$manufacturerLink = '<div class="orderlist">';
+				$manufacturerLink = '<div class="sorter-brand">';//[V] class="orderlist"
 				if ($virtuemart_manufacturer_id > 0) {
 					$manufacturerLink .= '<div><a title="" href="' . JRoute::_ ($fieldLink . $orderTxt . $orderbyTxt) . '">' . JText::_ ('COM_VIRTUEMART_SEARCH_SELECT_ALL_MANUFACTURER') . '</a></div>';
 				}
@@ -1864,7 +1848,7 @@ class VirtueMartModelProduct extends VmModel {
 							$manufacturerLink .= '<div><a title="' . $mf->mf_name . '" href="' . $link . '">' . $mf->mf_name . '</a></div>';
 						}
 						else {
-							$currentManufacturerLink = '<div class="title">' . JText::_ ('COM_VIRTUEMART_PRODUCT_DETAILS_MANUFACTURER_LBL') . '</div><div class="activeOrder">' . $mf->mf_name . '</div>';
+							$currentManufacturerLink = '<label class="title">' . JText::_ ('COM_VIRTUEMART_PRODUCT_DETAILS_MANUFACTURER_LBL') . '</label><span class="activeOrder">' . $mf->mf_name . '</span>';
 						}
 					}
 				}
@@ -1883,7 +1867,7 @@ class VirtueMartModelProduct extends VmModel {
 		$orderByLink = '';
 		$fields = VmConfig::get ('browse_orderby_fields');
 		if (count ($fields) > 1) {
-			$orderByLink = '<div class="orderlist">';
+			$orderByLink = '<div class="sorter-top">';//[V] class="orderlist"
 			foreach ($fields as $field) {
 				if ($field != $orderby) {
 
@@ -1906,7 +1890,7 @@ class VirtueMartModelProduct extends VmModel {
 					else {
 						$link = JRoute::_ ($fieldLink . $manufacturerTxt . '&orderby=' . $field);
 					}
-					$orderByLink .= '<div><a title="' . $text . '" href="' . $link . '">' . $text . '</a></div>';
+					$orderByLink .= '<option value="' . $link . '">' . $text . '</option>';
 				}
 			}
 			$orderByLink .= '</div>';
@@ -1916,10 +1900,12 @@ class VirtueMartModelProduct extends VmModel {
 		if ($order == 'ASC') {
 			$orderlink = '&order=DESC';
 			$orderTxt = JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_DESC');
+			$rorderTxt = JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_ASC');
 		}
 		else {
-			$orderTxt = JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_ASC');
 			$orderlink = '';
+			$orderTxt = JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_ASC');
+			$rorderTxt = JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_DESC');
 		}
 
 		/* full string list */
@@ -1940,8 +1926,9 @@ class VirtueMartModelProduct extends VmModel {
 			// 		$orderby = $orderby;
 		}
 
-		$orderByList = '<div class="orderlistcontainer"><div class="title">' . JText::_ ('COM_VIRTUEMART_ORDERBY') . '</div><div class="activeOrder"><a title="' . $orderTxt . '" href="' . $link . '">' . JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_' . $orderby) . ' ' . $orderTxt . '</a></div>';
-		$orderByList .= $orderByLink . '</div>';
+		$orderByList = '<div class="orderlistcontainer"><label class="title">' . JText::_ ('COM_VIRTUEMART_ORDERBY') . ' </label>';
+		$orderByList .='<select class="activeOrder" onchange="window.location.href=this.value"><option>' . JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_' . $orderby) . $rorderTxt . '</option><optgroup label="______________"></optgroup><option value="' . $link . '">' . JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_' . $orderby) . $orderTxt . '</option>';
+		$orderByList .= $orderByLink . '</select>';
 
 		$manuList = '';
 		if (VmConfig::get ('show_manufacturers')) {
