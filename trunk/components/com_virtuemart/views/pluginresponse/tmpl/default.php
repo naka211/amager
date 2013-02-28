@@ -103,7 +103,11 @@ Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
                 <label>By:</label><span><?php echo $BT_info->city;?></span><br>
                 <label>Telefon:</label><span><?php echo $BT_info->phone_1;?></span><br><br>
                 <h4>Leveringsservice:</h4>
+                <?php if($BT_info->address_2){?>
                 <span>Afhentning: <?php echo $BT_info->address_2;?></span>
+                <?php } else {?>
+                <span>Forsendelse</span>
+                <?php }?>
             </div><!--.delivery-address-->
         </div><!--.order-list-->
         <div class="table-pro">
