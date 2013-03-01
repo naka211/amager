@@ -85,23 +85,23 @@ Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
                 <label>Ordre- el. rekvisitionsnr.:</label><span><?php echo $BT_info->order1;?></span><br>
                 <label>Personreference:</label><span><?php echo $BT_info->person;?></span><br>
                 <?php }?>
-            	<label>Fornavn:</label><span><?php echo $ST_info->first_name;?></span><br>
-                <label>Efternavn:</label><span><?php echo $ST_info->last_name;?></span><br>
-                <label>Adresse:</label><span><?php echo $ST_info->address_1;?></span><br>
-                <label>Postnr.:</label><span><?php echo $ST_info->zip;?></span><br>
-                <label>By:</label><span><?php echo $ST_info->city;?></span><br>
-                <label>Telefon:</label><span><?php echo $ST_info->phone_1;?></span><br><br>
-                <h4>Betaling: </h4>
-                <label>Kortbetaling</label>
-            </div><!--.cus-info-->
-            <div class="delivery-address">
-            	<h4>Leveringsadresse:</h4>
             	<label>Fornavn:</label><span><?php echo $BT_info->first_name;?></span><br>
                 <label>Efternavn:</label><span><?php echo $BT_info->last_name;?></span><br>
                 <label>Adresse:</label><span><?php echo $BT_info->address_1;?></span><br>
                 <label>Postnr.:</label><span><?php echo $BT_info->zip;?></span><br>
                 <label>By:</label><span><?php echo $BT_info->city;?></span><br>
                 <label>Telefon:</label><span><?php echo $BT_info->phone_1;?></span><br><br>
+                <h4>Betaling: </h4>
+                <label>Kortbetaling</label>
+            </div><!--.cus-info-->
+            <div class="delivery-address">
+            	<h4>Leveringsadresse:</h4>
+            	<label>Fornavn:</label><span><?php echo $ST_info->first_name;?></span><br>
+                <label>Efternavn:</label><span><?php echo $ST_info->last_name;?></span><br>
+                <label>Adresse:</label><span><?php echo $ST_info->address_1;?></span><br>
+                <label>Postnr.:</label><span><?php echo $ST_info->zip;?></span><br>
+                <label>By:</label><span><?php echo $ST_info->city;?></span><br>
+                <label>Telefon:</label><span><?php echo $ST_info->phone_1;?></span><br><br>
                 <h4>Leveringsservice:</h4>
                 <?php if($BT_info->address_2){?>
                 <span>Afhentning: <?php echo $BT_info->address_2;?></span>

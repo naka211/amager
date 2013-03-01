@@ -418,7 +418,7 @@ class VirtueMartControllerCart extends JController {
 			$this->addModelPath( JPATH_VM_ADMINISTRATOR.DS.'models' );
 			$userModel = VmModel::getModel('user');//print_r($userModel);exit;
 
-			$data['address_type_name'] = JRequest::getVar('mwctype');
+			$data['mwctype'] = JRequest::getVar('mwctype');
 			$data['email'] = JRequest::getVar('email');
 			$data['firstname'] = JRequest::getVar('firstname');
 			$data['lastname'] = JRequest::getVar('lastname');
