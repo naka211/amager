@@ -6,6 +6,55 @@ defined('_JEXEC') or die('Restricted access');
 // Ajax is displayed in vm_cart_products
 // ALL THE DISPLAY IS Done by Ajax using "hiddencontainer" ?>
 <!-- Virtuemart 2 Ajax Card -->
+<script type="text/javascript">
+function cart_update(){
+		var mod = jQuery("#vmCartModule");
+		jQuery.ajaxSetup({ cache: false })
+		jQuery.getJSON(window.vmSiteurl+"index.php?option=com_virtuemart&nosef=1&view=cart&task=viewJS&format=json"+window.vmLang,
+			function(datas, textStatus){
+				//console.log(datas);
+				//if (datas.totalProduct){
+					mod.find("#list-item").html("");
+					jQuery.each(datas.products, function(key, val) {
+						jQuery("#hiddencontainer .container").clone().appendTo(".vmCartModule #list-item");
+						jQuery.each(val, function(key, val) {
+							if (jQuery("#hiddencontainer .container .v"+key)) mod.find("#list-item .v"+key+":last").html(val) ;
+							if(key=="no")
+							mod.find(".list-cart-close:last").on("click", function(){
+								jQuery.ajax( {
+								type: "POST",
+								url: "index.php",
+								data: "option=com_virtuemart&view=cart&cart_virtuemart_product_id="+val+"&task=delete",
+								success: function( response ){cart_update()}
+								});
+							});
+						});
+					});
+					mod.find(".billtotal").html(datas.billTotal);
+					mod.find(".s_billtotal").html(datas.totalProductTxt+datas.billTotal);
+				//}
+			}
+		);
+	}
+	
+	
+jQuery(document).ready( function(){
+	var mod = jQuery("#vmCartModule");
+	
+	
+	mod.find(".list-cart-close").on("click", function(){
+		var id = jQuery(this).attr("rel");
+		jQuery.ajax( {
+		type: "POST",
+		url: "index.php",
+		data: "option=com_virtuemart&view=cart&cart_virtuemart_product_id="+id+"&task=delete",
+		success: function(){cart_update()}
+		});
+	});
+	
+	
+});
+</script>
 <div class="vmCartModule" id="vmCartModule">
 <div id="bg-cart" style="width: 1905px; height: 601px; display: none; "></div>
 <ul class="cart">
@@ -45,7 +94,7 @@ defined('_JEXEC') or die('Restricted access');
 			<div class="overview">
 				<div class="vm_cart_products">
 					<ul id="list-item">
-					<?php
+					<?php 
 					$prod_buff=$cart->products;
 					foreach ($data->products as $product){
 						$price=str_replace(",00","",$product["prices"]);
@@ -55,11 +104,11 @@ defined('_JEXEC') or die('Restricted access');
 						<li>
 							<div class="list-cart-img"><img src="<?php echo $prod->image->file_url_thumb?>" width="45" alt="" /></div>
 							<div class="list-cart-content">
-								<p class="title-pro" style="height:38px"><?php echo $product["product_name"]?></p>
+								<p class="title-pro" style="height:38px" ><?php echo $product["product_name"]?></p>
 								<p>x <?php echo $product["quantity"]?></p>
 							</div>
 							<div class="price-cart"><?php echo $price?></div>
-							<div class="list-cart-close">
+							<div class="list-cart-close" rel="<?php echo $product["product_id"]?>">
 								<a href="#">close</a>
 							</div>
 						</li>

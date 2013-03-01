@@ -28,7 +28,7 @@
  */
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
-//print_r($this->orderDetails['details']['BT']->order_number);exit;
+print_r($this->orderDetails['details']['BT']);exit;
 if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 	$type = "Privat";
 } else if($this->orderDetails['details']['BT']->address_type_name == 2 ){
@@ -219,13 +219,13 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
         <td width="146" style="padding: 0 10px; color: #3A3A3A;"><?php echo number_format($this->orderDetails['details']['BT']->order_shipment,2,',','.');?> DKK</td>
       </tr>
       <tr height="30" style="padding: 0 10px;">
-        <td style="padding: 0 10px; color: #3A3A3A;" ><?php echo number_format($this->orderDetails['details']['BT']->order_total,2,',','.');?> DKK</td>
+        <td style="padding: 0 10px; color: #3A3A3A;" ><?php echo number_format($this->orderDetails['details']['BT']->order_subtotal,2,',','.');?> DKK</td>
       </tr>
       <tr height="30" style="padding: 0 10px;">
-        <td style="padding: 0 10px; color: #3A3A3A;"><?php echo number_format($this->orderDetails['details']['BT']->order_total*0.25,2,',','.');?> DKK</td>
+        <td style="padding: 0 10px; color: #3A3A3A;"><?php echo number_format($this->orderDetails['details']['BT']->order_subtotal*0.25,2,',','.');?> DKK</td>
       </tr>
       <tr height="30" style="padding: 0 10px;">
-        <td style="padding: 0 10px;"><strong><?php echo number_format($this->orderDetails['details']['BT']->order_subtotal,2,',','.');?> DKK</strong></td>
+        <td style="padding: 0 10px;"><strong><?php echo number_format($this->orderDetails['details']['BT']->order_salesPrice,2,',','.');?> DKK</strong></td>
       </tr>
     </table></td>
     </tr>

@@ -1487,6 +1487,7 @@ class VirtueMartCart {
 
 			}
 			$this->data->products[$i]['product_sku'] = $product->product_sku;
+			$this->data->products[$i]['product_id'] = $product->virtuemart_product_id;
 
 			//** @todo WEIGHT CALCULATION
 			//$weight_subtotal = vmShipmentMethod::get_weight($product["virtuemart_product_id"]) * $product->quantity'];

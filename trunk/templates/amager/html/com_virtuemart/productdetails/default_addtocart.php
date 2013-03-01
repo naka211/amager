@@ -68,35 +68,6 @@ defined ('_JEXEC') or die('Restricted access');
 			<a href="#" onclick="document.getElementById(this.id+'Input').click()" id="btnAddItem">Læg i indkøbskurv</a>
 <?php echo '<input type="submit" id="btnAddItemInput" name="addtocart" class="addtocart-button" style="display:none" value="'.JText::_('COM_VIRTUEMART_CART_ADD_TO') .'" title="'.JText::_('COM_VIRTUEMART_CART_ADD_TO') .'" />' ?>
 <script type="text/javascript">
-function cart_update(){
-	var mod = jQuery("#vmCartModule");
-	jQuery.ajaxSetup({ cache: false })
-	jQuery.getJSON(window.vmSiteurl+"index.php?option=com_virtuemart&nosef=1&view=cart&task=viewJS&format=json"+window.vmLang,
-		function(datas, textStatus){
-			//console.log(datas);
-			//if (datas.totalProduct){
-				mod.find("#list-item").html("");
-				jQuery.each(datas.products, function(key, val) {
-					jQuery("#hiddencontainer .container").clone().appendTo(".vmCartModule #list-item");
-					jQuery.each(val, function(key, val) {
-						if (jQuery("#hiddencontainer .container .v"+key)) mod.find("#list-item .v"+key+":last").html(val) ;
-						if(key=="no")
-						mod.find(".list-cart-close:last").on("click", function(){
-							jQuery.ajax( {
-							type: "POST",
-							url: "index.php",
-							data: "option=com_virtuemart&view=cart&cart_virtuemart_product_id="+val+"&task=delete",
-							success: function( response ){cart_update()}
-							});
-						});
-					});
-				});
-				mod.find(".billtotal").html(datas.billTotal);
-				mod.find(".s_billtotal").html(datas.totalProductTxt+datas.billTotal);
-			//}
-		}
-	);
-}
 jQuery("form.js-recalculate").submit(function(){
 	//console.log(jQuery(this).serialize());
 	jQuery.ajax( {
