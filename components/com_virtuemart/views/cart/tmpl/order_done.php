@@ -63,7 +63,7 @@ $authemail = $cart->BT['email'];
 </style>
 <script>
 	<?php $siteURL = JURI::base();?>
-	function validateCard(cardnoObj) {
+	/*function validateCard(cardnoObj) {
 	   
 		if (document.forms['epay'].cardno.value.replace(" ", "").length > 0) {
 			if (luhn_check(document.forms['epay'].cardno.value.replace(" ", "")) || validTestCardNumber(document.forms['epay'].cardno.value.replace(" ", ""))) {
@@ -138,7 +138,7 @@ $authemail = $cart->BT['email'];
 	function insertImageInLabelHtml(labelID, imageSrc, altTxt)
 	{
 		document.getElementById(labelID).innerHTML = "<img src='" + imageSrc + "' border='0' alt='" + altTxt + "'>";
-	}
+	}*/
 
 </script>
 
