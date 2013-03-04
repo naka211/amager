@@ -120,7 +120,7 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 
 	// Start the Output
 	foreach($this->products as $product){
-
+		$link=JRoute::_ ( 'index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=' . $product->virtuemart_product_id . '&virtuemart_category_id=' . $product->virtuemart_category_id );
 		// Show the horizontal seperator
 		if ($iBrowseCol == $BrowseProducts_per_row)
 			$row_class=' class="no-mar"';
