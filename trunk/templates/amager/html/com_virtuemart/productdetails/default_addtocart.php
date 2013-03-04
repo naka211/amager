@@ -65,8 +65,9 @@ defined ('_JEXEC') or die('Restricted access');
 				</label>
 <?php	// Display the add to cart button?>
 			<div class="bnt-add-basket">
-			<a href="#" onclick="document.getElementById(this.id+'Input').click()" id="btnAddItem">Læg i indkøbskurv</a>
-<?php echo '<input type="submit" id="btnAddItemInput" name="addtocart" class="addtocart-button" style="display:none" value="'.JText::_('COM_VIRTUEMART_CART_ADD_TO') .'" title="'.JText::_('COM_VIRTUEMART_CART_ADD_TO') .'" />' ?>
+			<a href="javascript:void(0);" onclick="document.getElementById(this.id+'Input').click()" id="btnAddItem1">Læg i indkøbskurv</a>
+<?php echo '<input type="submit" id="btnAddItem1Input" name="addtocart" class="addtocart-button" style="display:none" value="'.JText::_('COM_VIRTUEMART_CART_ADD_TO') .'" title="'.JText::_('COM_VIRTUEMART_CART_ADD_TO') .'" />' ?>
+			<a href="#" id="btnAddItem" style="display:none;"></a>
 <script type="text/javascript">
 jQuery("form.js-recalculate").submit(function(){
 	//console.log(jQuery(this).serialize());
@@ -76,6 +77,7 @@ jQuery("form.js-recalculate").submit(function(){
 	data: jQuery(this).serialize(),
 	success: function( response ){
 		cart_update();
+		jQuery("#btnAddItem").click();
 	}
 	} );
 return false;

@@ -25,11 +25,11 @@ if (!empty($this->product->images)) {
 			$image = $this->product->images[$i];
 			if($i==$count_images-1):
 			?>
-            <li class="n-m-r">
+            <li>
 			<?php else:?>
 			<li>
             <?php endif;?>
-			<a>
+			<a href="#">
 			<?php
                 echo $image->displayMediaFull('width="102"',false,'');
             ?>

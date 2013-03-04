@@ -36,6 +36,7 @@ if($opt.$view==in_array($opt.$view,array('com_usersprofile','com_virtuemartuser'
 <link rel="stylesheet" type="text/css" href="<?php echo $tmplURL?>css/reset.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo $tmplURL?>css/styles.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo $tmplURL?>css/reveal.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo $tmplURL?>css/prettyPhoto.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo $tmplURL?>css/scrollbar.css"/>
 <style type="text/css">
 @font-face {
