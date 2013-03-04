@@ -64,12 +64,14 @@ class UsersControllerUser extends UsersController
 		if (true === $app->login($credentials, $options)) {
 			// Success
 			$app->setUserState('users.login.form.data', array());
-			$app->redirect(JRoute::_($app->getUserState('users.login.form.return'), false));
+			//$app->redirect(JRoute::_($app->getUserState('users.login.form.return'), false));
+			$this->setRedirect('index.php');
 		} else {
 			// Login failed !
 			$data['remember'] = (int)$options['remember'];
 			$app->setUserState('users.login.form.data', $data);
-			$app->redirect(JRoute::_('index.php?option=com_users&view=login', false));
+			//$app->redirect(JRoute::_('index.php?option=com_users&view=login', false));
+			$this->setRedirect('index.php');
 		}
 	}
 
@@ -93,13 +95,15 @@ class UsersControllerUser extends UsersController
 			$return = JRequest::getVar('return', '', 'method', 'base64');
 			$return = base64_decode($return);
 			if (!JURI::isInternal($return)) {
-				$return = '';
+				$return = 'index.php';
 			}
 
 			// Redirect the user.
-			$app->redirect(JRoute::_($return, false));
+			//$app->redirect(JRoute::_($return, false));
+			$this->setRedirect('index.php');
 		} else {
-			$app->redirect(JRoute::_('index.php?option=com_users&view=login', false));
+			//$app->redirect(JRoute::_('index.php?option=com_users&view=login', false));
+			$app->redirect(JRoute::_('index.php', false));
 		}
 	}
 
