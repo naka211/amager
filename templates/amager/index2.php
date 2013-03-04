@@ -135,12 +135,15 @@ focusInput = function(){
 	<!--.logo-->
 	<div class="nav-top">
 		<jdoc:include type="modules" name="menu" />
-		<?php if($user->guest){?>
 		<ul class="login">
+		<?php if($user->guest){?>
 		<li><a href="#" data-reveal-id="myModal">Login</a></li>
 		<li class="no-li"><a href="index.php?option=com_users&view=registration&Itemid=121">Registrer</a></li>
-		</ul>
-		<?php }?>
+		<?php } else {?>
+        <li><a href="index.php?option=com_users&task=profile.edit&user_id=<?php echo $user->id;?>">Min konto</a></li>
+		<li class="no-li"><a href="index.php?option=com_users&task=user.logout">Log ud</a></li>
+        <?php }?>
+        </ul>
 	</div>
 	<!--.nav-top-->
 	<div class="w-frm-login reveal-modal" id="myModal">	
@@ -191,11 +194,15 @@ focusInput = function(){
 	<div class="welcome">
 		<ul>
 			<li style="background:none;">Velkommen, <span><?php echo $user->name?></span></li>
-			<li style="float:left;"><a href="index.php?option=com_users&task=profile.edit&user_id=<?php echo $user->id;?>">Min konto</a></li>
-			<li class="n-bg-r" style="float:left;"><a href="index.php?option=com_users&task=user.logout">Log ud</a></li>
 		</ul>
 	</div><!--.welcome-->
-	<?php }?>
+	<?php } else {?>
+    <div class="welcome">
+		<ul>
+			<li style="background:none;">&nbsp;</li>
+		</ul>
+	</div>
+    <?php }?>
 	<jdoc:include type="modules" name="cart" />
 
 	<div class="clear"></div>
@@ -205,7 +212,7 @@ focusInput = function(){
 </div>
 <!--#header-->
 
-<div id="page" <?php if($user->guest == 1) echo 'style="margin-top:120px;"';?>>
+<div id="page">
 	<div id="nav-search">
 	<div id="w-nav-search">
 		<jdoc:include type="modules" name="search" />
