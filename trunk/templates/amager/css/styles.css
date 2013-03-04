@@ -36,7 +36,7 @@ ul.main-sub ul.sub-menu li { background: none; padding: 5px 0px 0px 5px; width: 
 ul.main-sub ul.sub-menu li a { color: #7a7f7f; text-transform: none; background: none; font-size: 11px; padding-left: 0px; }
 ul.main-sub ul.sub-menu li a:hover { text-decoration: underline; }
 
-ul.login { float: right; background: url(../img/icon-login2.png) no-repeat left center; padding: 0px 0px 0px 30px; }
+ul.login { float: right; background: url(../img/icon-login2.png) no-repeat left center; padding: 0px 0px 0px 25px; }
 ul.login li { border-right: none; padding: 0px 2px 0px 0px; background: url(../img/bg-li-login.png) no-repeat right center; }
 ul.login li a { padding:  0px 5px 0px 0px; }
 ul.login li.no-li { background: none; padding: 0px 0px 0px 1px; }
@@ -51,7 +51,7 @@ ul.login li.no-li { background: none; padding: 0px 0px 0px 1px; }
 .sitemap a { text-decoration: none; color: #525558; font-size: 14px; }
 .sitemap a:hover { color: #00b2ea; }
 
-#page {clear: both; margin-top: 135px;}
+#page {clear: both; margin-top: 120px;}
 #nav-search { background: url(../img/bg-nav-search.gif) repeat-x top center; z-index: 9999; }
 #nav-search #w-nav-search{ width: 970px; margin: 0 auto; height: 39px; padding: 10px 0px 8px 0px; position: relative; }
 #w-nav-search .top-cate { background: url(../img/img-top-cate.png) no-repeat; width: 212px; height: 60px; 
