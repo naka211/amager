@@ -167,7 +167,8 @@ focusInput = function(){
 		<li><a href="#" data-reveal-id="myModal">Login</a></li>
 		<li class="no-li"><a href="index.php?option=com_users&view=registration&Itemid=121">Registrer</a></li>
 		</ul>
-		<?php }?>
+		<?php } else {?>
+        <?php }?>
 	</div>
 	<!--.nav-top-->
 	<div class="w-frm-login reveal-modal" id="myModal">	
