@@ -16,3 +16,5 @@ $col= 1 ;
     <a class="prev" id="foo1_prev" href="#"><span>prev</span></a> <a class="next" id="foo1_next" href="#"><span>next</span></a> </div>
     <!--.image_carousel-->
 </div>
+<div class="clear"></div>
+<div class="main-brand-shadow"> </div>

@@ -176,7 +176,7 @@ if ( !$mainframe->isAdmin() && class_exists('jNews_Captcha') && $GLOBALS[JNEWS.'
     	echo '<input type="hidden" name="Itemid" value="'.$Itemid.'" />' ;
 		if (!empty($button)) echo '<input type="submit" value="'.$button.'" class="button"/>';
 		echo JHTML::_( 'form.token' );
-		echo '</form> ';
+		echo '</form> </div></div>';
 	 }
 
 	 public static function formEndYesNo($link, $cle, $subscriberId, $listId) {

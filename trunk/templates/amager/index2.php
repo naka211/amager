@@ -258,6 +258,5 @@ focusInput = function(){
 </div>
 <!--#footer-bottom-->
 
-<jdoc:include type="modules" name="debug" />
 </body>
 </html>

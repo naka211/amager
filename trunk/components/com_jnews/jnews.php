@@ -122,6 +122,8 @@ switch ($action) {
 		break;
 
 	case ('subone'):
+		echo '{module Newsletter form}';
+		break;
 		if(!$validated) $subscriberId=0;
 		frontEnd::subscriptions($subscriber, $subscriberId, $listId, 'subscribe');
 		if(!empty($GLOBALS[JNEWS.'subs_redirect_url'])){
