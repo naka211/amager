@@ -3,22 +3,6 @@
 vmdebug ('$this->category ' . $this->category->category_name);
 // Check to ensure this file is included in Joomla!
 defined ('_JEXEC') or die('Restricted access');
-JHTML::_ ('behavior.modal');
-/* javascript for list Slide
-  Only here for the order list
-  can be changed by the template maker
-*/
-$js = "
-jQuery(document).ready(function () {
-	jQuery('.orderlistcontainer').hover(
-		function() { jQuery(this).find('.orderlist').stop().show()},
-		function() { jQuery(this).find('.orderlist').stop().hide()}
-	)
-});
-";
-
-$document = JFactory::getDocument ();
-$document->addScriptDeclaration ($js);
 
 /*$edit_link = '';
 if(!class_exists('Permissions')) require(JPATH_VM_ADMINISTRATOR.DS.'helpers'.DS.'permissions.php');
@@ -107,7 +91,9 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 <div class="orderby-displaynumber">
 	<div class="sorter">
 		<?php echo $this->orderByList['orderby']; ?>
+		<form id="mf_form_filters" action="<?php echo JURI::current()?>" method="post">
 		<?php echo $this->orderByList['manufacturer']; ?>
+		</form>
 	</div>
 </div>
 <div class="product"><ul>
