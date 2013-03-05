@@ -1847,7 +1847,7 @@ class VirtueMartModelProduct extends VmModel {
 				if (count ($manufacturers) > 1) {
 					foreach ($manufacturers as $mf) {
 						//$link = JRoute::_ ($fieldLink . '&virtuemart_manufacturer_id=' . $mf->virtuemart_manufacturer_id . $orderTxt . $orderbyTxt);
-						if (in_array($mf->virtuemart_manufacturer_id, $virtuemart_manufacturer_id)) {
+						if ($mf->virtuemart_manufacturer_id==$virtuemart_manufacturer_id OR (is_array($virtuemart_manufacturer_id) AND in_array($mf->virtuemart_manufacturer_id, $virtuemart_manufacturer_id)) ) {
 							$checked='checked="checked"';
 						}else{
 							$checked="";
