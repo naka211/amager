@@ -39,12 +39,12 @@ if ($display_style =="div") { ?>
 <?php
 } else {
 	$last = count($manufacturers)-1;
+//Display MFs
 ?>
-
 <ul>
 <?php
 foreach ($manufacturers as $manufacturer) {
-	$link = JROUTE::_('index.php?option=com_virtuemart&view=category&virtuemart_manufacturer_id=' . $manufacturer->virtuemart_manufacturer_id);
+	$link = JROUTE::_('index.php?option=com_virtuemart&view=manufacturer&virtuemart_manufacturer_id=' . $manufacturer->virtuemart_manufacturer_id);
 	?>
 	<li><a href="<?php echo $link; ?>">
 		<?php
