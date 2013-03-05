@@ -143,7 +143,7 @@ class VirtueMartModelProduct extends VmModel {
 
 		$this->product_parent_id = JRequest::getInt ('product_parent_id', FALSE);
 
-		$this->virtuemart_manufacturer_id = JRequest::getInt ('virtuemart_manufacturer_id', FALSE);
+		$this->virtuemart_manufacturer_id = JRequest::getVar ('virtuemart_manufacturer_id', FALSE);
 
 		$this->search_type = JRequest::getVar ('search_type', '');
 
@@ -306,7 +306,12 @@ class VirtueMartModelProduct extends VmModel {
 
 			if ($this->virtuemart_manufacturer_id) {
 				$joinMf = TRUE;
-				$where[] = ' `#__virtuemart_product_manufacturers`.`virtuemart_manufacturer_id` = ' . $this->virtuemart_manufacturer_id;
+				if(is_array($this->virtuemart_manufacturer_id)){
+					foreach($this->virtuemart_manufacturer_id as $tmp)
+						$tmp1[] = ' `#__virtuemart_product_manufacturers`.`virtuemart_manufacturer_id` = ' . $tmp;
+					$where[] ="(" . implode (' OR ', $tmp1) . ")";
+				}else
+					$where[] = ' `#__virtuemart_product_manufacturers`.`virtuemart_manufacturer_id` = ' . $this->virtuemart_manufacturer_id;
 			}
 
 			// Time filter
@@ -1794,7 +1799,7 @@ class VirtueMartModelProduct extends VmModel {
 		$fieldLink = 'index.php' . $fieldLink;
 		$orderTxt = '';
 
-		$order = JRequest::getWord ('order', 'ASC');
+		$order = JRequest::getWord ('order', 'DESC');
 		if ($order == 'DESC') {
 			$orderTxt .= '&order=' . $order;
 		}
@@ -1817,7 +1822,7 @@ class VirtueMartModelProduct extends VmModel {
 
 			// manufacturer link list
 
-			$virtuemart_manufacturer_id = JRequest::getInt ('virtuemart_manufacturer_id', 0);
+			$virtuemart_manufacturer_id = JRequest::getVar('virtuemart_manufacturer_id', array());
 			if ($virtuemart_manufacturer_id != '') {
 				$manufacturerTxt = '&virtuemart_manufacturer_id=' . $virtuemart_manufacturer_id;
 			}
@@ -1838,18 +1843,20 @@ class VirtueMartModelProduct extends VmModel {
 			$manufacturerLink = '';
 			if (count ($manufacturers) > 0) {
 				$manufacturerLink = '<div class="sorter-brand">';//[V] class="orderlist"
-				if ($virtuemart_manufacturer_id > 0) {
-					$manufacturerLink .= '<div><a title="" href="' . JRoute::_ ($fieldLink . $orderTxt . $orderbyTxt) . '">' . JText::_ ('COM_VIRTUEMART_SEARCH_SELECT_ALL_MANUFACTURER') . '</a></div>';
-				}
+
 				if (count ($manufacturers) > 1) {
 					foreach ($manufacturers as $mf) {
-						$link = JRoute::_ ($fieldLink . '&virtuemart_manufacturer_id=' . $mf->virtuemart_manufacturer_id . $orderTxt . $orderbyTxt);
-						if ($mf->virtuemart_manufacturer_id != $virtuemart_manufacturer_id) {
-							$manufacturerLink .= '<div><a title="' . $mf->mf_name . '" href="' . $link . '">' . $mf->mf_name . '</a></div>';
+						//$link = JRoute::_ ($fieldLink . '&virtuemart_manufacturer_id=' . $mf->virtuemart_manufacturer_id . $orderTxt . $orderbyTxt);
+						if (in_array($mf->virtuemart_manufacturer_id, $virtuemart_manufacturer_id)) {
+							$checked='checked="checked"';
+						}else{
+							$checked="";
 						}
-						else {
+							$manufacturerLink .= '<div><label><input type="checkbox" name="virtuemart_manufacturer_id[]" onchange="this.form.submit()" '.$checked.' value="'.$mf->virtuemart_manufacturer_id.'" /> ' .$mf->mf_name. '</label></div>';
+						
+						/*else {
 							$currentManufacturerLink = '<label class="title">' . JText::_ ('COM_VIRTUEMART_PRODUCT_DETAILS_MANUFACTURER_LBL') . '</label><span class="activeOrder">' . $mf->mf_name . '</span>';
-						}
+						}*/
 					}
 				}
 				elseif ($virtuemart_manufacturer_id > 0) {
@@ -1928,12 +1935,12 @@ class VirtueMartModelProduct extends VmModel {
 
 		$orderByList = '<div class="orderlistcontainer"><label class="title">' . JText::_ ('COM_VIRTUEMART_ORDERBY') . ' </label>';
 		$orderByList .='<select class="activeOrder" onchange="window.location.href=this.value"><option>' . JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_' . $orderby) . $rorderTxt . '</option><optgroup label="______________"></optgroup><option value="' . $link . '">' . JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_' . $orderby) . $orderTxt . '</option>';
-		$orderByList .= $orderByLink . '</select>';
+		$orderByList .= $orderByLink . '</select></div>';
 
 		$manuList = '';
 		if (VmConfig::get ('show_manufacturers')) {
 			if (empty ($currentManufacturerLink)) {
-				$currentManufacturerLink = '<div class="title">' . JText::_ ('COM_VIRTUEMART_PRODUCT_DETAILS_MANUFACTURER_LBL') . '</div><div class="activeOrder">' . JText::_ ('COM_VIRTUEMART_SEARCH_SELECT_MANUFACTURER') . '</div>';
+				$currentManufacturerLink = '<div class="title">' . JText::_ ('COM_VIRTUEMART_PRODUCT_DETAILS_MANUFACTURER_LBL') . '</div>';
 			}
 			$manuList = ' <div class="orderlistcontainer">' . $currentManufacturerLink;
 			$manuList .= $manufacturerLink . '</div><div class="clear"></div>';

@@ -69,11 +69,11 @@ class VirtuemartViewCategory extends VmView {
 
 		//No redirect here, category id = 0 means show ALL categories! note by Max Milbers
 /*		if(empty($category->virtuemart_vendor_id) && $search == null ) {
-	    	$app -> enqueueMessage(JText::_('COM_VIRTUEMART_CATEGORY_NOT_FOUND'));
-	    	$app -> redirect( 'index.php');
-	    }*/
+			$app -> enqueueMessage(JText::_('COM_VIRTUEMART_CATEGORY_NOT_FOUND'));
+			$app -> redirect( 'index.php');
+		}*/
 
-	    // Add the category name to the pathway
+		// Add the category name to the pathway
 		if ($category->parents) {
 			foreach ($category->parents as $c){
 				$pathway->addItem(strip_tags($c->category_name),JRoute::_('index.php?option=com_virtuemart&view=category&virtuemart_category_id='.$c->virtuemart_category_id));
@@ -130,12 +130,12 @@ class VirtuemartViewCategory extends VmView {
 			$document->addHeadLink( JRoute::_('index.php?option=com_virtuemart&view=category&virtuemart_category_id='.$categoryId) , 'canonical', 'rel', '' );
 		}
 
-	    // Set the titles
+		// Set the titles
 		if ($category->customtitle) {
-        	 $title = strip_tags($category->customtitle);
-     	} elseif ($category->category_name) {
-     		 $title = strip_tags($category->category_name);
-     		 }
+			 $title = strip_tags($category->customtitle);
+	 	} elseif ($category->category_name) {
+	 		 $title = strip_tags($category->category_name);
+	 		 }
 		else {
 			$menus	= $app->getMenu();
 			$menu = $menus->getActive();
@@ -169,34 +169,34 @@ class VirtuemartViewCategory extends VmView {
 		$this->assignRef('keyword', $keyword);
 		$this->assignRef('search', $search);
 
-	    // Load the products in the given category
-	    $products = $productModel->getProductsInCategory($categoryId);
-	    $productModel->addImages($products,1);
+		// Load the products in the given category
+		$products = $productModel->getProductsInCategory($categoryId);
+		$productModel->addImages($products,1);
 
-	    $this->assignRef('products', $products);
+		$this->assignRef('products', $products);
 		foreach($products as $product){
-              $product->stock = $productModel->getStockIndicator($product);
-         }
+			  $product->stock = $productModel->getStockIndicator($product);
+		 }
 
 
 		$ratingModel = VmModel::getModel('ratings');
 		$showRating = $ratingModel->showRating();
 		$this->assignRef('showRating', $showRating);
 
-		$virtuemart_manufacturer_id = JRequest::getInt('virtuemart_manufacturer_id',0 );
+		$virtuemart_manufacturer_id = JRequest::getVar('virtuemart_manufacturer_id',array() );
 		if ($virtuemart_manufacturer_id and !empty($products[0])) $title .=' '.$products[0]->mf_name ;
 		$document->setTitle( $title );
 		// Override Category name when viewing manufacturers products !IMPORTANT AFTER page title.
-		if (JRequest::getInt('virtuemart_manufacturer_id' ) and !empty($products[0])) $category->category_name =$products[0]->mf_name ;
+		if (JRequest::getVar('virtuemart_manufacturer_id' ) and !empty($products[0])) $category->category_name =$products[0]->mf_name ;
 
-	    $pagination = $productModel->getPagination($perRow);
-	    $this->assignRef('vmPagination', $pagination);
+		$pagination = $productModel->getPagination($perRow);
+		$this->assignRef('vmPagination', $pagination);
 
-	    $orderByList = $productModel->getOrderByList($categoryId);
-	    $this->assignRef('orderByList', $orderByList);
+		$orderByList = $productModel->getOrderByList($categoryId);
+		$this->assignRef('orderByList', $orderByList);
 
-// 	    $productRelatedManufacturerList = $productModel->getProductRelatedManufacturerList($categoryId);
-// 	    $this->assignRef('productRelatedManufacturerList', $productRelatedManufacturerList);
+// 		$productRelatedManufacturerList = $productModel->getProductRelatedManufacturerList($categoryId);
+// 		$this->assignRef('productRelatedManufacturerList', $productRelatedManufacturerList);
 
 		//$sortOrderButton = $productModel->getsortOrderButton();
 		//$this->assignRef('sortOrder', $sortOrderButton);
@@ -231,14 +231,14 @@ class VirtuemartViewCategory extends VmView {
 		$paginationAction=JRoute::_('index.php?option=com_virtuemart&view=category&virtuemart_category_id='.$categoryId );
 		$this->assignRef('paginationAction', $paginationAction);
 
-	    shopFunctionsF::setLastVisitedCategoryId($categoryId);
+		shopFunctionsF::setLastVisitedCategoryId($categoryId);
 		shopFunctionsF::setLastVisitedManuId($virtuemart_manufacturer_id);
 
-	    if(empty($category->category_template)){
-	    	$category->category_template = VmConfig::get('categorytemplate');
-	    }
+		if(empty($category->category_template)){
+			$category->category_template = VmConfig::get('categorytemplate');
+		}
 
-	    shopFunctionsF::setVmTemplate($this,$category->category_template,0,$category->category_layout);
+		shopFunctionsF::setVmTemplate($this,$category->category_template,0,$category->category_layout);
 
 		parent::display($tpl);
 	}
