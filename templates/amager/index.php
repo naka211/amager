@@ -272,8 +272,7 @@ focusInput = function(){
             <jdoc:include type="modules" name="below" />
 			<?php }?>
 			<!--.main-brand-->
-			<div class="clear"></div>
-			<div class="main-brand-shadow"> </div>
+			
 			<!--.main-brand-shadow-->
 		</div>
 		<!--#main-content-->
@@ -305,7 +304,7 @@ focusInput = function(){
 </div>
 <!--#footer-bottom-->
 
-<jdoc:include type="modules" name="debug" />
+
 </body>
 </html>
 <?php }?>
