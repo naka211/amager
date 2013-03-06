@@ -84,6 +84,12 @@ class VirtueMartControllerPluginresponse extends JController {
 	// Display it all
 	$view->display();
     }
+	
+	function printOrder(){
+		$view = $this->getView('pluginresponse', 'html');
+		$view->setLayout('print');
+		$view->display();
+	}
 
     function ShipmentResponseReceived() {
 		// TODO: not ready yet
