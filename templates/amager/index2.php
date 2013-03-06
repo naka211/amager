@@ -219,7 +219,7 @@ focusInput = function(){
 
 		<div class="func-img"> <img src="<?php echo $tmplURL?>img/img-3.png" width="220" height="34" alt="" /> </div>
 
-		<div class="sitemap"> <a href="site-map.php">Sitemap</a> </div>
+		<div class="sitemap"> <a href="index.php?option=com_xmap&view=html&id=1&Itemid=135">Sitemap</a> </div>
 
 	</div>
 	<!--#w-nav-search-->
