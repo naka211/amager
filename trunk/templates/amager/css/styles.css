@@ -966,7 +966,7 @@ padding: 0px 5px; border: none medium; font-style: italic; margin-bottom:8px;}
 .newsletter-content .bnt-subs-now2 { background: url(../img/button.png) no-repeat -582px -428px; width: 126px; height: 27px; float: left;}
 .bnt-subs-now2 a {text-indent: -4000px; display: block; width: 126px; height: 27px; }
 .bnt-subs-now2 a:hover { background: url(../img/button.png) no-repeat -582px -455px; width: 126px; height: 27px; }
-.bnt-send2 { background: url(../img/button.png) no-repeat -709px -428px; width: 86px; height: 27px; float: left; margin-left: 10px;}
+.bnt-send2 { background: url(../img/button.png) no-repeat -709px -428px; width: 86px; height: 27px; float: left;}
 .bnt-send2 a{ text-indent: -4000px; display: block; width: 86px; height: 27px; }
 .bnt-send2 a:hover { background: url(../img/button.png) no-repeat -709px -455px; width: 86px; height: 27px;}
 
@@ -1046,3 +1046,105 @@ span.icon { width: 14px; height: 12px;}
 .pagination ul li:hover a { color: #00b2ea;}
 .pagination ul li a { color: #3a3a3a; text-decoration: none; }
 .pagination ul li a.pagenav { color: #00b2ea;}
+
+#system-message
+{
+                margin:10px 0 20px 0;
+                border-left:0;
+                border-right:0;
+}
+
+#system-message dt
+{
+	font-weight: bold;
+}
+#system-message dd
+{
+	margin: 0 0 15px 0;
+	font-weight: bold;
+	text-indent: 0px;
+	padding:0
+}
+#system-message dd ul
+{
+	color: #000;
+	list-style: none;
+	padding: 0px;
+}
+#system-message dd ul li
+{
+	line-height:1.5em
+}
+
+/* System Standard Messages */
+#system-message dt.message
+{
+	position:absolute;
+	top:-2000px;
+	left:-3000px;
+}
+
+#system-message dd.message  ul
+{
+	background: #fff  url(../img/system/notice-info.png) no-repeat;
+	padding-left:40px;
+	padding: 10px 10px 10px 40px;
+	border-top: 2px solid #90B203;
+	border-bottom: 2px solid #90B203;
+}
+
+#system-message dd.message ul li{background:none !important}
+
+/* System Error Messages */
+#system-message dt.error
+{
+	position:absolute;
+	top:-2000px;
+	left:-3000px;
+}
+
+#system-message dd.error ul
+{
+	background:#fff url(../img/system/notice-alert.png) no-repeat ;
+	padding-left:40px;
+ 	padding: 10px 10px 10px 40px;
+    border-top: 2px solid #990000;
+    border-bottom: 2px solid #990000;
+}
+
+
+
+/* System Notice Messages */
+#system-message dt.notice
+{
+	position:absolute;
+	top:-2000px;
+	left:-3000px;
+}
+
+#system-message dd.notice  ul
+{
+		background:#fff url(../img/system/notice-note.png) no-repeat ;
+		padding-left:40px;
+	    padding: 10px 10px 10px 40px;
+	    border-top: 2px solid #FAA528;
+	    border-bottom: 2px solid #FAA528;
+}
+#system-message dd.notice ul { color: #000;margin:10px 0 }
+
+#system-message
+{
+    margin-bottom: 0px;
+    padding: 0;
+}
+
+#system-message dt
+{
+    font-weight: bold;
+}
+
+#system-message dd
+{
+    font-weight: bold;
+    padding: 0;
+}
