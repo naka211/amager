@@ -4,7 +4,7 @@
 		<field name="username" type="text"
 			description="COM_USERS_FIELD_RESET_CONFIRM_USERNAME_DESC"
 			filter="username"
-			label="COM_USERS_FIELD_RESET_CONFIRM_USERNAME_LABEL"
+			label="COM_USERS_FIELD_REMIND_EMAIL_LABEL"
 			required="true"
 			size="30"/>
 
