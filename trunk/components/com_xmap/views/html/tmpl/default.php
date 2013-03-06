@@ -59,6 +59,16 @@ if ($this->displayer->canEdit) {
 	$doc->addStyleDeclaration ($css);
 	$doc->addScriptDeclaration ($js);
 }
+
+$db = JFactory::getDBO();
+$query = "SELECT c.virtuemart_category_id, c.category_name FROM #__virtuemart_categories_da_dk AS c INNER JOIN #__virtuemart_category_categories cc ON c.virtuemart_category_id = cc.category_child_id WHERE cc.category_parent_id = 0";
+$db->setQuery($query);
+$cats = $db->loadObjectList();
+
+$query = "SELECT virtuemart_manufacturer_id, mf_name FROM #__virtuemart_manufacturers_da_dk";
+$db->setQuery($query);
+$mfs = $db->loadObjectList();
+//print_r($cats);exit;
 ?>
 <div id="xmap">
 <?php if ($params->get('show_page_heading', 1) && $params->get('page_heading') != '') : ?>
@@ -92,8 +102,29 @@ if ($this->displayer->canEdit) {
 <?php if ($params->get('showintro', 1) )  : ?>
 <?php echo $this->item->introtext; ?>
 <?php endif; ?>
-
+<div class="n-m-l2">
 <?php echo $this->loadTemplate('items'); ?>
+</div>
+<div>
+	<h2>Kategorier</h2>
+    <ul>
+    	<?php foreach($cats as $cat){
+			$caturl = JRoute::_('index.php?option=com_virtuemart&view=category&virtuemart_category_id='.$cat->virtuemart_category_id);
+		?>
+        <li><a href="<?php echo $caturl;?>"><?php echo $cat->category_name;?></a></li>
+        <?php }?>
+    </ul>
+</div>
 
-<span class="article_separator">&nbsp;</span>
+<div>
+	<h2>mærker vi forhandler</h2>
+    <ul>
+    	<?php foreach($mfs as $mf){
+			$mfurl = JRoute::_('index.php?option=com_virtuemart&view=manufacturer&virtuemart_manufacturer_id='.$mf->virtuemart_manufacturer_id);
+		?>
+        <li><a href="<?php echo $mfurl;?>"><?php echo $mf->mf_name;?></a></li>
+        <?php }?>
+    </ul>
+</div>
+
 </div>
