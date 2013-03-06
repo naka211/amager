@@ -971,15 +971,15 @@ padding: 0px 5px; border: none medium; font-style: italic; margin-bottom:8px;}
 .bnt-send2 a:hover { background: url(../img/button.png) no-repeat -709px -455px; width: 86px; height: 27px;}
 
 /************site-map-page*************/
-#site-map-page { overflow: hidden; padding: 17px; margin: 15px 0px; background: #fff; border: 1px solid #cacaca; }
-#site-map-page h1 { font-size: 22px; text-transform: none; }
-#site-map-page div { float: left; margin-left: 84px; }
-#site-map-page div.n-m-l2 { margin-left: 0px;} 
-#site-map-page div h2 { font-size: 16px; text-transform: uppercase; color: black; font-weight: normal; margin-bottom: 5px; }
-#site-map-page div ul { list-style: inside; }
-#site-map-page div ul.m-b-15 { margin-bottom: 15px;}
-#site-map-page div ul li a { text-decoration: none; color: #505050; }
-#site-map-page div ul li a:hover {color: #00b2ea; }
+#xmap { overflow: hidden; padding: 17px; margin: 15px 0px; background: #fff; border: 1px solid #cacaca; }
+#xmap h1 { font-size: 22px; text-transform: none; }
+#xmap div { float: left; margin-left: 84px; }
+#xmap div.n-m-l2 { margin-left: 0px;} 
+#xmap h2 { font-size: 16px; text-transform: uppercase; color: black; font-weight: normal; margin-bottom: 5px; }
+#xmap ul { list-style: inside; }
+#xmap ul.level_0 { margin-bottom: 15px;}
+#xmap ul li a { text-decoration: none; color: #505050; }
+#xmap ul li a:hover {color: #00b2ea; }
 #w-erhverv { display: none; }
 #w-ny-tilmeld { display: none; }
 
