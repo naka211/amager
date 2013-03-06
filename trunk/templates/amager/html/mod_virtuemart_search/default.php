@@ -1,7 +1,9 @@
 <?php // no direct access
-defined('_JEXEC') or die('Restricted access'); ?>
+defined('_JEXEC') or die('Restricted access');
+$text=JRequest::getVar("keyword",$text);
+?>
 <!--BEGIN Search Box -->
-<form id="vm_mod_search" class="search2" action="<?php echo JRoute::_('index.php?option=com_virtuemart&view=category&search=true&limitstart=0&virtuemart_category_id='.$category_id ); ?>" method="get">
+<form id="vm_mod_search" class="search2" action="<?php echo JRoute::_('index.php?option=com_virtuemart&view=search&search=true&limitstart=0&virtuemart_category_id='.$category_id ); ?>" method="get">
 <div>
 <?php $output = '<input name="keyword" id="mod_virtuemart_search" maxlength="'.$maxlength.'" alt="'.$button_text.'" class="inputbox'.$moduleclass_sfx.'" type="text" size="'.$width.'" value="'.$text.'"  onblur="if(this.value==\'\') this.value=\''.$text.'\';" onfocus="if(this.value==\''.$text.'\') this.value=\'\';" />';
  $image = JURI::base().'components/com_virtuemart/assets/images/vmgeneral/search.png' ;
@@ -42,6 +44,6 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <div class="bnt-go btn"><a href="javascript:document.vm_mod_search.submit()">go&gt;</a></div>
 		<input type="hidden" name="limitstart" value="0" />
 		<input type="hidden" name="option" value="com_virtuemart" />
-		<input type="hidden" name="view" value="category" />
+		<input type="hidden" name="view" value="search" />
 	</form>
 <!-- End Search Box -->
