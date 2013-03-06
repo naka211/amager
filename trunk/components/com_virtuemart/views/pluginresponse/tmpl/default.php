@@ -196,9 +196,9 @@ Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
         </div><!--.note-shipment-->
       </div><!--#w-tak-page-->
       <div class="bnt-gohome">
-      	<a href="">TIL FORSIDEN</a>
+      	<a href="index.php">TIL FORSIDEN</a>
       </div><!--.bnt-gohome-->
       <div class="bnt-print-receipt">
-      	<a href="#">PRINT KVITTERING</a>
+      	<a href="index.php?option=com_virtuemart&view=pluginresponse&layout=printOrder&orderid=<?php echo $orderid;?>&tmpl=component">PRINT KVITTERING</a>
       </div><!--.bnt-print-receipt-->
   </div>
