@@ -198,7 +198,7 @@ function notification() {
 		$HTML = '';
 		$formname = 'modjnewsForm'.$this->num;
 		$HTML .= '<div class="jNewsMod jcolor'.$this->moduleclass_sfx.'" id="jnews_module'.$this->num.'">'; //open tag for the div
-		$HTML .= '<div class="jNewsRT"><div class="jNewsRB"><div class="jNewsLB">';
+		$HTML .= '<div class="jNewsRT" id="newsletter-page"><div class="jNewsRB" id="w-newsletter"><div class="jNewsLB"><div class="newsletter-title">           	<h2>Tilmeld nyhedsbrev</h2><div class="come-back2"><a href="javascript:history.back()">Tilbage</a></div></div>';
 		switch ( $this->effect ){
 			case 'mootools-slide':
 				$HTML .= $this->_addMootoolsSlide();
@@ -226,7 +226,7 @@ function notification() {
 			$linkForm = 'option='.JNEWS_OPTION;
 			$linkForm = jNews_Tools::completeLink( $linkForm, false, false );
 			
-			$HTML .= '<form action="'.$linkForm.'" method="post" name="modjnewsForm'.$this->num.'">'; //start of form
+			$HTML .= '<form action="'.$linkForm.'" method="post" name="modjnewsForm'.$this->num.'" class="newsletter-content"><p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>'; //start of form
 			
 			if (!empty($this->introtext)) {//display pretext
 				$text = '<span class="pretext">'. $this->introtext .'</span>';
@@ -247,7 +247,7 @@ function notification() {
 //				}//endallow_unregistered
 				if(!$this->linear) $HTML .= '</div>';//enddive inputfields
 
-				if(!$this->linear) $HTML .= '<div class="subscripitonRHTML">';		
+				if(!$this->linear) $HTML .= '<div class="subscripitonRHTML" style="visibility:hidden; height:0px;">';		
 				$HTML .= $this->showReceiveHTML($subscriber);
 				if(!$this->linear) $HTML .= '</div>';//enddiv rHTML
 				
@@ -734,14 +734,14 @@ function notification() {
 				 				ajax.request();";
 					}else{
 						$js .="
-								var ajax = new Request({
+								var ajax = jQuery.ajax({
 								url : url,
 								data: ".$data;
 						$js .=",
 								method: 'POST',
-								onComplete : function(result){modsubscribe".$this->num."(result); }
+								complete : function(result){modsubscribe".$this->num."(result); }
 								});
-								ajax.send();";
+								";
 					}
 				} else {
     				$js .= 'form.submit();' .
@@ -777,7 +777,7 @@ function notification() {
        			if(!$this->module_message && $this->effect != 'mootools-slide'){
 		 			$js .=	'
 					message = document.getElementById(\'message'.$this->num.'\');
-					message.innerHTML = submessage.innerHTML;
+					message.innerHTML = result.responseText;
 					message.setAttribute(\'style\', \'display:block; padding:5px\');';
 
        				if($this->effect =='mootools-modal'){
@@ -921,7 +921,7 @@ function notification() {
 
 		if(!empty($this->hiddenlistIds)) $hiddenListIds = explode(',',$this->hiddenlistIds); //we retrieve the listIds set in the module
 		
-		if(!$this->linear) $html .= '<div class="subscriptionLists">';
+		if(!$this->linear) $html .= '<div class="subscriptionLists" style="visibility:hidden; height:0px;">';
 		//we subscription list here
 		if( $this->dropdown ) {
 			$dropdown = '<input type="hidden" value="1" name="subscribed[1]"  />';
@@ -1241,7 +1241,7 @@ function notification() {
 			if ( !empty($this->redirectURL) ) {
 							$btn = '<input id="aca_22" type="submit" value="'.$this->buttonUnregistered.'" class="button" name="'.$this->buttonUnregistered.'" />';
 			} else {
-							$btn = '<input id="aca_22" type="button" value="'.$this->buttonUnregistered.'" class="button" name="'.$this->buttonUnregistered.'" onclick="return submitjnewsmod'.$this->num.'(\'modjnewsForm'.$this->num.'\',\''.$url.'\');" />';
+							$btn = '<input id="aca_22" type="button" value="" class="button bnt-subs-now2" name="'.$this->buttonUnregistered.'" onclick="return submitjnewsmod'.$this->num.'(\'modjnewsForm'.$this->num.'\',\''.$url.'\');" style="cursor: pointer;" />';
 			}
 				      if($this->effect == 'mootools-slide' && !$this->red_subscription){
 			       			$btnHTML .= '<div style="display:none; width:50px; padding-top:5px; height:100%" id="ajax_loading'.$this->num.'"><img alt="loader" src="'.JURI::base().'components/'.JNEWS_OPTION.'/images/16/ajax-loader.gif"/>'._JNEWS_PLEASE_WAIT.'</div>';
@@ -1252,7 +1252,7 @@ function notification() {
 		      $hidden = '<input type="hidden" name="act" value="subscribe" />';
 		      $hidden .= '<input type="hidden" name="redirectlink" value="' . $this->redirectURL .'" />';
 		      $hidden .= '<input type="hidden" name="listname" value="' . $this->showListName .'" />';
-		      $hidden .= '<input type="hidden" id="passwordA" name="passwordA" value="'.crypt($GLOBALS[JNEWS.'url_pass'],$GLOBALS[JNEWS.'url_pass']).'" />';
+		      $hidden .= '<input type="hidden" id="passwordA" name="passwordA" value="'.crypt($GLOBALS[JNEWS.'url_pass']).'" />';
 		      $hidden .= '<input type="hidden" name="fromSubscribe" value="1" />';
 
 		      $btnHTML .= $hidden;
@@ -1284,14 +1284,14 @@ function notification() {
         	
         	//name field
 			if ($this->shownamefield) {
-				$text = '<input id="wz_11" type="text" size="'. $this->fieldsize.'" value="'. addslashes(_JNEWS_NAME).'" class="inputbox" name="name" onblur="if(this.value==\'\') this.value=\''. addslashes(_JNEWS_NAME).'\';" onfocus="if(this.value==\''. addslashes(_JNEWS_NAME).'\') this.value=\'\' ; " />';
+				$text = '<input id="wz_11" type="text" size="'. $this->fieldsize.'" value="Indtast din navn" class="inputbox" name="name" onblur="if(this.value==\'\') this.value=\'Indtast din navn\';" onfocus="if(this.value==\'Indtast din navn\') this.value=\'\' ; " />';
 				$HTML .= jnews::printLine($this->linear, $text);
 			} else {
 				$text = '<input id="wz_11" type="hidden" value="" name="name" />';
 			}
 
 		    //email field
-		    $text = '<input id="wz_12" type="email" size="' .$this->fieldsize .'" value="' . addslashes(_JNEWS_EMAIL) .'" class="inputbox" name="email" onblur="if(this.value==\'\') this.value=\'' . addslashes(_JNEWS_EMAIL) .'\';" onfocus="if(this.value==\'' . addslashes(_JNEWS_EMAIL) .'\') this.value=\'\' ; " />';
+		    $text = '<input id="wz_12" type="email" size="' .$this->fieldsize .'" value="Indtast din e-mail" class="inputbox" name="email" onblur="if(this.value==\'\') this.value=\'Indtast din e-mail\';" onfocus="if(this.value==\'Indtast din e-mail\') this.value=\'\' ; " />';
 		    $HTML .= jnews::printLine($this->linear, $text);
 		    
 			//for field columns

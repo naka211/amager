@@ -958,7 +958,7 @@ font-style: italic; color: #909090; padding: 0px 5px; }
 .newsletter-title h2 { color: #00b2ea; font-size: 18px; text-transform: none; float: left; }
 .newsletter-title .come-back2 { float: right; background: url(../img/icon-back2.png) no-repeat left center; padding-left: 10px;  }
 .come-back2 a{ color: #00b2ea; text-decoration: none; }
-.newsletter-content { border-top: 1px solid #cacaca; padding: 14px 14px 60px; overflow: hidden; }
+.newsletter-content { border-top: 1px solid #cacaca; padding: 14px 14px 14px; overflow: hidden; }
 .newsletter-content input { background: url(../img/bg-input5.png) no-repeat; width: 233px; height: 27px; line-height: 27px; color: #909090;
 padding: 0px 5px; border: none medium; font-style: italic; margin-bottom:8px;}
 .newsletter-content div { float: left; }
