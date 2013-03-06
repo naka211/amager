@@ -222,7 +222,7 @@ switch ($action) {
 
 	case ('noredsubscribe'):
 
-		JRequest::checkToken() or die( 'Invalid Token' );
+		//JRequest::checkToken() or die( 'Invalid Token' );
 		
 		$userid = JRequest::getInt('userid');
 		$sublists = JRequest::getVar('modsubscribed_lists');
@@ -240,7 +240,7 @@ switch ($action) {
 		}//endif		
 		$modsub->name = str_replace( array( '"', "=", 'INSERT ' ), '_', $modsub->name );
 		//we need to check the pwd
-		if ( crypt( $GLOBALS[JNEWS.'url_pass'], $GLOBALS[JNEWS.'url_pass'] ) != $modsub->passwordA ) die( 'Invalid password' );
+		if ( crypt( $GLOBALS[JNEWS.'url_pass'],$modsub->passwordA ) != $modsub->passwordA ) die( 'Invalid password' );
 		
 		$modsub->subscribedlists = $sublists;
 		$modsub->column1 = JRequest::getVar('modcolumn1','');
