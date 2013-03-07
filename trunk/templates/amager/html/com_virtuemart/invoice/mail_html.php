@@ -186,7 +186,7 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
     <td height="50" width="481" style="padding: 0 10px; text-align: left;">Produkt</td>
     <td width="155">Vare-nr</td>
     <td width="40">Antal</td>
-    <td width="140">Pris i alt</td>
+    <td width="140">Pris pr. enhed</td>
     <td align="right" width="152" style="padding: 0 10px;">Pris i alt</td>
   </tr>
   <?php foreach($this->orderDetails['items'] as $item){?>

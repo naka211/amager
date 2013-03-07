@@ -894,7 +894,7 @@ border-left: 2px solid #fff; background: #efefef; }
 .overview-right .w-over-top { overflow: hidden; }
 .overview-right .over-title-gray { background: #e6e6e6; padding: 5px 14px; color: black; margin: 10px 0px; cursor: pointer; width: 584px; }
 .over-title-gray label, .over-title-green label { float: left; width: 449px; font-weight: bold; cursor: pointer; }
-.overview-right .over-title-green { background: #b8e187; padding: 5px 14px; color: black; cursor: pointer; width: 584px;}
+.overview-right .active { background: #b8e187; padding: 5px 14px; color: black; cursor: pointer; width: 584px;}
 .overview-right a { color: black; text-decoration: none; }
 .overview-right h4 { color: black; font-weight: bold; }
 .overview-right .over-info { font-weight: bold; color: black; margin-top: 10px; }
@@ -902,11 +902,11 @@ border-left: 2px solid #fff; background: #efefef; }
 .overview-right .over-cus-info, .over-delivery-address { float: left; width: 306px; margin-top: 10px;}
 .over-cus-info label, .over-delivery-address label { width: 152px; float: left; }
 .table-pro-title .col-1-, .col-2-, .col-3-, .col-4- { float: left; color: black; text-align: center;}
-.col-1- { width: 300px; text-align: left !important; }
-.col-1-content- { width: 200px; text-align: left !important; margin-left: 10px; }
+.col-1- { width: 200px; text-align: left !important; }
+.col-1-content- { width: 200px; text-align: left !important;}
 .col-2-, .col-2-content- { width: 108px; margin-left: 10px; }
 .col-3-, .col-3-content- { width: 56px; }
-.col-4-, .col-4-content- { width: 97px; text-align: right !important; float: right !important; }
+.col-4-, .col-4-content- { width: 97px; text-align: center; }
 .col-1-content-, .col-2-content-, .col-3-content-, .col-4-content- { float: left; text-align: center; }
 .b-t-2{ border-top: 2px solid #cacaca;}
 .w-print-down { overflow: hidden; }
