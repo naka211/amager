@@ -29,13 +29,13 @@ if (count($this->orderlist) == 0) {
 			<div class="over-info">
 				<label>Kundetype:</label>
 				<span><?php
-				$userHtml="";
+				$tmp="";
 				switch($orderDetails["details"]["BT"]->address_type_name){
 					case 1: echo "Privat";break;
-					case 2: $userHtml="<label>Firmanavn:</label><span>".$orderDetails["details"]["BT"]->company."</span><br>
+					case 2: $tmp="<label>Firmanavn:</label><span>".$orderDetails["details"]["BT"]->company."</span><br>
 					<label>CVR-nr.:</label><span>".$orderDetails["details"]["BT"]->cvr."</span><br>";
 					echo "Erhverv";break;
-					case 3: $userHtml="<label>EAN-nr.:</label><span>".$orderDetails["details"]["BT"]->ean."</span><br>
+					case 3: $tmp="<label>EAN-nr.:</label><span>".$orderDetails["details"]["BT"]->ean."</span><br>
 					<label>Myndighed/Institution:</label><span>".$orderDetails["details"]["BT"]->authority."</span><br>
 					<label>Rekvisitionsnr.:</label><span>".$orderDetails["details"]["BT"]->order1."</span><br>
 					<label>Personreference:</label><span>".$orderDetails["details"]["BT"]->person."</span><br>";
@@ -48,7 +48,7 @@ if (count($this->orderlist) == 0) {
 			<div class="w-over-top">
 				<div class="over-cus-info">
 					<h4>Kundeoplysninger:</h4>
-					<?php echo $userHtml?>
+					<?php echo $tmp?>
 					<label>Fornavn:</label><span><?php echo $orderDetails["details"]["BT"]->first_name?></span><br>
 					<label>Efternavn:</label><span><?php echo $orderDetails["details"]["BT"]->last_name?></span><br>
 					<label>Adresse:</label><span><?php echo $orderDetails["details"]["BT"]->address_1?></span><br>
@@ -90,8 +90,8 @@ if (count($this->orderlist) == 0) {
 <?php
 // Display orders
 			foreach($orderDetails['items'] as $item) {
-		$qtt = $item->product_quantity ;
-		$_link = JRoute::_('index.php?option=com_virtuemart&view=productdetails&virtuemart_category_id=' . $item->virtuemart_category_id . '&virtuemart_product_id=' . $item->virtuemart_product_id);
+		//$qtt = $item->product_quantity ;
+		//$_link = JRoute::_('index.php?option=com_virtuemart&view=productdetails&virtuemart_category_id=' . $item->virtuemart_category_id . '&virtuemart_product_id=' . $item->virtuemart_product_id);
 ?>
 	
 				<div class="table-pro-content">
