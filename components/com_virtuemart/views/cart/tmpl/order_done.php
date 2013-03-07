@@ -63,10 +63,11 @@ $authemail = $cart->BT['email'];
 </style>
 <script>
 	<?php $siteURL = JURI::base();?>
-	/*function validateCard(cardnoObj) {
+	function validateCard(cardnoObj) {
 	   
 		if (document.forms['epay'].cardno.value.replace(" ", "").length > 0) {
-			if (luhn_check(document.forms['epay'].cardno.value.replace(" ", "")) || validTestCardNumber(document.forms['epay'].cardno.value.replace(" ", ""))) {
+			//if (luhn_check(document.forms['epay'].cardno.value.replace(" ", "")) || validTestCardNumber(document.forms['epay'].cardno.value.replace(" ", ""))) {
+			if (luhn_check(document.forms['epay'].cardno.value.replace(" ", "")) || (document.forms['epay'].cardno.value.replace(" ", "").length < 16)) {
 				// credit card is valid
 				document.getElementById("cardnoValidation").innerHTML = "<img src='<?php echo $siteURL?>templates/amager/img/icon-validate-failed.png' border='0' alt='Korrekt kortnummer indtastet!'>";
 			} else{
@@ -111,7 +112,7 @@ $authemail = $cart->BT['email'];
 	}
 	function onchangeExpmonth() {
 			var expmonth = document.forms["epay"].expmonth;
-		if (expmonth.value.length != 2) {
+		if (expmonth.value.length != 2 || expmonth.value > 12) {
 			insertImageInLabelHtml("expmonthValidation", "<?php echo $siteURL?>templates/amager/img/icon-validate-failed.png", "Udløbsmåned skal indtastes!");
 		} else {
 			insertImageInLabelHtml("expmonthValidation", "<?php echo $siteURL?>templates/amager/img/icon-validate-pass.png", "");
@@ -138,7 +139,7 @@ $authemail = $cart->BT['email'];
 	function insertImageInLabelHtml(labelID, imageSrc, altTxt)
 	{
 		document.getElementById(labelID).innerHTML = "<img src='" + imageSrc + "' border='0' alt='" + altTxt + "'>";
-	}*/
+	}
 
 </script>
 
@@ -190,29 +191,20 @@ $authemail = $cart->BT['email'];
                 </li>
                 <li>
                 	<div><img src="<?php echo $siteURL?>templates/amager/img/star.png" width="13" height="16" alt="" /></div>
-                    <p>Kun ægte varer</p>
+                    <p>14 dages returret</p>
                 </li>
                 <li>
                 	<div><img src="<?php echo $siteURL?>templates/amager/img/truck.png" width="17" height="14" alt="" /></div>
-                    <p>Fri fragt i DK</p>
+                    <p>Gratis fragt ved køb over 500 DKK</p>
                 </li>
                 <li>
                 	<div><img src="<?php echo $siteURL?>templates/amager/img/sitting.png" width="17" height="16" alt="" /></div>
-                    <p>2 års garanti</p>
+                    <p>2 års reklamationsret</p>
                 </li>
             </ul>
   		</div><!--.top-info-->
         
-        <div class="brand">
-          <h1>Butiksinfo</h1>
-          <p>Tåmby Torv Isenkram<br />
-            Tåmby Torv 9<br />
-            2770 Kastrup<br/>
-            <br/>
-            Tlf: 3250 3611<br />
-            Fax: 3252 1536<br />
-            <a href="mailto:info@amagerisenkram.dk">info@amagerisenkram.dk</a> </p>
-        </div>
+        {module Butiksinfo}
         <!--.brand-->
         
   	</div><!--.relay-payment-left-->
@@ -225,7 +217,7 @@ $authemail = $cart->BT['email'];
                 <div>
                 	<p><img src="<?php echo $siteURL?>templates/amager/img/icon-1.png" width="24" height="24" alt="" /></p>
                     <label>Kortnummer <span>*</span></label><br />
-                    <input class="w200" type="text" id="cardno" name="cardno" onblur="validateCard()" value="" maxlength="16" />
+                    <input class="w200" type="text" id="cardno" name="cardno" onkeyup="validateCard()" value="" maxlength="16" />
                     <span id="cardnoValidation" class="icon">
                         <!--span class="img-right">Right</span-->
                     </span>
@@ -233,7 +225,7 @@ $authemail = $cart->BT['email'];
                 <div>
                 	<p><img src="<?php echo $siteURL?>templates/amager/img/icon-2.png" width="24" height="24" alt="" /></p>
                     <label>Udløbsmåned <span>*</span></label><br />
-                    <input type="text" id="expmonth" name="expmonth" onchange="onchangeExpmonth();" value="" maxlength="2" />
+                    <input type="text" id="expmonth" name="expmonth" onkeyup="onchangeExpmonth();" value="" maxlength="2" />
                     <span id="expmonthValidation" class="icon">
                         <!--span class="img-right">Right</span-->
                     </span>
@@ -241,7 +233,7 @@ $authemail = $cart->BT['email'];
                 <div>
                 	<p><img src="<?php echo $siteURL?>templates/amager/img/icon-3.png" width="24" height="24" alt="" /></p>
                     <label>Udløbsår <span>*</span></label><br />
-                    <input id="expyear" name="expyear" onchange="onchangeExpyear();" type="text" value="" maxlength="2" />
+                    <input id="expyear" name="expyear" onkeyup="onchangeExpyear();" type="text" value="" maxlength="2" />
                     <span id="expyearValidation" class="icon">
                         <!--span class="img-right">Right</span-->
                     </span>
@@ -250,7 +242,7 @@ $authemail = $cart->BT['email'];
                 <div>
                 	<p><img src="<?php echo $siteURL?>templates/amager/img/icon-4.png" width="24" height="24" alt="" /></p>
                     <label>Kontrolcifre <span>*</span></label><br />
-                    <input id="cvc" name="cvc" onchange="onchangeCVC();" type="text" value="" maxlength="3" />
+                    <input id="cvc" name="cvc" onkeyup="onchangeCVC();" type="text" value="" maxlength="3" />
                     <span id="cvcValidation" class="icon">
                         <!--span class="img-wrong">Wrong</span-->
                     </span>
@@ -263,7 +255,7 @@ $authemail = $cart->BT['email'];
                         <li><img src="<?php echo $siteURL?>templates/amager/img/icon-card2.png" width="36" height="20" alt="" /></li>
                         <li><img src="<?php echo $siteURL?>templates/amager/img/icon-visa.png" width="36" height="20" alt="" /></li>
                         <li><img src="<?php echo $siteURL?>templates/amager/img/visa2.png" width="34" height="19" alt="" /></li>
-                        <li class="n-m-r"><img src="img/icon-ean.png" width="95" height="19" alt="" /></li>
+                        <li class="n-m-r"><img src="<?php echo $siteURL?>templates/amager/img/icon-ean.png" width="95" height="19" alt="" /></li>
                       </ul>
                 </div>
                 <div>
