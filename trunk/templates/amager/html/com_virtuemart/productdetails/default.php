@@ -224,7 +224,7 @@ if (VmConfig::get('ask_question', 1) == 1){
 
 		// Manufacturer of the Product
 		if (VmConfig::get('show_manufacturers', 1) && !empty($this->product->virtuemart_manufacturer_id)) {
-			echo $this->loadTemplate('manufacturer');
+			//echo $this->loadTemplate('manufacturer');
 		}
 		?>
 	</div>
