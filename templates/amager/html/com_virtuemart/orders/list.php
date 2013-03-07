@@ -114,16 +114,16 @@ if (count($this->orderlist) == 0) {
 			<div class="table-pro-content b-t-2">
 				<div class="sum-total">
 					<div>
-					<label>Forsendelse:</label><span>49,00 DKK</span>
+					<label>Forsendelse:</label><span>???</span>
 					</div>
 					<div>
-					<label>Subtotal inkl. moms:</label><span>799,80 DKK</span>
+					<label>Subtotal inkl. moms:</label><span>???</span>
 					</div>
 					<div>
-					<label>Heraf moms:</label><span>199,95 DKK</span>
+					<label>Heraf moms:</label><span>???</span>
 					</div>
 					<div class="black">
-					<label>TOTAL INKL. MOMS:</label><span>848,80 DKK</span>
+					<label>TOTAL INKL. MOMS:</label><span>???</span>
 					</div>
 				</div><!--.sum-total-->
 			</div><!--.table-pro-content-->
