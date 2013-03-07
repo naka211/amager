@@ -53,7 +53,7 @@ if($opt.$view==in_array($opt.$view,array('com_usersprofile','com_virtuemartuser'
 	$db->setQuery($query);
 	$pro = $db->loadObject();
 	
-	$query = 'SELECT file_url_thumb FROM #__virtuemart_medias WHERE virtuemart_media_id = (SELECT virtuemart_media_id FROM #__virtuemart_product_medias WHERE virtuemart_product_id = '.JRequest::getVar('virtuemart_product_id').' AND ordering = 1)';	
+	$query = 'SELECT file_url FROM #__virtuemart_medias WHERE virtuemart_media_id = (SELECT virtuemart_media_id FROM #__virtuemart_product_medias WHERE virtuemart_product_id = '.JRequest::getVar('virtuemart_product_id').' AND ordering = 1)';	
 	$db->setQuery($query);
 	$img = $db->loadResult();
 	?>
