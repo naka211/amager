@@ -47,6 +47,37 @@ if($opt.$view==in_array($opt.$view,array('com_usersprofile','com_virtuemartuser'
 }
 </style>
 <jdoc:include type="head" />
+	<?php if($opt.$view==in_array($opt.$view,array("com_virtuemartproductdetails"))){
+	$db = JFactory::getDBO();
+	$query = 'SELECT product_desc, product_name FROM #__virtuemart_products_da_dk WHERE virtuemart_product_id = '.JRequest::getVar('virtuemart_product_id');	
+	$db->setQuery($query);
+	$pro = $db->loadObject();
+	
+	$query = 'SELECT file_url_thumb FROM #__virtuemart_medias WHERE virtuemart_media_id = (SELECT virtuemart_media_id FROM #__virtuemart_product_medias WHERE virtuemart_product_id = '.JRequest::getVar('virtuemart_product_id').' AND ordering = 1)';	
+	$db->setQuery($query);
+	$img = $db->loadResult();
+	?>
+	<meta name="productTitle" property="og:title" content="<?php echo $pro->product_name;?>">
+	<meta name="productImage" property="og:image" content="<?php echo JURI::base().$img;?>">
+	<meta property="og:url" content="<?php echo JURI::base()?>index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=<?php echo JRequest::getVar('virtuemart_product_id');?>&virtuemart_category_id=<?php echo JRequest::getVar('virtuemart_category_id');?>" />
+	<meta property="og:description" content="<?php echo $pro->product_desc;?>" />
+    <script>
+			jQuery(document).ready(function(){
+				jQuery(".share-pro-onface a").click(function(){
+					//alert("Oh my loev");
+					postFacebookWallDetail("<?php echo urlencode(JURI::root()."index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=".JRequest::getVar('virtuemart_product_id')."&virtuemart_category_id=".JRequest::getVar('virtuemart_category_id')); ?>");
+				});
+				function postFacebookWallDetail(urlencode){
+					t=document.title; 
+					window.open('http://www.facebook.com/sharer.php?u='+urlencode+'&v=<?php echo time();?>','sharer','toolbar=0,status=0,width=626,height=436'); 
+					return false; 
+				}
+				
+			});
+			
+			</script>
+    <?php }?>
+
 
 <!--Script-->
 <script type="text/javascript" src="<?php echo $tmplURL?>js/webfont.js" async="async"></script>

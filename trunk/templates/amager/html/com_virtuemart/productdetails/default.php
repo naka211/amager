@@ -76,7 +76,7 @@ if (empty($this->product)) {
 <div class="pro-title">
 	<h2><?php echo $this->product->product_name ?></h2>
 	<div class="share-pro-onface">
-		<a href="#">Del Produkt på facebook</a>
+		<a href="javascript:void(0);">Del Produkt på facebook</a>
 	</div>
 	<div class="tell">
 		<a href="#" data-reveal-id="myModal2">Tip en ven</a>
