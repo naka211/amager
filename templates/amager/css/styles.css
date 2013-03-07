@@ -900,7 +900,7 @@ border-left: 2px solid #fff; background: #efefef; }
 .overview-right .over-info { font-weight: bold; color: black; margin-top: 10px; }
 .over-info label { width: 123px; float: left; }
 .overview-right .over-cus-info, .over-delivery-address { float: left; width: 306px; margin-top: 10px;}
-.over-cus-info label, .over-delivery-address label { width: 105px; float: left; }
+.over-cus-info label, .over-delivery-address label { width: 152px; float: left; }
 .table-pro-title .col-1-, .col-2-, .col-3-, .col-4- { float: left; color: black; text-align: center;}
 .col-1- { width: 300px; text-align: left !important; }
 .col-1-content- { width: 200px; text-align: left !important; margin-left: 10px; }
