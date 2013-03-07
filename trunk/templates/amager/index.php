@@ -59,7 +59,7 @@ if($opt.$view==in_array($opt.$view,array('com_usersprofile','com_virtuemartuser'
 	?>
 	<meta name="productTitle" property="og:title" content="<?php echo $pro->product_name;?>">
 	<meta name="productImage" property="og:image" content="<?php echo JURI::base().$img;?>">
-	<meta property="og:url" content="<?php echo JURI::base()?>index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=<?php echo JRequest::getVar('virtuemart_product_id');?>&virtuemart_category_id=<?php echo JRequest::getVar('virtuemart_category_id');?>" />
+	<meta property="og:url" content="<?php echo JRoute::_('http://'.$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]);?>" />
 	<meta property="og:description" content="<?php echo $pro->product_desc;?>" />
     <script>
 			jQuery(document).ready(function(){
