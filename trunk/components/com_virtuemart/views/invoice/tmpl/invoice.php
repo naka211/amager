@@ -74,7 +74,7 @@ if ($this->headFooter) {
 if ($this->print) {
     ?>
 
-<body onload="javascript:print();">
+<body onLoad="javascript:print();">
 
 <div class='spaceStyle'>
     <?php
