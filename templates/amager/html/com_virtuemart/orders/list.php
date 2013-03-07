@@ -10,6 +10,24 @@ if (count($this->orderlist) == 0) {
 } else {
 	$orderModel = VmModel::getModel('orders');
  ?>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	
+//Set default open/close settings
+jQuery('.w-over-title-gray').hide(); //Hide/close all containers
+jQuery('.over-title-gray:first').addClass('active').next().show(); //Add "active" class to first trigger, then show/open the immediate next container
+
+//On Click
+jQuery('.over-title-gray').click(function(){
+	if( jQuery(this).next().is(':hidden') ) { //If immediate next container is closed...
+		jQuery('.over-title-gray').removeClass('active').next().slideUp(); //Remove all .acc_trigger classes and slide up the immediate next container
+		jQuery(this).toggleClass('active').next().slideDown(); //Add .acc_trigger class to clicked trigger and slide down the immediate next container
+	}
+	return false; //Prevent the browser jump to the link anchor
+});
+
+});
+</script>
 <div id="overview-page">
 	<div class="overview-left">
 		<div class="bnt-overview"><a href="<?php echo JRoute::_('index.php?option=com_users&task=profile.edit&user_id='.$user->id); ?>"></a></div><!--.bnt-overview-->
@@ -83,21 +101,22 @@ if (count($this->orderlist) == 0) {
 				<div class="col-3-">
 				<p>Antal</p>
 				</div><!--.col-3-->
-				<div class="col-4-">
+                <div class="col-4-">
+				<p>Pris pr. enhed</p>
+				</div>
+				<div class="col-4-" style="text-align:right">
 				<p>Pris i alt</p>
 				</div><!--.col-4-->
 				</div><!--.table-pro-title-->
 <?php
 // Display orders
 			foreach($orderDetails['items'] as $item) {
+				//print_r($item);exit;
 		//$qtt = $item->product_quantity ;
 		//$_link = JRoute::_('index.php?option=com_virtuemart&view=productdetails&virtuemart_category_id=' . $item->virtuemart_category_id . '&virtuemart_product_id=' . $item->virtuemart_product_id);
 ?>
 	
 				<div class="table-pro-content">
-					<div class="list-pro-item-img2">
-					<img src="img/img-pro-item2.jpg" width="89" height="72" alt="">
-					</div><!--.list-pro-item-img-->
 					<div class="col-1-content-">
 					<p><?php echo $item->order_item_name?></p>
 					</div><!--.col-1-content-->
@@ -107,31 +126,43 @@ if (count($this->orderlist) == 0) {
 					<div class="col-3-content-">
 					<p><?php echo $item->product_quantity?></p>
 					</div><!--.col-3-content-->
-					<div class="col-4-content-">
-					<p><?php echo $this->currency->priceDisplay($item->product_item_price,$this->currency)?></p>
+                    <div class="col-4-content-">
+					<p><?php echo $this->currency->priceDisplay($item->product_final_price,$this->currency)?></p>
+					</div><!--.col-4-content-->
+					<div class="col-4-content-" style="text-align:right">
+					<p><?php echo $this->currency->priceDisplay($item->product_subtotal_with_tax,$this->currency)?></p>
 					</div><!--.col-4-content-->
 				</div><!--.table-pro-content-->
+         	<?php
+			/// Display orders
+				}
+			?>
 			<div class="table-pro-content b-t-2">
 				<div class="sum-total">
 					<div>
-					<label>Forsendelse:</label><span>???</span>
+					<label>Forsendelse:</label><span><?php echo number_format($orderDetails['details']['BT']->order_shipment,2,',','.');?> DKK</span>
 					</div>
 					<div>
-					<label>Subtotal inkl. moms:</label><span>???</span>
+					<label>Subtotal inkl. moms:</label><span><?php echo number_format($orderDetails['details']['BT']->order_salesPrice,2,',','.');?> DKK</span>
 					</div>
 					<div>
-					<label>Heraf moms:</label><span>???</span>
+					<label>Heraf moms:</label><span><?php echo number_format($orderDetails['details']['BT']->order_salesPrice*0.25,2,',','.');?> DKK</span>
 					</div>
 					<div class="black">
-					<label>TOTAL INKL. MOMS:</label><span>???</span>
+					<label>TOTAL INKL. MOMS:</label><span><?php echo number_format($orderDetails['details']['BT']->order_total,2,',','.');?> DKK</span>
 					</div>
 				</div><!--.sum-total-->
 			</div><!--.table-pro-content-->
-<?php
-/// Display orders
-	}
-?>
+
 			</div>
+            <div class="w-print-down">            
+                <div class="bnt-download">
+                    <a href="#">Download PDF-file</a>
+                </div><!--.bnt-download-->
+                <div class="bnt-over-print">
+                    <a href="index.php?option=com_virtuemart&view=pluginresponse&layout=printOrder&orderid=<?php echo $orderDetails['details']['BT']->order_number;?>&tmpl=component" target="_blank">Print</a>
+                </div><!--.bnt-over-print-->
+            </div>
 		</div>
 <?php
 			$k = 1 - $k;
