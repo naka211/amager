@@ -226,7 +226,7 @@ function notification() {
 			$linkForm = 'option='.JNEWS_OPTION;
 			$linkForm = jNews_Tools::completeLink( $linkForm, false, false );
 			
-			$HTML .= '<form action="'.$linkForm.'" method="post" name="modjnewsForm'.$this->num.'" class="newsletter-content"><p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>'; //start of form
+			$HTML .= '<form action="'.$linkForm.'" method="post" name="modjnewsForm'.$this->num.'" class="newsletter-content"><p>Tilmeld dig nyheder og modtag aktuelle tilbud</p>'; //start of form
 			
 			if (!empty($this->introtext)) {//display pretext
 				$text = '<span class="pretext">'. $this->introtext .'</span>';

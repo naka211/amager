@@ -569,7 +569,7 @@ border-top: 1px dotted #cacaca; margin-top: 10px; padding-top: 5px;}
 .enlarge a{ text-indent: -4000px; display: block; width: 75px; height: 23px; }
 .enlarge a:hover {background: url(../img/button.png) no-repeat -494px -127px; width: 75px; height: 23px;}
 .pro-content-left .list-item ul{ list-style: none; margin-top: 8px; }
-.list-item ul li { float: left; border: 1px solid #cacaca; margin-right: 8px; }
+.list-item ul li { float: left; border: 1px solid #cacaca; margin-right: 5px; }
 .list-item ul li.n-m-r { margin-right: 0px;}
 
 .pro-content-left .list-item ul#thumblist { display: block; }

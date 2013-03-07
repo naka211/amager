@@ -1940,7 +1940,7 @@ class VirtueMartModelProduct extends VmModel {
 		$manuList = '';
 		if (VmConfig::get ('show_manufacturers')) {
 			if (empty ($currentManufacturerLink)) {
-				$currentManufacturerLink = '<div class="title">' . JText::_ ('COM_VIRTUEMART_PRODUCT_DETAILS_MANUFACTURER_LBL') . '</div>';
+				//$currentManufacturerLink = '<div class="title">' . JText::_ ('COM_VIRTUEMART_PRODUCT_DETAILS_MANUFACTURER_LBL') . '</div>';
 			}
 			$manuList = ' <div class="orderlistcontainer">' . $currentManufacturerLink;
 			$manuList .= $manufacturerLink . '</div><div class="clear"></div>';
