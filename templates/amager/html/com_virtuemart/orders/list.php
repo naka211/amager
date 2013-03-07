@@ -157,7 +157,7 @@ jQuery('.over-title-gray').click(function(){
 			</div>
             <div class="w-print-down">            
                 <div class="bnt-download">
-                    <a href="#">Download PDF-file</a>
+                    <a href="index.php?option=com_virtuemart&view=invoice&task=exportPdf&orderid=<?php echo $row->virtuemart_order_id;?>">Download PDF-file</a>
                 </div><!--.bnt-download-->
                 <div class="bnt-over-print">
                     <a href="index.php?option=com_virtuemart&view=pluginresponse&layout=printOrder&orderid=<?php echo $orderDetails['details']['BT']->order_number;?>&tmpl=component" target="_blank">Print</a>

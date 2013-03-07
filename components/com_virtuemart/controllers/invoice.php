@@ -42,6 +42,13 @@ class VirtueMartControllerInvoice extends JController
 // 		$view->headFooter = true;
 		$view->display();
 	}
+	
+	function exportPdf(){
+		$orderid = JRequest::getInt('orderid');
+		$orderModel = VmModel::getModel('orders');
+		$orderDetails = $orderModel->getOrder($orderid);
+		$this->checkStoreInvoice($orderDetails);
+	}
 
 	function checkStoreInvoice($orderDetails = 0){
 
@@ -71,7 +78,6 @@ class VirtueMartControllerInvoice extends JController
 		if (!  $orderModel->createInvoiceNumber($orderDetails['details']['BT'], $invoiceNumberDate)) {
 		    return 0;
 		}
-
 		if(!empty($invoiceNumberDate[0])){
 			$invoiceNumber = $invoiceNumberDate[0];
 		} else {
@@ -135,7 +141,7 @@ class VirtueMartControllerInvoice extends JController
 		$view->display();
 		$html = ob_get_contents();
 		ob_end_clean();
-
+		
 
 		// create new PDF document
 		$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
