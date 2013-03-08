@@ -42,13 +42,6 @@ class VirtueMartControllerInvoice extends JController
 // 		$view->headFooter = true;
 		$view->display();
 	}
-	
-	function exportPdf(){
-		$orderid = JRequest::getInt('orderid');
-		$orderModel = VmModel::getModel('orders');
-		$orderDetails = $orderModel->getOrder($orderid);
-		$this->checkStoreInvoice($orderDetails);
-	}
 
 	function checkStoreInvoice($orderDetails = 0){
 
