@@ -105,7 +105,7 @@ jQuery(document).ready( function(){
 							<div class="list-cart-img"><img src="<?php echo $prod->image->file_url_thumb?>" width="45" alt="" /></div>
 							<div class="list-cart-content">
 								<p class="title-pro" style="height:38px" ><?php echo $product["product_name"]?></p>
-								<p>x <?php echo $product["quantity"]?></p>
+								<p>Antal: <?php echo $product["quantity"]?></p>
 							</div>
 							<div class="price-cart"><?php echo $price?></div>
 							<div class="list-cart-close" rel="<?php echo $product["product_id"]?>">

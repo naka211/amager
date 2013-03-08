@@ -228,7 +228,6 @@ focusInput = function(){
 	<div class="clear"></div>
 	<div id="main">
 	<div id="w-main">
-		<jdoc:include type="message" />
 		<jdoc:include type="component" />
 	</div>
 	<!--#w-main-->
