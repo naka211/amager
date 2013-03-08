@@ -65,7 +65,7 @@ class VirtuemartViewInvoice extends VmView {
 
 		$this->format = JRequest::getWord('format','html');
 		if($layout == 'invoice'){
-			//$document->setTitle( JText::_('COM_VIRTUEMART_INVOICE') );
+			$document->setTitle( JText::_('COM_VIRTUEMART_INVOICE') );
 		}
 		$order_print=false;
 
