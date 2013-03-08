@@ -41,6 +41,7 @@ class VirtuemartViewInvoice extends VmView {
 	{
 
 		$document = JFactory::getDocument();
+		$document->setName("Faktura");
 
 		if(empty($this->uselayout)){
 			$layout = JRequest::getWord('layout','mail');
