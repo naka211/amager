@@ -111,9 +111,9 @@ jQuery(document).ready(function() {
       
       <div class="store-map" id="me<?php echo $i;?>">
         	<?php echo $shop->description;?>
-        <div class="bnt-fa-facebook btn">
+        <!--<div class="bnt-fa-facebook btn">
             <a href="#"><img src="templates/amager/img/bnt-del-face.png" width="158" height="28" alt="" /></a>
-        </div><!--.bnt-fa-facebook-->
+        </div>--><!--.bnt-fa-facebook-->
         <div class="store-map-detail">
             <div id="map_canvas<?php echo $i;?>"></div>
         </div><!--.store-map-detail-->
