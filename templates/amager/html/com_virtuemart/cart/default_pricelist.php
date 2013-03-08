@@ -55,7 +55,7 @@ foreach ($this->cart->products as $pkey => $prow) {
 		<input type="hidden" name="view" value="cart"/>
 		<input type="hidden" name="task" value="update"/>
 		<input type="hidden" name="cart_virtuemart_product_id" value="<?php echo $prow->cart_item_id  ?>"/>
-		<input type="submit" class="vmicon vm2-add_quantity_cart" name="update" title="<?php echo  JText::_ ('COM_VIRTUEMART_CART_UPDATE') ?>" style="width:auto" value="ÆNDRE"/>
+		<input type="submit" class="vmicon vm2-add_quantity_cart" name="update" title="<?php echo  JText::_ ('COM_VIRTUEMART_CART_UPDATE') ?>" style="width:auto" value="Opdatere"/>
 	</form>
 	</div>
 	<div class="col4">
