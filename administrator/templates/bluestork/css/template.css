@@ -31,13 +31,13 @@ p.nowarning{color:#333;font-weight:700;font-size:1.091em}
 #toolbar-box .m{background:#f4f4f4;min-height:48px}
 #submenu-box{margin-bottom:10px}
 #module-status > span{display:block;float:left;line-height:16px;margin-bottom:5px;padding:4px 10px 0 22px}
-#module-status .viewsite{background:url(../images/menu/sprite-16.png) no-repeat 0 -1402px}
+#module-status .viewsite{background:url(../images/menu/sprite-16.png) no-repeat 0 -1456px}
 #module-status .preview{background:url(../images/menu/sprite-16.png) no-repeat 0 -834px}
 #module-status .unread-messages,#module-status .no-unread-messages{background:url(../images/menu/sprite-16.png) no-repeat 0 -889px}
 #module-status .loggedin-users{background:url(../images/menu/sprite-16.png) no-repeat 0 -1364px}
 #module-status .backloggedin-users{background:url(../images/menu/sprite-16.png) no-repeat 0 -91px}
 #module-status .multilanguage{background:url(../images/menu/sprite-16.png) no-repeat 0 -789px}
-#module-status .logout{background:url(../images/menu/sprite-16.png) no-repeat 0 -775px}
+#module-status .logout{background:url(../images/menu/sprite-16.png) no-repeat 0 -815px}
 #module-unread-new span{color:red;text-decoration:none;font-weight:700}
 #module-unread span{color:#000;text-decoration:none}
 div.noparams-notice{text-align:center;padding:5px}
@@ -278,7 +278,6 @@ input#mod-login-username,input#mod-login-password,select#lang{float:right;clear:
 .jgrid span.published{background-image:url(../images/admin/publish_g.png)}
 .jgrid span.expired{background-image:url(../images/admin/publish_r.png)}
 .jgrid span.protected{background:url(../images/menu/sprite-16.png) no-repeat 0 -1260px}
-.icon-16-boutique{background:url(../images/menu/icon-16-boutique.png) no-repeat 0 0}
 .icon-16-alert{background:url(../images/menu/sprite-16.png) no-repeat 0 0}
 .icon-16-article{background:url(../images/menu/sprite-16.png) no-repeat 0 -78px}
 .icon-16-banners{background:url(../images/menu/sprite-16.png) no-repeat 0 -179px}
