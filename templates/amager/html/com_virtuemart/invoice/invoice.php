@@ -9,26 +9,26 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 	$type = "Offentlig instans";
 }
 	?>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin: 0 auto; padding: 15px; background: #fff; border: 1px solid #646464;">
+<table border="0" cellspacing="0" cellpadding="0" style="margin: 0 auto; padding: 15px; background: #fff; border: 1px solid #646464;">
 	<tr>
-		<td style="text-align: center; border-bottom: 1px dotted #CACACA;" colspan="4"><img src="<?php echo JURI::base();?>templates/amager/img/logo2.png" width="196" height="97" /></td>
+		<td style="text-align: center; border-bottom: 1px dotted #CACACA;" colspan="4"><img src="<?php echo JURI::base();?>templates/amager/img/logo2.png" alt="" width="196" height="97" /></td>
 	</tr>
 	<tr>
 		<td colspan="4"><h2 style="color: #00b2ea; border-bottom: 1px dotted #CACACA; padding: 10px 0; margin: 0;">ORDREOVERSIGT</h2></td>
 	</tr>
-	<tr>
+	<tr style="padding-left: 20px">
 		<td><strong>Ordrenummer:</strong></td>
 		<td><strong><?php echo $this->orderDetails['details']['BT']->order_number;?></strong></td>
 	</tr>
-	<tr>
+	<tr style="padding-left: 20px">
 		<td><strong>Kundetype:</strong></td>
 		<td><strong><?php echo $type;?></strong></td>
 	</tr>
-	<tr>
+	<tr style="padding-left: 20px">
 		<td><strong>E-mail:</strong></td>
 		<td><strong><?php echo $this->orderDetails['details']['BT']->email;?></strong></td>
 	</tr>
-  <tr>
+  <tr style="padding-left: 20px">
   	<td colspan="2">
    	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
@@ -66,29 +66,29 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 			<td width="50%" height="30"><?php echo $this->orderDetails['details']['BT']->first_name;?></td>
 		  </tr>
 		  <tr>
-			<td height="30">Efternavn:</td>
-			<td height="30"><?php echo $this->orderDetails['details']['BT']->last_name;?></td>
+			<td>Efternavn:</td>
+			<td><?php echo $this->orderDetails['details']['BT']->last_name;?></td>
 		  </tr>
 		  <tr>
-			<td height="30">Adresse:</td>
-			<td height="30"><?php echo $this->orderDetails['details']['BT']->address_1;?></td>
+			<td>Adresse:</td>
+			<td><?php echo $this->orderDetails['details']['BT']->address_1;?></td>
 		  </tr>
 		  <tr>
-			<td height="30">Postnr.:</td>
-			<td height="30"><?php echo $this->orderDetails['details']['BT']->zip;?></td>
+			<td>Postnr.:</td>
+			<td><?php echo $this->orderDetails['details']['BT']->zip;?></td>
 		  </tr>
 		  <tr>
-			<td height="30">By:</td>
-			<td height="30"><?php echo $this->orderDetails['details']['BT']->city;?></td>
+			<td>By:</td>
+			<td><?php echo $this->orderDetails['details']['BT']->city;?></td>
 		  </tr>
 		  <tr>
-			<td height="30">Telefon:</td>
-			<td height="30"><?php echo $this->orderDetails['details']['BT']->phone_1;?></td>
+			<td>Telefon:</td>
+			<td><?php echo $this->orderDetails['details']['BT']->phone_1;?></td>
 		  </tr>
 		</table>
 
 	</td>
-	<td colspan="2" width="558" valign="top">
+	<td colspan="2" valign="top">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 			<td colspan="2" height="30"><strong>Leveringsadresse:</strong></td>
@@ -98,40 +98,40 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 			<td width="50%" height="30"><?php echo $this->orderDetails['details']['ST']->first_name;?></td>
 		  </tr>
 		  <tr>
-			<td height="30">Efternavn:</td>
-			<td height="30"><?php echo $this->orderDetails['details']['ST']->last_name;?></td>
+			<td>Efternavn:</td>
+			<td><?php echo $this->orderDetails['details']['ST']->last_name;?></td>
 		  </tr>
 		  <tr>
-			<td height="30">Adresse:</td>
-			<td height="30"><?php echo $this->orderDetails['details']['ST']->address_1;?></td>
+			<td>Adresse:</td>
+			<td><?php echo $this->orderDetails['details']['ST']->address_1;?></td>
 		  </tr>
 		  <tr>
-			<td height="30">Postnr.:</td>
-			<td height="30"><?php echo $this->orderDetails['details']['ST']->zip;?></td>
+			<td>Postnr.:</td>
+			<td><?php echo $this->orderDetails['details']['ST']->zip;?></td>
 		  </tr>
 		  <tr>
-			<td height="30">By:</td>
-			<td height="30"><?php echo $this->orderDetails['details']['ST']->city;?></td>
+			<td>By:</td>
+			<td><?php echo $this->orderDetails['details']['ST']->city;?></td>
 		  </tr>
 		  <tr>
-			<td height="30">Telefon:</td>
-			<td height="30"><?php echo $this->orderDetails['details']['ST']->phone_1;?></td>
+			<td>Telefon:</td>
+			<td><?php echo $this->orderDetails['details']['ST']->phone_1;?></td>
 		  </tr>
 		</table>
 
 	</td>
   </tr>
-  <tr height="0" style="color: #3A3A3A;">
-  	
-  </tr>
-  <tr>
+<tr height="10px">
+&nbsp;
+</tr>
+  <tr style="padding-left: 20px">
   	<td colspan="2">
    	<table border="0" cellspacing="0" cellpadding="0" width="100%">
   <tr>
-	<td height="30"> <strong>Betaling: </strong></td>
+	<td> <strong>Betaling: </strong></td>
   </tr>
   <tr>
-	<td valign="top" height="30">Kortbetaling</td>
+	<td valign="top">Kortbetaling</td>
   </tr>
 </table>
 
@@ -139,7 +139,7 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 	<td colspan="2">
 		<table border="0" cellspacing="0" cellpadding="0" width="100%">
   <tr>
-	<td height="30"><strong>Leveringsservice:</strong></td>
+	<td><strong>Leveringsservice:</strong></td>
   </tr>
   <tr>
 	<td valign="top" height="30"><?php if($this->orderDetails['details']['BT']->address_2){?>Afhentning: <?php echo $this->orderDetails['details']['BT']->address_2;?><?php }else{?>Forsendelse<?php }?></td>
@@ -148,30 +148,30 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 
 	</td>
   </tr>
-  <tr height="10">
-  	<td colspan="4">
-   	  <table width="970" border="0" cellspacing="0" cellpadding="0" style="border: 1px solid #CACACA;">
+  <tr>
+  	<td colspan="4" style="padding-left: 20px">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: 1px solid #CACACA;">
   <tr align="right" style="background: #EFEFEF; padding: 0 10px; text-align: center;">
-	<td height="50" width="481" style="padding: 0 10px; text-align: left;">Produkt</td>
-	<td width="155">Vare-nr</td>
-	<td width="40">Antal</td>
-	<td width="140">Pris pr. enhed</td>
-	<td align="right" width="152" style="padding: 0 10px;">Pris i alt</td>
+	<td width="500" style="text-align: left;">Produkt</td>
+	<td width="200">Vare-nr</td>
+	<td width="150">Antal</td>
+	<td width="300">Pris pr. enhed</td>
+	<td align="right" width="300" style="padding: 0 10px;">Pris i alt</td>
   </tr>
   <?php foreach($this->orderDetails['items'] as $item){?>
-  <tr height="30" style="padding: 0 10px; text-align: center;">
+  <tr style="padding: 0 10px; text-align: right;">
 	<td style="padding: 0 10px; border-bottom: 1px solid #CACACA; color: #3A3A3A; text-align: left; "><?php echo $item->order_item_name;?></td>
-	<td style="border-bottom: 1px solid #CACACA; color: #3A3A3A; text-align: center;"><?php echo $item->order_item_sku;?></td>
+	<td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;"><?php echo $item->order_item_sku;?></td>
 	<td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;"><?php echo $item->product_quantity;?></td>
 	<td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;"><?php echo number_format($item->product_final_price,2,',','.');?> DKK</td>
-	<td style="border-bottom: 1px solid #CACACA; text-align: right; padding: 0 10px; color: #3A3A3A;"><?php echo number_format($item->product_subtotal_with_tax,2,',','.');?> DKK</td>
+	<td style="border-bottom: 1px solid #CACACA; padding: 0 10px; color: #3A3A3A;"><?php echo number_format($item->product_subtotal_with_tax,2,',','.');?> DKK</td>
   </tr>
   <?php }?>
   <tr>
-	<td style="text-transform: uppercase; color: red; padding: 0 10px; font-size: 20px;"><strong><?php if($this->orderDetails['details']['BT']->address_2){?>Afhentning: <?php echo $this->orderDetails['details']['BT']->address_2;?><?php }else{?>Forsendelse<?php }?></strong></td>
-	<td colspan="2"><table width="260" border="0" cellpadding="0" cellspacing="0" align="right">
+	<td style="text-transform: uppercase; color: red; padding: 0 10px;"><strong><?php if($this->orderDetails['details']['BT']->address_2){?>Afhentning: <?php echo $this->orderDetails['details']['BT']->address_2;?><?php }else{?>Forsendelse<?php }?></strong></td>
+	<td colspan="2"><table width="100%" border="0" cellpadding="0" cellspacing="0" align="right">
 	  <tr>
-		<td width="260" style="color: #3A3A3A;">Forsendelse:</td>
+		<td width="400" style="color: #3A3A3A;">Forsendelse:</td>
 	  </tr>
 	  <tr>
 		<td style="color: #3A3A3A;">Subtotal inkl. moms:</td>
@@ -184,9 +184,9 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 	  </tr>
 
 	</table></td>
-	<td colspan="2"><table width="136" border="0" cellpadding="0" cellspacing="0" align="right" style="text-align: right;" >
+	<td colspan="2"><table width="100%" border="0" cellpadding="0" cellspacing="0" align="right" style="text-align: right;" >
 	  <tr>
-		<td width="146" style="padding: 0 10px; color: #3A3A3A;"><?php echo number_format($this->orderDetails['details']['BT']->order_shipment,2,',','.');?> DKK</td>
+		<td style="padding: 0 10px; color: #3A3A3A;"><?php echo number_format($this->orderDetails['details']['BT']->order_shipment,2,',','.');?> DKK</td>
 	  </tr>
 	  <tr>
 		<td style="padding: 0 10px; color: #3A3A3A;" ><?php echo number_format($this->orderDetails['details']['BT']->order_salesPrice,2,',','.');?> DKK</td>
@@ -203,13 +203,13 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 
 	</td>
   </tr>
-  <tr><td height="30"></td></tr>
-  <tr style="background: #2E3033;margin-top: 20px; color: #fff;">
+  <tr><td></td></tr>
+  <tr style="margin-top: 20px;">
   	<td colspan="4" style="padding: 30px 10px; line-height: 1.8em;">
 		Tåmby Torv Isenkram
-		Tåmby Torv 9 2770 Kastrup<br />   
+		Tåmby Torv 9 2770 Kastrup<br />
 		Tlf: 3250 3611 - Fax: 3252 1536<br />
-		<a style="color: #fff; text-decoration: none;" href="mailto:info@amagerisenkram.dk">info@amagerisenkram.dk</a>
+		<a style="text-decoration: none;" href="mailto:info@amagerisenkram.dk">info@amagerisenkram.dk</a>
 	</td>
   </tr>
 </table>
