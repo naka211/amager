@@ -96,6 +96,7 @@ if($menu->getActive()->id == $menu->getDefault()->id){
 jQuery(document).ready( function(){
 	jQuery('#foo1').carouFredSel({
 		circular		:true,
+		height			:245,
 		infinite		:true,
 		prev			:'#foo1_prev',
 		next			:'#foo1_next',
@@ -114,6 +115,7 @@ jQuery(document).ready( function(){
 
 	jQuery("#foo3").carouFredSel({
 		responsive	: true,
+		height		: 42,
 		scroll		:
 		{
 			duration:1200,
