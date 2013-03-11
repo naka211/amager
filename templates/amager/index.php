@@ -93,6 +93,7 @@ if($menu->getActive()->id == $menu->getDefault()->id){
 ?>
 <script type="text/javascript" src="<?php echo $tmplURL?>js/jquery.carouFredSel-6.0.1-packed.js"></script>
 <script type="text/javascript">
+<?php if($opt.$view==in_array($opt.$view,array('com_virtuemartvirtuemart'))){?>
 jQuery(document).ready( function(){
 	jQuery('#foo1').carouFredSel({
 		circular		:true,
@@ -128,7 +129,7 @@ jQuery(document).ready( function(){
 		}
 	});
 });
-
+<?php }?>
 jQuery(function() {
 	jQuery('#callout').find('a').click(function(e){
 		e.preventDefault();
