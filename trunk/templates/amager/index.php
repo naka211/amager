@@ -103,7 +103,7 @@ jQuery(document).ready( function(){
 		items:{
 			visible		:5,
 			minimum		:5
-
+	
 			},
 		scroll:{
 			duration	:600,
@@ -125,7 +125,6 @@ jQuery(document).ready( function(){
 		{
 			visible		: 1,
 			width		: 754,
-			height		: "240"
 		}
 	});
 });
