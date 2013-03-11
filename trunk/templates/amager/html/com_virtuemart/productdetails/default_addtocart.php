@@ -73,7 +73,7 @@ jQuery("form.js-recalculate").submit(function(){
 	//console.log(jQuery(this).serialize());
 	jQuery.ajax( {
 	type: "POST",
-	url: "",
+	url: "index.php",
 	data: jQuery(this).serialize(),
 	success: function( response ){
 		cart_update();
