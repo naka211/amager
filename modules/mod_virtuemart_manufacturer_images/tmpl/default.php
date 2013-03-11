@@ -6,8 +6,10 @@ $col= 1 ;
     <div class="image_carousel">
     <div id="foo1">
     <?php
-	foreach ($manufacturers as $manufacturer) {?>
-        <img src="<?php echo $manufacturer->images[0]->file_url;?>" />
+	foreach ($manufacturers as $manufacturer) {
+	$size = getimagesize($manufacturer->images[0]->file_url);
+	?>
+        <img src="<?php echo $manufacturer->images[0]->file_url;?>" width="<?php echo $size[0];?>" height="<?php echo $size[1];?>" />
 	<?php }
 	?>
     </div>
