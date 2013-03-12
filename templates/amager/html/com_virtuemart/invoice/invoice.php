@@ -182,11 +182,11 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 	<td colspan="4">
 	<table border="0" cellspacing="0" cellpadding="0" style="border: 1px solid #CACACA;line-height: 1.8em">
 		<tr align="right" style="background: #EFEFEF;">
-		<td width="600" style="text-align: left;">Produkt</td>
-		<td width="300">Vare-nr</td>
-		<td width="300">Antal</td>
-		<td width="300">Pris pr. enhed</td>
-		<td width="500" style="padding-right: 20px">Pris i alt</td>
+		<td width="40%" style="text-align: left;">Produkt</td>
+		<td width="10%">Vare-nr</td>
+		<td width="10%">Antal</td>
+		<td width="20%">Pris pr. enhed</td>
+		<td width="20%" style="padding-right: 20px">Pris i alt</td>
 		</tr>
 
 	<?php foreach($this->orderDetails['items'] as $item){?>
