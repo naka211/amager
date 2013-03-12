@@ -1,132 +1,251 @@
 <?php
-/**
- *
- * Order detail view
- *
- * @package    VirtueMart
- * @subpackage Orders
- * @author Max Milbers, Valerie Isaksen
- * @link http://www.virtuemart.net
- * @copyright Copyright (c) 2004 - 2010 VirtueMart Team. All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
- * VirtueMart is free software. This version may have been modified pursuant
- * to the GNU General Public License, and as distributed it includes or
- * is derivative of works licensed under the GNU General Public License or
- * other free or open source software licenses.
- * @version $Id: details.php 5412 2012-02-09 19:27:55Z alatak $
- */
-//index.php?option=com_virtuemart&view=invoice&layout=invoice&format=pdf&tmpl=component&order_number=xx&order_pass=p_yy
-//
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
-JHTML::stylesheet('vmpanels.css', JURI::root() . 'components/com_virtuemart/assets/css/');
-if ($this->_layout == "invoice") {
-    $document = JFactory::getDocument();
-    $document->setTitle(JText::_('COM_VIRTUEMART_ORDER_PRINT_PO_NUMBER') . ' ' . $this->orderDetails['details']['BT']->order_number . ' ' . $this->vendor->vendor_store_name);
-//$document->setName( JText::_('COM_VIRTUEMART_ACC_ORDER_INFO').' '.$this->orderDetails['details']['BT']->order_number);
-//$document->setDescription( JText::_('COM_VIRTUEMART_ORDER_PRINT_PO_NUMBER').' '.$this->orderDetails['details']['BT']->order_number);
-}
-
-if ($this->headFooter) {
-    ?>
-<div class="vendor-details-view">
-    <h1><?php echo $this->vendor->vendor_store_name;
-        if (!empty($this->vendor->images[0])) {
-            ?>
-            <div class="vendor-image">
-                <?php echo $this->vendor->images[0]->displayMediaThumb('', false); ?>
-            </div>
-            <?php
-        }
-        ?>    </h1>
-	<div class="vendor-details-address">
-	<?php //Attention this is removed, please use directly
-		//echo $this->vendorAddress;
-		echo shopFunctions::renderVendorAddress($this->vendor->virtuemart_vendor_id, '<br />');
-		?>
-		</div>
-</div>
-
-<div class="vendor-description">
-<?php //echo $this->vendor->vendor_store_desc.'<br>';
-
-
-    /*	foreach($this->vendorAddress as $userfields){
-
-         foreach($userfields['fields'] as $item){
-             if(!empty($item['value'])){
-                 if($item['name']==='agreed'){
-                     $item['value'] =  ($item['value']===0) ? JText::_('COM_VIRTUEMART_USER_FORM_BILLTO_TOS_NO'):JText::_('COM_VIRTUEMART_USER_FORM_BILLTO_TOS_YES');
-                 }
-             ?><!-- span class="titles"><?php echo $item['title'] ?></span -->
-                         <span class="values vm2<?php echo '-'.$item['name'] ?>" ><?php echo $this->escape($item['value']) ?></span>
-                     <?php if ($item['name'] != 'title' and $item['name'] != 'first_name' and $item['name'] != 'middle_name' and $item['name'] != 'zip') { ?>
-                         <br class="clear" />
-                     <?php
-                 }
-             }
-         }
-     }*/
-}
-?></div> <?php
-
-
-if ($this->print) {
-    ?>
-
-<body onLoad="javascript:print();">
-
-<div class='spaceStyle'>
-    <?php
-// 			echo require(__DIR__.'/mail_html_shopper.php');
-    ?>
-</div>
-<div class='spaceStyle'>
-    <?php
-    echo $this->loadTemplate('order');
-    ?>
-</div>
-
-<div class='spaceStyle'>
-    <?php
-    echo $this->loadTemplate('items');
-    ?>
-</div>
-    <?php    //echo $this->vendor->vendor_legal_info; ?>
-</body>
-<?php
+if($this->orderDetails['details']['BT']->address_type_name == 1 ){
+	$type = "Privat";
+} else if($this->orderDetails['details']['BT']->address_type_name == 2 ){
+	$type = "Erhverv";
 } else {
-
-    ?>
-
-<?php
-
-    echo $this->loadTemplate('order');
-
-    ?>
-
-
-	<div class='spaceStyle'>
-	<?php
-
-    $tabarray = array();
-
-    $tabarray['items'] = 'COM_VIRTUEMART_ORDER_ITEM';
-    $tabarray['history'] = 'COM_VIRTUEMART_ORDER_HISTORY';
-
-    shopFunctionsF::buildTabs( $this, $tabarray);
-    echo '</div>
-	    <br clear="all"/><br/>';
+	$type = "Offentlig instans";
 }
+	?>
+<table border="0" cellspacing="0" cellpadding="0" style="margin: 15px; background: #fff; border: 1px solid #646464;">
+	<tr>
+		<td style="text-align: center; border-bottom: 1px dotted #CACACA;" colspan="4"><img src="<?php echo JURI::base();?>templates/amager/img/logo2.png" alt="" width="196" height="97" /></td>
+	</tr>
 
-if ($this->headFooter) {
-    echo $this->vendor->vendor_legal_info;
-}
+	<tr>
+		<td colspan="4"><h2 style="color: #00b2ea; border-bottom: 1px dotted #CACACA; padding: 10px 0; margin: 0;">ORDREOVERSIGT</h2></td>
+	</tr>
 
-?>
+	<tr style="padding-left: 20px">
+		<td><strong>Ordrenummer:</strong></td>
+		<td><strong><?php echo $this->orderDetails['details']['BT']->order_number;?></strong></td>
+	</tr>
 
+	<tr style="padding-left: 20px">
+		<td><strong>Kundetype:</strong></td>
+		<td><strong><?php echo $type;?></strong></td>
+	</tr>
 
+	<tr style="padding-left: 20px">
+		<td><strong>E-mail:</strong></td>
+		<td><strong><?php echo $this->orderDetails['details']['BT']->email;?></strong></td>
+	</tr>
 
+	<tr>
+	<td colspan="2">&nbsp;</td>
+	</tr>
 
+	<tr style="padding-left: 20px">
+		<td colspan="2">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+				<td colspan="2" height="30"><strong>Kundeoplysninger:</strong></td>
+				</tr>
 
+<?php if($this->orderDetails['details']['BT']->address_type_name == 2){?>
+				<tr>
+					<td width="50%" height="30">Firmanavn:</td>
+					<td width="50%" height="30"><?php echo $this->orderDetails['details']['BT']->company;?></td>
+				</tr>
 
+				<tr>
+					<td width="50%" height="30">CVR-nr.:</td>
+					<td width="50%" height="30"><?php echo $this->orderDetails['details']['BT']->cvr;?></td>
+				</tr>
+<?php } else if($this->orderDetails['details']['BT']->address_type_name == 3){?>
+				<tr>
+					<td width="50%" height="30">EAN-nr.:</td>
+					<td width="50%" height="30"><?php echo $this->orderDetails['details']['BT']->ean;?></td>
+				</tr>
+
+				<tr>
+					<td width="50%" height="30">Myndighed/Institution:</td>
+					<td width="50%" height="30"><?php echo $this->orderDetails['details']['BT']->authority;?></td>
+				</tr>
+
+				<tr>
+					<td width="50%" height="30">Ordre- el. rekvisitionsnr.:</td>
+					<td width="50%" height="30"><?php echo $this->orderDetails['details']['BT']->order1;?></td>
+				</tr>
+
+				<tr>
+					<td width="50%" height="30">Personreference:</td>
+					<td width="50%" height="30"><?php echo $this->orderDetails['details']['BT']->person;?></td>
+				</tr>
+<?php }?>
+
+				<tr>
+					<td width="50%" height="30">Fornavn:</td>
+					<td width="50%" height="30"><?php echo $this->orderDetails['details']['BT']->first_name;?></td>
+				</tr>
+
+				<tr>
+					<td>Efternavn:</td>
+					<td><?php echo $this->orderDetails['details']['BT']->last_name;?></td>
+				</tr>
+
+				<tr>
+					<td>Adresse:</td>
+					<td><?php echo $this->orderDetails['details']['BT']->address_1;?></td>
+				</tr>
+
+				<tr>
+					<td>Postnr.:</td>
+					<td><?php echo $this->orderDetails['details']['BT']->zip;?></td>
+				</tr>
+
+				<tr>
+					<td>By:</td>
+					<td><?php echo $this->orderDetails['details']['BT']->city;?></td>
+				</tr>
+
+				<tr>
+					<td>Telefon:</td>
+					<td><?php echo $this->orderDetails['details']['BT']->phone_1;?></td>
+				</tr>
+			</table>
+		</td>
+
+		<td colspan="2" valign="top">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td colspan="2" height="30"><strong>Leveringsadresse:</strong></td>
+				</tr>
+
+				<tr>
+					<td width="50%" height="30">Fornavn:</td>
+					<td width="50%" height="30"><?php echo $this->orderDetails['details']['ST']->first_name;?></td>
+				</tr>
+
+				<tr>
+					<td>Efternavn:</td>
+					<td><?php echo $this->orderDetails['details']['ST']->last_name;?></td>
+				</tr>
+
+				<tr>
+					<td>Adresse:</td>
+					<td><?php echo $this->orderDetails['details']['ST']->address_1;?></td>
+				</tr>
+
+				<tr>
+					<td>Postnr.:</td>
+					<td><?php echo $this->orderDetails['details']['ST']->zip;?></td>
+				</tr>
+
+				<tr>
+					<td>By:</td>
+					<td><?php echo $this->orderDetails['details']['ST']->city;?></td>
+				</tr>
+
+				<tr>
+					<td>Telefon:</td>
+					<td><?php echo $this->orderDetails['details']['ST']->phone_1;?></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<tr>
+	<td colspan="4">&nbsp;</td>
+	</tr>
+
+	<tr style="padding-left: 20px">
+		<td colspan="2">
+			<table border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tr>
+			<td> <strong>Betaling: </strong></td>
+			</tr>
+			<tr>
+			<td valign="top">Kortbetaling</td>
+			</tr>
+			</table>
+		</td>
+		<td colspan="2">
+			<table border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tr>
+			<td><strong>Leveringsservice:</strong></td>
+			</tr>
+			<tr>
+				<td valign="top" height="30"><?php if($this->orderDetails['details']['BT']->address_2){?>Afhentning: <?php echo $this->orderDetails['details']['BT']->address_2;?><?php }else{?>Forsendelse<?php }?></td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+
+	<tr>
+	<td colspan="4">&nbsp;</td>
+	</tr>
+
+	<tr style="padding-left: 20px">
+	<td colspan="4">
+	<table border="0" cellspacing="0" cellpadding="0" style="border: 1px solid #CACACA;line-height: 1.8em">
+		<tr align="right" style="background: #EFEFEF;">
+		<td width="600" style="text-align: left;">Produkt</td>
+		<td width="300">Vare-nr</td>
+		<td width="300">Antal</td>
+		<td width="300">Pris pr. enhed</td>
+		<td width="500" style="padding-right: 20px">Pris i alt</td>
+		</tr>
+
+	<?php foreach($this->orderDetails['items'] as $item){?>
+		<tr style="text-align: right;">
+		<td style="border-bottom: 1px solid #CACACA; color: #3A3A3A; text-align: left; "><?php echo $item->order_item_name;?></td>
+		<td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;"><?php echo $item->order_item_sku;?></td>
+		<td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;"><?php echo $item->product_quantity;?></td>
+		<td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;"><?php echo number_format($item->product_final_price,2,',','.');?> DKK</td>
+		<td style="border-bottom: 1px solid #CACACA; color: #3A3A3A;"><?php echo number_format($item->product_subtotal_with_tax,2,',','.');?> DKK</td>
+		</tr>
+	<?php }?>
+
+		<tr>
+		<td colspan="3" style="text-transform: uppercase; color: red;"><strong><?php if($this->orderDetails['details']['BT']->address_2){echo "Afhentning: ".$this->orderDetails['details']['BT']->address_2;}else{echo "Forsendelse";}?></strong></td>
+		<td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td width="400" style="color: #3A3A3A;">Forsendelse:</td>
+		</tr>
+		<tr>
+			<td style="color: #3A3A3A;">Subtotal inkl. moms:</td>
+		</tr>
+		<tr>
+			<td style="color: #3A3A3A;">Heraf moms:</td>
+		</tr>
+		<tr>
+			<td><strong>TOTAL INKL. MOMS:</strong></td>
+		</tr>
+		</table></td>
+
+		<td><table width="100%" border="0" cellpadding="0" cellspacing="0" style="text-align: right;" >
+		<tr>
+			<td style="padding: 0 10px; color: #3A3A3A;"><?php echo number_format($this->orderDetails['details']['BT']->order_shipment,2,',','.');?> DKK</td>
+		</tr>
+
+		<tr>
+			<td style="padding: 0 10px; color: #3A3A3A;" ><?php echo number_format($this->orderDetails['details']['BT']->order_salesPrice,2,',','.');?> DKK</td>
+		</tr>
+
+		<tr>
+			<td style="padding: 0 10px; color: #3A3A3A;"><?php echo number_format($this->orderDetails['details']['BT']->order_salesPrice*0.25,2,',','.');?> DKK</td>
+		</tr>
+
+		<tr>
+			<td style="padding: 0 10px;"><strong><?php echo number_format($this->orderDetails['details']['BT']->order_total,2,',','.');?> DKK</strong></td>
+		</tr>
+		</table></td>
+		</tr>
+	</table>
+	</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr style="margin-top: 20px;">
+	<td colspan="4" style="padding: 30px 10px; line-height: 1.8em;">
+		Tåmby Torv Isenkram
+		Tåmby Torv 9 2770 Kastrup<br />
+		Tlf: 3250 3611 - Fax: 3252 1536<br />
+		<a style="text-decoration: none;" href="mailto:info@amagerisenkram.dk">info@amagerisenkram.dk</a>
+	</td>
+	</tr>
+</table>
