@@ -19,18 +19,18 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 	</tr>
 
 	<tr style="padding-left: 20px">
-		<td><strong>Ordrenummer:</strong></td>
-		<td><strong><?php echo $this->orderDetails['details']['BT']->order_number;?></strong></td>
+		<td height="30"><strong>Ordrenummer:</strong></td>
+		<td height="30"><strong><?php echo $this->orderDetails['details']['BT']->order_number;?></strong></td>
 	</tr>
 
 	<tr style="padding-left: 20px">
-		<td><strong>Kundetype:</strong></td>
-		<td><strong><?php echo $type;?></strong></td>
+		<td height="30"><strong>Kundetype:</strong></td>
+		<td height="30"><strong><?php echo $type;?></strong></td>
 	</tr>
 
 	<tr style="padding-left: 20px">
-		<td><strong>E-mail:</strong></td>
-		<td><strong><?php echo $this->orderDetails['details']['BT']->email;?></strong></td>
+		<td height="30"><strong>E-mail:</strong></td>
+		<td height="30"><strong><?php echo $this->orderDetails['details']['BT']->email;?></strong></td>
 	</tr>
 
 	<tr>
@@ -82,28 +82,28 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 				</tr>
 
 				<tr>
-					<td>Efternavn:</td>
-					<td><?php echo $this->orderDetails['details']['BT']->last_name;?></td>
+					<td height="30">Efternavn:</td>
+					<td height="30"><?php echo $this->orderDetails['details']['BT']->last_name;?></td>
 				</tr>
 
 				<tr>
-					<td>Adresse:</td>
-					<td><?php echo $this->orderDetails['details']['BT']->address_1;?></td>
+					<td height="30">Adresse:</td>
+					<td height="30"><?php echo $this->orderDetails['details']['BT']->address_1;?></td>
 				</tr>
 
 				<tr>
-					<td>Postnr.:</td>
-					<td><?php echo $this->orderDetails['details']['BT']->zip;?></td>
+					<td height="30">Postnr.:</td>
+					<td height="30"><?php echo $this->orderDetails['details']['BT']->zip;?></td>
 				</tr>
 
 				<tr>
-					<td>By:</td>
-					<td><?php echo $this->orderDetails['details']['BT']->city;?></td>
+					<td height="30">By:</td>
+					<td height="30"><?php echo $this->orderDetails['details']['BT']->city;?></td>
 				</tr>
 
 				<tr>
-					<td>Telefon:</td>
-					<td><?php echo $this->orderDetails['details']['BT']->phone_1;?></td>
+					<td height="30">Telefon:</td>
+					<td height="30"><?php echo $this->orderDetails['details']['BT']->phone_1;?></td>
 				</tr>
 			</table>
 		</td>
@@ -120,28 +120,28 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 				</tr>
 
 				<tr>
-					<td>Efternavn:</td>
-					<td><?php echo $this->orderDetails['details']['ST']->last_name;?></td>
+					<td height="30">Efternavn:</td>
+					<td height="30"><?php echo $this->orderDetails['details']['ST']->last_name;?></td>
 				</tr>
 
 				<tr>
-					<td>Adresse:</td>
-					<td><?php echo $this->orderDetails['details']['ST']->address_1;?></td>
+					<td height="30">Adresse:</td>
+					<td height="30"><?php echo $this->orderDetails['details']['ST']->address_1;?></td>
 				</tr>
 
 				<tr>
-					<td>Postnr.:</td>
-					<td><?php echo $this->orderDetails['details']['ST']->zip;?></td>
+					<td height="30">Postnr.:</td>
+					<td height="30"><?php echo $this->orderDetails['details']['ST']->zip;?></td>
 				</tr>
 
 				<tr>
-					<td>By:</td>
-					<td><?php echo $this->orderDetails['details']['ST']->city;?></td>
+					<td height="30">By:</td>
+					<td height="30"><?php echo $this->orderDetails['details']['ST']->city;?></td>
 				</tr>
 
 				<tr>
-					<td>Telefon:</td>
-					<td><?php echo $this->orderDetails['details']['ST']->phone_1;?></td>
+					<td height="30">Telefon:</td>
+					<td height="30"><?php echo $this->orderDetails['details']['ST']->phone_1;?></td>
 				</tr>
 			</table>
 		</td>
