@@ -157,7 +157,10 @@ jQuery('.over-title-gray').click(function(){
 			</div>
             <div class="w-print-down">            
                 <div class="bnt-download">
-                   <a href="javascript:location.href = '<?php echo 'index.php?option=com_virtuemart&view=invoice&layout=invoice&format=pdf&tmpl=component&virtuemart_order_id='.$row->virtuemart_order_id.'&order_number='.$orderDetails['details']['BT']->order_number.'&order_pass='.$orderDetails['details']['BT']->order_pass.'&create_invoice=1';?>'">Download PDF-file</a>
+                	<?php 
+					$invoiceNumberDate=array();
+					$orderModel->createInvoiceNumber($orderDetails['details']['BT'], $invoiceNumberDate);?>
+                   <a href="_/invoices/vminvoice_<?php echo $invoiceNumberDate[0];?>.pdf">Download PDF-file</a>
                 </div><!--.bnt-download-->
                 <div class="bnt-over-print">
                     <a href="index.php?option=com_virtuemart&view=pluginresponse&layout=printOrder&orderid=<?php echo $orderDetails['details']['BT']->order_number;?>&tmpl=component" target="_blank">Print</a>
