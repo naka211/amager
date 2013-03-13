@@ -1,6 +1,6 @@
 <?php // no direct access
 defined('_JEXEC') or die('Restricted access');
-$text=JRequest::getVar("keyword",$text);
+$text=JRequest::getVar("keyword","Hvad søger du efter…");
 ?>
 <!--BEGIN Search Box -->
 <form id="vm_mod_search" class="search2" action="<?php echo JRoute::_('index.php?option=com_virtuemart&view=search&search=true&limitstart=0&virtuemart_category_id='.$category_id ); ?>" method="get">
