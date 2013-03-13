@@ -210,11 +210,12 @@ class VirtueMartControllerProductdetails extends JController {
 		$view = $this->getView ('recommend', 'html');
 		$mainframe = JFactory::getApplication ();
 
-		$virtuemart_product_id = JRequest::getInt ('virtuemart_product_id', 0);
+		$vm_product_id = JRequest::getInt ('virtuemart_product_id', 0);
+		$vm_category_id = JRequest::getInt ('virtuemart_category_id', 0);
 		$msg = JRequest::getVar ("msg", "");
 
 		$productModel = VmModel::getModel ('product');
-		$product = $productModel->getProduct ($virtuemart_product_id);
+		$product = $productModel->getProduct ($vm_product_id);
 
 		$fromMail = JRequest::getVar ('uremail'); //is sanitized then
 		$fromMail = str_replace (array('\'', '"', ',', '%', '*', '/', '\\', '?', '^', '`', '{', '}', '|', '~'), array(''), $fromMail);
@@ -234,16 +235,12 @@ class VirtueMartControllerProductdetails extends JController {
 		$mailer->setBody($body);
 		$mailer->addReplyTo($fromMail);
 
-		if ($mailer->Send()){
-			$string = 'COM_VIRTUEMART_MAIL_SEND_SUCCESSFULLY';
-		} else {
-			$string = 'COM_VIRTUEMART_MAIL_NOT_SEND_SUCCESSFULLY';
-		}
-		$mainframe->enqueueMessage (JText::_ ($string));
+		$mailer->Send();
 
 // 		vmdebug('my email vars ',$vars,$TOMail);
 
 		$view->setLayout ('mail_confirmed');
+		$view->assignRef("backlink",JRoute::_('index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id='.$vm_product_id.'&virtuemart_category_id='.$vm_category_id));
 		$view->display ();
 	}
 
