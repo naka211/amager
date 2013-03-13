@@ -58,9 +58,8 @@ if($BT_info->address_type_name == 1 ){
 $query = "SELECT email FROM #__users WHERE id = ".$BT_info->virtuemart_user_id;
 $db->setQuery($query);
 $email = $db->loadResult();
-print_r($_SERVER);
 ?>
-
+<link rel="stylesheet" type="text/css" href="https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/<?php echo JURI::base();?>templates/amager/css/styles.css"/>
 <div id="tak-page">
   	<div id="w-tak-page">
   	<h2>Tak for din ordre</h2>
