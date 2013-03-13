@@ -58,7 +58,9 @@ if($BT_info->address_type_name == 1 ){
 $query = "SELECT email FROM #__users WHERE id = ".$BT_info->virtuemart_user_id;
 $db->setQuery($query);
 $email = $db->loadResult();
+print_r($_SERVER);
 ?>
+
 <div id="tak-page">
   	<div id="w-tak-page">
   	<h2>Tak for din ordre</h2>
