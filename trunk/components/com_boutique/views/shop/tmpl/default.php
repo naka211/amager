@@ -68,6 +68,37 @@ jQuery(document).ready(function() {
 		  jQuery(this).hide(600);
      });
 	 
+	 jQuery('#clickme4').click(function() 
+	 {
+          jQuery('#me1').animate(
+		  {
+               height: 'toggle'
+               }, 2000
+          );
+		  jQuery('#clickme1').hide(600);
+		  
+     });
+	 
+     jQuery('#clickme5').click(function() 
+	 {
+          jQuery('#me2').animate(
+		  {
+               height: 'toggle'
+               }, 2000
+          );
+		  jQuery('#clickme2').hide(600);
+     });
+	 
+	  jQuery('#clickme6').click(function() 
+	 {
+          jQuery('#me3').animate(
+		  {
+               height: 'toggle'
+               }, 2000
+          );
+		  jQuery('#clickme3').hide(600);
+     });
+	 
 	 jQuery("#luk1").click(function () 
 	{
 		jQuery("#me1").hide(600)
@@ -97,6 +128,9 @@ jQuery(document).ready(function() {
         <h2><img src="images/<?php echo $shop->name;?>.png" width="160" height="13" alt="" /></h2>
         <div class="store-info">
          	<?php echo $shop->information;?>
+            <p>
+            <a href="javascript:void(0);" id="clickme<?php echo $i+3;?>">Søndagsåben Tryk her >></a>
+            </p>
         </div>
         <!--.store-info-->
         <div class="store-open">
