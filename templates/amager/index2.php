@@ -6,6 +6,7 @@ if($opt.$view==in_array($opt.$view,array('com_virtuemartpluginresponse'))){
 
 		$tmplURL = 'https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/'.JURI::base().'templates/amager/';
 	}
+}
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
