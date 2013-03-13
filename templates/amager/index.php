@@ -2,7 +2,6 @@
 // No direct access.
 
 defined('_JEXEC') or die;
-
 //jimport('joomla.filesystem.file');
 
 // check modules
@@ -16,7 +15,7 @@ $doc				= JFactory::getDocument();
 //$color				= $this->params->get('templatecolor');
 //$logo				= $this->params->get('logo');
 //$templateparams		= $app->getTemplate(true)->params;
-$tmplURL=JURI::base().'templates/'.$this->template."/";
+$tmplURL=$this->baseurl.'templates/'.$this->template."/";
 $user = JFactory::getUser();
 //$doc->addStyleSheet($this->baseurl.'/templates/'.$this->template.'/css/layout.css', $type = 'text/css', $media = 'screen,projection');
 //$doc->addStyleSheet($this->baseurl.'/templates/'.$this->template.'/css/print.css', $type = 'text/css', $media = 'print');
