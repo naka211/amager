@@ -125,6 +125,16 @@ focusInput = function(){
 	}
 );
 </script>
+<?php if($opt.$view==in_array($opt.$view,array('com_virtuemartpluginresponse'))){
+	if ( eregi("MSIE", getenv( "HTTP_USER_AGENT" ) ) || eregi("Internet Explorer", getenv("HTTP_USER_AGENT" ) ) ) {	
+?>
+<link rel="stylesheet" type="text/css" href="https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/<?php echo JURI::base();?>templates/amager/css/styles.css"/>
+<link rel="stylesheet" type="text/css" href="https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/<?php echo JURI::base();?>templates/amager/css/reveal.css"/>
+
+<script src="https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/<?php echo JURI::base();?>/components/com_virtuemart/assets/js/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/<?php echo JURI::base();?>templates/amager/js/jquery.reveal.js"></script>
+<?php }
+}?>
 </head>
 
 <body>
