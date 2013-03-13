@@ -239,9 +239,11 @@ class VirtueMartControllerProductdetails extends JController {
 
 // 		vmdebug('my email vars ',$vars,$TOMail);
 
-		$view->setLayout ('mail_confirmed');
+		/*$view->setLayout ('mail_confirmed');
 		$view->assignRef("backlink",JRoute::_('index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id='.$vm_product_id.'&virtuemart_category_id='.$vm_category_id));
-		$view->display ();
+		$view->display ();*/
+		
+		$this->setRedirect (JRoute::_ ('index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id='.$vm_product_id.'&virtuemart_category_id='.$vm_category_id), $msg);
 	}
 
 	/**

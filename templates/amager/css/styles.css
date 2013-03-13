@@ -621,9 +621,19 @@ border-top-right-radius:3px; border-bottom-left-radius:3px; border-bottom-right-
 margin-bottom: 15px;}
 .tell-friend label { float: left; width: 118px;}
 .tell-friend div { margin-bottom: 8px; padding: 0px 17px;}
-.tell-friend input { background: url(../img/bg-input6.png) no-repeat; width: 228px; height: 27px; line-height: 27px;
- border: none medium; padding: 0px 5px; color: #909090; }
-.tell-friend textarea { width: 226px; height: 87px; padding: 5px; border: 1px solid #cacaca; font-size: 14px; 
+
+
+.tell-friend input { background: url(../img/bg-input05.png) no-repeat 0px 0px ; width: 264px; height: 27px; line-height: 27px; border: none medium;
+font-style: italic; color: #909090; padding: 0px 5px; }
+.tell-friend input.error { background: url(../img/bg-input05.png) no-repeat 0px -52px ; width: 264px; height: 27px; line-height: 27px; border: none medium;
+font-style: italic; color: #909090; padding: 0px 5px; }
+.tell-friend input.valid { background: url(../img/bg-input05.png) no-repeat 0px -26px ; width: 264px; height: 27px; line-height: 27px; border: none medium;
+font-style: italic; color: #909090; padding: 0px 5px; }
+/*
+.tell-friend input { background: url(../img/bg-input05.png) no-repeat; width: 228px; height: 27px; line-height: 27px;
+ border: none medium; padding: 0px 5px; color: #909090; }*/
+ 
+.tell-friend textarea { width: 232px; height: 87px; padding: 5px; border: 1px solid #cacaca; font-size: 14px; 
  color: #909090; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; }
 .tell-friend .bnt-send3 { background: url(../img/button.png) no-repeat -311px -488px; width: 76px; height: 27px; padding: 0px;
  margin: 0px; float: left; margin-left: 134px; }
