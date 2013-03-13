@@ -9,11 +9,40 @@ if (empty($this->product)) {
 	return;
 }
 ?>
+<script language="javascript" src="templates/amager/js/jquery.validate.js"></script>
+<script language="javascript">
+jQuery(document).ready(function()
+{
+	jQuery.validator.addMethod("requireDefault", function(value, element) 
+	{	
+		return !(element.value == element.defaultValue);
+	});
+	
+	jQuery("#mailForm").validate({
+		rules: {
+			uremail: {
+				requireDefault: true,
+				required: true,
+				email: true
+			},
+			urfriendemail: {
+				requireDefault: true,
+				required: true,
+				email: true
+			}
+		},
+		messages: {
+			uremail: "",
+			urfriendemail: ""
+		}
+	});
+});// JavaScript Document
+</script>
 <div id="produkter-page" class="productdetails-view productdetails">
 	{module Breadcrumbs}
 	<div class="w-tell-friend reveal-modal" id="myModal2">
 	<a href="#" class="close-reveal-modal"></a>
-	<form class="tell-friend" action="<?php echo JRoute::_('index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id='.$this->product->virtuemart_product_id.'&virtuemart_category_id='.$this->product->virtuemart_category_id.'&tmpl=component') ; ?>" method="post">
+	<form class="tell-friend" action="<?php echo JRoute::_('index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id='.$this->product->virtuemart_product_id.'&virtuemart_category_id='.$this->product->virtuemart_category_id.'&tmpl=component') ; ?>" method="post" id="mailForm">
 		<fieldset>
 		<h2>Tip en ven</h2>
 		<form action="" method="post">
