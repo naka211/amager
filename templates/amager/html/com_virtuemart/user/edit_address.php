@@ -25,7 +25,8 @@ $user = JFactory::getUser();
 		<h2><div><img src="<?php echo JURI::base()."templates/".$template?>/img/step1.png" width="24" height="24" alt=""></div>Kundeoplysninger</h2>
 		<div class="frm-cus-info">
         <?php if($user->guest == 1){?>
-		<div><label>Vælg kundetype *</label><label style="font-size:12px; margin-left:5px;">Allerede kunde? <a href="#" data-reveal-id="myModal">Tryk her >></a></label></div>
+        <div><label style="font-size:12px;">Allerede kunde? <a href="#" data-reveal-id="myModal">Tryk her >></a></label></div>
+		<div><label>Vælg kundetype *</label></div>
 		<div>
 		<?php //$this->userId?>
 		<select name="mwctype" id="choicemaker">

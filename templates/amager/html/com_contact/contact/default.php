@@ -17,7 +17,7 @@ if(JRequest::getVar('success')){?>
 <div id="signup-page">
     <div id="w-signup-page">
     <div class="signup-title">
-        <h2>Kontakt Os</h2>
+        <h2>Kvittering</h2>
     </div><!--.signup-title-->
     		<p style="margin-left:10px; margin-top:10px;">Kære kunde, <br>Tak for din henvendelse. Vi vil kontakte dig hurtigst muligt.<br><br>
         Med venlig hilsen<br>
