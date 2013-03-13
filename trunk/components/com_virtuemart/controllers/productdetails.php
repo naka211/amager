@@ -199,6 +199,55 @@ class VirtueMartControllerProductdetails extends JController {
 	}
 
 	/**
+	 * Send the Recommend to a friend email.
+	 *
+	 * @author Kohl Patrick,
+	 */
+	public function mailTellafriend () {
+
+		JRequest::checkToken () or jexit ('Invalid Token');
+		// Display it all
+		$view = $this->getView ('recommend', 'html');
+		$mainframe = JFactory::getApplication ();
+
+		$virtuemart_product_id = JRequest::getInt ('virtuemart_product_id', 0);
+		$msg = JRequest::getVar ("msg", "");
+
+		$productModel = VmModel::getModel ('product');
+		$product = $productModel->getProduct ($virtuemart_product_id);
+
+		$fromMail = JRequest::getVar ('uremail'); //is sanitized then
+		$fromMail = str_replace (array('\'', '"', ',', '%', '*', '/', '\\', '?', '^', '`', '{', '}', '|', '~'), array(''), $fromMail);
+
+		$toMail = JRequest::getVar ('urfriendemail'); //is sanitized then
+		$toMail = str_replace (array('\'', '"', ',', '%', '*', '/', '\\', '?', '^', '`', '{', '}', '|', '~'), array(''), $toMail);
+
+		$subject=$fromMail." sende dig en anbefaling fra amager.dk";
+
+		$body="<strong>Hej ".$toMail."</strong><br/><br/>".
+		"Mail om ".$product->product_name.": ".$msg;
+
+		$mailer = JFactory::getMailer();
+		$mailer->addRecipient($toMail);
+		$mailer->setSubject($subject);
+		$mailer->isHTML(TRUE);
+		$mailer->setBody($body);
+		$mailer->addReplyTo($fromMail);
+
+		if ($mailer->Send()){
+			$string = 'COM_VIRTUEMART_MAIL_SEND_SUCCESSFULLY';
+		} else {
+			$string = 'COM_VIRTUEMART_MAIL_NOT_SEND_SUCCESSFULLY';
+		}
+		$mainframe->enqueueMessage (JText::_ ($string));
+
+// 		vmdebug('my email vars ',$vars,$TOMail);
+
+		$view->setLayout ('mail_confirmed');
+		$view->display ();
+	}
+
+	/**
 	 *  Ask Question form
 	 * Recommend form for Mail
 	 */
@@ -207,13 +256,13 @@ class VirtueMartControllerProductdetails extends JController {
 		if (JRequest::getCmd ('task') == 'recommend') {
 
 			/*OSP 2012-03-14 ...Track #375; allowed by setting */
-			if (VmConfig::get ('recommend_unauth', 0) == '0') {
+			/*if (VmConfig::get ('recommend_unauth', 0) == '0') {
 				$user = JFactory::getUser ();
 				if (empty($user->id)) {
 					VmInfo (JText::_ ('JGLOBAL_YOU_MUST_LOGIN_FIRST'));
 					return;
 				}
-			}
+			}*/
 			$view = $this->getView ('recommend', 'html');
 		} else {
 			$view = $this->getView ('askquestion', 'html');
