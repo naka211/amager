@@ -90,7 +90,7 @@ class UsersControllerProfile extends UsersController
 		$data['password1'] = JRequest::getVar('password1');
 		$data['password2'] = JRequest::getVar('password2');
 		
-		$data['company'] = JRequest::getVar('conpany');
+		$data['company'] = JRequest::getVar('company');
 		$data['cvr'] = JRequest::getVar('cvr');
 		
 		$data['ean'] = JRequest::getVar('ean');
