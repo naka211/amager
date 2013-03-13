@@ -13,27 +13,36 @@ if (empty($this->product)) {
 	{module Breadcrumbs}
 	<div class="w-tell-friend reveal-modal" id="myModal2">
 	<a href="#" class="close-reveal-modal"></a>
-	<form name="f1" class="tell-friend" action="" method="get">
+	<form class="tell-friend" action="<?php echo JRoute::_('index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id='.$this->product->virtuemart_product_id.'&virtuemart_category_id='.$this->product->virtuemart_category_id.'&tmpl=component') ; ?>" method="post">
 		<fieldset>
 		<h2>Tip en ven</h2>
+		<form action="" method="post">
 			<div>
 			<label>Din e-mail <span>*</span></label>
-			<input type="text" value="" />
+			<input name="uremail" type="text" value="" />
 			</div>
 			<div>
 			<label>Din ven’s e-mail<span>*</span></label>
-			<input type="text" value="" />
+			<input name="urfriendemail" type="text" value="" />
 			</div>
 			<div>
 			<label>Besked</label>
-			<textarea name="" cols="" rows=""><?php echo JURI::current()?></textarea>
+			<textarea name="msg" cols="" rows=""><?php echo JURI::current()?></textarea>
 			</div>
 			<div class="bnt-send3">
-			<a href="#">SEND</a>
+			<a onclick="nextSibling.click()">SEND</a><input type="submit" value="SEND" style="display: none"/>
 			</div><!--.bnt-send3-->
 			<div class="bnt-reset">
-			<a href="#">nulstil</a>
+			<a onclick="nextSibling.click()">nulstil</a><input type="reset" value="nulstil" style="display: none"/>
 			</div><!--.bnt-reset-->
+			<input type="hidden" name="virtuemart_product_id" value="<?php echo $this->product->virtuemart_product_id ?>" />
+			<input type="hidden" name="tmpl" value="component" />
+			<input type="hidden" name="view" value="productdetails" />
+			<input type="hidden" name="option" value="com_virtuemart" />
+			<input type="hidden" name="virtuemart_category_id" value="<?php echo $this->product->virtuemart_category_id ?>" />
+			<input type="hidden" name="task" value="mailTellafriend" />
+			<?php echo JHTML::_( 'form.token' ); ?>
+		</form>
 		</fieldset>
 	</form>
 	</div>
