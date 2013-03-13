@@ -14,6 +14,7 @@ else {
 	$url = JRoute::_ ('index.php?option=com_virtuemart&view=cart&task=checkout', $this->useXHTML, $this->useSSL);
 }
 $user = JFactory::getUser();
+$user = JUser::getInstance($user->id);
 //print_r($user);exit;
 ?>
 <script language="javascript" src="templates/amager/js/jquery.validate.js"></script>
@@ -95,7 +96,7 @@ $user = JFactory::getUser();
 		<?php }?>
         <?php if($user->guest == 1){?>
 		<div class="bnt-create-acc" style=""></div>
-		<div class="w-create-acc">
+		<div class="w-create-acc" style="display:block;">
 			
 				<label>Kodeord (skal være min 4 tegn) *</label>
 			
@@ -114,7 +115,7 @@ $user = JFactory::getUser();
 		</div>
 		<?php }?>
 		<div class="bnt-another-add" style=""></div>
-		<div class="w-another-add" style="display: none; ">
+		<div class="w-another-add" style="display: none;">
 			<div>
 			<input type="text" name="firstname2" id="firstname2" value="Fornavn *">
 			</div>
@@ -175,7 +176,7 @@ jQuery(document).ready(function(){
 				requireDefault: true,
 				required: true,
 				number: true,
-				minlength: 4
+				maxlength: 4
 			},
 			city: {
 				requireDefault: true,
@@ -192,7 +193,7 @@ jQuery(document).ready(function(){
 			email: "",
 			firstname: "",
 			lastname: "",
-			password: {
+			password1: {
 				required: "",
 				minlength: ""
 			},
@@ -278,7 +279,18 @@ jQuery(document).ready(function(){
 			};
 		jQuery("#firstname2").rules("add", newRule);
 		jQuery("#lastname2").rules("add", newRule);
-		jQuery("#zipcode2").rules("add", newRule);
+		jQuery("#zipcode2").rules("add", {
+				requireDefault: true,
+				required: true,
+				number: true,
+				maxlength: 4,
+				messages: {
+					requireDefault: "",
+					required: "",
+					number: "",
+					maxlength: ""
+				}
+			});
 		jQuery("#address2").rules("add", newRule);
 		jQuery("#city2").rules("add", newRule);
 		jQuery("#phone2").rules("add", newRule);

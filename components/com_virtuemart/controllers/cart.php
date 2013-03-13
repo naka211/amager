@@ -440,7 +440,7 @@ class VirtueMartControllerCart extends JController {
 			$data['username'] = JRequest::getVar('username1');
 			$data['name'] = JRequest::getVar('name');
 			$data['newsletter'] = 1;
-			
+			//print_r($data);exit;
 			$ret = $userModel->store($data);
 			$credentials = array('username' => $ret['user']->username,'password' => $ret['user']->password_clear);
 			$mainframe->login($credentials);

@@ -638,8 +638,10 @@ class VirtueMartModelUser extends VmModel {
 
 		// Save the JUser object
 		if (!$user->save()) {
-			vmError(JText::_( $user->getError()) , JText::_( $user->getError()));
-			return false;
+			echo '<script>alert("'.$user->getError().'");window.history.go(-1);</script>';
+			//vmError(JText::_( $user->getError()) , JText::_( $user->getError()));
+			exit;
+			//return false;
 		}
 		//vmdebug('my user, why logged in? ',$user);
 
