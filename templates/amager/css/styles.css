@@ -4,7 +4,7 @@ h1{ font-size: 20px; color: #00b2ea; text-transform: uppercase; font-family: 'Fj
 h2{ font-size: 14px; font-weight: bold; color: #fff; text-transform: uppercase; }
 .m-b { margin-bottom: 5px; }
 #header { background: #2e3033; position: fixed; z-index: 999999; width: 100%; top: 0px; }
-#header #w-header{ width: 970px; margin: 0 auto; padding-bottom: 12px; }
+#header #w-header{ width: 970px; margin: 0 auto; padding-bottom: 5px; }
 #w-header .logo { background: url(../img/logo.png) no-repeat; width: 196px; height: 97px; float: left; margin-top: 12px; }
 #w-header .logo a { text-indent: -4000px; display: block; width: 196px; height: 97px; }
 #w-header .logo3 { background: url(../img/logo.png) no-repeat; width: 196px; height: 97px; margin-top: 12px; margin: 11px auto auto; overflow: hidden; }
@@ -112,7 +112,7 @@ div.list-cart li .list-cart-close { float: right; background: url(../img/delete.
 top: 0px; right: 10px; }
 div.list-cart li .list-cart-close a { text-indent: -4000px; display: block; height: 12px; width: 12px; }
 ul.cart .img-cart { float: left; margin-top: -4px; }
-ul.cart .info-cart { float: left; margin-left: 13px; margin-top: -5px;}
+ul.cart .info-cart { float: left; margin-left: 12px; margin-top: -5px;width: 132px;}
 .info-cart p a{ color: #00b2ea; font-weight: bold; font-style: normal; text-decoration: none; }
 .info-cart span{ color: #fff; }
 .bnt-see-cart {width: 56px; height: 23px; float: right; margin-top: 5px; }
@@ -463,7 +463,7 @@ background: linear-gradient(to bottom,  rgb(247,247,247) 0%,rgb(241,241,241) 1%,
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#e4e4e4',GradientType=0 ); /* IE6-8 */
 }
 .sorter-top div{ float: left; }
-.sorter-top select { width: 116px; border: 1px solid #cacaca; height: 20px; }
+.sorter-top select {border: 1px solid #cacaca; height: 20px; }
 .sorter-top .bnt-search { float: right; background: url(../img/button.png) no-repeat -45px -198px; width: 68px; height: 25px; }
 .bnt-search a { text-decoration: none; display: block; text-indent: -4000px; }
 .bnt-search a:hover{ float: right; background: url(../img/button.png) no-repeat -45px -223px; width: 68px; height: 25px; }

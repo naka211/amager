@@ -1933,7 +1933,7 @@ class VirtueMartModelProduct extends VmModel {
 			// 		$orderby = $orderby;
 		}
 
-		$orderByList = '<div class="orderlistcontainer"><label class="title">' . JText::_ ('COM_VIRTUEMART_ORDERBY') . ' </label>';
+		$orderByList = '<div class="sorter-top"><label class="title">' . JText::_ ('COM_VIRTUEMART_ORDERBY') . ' </label>';
 		$orderByList .='<select class="activeOrder" onchange="window.location.href=this.value"><option>' . JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_' . $orderby) . $rorderTxt . '</option><optgroup label="______________"></optgroup><option value="' . $link . '">' . JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_' . $orderby) . $orderTxt . '</option>';
 		$orderByList .= $orderByLink . '</select></div>';
 

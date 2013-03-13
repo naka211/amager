@@ -295,10 +295,9 @@ focusInput = function(){
 		<!--#nav-left-->
 
 		<div id="main-content">
-        	<?php if($opt.$view==in_array($opt.$view,array('com_virtuemartvirtuemart'))){?>
+		<?php if($opt.$view==in_array($opt.$view,array('com_virtuemartvirtuemart'))){?>
 			<jdoc:include type="modules" name="above" />
 			<?php }?>
-			<jdoc:include type="message" />
 			<jdoc:include type="component" />
 			<div class="clear"></div>
             <?php if($opt.$view==in_array($opt.$view,array('com_virtuemartvirtuemart'))){?>

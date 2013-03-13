@@ -124,7 +124,7 @@ jQuery(document).ready( function(){
 
 		<div class="total2">
 			<div class="title-total"><p>TOTAL INKL. MOMS</p></div>
-			<div class="price2 s_billtotal"><p><?php echo $data->billTotal?></p></div>
+			<div class="price2 billtotal"><p><?php echo preg_replace("/\d+\s\w+\s/","",$data->billTotal,1)?></p></div>
 		</div>
         <div class="free-shipping">Fri fragt! Ved køb for minimum 500 DKK</div>
 		<div class="bnt-view-basket"> <a href="<?php echo JRoute::_("index.php?option=com_virtuemart&view=cart".$taskRoute,$useXHTML,$useSSL)?>">SE VAREKURV</a> </div>
