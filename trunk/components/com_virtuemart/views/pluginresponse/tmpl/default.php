@@ -59,15 +59,7 @@ $query = "SELECT email FROM #__users WHERE id = ".$BT_info->virtuemart_user_id;
 $db->setQuery($query);
 $email = $db->loadResult();
 
-if ( eregi("MSIE", getenv( "HTTP_USER_AGENT" ) ) || eregi("Internet Explorer", getenv("HTTP_USER_AGENT" ) ) ) {
-  // do something
 ?>
-<link rel="stylesheet" type="text/css" href="https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/<?php echo JURI::base();?>templates/amager/css/styles.css"/>
-<link rel="stylesheet" type="text/css" href="https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/<?php echo JURI::base();?>templates/amager/css/reveal.css"/>
-
-<script src="https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/<?php echo JURI::base();?>/components/com_virtuemart/assets/js/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/<?php echo JURI::base();?>templates/amager/js/jquery.reveal.js"></script>
-<?php }?>
 
 <div id="tak-page">
   	<div id="w-tak-page">
