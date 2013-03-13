@@ -130,7 +130,7 @@ $authemail = $cart->BT['email'];
 	
 	function onchangeCVC() {
 			var expmonth = document.forms["epay"].cvc;
-		if (expmonth.value.length != 3) {
+		if (expmonth.value.length < 3) {
 			insertImageInLabelHtml("cvcValidation", "<?php echo $siteURL?>templates/amager/img/icon-validate-failed.png", "Kontrolciffer skal indtastes!");
 		} else {
 			insertImageInLabelHtml("cvcValidation", "<?php echo $siteURL?>templates/amager/img/icon-validate-pass.png", "");
@@ -242,7 +242,7 @@ $authemail = $cart->BT['email'];
                 <div>
                 	<p><img src="<?php echo $siteURL?>templates/amager/img/icon-4.png" width="24" height="24" alt="" /></p>
                     <label>Kontrolcifre <span>*</span></label><br />
-                    <input id="cvc" name="cvc" onkeyup="onchangeCVC();" type="text" value="" maxlength="3" />
+                    <input id="cvc" name="cvc" onkeyup="onchangeCVC();" type="text" value="" maxlength="4" />
                     <span id="cvcValidation" class="icon">
                         <!--span class="img-wrong">Wrong</span-->
                     </span>

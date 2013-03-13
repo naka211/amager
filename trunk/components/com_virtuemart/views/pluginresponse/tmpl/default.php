@@ -151,6 +151,8 @@ Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
             	<div class="pick">
                 	<?php if($BT_info->address_2){?>
                 	<p>Afhentning: <?php echo $BT_info->address_2;?></p>  
+                    <?php } else {?>
+                    Forsendelse
                     <?php }?>                  
                 </div><!--.pick-->
                 <div class="sum-total">
