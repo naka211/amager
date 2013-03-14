@@ -67,6 +67,8 @@ class UsersControllerUser extends UsersController
 			//$app->redirect(JRoute::_($app->getUserState('users.login.form.return'), false));
 			$this->setRedirect('index.php');
 		} else {
+			echo '<script>alert("Email eller password er ikke korrekt. Venligst prøv igen!");window.history.go(-1);</script>';
+			exit;
 			// Login failed !
 			$data['remember'] = (int)$options['remember'];
 			$app->setUserState('users.login.form.data', $data);
