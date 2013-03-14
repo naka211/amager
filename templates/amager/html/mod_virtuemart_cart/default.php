@@ -62,7 +62,7 @@ jQuery(document).ready( function(){
 		<div class="img-cart"><a href="#"><img src="templates/<?php echo $document->template?>/img/img-cart.png" width="38" height="37" alt=""></a></div>
 		<div class="info-cart">
 			<p><a href="#">Din indkøbskurven</a></p>
-			<span class="s_billtotal"><?php echo $data->totalProductTxt ?> <?php if ($data->totalProduct and $show_price) echo $data->products[0]['prices']; ?></span>
+			<span class="s_billtotal"><?php echo $data->totalProductTxt ?> <?php if ($data->totalProduct and $show_price) echo $data->billTotal; ?></span>
 		</div>
 		<div class="bnt-see-cart">
 			<a href="#"><img src="templates/<?php echo $document->template?>/img/bnt-sekurv.png" width="56" height="23" alt=""></a>
