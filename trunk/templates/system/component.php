@@ -19,7 +19,6 @@ defined('_JEXEC') or die;
 <?php endif; ?>
 </head>
 <body class="contentpane">
-	<jdoc:include type="message" />
 	<jdoc:include type="component" />
 </body>
 </html>
