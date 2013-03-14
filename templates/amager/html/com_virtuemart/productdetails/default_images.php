@@ -18,28 +18,28 @@ if (!empty($this->product->images)) {
 	// Showing The Additional Images
 	$count_images = count ($this->product->images);
 		?>
-    <div class="list-item">
+	<div class="list-item">
 	<ul id="thumblist" class="gallery">
 		<?php
 		for ($i = 0; $i < $count_images; $i++) {
 			$image = $this->product->images[$i];
 			if($i==$count_images-1):
 			?>
-            <li>
+			<li>
 			<?php else:?>
 			<li>
-            <?php endif;?>
+			<?php endif;?>
 			<a href="#">
 			<?php
-                echo $image->displayMediaFull('width="102"',false,'');
-            ?>
+				echo $image->displayMediaThumb('width="102"',false,'');
+			?>
 			</a></li>
 			<?php
 		}
 		?>
-        <div class="clear"></div>
+		<div class="clear"></div>
 	</ul>
-    </div>
+	</div>
 <?php
 }
 ?>

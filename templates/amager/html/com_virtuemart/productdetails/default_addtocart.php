@@ -70,7 +70,7 @@ defined ('_JEXEC') or die('Restricted access');
 			<a href="#" id="btnAddItem" style="display:none;"></a>
 <script type="text/javascript">
 jQuery("form.js-recalculate").submit(function(){
-	//console.log(jQuery(this).serialize());
+	console.log(jQuery(this).serialize());return false;
 	jQuery.ajax( {
 	type: "POST",
 	url: "index.php",

@@ -312,7 +312,7 @@ a.prev span, a.next span {display: none; }
 .product ul li .price p.v-detail { text-align: center; text-decoration: underline; width: 216px; color: #505050; }
 .product ul li .price p.v-detail a {color: #505050; }
 .product ul li .add-cart { background: #2e3033; text-align: center; padding: 6px; margin-top: 10px; }
-.product ul li .add-cart a { color: #fff; text-transform: uppercase; text-decoration: none; font-weight: bold; font-size: 16px; }
+.product ul li .add-cart a { color: #fff; text-transform: uppercase; text-decoration: none; font-weight: bold; font-size: 16px; cursor: pointer;}
 
 /*** CSS3 fadeIn ***/
 /*@-webkit-keyframes fadeIn {
