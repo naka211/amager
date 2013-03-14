@@ -55,10 +55,6 @@ if($BT_info->address_type_name == 1 ){
 	$type = "Offentlig instans";
 }
 
-$query = "SELECT email FROM #__users WHERE id = ".$BT_info->virtuemart_user_id;
-$db->setQuery($query);
-$email = $db->loadResult();
-
 ?>
 
 <div id="tak-page">
@@ -74,7 +70,7 @@ Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
         <h2>ORDREOVERSIGT</h2>
         	<div class="main-info">
                 <label>Kundetype:</label><span><?php echo $type;?></span><br>
-                <label>E-mail: </label><span><a href="mailto:<?php echo $email;?>"><?php echo $email;?></a></span>
+                <label>E-mail: </label><span><a href="mailto:<?php echo $BT_info->email;?>"><?php echo $BT_info->email;?></a></span>
             </div><!--.main-info-->
             <div class="cus-info">
             	<h4>Kundeoplysninger:</h4>

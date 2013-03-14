@@ -32,6 +32,7 @@ if($opt.$view==in_array($opt.$view,array('com_usersprofile','com_virtuemartuser'
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
 <head>
+<meta http-equiv="x-ua-compatible" content="IE=edge">
 <!--Style-->
 <link rel="stylesheet" type="text/css" href="<?php echo $tmplURL?>css/reset.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo $tmplURL?>css/styles.css"/>
@@ -44,6 +45,9 @@ if($opt.$view==in_array($opt.$view,array('com_usersprofile','com_virtuemartuser'
 	font-style: normal;
 	font-weight: 400;
 	src: local('Fjalla One'), local('FjallaOne-Regular'), url(<?php echo $tmplURL?>font/FjallaOne-Regular.ttf) format('truetype');
+}
+::-ms-clear {
+  display: none;
 }
 </style>
 <jdoc:include type="head" />
