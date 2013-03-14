@@ -7,10 +7,12 @@ $col= 1 ;
     <div id="foo1">
     <?php
 	foreach ($manufacturers as $manufacturer) {
+		if($manufacturer->images[0]->file_url){
 	$size = getimagesize($manufacturer->images[0]->file_url);
 	?>
         <img src="<?php echo $manufacturer->images[0]->file_url;?>" width="<?php echo $size[0];?>" height="<?php echo $size[1];?>" />
 	<?php }
+	}
 	?>
     </div>
     <!--foo1-->
