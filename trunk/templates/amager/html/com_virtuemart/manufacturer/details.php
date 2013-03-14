@@ -97,7 +97,7 @@ $currency = CurrencyDisplay::getInstance( );
 
 						<p class="v-detail"><a href="<?php echo $link?>">Vis detaljer</a></p>
 						</div>
-						<div class="add-cart"> <a href="#ADDCART">Læg i Kurv</a> </div>
+						<div class="add-cart"> <a rel="<?php echo $product->virtuemart_product_id?>">Læg i Kurv</a> </div>
 					<?php if(!empty($product->prices['discountAmount'])){?>
 						<div class="sale-off"><img src="templates/<?php echo $template?>/img/tilbud.png" width="67" height="67" alt=""></div>
 					<?php }?>
@@ -123,7 +123,21 @@ $currency = CurrencyDisplay::getInstance( );
 </ul></div>
 
 <div class="pagination"><?php echo $pagination->getPagesLinks (); ?></div>
-
+<a id="btnAddItem" style="display:none;"></a>
+<script type="text/javascript">
+	jQuery(".add-cart a").click(function(e){
+	jQuery.ajax( {
+	type: "POST",
+	url: "index.php?quantity%5B%5D=1&option=com_virtuemart&view=cart&virtuemart_product_id%5B%5D="+jQuery(this).attr("rel")+"&task=add",
+	data: jQuery(this).serialize(),
+	success: function( response ){
+		cart_update();
+		jQuery("#btnAddItem").click();
+	}
+	});
+	return false;
+});
+</script>
 <?php
 		}
 ?>
