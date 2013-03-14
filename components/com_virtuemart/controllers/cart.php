@@ -412,73 +412,96 @@ class VirtueMartControllerCart extends JController {
 
 		//Use false to prevent valid boolean to get deleted
 		//T.Trung
-		
-		if(!JRequest::getVar('userid')){
-			$mainframe = JFactory::getApplication();
-			$this->addModelPath( JPATH_VM_ADMINISTRATOR.DS.'models' );
-			$userModel = VmModel::getModel('user');//print_r($userModel);exit;
-
-			$data['mwctype'] = JRequest::getVar('mwctype');
-			$data['email'] = JRequest::getVar('email');
-			$data['firstname'] = JRequest::getVar('firstname');
-			$data['lastname'] = JRequest::getVar('lastname');
-			$data['address'] = JRequest::getVar('address');
-			$data['zipcode'] = JRequest::getVar('zipcode');
-			$data['city'] = JRequest::getVar('city');
-			$data['phone'] = JRequest::getVar('phone');
-			$data['password'] = JRequest::getVar('password1');
-			$data['password2'] = JRequest::getVar('password2');
-			
-			$data['company'] = JRequest::getVar('conpany');
-			$data['cvr'] = JRequest::getVar('cvr');
-			
-			$data['ean'] = JRequest::getVar('ean');
-			$data['authority'] = JRequest::getVar('authority');
-			$data['order'] = JRequest::getVar('order');
-			$data['person'] = JRequest::getVar('person');
-			
-			$data['username'] = JRequest::getVar('username1');
-			$data['name'] = JRequest::getVar('name');
-			$data['newsletter'] = 1;
-			//print_r($data);exit;
-			$ret = $userModel->store($data);
-			$credentials = array('username' => $ret['user']->username,'password' => $ret['user']->password_clear);
-			$mainframe->login($credentials);
-		}
-		$user = JFactory::getUser();
-		//T.Trung end
 		$cart = VirtueMartCart::getCart();
-		//T.Trung
+		if(!JRequest::getVar('password1') && (!JRequest::getVar('userid'))){
+			$cart->BT = array();
+			$cart->BT['email'] = JRequest::getVar('email');
+			$cart->BT['address_type_name'] = JRequest::getVar('mwctype');
+			$cart->BT['ean'] = JRequest::getVar('ean');
+			$cart->BT['authority'] = JRequest::getVar('authority');
+			$cart->BT['order1'] = JRequest::getVar('order');
+			$cart->BT['person'] = JRequest::getVar('person');
+			$cart->BT['first_name'] = JRequest::getVar('firstname');
+			$cart->BT['last_name'] = JRequest::getVar('lastname');
+			$cart->BT['address_1'] = JRequest::getVar('address');
+			$cart->BT['address_2'] = JRequest::getVar('location');
+			$cart->BT['zip'] = JRequest::getVar('zipcode');
+			$cart->BT['city'] = JRequest::getVar('city');
+			$cart->BT['phone_1'] = JRequest::getVar('phone');
+			
+			$cart->BT['company'] = JRequest::getVar('company');
+			$cart->BT['cvr'] = JRequest::getVar('cvr');
+		} else {
+			if(!JRequest::getVar('userid')){
+				$mainframe = JFactory::getApplication();
+				$this->addModelPath( JPATH_VM_ADMINISTRATOR.DS.'models' );
+				$userModel = VmModel::getModel('user');//print_r($userModel);exit;
+	
+				$data['mwctype'] = JRequest::getVar('mwctype');
+				$data['email'] = JRequest::getVar('email');
+				$data['firstname'] = JRequest::getVar('firstname');
+				$data['lastname'] = JRequest::getVar('lastname');
+				$data['address'] = JRequest::getVar('address');
+				$data['zipcode'] = JRequest::getVar('zipcode');
+				$data['city'] = JRequest::getVar('city');
+				$data['phone'] = JRequest::getVar('phone');
+				$data['password'] = JRequest::getVar('password1');
+				$data['password2'] = JRequest::getVar('password2');
+				
+				$data['company'] = JRequest::getVar('company');
+				$data['cvr'] = JRequest::getVar('cvr');
+				
+				$data['ean'] = JRequest::getVar('ean');
+				$data['authority'] = JRequest::getVar('authority');
+				$data['order'] = JRequest::getVar('order');
+				$data['person'] = JRequest::getVar('person');
+				
+				$data['username'] = JRequest::getVar('username1');
+				$data['name'] = JRequest::getVar('name');
+				$data['newsletter'] = 1;
+				//print_r($data);exit;
+				$ret = $userModel->store($data);
+				$credentials = array('username' => $ret['user']->username,'password' => $ret['user']->password_clear);
+				$mainframe->login($credentials);
+			}
+
+			$user = JFactory::getUser();
+			$user = JUser::getInstance($user->id);
+			//T.Trung end
+			
+			//T.Trung
+			
+			$cart->BT = array();
+			$cart->BT['email'] = $user->email;
+			$cart->BT['address_type_name'] = $user->mwctype;
+			$cart->BT['ean'] = $user->ean;
+			$cart->BT['authority'] = $user->authority;
+			$cart->BT['order1'] = $user->order;
+			$cart->BT['person'] = $user->person;
+			$cart->BT['first_name'] = $user->firstname;
+			$cart->BT['last_name'] = $user->lastname;
+			$cart->BT['address_1'] = $user->address;
+			$cart->BT['address_2'] = JRequest::getVar('location');
+			$cart->BT['zip'] = $user->zipcode;
+			$cart->BT['city'] = $user->city;
+			$cart->BT['phone_1'] = $user->phone;
+			
+			$cart->BT['company'] = $user->company;
+			$cart->BT['cvr'] = $user->cvr;
+		}
+		
 		$cart->virtuemart_shipmentmethod_id = JRequest::getVar('virtuemart_shipmentmethod_id');
 		$cart->STsameAsBT = JRequest::getVar('STsameAsBT');
 		$cart->tosAccepted = 1;
 		
-		$cart->BT = array();
-		$cart->BT['email'] = $user->email;
-		$cart->BT['address_type_name'] = $user->mwctype;
-		$cart->BT['ean'] = $user->ean;
-		$cart->BT['authority'] = $user->authority;
-		$cart->BT['order1'] = $user->order;
-		$cart->BT['person'] = $user->person;
-		$cart->BT['first_name'] = $user->firstname;
-		$cart->BT['last_name'] = $user->lastname;
-		$cart->BT['address_1'] = $user->address;
-		$cart->BT['address_2'] = JRequest::getVar('location');
-		$cart->BT['zip'] = $user->zipcode;
-		$cart->BT['city'] = $user->city;
-		$cart->BT['phone_1'] = $user->phone;
-		
-		$cart->BT['company'] = $user->company;
-		$cart->BT['cvr'] = $user->cvr;
-
 		if(JRequest::getVar('STsameAsBT')){
 			$cart->ST = array();
-			$cart->ST['first_name'] = $user->firstname;
-			$cart->ST['last_name'] = $user->lastname;
-			$cart->ST['address_1'] = $user->address;
-			$cart->ST['zip'] = $user->zipcode;
-			$cart->ST['city'] = $user->city;
-			$cart->ST['phone_1'] = $user->phone;
+			$cart->ST['first_name'] = $cart->BT['first_name'];
+			$cart->ST['last_name'] = $cart->BT['last_name'];
+			$cart->ST['address_1'] = $cart->BT['address_1'];
+			$cart->ST['zip'] = $cart->BT['zip'];
+			$cart->ST['city'] = $cart->BT['city'];
+			$cart->ST['phone_1'] = $cart->BT['phone_1'];
 		} else {
 			$cart->ST = array();
 			$cart->ST['first_name'] = JRequest::getVar('firstname2');
