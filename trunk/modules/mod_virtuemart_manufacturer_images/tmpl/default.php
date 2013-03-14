@@ -7,7 +7,7 @@ $col= 1 ;
     <div id="foo1">
     <?php
 	foreach ($manufacturers as $manufacturer) {
-		if($manufacturer->images[0]->file_url){
+		if($manufacturer->images[0]->file_url_thumb){
 	$size = getimagesize($manufacturer->images[0]->file_url);
 	?>
         <img src="<?php echo $manufacturer->images[0]->file_url;?>" width="<?php echo $size[0];?>" height="<?php echo $size[1];?>" />
