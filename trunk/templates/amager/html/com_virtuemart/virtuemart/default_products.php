@@ -71,7 +71,7 @@ foreach ( $productList as $product ) {
 
 						<p class="v-detail"><a href="<?php echo $link?>">Vis detaljer</a></p>
 						</div>
-						<div class="add-cart"> <a href="#ADDCART">Læg i Kurv</a> </div>
+						<div class="add-cart"><a rel="<?php echo $product->virtuemart_product_id?>">Læg i Kurv</a></div>
 					<?php if(!empty($product->prices['discountAmount'])){?>
 						<div class="sale-off"><img src="templates/<?php echo $template?>/img/tilbud.png" width="67" height="67" alt=""></div>
 					<?php }?>
