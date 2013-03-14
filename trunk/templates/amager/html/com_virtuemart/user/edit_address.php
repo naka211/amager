@@ -96,7 +96,7 @@ $user = JUser::getInstance($user->id);
 		<?php }?>
         <?php if($user->guest == 1){?>
 		<div class="bnt-create-acc" style=""></div>
-		<div class="w-create-acc" style="display:block;">
+		<div class="w-create-acc">
 			
 				<label>Kodeord (skal være min 4 tegn) *</label>
 			
