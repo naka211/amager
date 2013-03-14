@@ -154,7 +154,11 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 
 						<p class="v-detail"><a href="<?php echo $link?>">Vis detaljer</a></p>
 						</div>
-						<div class="add-cart"> <a rel="<?php echo $product->virtuemart_product_id?>">Læg i Kurv</a> </div>
+						<div class="add-cart"><?php if($product->product_in_stock - $product->product_ordered < 1){?>
+						<span style="color: #F33;text-transform: uppercase;text-decoration: none;font-weight: bold;font-size: 16px;">Ikke på lager</span>
+<?php }else{?>
+						<a rel="<?php echo $product->virtuemart_product_id?>">Læg i Kurv</a>
+<?php }?></div>
 					<?php if(!empty($product->prices['discountAmount'])){?>
 						<div class="sale-off"><img src="templates/<?php echo $template?>/img/tilbud.png" width="67" height="67" alt=""></div>
 					<?php }?>
