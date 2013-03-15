@@ -255,7 +255,7 @@ a.next {background: url(../img/arrow-right.png); width: 15px; height: 21px; disp
 a.prev {left: 0px; top: 9px;}
 a.next { right: 0px; top: 9px; }
 a.prev span, a.next span {display: none; }
-.image_carousel img {margin: 0px 14px; display: block; float: left; }
+.image_carousel img {margin: 0px 12px; display: block; float: left; }
 .image_carousel { position: relative; padding-left: 20px; }
 
 .note {background: #f8f4e9; padding: 14px 0px; position: relative; margin-top: 14px; border: 1px solid #d1d1d1; font-size: 15px; font-weight: bold;}

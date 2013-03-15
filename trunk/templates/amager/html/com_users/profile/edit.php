@@ -89,6 +89,9 @@ jQuery(document).ready(function()
 			phone: ""
 		}
 	});
+	jQuery("#firstname").bind("blur",function(){
+		jQuery("#name").val(jQuery("#firstname").val()+' '+jQuery("#lastname").val());
+	});
 	jQuery("#lastname").bind("blur",function(){
 		jQuery("#name").val(jQuery("#firstname").val()+' '+jQuery("#lastname").val());
 	});
@@ -175,7 +178,7 @@ jQuery(document).ready(function()
 			<!--</div>--><!--.bnt-save-->
 			</div><!--.info-persional-->
 		</div><!--.overview-right-->
-		<input type="hidden" name="name" value="<?php echo $user->name;?>" />
+		<input type="hidden" name="name" value="<?php echo $user->name;?>" id="name" />
 		<input type="hidden" name="mwctype" value="<?php echo $user->mwctype;?>" />
 		<input type="hidden" name="email" value="<?php echo $user->email;?>" />
 		<input type="hidden" name="username" value="<?php echo $user->username;?>" />
