@@ -122,8 +122,16 @@ class UsersControllerRegistration extends UsersController
 		$data['password1'] = JRequest::getVar('password1');
 		$data['password2'] = JRequest::getVar('password2');
 		
-		$data['company'] = JRequest::getVar('conpany');
-		$data['cvr'] = JRequest::getVar('cvr');
+		if(JRequest::getVar('company') == 'Firmanavn'){
+			$data['company'] = '';
+		} else {
+			$data['company'] = JRequest::getVar('company');
+		}
+		if(JRequest::getVar('cvr') == 'CVR-nr.'){
+			$data['cvr'] = '';
+		} else {
+			$data['cvr'] = JRequest::getVar('cvr');
+		}
 		
 		$data['ean'] = JRequest::getVar('ean');
 		$data['authority'] = JRequest::getVar('authority');

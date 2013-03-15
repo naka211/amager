@@ -429,8 +429,16 @@ class VirtueMartControllerCart extends JController {
 			$cart->BT['city'] = JRequest::getVar('city');
 			$cart->BT['phone_1'] = JRequest::getVar('phone');
 			
-			$cart->BT['company'] = JRequest::getVar('company');
-			$cart->BT['cvr'] = JRequest::getVar('cvr');
+			if(JRequest::getVar('company') == 'Firmanavn'){
+				$cart->BT['company'] = '';
+			} else {
+				$cart->BT['company'] = JRequest::getVar('company');
+			}
+			if(JRequest::getVar('cvr') == 'CVR-nr.'){
+				$cart->BT['cvr'] = '';
+			} else {
+				$cart->BT['cvr'] = JRequest::getVar('cvr');
+			}
 		} else {
 			if(!JRequest::getVar('userid')){
 				$mainframe = JFactory::getApplication();
@@ -448,8 +456,16 @@ class VirtueMartControllerCart extends JController {
 				$data['password'] = JRequest::getVar('password1');
 				$data['password2'] = JRequest::getVar('password2');
 				
-				$data['company'] = JRequest::getVar('company');
-				$data['cvr'] = JRequest::getVar('cvr');
+				if(JRequest::getVar('company') == 'Firmanavn'){
+					$cart->BT['company'] = '';
+				} else {
+					$cart->BT['company'] = JRequest::getVar('company');
+				}
+				if(JRequest::getVar('cvr') == 'CVR-nr.'){
+					$cart->BT['cvr'] = '';
+				} else {
+					$cart->BT['cvr'] = JRequest::getVar('cvr');
+				}
 				
 				$data['ean'] = JRequest::getVar('ean');
 				$data['authority'] = JRequest::getVar('authority');
