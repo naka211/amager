@@ -437,7 +437,9 @@ class UsersModelRegistration extends JModelForm
 				'COM_USERS_EMAIL_REGISTERED_BODY',
 				$data['name'],
 				$data['sitename'],
-				$data['siteurl']
+				$data['siteurl'],
+				$data['username'],
+				$data['password_clear']
 			);
 		}
 
