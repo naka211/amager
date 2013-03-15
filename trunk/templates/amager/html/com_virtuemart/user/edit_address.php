@@ -308,19 +308,25 @@ jQuery(document).ready(function(){
 		STo();
 
 	jQuery('.bnt-create-acc').click(function(){
-	jQuery(".w-create-acc").slideToggle();
+		jQuery(".w-create-acc").slideToggle();
 	});
 
 	jQuery('.bnt-another-add').click(function(){
-	if(jQuery(".w-another-add").css("display")=="block"){
-		STx();
-		jQuery(".w-another-add").slideToggle();
-		jQuery("#STsameAsBT").val("1");
-	}else{
-		jQuery(".w-another-add").slideToggle();
-		STo();
-		jQuery("#STsameAsBT").val("0");
-	}
+		if(jQuery(".w-another-add").css("display")=="block"){
+			STx();
+			jQuery(".w-another-add").slideToggle();
+			jQuery("#STsameAsBT").val("1");
+			
+			
+			jQuery("#ship1").removeAttr("disabled");
+		}else{
+			jQuery(".w-another-add").slideToggle();
+			STo();
+			jQuery("#STsameAsBT").val("0");
+			
+			jQuery("#ship2").attr("checked", "checked");
+			jQuery("#ship1").attr("disabled", "disabled");
+		}
 	});
 	
 	formatMoney = function(num){
@@ -391,11 +397,11 @@ echo JHTML::_ ('form.token');
 					?>
 					<?php echo $shipment[1]->shipment_desc;?>
 					<div>
-					<input name="virtuemart_shipmentmethod_id" type="radio" value="2" checked="checked" onchange="changeDelivery(this.value)" />
+					<input name="virtuemart_shipmentmethod_id" type="radio" value="2" checked="checked" onchange="changeDelivery(this.value)" id="ship2" />
 					<span>Forsendelse <?php echo number_format($fee,2,',','.').' DKK'; ?></span>
 					</div>
 					<div>
-					<input name="virtuemart_shipmentmethod_id" type="radio" value="1" onchange="changeDelivery(this.value)" />
+					<input name="virtuemart_shipmentmethod_id" type="radio" value="1" onchange="changeDelivery(this.value)" id="ship1" />
 					<span>Afhentning 0,00 DKK</span>
 					</div>
 					<div>
