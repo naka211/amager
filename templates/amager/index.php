@@ -17,6 +17,7 @@ $doc				= JFactory::getDocument();
 //$templateparams		= $app->getTemplate(true)->params;
 $tmplURL=JURI::base().'templates/'.$this->template."/";
 $user = JFactory::getUser();
+$user = JUser::getInstance($user->id);
 //$doc->addStyleSheet($this->baseurl.'/templates/'.$this->template.'/css/layout.css', $type = 'text/css', $media = 'screen,projection');
 //$doc->addStyleSheet($this->baseurl.'/templates/'.$this->template.'/css/print.css', $type = 'text/css', $media = 'print');
 
