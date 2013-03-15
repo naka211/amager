@@ -41,7 +41,7 @@ $text=JRequest::getVar("keyword","Hvad søger du efter…");
 			echo $output;
 ?>
 </div>
-<div class="bnt-go btn"><a href="javascript:document.vm_mod_search.submit()">go&gt;</a></div>
+<div class="bnt-go btn"><a href="javascript:document.getElementById('vm_mod_search').submit()">go&gt;</a></div>
 		<input type="hidden" name="limitstart" value="0" />
 		<input type="hidden" name="option" value="com_virtuemart" />
 		<input type="hidden" name="view" value="search" />

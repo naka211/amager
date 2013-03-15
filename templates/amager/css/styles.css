@@ -27,7 +27,7 @@ border-bottom-left-radius:5px; border-bottom-right-radius:0px; }
 -webkit-border-bottom-left-radius:0px; -webkit-border-bottom-right-radius:5px; border-top-left-radius:0px; border-top-right-radius:0px;
 border-bottom-left-radius:0px; border-bottom-right-radius:5px; padding-right: 18px; }
 
-.nav-top ul li ul.main-sub { background: #dbe3e3; color: #2e3033; width: 970px; font-size: 11px; position: absolute; top: 26px; left: -216px; 
+.nav-top ul li ul.main-sub { background: #dbe3e3; color: #2e3033; width: 970px; font-size: 11px; position: absolute; top: 24px; left: -216px; 
 overflow: hidden; z-index: 999999; display: none; padding-bottom: 10px; border: 2px solid #cacaca; }
 .nav-top ul li:hover ul.main-sub { display: block; }
 ul.main-sub ul.sub-menu { float: left; width: 151px; padding: 10px 0px 0px 10px; height:205px;}
@@ -420,7 +420,7 @@ div.pulse:hover {
 .banner-item .close:hover {background: url(../img/button.png) no-repeat scroll -723px -246px; width: 34px; height: 34px; position: absolute; top: 5px; right: 5px; }
 
 #category ul { list-style: none; }
-#category ul li { background: #fff; float: left; border: 2px solid #d5d5d5; padding: 10px 29px; margin: 14px 15px 0px 0px; position: relative; }
+#category ul li { background: #fff; float: left; border: 2px solid #d5d5d5; padding: 5px 29px; margin: 14px 15px 0px 0px; position: relative; }
 #category ul li.n-m-r { margin-right: 0px; }
 #category ul li p.cate-title{ text-align: left; background: #f0f0f0 url(../img/bg-detail-pro.png) no-repeat center right; color: #000000;
 text-transform: uppercase; font-size: 14px; position: absolute; bottom: 1px; left: 1px; padding: 5px 0px 3px 10px; width: 163px;
