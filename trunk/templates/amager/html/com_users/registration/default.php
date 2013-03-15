@@ -27,8 +27,8 @@ JHtml::_('behavior.noframes');
         Med venlig hilsen<br />
         Amager Isenkram
         </p>
-        <div class="bnt-gohome" style="float:none; margin-left:10px;">
-        <a href="index.php">TIL FORSIDEN</a>
+        <div class="bnt-login" style="float:none; margin-left:10px;">
+        <a href="javascript:void(0);" data-reveal-id="myModal">TIL FORSIDEN</a>
         </div>
 	<?php }else {?>
     <form method="post" action="<?php echo JRoute::_('index.php?option=com_users&task=registration.register'); ?>" name="registrationForm" class="info-per" id="registrationForm">

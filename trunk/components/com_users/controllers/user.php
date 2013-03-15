@@ -64,8 +64,8 @@ class UsersControllerUser extends UsersController
 		if (true === $app->login($credentials, $options)) {
 			// Success
 			$app->setUserState('users.login.form.data', array());
-			//$app->redirect(JRoute::_($app->getUserState('users.login.form.return'), false));
-			$this->setRedirect('index.php');
+			$app->redirect(JRoute::_($app->getUserState('users.login.form.return'), false));
+			//$this->setRedirect('index.php');
 		} else {
 			echo '<script>alert("Email eller password er ikke korrekt. Venligst prøv igen!");window.history.go(-1);</script>';
 			exit;
@@ -101,8 +101,8 @@ class UsersControllerUser extends UsersController
 			}
 
 			// Redirect the user.
-			//$app->redirect(JRoute::_($return, false));
-			$this->setRedirect('index.php');
+			$app->redirect(JRoute::_($return, false));
+			//$this->setRedirect('index.php');
 		} else {
 			//$app->redirect(JRoute::_('index.php?option=com_users&view=login', false));
 			$app->redirect(JRoute::_('index.php', false));

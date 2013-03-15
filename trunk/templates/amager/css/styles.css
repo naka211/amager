@@ -885,6 +885,12 @@ border-left: 2px solid #fff; background: #efefef; }
 .bnt-gohome { margin: 10px 0px 27px 0px; background: url(../img/button.png) no-repeat 0px -401px; width: 188px; height: 43px; float: left; }
 .bnt-gohome a { text-indent: -4000px; display: block; width: 188px; height: 43px; }
 .bnt-gohome a:hover {background: url(../img/button.png) no-repeat 0px -444px; width: 188px; height: 43px; }
+
+.bnt-login { margin: 10px 0px 27px 0px; background: url(../img/button.png) no-repeat -270px -692px; width: 188px; height: 43px; float: left; }
+.bnt-login a { text-indent: -4000px; display: block; width: 188px; height: 43px; }
+.bnt-login a:hover {background: url(../img/button.png) no-repeat -270px -649px; width: 188px; height: 43px; }
+
+
 .bnt-print-receipt { margin: 10px 0px 27px 10px; background: url(../img/button.png) no-repeat -189px -401px; width: 228px; height: 43px; float: left; }
 .bnt-print-receipt a { text-indent: -4000px; display: block; width: 228px; height: 43px; }
 .bnt-print-receipt a:hover {background: url(../img/button.png) no-repeat -189px -444px; width: 228px; height: 43px; }
