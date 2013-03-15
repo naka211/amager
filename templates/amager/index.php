@@ -234,7 +234,7 @@ focusInput = function(){
 						<input type="submit" name="Submit" value=" " class="btn-login" />
 					<!--</div>--><!--.bnt-login-->
 					<div class="chk">
-						<input type="checkbox" name="remember" value="yes" /><span>Husk mig</span>
+						<input type="checkbox" name="remember" value="yes"  <?php echo $username?'checked':'';?>/><span>Husk mig</span>
 					</div>
 					<div class="forgot-pass"><a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">Har du glemt dit kodeord, tryk her</a></div>
 				</div><!--.info-user-->
