@@ -149,7 +149,7 @@ focusInput = function(){
 		<li class="no-li"><a href="index.php?option=com_users&view=registration&Itemid=121">Registrer</a></li>
 		<?php } else {?>
         <li><a href="index.php?option=com_users&task=profile.edit&user_id=<?php echo $user->id;?>">Min konto</a></li>
-		<li class="no-li"><a href="index.php?option=com_users&task=user.logout">Log ud</a></li>
+		<li class="no-li"><a href="index.php?option=com_users&task=user.logout&return=<?php echo base64_encode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); ?>">Log ud</a></li>
         <?php }?>
         </ul>
 	</div>
@@ -191,6 +191,7 @@ focusInput = function(){
 						<a href="index.php?option=com_users&view=registration&Itemid=121">Tilmeld</a>
 					</div><!--.bnt-sub-->
 				</div><!--.new-user-->
+                <input type="hidden" name="return" value="<?php echo base64_encode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); ?>" />
 			<?php echo JHtml::_('form.token'); ?>
 			</fieldset>
 		</form>
