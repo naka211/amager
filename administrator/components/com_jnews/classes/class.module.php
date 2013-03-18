@@ -64,7 +64,7 @@ function jnews_module() {
 	
 function normal( $params, $module=null ) {
 	if ( isset($module->id) ) $this->moduleID = $module->id;
-	
+
 	$this->shownamefield = $params->get('shownamefield', 1 );
 	$this->receivehtmldefault = $params->get( 'receivehtmldefault', 1 );
 	$this->showreceivehtml = $params->get( 'showreceivehtml', 0 );
@@ -1239,7 +1239,7 @@ function notification() {
 			     $btn = '<input id="aca_22" type="image" src="'.$this->imgUnregistered.'" value="'.$this->buttonUnregistered.'" alt="'.$this->buttonUnregistered.'" name="'.$this->buttonUnregistered.'" onclick="return submitjnewsmod'.$this->num.'(\'modjnewsForm'.$this->num.'\',\''.$url.'\');" />';
 		      }else{
 			if ( !empty($this->redirectURL) ) {
-							$btn = '<input id="aca_22" type="submit" value="'.$this->buttonUnregistered.'" class="button" name="'.$this->buttonUnregistered.'" />';
+							$btn = '<input id="aca_22" type="submit" value="" class="button bnt-subs-now2" name="'.$this->buttonUnregistered.'" style="cursor: pointer;" />';
 			} else {
 							$btn = '<input id="aca_22" type="button" value="" class="button bnt-subs-now2" name="'.$this->buttonUnregistered.'" onclick="return submitjnewsmod'.$this->num.'(\'modjnewsForm'.$this->num.'\',\''.$url.'\');" style="cursor: pointer;" />';
 			}

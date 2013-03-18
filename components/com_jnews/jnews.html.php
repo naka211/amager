@@ -664,5 +664,23 @@ if ( !$mainframe->isAdmin() && class_exists('jNews_Captcha') && $GLOBALS[JNEWS.'
    		return true;
 
    }
+   
+   function thanksPage(){
+	   echo '<div id="newsletter-page">
+				<div id="w-newsletter">
+					<div class="newsletter-title">
+						<h2>Tilmeld nyhedsbrev</h2>
+					</div>
+					<div class="newsletter-content">
+						<p>Kære bruger</p>
+						<p>Du er succesfuldt blevet tilføjet til listen.</p>
+						<p>Med venlig hilsen<br />Amager Isenkram</p>
+						<div class="bnt-gohome">
+							<a href="index.php">TIL FORSIDEN</a>
+						</div>
+					</div>
+				</div>
+			</div>';
+   }
 
  }
