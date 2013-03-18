@@ -89,6 +89,9 @@ if ($userId <= 0){
 
 switch ($action) {
 
+	case ('thankyou'):
+		frontHTML::thanksPage();
+		break;
 	case ('subscribers'):
 		frontend::showSubscribersFE($listId, $action, $task, true);
 		break;
@@ -310,7 +313,15 @@ switch ($action) {
 			echo "<script>alert('".addslashes(_JNEWS_EMAIL_INVALID)."'); window.history.go(-1);</script>\n";
 			break;
 		}//endelseif
-
+//T.Trung
+		$data['email'] = JRequest::getVar('email');
+		jNews_Subscribers::getSubscriberIdFromEmail( $data );
+		if($data['subscriberId']){
+			echo "<script>alert('Din e-mail allerede eksisterer i vores postlister.'); window.history.go(-1);</script>\n";
+			break;
+		}
+//end T.Trung
+		
 		if($userid>0){
 			$message = frontEnd::newSubscriber( $name, $email, true );
 		}else{

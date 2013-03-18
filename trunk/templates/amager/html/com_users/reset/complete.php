@@ -12,6 +12,22 @@ defined('_JEXEC') or die;
 JHtml::_('behavior.keepalive');
 JHtml::_('behavior.formvalidation');
 JHtml::_('behavior.noframes');
+if(JRequest::getVar('complete')){
+?>
+<div id="newsletter-page">
+    <div id="w-newsletter">
+        <div class="newsletter-title">
+            <h2>Kvittering</h2>
+        </div>
+        <div class="newsletter-content">
+            <p>Kære bruger</p>
+            <p>Dit password er blevet ændret....venligst login <a href="javascript:void(0);" data-reveal-id="myModal">her</a></p>
+            <p>Med venlig hilsen<br />Amager Isenkram</p>
+        </div>
+    </div>
+</div>
+<?php 
+} else {
 ?>
 <div id="newsletter-page">
 <div class="reset-complete<?php echo $this->pageclass_sfx?>" id="w-newsletter">
@@ -46,3 +62,4 @@ JHtml::_('behavior.noframes');
 	</form>
 </div>
 </div>
+<?php }?>
