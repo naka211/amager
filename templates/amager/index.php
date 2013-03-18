@@ -213,6 +213,7 @@ focusInput = function(){
 	<div class="w-frm-login reveal-modal" id="myModal">	
 	<a href="#" class="close-reveal-modal"></a>
 		<?php 
+				print_r($_COOKIE);exit;
 		$username = JRequest::getString('username','','cookie');
 		$password = JRequest::getString('password','','cookie');
 		?>
