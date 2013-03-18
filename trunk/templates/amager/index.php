@@ -213,7 +213,6 @@ focusInput = function(){
 	<div class="w-frm-login reveal-modal" id="myModal">	
 	<a href="#" class="close-reveal-modal"></a>
 		<?php 
-				print_r($_COOKIE);exit;
 		$username = JRequest::getString('username','','cookie');
 		$password = JRequest::getString('password','','cookie');
 		?>
@@ -236,7 +235,7 @@ focusInput = function(){
 						<input type="submit" name="Submit" value=" " class="btn-login" />
 					<!--</div>--><!--.bnt-login-->
 					<div class="chk">
-						<input type="checkbox" name="remember" value="yes"  <?php echo $username?'checked':'';?>/><span>Husk mig</span>
+						<input type="checkbox" name="remember" value="1" <?php echo $username?'checked':'';?>/><span>Husk mig</span>
 					</div>
 					<div class="forgot-pass"><a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">Har du glemt dit kodeord, tryk her</a></div>
 				</div><!--.info-user-->
