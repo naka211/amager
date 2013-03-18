@@ -186,7 +186,7 @@ class UsersControllerReset extends UsersController
 			// Get the route to the next page.
 			$itemid = UsersHelperRoute::getLoginRoute();
 			$itemid = $itemid !== null ? '&Itemid='.$itemid : '';
-			$route	= 'index.php';
+			$route	= 'index.php?option=com_users&view=reset&layout=complete&complete=1';
 
 			// Proceed to the login form.
 			$message = JText::_('COM_USERS_RESET_COMPLETE_SUCCESS');
