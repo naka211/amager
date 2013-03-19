@@ -238,7 +238,7 @@ border: none medium; margin-bottom: 5px; color: #d1d1d1; font-style: italic; lin
 .product ul{ list-style: none; }
 .product ul li { background: #fff; float: left; width: 148px; border: 1px solid #cacaca; padding: 10px 14px; margin: 14px 14px 0px 0px; }
 .product ul li.no-mar { margin-right: 0px;}
-.product ul li .img-pro { width: 150px; height: 115px; }
+.product ul li .img-pro { width: 150px; height: 120px; }
 .product ul li p.title { text-align: center; }
 .product ul li p.title a { color: #3a3a3a; text-decoration: none; }
 .product ul li .price {border-top: 1px solid #cacaca; padding-top: 10px; margin-top: 10px;}
