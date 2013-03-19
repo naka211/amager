@@ -61,7 +61,7 @@ if ($this->displayer->canEdit) {
 }
 
 $db = JFactory::getDBO();
-$query = "SELECT c.virtuemart_category_id, c.category_name FROM #__virtuemart_categories_da_dk AS c INNER JOIN #__virtuemart_category_categories cc ON c.virtuemart_category_id = cc.category_child_id WHERE cc.category_parent_id = 0 ORDER BY cc.ordering";
+$query = "SELECT c.virtuemart_category_id, c.category_name FROM #__virtuemart_categories_da_dk AS c INNER JOIN #__virtuemart_category_categories cc ON c.virtuemart_category_id = cc.category_child_id INNER JOIN #__virtuemart_categories ca ON c.virtuemart_category_id = ca.virtuemart_category_id WHERE cc.category_parent_id = 0 ORDER BY ca.ordering";
 $db->setQuery($query);
 $cats = $db->loadObjectList();
 
