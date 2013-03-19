@@ -25,7 +25,9 @@ $images = json_decode($this->item->images);
     <a href="#"><img width="343" height="227" alt="" src="<?php echo $images->image_intro; ?>"></a>
     <?php }?>
     <?php echo $this->item->text; ?>
+    <?php if($this->item->catid == 9){?>
     <div class="btn-back">
         <a href="javascript:void(0);" onclick="history.back();">Tilbage</a>
     </div><!--.bnt-back-->
+    <?php }?>
 </div>
