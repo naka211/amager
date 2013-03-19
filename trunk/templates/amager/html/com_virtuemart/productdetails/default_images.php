@@ -30,8 +30,9 @@ if (!empty($this->product->images)) {
 			<li>
 			<?php endif;?>
 			<a href="#">
+            	<img width="102" alt="converse_all-stars" src="<?php echo $image->file_url;?>">
 			<?php
-				echo $image->displayMediaThumb('width="102"',false,'');
+				//echo $image->displayMediaThumb('width="102"',false,'');
 			?>
 			</a></li>
 			<?php
