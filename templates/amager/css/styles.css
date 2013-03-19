@@ -564,7 +564,8 @@ border-top: 1px dotted #cacaca; margin-top: 10px; padding-top: 5px;}
 
 .w-pro .pro-content { padding: 20px; overflow: hidden;}
 .pro-content .pro-content-left { float: left; width: 329px; }
-.pro-content-left .img-main { width: 329px; border: 1px solid #cacaca; }
+.pro-content-left .img-main { width: 329px;}
+.pro-content-left .img-main img{ border: 1px solid #cacaca; }
 .pro-content-left .enlarge { background: url(../img/button.png) no-repeat -494px -104px; width: 75px; height: 23px; margin-top: 3px; }
 .enlarge a{ text-indent: -4000px; display: block; width: 75px; height: 23px; }
 .enlarge a:hover {background: url(../img/button.png) no-repeat -494px -127px; width: 75px; height: 23px;}
