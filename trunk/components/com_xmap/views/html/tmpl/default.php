@@ -65,7 +65,7 @@ $query = "SELECT c.virtuemart_category_id, c.category_name FROM #__virtuemart_ca
 $db->setQuery($query);
 $cats = $db->loadObjectList();
 
-$query = "SELECT virtuemart_manufacturer_id, mf_name FROM #__virtuemart_manufacturers_da_dk";
+$query = "SELECT virtuemart_manufacturer_id, mf_name FROM #__virtuemart_manufacturers_da_dk ORDER BY mf_name";
 $db->setQuery($query);
 $mfs = $db->loadObjectList();
 //print_r($cats);exit;
