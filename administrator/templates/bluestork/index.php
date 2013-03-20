@@ -111,5 +111,10 @@ if ($this->params->get('highContrast')) {
 				echo JText::sprintf('JGLOBAL_ISFREESOFTWARE', $joomla) ?>
 		</p>
 	</div>
+<style>
+.ui-autocomplete{
+	z-index:999 !important;
+}
+</style>
 </body>
 </html>
