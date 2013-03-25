@@ -414,30 +414,38 @@ class VirtueMartControllerCart extends JController {
 		//T.Trung
 		$cart = VirtueMartCart::getCart();
 		if(!JRequest::getVar('password1') && (!JRequest::getVar('userid'))){
-			$cart->BT = array();
-			$cart->BT['email'] = JRequest::getVar('email');
-			$cart->BT['address_type_name'] = JRequest::getVar('mwctype');
-			$cart->BT['ean'] = JRequest::getVar('ean');
-			$cart->BT['authority'] = JRequest::getVar('authority');
-			$cart->BT['order1'] = JRequest::getVar('order');
-			$cart->BT['person'] = JRequest::getVar('person');
-			$cart->BT['first_name'] = JRequest::getVar('firstname');
-			$cart->BT['last_name'] = JRequest::getVar('lastname');
-			$cart->BT['address_1'] = JRequest::getVar('address');
-			$cart->BT['address_2'] = JRequest::getVar('location');
-			$cart->BT['zip'] = JRequest::getVar('zipcode');
-			$cart->BT['city'] = JRequest::getVar('city');
-			$cart->BT['phone_1'] = JRequest::getVar('phone');
-			
-			if(JRequest::getVar('company') == 'Firmanavn'){
-				$cart->BT['company'] = '';
+			$db = JFactory::getDBO();
+			$db->setQuery("SELECT id FROM #__users WHERE username = '".JRequest::getVar('email')."'");
+			$id = $db->loadResult();
+			if($id){
+				echo '<script>alert("E-mail adresse er allerede registeret!");window.history.go(-1);</script>';
+				exit;
 			} else {
-				$cart->BT['company'] = JRequest::getVar('company');
-			}
-			if(JRequest::getVar('cvr') == 'CVR-nr.'){
-				$cart->BT['cvr'] = '';
-			} else {
-				$cart->BT['cvr'] = JRequest::getVar('cvr');
+				$cart->BT = array();
+				$cart->BT['email'] = JRequest::getVar('email');
+				$cart->BT['address_type_name'] = JRequest::getVar('mwctype');
+				$cart->BT['ean'] = JRequest::getVar('ean');
+				$cart->BT['authority'] = JRequest::getVar('authority');
+				$cart->BT['order1'] = JRequest::getVar('order');
+				$cart->BT['person'] = JRequest::getVar('person');
+				$cart->BT['first_name'] = JRequest::getVar('firstname');
+				$cart->BT['last_name'] = JRequest::getVar('lastname');
+				$cart->BT['address_1'] = JRequest::getVar('address');
+				$cart->BT['address_2'] = JRequest::getVar('location');
+				$cart->BT['zip'] = JRequest::getVar('zipcode');
+				$cart->BT['city'] = JRequest::getVar('city');
+				$cart->BT['phone_1'] = JRequest::getVar('phone');
+				
+				if(JRequest::getVar('company') == 'Firmanavn'){
+					$cart->BT['company'] = '';
+				} else {
+					$cart->BT['company'] = JRequest::getVar('company');
+				}
+				if(JRequest::getVar('cvr') == 'CVR-nr.'){
+					$cart->BT['cvr'] = '';
+				} else {
+					$cart->BT['cvr'] = JRequest::getVar('cvr');
+				}
 			}
 		} else {
 			if(!JRequest::getVar('userid')){
@@ -529,7 +537,7 @@ class VirtueMartControllerCart extends JController {
 		}
 		//print_r($cart);exit;
 		//T.Trung end
-		//print_r($cart);exit;
+		//print_r('sai');exit;
 		if ($cart) {
 			$cart->confirmDone();
 			$siteURL = JURI::base();
