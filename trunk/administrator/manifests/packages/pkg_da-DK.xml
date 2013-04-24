@@ -2,12 +2,12 @@
 <extension type="package" version="2.5">
 <name>Danish Language Pack</name>
 <packagename>da-DK</packagename>
-<version>2.5.8.1</version>
+<version>2.5.9.2</version>
 <creationDate>2008-03-15</creationDate>
 <author>Danish Joomla! Translation Team</author>
 <authorEmail>dansk@danskjoomla.dk</authorEmail>
 <authorUrl>www.danskjoomla.dk</authorUrl>
-<copyright>Copyright (C) 2005 - 2012 Open Source Matters. All rights reserved.</copyright>
+<copyright>Copyright (C) 2005 - 2013 Open Source Matters. All rights reserved.</copyright>
 <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 <description>da-DK Dansk Joomla! 2.5.x sprogpakke til site og admin</description>
 <url>http://danskjoomla.dk</url>

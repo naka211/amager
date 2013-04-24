@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="xlsx">
+			<field name="dataurl" type="media" directory="inf"
+				hide_none="1" label="label"
+				size="40"
+				description="desc" />
+	</fieldset>
+</form>

@@ -3,7 +3,7 @@
  * Plugin Helper File
  *
  * @package         Modules Anywhere
- * @version         3.2.1
+ * @version         3.2.3
  *
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
@@ -22,6 +22,8 @@ class plgSystemModulesAnywhereHelper
 {
 	function __construct(&$params)
 	{
+		$this->option = JFactory::getApplication()->input->get('option');
+
 		$this->params = $params;
 		$this->params->comment_start = '<!-- START: Modules Anywhere -->';
 		$this->params->comment_end = '<!-- END: Modules Anywhere -->';
@@ -105,7 +107,7 @@ class plgSystemModulesAnywhereHelper
 		}
 
 		// FEED
-		if ((JFactory::getDocument()->getType() == 'feed' || JFactory::getApplication()->input->get('option') == 'com_acymailing') && isset(JFactory::getDocument()->items)) {
+		if ((JFactory::getDocument()->getType() == 'feed' || $this->option == 'com_acymailing') && isset(JFactory::getDocument()->items)) {
 			for ($i = 0; $i < count(JFactory::getDocument()->items); $i++) {
 				$this->onContentPrepare(JFactory::getDocument()->items[$i]);
 			}
@@ -171,7 +173,7 @@ class plgSystemModulesAnywhereHelper
 		}
 
 		// COMPONENT
-		if (JFactory::getDocument()->getType() == 'feed' || JFactory::getApplication()->input->get('option') == 'com_acymailing') {
+		if (JFactory::getDocument()->getType() == 'feed' || $this->option == 'com_acymailing') {
 			$s = '#(<item[^>]*>)#s';
 			$str = preg_replace($s, '\1<!-- START: MODA_COMPONENT -->', $str);
 			$str = str_replace('</item>', '<!-- END: MODA_COMPONENT --></item>', $str);
@@ -425,28 +427,28 @@ class plgSystemModulesAnywhereHelper
 
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('m.*');
-		$query->from('#__modules AS m');
-		$query->where('m.client_id = 0');
+		$query->select('m.*')
+			->from('#__modules AS m')
+			->where('m.client_id = 0');
 		if (is_numeric($id)) {
 			$query->where('m.id = ' . (int) $id);
 		} else {
-			$query->where('m.title = ' . $db->q(NNText::html_entity_decoder($id)));
+			$query->where('m.title = ' . $db->quote(NNText::html_entity_decoder($id)));
 		}
 		if (!$ignore_access) {
 			$query->where('m.access IN (' . implode(',', $this->params->aid) . ')');
 		}
 		if (!$ignore_state) {
-			$query->where('m.published = 1');
-			$query->join('LEFT', '#__extensions AS e ON e.element = m.module AND e.client_id = m.client_id');
-			$query->where('e.enabled = 1');
+			$query->where('m.published = 1')
+				->join('LEFT', '#__extensions AS e ON e.element = m.module AND e.client_id = m.client_id')
+				->where('e.enabled = 1');
 		}
 		if (!$ignore_assignments) {
 			$date = JFactory::getDate();
 			$now = $date->toSql();
 			$nullDate = $db->getNullDate();
-			$query->where('(m.publish_up = ' . $db->q($nullDate) . ' OR m.publish_up <= ' . $db->q($now) . ')');
-			$query->where('(m.publish_down = ' . $db->q($nullDate) . ' OR m.publish_down >= ' . $db->q($now) . ')');
+			$query->where('(m.publish_up = ' . $db->quote($nullDate) . ' OR m.publish_up <= ' . $db->quote($now) . ')')
+				->where('(m.publish_down = ' . $db->quote($nullDate) . ' OR m.publish_down >= ' . $db->quote($now) . ')');
 		}
 		$query->order('m.ordering');
 		$db->setQuery($query);
@@ -478,14 +480,12 @@ class plgSystemModulesAnywhereHelper
 		$module->style = $chrome;
 
 		if (($area == 'articles' && !$ignore_caching) || !empty($overrides)) {
-			$json = ($module->params && strpos(trim($module->params), '{') === 0);
+			$json = ($module->params && substr(trim($module->params), 0, 1) == '{');
 			if ($json) {
 				$params = json_decode($module->params);
 			} else {
 				// Old ini style. Needed for crappy old style modules like swMenuPro
-				$registry = new JRegistry;
-				$registry->loadString($module->params);
-				$params = $registry->toObject();
+				$params = JRegistryFormat::getInstance('INI')->stringToObject($module->params);
 			}
 
 			// override module parameters
@@ -552,6 +552,9 @@ class plgSystemModulesAnywhereHelper
 		NNProtect::unprotectForm($str, array('{' . $this->params->module_tag, '{' . $this->params->modulepos_tag, '{loadposition'));
 	}
 
+	/**
+	 * Just in case you can't figure the method name out: this cleans the left-over junk
+	 */
 	function cleanLeftoverJunk(&$str)
 	{
 		if (!(strpos($str, '{/' . $this->params->module_tag . '}') === false)) {

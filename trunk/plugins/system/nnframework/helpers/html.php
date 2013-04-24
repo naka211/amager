@@ -1,10 +1,10 @@
 <?php
 /**
- * nnHTML
+ * nnHtml
  * extra JHTML functions
  *
  * @package         NoNumber Framework
- * @version         13.1.5
+ * @version         13.3.9
  *
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
@@ -26,9 +26,9 @@ $scripts[] = "nn_texts['minimize'] = '" . addslashes(JText::_('NN_MINIMIZE')) . 
 JFactory::getDocument()->addScriptDeclaration(implode('', $scripts));
 
 /**
- * nnHTML
+ * nnHtml
  */
-class nnHTML
+class nnHtml
 {
 	static function selectlist(&$options, $name, $value, $id, $size = 0, $multiple = 0, $attribs = '')
 	{
@@ -80,8 +80,8 @@ class nnHTML
 
 		$links = array();
 		if ($multiple) {
-			JHtml::stylesheet('nnframework/multiselect/style.css', false, true);
-			JHtml::script('nnframework/multiselect/script.js', false, true);
+			JHtml::stylesheet('nnframework/multiselect.min.css', false, true);
+			JHtml::script('nnframework/multiselect.min.js', false, true);
 		} else if ($size && count($options) > $size) {
 			$links[] = '<a href="javascript://" onclick="nnScripts.toggleSelectListSize(\'' . $id . '\');" id="toggle_' . $id . '">'
 				. '<span class="show">' . JText::_('NN_MAXIMIZE') . '</span>'
