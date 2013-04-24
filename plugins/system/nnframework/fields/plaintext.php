@@ -4,7 +4,7 @@
  * Displays plain text as element
  *
  * @package         NoNumber Framework
- * @version         13.1.5
+ * @version         13.3.9
  *
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl

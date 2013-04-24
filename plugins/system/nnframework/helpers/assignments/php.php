@@ -3,7 +3,7 @@
  * NoNumber Framework Helper File: Assignments: PHP
  *
  * @package         NoNumber Framework
- * @version         13.1.5
+ * @version         13.3.9
  *
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
@@ -44,7 +44,7 @@ class NNFrameworkAssignmentsPHP
 				$article = '';
 			}
 			if (!isset($Itemid)) {
-				$Itemid = JFactory::getApplication()->input->getInt('Itemid');
+				$Itemid = JFactory::getApplication()->input->getInt('Itemid', 0);
 			}
 			if (!isset($mainframe)) {
 				$mainframe = JFactory::getApplication();

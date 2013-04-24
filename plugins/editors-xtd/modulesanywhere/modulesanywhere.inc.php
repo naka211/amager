@@ -4,7 +4,7 @@
  * Displays a list with modules
  *
  * @package         Modules Anywhere
- * @version         3.2.1
+ * @version         3.2.3
  *
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
@@ -72,14 +72,14 @@ class plgButtonModulesAnywherePopup
 			if ($filter_position == 'none') {
 				$where[] = 'm.position = ""';
 			} else {
-				$where[] = 'm.position = ' . $db->q($filter_position);
+				$where[] = 'm.position = ' . $db->quote($filter_position);
 			}
 		}
 		if ($filter_type) {
-			$where[] = 'm.module = ' . $db->q($filter_type);
+			$where[] = 'm.module = ' . $db->quote($filter_type);
 		}
 		if ($filter_search) {
-			$where[] = 'LOWER( m.title ) LIKE ' . $db->q('%' . $db->escape($filter_search, true) . '%', false);
+			$where[] = 'LOWER( m.title ) LIKE ' . $db->quote('%' . $db->escape($filter_search, true) . '%', false);
 		}
 		if ($filter_state != '') {
 			$where[] = 'm.published = ' . $filter_state;
@@ -95,12 +95,12 @@ class plgButtonModulesAnywherePopup
 
 		// get the total number of records
 		$query = $db->getQuery(true);
-		$query->select('COUNT(DISTINCT m.id)');
-		$query->from('#__modules AS m');
-		$query->join('LEFT', '#__users AS u ON u.id = m.checked_out');
-		$query->join('LEFT', '#__viewlevels AS g ON g.id = m.access');
-		$query->join('LEFT', '#__modules_menu AS mm ON mm.moduleid = m.id');
-		$query->where($where);
+		$query->select('COUNT(DISTINCT m.id)')
+			->from('#__modules AS m')
+			->join('LEFT', '#__users AS u ON u.id = m.checked_out')
+			->join('LEFT', '#__viewlevels AS g ON g.id = m.access')
+			->join('LEFT', '#__modules_menu AS mm ON mm.moduleid = m.id')
+			->where($where);
 		$db->setQuery($query);
 		$total = $db->loadResult();
 
@@ -108,14 +108,14 @@ class plgButtonModulesAnywherePopup
 		$pageNav = new JPagination($total, $limitstart, $limit);
 
 		$query = $db->getQuery(true);
-		$query->select('m.*, u.name AS editor, g.title AS groupname, MIN( mm.menuid ) AS pages');
-		$query->from('#__modules AS m');
-		$query->join('LEFT', '#__users AS u ON u.id = m.checked_out');
-		$query->join('LEFT', '#__viewlevels AS g ON g.id = m.access');
-		$query->join('LEFT', '#__modules_menu AS mm ON mm.moduleid = m.id');
-		$query->where($where);
-		$query->group('m.id');
-		$query->order($orderby);
+		$query->select('m.*, u.name AS editor, g.title AS groupname, MIN( mm.menuid ) AS pages')
+			->from('#__modules AS m')
+			->join('LEFT', '#__users AS u ON u.id = m.checked_out')
+			->join('LEFT', '#__viewlevels AS g ON g.id = m.access')
+			->join('LEFT', '#__modules_menu AS mm ON mm.moduleid = m.id')
+			->where($where)
+			->group('m.id')
+			->order($orderby);
 		$db->setQuery($query, $pageNav->limitstart, $pageNav->limit);
 		$rows = $db->loadObjectList();
 		if ($db->getErrorNum()) {
@@ -125,12 +125,12 @@ class plgButtonModulesAnywherePopup
 
 		// get list of Positions for dropdown filter
 		$query = $db->getQuery(true);
-		$query->select('m.position AS value, m.position AS text');
-		$query->from('#__modules as m');
-		$query->where('m.client_id = 0');
-		$query->where('m.position != ""');
-		$query->group('m.position');
-		$query->order('m.position');
+		$query->select('m.position AS value, m.position AS text')
+			->from('#__modules as m')
+			->where('m.client_id = 0')
+			->where('m.position != ""')
+			->group('m.position')
+			->order('m.position');
 		$db->setQuery($query);
 		$positions = $db->loadObjectList();
 		array_unshift($positions, $options[] = JHtml::_('select.option', 'none', ':: ' . JText::_('JNONE') . ' ::'));
@@ -139,13 +139,13 @@ class plgButtonModulesAnywherePopup
 
 		// get list of Types for dropdown filter
 		$query = $db->getQuery(true);
-		$query->select('e.element AS value, e.name AS text');
-		$query->from('#__extensions as e');
-		$query->where('e.client_id = 0');
-		$query->where('type = ' . $db->q('module'));
-		$query->join('LEFT', '#__modules as m ON m.module = e.element AND m.client_id = e.client_id');
-		$query->where('m.module IS NOT NULL');
-		$query->group('e.element, e.name');
+		$query->select('e.element AS value, e.name AS text')
+			->from('#__extensions as e')
+			->where('e.client_id = 0')
+			->where('type = ' . $db->quote('module'))
+			->join('LEFT', '#__modules as m ON m.module = e.element AND m.client_id = e.client_id')
+			->where('m.module IS NOT NULL')
+			->group('e.element, e.name');
 		$db->setQuery($query);
 		$types = $db->loadObjectList();
 		$lang = JFactory::getLanguage();

@@ -3,7 +3,7 @@
  * Plugin Helper File
  *
  * @package         Modules Anywhere
- * @version         3.2.1
+ * @version         3.2.3
  *
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
@@ -40,7 +40,7 @@ class plgButtonModulesAnywhereHelper
 		}
 
 		JHtml::_('behavior.modal');
-		JHtml::stylesheet('modulesanywhere/button.css', false, true);
+		JHtml::stylesheet('modulesanywhere/button.min.css', false, true);
 
 		$icon = 'modulesanywhere';
 		if (!$this->params->button_icon) {
