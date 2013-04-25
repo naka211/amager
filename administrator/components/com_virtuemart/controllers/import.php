@@ -11,6 +11,10 @@ class VirtuemartControllerImport extends VmController {
 		parent::__construct();
 	}
 
+	protected function strEncode($s){
+		return strtolower(mb_convert_encoding( $s, "HTML-ENTITIES", "UTF-8"));
+	}
+
 	protected function getItems(){
 		$f=JPATH_ROOT.'/images/inf/index.xlsx';
 		if(file_exists($f)){
@@ -98,7 +102,6 @@ class VirtuemartControllerImport extends VmController {
 			"boxchecked" => 0,
 			"controller" => "product",
 			"view" => "product",
-			//[c9cdc7901ee53db1f9796311e85cfac1] => 1
 			"virtuemart_product_id" => 0,
 			"product_parent_id" => 0,
 		);
@@ -121,6 +124,8 @@ class VirtuemartControllerImport extends VmController {
 			$_POST[$token]=1;
 			$model = VmModel::getModel("product");
 			$dat = $this->getItems();
+			if(!$dat)
+				return;
 
 		foreach($dat as $r){
 			$rec= $rec_frame;
@@ -128,7 +133,7 @@ class VirtuemartControllerImport extends VmController {
 
 			$rec["product_name"] = $r[0];
 			$rec["product_desc"] = $r[1];
-			
+
 			foreach($brands as $o)
 				if($o[0]==$r[2]){
 					$r[2]=$o[1];
@@ -152,15 +157,16 @@ class VirtuemartControllerImport extends VmController {
 			$rec["product_weight"] = $r[10];
 
 			foreach($cats as $o){
-				$tmp0=strtolower(htmlentities($o[0]));
-				$tmp1=strtolower(htmlentities($o[2]));
+				$tmp0=$this->strEncode($o[0]);
+				$tmp1=$this->strEncode($o[2]);
 
-				if($tmp0==strtolower(htmlentities($r[12])) AND $tmp1==strtolower(htmlentities($r[13]))){
+				if($tmp0==$this->strEncode($r[12]) AND $tmp1==$this->strEncode($r[13])){
 					$r[13]=$o[1];
 					break;
 				}
 			}
 			$rec["categories"] = array($r[13]);
+
 			$model->store($rec);
 		}
 		$this->setRedirect(JRoute::_('index.php?option=com_virtuemart&view=product', false));
