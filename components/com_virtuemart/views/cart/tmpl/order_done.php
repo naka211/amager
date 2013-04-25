@@ -36,7 +36,7 @@ $callbackurl = $siteURL . 'index.php?callback=1&option=com_virtuemart&view=plugi
 $declineurl = $siteURL . 'index.php?option=com_virtuemart&view=pluginresponse&task=pluginUserPaymentCancel&on='.$cart->order_number . '&pm=1&HTTP_COOKIE='.getenv("HTTP_COOKIE");
 
 $orderid = $cart->order_number;
-$merchantid = '8010648';
+$merchantid = '8011718';
 $customerfee = intval('');
 $authsms = $cms = 'Joomla';
 $instantcapture = 0;
