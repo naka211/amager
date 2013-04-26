@@ -99,12 +99,12 @@ jQuery(document).ready( function(){
 					foreach ($data->products as $product){
 						$price=str_replace(",00","",$product["prices"]);
 						$prod=current($prod_buff);
-						//print_r($prod->image->file_url_thumb);exit;
+						$pname=(mb_strlen($prod->product_name,"UTF-8") < 49) ? $prod->product_name : mb_substr($prod->product_name, 0, 48, "UTF-8")."…";
 						?>
 						<li>
 							<div class="list-cart-img"><img src="<?php echo $prod->image->file_url_thumb?>" width="45" alt="" /></div>
 							<div class="list-cart-content">
-								<p class="title-pro" style="height:38px" ><?php echo $product["product_name"]?></p>
+								<p class="title-pro" style="height:38px" ><?php echo str_replace($prod->product_name,$pname,$product["product_name"])?></p>
 								<p>Antal: <?php echo $product["quantity"]?></p>
 							</div>
 							<div class="price-cart"><?php echo $price?></div>

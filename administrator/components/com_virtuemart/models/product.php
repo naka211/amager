@@ -1860,7 +1860,7 @@ class VirtueMartModelProduct extends VmModel {
 					}
 				}
 				elseif ($virtuemart_manufacturer_id > 0) {
-					$currentManufacturerLink = '<div class="title">' . JText::_ ('COM_VIRTUEMART_PRODUCT_DETAILS_MANUFACTURER_LBL') . '</div><div class="activeOrder">' . $manufacturers[0]->mf_name . '</div>';
+					$currentManufacturerLink = '<span class="title">' . JText::_ ('COM_VIRTUEMART_PRODUCT_DETAILS_MANUFACTURER_LBL') . '</span><span class="activeOrder">' . $manufacturers[0]->mf_name . '</span>';
 				}
 				else {
 					$currentManufacturerLink = '<div class="title">' . JText::_ ('COM_VIRTUEMART_PRODUCT_DETAILS_MANUFACTURER_LBL') . '</div><div class="Order"> ' . $manufacturers[0]->mf_name . '</div>';

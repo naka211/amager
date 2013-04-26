@@ -112,7 +112,7 @@ jQuery(document).ready(function()
 ?>
 	<?php // Product Title ?>
 <div class="pro-title">
-	<h2><?php echo $this->product->product_name ?></h2>
+	<h2 style="margin-bottom:6px"><?php echo $this->product->product_name ?></h2>
 	<div class="share-pro-onface">
 		<a href="javascript:void(0);">Del Produkt på facebook</a>
 	</div>

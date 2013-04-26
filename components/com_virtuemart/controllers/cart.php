@@ -183,6 +183,7 @@ class VirtueMartControllerCart extends JController {
 			$this->data->products[$c]["product_thumb"]='<img src="'.JURI::base().$prod->image->file_url_thumb.'" width="45" alt="" />';
 			$this->data->products[$c]["quantity"]="Antal: ".$this->data->products[$c]["quantity"];
 			$this->data->products[$c]["no"]=$prod->virtuemart_product_id;
+			$this->data->products[$c]["product_name"]=(mb_strlen($prod->product_name,"UTF-8") < 49) ? $prod->product_name : mb_substr($prod->product_name, 0, 48, "UTF-8")."…";
 			next($prod_buff);
 			$c++;
 		}
