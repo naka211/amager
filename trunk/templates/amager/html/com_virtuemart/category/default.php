@@ -102,13 +102,13 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 	$iBrowseCol = 1;
 
 	// Calculating Products Per Row
-	$BrowseProducts_per_row = $this->perRow;
+	$ppr = $this->perRow;
 
 	// Start the Output
 	foreach($this->products as $product){
 		$link=JRoute::_ ( 'index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=' . $product->virtuemart_product_id . '&virtuemart_category_id=' . $product->virtuemart_category_id );
 		// Show the horizontal seperator
-		if ($iBrowseCol == $BrowseProducts_per_row)
+		if ($iBrowseCol == $ppr)
 			$row_class=' class="no-mar"';
 		else
 				$row_class="";
@@ -117,22 +117,21 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 		?>
 		<li<?php echo $row_class?>>
 			<div class="img-pro" style="text-align:center">
-			<?php // Product Image
-			if ($product->images) {
-				echo $product->images[0]->displayMediaThumb( '', false );
-			}
-			?>
+<?php // Product Image
+			if ($product->images) 
+				echo $product->images[0]->displayMediaThumb( null, false );
+?>
 			</div>
 			<p class="title">
-				<a href="<?php echo $product->link?>"><?php echo $product->product_name?></a>
+				<a href="<?php echo $product->link?>"><?php echo (mb_strlen($product->product_name,"UTF-8") < 62) ? $product->product_name : mb_substr($product->product_name, 0, 61, "UTF-8")."…"?></a>
 			</p>
 
 				<div class="price">
 					<p class="new-price">
 <?php
-				if (VmConfig::get ( 'show_prices' ) == '1') {
+				if (VmConfig::get ( 'show_prices' ))
 					echo $this->currency->priceDisplay($product->prices['salesPrice'],0,1.0,false,$this->currency->_priceConfig['salesPrice'][1] );
-				}?>
+?>
 					</p>
 				</div>
 <?php if(!empty($product->prices['discountAmount'])){?>
@@ -167,7 +166,7 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 		<?php
 
 		// Do we need to close the current row now?
-		if ($iBrowseCol == $BrowseProducts_per_row){
+		if ($iBrowseCol == $ppr){
 			$iBrowseCol = 1;
 		} else {
 			$iBrowseCol++;
