@@ -41,7 +41,7 @@ foreach ($this->cart->products as $pkey => $prow) {
 			}
 		?>
 		</div>
-		<div class="pro-item-title">
+		<div class="pro-item-title" style="max-width: 248px">
 		<p><?php echo $prow->product_name.$prow->customfields?></p>
 		</div><!--.pro-item-title-->
 	</div>
