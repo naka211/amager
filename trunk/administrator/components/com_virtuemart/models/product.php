@@ -1797,12 +1797,6 @@ class VirtueMartModelProduct extends VmModel {
 		}
 		$fieldLink[0] = "?";
 		$fieldLink = 'index.php' . $fieldLink;
-		$orderTxt = '';
-
-		$order = JRequest::getWord ('order', 'DESC');
-		if ($order == 'DESC') {
-			$orderTxt .= '&order=' . $order;
-		}
 
 		$orderbyTxt = '';
 		$orderby = JRequest::getVar ('orderby', VmConfig::get ('browse_orderby_field'));
@@ -1846,7 +1840,6 @@ class VirtueMartModelProduct extends VmModel {
 
 				if (count ($manufacturers) > 1) {
 					foreach ($manufacturers as $mf) {
-						//$link = JRoute::_ ($fieldLink . '&virtuemart_manufacturer_id=' . $mf->virtuemart_manufacturer_id . $orderTxt . $orderbyTxt);
 						if ($mf->virtuemart_manufacturer_id==$virtuemart_manufacturer_id OR (is_array($virtuemart_manufacturer_id) AND in_array($mf->virtuemart_manufacturer_id, $virtuemart_manufacturer_id)) ) {
 							$checked='checked="checked"';
 						}else{
@@ -1891,11 +1884,13 @@ class VirtueMartModelProduct extends VmModel {
 
 					$text = JText::_ ('COM_VIRTUEMART_' . strtoupper ($fieldWithoutPrefix));
 
+					$orderlink= ($field=="`p`.created_on") ? "&order=DESC" : "";
+
 					if ($field == $orderbyCfg) {
 						$link = JRoute::_ ($fieldLink . $manufacturerTxt);
 					}
 					else {
-						$link = JRoute::_ ($fieldLink . $manufacturerTxt . '&orderby=' . $field);
+						$link = JRoute::_ ($fieldLink . $orderlink . $manufacturerTxt . '&orderby=' . $field);
 					}
 					$orderByLink .= '<option value="' . $link . '">' . $text . '</option>';
 				}
@@ -1903,24 +1898,12 @@ class VirtueMartModelProduct extends VmModel {
 			$orderByLink .= '</div>';
 		}
 
-		/* invert order value set*/
-		if ($order == 'ASC') {
-			$orderlink = '&order=DESC';
-			$orderTxt = JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_DESC');
-			$rorderTxt = JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_ASC');
-		}
-		else {
-			$orderlink = '';
-			$orderTxt = JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_ASC');
-			$rorderTxt = JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_DESC');
-		}
-
 		/* full string list */
 		if ($orderby == '') {
 			$orderby = $orderbyCfg;
 		}
 		$orderby = strtoupper ($orderby);
-		$link = JRoute::_ ($fieldLink . $orderlink . $orderbyTxt . $manufacturerTxt);
+		//$link = JRoute::_ ($fieldLink . $orderlink . $orderbyTxt . $manufacturerTxt);
 
 		$dotps = strrpos ($orderby, '.');
 		if ($dotps !== FALSE) {
@@ -1933,9 +1916,9 @@ class VirtueMartModelProduct extends VmModel {
 			// 		$orderby = $orderby;
 		}
 
-		$orderByList = '<div class="sorter-top"><label class="title">' . JText::_ ('COM_VIRTUEMART_ORDERBY') . ' </label>';
-		$orderByList .='<select class="activeOrder" onchange="window.location.href=this.value"><option>' . JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_' . $orderby) . $rorderTxt . '</option><optgroup label="______________"></optgroup><option value="' . $link . '">' . JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_' . $orderby) . $orderTxt . '</option>';
-		$orderByList .= $orderByLink . '</select></div>';
+		$orderByList = '<label class="title" style="line-height:29px">' . JText::_ ('COM_VIRTUEMART_ORDERBY') . ' </label>';
+		$orderByList .='<select class="activeOrder" onchange="window.location.href=this.value"><option>' . JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_' . $orderby) . '</option>';
+		$orderByList .= $orderByLink . '</select>';
 
 		$manuList = '';
 		if (VmConfig::get ('show_manufacturers')) {
