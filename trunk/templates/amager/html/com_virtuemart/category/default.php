@@ -92,7 +92,7 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 	<div class="sorter">
 		<div style="padding: 10px;border-bottom: 1px solid #CACACA">
 		<?php echo $this->orderByList['orderby']; ?>
-		<?php echo $this->vmPagination->getLimitBox (); ?>
+		Visning <?php echo $this->vmPagination->getLimitBox (); ?>
 		<div class="pagination"><?php echo $this->vmPagination->getPagesLinks (); ?></div>
 		</div>
 		<form id="mf_form_filters" action="<?php echo JURI::current()?>" method="post">
@@ -183,7 +183,7 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 	<div class="sorter">
 		<div style="padding: 10px;border-bottom: 1px solid #CACACA">
 			<?php echo $this->orderByList['orderby']; ?>
-			<?php echo $this->vmPagination->getLimitBox (); ?>
+			Visning <?php echo $this->vmPagination->getLimitBox (); ?>
 			<div class="pagination"><?php echo $this->vmPagination->getPagesLinks (); ?></div>
 		</div>
 	</div>
