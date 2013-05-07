@@ -188,6 +188,7 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 		</div>
 	</div>
 </div>
+
 <a id="btnAddItem" style="display:none;"></a>
 <script type="text/javascript">
 	jQuery(".add-cart a").click(function(e){
