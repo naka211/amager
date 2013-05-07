@@ -170,6 +170,31 @@ function virtuemartBuildRoute(&$query) {
 				if ( isset($jmenu['manufacturer']) ) $query['Itemid'] = $jmenu['manufacturer'];
 				else $query['Itemid'] = $jmenu['virtuemart'];
 			}
+
+// Joomla replace before route limitstart by start but without SEF this is start !
+			if ( isset($query['limitstart'] ) ) {
+				$limitstart = $query['limitstart'] ;
+				unset($query['limitstart']);
+			}
+			if ( isset($query['start'] ) ) {
+				$start = $query['start'] ;
+				unset($query['start']);
+			}
+			if ( isset($query['limit'] ) ) {
+				$limit = $query['limit'] ;
+				unset($query['limit']);
+			}
+			
+			if ($start !== null &&  $limitstart!== null ) {
+				//$segments[] = $helper->lang('results') .',1-'.$start ;
+			} else if ( $start>0 ) {
+				// using general limit if $limit is not set
+				if ($limit === null) $limit= vmrouterHelper::$limit;
+
+				$segments[] = $helper->lang('results') .','. ($start+1).'-'.($start+$limit);
+			} else if ($limit !== null && $limit != vmrouterHelper::$limit ) $segments[] = $helper->lang('results') .',1-'.$limit ;//limit change
+
+			return $segments;
 			break;
 		case 'user';
 
@@ -408,8 +433,8 @@ function virtuemartParseRoute($segments) {
 			$vars['keyword'] = array_shift($segments);
 
 		}
-		$vars['view'] = 'category';
-		$vars['virtuemart_category_id'] = $helper->activeMenu->virtuemart_category_id ;
+		$vars['view'] = 'search';
+		$vars['virtuemart_category_id'] = $helper->activeMenu->virtuemart_category_id;
 		if (empty($segments)) return $vars;
 	}
 	if (end($segments) == 'modal') {
@@ -696,7 +721,7 @@ class vmrouterHelper {
 				$mainframe = Jfactory::getApplication(); ;
 				$view = 'virtuemart';
 				if(isset($query['view'])) $view = $query['view'];
-				self::$limit= $mainframe->getUserStateFromRequest('com_virtuemart.'.$view.'.limit', VmConfig::get('list_limit', 20), 'int');
+				self::$limit= $mainframe->getUserStateFromRequest('com_virtuemart.'.$view.'.limit', VmConfig::get('list_limit'), 20);
 				// 				self::$limit= $mainframe->getUserStateFromRequest('global.list.limit', 'limit', VmConfig::get('list_limit', 20), 'int');
 			}
 		}

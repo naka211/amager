@@ -6,7 +6,10 @@ $ids = $productModel->sortSearchListQuery();
 $products = $productModel->getProducts ($ids);
 $productModel->addImages($products,1);
 $pagination = $productModel->getPagination(4);
-$currency = CurrencyDisplay::getInstance( );
+if (!class_exists('CurrencyDisplay')) require(JPATH_VM_ADMINISTRATOR . DS . 'helpers' . DS . 'currencydisplay.php');
+$currency = CurrencyDisplay::getInstance();
+JRequest::setVar("limitstart",0);
+JRequest::setVar("limit",20);
 //echo '<pre>',print_r($products),'</pre>';
 ?>
 <div id="callout" class="banner-item">
@@ -117,16 +120,17 @@ $currency = CurrencyDisplay::getInstance( );
 		}
 
 	} // end of foreach ( $products as $product )
-	// Do we need a final closing row tag?
-	if ($iBrowseCol != 1) {
 ?>
-	<div class="clear"></div>
-<?php
-	}
-?>
-</ul></div>
+<div class="clear"></div></ul></div>
+<div class="orderby-displaynumber">
+	<div class="sorter">
+		<div style="padding: 10px;border-bottom: 1px solid #CACACA">
+			<div class="pagination"><?php echo $pagination->getPagesLinks (); ?></div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
 
-<div class="pagination"><?php echo $pagination->getPagesLinks (); ?></div>
 <a id="btnAddItem" style="display:none;"></a>
 <script type="text/javascript">
 	jQuery(".add-cart a").click(function(e){

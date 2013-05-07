@@ -41,12 +41,14 @@ class VirtuemartViewManufacturer extends VmView {
 		$this->loadHelper('image');
 
 		$virtuemart_manufacturer_id = JRequest::getInt('virtuemart_manufacturer_id', 0);
+		$categoryId = JRequest::getInt('virtuemart_category_id', false);
 		$mf_category_id = JRequest::getInt('mf_category_id', 0);
 
 		// get necessary models
 		$model = VmModel::getModel('manufacturer');
 		if ($virtuemart_manufacturer_id !=0 ) {
-
+			shopFunctionsF::setLastVisitedManuId($virtuemart_manufacturer_id);
+			shopFunctionsF::setLastVisitedCategoryId($categoryId);
 			$manufacturer = $model->getManufacturer();
 			$model->addImages($manufacturer,1);
 

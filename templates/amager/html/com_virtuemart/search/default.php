@@ -206,16 +206,17 @@ if (!empty($this->products)) {/* Show products */
 		}
 
 	} // end of foreach ( $this->products as $product )
-	// Do we need a final closing row tag?
-	if ($iBrowseCol != 1) {
 ?>
-	<div class="clear"></div>
-<?php
-	}
-?>
-</ul></div>
+<div class="clear"></div></ul></div>
 
-<div class="pagination"><?php echo $this->vmPagination->getPagesLinks (); ?></div>
+<div class="orderby-displaynumber">
+	<div class="sorter">
+		<div style="padding: 10px;border-bottom: 1px solid #CACACA">
+			<div class="pagination"><?php echo $this->vmPagination->getPagesLinks (); ?></div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
 <a id="btnAddItem" style="display:none;"></a>
 <script type="text/javascript">
 	jQuery(".add-cart a").click(function(e){

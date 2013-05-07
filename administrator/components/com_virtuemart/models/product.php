@@ -7,14 +7,6 @@ if (!class_exists ('VmModel')) {
 	require(JPATH_VM_ADMINISTRATOR . DS . 'helpers' . DS . 'vmmodel.php');
 }
 
-// JTable::addIncludePath(JPATH_VM_ADMINISTRATOR.DS.'tables');
-/**
- * Model for VirtueMart Products
- *
- * @package VirtueMart
- * @author RolandD
- * @todo Replace getOrderUp and getOrderDown with JTable move function. This requires the vm_product_category_xref table to replace the ordering with the ordering column
- */
 class VirtueMartModelProduct extends VmModel {
 
 	/**
@@ -519,6 +511,7 @@ class VirtueMartModelProduct extends VmModel {
 
 			$lastCatId = ShopFunctionsf::getLastVisitedCategoryId ();
 			$lastManId = ShopFunctionsf::getLastVisitedManuId ();
+
 			if ($lastCatId != $cateid or $lastManId != $manid) {
 				$limitStart = 0;
 			}
