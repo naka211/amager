@@ -32,6 +32,10 @@ if(!class_exists('VmView'))require(JPATH_VM_SITE.DS.'helpers'.DS.'vmview.php');
 */
 class VirtuemartViewCategory extends VmView {
 
+	protected function strEncode($s){
+		return mb_strtolower( strip_tags( $s));
+	}
+
 	public function display($tpl = null) {
 
 
@@ -133,9 +137,12 @@ class VirtuemartViewCategory extends VmView {
 		// Set the titles
 		if ($category->customtitle) {
 			 $title = strip_tags($category->customtitle);
-	 	} elseif ($category->category_name) {
-	 		 $title = strip_tags($category->category_name);
-	 		 }
+		} elseif ($category->category_name) {
+			$title = "Amager isenkram | " .
+					($category->haschildren ? ucfirst($this->strEncode($category->category_name)). " på tilbud online | Køb" : "Køb " .$this->strEncode($category->category_name)
+					) .
+					" online på amagerisenkram.dk";
+			}
 		else {
 			$menus	= $app->getMenu();
 			$menu = $menus->getActive();
