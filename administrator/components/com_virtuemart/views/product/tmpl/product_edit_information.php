@@ -50,9 +50,15 @@ $i=0;
 					<td  >
 						<div style="text-align:right;font-weight:bold;"><?php echo JText::_('COM_VIRTUEMART_PRODUCT_FORM_SKU') ?></div>
 					</td>
-					<td  height="2" colspan="3" >
+					<td  height="2" >
 						<input type="text" class="inputbox" name="product_sku" id="product_sku" value="<?php echo $this->product->product_sku; ?>" size="32" maxlength="64" />
 					</td>
+                    <td ><div style="text-align:right;font-weight:bold;">
+						Can not delivered:</div>
+                    </td>
+                    <td >
+						<?php echo VmHTML::checkbox('product_delivery', $this->product->product_delivery); ?>
+                    </td>
 				</tr>
 				<?php $i = 1 - $i; ?>
 				<tr class="row<?php echo $i?>">
