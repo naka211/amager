@@ -71,6 +71,7 @@ class TableProducts extends VmTable {
 	var $product_availability	= null;
 	/** @var int File thumbnail image width */
 	var $product_special	= null;
+	var $product_delivery	= null;
 
 
 	/** @var int File thumbnail image width */
