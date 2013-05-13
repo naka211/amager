@@ -155,7 +155,7 @@ class VirtueMartViewVirtueMart extends VmView {
 			$document->setHeadData($head);*/
 			$document->setTitle(JText::_('COM_VIRTUEMART_PRODUCT_NOT_FOUND').JText::sprintf('COM_VIRTUEMART_HOME',$vendor->vendor_store_name));
 		} else {
-			$document->setTitle(JText::sprintf('COM_VIRTUEMART_HOME',$vendor->vendor_store_name));
+			$document->setTitle("Amager isenkram | Shop stort og bredt udvalg af isenkram online på amagerisenkram.dk");
 		}
 
 		$template = VmConfig::get('vmtemplate','default');
