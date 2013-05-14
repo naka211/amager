@@ -53,6 +53,10 @@ JRequest::setVar("limit",20);
 	// Start the Output
 	foreach($products as $product){
 		$link=JRoute::_ ( 'index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=' . $product->virtuemart_product_id . '&virtuemart_category_id=' . $product->virtuemart_category_id );
+
+		if($iBrowseCol == 1)
+			echo '<div>';
+
 		// Show the horizontal seperator
 		if ($iBrowseCol == $BrowseProducts_per_row)
 			$row_class=' class="no-mar"';
@@ -70,7 +74,7 @@ JRequest::setVar("limit",20);
 			?>
 			</div>
 			<p class="title">
-				<a href="<?php echo $product->link?>"><?php echo $product->product_name?></a>
+				<?php echo (mb_strlen($product->product_name,"UTF-8") < 62) ? $product->product_name : mb_substr($product->product_name, 0, 61, "UTF-8")."…"?>
 			</p>
 
 				<div class="price">
@@ -85,10 +89,12 @@ JRequest::setVar("limit",20);
 					<div class="sale-off"><img src="templates/<?php echo $template?>/img/tilbud.png" width="67" height="67" alt=""></div>
 <?php }?>
 <div class="pro-larg fadeIn">
-						<div class="img-pro-larg"><a href="<?php echo $link?>"><?php echo $product->images[0]->displayMediaThumb( 'border="0"', false, '' )?></a></div>
+	<a href="<?php echo $link?>">
+						<div class="img-pro-larg"><?php echo $product->images[0]->displayMediaThumb( 'border="0"', false, '' )?></div>
 						
-						<p class="title"><a href="<?php echo $link?>"><?php echo $product->product_name?></a></p>
-						<p class="num"><a href="<?php echo $link?>">Varenr. <?php echo $product->product_sku?></a></p>
+						<p class="title"><?php echo $product->product_name?></p>
+						<p class="num">Varenr. <?php echo $product->product_sku?></p>
+<?php if($product->product_delivery) echo "<p>VAREN KAN KUN AFHENTES!</p>"?>
 						<div class="price">
 					<?php if(!empty($product->prices['discountAmount'])){?>
 						<p class="old-price-larg"><?php echo $currency->priceDisplay($product->prices['basePrice'],0,1.0,false,$currency->_priceConfig['basePrice'][1] );?></p>
@@ -98,30 +104,32 @@ JRequest::setVar("limit",20);
 
 						<p class="price-red"><?php echo $currency->priceDisplay($product->prices['salesPrice'],0,1.0,false,$currency->_priceConfig['salesPrice'][1] );?></p>
 
-						<p class="v-detail"><a href="<?php echo $link?>">Vis detaljer</a></p>
+						<p class="v-detail">Vis detaljer</p>
 						</div>
 						<div class="add-cart"><?php if($product->product_in_stock - $product->product_ordered < 1){?>
 						<span style="color: #F33;text-transform: uppercase;text-decoration: none;font-weight: bold;font-size: 16px;">Ikke på lager</span>
 <?php }else{?>
-						<a rel="<?php echo $product->virtuemart_product_id?>">Læg i Kurv</a>
+						<a rel="<?php echo $product->virtuemart_product_id?>">Læg i Kurv
 <?php }?></div>
 					<?php if(!empty($product->prices['discountAmount'])){?>
 						<div class="sale-off"><img src="templates/<?php echo $template?>/img/tilbud.png" width="67" height="67" alt=""></div>
 					<?php }?>
-					</div>
+	</a>
+</div>
 		</li> <!-- end of product -->
 		<?php
 
 		// Do we need to close the current row now?
 		if ($iBrowseCol == $BrowseProducts_per_row){
 			$iBrowseCol = 1;
+			echo '<div class="clear"></div></div>';
 		} else {
 			$iBrowseCol++;
 		}
 
 	} // end of foreach ( $products as $product )
 ?>
-<div class="clear"></div></ul></div>
+</ul></div>
 <div class="orderby-displaynumber">
 	<div class="sorter">
 		<div style="padding: 10px;border-bottom: 1px solid #CACACA">

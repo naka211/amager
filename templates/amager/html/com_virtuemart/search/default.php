@@ -159,7 +159,7 @@ if (!empty($this->products)) {/* Show products */
 			?>
 			</div>
 			<p class="title">
-				<a href="<?php echo $product->link?>"><?php echo $product->product_name?></a>
+				<?php echo (mb_strlen($product->product_name,"UTF-8") < 62) ? $product->product_name : mb_substr($product->product_name, 0, 61, "UTF-8")."…"?>
 			</p>
 
 				<div class="price">
