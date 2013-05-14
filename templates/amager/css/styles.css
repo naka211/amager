@@ -239,8 +239,8 @@ border: none medium; margin-bottom: 5px; color: #d1d1d1; font-style: italic; lin
 .product ul li { background: #fff; float: left; width: 148px; border: 1px solid #cacaca; padding: 10px 14px; margin: 14px 14px 0px 0px}
 .product ul li.no-mar { margin-right: 0px;}
 .product ul li .img-pro { width: 150px; height: 120px}
+.product ul li a { color: #3a3a3a; text-decoration: none}
 .product ul li p.title { text-align: center;height: 57px}
-.product ul li p.title a { color: #3a3a3a; text-decoration: none}
 .product ul li .price {border-top: 1px solid #cacaca; padding-top: 10px; margin-top: 10px;}
 .product ul li .price p{ text-align: center; width: 150px}
 .product ul li .price p.old-price { text-decoration: line-through; text-align: center; width: 150px}
@@ -555,7 +555,7 @@ border-top: 1px dotted #cacaca; margin-top: 10px; padding-top: 5px;}
 
 .w-pro { background: #fff; border: 1px solid #cacaca; margin-top: 15px; overflow: hidden}
 .w-pro .pro-title{ padding: 10px; background: #f1f1f1; overflow: hidden; border-bottom: 1px solid #cacaca}
-.pro-title h2{ font-size: 18px; color: #00b2ea; text-transform: none; float: left}
+.pro-title h2{width: 450px;font-size: 18px; color: #00b2ea; text-transform: none; float: left}
 .pro-title .tell { float: right; background: url(../img/button.png) no-repeat -497px -54px; width: 90px; height: 24px; margin-right: 10px}
 .tell a{width: 90px; height: 24px; text-indent: -4000px; display: block;}
 .tell a:hover { background: url(../img/button.png) no-repeat -497px -78px; width: 90px; height: 24px;}

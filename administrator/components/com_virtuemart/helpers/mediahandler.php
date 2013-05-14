@@ -533,7 +533,7 @@ class VmMediaHandler {
 		 */
 		function getIcon($imageArgs,$lightbox,$return=false,$withDescr=false,$absUrl = false){
 
-			if(!empty($this->file_extension)){
+			if(!empty($this->file_extension) AND $this->file_extension != "jpg"){
 				$file_url = $this->theme_url.'assets/images/vmgeneral/filetype_'.$this->file_extension.'.png';
 				$file_alt = $this->file_description;
 			} else {

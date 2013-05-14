@@ -382,6 +382,9 @@ class VirtueMartCart {
 
 			$product -> link = $tmpProduct -> link;
 			$product -> packaging = $tmpProduct -> packaging;
+			//[V] add nodelivery att to cart
+			($tmpProduct -> product_delivery) ? $product -> nodelivery = $tmpProduct -> product_delivery : NULL;
+			///
 			//$product -> customfields = empty($tmpProduct -> customfields)? array():$tmpProduct -> customfields ;
 			//$product -> customfieldsCart = empty($tmpProduct -> customfieldsCart)? array(): $tmpProduct -> customfieldsCart;
 			if (!empty($tmpProduct -> customfieldsCart) ) $product -> customfieldsCart = true;
