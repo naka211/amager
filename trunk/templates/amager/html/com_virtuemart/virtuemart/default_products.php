@@ -18,14 +18,13 @@ $nb = 1;
 foreach ( $productList as $product ) {
 
 	$link=JRoute::_ ( 'index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=' . $product->virtuemart_product_id . '&virtuemart_category_id=' . $product->virtuemart_category_id );
-	$endrow='';
 
-	if($col == 1){
+	if($col == 1)
 		echo '<div>';
-	}
 
 		// Show Products
 	// this is an indicator wether a row needs to be opened or not
+	$endrow='';
 	if ($col == 4)
 		$endrow=' class="no-mar"';
 		?>
