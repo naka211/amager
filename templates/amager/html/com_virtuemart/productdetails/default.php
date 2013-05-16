@@ -319,6 +319,6 @@ if (VmConfig::get('ask_question', 1) == 1){
 ?>
 <div class="w-frm-login reveal-modal" id="myModal1">
 	<a class="close-reveal-modal" href="javascript:void(0);"></a>	
-	<div class="frm-login"><div class="logo2" style="text-align:left;"><?php echo $text;?></div></div>
+	<div class="frm-login"><div class="logo2" style="text-align:left;border-bottom: none"><?php echo $text;?></div></div>
 </div>
 <?php }?>

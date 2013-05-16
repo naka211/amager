@@ -48,7 +48,7 @@ JRequest::setVar("limit",20);
 	$iBrowseCol = 1;
 
 	// Calculating Products Per Row
-	$BrowseProducts_per_row =4;
+	$ppr =4;
 
 	// Start the Output
 	foreach($products as $product){
@@ -58,7 +58,7 @@ JRequest::setVar("limit",20);
 			echo '<div>';
 
 		// Show the horizontal seperator
-		if ($iBrowseCol == $BrowseProducts_per_row)
+		if ($iBrowseCol == $ppr)
 			$row_class=' class="no-mar"';
 		else
 				$row_class="";
@@ -120,7 +120,7 @@ JRequest::setVar("limit",20);
 		<?php
 
 		// Do we need to close the current row now?
-		if ($iBrowseCol == $BrowseProducts_per_row){
+		if ($iBrowseCol == $ppr){
 			$iBrowseCol = 1;
 			echo '<div class="clear"></div></div>';
 		} else {
@@ -128,11 +128,14 @@ JRequest::setVar("limit",20);
 		}
 
 	} // end of foreach ( $products as $product )
+if($iBrowseCol != 1 AND $iBrowseCol != $ppr)
+	echo '<div class="clear"></div></div>';
 ?>
 </ul></div>
 <div class="orderby-displaynumber">
 	<div class="sorter">
 		<div style="padding: 10px;border-bottom: 1px solid #CACACA">
+			Visning <?php echo $pagination->getLimitBox (); ?>
 			<div class="pagination"><?php echo $pagination->getPagesLinks (); ?></div>
 			<div class="clear"></div>
 		</div>

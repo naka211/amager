@@ -134,7 +134,7 @@ if (!empty($this->products)) {/* Show products */
 	$iBrowseCol = 1;
 
 	// Calculating Products Per Row
-	$BrowseProducts_per_row = $this->perRow;
+	$ppr = $this->perRow;
 
 	// Start the Output
 	foreach($this->products as $product){
@@ -143,7 +143,7 @@ if (!empty($this->products)) {/* Show products */
 			echo '<div>';
 
 		// Show the horizontal seperator
-		if ($iBrowseCol == $BrowseProducts_per_row)
+		if ($iBrowseCol == $ppr)
 			$row_class=' class="no-mar"';
 		else
 				$row_class="";
@@ -205,14 +205,15 @@ if (!empty($this->products)) {/* Show products */
 		<?php
 
 		// Do we need to close the current row now?
-		if ($iBrowseCol == $BrowseProducts_per_row){
+		if ($iBrowseCol == $ppr){
 			$iBrowseCol = 1;
 			echo '<div class="clear"></div></div>';
-		} else {
+		}else
 			$iBrowseCol++;
-		}
 
 	} // end of foreach ( $this->products as $product )
+if($iBrowseCol != 1 AND $iBrowseCol != $ppr)
+	echo '<div class="clear"></div></div>';
 ?>
 </ul></div>
 
