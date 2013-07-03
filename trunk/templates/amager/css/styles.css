@@ -218,7 +218,7 @@ border: none medium; margin-bottom: 5px; color: #d1d1d1; font-style: italic; lin
 .bnt-register a:hover {background: url(../img/button.png) no-repeat -198px -129px; width: 114px; height: 31px;}
 
 
-.offers .img-offers { width: 168px; height: 164px;}
+.offers .img-offers { width: 168px;/* height: 164px;*/}
 
 .brand a { color: #1294b4; text-decoration: none}
 .brand p { border-top: 1px solid #d1d1d1; padding-top: 5px;}
