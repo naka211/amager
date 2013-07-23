@@ -424,8 +424,8 @@ div.pulse:hover {
 #category ul { list-style: none}
 #category ul li { background: #fff; float: left; border: 2px solid #d5d5d5; padding: 5px 29px; margin: 14px 15px 0px 0px; position: relative}
 #category ul li.n-m-r { margin-right: 0px}
-#category ul li p.cate-title{ text-align: left; background: #f0f0f0 url(../img/bg-detail-pro.png) no-repeat center right; color: #000000;
-text-transform: uppercase; font-size: 14px; position: absolute; bottom: 1px; left: 1px; padding: 5px 0px 3px 10px; width: 163px;
+#category ul li p.cate-title{ text-align: left; background: #f0f0f0 url(../img/bg-detail-pro.png) no-repeat 105% 50%; color: #000000;
+text-transform: uppercase; font-size: 13px; position: absolute; bottom: 1px; left: 1px; padding: 5px 0px 3px 0px; width: 172px;
 font-family: 'Fjalla One', sans-serif; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 filter: alpha(opacity=80); opacity: 0.8; filter: alpha(opacity=80)}
 #category ul li p.cate-title a { color: #000000; text-decoration: none;}
