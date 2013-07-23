@@ -123,7 +123,7 @@ ul.cart .info-cart { float: left; margin-left: 12px; margin-top: -5px;width: 132
 #main { clear: both}
 #main #w-main{ width: 970px; margin: 0 auto; clear: both; position: relative; clear: both}
 #w-main #nav-left { float: left; width: 206px; margin-bottom: 10px}
-.cate{ background: #fff; width: 170px; padding: 10px 10px;
+.cate{ background: #fff; width: 180px; padding: 10px 0 10px 10px;
     border-top: solid 0px #dbdbdb;
 	border-right:solid 3px #dbdbdb;
 	border-left:solid 3px #dbdbdb;
@@ -157,9 +157,9 @@ ul.cart .info-cart { float: left; margin-left: 12px; margin-top: -5px;width: 132
 
 .cate ul li ul.cate-sub1 {border-top: 1px dotted #d1d1d1; margin-top: 5px; background: #fff;}
 .cate ul li ul.cate-sub1 li { background: url(../img/bg-li3.png) no-repeat top left !important; 
-border: none; padding: 3px 0px; background: none; margin-left: -5px}
+border: none; padding: 3px 0px; background: none; margin-left: -20px}
 .cate ul li ul.cate-sub1 li:hover { cursor: pointer}
-.cate ul li ul.cate-sub1 li.active-sub1 {margin: 1px 0px 1px -5px; background: none}
+.cate ul li ul.cate-sub1 li.active-sub1 {margin: 1px 0px 1px -20px; background: none}
 .cate ul li ul.cate-sub1 li.active-sub1 a { color: #00b2ea}
 .cate ul li ul.cate-sub1 li a{color: #8a8a8a; padding-left: 10px; text-decoration: none}
 .cate ul li ul.cate-sub1 li.n-b-b { border-bottom: 0px; padding-bottom: -5px}
