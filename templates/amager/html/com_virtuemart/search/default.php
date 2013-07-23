@@ -212,7 +212,7 @@ if (!empty($this->products)) {/* Show products */
 			$iBrowseCol++;
 
 	} // end of foreach ( $this->products as $product )
-if($iBrowseCol != 1 AND $iBrowseCol != $ppr)
+if($iBrowseCol != 1)
 	echo '<div class="clear"></div></div>';
 ?>
 </ul></div>

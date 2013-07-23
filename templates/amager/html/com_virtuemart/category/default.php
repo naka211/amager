@@ -184,7 +184,7 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 		}
 
 	} // end of foreach ( $this->products as $product )
-if($iBrowseCol != 1 AND $iBrowseCol != $ppr)
+if($iBrowseCol != 1)
 	echo '<div class="clear"></div></div>';
 ?>
 </ul></div>
