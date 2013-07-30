@@ -553,7 +553,7 @@ echo JHTML::_ ('form.token');
 							<label>Subtotal inkl. moms:</label><span><?php echo number_format($cart->pricesUnformatted['salesPrice'],2,',','.').' DKK'; ?></span>
 						</div>
 						<div class="m-20">
-							<label>Heraf moms:</label><span><?php echo number_format($cart->pricesUnformatted['salesPrice']*0.25,2,',','.');?> DKK</span>
+							<label>Heraf moms:</label><span><?php echo number_format($cart->pricesUnformatted['salesPrice']*0.2,2,',','.');?> DKK</span>
 						</div>
 						<div class="n-b-b3 m-20 black">
 							<label>TOTAL INKL. MOMS:</label><span id="payTotal"><?php echo number_format($cart->pricesUnformatted['salesPrice']+$fee,2,',','.').' DKK'; ?></span>

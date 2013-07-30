@@ -60,7 +60,7 @@ $db->setQuery($query);
 $email = $db->loadResult();
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<body style="padding: 0; margin: 0px; background: #cacaca; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 13px;" onload="window.print();">
+<body style="padding: 0; margin: 0px; background: #cacaca; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 13px;" onLoad="window.print();">
 	<table width="940" border="0" cellspacing="0" cellpadding="0" style="margin: 0 auto; padding: 15px; background: #fff; border: 1px solid #646464;">
     <tr style="background: #2E3033;">
     	<td style="text-align: center; border-bottom: 1px dotted #CACACA; padding: 10px 0;" colspan="4"><img src="<?php echo JURI::base();?>templates/amager/img/logo.png" width="196" height="97" /></td>
@@ -243,7 +243,7 @@ $email = $db->loadResult();
         <td style="padding: 0 10px; color: #3A3A3A;" ><?php echo number_format($order_info->order_salesPrice,2,',','.');?> DKK</td>
       </tr>
       <tr height="30" style="padding: 0 10px;">
-        <td style="padding: 0 10px; color: #3A3A3A;"><?php echo number_format($order_info->order_salesPrice*0.25,2,',','.');?> DKK</td>
+        <td style="padding: 0 10px; color: #3A3A3A;"><?php echo number_format($order_info->order_salesPrice*0.2,2,',','.');?> DKK</td>
       </tr>
       <tr height="30" style="padding: 0 10px;">
         <td style="padding: 0 10px;"><strong><?php echo number_format($order_info->order_total,2,',','.');?> DKK</strong></td>

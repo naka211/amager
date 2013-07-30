@@ -347,7 +347,10 @@ class calculationHelper {
 
 		$this->productPrices['salesPriceTemp'] = $this->productPrices['salesPrice'];
 		//Okey, this may not the best place, but atm we handle the override price as salesPrice
-		if ($override==1) {
+		//print_r($this->_now);exit;
+		//print_r($product->product_price_publish_up);exit;
+		//T.Trung edit here
+		if (($override==1) && (($product->product_price_publish_up <= $this->_now) && ($product->product_price_publish_down >= $this->_now))) {
 			$this->productPrices['salesPrice'] = $product_override_price;
 // 			$this->productPrices['discountedPriceWithoutTax'] = $this->product_override_price;
 // 			$this->productPrices['salesPriceWithDiscount'] = $this->product_override_price;

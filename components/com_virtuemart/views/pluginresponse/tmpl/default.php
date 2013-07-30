@@ -161,7 +161,7 @@ Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
                     	<label>Subtotal inkl. moms:</label><span><?php echo number_format($order_info->order_salesPrice,2,',','.');?> DKK</span>
                     </div>
                     <div>
-                    <label>Heraf moms:</label><span><?php echo number_format($order_info->order_salesPrice*0.25,2,',','.');?> DKK</span>
+                    <label>Heraf moms:</label><span><?php echo number_format($order_info->order_salesPrice*0.2,2,',','.');?> DKK</span>
                     </div>
                     <div class="black">
                     <label>TOTAL INKL. MOMS:</label><span><?php echo number_format($order_info->order_total,2,',','.');?> DKK</span>
