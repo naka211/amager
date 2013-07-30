@@ -222,7 +222,7 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
         <td style="padding: 0 10px; color: #3A3A3A;" ><?php echo number_format($this->orderDetails['details']['BT']->order_salesPrice,2,',','.');?> DKK</td>
       </tr>
       <tr height="30" style="padding: 0 10px;">
-        <td style="padding: 0 10px; color: #3A3A3A;"><?php echo number_format($this->orderDetails['details']['BT']->order_salesPrice*0.25,2,',','.');?> DKK</td>
+        <td style="padding: 0 10px; color: #3A3A3A;"><?php echo number_format($this->orderDetails['details']['BT']->order_salesPrice*0.2,2,',','.');?> DKK</td>
       </tr>
       <tr height="30" style="padding: 0 10px;">
         <td style="padding: 0 10px;"><strong><?php echo number_format($this->orderDetails['details']['BT']->order_total,2,',','.');?> DKK</strong></td>

@@ -146,7 +146,7 @@ jQuery('.over-title-gray').click(function(){
 					<label>Subtotal inkl. moms:</label><span><?php echo number_format($orderDetails['details']['BT']->order_salesPrice,2,',','.');?> DKK</span>
 					</div>
 					<div>
-					<label>Heraf moms:</label><span><?php echo number_format($orderDetails['details']['BT']->order_salesPrice*0.25,2,',','.');?> DKK</span>
+					<label>Heraf moms:</label><span><?php echo number_format($orderDetails['details']['BT']->order_salesPrice*0.2,2,',','.');?> DKK</span>
 					</div>
 					<div class="black">
 					<label>TOTAL INKL. MOMS:</label><span><?php echo number_format($orderDetails['details']['BT']->order_total,2,',','.');?> DKK</span>

@@ -171,4 +171,32 @@ class VirtuemartControllerImport extends VmController {
 		}
 		$this->setRedirect(JRoute::_('index.php?option=com_virtuemart&view=product', false));
 	}
+	
+	function exportcsv(){
+		$db = JFactory::getDBO();
+		$query = "SELECT p.product_sku, pdk.product_name, pp.product_price,pp.product_discount_id FROM #__virtuemart_products p 
+					INNER JOIN #__virtuemart_products_da_dk pdk ON p.virtuemart_product_id = pdk.virtuemart_product_id
+					INNER JOIN #__virtuemart_product_prices pp ON p.virtuemart_product_id = pp.virtuemart_product_id
+					INNER JOIN #__virtuemart_product_categories pc ON p.virtuemart_product_id = pc.virtuemart_product_id
+					WHERE pc.virtuemart_category_id = 185";
+		$db->setQuery($query);
+		$items = $db->loadObjectList();
+		$csv='"Vare nr.","VARENAVN","VEJL. PRIS","NU-PRIS"';
+		foreach($items as $item){
+			if($item->product_discount_id > 0){
+				$query = "SELECT ROUND(calc_value) FROM #__virtuemart_calcs WHERE virtuemart_calc_id = ".$item->product_discount_id;
+				$db->setQuery($query);
+				$calc_value = $db->loadResult();
+				$new_price = (float)$item->product_price - $calc_value;
+			}
+			$csv .= "\n".'="'.$item->product_sku.'","'.$item->product_name.'","'.$item->product_price.'","'.$new_price.'"';
+		}
+		
+		//Output file
+		header('Content-Encoding: UTF-8');
+		header("Content-Type: text/csv");
+		header('Content-Disposition: attachment; filename="Avis8Data.csv"' );
+		echo "\xEF\xBB\xBF";//with BOM
+		echo $csv;exit;
+	}
 }

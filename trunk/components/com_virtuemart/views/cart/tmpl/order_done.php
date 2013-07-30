@@ -36,7 +36,8 @@ $callbackurl = $siteURL . 'index.php?callback=1&option=com_virtuemart&view=plugi
 $declineurl = $siteURL . 'index.php?option=com_virtuemart&view=pluginresponse&task=pluginUserPaymentCancel&on='.$cart->order_number . '&pm=1&HTTP_COOKIE='.getenv("HTTP_COOKIE");
 
 $orderid = $cart->order_number;
-$merchantid = '8011718';
+//$merchantid = '8011718';
+$merchantid = '5746353';
 $customerfee = intval('');
 $authsms = $cms = 'Joomla';
 $instantcapture = 0;
@@ -67,7 +68,7 @@ $authemail = $cart->BT['email'];
 	   
 		if (document.forms['epay'].cardno.value.replace(" ", "").length > 0) {
 			//if (luhn_check(document.forms['epay'].cardno.value.replace(" ", "")) || validTestCardNumber(document.forms['epay'].cardno.value.replace(" ", ""))) {
-			if (luhn_check(document.forms['epay'].cardno.value.replace(" ", "")) || (document.forms['epay'].cardno.value.replace(" ", "").length < 16)) {
+			if (document.forms['epay'].cardno.value.replace(" ", "").length < 16) {
 				// credit card is valid
 				document.getElementById("cardnoValidation").innerHTML = "<img src='<?php echo $siteURL?>templates/amager/img/icon-validate-failed.png' border='0' alt='Korrekt kortnummer indtastet!'>";
 			} else{

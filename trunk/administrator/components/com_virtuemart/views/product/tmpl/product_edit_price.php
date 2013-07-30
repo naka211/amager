@@ -133,10 +133,10 @@ $rowColor = 0;
 						</span>
         </td>
         <td  nowrap>
-			<?php echo  vmJsApi::jDate ($this->tempProduct->product_price_publish_up, 'mprices[product_price_publish_up][]'); ?>
+			<?php //echo  vmJsApi::jDate ($this->tempProduct->product_price_publish_up, 'mprices[product_price_publish_up][]'); ?>
         </td>
         <td  nowrap>
-			<?php echo  vmJsApi::jDate ($this->tempProduct->product_price_publish_down, 'mprices[product_price_publish_down][]'); ?>
+			<?php //echo  vmJsApi::jDate ($this->tempProduct->product_price_publish_down, 'mprices[product_price_publish_down][]'); ?>
         </td>
     </tr>
 
@@ -155,12 +155,14 @@ $rowColor = 0;
            // echo VmHtml::radioList ('mprices[use_desired_price][' . $this->priceCounter . ']', $this->tempProduct->override, $options);
             echo '<input type="checkbox" name="mprices[use_desired_price][' . $this->priceCounter . ']" value="1"/>'
 	        ?>    </td>
-        <td width="60px">
+        <td width="80px">
             <div style="text-align: right; font-weight: bold;">
 				<span
                         class="hasTip"
                         title="<?php echo JText::_ ('COM_VIRTUEMART_PRODUCT_DISCOUNT_OVERRIDE_TIP'); ?>">
-					<?php echo JText::_ ('COM_VIRTUEMART_PRODUCT_DISCOUNT_OVERRIDE') ?>
+					<?php //echo JText::_ ('COM_VIRTUEMART_PRODUCT_DISCOUNT_OVERRIDE');
+						echo "AVIS price";
+					?>
 				</span>
             </div>
         </td>
@@ -179,20 +181,22 @@ $rowColor = 0;
 			?>
         </td>
         <td>
-            <div style="font-weight: bold;">
+        	<?php echo  vmJsApi::jDate ($this->tempProduct->product_price_publish_up, 'mprices[product_price_publish_up][]'); ?>
+           <!-- <div style="font-weight: bold;">
 				<?php echo JText::_ ('COM_VIRTUEMART_PRODUCT_PRICE_QUANTITY_RANGE') ?>
             </div>
             <input type="text"
                    size="12"
                    style="text-align:right;" name="mprices[price_quantity_start][]"
-                   value="<?php echo $this->tempProduct->price_quantity_start ?>"/>
+                   value="<?php echo $this->tempProduct->price_quantity_start ?>"/>-->
         </td>
         <td>
-            <br/>
+        	<?php echo  vmJsApi::jDate ($this->tempProduct->product_price_publish_down, 'mprices[product_price_publish_down][]'); ?>
+           <!-- <br/>
             <input type="text"
                    size="12"
                    style="text-align:right;" name="mprices[price_quantity_end][]"
-                   value="<?php echo $this->tempProduct->price_quantity_end  ?>"/>
+                   value="<?php echo $this->tempProduct->price_quantity_end  ?>"/>-->
         </td>
     </tr>
 </table>

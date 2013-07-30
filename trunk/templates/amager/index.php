@@ -28,6 +28,7 @@ $view=JRequest::getVar('view');
 if($opt.$view==in_array($opt.$view,array('com_usersprofile','com_virtuemartuser',"com_virtuemartcart","com_virtuemartpluginresponse","com_virtuemartorders"))){
 	require_once('index2.php');
 } else {
+	if($opt != "com_users") $return = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; else $return = 'http://'.$_SERVER['HTTP_HOST'];
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
@@ -247,7 +248,7 @@ focusInput = function(){
 						<a href="index.php?option=com_users&view=registration&Itemid=121">Tilmeld</a>
 					</div><!--.bnt-sub-->
 				</div><!--.new-user-->
-            <input type="hidden" name="return" value="<?php echo base64_encode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); ?>" />
+            <input type="hidden" name="return" value="<?php echo base64_encode($return); ?>" />
 			<?php echo JHtml::_('form.token'); ?>
 			</fieldset>
 		</form>
@@ -341,7 +342,16 @@ focusInput = function(){
 </div>
 <!--#footer-bottom-->
 
-
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+  ga('create', 'UA-42732693-1', 'amagerisenkram.dk');
+  ga('send', 'pageview');
+ 
+</script>
 </body>
 </html>
 <?php }?>

@@ -61,7 +61,7 @@ class UsersControllerUser extends UsersController
 		}
 		
 		// Perform the log in.
-		if (true === $app->login($credentials, $options)) {
+		if (TRUE === $app->login($credentials, $options)) {
 			// Success
 			$app->setUserState('users.login.form.data', array());
 			$app->redirect(JRoute::_($app->getUserState('users.login.form.return'), false));

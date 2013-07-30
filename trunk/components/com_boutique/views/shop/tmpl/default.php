@@ -68,36 +68,7 @@ jQuery(document).ready(function() {
 		  jQuery(this).hide(600);
      });
 	 
-	 jQuery('#clickme4').click(function() 
-	 {
-          jQuery('#me1').animate(
-		  {
-               height: 'toggle'
-               }, 2000
-          );
-		  jQuery('#clickme1').hide(600);
-		  
-     });
 	 
-     jQuery('#clickme5').click(function() 
-	 {
-          jQuery('#me2').animate(
-		  {
-               height: 'toggle'
-               }, 2000
-          );
-		  jQuery('#clickme2').hide(600);
-     });
-	 
-	  jQuery('#clickme6').click(function() 
-	 {
-          jQuery('#me3').animate(
-		  {
-               height: 'toggle'
-               }, 2000
-          );
-		  jQuery('#clickme3').hide(600);
-     });
 	 
 	 jQuery("#luk1").click(function () 
 	{
@@ -116,6 +87,17 @@ jQuery(document).ready(function() {
 	});
 });
 </script>
+<?php 
+$db = JFactory::getDBO();
+$db->setQuery('SELECT introtext FROM #__content WHERE id = 17');
+$text = $db->loadResult();
+?>
+<div class="w-frm-login reveal-modal" id="boutiqueArticle">	
+	<a href="javascript:void(0);" class="close-reveal-modal"></a>
+    <div class="frm-login" style="padding:15px;">
+		<?php echo $text;?>
+    </div>
+</div>
 <div id="butikker-page">
   <div class="store">
   	<?php $i = 1;
@@ -125,11 +107,11 @@ jQuery(document).ready(function() {
       <div class="store-img"> <img src="<?php echo JURI::base();?>components/com_boutique/img/<?php echo $shop->image;?>" alt="" /> </div>
       <!--.store-img-->
       <div class="store-content">
-        <h2><img src="images/<?php echo $shop->name;?>.png" width="160" height="13" alt="" /></h2>
+        <h2><img src="images/<?php echo $shop->id;?>.png" width="160" height="13" alt="" /></h2>
         <div class="store-info">
          	<?php echo $shop->information;?>
             <p>
-            <a href="javascript:void(0);" id="clickme<?php echo $i+3;?>">Søndagsåben Tryk her >></a>
+            <a href="javascript:void(0);" data-reveal-id="boutiqueArticle">Søndagsåben Tryk her >></a>
             </p>
         </div>
         <!--.store-info-->
