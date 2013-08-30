@@ -2180,7 +2180,6 @@ function lowStockWarningEmail($virtuemart_product_id) {
 		$vars['vendorAddress'] = shopFunctions::renderVendorAddress ($product->virtuemart_vendor_id);
 
 		$orderModel = VmModel::getModel ('orders');
-		print_r($productShoppers);exit;
 		foreach ($productShoppers as $productShopper) {
 			$vars['user'] = $productShopper['name'];
 			if (shopFunctionsF::renderMail ('productdetails', $productShopper['email'], $vars, 'productdetails', TRUE)) {
