@@ -37,7 +37,7 @@ $declineurl = $siteURL . 'index.php?option=com_virtuemart&view=pluginresponse&ta
 
 $orderid = $cart->order_number;
 //$merchantid = '8011718';
-$merchantid = '5746353';
+$merchantid = '8012788';
 $customerfee = intval('');
 $authsms = $cms = 'Joomla';
 $instantcapture = 0;
