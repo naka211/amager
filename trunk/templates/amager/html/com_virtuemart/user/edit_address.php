@@ -425,7 +425,7 @@ echo JHTML::_ ('form.token');
 						<select name="location" id="location" disabled="disabled">
 						<option selected="selected" value="Amager Isenkram">Amager Isenkram</option>
 						<option value="Gør Det Selv Shop">Gør Det Selv Shop</option>
-						<option value="Tåmby Torv Isenkram">Tåmby Torv Isenkram</option>
+						<option value="Tårnby Torv Isenkram">Tårnby Torv Isenkram</option>
 						</select>
 					</div>
 				</div>
