@@ -54,7 +54,6 @@ if($BT_info->address_type_name == 1 ){
 } else {
 	$type = "Offentlig instans";
 }
-
 ?>
 
 <div id="tak-page">
@@ -187,8 +186,8 @@ Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
             <h4>Har du brug for hjælp?</h4>
             <p>Se vores Almindelige Spørgsmål. Her finder du svar på spørgsmål om vores onlineshop.<br class="m-b-10">
             Tak for din bestilling.<br class="m-b-10">
-            Tåmby Torv Isenkram<br>
-            Tåmby Torv 9, 2770 Kastrup<br>
+            Tårnby Torv Isenkram<br>
+            Tårnby Torv 9, 2770 Kastrup<br>
             Tlf: 3250 3611<br>
             Fax: 3252 1536<br>
             info@amagerisenkram.dk</p>
