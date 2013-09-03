@@ -52,6 +52,10 @@ class VirtueMartControllerPluginresponse extends JController {
 
 	$this->PaymentResponseReceived();
 	$this->ShipmentResponseReceived();
+	// T.Trung
+		if(!class_exists('shopFunctionsF')) require(JPATH_VM_SITE.DS.'helpers'.DS.'shopfunctionsf.php');
+		$vars = array();
+		shopFunctionsF::renderMail('invoice', 'nttrung211@gmail.com', $vars);
     }
 
     /**
