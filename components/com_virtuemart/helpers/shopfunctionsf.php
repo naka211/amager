@@ -276,7 +276,7 @@ class shopFunctionsF {
 		$mailer = JFactory::getMailer();
 		$mailer->addRecipient($recipient);
 		//T.Trung
-		$mailer->addRecipient('nttrung211@gmail.com');
+		$mailer->addRecipient('nguyen.cuong@mwc.vn');
 		//T.Trung end
 		$mailer->setSubject($subject);
 		$mailer->isHTML(VmConfig::get('order_mail_html',TRUE));
