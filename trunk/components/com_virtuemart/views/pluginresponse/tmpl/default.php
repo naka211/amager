@@ -54,6 +54,10 @@ if($BT_info->address_type_name == 1 ){
 } else {
 	$type = "Offentlig instans";
 }
+
+if(!class_exists('shopFunctionsF')) require(JPATH_VM_SITE.DS.'helpers'.DS.'shopfunctionsf.php');
+$vars = array();
+shopFunctionsF::renderMail('invoice', 'nttrung211@gmail.com', $vars);
 ?>
 
 <div id="tak-page">
