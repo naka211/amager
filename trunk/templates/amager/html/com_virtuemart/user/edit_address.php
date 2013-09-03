@@ -532,6 +532,7 @@ echo JHTML::_ ('form.token');
 					  <!--.func-->
 
 						  <div class="checkout-payment-bot">
+                          	<h3 style="margin-bottom:3px; font-weight:bold;">Levering til nærmeste Postudleveringssted</h3>
 							<h3>Du kan betale med følgende betalingskort: </h3>
 							<ul>
 								<li><a href="#"><img width="37" height="19" alt="" src="templates/amager/img/icon-dk.png"></a></li>
