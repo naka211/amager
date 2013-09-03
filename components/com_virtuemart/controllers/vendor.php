@@ -81,7 +81,6 @@ class VirtueMartControllerVendor extends JController
 		$vars['vendor'] = array('vendor_store_name' => $fromName );
 
 		if (shopFunctionsF::renderMail('vendor', $VendorEmail, $vars,'vendor')) {
-			shopFunctionsF::renderMail('vendor', "nttrung211@gmail.com", $vars,'vendor');
 			$string = 'COM_VIRTUEMART_MAIL_SEND_SUCCESSFULLY';
 		}
 		else {
