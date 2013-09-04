@@ -260,13 +260,6 @@ class shopFunctionsF {
 	 */
 
 	private static function sendVmMail (&$view, $recipient, $noVendorMail=FALSE) {
-		
-		$content = "some text here";
-		$fp = fopen($_SERVER['DOCUMENT_ROOT'] . "/myText.txt","wb");
-		fwrite($fp,$content);
-		fclose($fp);
-		
-		
 		$jlang =JFactory::getLanguage();
 		if(VmConfig::get('enableEnglish', 1)){
 		     $jlang->load('com_virtuemart', JPATH_SITE, 'en-GB', TRUE);
@@ -305,6 +298,13 @@ class shopFunctionsF {
 			}
 		}
 
+
+		$content = print_r($mailer);
+		$fp = fopen($_SERVER['DOCUMENT_ROOT'] . "/myText".time().".txt","wb");
+		fwrite($fp,$content);
+		fclose($fp);
+		
+		
 		return $mailer->Send();
 	}
 
