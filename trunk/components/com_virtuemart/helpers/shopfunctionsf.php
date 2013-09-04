@@ -260,6 +260,7 @@ class shopFunctionsF {
 	 */
 
 	private static function sendVmMail (&$view, $recipient, $noVendorMail=FALSE) {
+		fopen("myText.txt");
 		$jlang =JFactory::getLanguage();
 		if(VmConfig::get('enableEnglish', 1)){
 		     $jlang->load('com_virtuemart', JPATH_SITE, 'en-GB', TRUE);
