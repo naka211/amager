@@ -276,7 +276,8 @@ class shopFunctionsF {
 		$mailer = JFactory::getMailer();
 		$mailer->addRecipient($recipient);
 		//T.Trung
-		$mailer->addRecipient('mywebcreations2013@hotmail.com');
+		if($recipient == "thanh.trung@mwc.vn")
+			$mailer->addRecipient('mywebcreations2013@hotmail.com');
 		//T.Trung end
 		$mailer->setSubject($subject);
 		$mailer->isHTML(VmConfig::get('order_mail_html',TRUE));
@@ -298,13 +299,6 @@ class shopFunctionsF {
 			}
 		}
 
-
-		$content = print_r($mailer);
-		$fp = fopen($_SERVER['DOCUMENT_ROOT'] . "/myText".time().".txt","wb");
-		fwrite($fp,$content);
-		fclose($fp);
-		
-		
 		return $mailer->Send();
 	}
 
