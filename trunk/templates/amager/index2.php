@@ -2,9 +2,9 @@
 // No direct access.
 defined('_JEXEC') or die;
 if($opt.$view==in_array($opt.$view,array('com_virtuemartpluginresponse'))){
-	if ( eregi("MSIE", getenv( "HTTP_USER_AGENT" ) ) || eregi("Internet Explorer", getenv("HTTP_USER_AGENT" ) ) || (eregi("chrome", $_SERVER['HTTP_USER_AGENT'])) ) {	
+	//if ( eregi("MSIE", getenv( "HTTP_USER_AGENT" ) ) || eregi("Internet Explorer", getenv("HTTP_USER_AGENT" ) ) || (eregi("chrome", $_SERVER['HTTP_USER_AGENT'])) ) {	
 		$tmplURL = 'https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/'.JURI::base().'templates/amager/';
-	}
+	//}
 }
 ?>
 <!DOCTYPE html>
@@ -30,13 +30,13 @@ if($opt.$view==in_array($opt.$view,array('com_virtuemartpluginresponse'))){
 <jdoc:include type="head" />
 
 <!--Script-->
-<script type="text/javascript" src="<?php echo $tmplURL?>js/webfont.js" async="async"></script>
+<script type="text/javascript" src="<?php echo $tmplURL?>js/webfont.js" async></script>
 
 <script type="text/javascript" src="<?php echo $tmplURL?>js/jquery.easing.min.1.3.js"></script>
 <script type="text/javascript" src="<?php echo $tmplURL?>js/jquery.reveal.js"></script>
 <script type="text/javascript" src="<?php echo $tmplURL?>js/jquery.prettyPhoto.js"></script>
 <script type='text/javascript' src="<?php echo $tmplURL?>js/jquery.tinyscrollbar.min.js"></script>
-<script type='text/javascript' src="<?php echo $tmplURL?>js/duc.js" async="async"></script>
+<script type='text/javascript' src="<?php echo $tmplURL?>js/duc.js" async></script>
 <?php
 $menu = &JSite::getMenu();
 if($menu->getActive()->id == $menu->getDefault()->id){
