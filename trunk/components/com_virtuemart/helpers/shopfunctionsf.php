@@ -298,6 +298,30 @@ class shopFunctionsF {
 				$mailer->addAttachment($media);
 			}
 		}
+		
+		// live site
+		/*$headers  = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+		$headers .= 'From: info@amagerisenkram.dk' . "\r\n";
+
+		if($recipient == "ttih@amagerisenkram.dk"){
+			$to = 'ttih@amagerisenkram.dk, oliver-m@hotmail.com';
+		} else {
+			$to = $recipient;
+		}*/
+		
+		// test site
+		$headers  = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+		$headers .= 'From: info@amagerisenkram.dk' . "\r\n";
+
+		if($recipient == "thanh.trung@mwc.vn"){
+			$to = 'thanh.trung@mwc.vn, mywebcreations2013@hotmail.com';
+		} else {
+			$to = $recipient;
+		}
+		
+		if(mail($to, $subject, $body, $headers)) error_log("Hihi", 3, "error.log");
 
 		return $mailer->Send();
 	}
