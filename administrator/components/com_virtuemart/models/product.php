@@ -1599,7 +1599,7 @@ class VirtueMartModelProduct extends VmModel {
 
 		//	if (is_array($cids)) $cids = array($cids);
 		$product = $this->getProduct ($id, TRUE, FALSE, FALSE);
-		$product->field = $this->productCustomsfieldsClone ($id);
+		$product->field = $this->productCustomsfieldsClone ($id);print_r($product);exit;
 // 		vmdebug('$product->field',$product->field);
 		$product->virtuemart_product_id = $product->virtuemart_product_price_id = 0;
 		//Lets check if the user is admin or the mainvendor

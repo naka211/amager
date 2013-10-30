@@ -300,18 +300,19 @@ class shopFunctionsF {
 		}
 		
 		// live site
-		/*$headers  = 'MIME-Version: 1.0' . "\r\n";
+		$headers  = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
-		$headers .= 'From: info@amagerisenkram.dk' . "\r\n";
+		$headers .= 'From: Amager Isenkram <info@amagerisenkram.dk>' . "\r\n";
 
 		if($recipient == "ttih@amagerisenkram.dk"){
-			$to = 'ttih@amagerisenkram.dk, oliver-m@hotmail.com';
+			//$to = 'ttih@amagerisenkram.dk, info@amagerisenkram.dk, oliver-m@hotmail.com, mywebcreations2013@hotmail.com';
+            $to = 'ttih@amagerisenkram.dk, info@amagerisenkram.dk, oliver-m@hotmail.com';
 		} else {
 			$to = $recipient;
-		}*/
+		}
 		
 		// test site
-		$headers  = 'MIME-Version: 1.0' . "\r\n";
+		/*$headers  = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 		$headers .= 'From: info@amagerisenkram.dk' . "\r\n";
 
@@ -319,9 +320,9 @@ class shopFunctionsF {
 			$to = 'thanh.trung@mwc.vn, mywebcreations2013@hotmail.com';
 		} else {
 			$to = $recipient;
-		}
+		}*/
 		
-		if(mail($to, $subject, $body, $headers)) error_log("Hihi", 3, "error.log");
+		if(mail($to, $subject, $body, $headers)) error_log(date('H:i:s m-d-Y', time()).' to :'.$to.'///', 3, "error.log");
 
 		return $mailer->Send();
 	}

@@ -34,7 +34,9 @@ require_once JPATH_COMPONENT_ADMINISTRATOR.DS.'liveupdate'.DS.'liveupdate.php';
 	<div class="icon"><?php VmImage::displayImageButton(JROUTE::_('index.php?option=com_virtuemart&view=config'), 'vm_shop_configuration_48', JText::_('COM_VIRTUEMART_CONFIG')); ?></div>
 	<div class="icon"><?php VmImage::displayImageButton(JROUTE::_('index.php?option=com_virtuemart&view=user&task=editshop'), 'vm_shop_mart_48', JText::_('COM_VIRTUEMART_STORE')); ?></div>
 	<div class="icon"><?php VmImage::displayImageButton('http://virtuemart.org/index.php?option=com_content&amp;task=view&amp;id=248&amp;Itemid=125', 'vm_shop_help_48', JText::_('COM_VIRTUEMART_DOCUMENTATION')); ?></div>
-<?php
+    <div class="icon"><?php VmImage::displayImageButton(JROUTE::_('index.php?option=com_virtuemart&view=product&layout=product_import'), 'vm_shop_mart_48', JText::_('Import Products')); ?></div> 
+	<div class="icon"><?php VmImage::displayImageButton(JROUTE::_('index.php?option=com_virtuemart&view=product&layout=product_export'), 'vm_shop_orders_48', JText::_('Export Products')); ?></div> 
+	<?php
 	/*<div class="icon"><?php VmImage::displayImageButton('index.php?option=com_virtuemart&view=import&task=chkImport', 'vm_module_48', "Import products"); ?></div>*/
 ?>
 <div class="clear"></div>

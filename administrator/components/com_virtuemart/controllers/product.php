@@ -54,9 +54,180 @@ class VirtuemartControllerProduct extends VmController {
 	 *
 	 * @author Max Milbers
 	 */
+	 
+	 
+	 function saveExport(){
+			$db = JFactory::getDBO();
+			/*define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+			include JPATH_SITE.DS.'lib/Classes/PHPExcel/IOFactory.php';
+			
+			$file_name = 'products.csv';
+			$objPHPExcel = new PHPExcel();
+			
+			$objPHPExcel->getProperties()->setCreator("Amager")
+							 ->setLastModifiedBy("MWC")
+							 ->setTitle("Products promotion")
+							 ->setSubject("Products promotion")
+							 ->setDescription("Products promotion Excel 2007 file")
+							 ->setKeywords("MWC");*/
+
+			$_cat = JRequest::getVar('categories', NULL);
+			if($_cat == NULL){
+	
+				echo '<script>alert("Please!, Categories can not empty");window.history.go(-1);</script>';
+				exit();
+			}
+			if(count($_cat) !=1){
+	
+				echo '<script>alert("Please!, only one category");window.history.go(-1);</script>';
+				exit();
+			}
+
+			$sql="SELECT category_child_id FROM #__virtuemart_category_categories  WHERE category_parent_id=".$_cat[0];
+			
+			$db->setQuery($sql);
+			$db->Query($sql);
+			$child_cat = $db->loadObjectList();
+			
+			//$product = array();
+			
+			for($i=0;$i<count($child_cat);$i++){
+			
+				$sql="SELECT virtuemart_product_id FROM #__virtuemart_product_categories  WHERE virtuemart_category_id=".$child_cat[$i]->category_child_id;
+				$db->setQuery($sql);
+				$db->Query($sql);
+				$product_id[$i] = $db->loadObjectList();
+				
+				$sql0_1="SELECT category_name FROM #__virtuemart_categories_da_dk WHERE virtuemart_category_id=".$child_cat[$i]->category_child_id;
+				$db->query("SET NAMES utf8");
+				$db->setQuery($sql0_1);
+				$db->Query($sql0_1);
+				$_catname[$i] = $db->loadObjectList();
+			}
+			
+			//print_r(count($product_id[]));die;
+			
+			for($l=0;$l<count($product_id);$l++){
+				for($k=0;$k<count($product_id[$l]);$k++){
+				$sql1="SELECT pro.product_name, proSku.product_sku, proSku.variant_gruppe, proPrice.product_override_price  FROM #__virtuemart_products_da_dk AS pro,
+				#__virtuemart_products AS proSku, #__virtuemart_product_prices AS proPrice  WHERE pro.virtuemart_product_id=proSku.virtuemart_product_id AND proSku.virtuemart_product_id=proPrice.virtuemart_product_id
+				AND proSku.virtuemart_product_id=".$product_id[$l][$k]->virtuemart_product_id." GROUP BY proSku.product_sku";
+				$db->setQuery($sql1);
+				$db->Query($sql1);
+				$db->query("SET NAMES utf8");
+				$_product[$l][$k] = $db->loadObjectList();
+				}
+
+			}	  
+
+//print_r($_product);die;
+
+		$csv='"Vare nr.","VARENAVN","NU-PRIS","Side i Avis","Variant gruppe"';
+		for($j=0;$j<count($_product);$j++){
+			for($m=0;$m<count($_product[$j]);$m++){	
+		
+					$product_sku[$j]   		= $_product[$j][$m][0]->product_sku ;					
+					$product_name[$j]  		= $_product[$j][$m][0]->product_name;			
+					$product_price[$j] 		= $_product[$j][$m][0]->product_override_price;	
+					$side[$j][1]	   		= explode("-",$_catname[$j][0]->category_name);
+					$varriant_grupp[$j] 	= $_product[$j][0]->variant_gruppe;
+						//print_r($product_name[$j]);print_r("<br>");
+			$csv .= "\n".'"'.$product_sku[$j].'","'.mb_convert_encoding($product_name[$j], 'UTF-16LE', 'UTF-8').'","'.$product_price[$j].'","'.$side[$j][1][1].'","'.$varriant_grupp[$j].'"';
+			}
+		}
+		
+		//die;
+		//Output file
+		header('Content-Encoding: UTF-8');
+		//header("Content-Transfer-Encoding: Binary"); 
+		header("Content-Type: text/csv");
+		header('Content-Disposition: attachment; filename="Products.csv"' );
+		echo "\xEF\xBB\xBF";//with BOM
+		echo $csv;exit;
+}
+
+	 function saveImport(){
+		
+	 $_data = JRequest::get('post');
+	 $_cat = JRequest::getVar('categories', NULL);
+	//print_r($_cat);die;
+	if($_cat == NULL){
+	
+		echo '<script>alert("Please!, Categories can not empty");window.history.go(-1);</script>';
+		exit();
+	}
+	else{
+	
+		if (  $_FILES["file"]["error"] > 0 ){
+		  
+		  echo '<script>alert("Error: '.$_FILES["file"]["error"].'");window.history.go(-1);</script>';		  
+		}
+	
+		else{
+			$prodir = JPATH_SITE.DS."images/uploads/";
+			$newfilename = $prodir.rand(99,10000).$_FILES["file"]["name"];
+			move_uploaded_file($_FILES["file"]["tmp_name"],$newfilename);
+			define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+			include JPATH_SITE.DS.'lib/Classes/PHPExcel/IOFactory.php';
+			
+			$db = JFactory::getDBO();
+			$objPHPExcel = new PHPExcel();
+			$inputFileName = $newfilename;
+
+			$objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
+
+			$sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+			$db->query("SET NAMES utf8");
+			
+			//print_r($sheetData[2]['F']);die;
+
+			//$db->query("BEGIN");
+			//foreach($sheetData as $key=>$value){
+			
+			for($j=2;$j<count($sheetData)+1;$j++){
+					$price[$j] 					= $sheetData[$j]['F'];
+					$start_date[$j] 			= $sheetData[$j]['G'];
+					$end_date[$j] 				= $sheetData[$j]['H'];
+					$product_id[$j] 			= $sheetData[$j]['K'];
+					$number[$j] 				= $sheetData[$j]['Q'];
+										
+					$sql = "UPDATE #__virtuemart_product_prices SET product_override_price =".$price[$j]." , product_price_publish_up='".$start_date[$j]."', product_price_publish_down='".$end_date[$j]."', override=1 WHERE virtuemart_product_id = $product_id[$j]";
+					//print_r($sql);die;
+					$db->setQuery($sql);
+					$db->Query($sql);
+
+					$sql0 = "UPDATE #__virtuemart_products SET variant_gruppe = $number[$j] WHERE virtuemart_product_id = $product_id[$j]";				
+					$db->setQuery($sql0);
+					$db->Query($sql0);
+					//print_r(count($_cat));die;
+					
+					for($i=0;$i<count($_cat); $i++){					
+						$sql = "INSERT INTO #__virtuemart_product_categories(virtuemart_product_id, virtuemart_category_id) VALUES($product_id[$j], $_cat[$i])";
+						$db->setQuery($sql);
+						$db->Query($sql);
+					}
+
+			}
+			
+			if(mysql_error()){
+			
+					echo '<script>alert("Error: '.mysql_error().'");window.history.go(-1);</script>';	
+			}
+			else{
+					echo '<script>alert("Import Successfull");window.history.go(-1);</script>';	
+			}
+			
+		}
+
+	
+	}
+
+ }
 	function save($data = 0){
+	//die;
 
 		$data = JRequest::get('post');
+		///var_dump($data);die;
 
 		if(!class_exists('Permissions')) require(JPATH_VM_ADMINISTRATOR.DS.'helpers'.DS.'permissions.php');
 		if(Permissions::getInstance()->check('admin')){
