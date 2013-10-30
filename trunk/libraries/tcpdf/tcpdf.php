@@ -7540,7 +7540,8 @@ class TCPDF {
 					curl_setopt($cs, CURLOPT_BINARYTRANSFER, true);
 					curl_setopt($cs, CURLOPT_FAILONERROR, true);
 					curl_setopt($cs, CURLOPT_RETURNTRANSFER, true);
-					curl_setopt($cs, CURLOPT_FOLLOWLOCATION, true);
+//					curl_setopt($cs, CURLOPT_FOLLOWLOCATION, true);
+                    //curl_setopt($cs, '/var/www/amagerisenkram.dk/public_html/', true);
 					curl_setopt($cs, CURLOPT_CONNECTTIMEOUT, 5);
 					curl_setopt($cs, CURLOPT_TIMEOUT, 30);
 					curl_setopt($cs, CURLOPT_SSL_VERIFYPEER, false);
