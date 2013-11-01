@@ -7,6 +7,7 @@
 
 // Set flag that this is a parent file
 define('_JEXEC', 1);
+error_reporting(0);
 define('DS', DIRECTORY_SEPARATOR);
 
 if (file_exists(dirname(__FILE__) . '/defines.php')) {
