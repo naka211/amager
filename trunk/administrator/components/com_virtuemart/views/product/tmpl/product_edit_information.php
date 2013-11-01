@@ -65,9 +65,15 @@ $i=0;
 					<td  height="18"><div style="text-align:right;font-weight:bold;">
 						<?php echo JText::_('COM_VIRTUEMART_PRODUCT_FORM_NAME') ?></div>
 					</td>
-					<td height="18" colspan="3" >
+					<td height="18" >
 						<input type="text" class="inputbox"  name="product_name" id="product_name" value="<?php echo htmlspecialchars($this->product->product_name); ?>" size="32" maxlength="255" />
 					</td>
+                    <td align="right"><div style="text-align:right;font-weight:bold;">
+						Variant group:</div>
+                    </td>
+                    <td >
+						<input type="text" class="inputbox"  name="variant_gruppe" id="variant_gruppe" value="<?php echo htmlspecialchars($this->product->variant_gruppe); ?>" size="10" maxlength="255" />
+                    </td>
 				</tr>
 				<?php $i = 1 - $i; ?>
 				<tr class="row<?php echo $i?>">
