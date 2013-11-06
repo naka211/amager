@@ -24,54 +24,28 @@ $i=0;
 ?>
 
 <form method="post" name="adminForm" action="index.php" enctype="multipart/form-data" id="adminForm">
-<fieldset>
-	<legend>
-	<?php echo JText::_('Products Import');?></legend>
+    <fieldset>
+    <legend> <?php echo JText::_('Products Import');?></legend>
     <table width="100%">
-	  
-
-			
-						<?php $i = 1 - $i; ?>
-
-						<tr class="row<?php echo $i?>">
-							<td  valign="top">
-								<div style="text-align:right;font-weight:bold;">
-								<?php echo JText::_('COM_VIRTUEMART_CATEGORY_S') ?></div>
-							</td>
-							<td colspan="3">
-								<select class="inputbox" id="categories" name="categories" size="10">
-									<option value=""><?php echo JText::_('COM_VIRTUEMART_UNCATEGORIZED')  ?></option>
-									<?php echo $this->category_tree; ?>
-								</select>
-							</td>	
-
-										
-								<td>
-								<div style="text-align: right; font-weight: bold;">
-										<?php echo JText::_('File name: ') ?></div>
-								</td>
-								<td>
-									<th width="20px"><input class="" type="file" name="file" id="file"> </th>
-									<th width="20px"><input type="submit" name="submit" value="Submit"></th>
-								</td>
-								
-							
-						
-								
-						</tr>
-				
-</fieldset>
-
-<input type="hidden" name="task" value="saveImport" />
-<input type="hidden" name="option" value="com_virtuemart" />
-<input type="hidden" name="view" value="product" />
-<input type="hidden" name="controller" value="product" />
-
-
-	</table>
-</fieldset>
-</form>			
-				
-
-
-
+        <?php $i = 1 - $i; ?>
+        <tr class="row<?php echo $i?>">
+            <td valign="top"><div style="text-align:right;font-weight:bold;"> <?php echo JText::_('COM_VIRTUEMART_CATEGORY_S') ?></div></td>
+            <td><select class="inputbox" id="categories" name="categories" size="10">
+                    <option value=""><?php echo JText::_('COM_VIRTUEMART_UNCATEGORIZED')  ?></option>
+                    <?php echo $this->category_tree; ?>
+                </select></td>
+            <td><div style="text-align: right; font-weight: bold;"> <?php echo JText::_('Number of page: ') ?></div></td>
+            <td><input type="text" name="num" /></td>
+            <td><div style="text-align: right; font-weight: bold;"> <?php echo JText::_('File name: ') ?></div></td>
+            <td width="20px"><input class="" type="file" name="file" id="file"></td>
+            <td width="20px"><input type="submit" name="submit" value="Submit"></td>
+        </tr>
+            </fieldset>
+        
+        <input type="hidden" name="task" value="saveImport" />
+        <input type="hidden" name="option" value="com_virtuemart" />
+        <input type="hidden" name="view" value="product" />
+        <input type="hidden" name="controller" value="product" />
+    </table>
+    </fieldset>
+</form>
