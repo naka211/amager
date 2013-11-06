@@ -140,12 +140,64 @@ class VirtuemartControllerProduct extends VmController {
 		header('Content-Disposition: attachment; filename="Products.csv"' );
 		echo "\xEF\xBB\xBF";//with BOM
 		echo $csv;exit;
-}
+     }
+     
+     function createCategory($head_cat, $num){
+         $model = VmModel::getModel("category");
+         $data_arr = array(
+            "vmlang" => "da-DK",
+            "category_name" => "side 1",
+            "published" => 1,
+            "slug" => "",
+            "category_description" => "",
+            "ordering" => 0,
+            "category_parent_id" => 120,
+            //"products_per_row" => 20,
+            "limit_list_start" => 0,
+            "limit_list_step" => 10,
+            "limit_list_max" => 0,
+            "limit_list_initial" => 10,
+            "category_template" => 0,
+            "category_layout" => 0,
+            "category_product_layout" => 0,
+            "customtitle" => "",
+            "metadesc" => "",
+            "metakey" => "",
+            "metarobot" => "",
+            "metaauthor" => "",
+            "searchMedia" => "",
+            "media_published" => 1,
+            "file_title" => "",
+            "file_description" => "",
+            "file_meta" => "",
+            "file_url" => "images/stories/virtuemart/category/",
+            "file_url_thumb" => "",
+            "media_roles" => "file_is_displayable",
+            "media_action" => 0,
+            "file_is_category_image" => 1,
+            "active_media_id" => 0,
+            "option" => "com_virtuemart",
+            "virtuemart_category_id" => 0,
+            "task" => "apply",
+            "boxchecked" => 0,
+            "controller" => "category",
+            "view" => "category",
+            "virtuemart_vendor_id" => 1
+         );
+         $db = JFactory::getDBO();
+         $token=JSession::getFormToken();
+         $rec[$data_arr] = 1;
+         $data_arr['category_name'] = 'Side '.$num;
+         $data_arr['category_parent_id'] = $head_cat;
+         $model->store($data_arr);
+         return $data_arr['virtuemart_category_id'];
+     }
 
 	 function saveImport(){
 		
          $_data = JRequest::get('post');
          $_cat = JRequest::getVar('categories', NULL);
+         $_num = JRequest::getVar('num', NULL);
 
         if($_cat == NULL){
         
@@ -174,189 +226,215 @@ class VirtuemartControllerProduct extends VmController {
                 
                 //$db->query("BEGIN");
                 //foreach($sheetData as $key=>$value){
-                
-                for($j=2;$j<=count($sheetData);$j++) {
-                    //print_r(date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $sheetData[$j]['J']))));exit;
-                    $check = $this->check_product($sheetData[$j]['A']);
-                    if($check){
-                        $price 					= $sheetData[$j]['H'];
-                        $start_date			    = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $sheetData[$j]['J'])));
-                        $end_date				= date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $sheetData[$j]['K'])));
-                        $product_sku			= $sheetData[$j]['A'];
-                        $variant 				= $sheetData[$j]['S'];
-                        
-                        $query = "SELECT virtuemart_product_id FROM #__virtuemart_products WHERE product_sku = ".$product_sku;
-                        $db->setQuery($query);
-                        $product_id = $db->loadResult();
-                        
-                        //print_r($product_id);exit;               
-                        $sql = "UPDATE #__virtuemart_product_prices SET product_override_price =".$price." , product_price_publish_up='".$start_date."', product_price_publish_down='".$end_date."', override = 1 WHERE virtuemart_product_id = ".$product_id;
-                        //print_r($sql);die;
-                        $db->setQuery($sql);
-                        $db->query($sql);
+                $rec_frame=array(
+                    "vmlang" => "da-DK",
+                    "published" => 1,
+                    "product_special" => 0,
+                    "product_sku" => '',//X
+                    "product_name" => '',//X
+                    "slug" => '',
+                    "product_url" => '',
+                    "virtuemart_manufacturer_id" => '',//X
+                    "categories" => array(),//X
+                    "ordering" => 0,
+                    "layout" => 0,
+                    "mprices" => array(
+                        "product_price" => array(),//X
+                        "virtuemart_product_price_id" => array(),
+                        "product_currency" => array(40),
+                        "virtuemart_shoppergroup_id" => array(),
+                        "basePrice" => array(),
+                        "product_tax_id" => array(),
+                        "salesPrice" => array(),//X
+                        "product_discount_id" => array(-1),
+                        "product_price_publish_up" => array(),
+                        "product_price_publish_down" => array(),
+                        "product_override_price" => array(),
+                        "price_quantity_start" => array(),
+                        "price_quantity_end" => array(),
+                        "override" => array()
+                    ),
+                    "intnotes" => '',//X
+                    "product_s_desc" => '',
+                    "product_desc" => '',//X
+                    "customtitle" => '',
+
+                    "metadesc" => '',
+                    "metakey" => '',
+                    "metarobot" => '',
+                    "metaauthor" => '',
+                    "product_in_stock" => '',//X
+                    "product_ordered" => '',//unsure
+                    "low_stock_notification" => 0,
+                    "min_order_level" => '',
+                    "max_order_level" => '',
+                    "product_available_date" => date("Y-m-d"),
+                    "product_availability" => '',
+                    "image" => '',
+                    "customer_email_type" => "customer",
+                    "notification_template" => 1,
+                    "notify_number" => '',
+                    "product_length" => 0,
+                    "product_lwh_uom" => "M",
+                    "product_width" => 0,
+                    "product_height" => 0,
+                    "product_weight" => '',//X
+                    "product_weight_uom" => "KG",
+                    "product_packaging" => '',
+                    "product_unit" => "KG",
+                    "product_box" => '',
+                    "searchMedia" => '',
+                    "media_published" => 1,
+                    "file_title" => '',
+                    "file_description" => '',
+                    "file_meta" => '',
+                    "file_url" => "images/stories/virtuemart/product/",
+                    "file_url_thumb" => '',
+                    "media_roles" => "file_is_displayable",
+                    "media_action" => 0,
+                    "file_is_product_image" => 1,
+                    "active_media_id" => 0,
+                    "option" => "com_virtuemart",
+                    "save_customfields" => 1,
+                    "search" => '',
+                    "task" => "save",
+                    "boxchecked" => 0,
+                    "controller" => "product",
+                    "view" => "product",
+                    "virtuemart_product_id" => 0,
+                    "product_parent_id" => 0,
+                    "product_delivery" => 0,
+                    "variant_gruppe" => ''
+                    
+                );
         
-                        $sql0 = "UPDATE #__virtuemart_products SET variant_gruppe = ".$variant." WHERE virtuemart_product_id = ".$product_id;				
-                        $db->setQuery($sql0);
-                        $db->query($sql0);
-                        //print_r(count($_cat));die;
+                $db->setQuery ('SELECT mf_name name, virtuemart_manufacturer_id id FROM `#__virtuemart_manufacturers_' . VMLANG . '`');
+                    $brands = $db->loadObjectList();
+        
+                $db->setQuery ('SELECT b.category_name pname, a.category_child_id cid, c.category_name cname
+                FROM `#__virtuemart_category_categories` as a
+                RIGHT JOIN `#__virtuemart_categories_' . VMLANG . '` as b ON a.category_parent_id=b.virtuemart_category_id
+                RIGHT JOIN `#__virtuemart_categories_' . VMLANG . '` as c ON a.category_child_id=c.virtuemart_category_id');
+                $cats = $db->loadObjectList();
+        
+                $db->setQuery ('SELECT virtuemart_calc_id id, calc_name num FROM `#__virtuemart_calcs`');
+                $rules = $db->loadObjectList();
+    
+                $token=JSession::getFormToken();
+                $_POST[$token]=1;
+                $model = VmModel::getModel("product");
                         
-                        $query = "SELECT id FROM #__virtuemart_product_categories WHERE virtuemart_product_id = ".$product_id." AND virtuemart_category_id = ".$_cat;
-                        $db->setQuery($query);
-                        $ok = $db->loadResult();
-                        if(!$ok){
-                            $sql = "INSERT INTO #__virtuemart_product_categories(virtuemart_product_id, virtuemart_category_id) VALUES(".$product_id.",".$_cat.")";
-                            $db->setQuery($sql);
-                            $db->query($sql);
-                        }
-                    } else {
-                        $rec_frame=array(
-                            "vmlang" => "da-DK",
-                            "published" => 1,
-                            "product_special" => 0,
-                            "product_sku" => '',//X
-                            "product_name" => '',//X
-                            "slug" => '',
-                            "product_url" => '',
-                            "virtuemart_manufacturer_id" => '',//X
-                            "categories" => array(),//X
-                            "ordering" => 0,
-                            "layout" => 0,
-                            "mprices" => array(
-                                "product_price" => array(),//X
-                                "virtuemart_product_price_id" => array(),
-                                "product_currency" => array(40),
-                                "virtuemart_shoppergroup_id" => array(),
-                                "basePrice" => array(),
-                                "product_tax_id" => array(),
-                                "salesPrice" => array(),//X
-                                "product_discount_id" => array(-1),
-                                "product_price_publish_up" => array(),
-                                "product_price_publish_down" => array(),
-                                "product_override_price" => array(),
-                                "price_quantity_start" => array(),
-                                "price_quantity_end" => array(),
-                            ),
-                            "intnotes" => '',//X
-                            "product_s_desc" => '',
-                            "product_desc" => '',//X
-                            "customtitle" => '',
-                            "metadesc" => '',
-                            "metakey" => '',
-                            "metarobot" => '',
-                            "metaauthor" => '',
-                            "product_in_stock" => '',//X
-                            "product_ordered" => '',//unsure
-                            "low_stock_notification" => 0,
-                            "min_order_level" => '',
-                            "max_order_level" => '',
-                            "product_available_date" => date("Y-m-d"),
-                            "product_availability" => '',
-                            "image" => '',
-                            "customer_email_type" => "customer",
-                            "notification_template" => 1,
-                            "notify_number" => '',
-                            "product_length" => 0,
-                            "product_lwh_uom" => "M",
-                            "product_width" => 0,
-                            "product_height" => 0,
-                            "product_weight" => '',//X
-                            "product_weight_uom" => "KG",
-                            "product_packaging" => '',
-                            "product_unit" => "KG",
-                            "product_box" => '',
-                            "searchMedia" => '',
-                            "media_published" => 1,
-                            "file_title" => '',
-                            "file_description" => '',
-                            "file_meta" => '',
-                            "file_url" => "images/stories/virtuemart/product/",
-                            "file_url_thumb" => '',
-                            "media_roles" => "file_is_displayable",
-                            "media_action" => 0,
-                            "file_is_product_image" => 1,
-                            "active_media_id" => 0,
-                            "option" => "com_virtuemart",
-                            "save_customfields" => 1,
-                            "search" => '',
-                            "task" => "save",
-                            "boxchecked" => 0,
-                            "controller" => "product",
-                            "view" => "product",
-                            "virtuemart_product_id" => 0,
-                            "product_parent_id" => 0,
-                        );
+                for($i=1; $i<=$_num; $i++){
+                    $catid = $this->createCategory($_cat, $i);
+                    for($j=2; $j<=count($sheetData); $j++) {
+                        if($sheetData[$j]['R'] == $i){
+                            $check = $this->check_product($sheetData[$j]['A']);
+                            if($check){
+                                $price 					= $sheetData[$j]['H'];
+                                $start_date			    = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $sheetData[$j]['J'])));
+                                $end_date				= date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $sheetData[$j]['K'])));
+                                $product_sku			= $sheetData[$j]['A'];
+                                $variant 				= $sheetData[$j]['S'];
+                                
+                                $cant_deliverry			= $sheetData[$j]['N']?1:0;
+                                $published 				= $sheetData[$j]['T']?1:0;
+                                
+                                $query = "SELECT virtuemart_product_id FROM #__virtuemart_products WHERE product_sku = ".$product_sku;
+                                $db->setQuery($query);
+                                $product_id = $db->loadResult();
+                                
+                                $sql = "UPDATE #__virtuemart_product_prices SET product_override_price = ".$price." , product_price_publish_up='".$start_date."', product_price_publish_down='".$end_date."', override = 1 WHERE virtuemart_product_id = ".$product_id;
+                                $db->setQuery($sql);
+                                $db->query($sql);
                 
-                        $db->setQuery ('SELECT mf_name name, virtuemart_manufacturer_id id FROM `#__virtuemart_manufacturers_' . VMLANG . '`');
-                            $brands = $db->loadRowList();
-                
-                        $db->setQuery ('SELECT b.category_name pname, a.category_child_id cid, c.category_name cname
-                        FROM `#__virtuemart_category_categories` as a
-                        RIGHT JOIN `#__virtuemart_categories_' . VMLANG . '` as b ON a.category_parent_id=b.virtuemart_category_id
-                        RIGHT JOIN `#__virtuemart_categories_' . VMLANG . '` as c ON a.category_child_id=c.virtuemart_category_id');
-                            $cats = $db->loadRowList();
-                
-                        $db->setQuery ('SELECT virtuemart_calc_id id, calc_name num FROM `#__virtuemart_calcs`');
-                            $rules = $db->loadRowList();
-                
-                            $token=JSession::getFormToken();
-                            $_POST[$token]=1;
-                            $model = VmModel::getModel("product");
-                            $dat = $this->getItems();
-                            if(!$dat)
-                                return;
-                
-                        foreach($dat as $r){
-                            $rec= $rec_frame;
-                            $rec[$token]=1;
-                
-                            $rec["product_name"] = $r[0];
-                            $rec["product_desc"] = $r[1];
-                
-                            foreach($brands as $o)
-                                if($o[0]==$r[2]){
-                                    $r[2]=$o[1];
-                                    break;
+                                $sql0 = "UPDATE #__virtuemart_products SET variant_gruppe = '".$variant."', published = ".$published.", product_delivery = ".$cant_deliverry." WHERE virtuemart_product_id = ".$product_id;		
+                                $db->setQuery($sql0);
+                                $db->query($sql0);
+                                
+                                $query = "SELECT id FROM #__virtuemart_product_categories WHERE virtuemart_product_id = ".$product_id." AND virtuemart_category_id = ".$_cat;
+                                $db->setQuery($query);
+                                $ok = $db->loadResult();
+                                if(!$ok){
+                                    $sql = "INSERT INTO #__virtuemart_product_categories(virtuemart_product_id, virtuemart_category_id) VALUES(".$product_id.",".$catid.")";
+                                    $db->setQuery($sql);
+                                    $db->query($sql);
                                 }
-                            $rec["virtuemart_manufacturer_id"] = $r[2];
-                            $rec["mprices"]["product_price"] = array($r[3]);
-                
-                            if($r[4]){
-                                $tmp0=$r[4]-$r[3];
-                                foreach($rules as $o){
-                                    if($o[1]==$tmp0){
-                                        $rec["mprices"]["product_discount_id"] = array($o[0]);
+                            } else {
+                                $cant_deliverry			= $sheetData[$j]['N']?1:0;
+                                $published 				= $sheetData[$j]['T']?1:0;
+                                $start_date			    = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $sheetData[$j]['J'])));
+                                $end_date				= date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $sheetData[$j]['K'])));
+                                
+                                $rec = $rec_frame;
+                                $rec[$token] = 1;
+                    
+                                $rec["product_name"] = $sheetData[$j]['B'];
+                                $rec["product_desc"] = $sheetData[$j]['C'];
+                    
+                                foreach($brands as $o){
+                                    if(strtolower($o->name) == strtolower($sheetData[$j]['D'])){
+                                        $sheetData[$j]['D'] = $o->id;
                                         break;
                                     }
                                 }
-                            }
-                            $rec["product_in_stock"] = $r[7];
-                            $rec["intnotes"] = $r[8];
-                            $rec["product_sku"] = $r[9];
-                            $rec["product_weight"] = $r[10];
-                
-                            foreach($cats as $o){
-                                $tmp0=$this->strEncode($o[0]);
-                                $tmp1=$this->strEncode($o[2]);
-                
-                                if($tmp0==$this->strEncode($r[12]) AND $tmp1==$this->strEncode($r[13])){
-                                    $r[13]=$o[1];
-                                    break;
+                                $rec["virtuemart_manufacturer_id"] = $sheetData[$j]['D'];
+                                $rec["mprices"]["product_price"] = array($sheetData[$j]['F']);
+                    
+                                if($sheetData[$j]['G']){
+                                    $tmp0 = $sheetData[$j]['G'] - $sheetData[$j]['F'];
+                                    foreach($rules as $o){
+                                        if($o->num == $tmp0){
+                                            $rec["mprices"]["product_discount_id"] = array($o->id);
+                                            break;
+                                        }
+                                    }
                                 }
+                                $rec["mprices"]["product_override_price"] = array($sheetData[$j]['H']);
+                                if($sheetData[$j]['H']){
+                                    $rec["mprices"]["override"] = array(1);
+                                }
+                                $rec["mprices"]["product_price_publish_up"] = array($start_date);
+                                $rec["mprices"]["product_price_publish_down"] = array($end_date);
+                                
+                                $rec["product_in_stock"] = $sheetData[$j]['L'];
+                                $rec["product_sku"] = $sheetData[$j]['A'];
+                                $rec["product_weight"] = $sheetData[$j]['M'];
+                                $rec["published"] = $published;
+                                $rec["product_delivery"] = $cant_deliverry;
+                                $rec["variant_gruppe"] = $sheetData[$j]['S'];
+                    
+                                foreach($cats as $o){
+                                    $tmp0 = $this->strEncode($o->pname);
+                                    $tmp1 = $this->strEncode($o->cname);
+                    
+                                    if($tmp0==$this->strEncode($sheetData[$j]['P']) AND $tmp1==$this->strEncode($sheetData[$j]['Q'])){
+                                        $sheetData[$j]['Q'] = $o->cid;
+                                        break;
+                                    }
+                                }
+                                $rec["categories"] = array($sheetData[$j]['Q'], $catid);
+                                
+                                $model->store($rec);
                             }
-                            $rec["categories"] = array($r[13]);
-                
-                            $model->store($rec);
                         }
                     }
+                    
                 }
+                
+                
                 if(mysql_error()){
-                        echo '<script>alert("Error: '.mysql_error().'");window.history.go(-1);</script>';	
+                    echo '<script>alert("Error: '.mysql_error().'");window.history.go(-1);</script>';	
                 } else {
-                        echo '<script>alert("Import Successfull");window.history.go(-1);</script>';	
+                    unlink($newfilename);
+                    echo '<script>alert("Import Successfully");window.history.go(-1);</script>';	
                 }
 		    }
         }
     }
+    
+    protected function strEncode($s){
+		return strtolower(mb_convert_encoding( $s, "HTML-ENTITIES", "UTF-8"));
+	}
     
     function check_product($sku){
         $db = JFactory::getDBO();

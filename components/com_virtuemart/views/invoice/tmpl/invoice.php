@@ -15,7 +15,7 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 	</tr>
 
 	<tr>
-		<td colspan="4"><h2 style="color: #00b2ea; border-bottom: 1px dotted #CACACA; padding: 10px; margin: 0;">ORDREOVERSIGT</h2></td>
+		<td colspan="4"><h2 style="color: #00b2ea; border-bottom: 1px dotted #CACACA; padding: 10px; margin: 0;">FAKTURA</h2></td>
 	</tr>
 
 	<tr>
