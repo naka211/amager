@@ -88,7 +88,7 @@ class VirtuemartControllerProduct extends VmController {
 			$db->setQuery($sql);
 			$db->Query($sql);
 			$child_cat = $db->loadObjectList();
-			
+			//print_r($child_cat);exit;
 			//$product = array();
 			
 			for($i=0;$i<count($child_cat);$i++){
@@ -103,7 +103,7 @@ class VirtuemartControllerProduct extends VmController {
 				$db->setQuery($sql0_1);
 				$_catname[$i] = $db->loadObjectList(); 
 			}
-			//print_r($_catname);exit;
+			//print_r($product_id);exit;
 			//print_r($product_id[]);die;
 			
 			for($l=0;$l<count($product_id);$l++){
@@ -131,7 +131,7 @@ class VirtuemartControllerProduct extends VmController {
 			$csv .= "\n".'"'.$product_sku[$j].'","'.mb_convert_encoding($product_name[$j], 'UTF-16LE', 'UTF-8').'","'.$product_price[$j].'","'.$side[$j][1][1].'","'.$varriant_grupp[$j].'"';
 			}
 		}
-		
+		//die($csv);
 		//die;
 		//Output file
 		header('Content-Encoding: UTF-8');
