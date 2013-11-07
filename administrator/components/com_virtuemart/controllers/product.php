@@ -328,94 +328,80 @@ class VirtuemartControllerProduct extends VmController {
                     $catid = $this->createCategory($_cat, $i);
                     for($j=2; $j<=count($sheetData); $j++) {
                         if($sheetData[$j]['R'] == $i){
+                            if((!$sheetData[$j]['N']) || ($sheetData[$j]['N']==='False')){
+                                $sheetData[$j]['N'] = 0;
+                            } else {
+                                $sheetData[$j]['N'] = 1;
+                            }
+                            
+                            if((!$sheetData[$j]['T']) || ($sheetData[$j]['T']==="False")){
+                                $sheetData[$j]['T'] = 0;
+                            } else {
+                                $sheetData[$j]['T'] = 1;
+                            }
+
+                            $sheetData[$j]['J']	    = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $sheetData[$j]['J'])));
+                            $sheetData[$j]['K']		= date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $sheetData[$j]['K'])));
+                            
+                            $rec = $rec_frame;
+                            $rec[$token] = 1;
+                
+                            $rec["product_name"] = $sheetData[$j]['B'];
+                            $rec["product_desc"] = $sheetData[$j]['C'];
+                
+                            foreach($brands as $o){
+                                if(strtolower($o->name) == strtolower($sheetData[$j]['D'])){
+                                    $sheetData[$j]['D'] = $o->id;
+                                    break;
+                                }
+                            }
+                            $rec["virtuemart_manufacturer_id"] = $sheetData[$j]['D'];
+                            $rec["mprices"]["product_price"] = array($sheetData[$j]['F']);
+                
+                            if($sheetData[$j]['G']){
+                                $tmp0 = $sheetData[$j]['G'] - $sheetData[$j]['F'];
+                                foreach($rules as $o){
+                                    if($o->num == $tmp0){
+                                        $rec["mprices"]["product_discount_id"] = array($o->id);
+                                        break;
+                                    }
+                                }
+                            }
+                            $rec["mprices"]["product_override_price"] = array($sheetData[$j]['H']);
+                            if($sheetData[$j]['H']){
+                                $rec["mprices"]["override"] = array(1);
+                            }
+                            $rec["mprices"]["product_price_publish_up"] = array($sheetData[$j]['J']);
+                            $rec["mprices"]["product_price_publish_down"] = array($sheetData[$j]['K']);
+                            
+                            $rec["product_in_stock"] = $sheetData[$j]['L'];
+                            $rec["product_sku"] = $sheetData[$j]['A'];
+                            $rec["product_weight"] = $sheetData[$j]['M'];
+                            $rec["published"] = $sheetData[$j]['T'];
+                            $rec["product_delivery"] = $sheetData[$j]['N'];
+                            $rec["variant_gruppe"] = $sheetData[$j]['S'];
+                
+                            foreach($cats as $o){
+                                $tmp0 = $this->strEncode($o->pname);
+                                $tmp1 = $this->strEncode($o->cname);
+                
+                                if($tmp0==$this->strEncode($sheetData[$j]['P']) AND $tmp1==$this->strEncode($sheetData[$j]['Q'])){
+                                    $sheetData[$j]['Q'] = $o->cid;
+                                    break;
+                                }
+                            }
+                            $rec["categories"] = array($sheetData[$j]['Q'], $catid);
+                                
+                                
                             $check = $this->check_product($sheetData[$j]['A']);
                             if($check){
-                                $price 					= $sheetData[$j]['H'];
-                                $start_date			    = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $sheetData[$j]['J'])));
-                                $end_date				= date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $sheetData[$j]['K'])));
-                                $product_sku			= $sheetData[$j]['A'];
-                                $variant 				= $sheetData[$j]['S'];
-                                
-                                $cant_deliverry			= $sheetData[$j]['N']?1:0;
-                                $published 				= $sheetData[$j]['T']?1:0;
-                                
-                                $query = "SELECT virtuemart_product_id FROM #__virtuemart_products WHERE product_sku = ".$product_sku;
+                                $query = "SELECT virtuemart_product_id FROM #__virtuemart_products WHERE product_sku = ".$sheetData[$j]['A'];
                                 $db->setQuery($query);
                                 $product_id = $db->loadResult();
-                                
-                                $sql = "UPDATE #__virtuemart_product_prices SET product_override_price = ".$price." , product_price_publish_up='".$start_date."', product_price_publish_down='".$end_date."', override = 1 WHERE virtuemart_product_id = ".$product_id;
-                                $db->setQuery($sql);
-                                $db->query($sql);
-                
-                                $sql0 = "UPDATE #__virtuemart_products SET variant_gruppe = '".$variant."', published = ".$published.", product_delivery = ".$cant_deliverry." WHERE virtuemart_product_id = ".$product_id;		
-                                $db->setQuery($sql0);
-                                $db->query($sql0);
-                                
-                                $query = "SELECT id FROM #__virtuemart_product_categories WHERE virtuemart_product_id = ".$product_id." AND virtuemart_category_id = ".$_cat;
-                                $db->setQuery($query);
-                                $ok = $db->loadResult();
-                                if(!$ok){
-                                    $sql = "INSERT INTO #__virtuemart_product_categories(virtuemart_product_id, virtuemart_category_id) VALUES(".$product_id.",".$catid.")";
-                                    $db->setQuery($sql);
-                                    $db->query($sql);
-                                }
-                            } else {
-                                $cant_deliverry			= $sheetData[$j]['N']?1:0;
-                                $published 				= $sheetData[$j]['T']?1:0;
-                                $start_date			    = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $sheetData[$j]['J'])));
-                                $end_date				= date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $sheetData[$j]['K'])));
-                                
-                                $rec = $rec_frame;
-                                $rec[$token] = 1;
-                    
-                                $rec["product_name"] = $sheetData[$j]['B'];
-                                $rec["product_desc"] = $sheetData[$j]['C'];
-                    
-                                foreach($brands as $o){
-                                    if(strtolower($o->name) == strtolower($sheetData[$j]['D'])){
-                                        $sheetData[$j]['D'] = $o->id;
-                                        break;
-                                    }
-                                }
-                                $rec["virtuemart_manufacturer_id"] = $sheetData[$j]['D'];
-                                $rec["mprices"]["product_price"] = array($sheetData[$j]['F']);
-                    
-                                if($sheetData[$j]['G']){
-                                    $tmp0 = $sheetData[$j]['G'] - $sheetData[$j]['F'];
-                                    foreach($rules as $o){
-                                        if($o->num == $tmp0){
-                                            $rec["mprices"]["product_discount_id"] = array($o->id);
-                                            break;
-                                        }
-                                    }
-                                }
-                                $rec["mprices"]["product_override_price"] = array($sheetData[$j]['H']);
-                                if($sheetData[$j]['H']){
-                                    $rec["mprices"]["override"] = array(1);
-                                }
-                                $rec["mprices"]["product_price_publish_up"] = array($start_date);
-                                $rec["mprices"]["product_price_publish_down"] = array($end_date);
-                                
-                                $rec["product_in_stock"] = $sheetData[$j]['L'];
-                                $rec["product_sku"] = $sheetData[$j]['A'];
-                                $rec["product_weight"] = $sheetData[$j]['M'];
-                                $rec["published"] = $published;
-                                $rec["product_delivery"] = $cant_deliverry;
-                                $rec["variant_gruppe"] = $sheetData[$j]['S'];
-                    
-                                foreach($cats as $o){
-                                    $tmp0 = $this->strEncode($o->pname);
-                                    $tmp1 = $this->strEncode($o->cname);
-                    
-                                    if($tmp0==$this->strEncode($sheetData[$j]['P']) AND $tmp1==$this->strEncode($sheetData[$j]['Q'])){
-                                        $sheetData[$j]['Q'] = $o->cid;
-                                        break;
-                                    }
-                                }
-                                $rec["categories"] = array($sheetData[$j]['Q'], $catid);
-                                
-                                $model->store($rec);
+                                $rec["virtuemart_product_id"] = $product_id;
                             }
+                            
+                            $model->store($rec);
                         }
                     }
                     
@@ -426,7 +412,7 @@ class VirtuemartControllerProduct extends VmController {
                     echo '<script>alert("Error: '.mysql_error().'");window.history.go(-1);</script>';	
                 } else {
                     unlink($newfilename);
-                    echo '<script>alert("Import Successfully");window.history.go(-1);</script>';	
+                    echo '<script>alert("Import Successfully");window.location = "'.JURI::base().'index.php?option=com_virtuemart&view=product";</script>';	
                 }
 		    }
         }
