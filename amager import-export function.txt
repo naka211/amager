@@ -1,0 +1,7 @@
+administrator/components/com_virtuemart/controllers/product.php
+administrator/components/com_virtuemart/views/virtuemart/tmpl/default_controlpanel.php
+administrator/components/com_virtuemart/views/product/tmpl/product_export.php
+administrator/components/com_virtuemart/views/product/tmpl/product_import.php
+administrator/components/com_virtuemart/views/product/tmpl/product_edit_information.php
+administrator/components/com_virtuemart/tables/products.php
+administrator/language/en-GB/en-GB.com_virtuemart.ini

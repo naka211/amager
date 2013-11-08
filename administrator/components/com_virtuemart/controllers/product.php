@@ -54,6 +54,30 @@ class VirtuemartControllerProduct extends VmController {
 	 *
 	 * @author Max Milbers
 	 */
+     
+     function a(){
+        $db = JFactory::getDBO();
+        $sql="SELECT cc.category_child_id id, c.category_name name FROM #__virtuemart_category_categories cc INNER JOIN #__virtuemart_categories_da_dk c ON cc.category_child_id = c.virtuemart_category_id WHERE cc.category_parent_id = 0";
+        $db->setQuery($sql);
+        $pcats = $db->loadObjectList();
+        $csv='';
+        foreach($pcats as $pcat){
+            $csv .= "\n".'"'.$pcat->name.'"';
+            $sql="SELECT cc.category_child_id id, c.category_name name FROM #__virtuemart_category_categories cc INNER JOIN #__virtuemart_categories_da_dk c ON cc.category_child_id = c.virtuemart_category_id WHERE cc.category_parent_id = ".$pcat->id;
+            $db->setQuery($sql);
+            $ccats = $db->loadObjectList();
+            foreach($ccats as $ccat){
+                $csv .= "\n".'"", '.$ccat->name.'';
+            }
+        }
+        
+        header('Content-Encoding: UTF-8');
+		//header("Content-Transfer-Encoding: Binary"); 
+		header("Content-Type: text/csv");
+		header('Content-Disposition: attachment; filename="Categories.csv"' );
+		echo "\xEF\xBB\xBF";//with BOM
+		echo $csv;exit;
+     }
 	 
 	 
 	 function saveExport(){
@@ -328,13 +352,13 @@ class VirtuemartControllerProduct extends VmController {
                     $catid = $this->createCategory($_cat, $i);
                     for($j=2; $j<=count($sheetData); $j++) {
                         if($sheetData[$j]['R'] == $i){
-                            if((!$sheetData[$j]['N']) || ($sheetData[$j]['N']==='False')){
+                            if((!$sheetData[$j]['N']) || (strtoupper($sheetData[$j]['N'])==='FALSE')){
                                 $sheetData[$j]['N'] = 0;
                             } else {
                                 $sheetData[$j]['N'] = 1;
                             }
                             
-                            if((!$sheetData[$j]['T']) || ($sheetData[$j]['T']==="False")){
+                            if((!$sheetData[$j]['T']) || (strtoupper($sheetData[$j]['T'])==='FALSE')){
                                 $sheetData[$j]['T'] = 0;
                             } else {
                                 $sheetData[$j]['T'] = 1;
