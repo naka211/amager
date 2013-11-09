@@ -136,7 +136,7 @@ class VirtuemartControllerProduct extends VmController {
                     #__virtuemart_products AS proSku, #__virtuemart_product_prices AS proPrice  WHERE pro.virtuemart_product_id=proSku.virtuemart_product_id AND proSku.virtuemart_product_id=proPrice.virtuemart_product_id
                     AND proSku.virtuemart_product_id=".$product_id[$l][$k]->virtuemart_product_id." GROUP BY proSku.product_sku";
                     $db->setQuery($sql1);
-                    $db->query("SET NAMES utf8");
+                    //$db->query("SET NAMES utf8");
                     $_product[$l][$k] = $db->loadObjectList();
 				}
 
@@ -158,7 +158,7 @@ class VirtuemartControllerProduct extends VmController {
 		//die($csv);
 		//die;
 		//Output file
-		header('Content-Encoding: UTF-16');
+		header('Content-Encoding: UTF-8');
 		//header("Content-Transfer-Encoding: Binary"); 
 		header("Content-Type: application/csv");
 		header('Content-Disposition: attachment; filename="Products.csv"' );
