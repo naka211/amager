@@ -160,7 +160,7 @@ class VirtuemartControllerProduct extends VmController {
 		//Output file
 		header('Content-Encoding: UTF-8');
 		//header("Content-Transfer-Encoding: Binary"); 
-		header("Content-Type: application/csv");
+		header("Content-Type: text/csv");
 		header('Content-Disposition: attachment; filename="Products.csv"' );
 		echo "\xEF\xBB\xBF";//with BOM
 		echo $csv;exit;
