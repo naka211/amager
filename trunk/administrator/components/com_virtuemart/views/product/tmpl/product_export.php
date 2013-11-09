@@ -34,12 +34,12 @@ $i=0;
 						<?php $i = 1 - $i; ?>
 
 						<tr class="row<?php echo $i?>">
-							<td valign="top">
+							<td>
 								<div style="text-align:right;font-weight:bold;">
 								<?php echo JText::_('COM_VIRTUEMART_CATEGORY_S') ?></div>
 							</td>
 							<td colspan="0">
-								<select class="inputbox" id="categories" name="categories[]" multiple="multiple" size="10">
+								<select class="inputbox" id="categories" name="categories[]">
 									<option value=""><?php echo JText::_('COM_VIRTUEMART_UNCATEGORIZED')  ?></option>
 									<?php echo $this->category_tree; ?>
 								</select>
