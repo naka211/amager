@@ -142,7 +142,7 @@ class VirtuemartControllerProduct extends VmController {
 
 			}	  
 
-		$csv='"Vare nr.","VARENAVN","NU-PRIS","Side i Avis","Variant gruppe"';
+		$csv='"Vare nr.","Varenavn","Nu-pris","Side i Avis","Variant gruppe"';
 		for($j=0;$j<count($_product);$j++){
 			for($m=0;$m<count($_product[$j]);$m++){	
 		
@@ -152,15 +152,15 @@ class VirtuemartControllerProduct extends VmController {
 					$side[$j][1]	   		= explode(" ",$_catname[$j][0]->category_name);
 					$varriant_grupp[$j] 	= $_product[$j][$m][0]->variant_gruppe;
 						//print_r($side);exit;
-			$csv .= "\n".'"'.$product_sku[$j].'","'.mb_convert_encoding($product_name[$j], 'UTF-16LE', 'UTF-8').'","'.$product_price[$j].'","'.$side[$j][1][1].'","'.$varriant_grupp[$j].'"';
+			$csv .= "\n".'"'.$product_sku[$j].'","'.$product_name[$j].'","'.$product_price[$j].'","'.$side[$j][1][1].'","'.$varriant_grupp[$j].'"';
 			}
 		}
 		//die($csv);
 		//die;
 		//Output file
-		header('Content-Encoding: UTF-8');
+		header('Content-Encoding: UTF-16');
 		//header("Content-Transfer-Encoding: Binary"); 
-		header("Content-Type: text/csv; charset=UTF-8");
+		header("Content-Type: application/csv");
 		header('Content-Disposition: attachment; filename="Products.csv"' );
 		echo "\xEF\xBB\xBF";//with BOM
 		echo $csv;exit;
