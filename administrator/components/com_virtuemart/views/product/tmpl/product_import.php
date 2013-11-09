@@ -29,13 +29,15 @@ $i=0;
     <table width="100%">
         <?php $i = 1 - $i; ?>
         <tr class="row<?php echo $i?>">
-            <td valign="top"><div style="text-align:right;font-weight:bold;"> <?php echo JText::_('COM_VIRTUEMART_CATEGORY_S') ?></div></td>
-            <td><select class="inputbox" id="categories" name="categories" size="10">
+            <td><div style="text-align:right;font-weight:bold;"> <?php echo JText::_('COM_VIRTUEMART_CATEGORY_S') ?></div></td>
+            <td><select class="inputbox" id="categories" name="categories" >
                     <option value=""><?php echo JText::_('COM_VIRTUEMART_UNCATEGORIZED')  ?></option>
                     <?php echo $this->category_tree; ?>
                 </select></td>
-            <td><div style="text-align: right; font-weight: bold;"> <?php echo JText::_('Number of page: ') ?></div></td>
-            <td><input type="text" name="num" /></td>
+            <td><div style="text-align: right; font-weight: bold;"> <?php echo JText::_('Number of first page: ') ?></div></td>
+            <td><input type="text" name="first_num" /></td>
+			<td><div style="text-align: right; font-weight: bold;"> <?php echo JText::_('Number of last page: ') ?></div></td>
+            <td><input type="text" name="last_num" /></td>
             <td><div style="text-align: right; font-weight: bold;"> <?php echo JText::_('File name: ') ?></div></td>
             <td width="20px"><input class="" type="file" name="file" id="file"></td>
             <td width="20px"><input type="submit" name="submit" value="Submit"></td>

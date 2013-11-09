@@ -221,7 +221,8 @@ class VirtuemartControllerProduct extends VmController {
 		
          $_data = JRequest::get('post');
          $_cat = JRequest::getVar('categories', NULL);
-         $_num = JRequest::getVar('num', NULL);
+         $first_num = JRequest::getVar('first_num', NULL);
+		 $last_num = JRequest::getVar('last_num', NULL);
 
         if($_cat == NULL){
         
@@ -348,7 +349,7 @@ class VirtuemartControllerProduct extends VmController {
                 $_POST[$token]=1;
                 $model = VmModel::getModel("product");
                         
-                for($i=1; $i<=$_num; $i++){
+                for($i=$first_num; $i<=$last_num; $i++){
                     $catid = $this->createCategory($_cat, $i);
                     for($j=2; $j<=count($sheetData); $j++) {
                         if($sheetData[$j]['R'] == $i){
