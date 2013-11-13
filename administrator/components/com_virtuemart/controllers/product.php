@@ -107,7 +107,7 @@ class VirtuemartControllerProduct extends VmController {
 				exit();
 			}
 
-			$sql="SELECT category_child_id FROM #__virtuemart_category_categories  WHERE category_parent_id=".$_cat[0];
+			$sql="SELECT category_child_id FROM #__virtuemart_category_categories  WHERE category_parent_id=".$_cat;
 			
 			$db->setQuery($sql);
 			$db->Query($sql);
@@ -127,7 +127,7 @@ class VirtuemartControllerProduct extends VmController {
 				$db->setQuery($sql0_1);
 				$_catname[$i] = $db->loadObjectList(); 
 			}
-			//print_r($product_id);exit;
+			//print_r(count($product_id));exit;
 			//print_r($product_id[]);die;
 			
 			for($l=0;$l<count($product_id);$l++){
@@ -141,9 +141,9 @@ class VirtuemartControllerProduct extends VmController {
 				}
 
 			}	  
-
+//print_r($_product);exit;
 		$csv='"Vare nr.","Varenavn","Nu-pris","Side i Avis","Variant gruppe"';
-		for($j=0;$j<count($_product);$j++){
+		for($j=0;$j<count($product_id);$j++){
 			for($m=0;$m<count($_product[$j]);$m++){	
 		
 					$product_sku[$j]   		= $_product[$j][$m][0]->product_sku ;					
@@ -158,10 +158,13 @@ class VirtuemartControllerProduct extends VmController {
 		//die($csv);
 		//die;
 		//Output file
+        $query = "SELECT category_name FROM #__virtuemart_categories_da_dk WHERE virtuemart_category_id = ".$_cat;
+        $db->setQuery($query);
+        $head_cat_name = $db->loadResult();
 		header('Content-Encoding: UTF-8');
 		//header("Content-Transfer-Encoding: Binary"); 
 		header("Content-Type: text/csv");
-		header('Content-Disposition: attachment; filename="Products.csv"' );
+		header('Content-Disposition: attachment; filename="'.$head_cat_name.'.csv"' );
 		echo "\xEF\xBB\xBF";//with BOM
 		echo $csv;exit;
      }
@@ -379,7 +382,7 @@ class VirtuemartControllerProduct extends VmController {
                             $rec = $rec_frame;
                             $rec[$token] = 1;
                 
-                            $rec["product_name"] = $sheetData[$j]['B'];
+                            $rec["product_name"] = $sheetData[$j]['D'].' - '.$sheetData[$j]['B'];
                             $rec["product_desc"] = $sheetData[$j]['C'];
                 
                             foreach($brands as $o){
@@ -408,7 +411,7 @@ class VirtuemartControllerProduct extends VmController {
                             $rec["mprices"]["product_price_publish_down"] = array($sheetData[$j]['K']);
                             
                             $rec["product_in_stock"] = $sheetData[$j]['L'];
-                            $rec["product_sku"] = $sheetData[$j]['A'];
+                            $rec["product_sku"] = $sheetData[$j]['O'];
                             $rec["product_weight"] = $sheetData[$j]['M'];
                             $rec["published"] = $sheetData[$j]['T'];
                             $rec["product_delivery"] = $sheetData[$j]['N'];
@@ -426,11 +429,8 @@ class VirtuemartControllerProduct extends VmController {
                             $rec["categories"] = array($sheetData[$j]['Q'], $catid);
                                 
                                 
-                            $check = $this->check_product($sheetData[$j]['A']);
-                            if($check){
-                                $query = "SELECT virtuemart_product_id FROM #__virtuemart_products WHERE product_sku = ".$sheetData[$j]['A'];
-                                $db->setQuery($query);
-                                $product_id = $db->loadResult();
+                            $product_id = $this->check_product($sheetData[$j]['O']);
+                            if($product_id){
                                 $rec["virtuemart_product_id"] = $product_id;
                             }
                             
@@ -457,7 +457,7 @@ class VirtuemartControllerProduct extends VmController {
     
     function check_product($sku){
         $db = JFactory::getDBO();
-        $query = "SELECT virtuemart_product_id FROM #__virtuemart_products WHERE product_sku = ".$sku;
+        $query = "SELECT virtuemart_product_id FROM #__virtuemart_products WHERE product_sku = '".$sku."'";
         $db->setQuery($query);
         return $db->loadResult();
         //print_r($sku);exit;
