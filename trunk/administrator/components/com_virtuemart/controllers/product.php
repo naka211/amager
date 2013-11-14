@@ -385,7 +385,7 @@ class VirtuemartControllerProduct extends VmController {
                             $rec = $rec_frame;
                             $rec[$token] = 1;
                 
-                            $rec["product_name"] = mb_convert_case($sheetData[$j]['D'], MB_CASE_TITLE, "UTF-8").' - '.mb_convert_case($sheetData[$j]['B'], MB_CASE_TITLE, "UTF-8");print_r($rec["product_name"]);
+                            $rec["product_name"] = mb_convert_case($sheetData[$j]['D'], MB_CASE_TITLE, "UTF-8").' - '.mb_convert_case($sheetData[$j]['B'], MB_CASE_TITLE, "UTF-8");
                             $rec["product_desc"] = $sheetData[$j]['C'];
                 
                             foreach($brands as $o){
