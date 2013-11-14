@@ -149,7 +149,7 @@ class VirtuemartControllerProduct extends VmController {
 					$product_sku[$j]   		= $_product[$j][$m][0]->product_sku ;					
 					$product_name[$j]  		= $_product[$j][$m][0]->product_name;			
 					$product_price[$j] 		= $_product[$j][$m][0]->product_override_price;	
-					$side[$j][1]	   		= explode(" ",$_catname[$j][0]->category_name);
+					$side[$j][1]	   		= explode("-",$_catname[$j][0]->category_name);
 					$varriant_grupp[$j] 	= $_product[$j][$m][0]->variant_gruppe;
 						//print_r($side);exit;
 			$csv .= "\n".'"'.$product_sku[$j].'","'.$product_name[$j].'","'.$product_price[$j].'","'.$side[$j][1][1].'","'.$varriant_grupp[$j].'"';
@@ -171,7 +171,10 @@ class VirtuemartControllerProduct extends VmController {
      
      function createCategory($head_cat, $num){
 		 $db = JFactory::getDBO();
-		 $query = 'SELECT virtuemart_category_id FROM #__virtuemart_categories_da_dk WHERE category_name = "Side '.$num.'"';
+         $query = "SELECT category_name FROM #__virtuemart_categories_da_dk WHERE virtuemart_category_id = ".$head_cat;
+         $db->setQuery($query);
+		 $head_cat_name = $db->loadResult();
+		 $query = 'SELECT virtuemart_category_id FROM #__virtuemart_categories_da_dk WHERE category_name = "'.$head_cat_name.'-'.$num.'"';
 		 $db->setQuery($query);
 		 $id = $db->loadResult();
 		 if($id){
@@ -221,13 +224,13 @@ class VirtuemartControllerProduct extends VmController {
 			 $db = JFactory::getDBO();
 			 $token=JSession::getFormToken();
 			 $rec[$data_arr] = 1;
-			 $data_arr['category_name'] = 'Side '.$num;
+			 $data_arr['category_name'] = $head_cat_name.'-'.$num;
 			 $data_arr['category_parent_id'] = $head_cat;
 			 $model->store($data_arr);
 			 return $data_arr['virtuemart_category_id'];
 		 }
      }
-
+     
 	 function saveImport(){
 		
          $_data = JRequest::get('post');
@@ -382,7 +385,7 @@ class VirtuemartControllerProduct extends VmController {
                             $rec = $rec_frame;
                             $rec[$token] = 1;
                 
-                            $rec["product_name"] = $sheetData[$j]['D'].' - '.$sheetData[$j]['B'];
+                            $rec["product_name"] = mb_convert_case($sheetData[$j]['D'], MB_CASE_TITLE, "UTF-8").' - '.mb_convert_case($sheetData[$j]['B'], MB_CASE_TITLE, "UTF-8");print_r($rec["product_name"]);
                             $rec["product_desc"] = $sheetData[$j]['C'];
                 
                             foreach($brands as $o){
