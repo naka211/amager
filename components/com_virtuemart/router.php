@@ -622,13 +622,12 @@ function virtuemartParseRoute($segments) {
 		$vars['view'] = 'category' ;
 
 
-	} elseif (isset($segments[0]) && ctype_digit ($segments[0]) || $helper->activeMenu->virtuemart_category_id>0 ) {
+	}/* elseif (isset($segments[0]) && ctype_digit ($segments[0]) || $helper->activeMenu->virtuemart_category_id>0 ) {
 		//$vars['virtuemart_category_id'] = $segments[0];
         $vars['virtuemart_category_id'] = $helper->getCategoryId ($segments[0]);
 		$vars['view'] = 'category';
-//print_r($vars);exit;
 
-	} elseif ($helper->activeMenu->virtuemart_category_id >0 && $vars['view'] != 'productdetails') {
+	}*/ elseif ($helper->activeMenu->virtuemart_category_id >0 && $vars['view'] != 'productdetails') {
 		$vars['virtuemart_category_id'] = $helper->activeMenu->virtuemart_category_id ;
 		$vars['view'] = 'category';
 
@@ -643,7 +642,7 @@ function virtuemartParseRoute($segments) {
 			$vars['task'] = $segments[1] ;
 		}
 	}
-
+//print_r($vars);exit;
 	//vmdebug('Router vars',$vars);
 
 	return $vars;
