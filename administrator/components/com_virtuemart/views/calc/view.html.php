@@ -124,7 +124,7 @@ class VirtuemartViewCalc extends VmView {
 			$this->addStandardDefaultViewCommands();
 			$this->addStandardDefaultViewLists($model);
 
-			$search = JRequest::getWord('search', false);
+			$search = JRequest::getVar('search', false);
 			$calcs = $model->getCalcs(false, false, $search);
 			$this->assignRef('calcs',	$calcs);
 
