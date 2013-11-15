@@ -108,7 +108,7 @@ class calculationHelper {
 		$this->rules['DATax'] = array();
 
 		//round only with internal digits
-		$this->_roundindig = VmConfig::get('roundindig',FALSE);
+		$this->_roundindig = VmConfig::get('roundindig',FALSE); 
 	}
 
 	static public function getInstance() {

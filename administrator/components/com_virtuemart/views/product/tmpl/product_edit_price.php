@@ -117,7 +117,7 @@ $rowColor = 0;
 							<?php echo JText::_('COM_VIRTUEMART_PRODUCT_FORM_DISCOUNT_TYPE') ?></div>
                         </td>*/ ?>
         <td colspan="2">
-			<?php echo $this->lists['discounts']; ?> <br/>
+			<?php echo $this->lists['discounts'];?> <br/>
         </td>
         <td>
 	                    <span class="hasTip" title="<?php echo JText::_ ('COM_VIRTUEMART_RULES_EFFECTING_TIP') ?>">
