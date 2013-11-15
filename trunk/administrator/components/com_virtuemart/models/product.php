@@ -1599,7 +1599,21 @@ class VirtueMartModelProduct extends VmModel {
 
 		//	if (is_array($cids)) $cids = array($cids);
 		$product = $this->getProduct ($id, TRUE, FALSE, FALSE);
-		$product->field = $this->productCustomsfieldsClone ($id);print_r($product);exit;
+        //T.Trung
+        $product->mprices["product_price"] = array($product->prices[0]["product_price"]);
+        $product->mprices["virtuemart_product_price_id"] = array();
+        $product->mprices["product_currency"] = array($product->prices[0]["product_currency"]);
+        $product->mprices["virtuemart_shoppergroup_id"] = array($product->prices[0]["virtuemart_shoppergroup_id"]);
+        $product->mprices["product_tax_id"] = array($product->prices[0]["product_tax_id"]);
+        $product->mprices["product_discount_id"] = array($product->prices[0]["product_discount_id"]);
+        $product->mprices["product_price_publish_up"] = array($product->prices[0]["product_price_publish_up"]);
+        $product->mprices["product_price_publish_down"] = array($product->prices[0]["product_price_publish_down"]);
+        $product->mprices["product_override_price"] = array($product->prices[0]["product_override_price"]);
+        $product->mprices["price_quantity_start"] = array($product->prices[0]["price_quantity_start"]);
+        $product->mprices["price_quantity_end"] = array($product->prices[0]["price_quantity_end"]);
+        $product->mprices["override"] = array($product->prices[0]["override"]);
+        //end T.Trung
+		$product->field = $this->productCustomsfieldsClone ($id);
 // 		vmdebug('$product->field',$product->field);
 		$product->virtuemart_product_id = $product->virtuemart_product_price_id = 0;
 		//Lets check if the user is admin or the mainvendor
@@ -1627,7 +1641,7 @@ class VirtueMartModelProduct extends VmModel {
 			foreach ($customfields as &$customfield) {
 				unset($customfield['virtuemart_product_id'], $customfield['virtuemart_customfield_id']);
 			}
-			return $customfields;
+			return $customfields; 
 		}
 		else {
 			return NULL;
