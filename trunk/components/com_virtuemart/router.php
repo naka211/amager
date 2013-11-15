@@ -623,9 +623,10 @@ function virtuemartParseRoute($segments) {
 
 
 	} elseif (isset($segments[0]) && ctype_digit ($segments[0]) || $helper->activeMenu->virtuemart_category_id>0 ) {
-		$vars['virtuemart_category_id'] = $segments[0];
+		//$vars['virtuemart_category_id'] = $segments[0];
+        $vars['virtuemart_category_id'] = $helper->getCategoryId ($segments[0]);
 		$vars['view'] = 'category';
-
+//print_r($vars);exit;
 
 	} elseif ($helper->activeMenu->virtuemart_category_id >0 && $vars['view'] != 'productdetails') {
 		$vars['virtuemart_category_id'] = $helper->activeMenu->virtuemart_category_id ;
