@@ -192,7 +192,7 @@ $i=0;
 	if (!class_exists ('calculationHelper')) {
 		require(JPATH_VM_ADMINISTRATOR . DS . 'helpers' . DS . 'calculationh.php');
 	}
-	$calculator = calculationHelper::getInstance ();
+	$calculator = calculationHelper::getInstance (); 
 	?>
     <table border="0" width="100%" cellpadding="2" cellspacing="3" id="mainPriceTable" class="adminform">
         <tbody id="productPriceBody">
@@ -217,9 +217,11 @@ $i=0;
 			$this->lists['currencies'] = JHTML::_ ('select.genericlist', $currencies, 'mprices[product_currency][' . $this->priceCounter . ']', '', 'virtuemart_currency_id', 'currency_name', $this->tempProduct->product_currency);
 
 			$DBTax = ''; //JText::_('COM_VIRTUEMART_RULES_EFFECTING') ;
-			foreach ($calculator->rules['DBTax'] as $rule) {
-				$DBTax .= $rule['calc_name'] . '<br />';
-			}
+            if($this->product->virtuemart_product_id){
+                foreach ($calculator->rules['DBTax'] as $rule) {
+                    $DBTax .= $rule['calc_name'] . '<br />';
+                }
+            }
 			$this->DBTaxRules = $DBTax;
 
 			$tax = ''; //JText::_('COM_VIRTUEMART_TAX_EFFECTING').'<br />';
@@ -244,6 +246,7 @@ $i=0;
 			if (!isset($this->tempProduct->product_discount_id)) {
 				$this->tempProduct->product_discount_id = 0;
 			}
+            //print_r($this->tempProduct->product_discount_id);exit;
 			$this->lists['discounts'] = $this->renderDiscountList ($this->tempProduct->product_discount_id, 'mprices[product_discount_id][' . $this->priceCounter . ']');
 
 			$this->lists['shoppergroups'] = ShopFunctions::renderShopperGroupList ($this->tempProduct->virtuemart_shoppergroup_id, false, 'mprices[virtuemart_shoppergroup_id][' . $this->priceCounter . ']');
