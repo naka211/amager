@@ -223,7 +223,7 @@ class VirtuemartControllerProduct extends VmController {
 			 );
 			 $db = JFactory::getDBO();
 			 $token=JSession::getFormToken();
-			 $rec[$data_arr] = 1;
+			 $rec[$token] = 1;
 			 $data_arr['category_name'] = $head_cat_name.'-'.$num;
 			 $data_arr['category_parent_id'] = $head_cat;
 			 $model->store($data_arr);
