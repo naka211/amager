@@ -536,7 +536,7 @@ class VirtueMartControllerCart extends JController {
 			$cart->ST['city'] = JRequest::getVar('city2');
 			$cart->ST['phone_1'] = JRequest::getVar('phone2');
 		}
-		//print_r($cart);exit;
+		print_r($cart);exit;
 		//T.Trung end
 		//print_r('sai');exit;
 		if ($cart) {
