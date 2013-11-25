@@ -10,7 +10,7 @@ $col= 1 ;
 		if($manufacturer->images[0]->file_url_thumb){
 	$size = getimagesize($manufacturer->images[0]->file_url);
 	?>
-        <img src="<?php echo $manufacturer->images[0]->file_url;?>" width="<?php echo $size[0];?>" height="<?php echo $size[1];?>" />
+        <img src="<?php echo $manufacturer->images[0]->file_url;?>" width="116<?php //echo $size[0];?>" height="42<?php //echo $size[1];?>" />
 	<?php }
 	}
 	?>

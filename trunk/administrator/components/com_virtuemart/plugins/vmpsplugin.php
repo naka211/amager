@@ -833,7 +833,7 @@ abstract class vmPSPlugin extends vmPlugin {
 		if ($this->getPluginMethods ($cart->vendorId) === 0) {
 			return FALSE;
 		}
-
+//print_r($this->methods);exit;
 		foreach ($this->methods as $method) {
 			if ($nb = (int)$this->checkConditions ($cart, $method, $cart_prices)) {
 				$nbMethod = $nbMethod + $nb;
@@ -841,6 +841,7 @@ abstract class vmPSPlugin extends vmPlugin {
 				$method_id = $method->$idName;
 			}
 		}
+        
 		return $nbMethod;
 	}
 
