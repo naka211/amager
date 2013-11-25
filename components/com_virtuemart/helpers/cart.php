@@ -765,8 +765,14 @@ class VirtueMartCart {
 		$value =	(string)preg_replace('#on[a-z](.+?)\)#si','',$value);//replace start of script onclick() onload()...
 		$value = trim(str_replace('"', ' ', $value),"'") ;*/
 		//$this->customer_comment=	(string)preg_replace('#^\'#si','',$value);//replace ' at start
-
+        $ship_id = $this->virtuemart_shipmentmethod_id;
 		$this->cartData = $this->prepareCartData();
+        if($this->pricesUnformatted['salesPrice'] > 500){
+            $this->virtuemart_shipmentmethod_id = $ship_id;
+            if($ship_id == 2){
+                $this->cartData['shipmentName'] = '<span class="vmshipment_name">Forsendelse</span><span class="vmshipment_description">Du Får gratis forsendelse, hvis din samlede bestilling er på mere end 500,00 DKK, ellers er fragten 49,00 DKK</span>';
+            }
+        }
 		$this->prepareCartPrice( ) ;
 
 		if (($this->selected_shipto = JRequest::getVar('shipto', null)) !== null) {
@@ -1146,6 +1152,7 @@ class VirtueMartCart {
 					if ($returnValue) $virtuemart_shipmentmethod_id = $returnValue;
 				}
 			}
+            
 			if ($nbShipment==1 && $virtuemart_shipmentmethod_id) {
 				$this->virtuemart_shipmentmethod_id = $virtuemart_shipmentmethod_id;
 				$this->automaticSelectedShipment=true;
@@ -1159,8 +1166,6 @@ class VirtueMartCart {
 		} else {
 			return false;
 		}
-
-
 	}
 
 	/*
