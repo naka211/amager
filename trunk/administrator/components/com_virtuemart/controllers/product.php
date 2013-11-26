@@ -323,6 +323,8 @@ class VirtuemartControllerProduct extends VmController {
                     "product_unit" => "KG",
                     "product_box" => '',
                     "searchMedia" => '',
+                    "virtuemart_media_id" => array(),
+                    "mediaordering" => array(),
                     "media_published" => 1,
                     "file_title" => '',
                     "file_description" => '',
@@ -435,6 +437,17 @@ class VirtuemartControllerProduct extends VmController {
                             $product_id = $this->check_product($sheetData[$j]['O']);
                             if($product_id){
                                 $rec["virtuemart_product_id"] = $product_id;
+                                $medias = $this->check_media($product_id); 
+                                if($medias){
+                                    foreach($medias as $media){
+                                        array_push($rec["virtuemart_media_id"],$media->virtuemart_media_id);
+                                        $rec["mediaordering"][$media->virtuemart_media_id] = $media->ordering;
+                                    }
+                                    $file = $this->load_file($medias[0]->virtuemart_media_id);
+                                    $rec["file_title"] = $file->file_title;
+                                    $rec["file_url"] = $file->file_url;
+                                    $rec["file_url_thumb"] = $file->file_url_thumb;
+                                }
                             }
                             
                             $model->store($rec);
@@ -464,6 +477,20 @@ class VirtuemartControllerProduct extends VmController {
         $db->setQuery($query);
         return $db->loadResult();
         //print_r($sku);exit;
+    }
+    
+    function check_media($id){
+        $db = JFactory::getDBO();
+        $query = "SELECT virtuemart_media_id, ordering FROM #__virtuemart_product_medias WHERE virtuemart_product_id = ".$id;
+        $db->setQuery($query);
+        return $db->loadObjectList();
+    }
+    
+    function load_file($id){
+        $db = JFactory::getDBO();
+        $query = "SELECT * FROM #__virtuemart_medias WHERE virtuemart_media_id = ".$id;
+        $db->setQuery($query);
+        return $db->loadObject();
     }
 
 	function save($data = 0){
