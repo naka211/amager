@@ -133,26 +133,6 @@ jQuery(document).ready( function(){
 			width		: 754,
 		}
 	});
-    
-    jQuery('#hLibCookieInfo').mouseover(function(){
-        jQuery(this).addClass('hLibCookieExpanded');
-    }).mouseout(function(){
-        jQuery(this).removeClass('hLibCookieExpanded');
-    });
-    
-    <?php if(!isset($_SESSION['cookieinfo'])){
-        $_SESSION['cookieinfo'] = 1;
-    ?>
-       jQuery('#hLibCookieInfo').addClass('hLibCookieExpanded');
-    <?php }?>
-    
-    jQuery('.bt-close-cookie').click(function(){
-        jQuery.post("<?php echo JURI::base().'index.php?option=com_virtuemart&controller=virtuemart&task=set_session'?>");
-        jQuery('.CookieInfo').addClass('moveCookie');
-    });
-    <?php if(isset($_SESSION['cookieinfo1'])){?>
-       jQuery('.CookieInfo').addClass('moveCookie');
-    <?php }?>
 });
 <?php }?>
 jQuery(function() {
@@ -185,6 +165,25 @@ jQuery(document).ready( function(){
 	focusInput();
 	jQuery('.item-115').append(jQuery('#add_menu').html());
 	jQuery('.search2').css('margin-left','218px');
+    
+    jQuery('#hLibCookieInfo').mouseover(function(){
+        jQuery(this).addClass('hLibCookieExpanded');
+    }).mouseout(function(){
+        jQuery(this).removeClass('hLibCookieExpanded');
+    });
+    <?php if(!isset($_SESSION['cookieinfo'])){
+        $_SESSION['cookieinfo'] = 1;
+    ?>
+       jQuery('#hLibCookieInfo').addClass('hLibCookieExpanded');
+    <?php }?>
+    
+    jQuery('.bt-close-cookie').click(function(){
+        jQuery.post("<?php echo JURI::base().'index.php?option=com_virtuemart&controller=virtuemart&task=set_session'?>");
+        jQuery('.CookieInfo').addClass('moveCookie');
+    });
+    <?php if(isset($_SESSION['cookieinfo1'])){?>
+       jQuery('.CookieInfo').addClass('moveCookie');
+    <?php }?>
 });
 
 focusInput = function(){
@@ -213,7 +212,7 @@ focusInput = function(){
 </head>
 
 <body>
-<?php if($opt.$view==in_array($opt.$view,array('com_virtuemartvirtuemart'))){
+<?php 
     $db = JFactory::getDBO();
     $query = 'SELECT * FROM #__content WHERE id IN (18,19)';	
 	$db->setQuery($query);
@@ -246,7 +245,6 @@ focusInput = function(){
     <!--Cookie-content--> 
     <a class="bt-close-cookie" href="#">Luk</a> </div>
 <!--END hLibCookieInfo-->
-<?php }?>
 <div id="header">
     <div id="w-header">
         <div class="logo"> <a href="./">Logo</a> </div>
