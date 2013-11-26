@@ -222,6 +222,7 @@ focusInput = function(){
     $tmp1 = explode("//",$tmp->urla);
     $link = JURI::base()."images/".$tmp1[1];
 ?>
+<?php if($articles[0]->state){?>
 <div id="hLibCookieInfo" class="hLibCookieInfo hLibCookiePreShow hLibCookieFirstDisplay hLibCookieMini" style="top: 40%;">
     <div class="hLibCookieInfoHeader">
         <div class="hLibCookieInfoIcon"></div>
@@ -237,6 +238,7 @@ focusInput = function(){
     </div>
     <!--hLibCookieInfo--> 
 </div>
+<?php }?>
 <div id="CookieInfo" class="CookieInfo">
     <div class="cookie-content">
         <p><?php echo $articles[1]->introtext;?></p>
