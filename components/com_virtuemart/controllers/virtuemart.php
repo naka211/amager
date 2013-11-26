@@ -48,5 +48,11 @@ class VirtueMartControllerVirtuemart extends JController
 		$safeurlparams = array('virtuemart_category_id'=>'INT','virtuemart_currency_id'=>'INT','return'=>'BASE64','lang'=>'CMD');
 		parent::display(true, $safeurlparams);//$view->display();
 	}
+    
+    function set_session(){
+        session_start();
+        $_SESSION['cookieinfo1']=1;
+        return true;
+    }
 }
  //pure php no closing tag
