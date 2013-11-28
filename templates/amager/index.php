@@ -175,6 +175,9 @@ jQuery(document).ready( function(){
         $_SESSION['cookieinfo'] = 1;
     ?>
        jQuery('#hLibCookieInfo').addClass('hLibCookieExpanded');
+       setInterval(function() {
+          jQuery('#hLibCookieInfo').removeClass('hLibCookieExpanded');
+        }, 5000);
     <?php }?>
     
     jQuery('.bt-close-cookie').click(function(){
@@ -218,8 +221,9 @@ focusInput = function(){
 	$db->setQuery($query);
 	$articles = $db->loadObjectList();
     $tmp = json_decode($articles[0]->urls);
-    $tmp1 = explode("//",$tmp->urla);
-    $link = JURI::base()."images/".$tmp1[1];
+    //$tmp1 = explode("//",$tmp->urla);
+    //$link = JURI::base()."images/".$tmp1[1];
+    $link = $tmp->urla;
 ?>
 <?php if($articles[0]->state){?>
 <div id="hLibCookieInfo" class="hLibCookieInfo hLibCookiePreShow hLibCookieFirstDisplay hLibCookieMini" style="top: 40%;">
@@ -232,7 +236,7 @@ focusInput = function(){
     <div class="hLibCookieInfoBody">
         <div class="content">
             <?php echo $articles[0]->introtext;?>
-            <p class="aaa"><a class="bt-download-tilbu" href="<?php echo $link;?>">Downloade tilbudavis</a></p>
+            <p class="aaa"><a target="_blank" class="bt-download-tilbu" href="<?php echo $link;?>">Se tilbudsavisen</a></p>
         </div>
     </div>
     <!--hLibCookieInfo--> 

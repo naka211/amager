@@ -397,7 +397,7 @@ class VirtuemartControllerProduct extends VmController {
                                 }
                             }
                             $rec["virtuemart_manufacturer_id"] = $sheetData[$j]['D'];
-                            $rec["mprices"]["product_price"] = array($sheetData[$j]['F']);
+                            $rec["mprices"]["product_price"] = array(str_replace(',', '', $sheetData[$j]['F']));
                 
                             if($sheetData[$j]['G']){
                                 $tmp0 = $sheetData[$j]['G'] - $sheetData[$j]['F'];
@@ -408,7 +408,7 @@ class VirtuemartControllerProduct extends VmController {
                                     }
                                 }
                             }
-                            $rec["mprices"]["product_override_price"] = array($sheetData[$j]['H']);
+                            $rec["mprices"]["product_override_price"] = array(str_replace(',', '', $sheetData[$j]['H']));
                             if($sheetData[$j]['H']){
                                 $rec["mprices"]["override"] = array(1);
                             }
@@ -448,8 +448,10 @@ class VirtuemartControllerProduct extends VmController {
                                     $rec["file_url"] = $file->file_url;
                                     $rec["file_url_thumb"] = $file->file_url_thumb;
                                 }
+                                $special = $this->check_special($product_id);
+                                $rec["product_special"] = $special;
                             }
-                            
+                            //print_r($rec);exit;
                             $model->store($rec);
                         }
                     }
@@ -491,6 +493,13 @@ class VirtuemartControllerProduct extends VmController {
         $query = "SELECT * FROM #__virtuemart_medias WHERE virtuemart_media_id = ".$id;
         $db->setQuery($query);
         return $db->loadObject();
+    }
+    
+    function check_special($id){
+        $db = JFactory::getDBO();
+        $query = "SELECT product_special FROM #__virtuemart_products WHERE virtuemart_product_id = ".$id;
+        $db->setQuery($query);
+        return $db->loadResult();
     }
 
 	function save($data = 0){
