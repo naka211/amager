@@ -305,8 +305,7 @@ class shopFunctionsF {
 		$headers .= 'From: Amager Isenkram <info@amagerisenkram.dk>' . "\r\n";
 
 		if($recipient == "ttih@amagerisenkram.dk"){
-			//$to = 'ttih@amagerisenkram.dk, info@amagerisenkram.dk, oliver-m@hotmail.com, mywebcreations2013@hotmail.com';
-            $to = 'ttih@amagerisenkram.dk, info@amagerisenkram.dk, oliver-m@hotmail.com';
+            $to = 'ttih@amagerisenkram.dk, ah@amagerisenkram.dk, om@amagerisenkram.dk';
 		} else {
 			$to = $recipient;
 		}

@@ -543,7 +543,11 @@ class VirtueMartControllerCart extends JController {
 		if ($cart) {
 			$cart->confirmDone();
 			$siteURL = JURI::base();
-   			$this->setRedirect('https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/'. $siteURL . 'index.php?option=com_virtuemart&view=cart&layout=order_done&tmpl=component&forcerelay=1&HTTP_COOKIE='.getenv("HTTP_COOKIE"));
+            if(JRequest::getVar('mwctype') == 3){
+                $this->setRedirect( $siteURL . 'index.php?option=com_virtuemart&view=cart&layout=order_done1');
+            } else {
+                $this->setRedirect('https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/'. $siteURL . 'index.php?option=com_virtuemart&view=cart&layout=order_done&tmpl=component&forcerelay=1&HTTP_COOKIE='.getenv("HTTP_COOKIE"));
+            }
 			/*$view = $this->getView('cart', 'html');
 			$view->setLayout('order_done');
 			// Display it all
