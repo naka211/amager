@@ -168,7 +168,7 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 			<td><strong>Leveringsservice:</strong></td>
 			</tr>
 			<tr>
-				<td valign="top" height="30"><?php if($this->orderDetails['details']['BT']->address_2){?>Afhentning: <?php echo $this->orderDetails['details']['BT']->address_2;?><?php }else{?>Forsendelse<?php }?></td>
+				<td valign="top" height="30"><?php if($this->orderDetails['details']['BT']->address_2){?>Afhentning: <?php echo $this->orderDetails['details']['BT']->address_2;?><?php }else{if($this->orderDetails['details']['BT']->address_type_name == 3) echo 'Forsendelse';else echo 'E-faktura/Nem-handel fakturablanket'; }?></td>
 			</tr>
 			</table>
 		</td>

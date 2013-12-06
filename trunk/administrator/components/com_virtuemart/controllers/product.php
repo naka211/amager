@@ -369,13 +369,13 @@ class VirtuemartControllerProduct extends VmController {
                     $catid = $this->createCategory($_cat, $i);
                     for($j=2; $j<=count($sheetData); $j++) {
                         if($sheetData[$j]['R'] == $i){
-                            if((!$sheetData[$j]['N']) || (strtoupper($sheetData[$j]['N'])==='FALSE')){
+                            if((!$sheetData[$j]['N']) || (strtoupper($sheetData[$j]['N'])==='FALSE') || (strtoupper($sheetData[$j]['N'])==='FASLE')){
                                 $sheetData[$j]['N'] = 0;
                             } else {
                                 $sheetData[$j]['N'] = 1;
                             }
                             
-                            if((!$sheetData[$j]['T']) || (strtoupper($sheetData[$j]['T'])==='FALSE')){
+                            if((!$sheetData[$j]['T']) || (strtoupper($sheetData[$j]['T'])==='FALSE') || (strtoupper($sheetData[$j]['T'])==='FASLE')){
                                 $sheetData[$j]['T'] = 0;
                             } else {
                                 $sheetData[$j]['T'] = 1;
@@ -387,9 +387,18 @@ class VirtuemartControllerProduct extends VmController {
                             $rec = $rec_frame;
                             $rec[$token] = 1;
                 
-                            $rec["product_name"] = mb_convert_case($sheetData[$j]['D'], MB_CASE_TITLE, "UTF-8").' - '.mb_convert_case($sheetData[$j]['B'], MB_CASE_TITLE, "UTF-8");
-                            $rec["product_desc"] = mb_convert_case($sheetData[$j]['C'], MB_CASE_TITLE, "UTF-8");
-                
+                            if($sheetData[$j]['D']){
+                                $rec["product_name"] = mb_convert_case($sheetData[$j]['D'], MB_CASE_TITLE, "UTF-8").' - '.mb_convert_case($sheetData[$j]['B'], MB_CASE_TITLE, "UTF-8");
+                            } else {
+                                $rec["product_name"] = mb_convert_case($sheetData[$j]['B'], MB_CASE_TITLE, "UTF-8");
+                            }
+                            
+                            $tmps = explode('.', $sheetData[$j]['C']);
+                            foreach($tmps as $tmp){
+                                $rec["product_desc"] .= $this->mb_ucfirst(trim($tmp));
+                                $rec["product_desc"] .= '. ';
+                            }
+                            
                             foreach($brands as $o){
                                 if(strtolower($o->name) == strtolower($sheetData[$j]['D'])){
                                     $sheetData[$j]['D'] = $o->id;
@@ -467,6 +476,10 @@ class VirtuemartControllerProduct extends VmController {
                 }
 		    }
         }
+    }
+    
+    function mb_ucfirst($string){
+        return mb_strtoupper(mb_substr($string, 0, 1)).mb_strtolower(mb_substr($string, 1));
     }
     
     protected function strEncode($s){
