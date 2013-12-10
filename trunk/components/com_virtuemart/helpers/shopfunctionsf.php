@@ -275,10 +275,6 @@ class shopFunctionsF {
 		$subject = (isset($view->subject)) ? $view->subject : JText::_('COM_VIRTUEMART_DEFAULT_MESSAGE_SUBJECT');
 		$mailer = JFactory::getMailer();
 		$mailer->addRecipient($recipient);
-		//T.Trung
-		if($recipient == "thanh.trung@mwc.vn")
-			$mailer->addRecipient('mywebcreations2013@hotmail.com');
-		//T.Trung end
 		$mailer->setSubject($subject);
 		$mailer->isHTML(VmConfig::get('order_mail_html',TRUE));
 		$mailer->setBody($body);
@@ -305,7 +301,7 @@ class shopFunctionsF {
 		$headers .= 'From: Amager Isenkram <info@amagerisenkram.dk>' . "\r\n";
 
 		if($recipient == "ttih@amagerisenkram.dk"){
-            $to = 'ttih@amagerisenkram.dk, ah@amagerisenkram.dk, om@amagerisenkram.dk';
+            //$to = 'ttih@amagerisenkram.dk, ah@amagerisenkram.dk, om@amagerisenkram.dk';
 		} else {
 			$to = $recipient;
 		}

@@ -29,6 +29,15 @@ if ($this->paymentResponseHtml) {
 }*/
 
 // add something???
+if(!class_exists('shopFunctionsF')) require(JPATH_VM_SITE.DS.'helpers'.DS.'shopfunctionsf.php');
+$config =& JFactory::getConfig();
+print_r($config->getValue( 'config.sitename' ));exit;
+$fromName = $config->getValue( 'config.sitename' );
+$fromMail = $config->getValue( 'config.mailfrom' );
+$vars['user'] = array('name' => $fromName, 'email' => $fromMail);
+$vars['vendor'] = array('vendor_store_name' => $fromName );
+shopFunctionsF::renderMail('vendor', $VendorEmail, $vars,'vendor');
+
 $db = JFactory::getDBO();
 $orderid = $this->cart->order_number;
 
