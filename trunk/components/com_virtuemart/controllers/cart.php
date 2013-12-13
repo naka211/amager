@@ -69,6 +69,26 @@ class VirtueMartControllerCart extends JController {
 			$mainframe->enqueueMessage('Cart does not exist?', 'error');
 		}
 	}
+    
+    function add_ipaper(){
+        $db = JFactory::getDBO();
+        $xml = simplexml_load_string($_POST['basket'],'SimpleXMLElement', LIBXML_NOCDATA);print_r($xml);exit;
+        $virtuemart_product_ids = array();
+        $quantities = array();
+        foreach($xml->item as $item){
+            $query = "SELECT virtuemart_product_id FROM #__virtuemart_products WHERE product_sku = '".$item->productid."'";
+            $db->setQuery($query);
+            $product_id = $db->loadResult();
+            array_push($virtuemart_product_ids, $product_id);
+            array_push($quantities, $item->amount);
+        }
+        $cart = VirtueMartCart::getCart();
+        $success = true;
+        $cart->add($virtuemart_product_ids, $success, $quantities);
+
+        $mainframe = JFactory::getApplication();
+        $mainframe->redirect('index.php/user/editaddresscheckoutBT.html');
+    }
 
 	/**
 	 * Add the product to the cart using Ajax
