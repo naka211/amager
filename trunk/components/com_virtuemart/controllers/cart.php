@@ -72,7 +72,7 @@ class VirtueMartControllerCart extends JController {
     
     function add_ipaper(){
         $db = JFactory::getDBO();
-        $xml = simplexml_load_string($_POST['basket'],'SimpleXMLElement', LIBXML_NOCDATA);print_r($xml);exit;
+        $xml = simplexml_load_string(preg_replace("/<([a-z][a-z0-9]*)[^>]*?(\/?)>/i",'<$1$2>', $_POST['basket']),'SimpleXMLElement', LIBXML_NOCDATA);
         $virtuemart_product_ids = array();
         $quantities = array();
         foreach($xml->item as $item){
