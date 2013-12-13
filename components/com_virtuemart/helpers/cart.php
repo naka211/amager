@@ -307,7 +307,7 @@ class VirtueMartCart {
 	 * @author Max Milbers
 	 * @access public
 	 */
-	public function add($virtuemart_product_ids=null,&$errorMsg='') {
+	public function add($virtuemart_product_ids=null,&$errorMsg='', $quantities=NULL) {
 		$mainframe = JFactory::getApplication();
 		$success = false;
 		$post = JRequest::get('default');
@@ -323,9 +323,13 @@ class VirtueMartCart {
 
 		//Iterate through the prod_id's and perform an add to cart for each one
 		foreach ($virtuemart_product_ids as $p_key => $virtuemart_product_id) {
-
-			$quantityPost = (int) $post['quantity'][$p_key];
-
+            if(empty($quantities)){
+			    $quantityPost = (int) $post['quantity'][$p_key];
+            } else {
+                $quantityPost = $quantities[$p_key];
+            }
+            $quantityPost = (int)$quantityPost;
+            
 			if($quantityPost === 0) continue;
 
 			$tmpProduct = $this->getProduct((int) $virtuemart_product_id,$quantityPost);
@@ -465,7 +469,6 @@ class VirtueMartCart {
 				// Add in the quantity in case the customfield plugins need it
 				$product->quantity = (int)$quantityPost;
 
-
 				if(!class_exists('vmCustomPlugin')) require(JPATH_VM_PLUGINS.DS.'vmcustomplugin.php');
 				JPluginHelper::importPlugin('vmcustom');
 				$dispatcher = JDispatcher::getInstance();
@@ -501,13 +504,13 @@ class VirtueMartCart {
 						// $errorMsg = JText::_('COM_VIRTUEMART_CART_PRODUCT_OUT_OF_STOCK');
 						continue;
 					}
-				}
+				} 
 				$success = true;
 			} else {
 				$mainframe->enqueueMessage(JText::_('COM_VIRTUEMART_PRODUCT_NOT_FOUND', false));
 				return false;
 			}
-		}
+		} 
 		if ($success== false) return false ;
 		// End Iteration through Prod id's
 		$this->setCartIntoSession();

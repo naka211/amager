@@ -35,7 +35,7 @@ $fromName = $config->getValue( 'config.sitename' );
 $fromMail = $config->getValue( 'config.mailfrom' );
 $vars['user'] = array('name' => $fromName, 'email' => $fromMail);
 $vars['vendor'] = array('vendor_store_name' => $fromName );
-shopFunctionsF::renderMail('vendor', $VendorEmail, $vars,'vendor');
+shopFunctionsF::renderMail('invoice', '', $vars);
 
 $db = JFactory::getDBO();
 $orderid = $this->cart->order_number;
