@@ -319,7 +319,7 @@ class shopFunctionsF {
 		
 		if(mail($to, $subject, $body, $headers)) error_log(date('H:i:s m-d-Y', time()).' to :'.$to.'///', 3, "error.log");
 
-		return $mailer->Send();
+		//return $mailer->Send();
 	}
 
 
