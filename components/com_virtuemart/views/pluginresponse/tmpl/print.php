@@ -257,8 +257,8 @@ $email = $db->loadResult();
   <tr><td height="30"></td></tr>
   <tr style="background: #2E3033;margin-top: 20px; color: #fff;">
   	<td colspan="4" style="padding: 30px 10px; line-height: 1.8em;">
-        Tåmby Torv Isenkram
-        Tåmby Torv 9 2770 Kastrup<br />   
+        Tårnby Torv Isenkram
+        Tårnby Torv 9 2770 Kastrup<br />   
         Tlf: 3250 3611 - Fax: 3252 1536<br />
         <a style="color: #fff; text-decoration: none;" href="mailto:info@amagerisenkram.dk">info@amagerisenkram.dk</a>
     </td>

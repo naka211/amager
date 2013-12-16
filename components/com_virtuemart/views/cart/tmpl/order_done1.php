@@ -29,13 +29,14 @@ if ($this->paymentResponseHtml) {
 }*/
 
 // add something???
+$admin = JFactory::getUser('939');
+$cart = $this->cart;
 if(!class_exists('shopFunctionsF')) require(JPATH_VM_SITE.DS.'helpers'.DS.'shopfunctionsf.php');
 $config =& JFactory::getConfig();
 $fromName = $config->getValue( 'config.sitename' );
 $fromMail = $config->getValue( 'config.mailfrom' );
 $vars['user'] = array('name' => $fromName, 'email' => $fromMail);
 $vars['vendor'] = array('vendor_store_name' => $fromName );
-shopFunctionsF::renderMail('invoice', '', $vars);
 
 $db = JFactory::getDBO();
 $orderid = $this->cart->order_number;
@@ -43,6 +44,14 @@ $orderid = $this->cart->order_number;
 $query = "SELECT virtuemart_order_id, order_shipment, order_total, order_salesPrice, order_number FROM #__virtuemart_orders WHERE order_number = '".$orderid."'";
 $db->setQuery($query);
 $order_info = $db->loadObject();
+
+if(!class_exists('VmModel'))require(JPATH_VM_ADMINISTRATOR.DS.'helpers'.DS.'vmmodel.php');
+$orderModel=VmModel::getModel('orders');
+$order = $orderModel->getOrder($order_info->virtuemart_order_id);
+
+$vars['orderDetails']=$order;
+shopFunctionsF::renderMail('invoice', $admin->email, $vars);
+shopFunctionsF::renderMail('invoice', $cart->BT['email'], $vars);
 
 $query = "SELECT * FROM #__virtuemart_order_userinfos WHERE address_type = 'BT' AND virtuemart_order_id = ".$order_info->virtuemart_order_id;
 $db->setQuery($query);
