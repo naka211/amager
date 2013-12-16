@@ -29,6 +29,9 @@ if ($this->paymentResponseHtml) {
 }*/
 
 // add something???
+$session = JFactory::getSession();
+$session->set('vmcart', 0, 'vm');
+
 $admin = JFactory::getUser('939');
 $cart = $this->cart;
 if(!class_exists('shopFunctionsF')) require(JPATH_VM_SITE.DS.'helpers'.DS.'shopfunctionsf.php');
