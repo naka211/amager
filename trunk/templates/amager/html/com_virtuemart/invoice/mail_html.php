@@ -199,7 +199,7 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
   </tr>
   <?php }?>
   <tr height="30" style="padding: 0 10px;">
-    <td style="text-transform: uppercase; color: red; padding: 0 10px; font-size: 20px;"><strong><?php if($this->orderDetails['details']['BT']->address_2){?>Afhentning: <?php echo $this->orderDetails['details']['BT']->address_2;?><?php }else{if($this->orderDetails['details']['BT']->address_type_name == 3) echo 'Forsendelse';else echo 'E-faktura/Nem-handel fakturablanket'; }?></strong></td>
+    <td style="text-transform: uppercase; color: red; padding: 0 10px; font-size: 20px;"><strong><?php if($this->orderDetails['details']['BT']->address_2){?>Afhentning: <?php echo $this->orderDetails['details']['BT']->address_2;?><?php }else{if($this->orderDetails['details']['BT']->address_type_name != 3) echo 'Forsendelse';else echo 'E-faktura/Nem-handel fakturablanket'; }?></strong></td>
     <td colspan="2"><table width="260" border="0" cellpadding="0" cellspacing="0" align="right">
       <tr height="30" style="padding: 0 10px;">
         <td width="260" style="color: #3A3A3A;">Forsendelse:</td>

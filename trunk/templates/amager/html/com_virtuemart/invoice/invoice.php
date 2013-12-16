@@ -168,7 +168,7 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 			<td><strong>Leveringsservice:</strong></td>
 			</tr>
 			<tr>
-				<td valign="top" height="30"><?php if($this->orderDetails['details']['BT']->address_2){?>Afhentning: <?php echo $this->orderDetails['details']['BT']->address_2;?><?php }else{if($this->orderDetails['details']['BT']->address_type_name == 3) echo 'Forsendelse';else echo 'E-faktura/Nem-handel fakturablanket'; }?></td>
+				<td valign="top" height="30"><?php if($this->orderDetails['details']['BT']->address_2){?>Afhentning: <?php echo $this->orderDetails['details']['BT']->address_2;?><?php }else{echo 'Forsendelse';}?></td>
 			</tr>
 			</table>
 		</td>
@@ -200,7 +200,7 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 	<?php }?>
 
 		<tr>
-		<td colspan="3" style="text-transform: uppercase; color: red; padding-left: 10px"><strong><?php if($this->orderDetails['details']['BT']->address_2){echo "Afhentning: ".$this->orderDetails['details']['BT']->address_2;}else{echo "Forsendelse";}?></strong></td>
+		<td colspan="3" style="text-transform: uppercase; color: red; padding-left: 10px"><strong><?php if($this->orderDetails['details']['BT']->address_2){echo "Afhentning: ".$this->orderDetails['details']['BT']->address_2;}else{if($this->orderDetails['details']['BT']->address_type_name != 3) echo 'Forsendelse';else echo 'E-faktura/Nem-handel fakturablanket';}?></strong></td>
 		<td><table width="100%" border="0" cellpadding="0" cellspacing="0">
 		<tr>
 			<td width="400" style="color: #3A3A3A;">Forsendelse:</td>
@@ -242,8 +242,8 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 
 	<tr style="margin-top: 20px;">
 	<td colspan="4" style="padding: 30px 10px; line-height: 1.8em;">
-		Tåmby Torv Isenkram
-		Tåmby Torv 9 2770 Kastrup<br />
+		Tårnby Torv Isenkram
+		Tårnby Torv 9 2770 Kastrup<br />
 		Tlf: 3250 3611 - Fax: 3252 1536<br />
 		<a style="text-decoration: none;" href="mailto:info@amagerisenkram.dk">info@amagerisenkram.dk</a>
 	</td>
