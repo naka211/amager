@@ -29,9 +29,6 @@ if ($this->paymentResponseHtml) {
 }*/
 
 // add something???
-$session = JFactory::getSession();
-$session->set('vmcart', 0, 'vm');
-
 $admin = JFactory::getUser('939');
 $cart = $this->cart;
 if(!class_exists('shopFunctionsF')) require(JPATH_VM_SITE.DS.'helpers'.DS.'shopfunctionsf.php');
@@ -222,3 +219,8 @@ Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
       	<a href="index.php?option=com_virtuemart&view=pluginresponse&layout=printOrder&orderid=<?php echo $orderid;?>&tmpl=component">PRINT KVITTERING</a>
       </div><!--.bnt-print-receipt-->
   </div>
+<?php 
+if(!class_exists('VmModel'))require(JPATH_VM_SITE.DS.'helpers'.DS.'cart.php');
+$cart = VirtueMartCart::getCart();
+$cart->emptyCart();
+?>
