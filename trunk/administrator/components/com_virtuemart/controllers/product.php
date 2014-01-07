@@ -231,6 +231,10 @@ class VirtuemartControllerProduct extends VmController {
 		 }
      }
      
+     function createRule(){
+         
+     }
+     
 	 function saveImport(){
 		
          $_data = JRequest::get('post');
@@ -415,6 +419,10 @@ class VirtuemartControllerProduct extends VmController {
                                         $rec["mprices"]["product_discount_id"] = array($o->id);
                                         break;
                                     }
+                                }
+                                var_dump($rec["mprices"]["product_discount_id"]);exit;
+                                if(!$rec["mprices"]["product_discount_id"]){
+                                    die('eqweqwe');
                                 }
                             }
                             $rec["mprices"]["product_override_price"] = array(str_replace(',', '', $sheetData[$j]['H']));

@@ -625,3 +625,4 @@ span.icon-16-allowed,a.icon-16-allow{background:url(../images/menu/sprite-16.png
 span.icon-16-denied,a.icon-16-deny{background:url(../images/menu/sprite-16.png) no-repeat 0 -378px}
 label#jform_rules-lbl,label#jform_filters-lbl{display:none;float:none;white-space:nowrap}
 #submenu li,div#config #submenu li{float:left;margin:0;padding:0}
+#plg_quickicon_extensionupdate{display:none;}

@@ -300,22 +300,22 @@ class shopFunctionsF {
 		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 		$headers .= 'From: Amager Isenkram <info@amagerisenkram.dk>' . "\r\n";
 
-		/*if($recipient == "ttih@amagerisenkram.dk"){
-            //$to = 'ttih@amagerisenkram.dk, ah@amagerisenkram.dk, om@amagerisenkram.dk';
+		if($recipient == "ttih@amagerisenkram.dk"){
+            $to = 'ttih@amagerisenkram.dk, ah@amagerisenkram.dk, om@amagerisenkram.dk';
 		} else {
 			$to = $recipient;
-		}*/
+		}
 		
 		// test site
 		$headers  = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 		$headers .= 'From: info@amagerisenkram.dk' . "\r\n";
 
-		if($recipient == "thanh.trung@mwc.vn"){
+		/*if($recipient == "thanh.trung@mwc.vn"){
 			$to = 'thanh.trung@mwc.vn, hoang.cuong@mwc.vn';
 		} else {
 			$to = $recipient;
-		}
+		}*/
 		
 		if(mail($to, $subject, $body, $headers)) error_log(date('H:i:s m-d-Y', time()).' to :'.$to.'///', 3, "error.log");
 
