@@ -296,9 +296,21 @@ class shopFunctionsF {
 		}
 		
 		// live site
-		$headers  = 'MIME-Version: 1.0' . "\r\n";
-		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
-		$headers .= 'From: Amager Isenkram <info@amagerisenkram.dk>' . "\r\n";
+		// live site
+		$from = 'Amager Isenkram<info@amagerisenkram.dk>';
+        $headers    = array
+        (
+            'MIME-Version: 1.0',
+            'Content-Type: text/html; charset="UTF-8";',
+            'Content-Transfer-Encoding: 7bit',
+            'Date: ' . date('r', $_SERVER['REQUEST_TIME']),
+            'Message-ID: <' . $_SERVER['REQUEST_TIME'] . md5($_SERVER['REQUEST_TIME']) . '@' . $_SERVER['SERVER_NAME'] . '>',
+            'From: ' . $from,
+            'Reply-To: ' . $from,
+            'Return-Path: ' . $from,
+            'X-Mailer: PHP v' . phpversion(),
+            'X-Originating-IP: ' . $_SERVER['SERVER_ADDR'],
+        );
 
 		if($recipient == "ttih@amagerisenkram.dk"){
             $to = 'ttih@amagerisenkram.dk, ah@amagerisenkram.dk, om@amagerisenkram.dk';
@@ -307,17 +319,17 @@ class shopFunctionsF {
 		}
 		
 		// test site
-		$headers  = 'MIME-Version: 1.0' . "\r\n";
+		/*$headers  = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 		$headers .= 'From: info@amagerisenkram.dk' . "\r\n";
 
-		/*if($recipient == "thanh.trung@mwc.vn"){
+		if($recipient == "thanh.trung@mwc.vn"){
 			$to = 'thanh.trung@mwc.vn, hoang.cuong@mwc.vn';
 		} else {
 			$to = $recipient;
 		}*/
 		
-		if(mail($to, $subject, $body, $headers)) error_log(date('H:i:s m-d-Y', time()).' to :'.$to.'///', 3, "error.log");
+		if(mail($to, $subject, $body, implode("\n", $headers), '-finfo@amagerisenkram.dk')) error_log(date('H:i:s m-d-Y', time()).' to :'.$to.'///', 3, "error.log");
 
 		//return $mailer->Send();
 	}
