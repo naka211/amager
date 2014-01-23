@@ -6,6 +6,11 @@ $ids = $productModel->sortSearchListQuery();
 $products = $productModel->getProducts ($ids);
 $productModel->addImages($products,1);
 $pagination = $productModel->getPagination(4);
+$id_manufactor=JRequest::getVar('virtuemart_manufacturer_id');
+$box=$productModel->getOrderByList($id_manufactor);
+//echo $box['orderby'];
+//$box=$ids->orderByList['orderby'];
+//echo $box;
 if (!class_exists('CurrencyDisplay')) require(JPATH_VM_ADMINISTRATOR . DS . 'helpers' . DS . 'currencydisplay.php');
 $currency = CurrencyDisplay::getInstance();
 JRequest::setVar("limitstart",0);
@@ -41,6 +46,19 @@ JRequest::setVar("limit",20);
 
 		if (!empty($products)){
 ?>
+
+<div class="orderby-displaynumber">
+	<div class="sorter">
+		<div style="padding: 10px;border-bottom: 1px solid #CACACA">
+		<?php echo $box['orderby']; ?>
+		Visning <?php echo $pagination->getLimitBox (); ?>
+		<div class="pagination"><?php echo $pagination->getPagesLinks (); ?></div>
+		</div>
+		<form id="mf_form_filters" action="<?php echo JURI::current()?>" method="post">
+		<?php echo $this->orderByList['manufacturer']; ?>
+		</form>
+	</div>
+</div>
 
 <div class="product"><ul>
 <?php
@@ -135,6 +153,7 @@ if($iBrowseCol != 1 AND $iBrowseCol != $ppr)
 <div class="orderby-displaynumber">
 	<div class="sorter">
 		<div style="padding: 10px;border-bottom: 1px solid #CACACA">
+			<?php echo $box['orderby']; ?>
 			Visning <?php echo $pagination->getLimitBox (); ?>
 			<div class="pagination"><?php echo $pagination->getPagesLinks (); ?></div>
 			<div class="clear"></div>
