@@ -1784,6 +1784,7 @@ class VirtueMartModelProduct extends VmModel {
 	 **/
 	function getOrderByList ($virtuemart_category_id = FALSE) {
 
+		//echo "dd" ;die();
 		$getArray = (JRequest::get ('get'));
 		$link = '';
 		$fieldLink = '';
@@ -1873,6 +1874,7 @@ class VirtueMartModelProduct extends VmModel {
 		/* order by link list*/
 		$orderByLink = '';
 		$fields = VmConfig::get ('browse_orderby_fields');
+		//print_r( $fields);die();
 		if (count ($fields) > 1) {
 			$orderByLink = '<div class="sorter-top">';//[V] class="orderlist"
 			foreach ($fields as $field) {
@@ -1899,7 +1901,11 @@ class VirtueMartModelProduct extends VmModel {
 					else {
 						$link = JRoute::_ ($fieldLink . $orderlink . $manufacturerTxt . '&orderby=' . $field);
 					}
-					$orderByLink .= '<option value="' . $link . '">' . $text . '</option>';
+					if($text=="Product SKU")
+					  $orderByLink .= '<option value="' . $link . '">' . "Varenummer" . '</option>';
+					else
+					  $orderByLink .= '<option value="' . $link . '">' . $text . '</option>';
+					  
 				}
 			}
 			$orderByLink .= '</div>';
@@ -1924,8 +1930,12 @@ class VirtueMartModelProduct extends VmModel {
 		}
 
 		$orderByList = '<label class="title" style="line-height:29px">' . JText::_ ('COM_VIRTUEMART_ORDERBY') . ' </label>';
-		$orderByList .='<select class="activeOrder" onchange="window.location.href=this.value"><option>' . JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_' . $orderby) . '</option>';
-		$orderByList .= $orderByLink . '</select>';
+		if(JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_' . $orderby)=="Product SKU")
+		  $orderByList .='<select class="activeOrder" onchange="window.location.href=this.value"><option>' . "Varenummer" . '</option>';
+		else
+		  $orderByList .='<select class="activeOrder" onchange="window.location.href=this.value"><option>' . JText::_ ('COM_VIRTUEMART_SEARCH_ORDER_' . $orderby) . '</option>';
+		
+		  $orderByList .= $orderByLink . '</select>';
 
 		$manuList = '';
 		if (VmConfig::get ('show_manufacturers')) {
