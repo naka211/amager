@@ -46,7 +46,8 @@ class VirtuemartControllerProduct extends VmController {
 	 * Shows the product add/edit screen
 	 */
 	public function edit($layout='edit') {
-		parent::edit('product_edit');
+		//echo "dd" ;die();
+        parent::edit('product_edit');
 	}
 
 	/**
@@ -525,9 +526,9 @@ class VirtuemartControllerProduct extends VmController {
 
 	function save($data = 0){
 	//die;
-
+        //echo "dd" ;die();
 		$data = JRequest::get('post');
-		///var_dump($data);die;
+		//var_dump($data);die;
 
 		if(!class_exists('Permissions')) require(JPATH_VM_ADMINISTRATOR.DS.'helpers'.DS.'permissions.php');
 		if(Permissions::getInstance()->check('admin')){
@@ -543,7 +544,9 @@ class VirtuemartControllerProduct extends VmController {
 			}
 
 		}
-		parent::save($data);
+		//$data[mprices][price_of_number][0]=129;
+        //$data['priceofnumber']=24;
+        parent::save($data);
 	}
 
 	function saveJS(){
