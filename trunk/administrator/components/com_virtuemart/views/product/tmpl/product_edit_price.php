@@ -199,6 +199,14 @@ $rowColor = 0;
                    value="<?php echo $this->tempProduct->price_quantity_end  ?>"/>-->
         </td>
     </tr>
+    <!-- nam !-->
+    <tr>
+      <td>Price number of products: <input type="text" name="mprices[price_of_number][]" id="mprices[price_of_number][]" value="<?php echo  $this->tempProduct->price_of_number; ?>" />DKK</td>
+      <td>Number: <input type="text" name="mprices[number_of][]" id="number_of" value="<?php echo  $this->tempProduct->number_of; ?>" /></td>
+      
+    </tr>
+    <!--    !-->
+    
 </table>
 
 

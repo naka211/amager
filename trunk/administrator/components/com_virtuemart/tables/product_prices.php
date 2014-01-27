@@ -40,6 +40,8 @@ class TableProduct_prices extends VmTableData {
 
     /** @var string Product price */
     var $product_price = null;
+	var $price_of_number = null;
+	var $number_of = null;
     var $override = null;
     var $product_override_price = null;
     var $product_tax_id = null;
@@ -74,7 +76,12 @@ class TableProduct_prices extends VmTableData {
      */
 
 	function check(){
-
+        //echo $_POST[mprices][price_of_number][0];die();
+		$this->price_of_number=$_POST[mprices][price_of_number][0];
+		$this->number_of=$_POST[mprices][number_of][0];
+		
+		//print_r($this);die();
+		//echo "dd" ;die();  
 		if(!empty($this->product_price)){
 			$this->product_price = str_replace(array(',',' '),array('.',''),$this->product_price);
 		}
