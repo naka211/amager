@@ -199,12 +199,57 @@ $rowColor = 0;
                    value="<?php echo $this->tempProduct->price_quantity_end  ?>"/>-->
         </td>
     </tr>
+    
     <!-- nam !-->
-    <tr>
-      <td>Price number of products: <input type="text" name="mprices[price_of_number][]" id="mprices[price_of_number][]" value="<?php echo  $this->tempProduct->price_of_number; ?>" />DKK</td>
-      <td>Number: <input type="text" name="mprices[number_of][]" id="number_of" value="<?php echo  $this->tempProduct->number_of; ?>" /></td>
-      
+    <?php $rowColor = 1 - $rowColor; ?>
+    <tr class="row<?php echo $rowColor?>">
+        <td colspan="2">&nbsp;</td>
+        <td width="80px">
+            <div style="text-align: right; font-weight: bold;">
+				<span
+                        class="hasTip"
+                        title="<?php echo JText::_ ('COM_VIRTUEMART_PRODUCT_DISCOUNT_OVERRIDE_TIP'); ?>">
+					<?php //echo JText::_ ('COM_VIRTUEMART_PRODUCT_DISCOUNT_OVERRIDE');
+						echo "Price(according to the quantity)";
+					?>
+				</span>
+            </div>
+        </td>
+        <td width="120px">
+            <input type="text"
+                   size="12"
+                   style="text-align:right;" name="mprices[price_of_number][]"
+                   value="<?php echo $this->tempProduct->price_of_number ?>"/>
+			<?php echo $this->vendor_currency;   ?>
+        </td>
+        <td>&nbsp;</td>
+        <td>
+        	
+            <div style="font-weight: bold;">
+				<?php echo JText::_ ('COM_VIRTUEMART_PRODUCT_PRICE_QUANTITY_RANGE') ?>
+            </div>
+            <input type="text"
+                   size="12"
+                   style="text-align:right;" name="mprices[price_quantity_start][]"
+                   value="<?php echo $this->tempProduct->price_quantity_start ?>"/>
+        </td>
+        <td>
+        	
+            <br/>
+            <input type="text"
+                   size="12"
+                   style="text-align:right;" name="mprices[price_quantity_end][]"
+                   value="<?php echo $this->tempProduct->price_quantity_end  ?>"/>
+        </td>
     </tr>
+    <!--
+    <tr class="row<?php echo $rowColor?>">
+    	<td>&nbsp;</td>
+      	<td>Price number of products: <input type="text" name="mprices[price_of_number][]" id="mprices[price_of_number][]" value="<?php echo  $this->tempProduct->price_of_number; ?>" />DKK</td>
+      	<td>&nbsp;</td>
+        <td>&nbsp;</td>
+      
+    </tr>-->
     <!--    !-->
     
 </table>
