@@ -349,7 +349,7 @@ class VirtueMartCart {
 			$product -> product_price = $tmpProduct -> product_price;
 			$product -> override = $tmpProduct -> override;
 			$product -> product_override_price = $tmpProduct -> product_override_price;
-
+			
 			$product -> product_tax_id = $tmpProduct -> product_tax_id;
 			$product -> product_discount_id = $tmpProduct -> product_discount_id;
 			$product -> product_currency = $tmpProduct -> product_currency;

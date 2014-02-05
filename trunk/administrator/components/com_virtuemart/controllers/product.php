@@ -232,8 +232,34 @@ class VirtuemartControllerProduct extends VmController {
 		 }
      }
      
-     function createRule(){
-         
+     function createRule($value){
+		 $model = VmModel::getModel("calc");
+         $data_arr = array(
+			"calc_name" => "$value",
+			"published" => 1,
+			"shared" => 0,
+			"ordering" => 0,
+			"calc_descr" => "",
+			"calc_kind" => "DBTax",
+			"calc_value_mathop" => "-",
+			"calc_value" => abs($value),
+			"calc_currency" => 40,
+			"calc_shopper_published" => 1,
+			"calc_vendor_published" => 1,
+			"publish_up" => "",
+			"publish_down" => "",
+			"virtuemart_vendor_id" => 1,
+			"virtuemart_calc_id" => 0,
+			"task" => "save",
+			"option" => "com_virtuemart",
+			"boxchecked" => 0,
+			"controller" => "calc",
+			"view" => "calc"
+		 );
+		 $token=JSession::getFormToken();
+		 $data_arr[$token] = 1;
+		 $model->store($data_arr);
+		 return $data_arr['virtuemart_calc_id'];
      }
      
 	 function saveImport(){
@@ -421,9 +447,9 @@ class VirtuemartControllerProduct extends VmController {
                                         break;
                                     }
                                 }
-                                var_dump($rec["mprices"]["product_discount_id"]);exit;
-                                if(!$rec["mprices"]["product_discount_id"]){
-                                    die('eqweqwe');
+                                if($rec["mprices"]["product_discount_id"][0] == -1){
+									$discount_id = $this->createRule($tmp0);
+									$rec["mprices"]["product_discount_id"] = array($discount_id);
                                 }
                             }
                             $rec["mprices"]["product_override_price"] = array(str_replace(',', '', $sheetData[$j]['H']));

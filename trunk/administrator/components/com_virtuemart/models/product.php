@@ -693,6 +693,7 @@ class VirtueMartModelProduct extends VmModel {
 
 		$product->product_price = null;
 		$product->product_override_price = null;
+		$product->price_of_number = null;
 		$product->override = null;
 		$product->virtuemart_product_price_id = null;
 		$product->virtuemart_shoppergroup_id = null;
@@ -728,7 +729,14 @@ class VirtueMartModelProduct extends VmModel {
 		}
 
 		$db->setQuery($q);
-		$product->prices = $db->loadAssocList();
+		$product->prices = $db->loadAssocList();//print_r($product->prices);//exit;
+		//T.Trung
+		if($front){
+			if(($product->prices[0]['price_quantity_start']<=$quantity) && ($product->prices[0]['price_quantity_end']>=$quantity)){
+				$product->prices[0]['product_override_price'] = $product->prices[0]['price_of_number'];
+			}
+		}
+		//end T.Trung
 		$err = $db->getErrorMsg();
 		if(!empty($err)){
 			vmError('getProductSingle '.$err);
