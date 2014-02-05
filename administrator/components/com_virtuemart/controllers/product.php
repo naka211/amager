@@ -261,6 +261,42 @@ class VirtuemartControllerProduct extends VmController {
 		 $model->store($data_arr);
 		 return $data_arr['virtuemart_calc_id'];
      }
+	 
+	 function createManufacturer($name){
+		 $model = VmModel::getModel("manufacturer");
+         $data_arr = array(
+		 	"vmlang" => "da-DK",
+			"mf_name" => "$name",
+			"published" => 1,
+			"slug" => "",
+			"virtuemart_manufacturercategories_id" => 1,
+			"mf_url" => "",
+			"mf_email" => "",
+			"mf_desc" => "",
+			"searchMedia" => "",
+			"calc_currency" => 40,
+			"media_published" => 1,
+			"file_title" => "",
+			"file_description" => "",
+			"file_meta" => "",
+			"file_url" => "images/stories/virtuemart/manufacturer/",
+			"file_url_thumb" => "",
+			"media_roles" => "file_is_displayable",
+			"media_action" => 0,
+			"virtuemart_vendor_id" => 0,
+			"active_media_id" => 0,
+			"task" => "save",
+			"option" => "com_virtuemart",
+			"virtuemart_manufacturer_id" => 0,
+			"boxchecked" => 0,
+			"controller" => "manufacturer",
+			"view" => "manufacturer"
+		 );
+		 $token=JSession::getFormToken();
+		 $data_arr[$token] = 1;
+		 $model->store($data_arr);
+		 return $data_arr['virtuemart_manufacturer_id'];
+     }
      
 	 function saveImport(){
 		
@@ -432,11 +468,14 @@ class VirtuemartControllerProduct extends VmController {
                             
                             foreach($brands as $o){
                                 if(strtolower($o->name) == strtolower($sheetData[$j]['D'])){
-                                    $sheetData[$j]['D'] = $o->id;
+                                    $rec["virtuemart_manufacturer_id"] = $o->id;
                                     break;
                                 }
+								if(!$rec["virtuemart_manufacturer_id"]){
+									$manufacturer_id = $this->createManufacturer(mb_convert_case($sheetData[$j]['D'], MB_CASE_TITLE, "UTF-8"));
+									$rec["virtuemart_manufacturer_id"] = $manufacturer_id;
+                                }
                             }
-                            $rec["virtuemart_manufacturer_id"] = $sheetData[$j]['D'];
                             $rec["mprices"]["product_price"] = array(str_replace(',', '', $sheetData[$j]['F']));
                 
                             if($sheetData[$j]['G']){
