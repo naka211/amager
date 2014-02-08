@@ -351,14 +351,18 @@ class calculationHelper {
 		//print_r($this->_now);exit;
 		//$down_time = explode(" ",$product->product_price_publish_down);
 		//print_r($down_time[0]." 23:59:59");exit;
-		if ((($override==1) && (($product->product_price_publish_up <= $this->_now) && ($product->product_price_publish_down >= $this->_now))) || ($product->price_quantity_start)) {
+		if (($override==1) && (($product->product_price_publish_up <= $this->_now) && ($product->product_price_publish_down >= $this->_now))) {
 			$this->productPrices['salesPrice'] = $product_override_price;
 // 			$this->productPrices['discountedPriceWithoutTax'] = $this->product_override_price;
 // 			$this->productPrices['salesPriceWithDiscount'] = $this->product_override_price;
-		} else {
-
 		}
-
+        //print_r($this->_cart);exit;
+        if($product->price_quantity_start){
+            $this->productPrices['salesPrice'] = $product->price_of_number;
+        }
+        //T.Trung
+        
+        
 		if(!empty($product->product_packaging) and $product->product_packaging!='0.0000'){
 			$this->productPrices['unitPrice'] = $this->productPrices['salesPrice']/$product->product_packaging;
 		} else {

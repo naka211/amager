@@ -232,6 +232,116 @@ class VirtuemartControllerProduct extends VmController {
 		 }
      }
      
+     function createMainCategory($head_cat, $under_cat){
+		 $db = JFactory::getDBO();
+         $query = 'SELECT virtuemart_category_id FROM #__virtuemart_categories_da_dk WHERE category_name = "'.$head_cat.'"';
+         $db->setQuery($query);
+		 $head_cat_id = $db->loadResult();
+         if(!$head_cat_id){
+             $head_cat_id = $this->createHeadCategory($head_cat);
+         }
+         
+         $model = VmModel::getModel("category");
+         $data_arr = array(
+            "vmlang" => "da-DK",
+            "category_name" => "side 1",
+            "published" => 1,
+            "slug" => "",
+            "category_description" => "",
+            "ordering" => 0,
+            "category_parent_id" => 120,
+            //"products_per_row" => 20,
+            "limit_list_start" => 0,
+            "limit_list_step" => 10,
+            "limit_list_max" => 0,
+            "limit_list_initial" => 10,
+            "category_template" => 0,
+            "category_layout" => 0,
+            "category_product_layout" => 0,
+            "customtitle" => "",
+            "metadesc" => "",
+            "metakey" => "",
+            "metarobot" => "",
+            "metaauthor" => "",
+            "searchMedia" => "",
+            "media_published" => 1,
+            "file_title" => "",
+            "file_description" => "",
+            "file_meta" => "",
+            "file_url" => "images/stories/virtuemart/category/",
+            "file_url_thumb" => "",
+            "media_roles" => "file_is_displayable",
+            "media_action" => 0,
+            "file_is_category_image" => 1,
+            "active_media_id" => 0,
+            "option" => "com_virtuemart",
+            "virtuemart_category_id" => 0,
+            "task" => "apply",
+            "boxchecked" => 0,
+            "controller" => "category",
+            "view" => "category",
+            "virtuemart_vendor_id" => 1
+         );
+         $db = JFactory::getDBO();
+         $token=JSession::getFormToken();
+         $rec[$token] = 1;
+         $data_arr['category_name'] = $under_cat;
+         $data_arr['category_parent_id'] = $head_cat_id;
+         $model->store($data_arr);
+         return $data_arr['virtuemart_category_id'];
+     }
+     
+     function createHeadCategory($head_cat){
+         $model = VmModel::getModel("category");
+         $data_arr = array(
+            "vmlang" => "da-DK",
+            "category_name" => "side 1",
+            "published" => 1,
+            "slug" => "",
+            "category_description" => "",
+            "ordering" => 0,
+            "category_parent_id" => 120,
+            //"products_per_row" => 20,
+            "limit_list_start" => 0,
+            "limit_list_step" => 10,
+            "limit_list_max" => 0,
+            "limit_list_initial" => 10,
+            "category_template" => 0,
+            "category_layout" => 0,
+            "category_product_layout" => 0,
+            "customtitle" => "",
+            "metadesc" => "",
+            "metakey" => "",
+            "metarobot" => "",
+            "metaauthor" => "",
+            "searchMedia" => "",
+            "media_published" => 1,
+            "file_title" => "",
+            "file_description" => "",
+            "file_meta" => "",
+            "file_url" => "images/stories/virtuemart/category/",
+            "file_url_thumb" => "",
+            "media_roles" => "file_is_displayable",
+            "media_action" => 0,
+            "file_is_category_image" => 1,
+            "active_media_id" => 0,
+            "option" => "com_virtuemart",
+            "virtuemart_category_id" => 0,
+            "task" => "apply",
+            "boxchecked" => 0,
+            "controller" => "category",
+            "view" => "category",
+            "virtuemart_vendor_id" => 1
+         );
+         $db = JFactory::getDBO();
+         $token=JSession::getFormToken();
+         $rec[$token] = 1;
+         $data_arr['category_name'] = $head_cat;
+         $data_arr['category_parent_id'] = 0;
+         $model->store($data_arr);
+         return $data_arr['virtuemart_category_id'];
+     }
+     
      function createRule($value){
 		 $model = VmModel::getModel("calc");
          $data_arr = array(
@@ -505,16 +615,21 @@ class VirtuemartControllerProduct extends VmController {
                             $rec["product_delivery"] = $sheetData[$j]['N'];
                             $rec["variant_gruppe"] = $sheetData[$j]['S'];
                 
+                            $cat_tmp = 0;
                             foreach($cats as $o){
                                 $tmp0 = $this->strEncode($o->pname);
                                 $tmp1 = $this->strEncode($o->cname);
                 
                                 if($tmp0==$this->strEncode($sheetData[$j]['P']) AND $tmp1==$this->strEncode($sheetData[$j]['Q'])){
-                                    $sheetData[$j]['Q'] = $o->cid;
+                                    $cat_tmp = $o->cid;
                                     break;
                                 }
+                                
                             }
-                            $rec["categories"] = array($sheetData[$j]['Q'], $catid);
+                            if($cat_tmp == 0){
+                                $cat_tmp = $this->createMainCategory($sheetData[$j]['P'], $sheetData[$j]['Q']);
+                            }
+                            $rec["categories"] = array($cat_tmp, $catid);
                                 
                                 
                             $product_id = $this->check_product($sheetData[$j]['O']);
