@@ -308,6 +308,15 @@ jQuery(document).ready(function(){
 		}, "") + "," + p[1];
 	}
 	//isST process
+    
+    requestPostdanmark = function(postcode){
+        jQuery.ajax({
+            type: "GET",
+            url: "http://api.postnord.com/wsp/rest/BusinessLocationLocator/Logistics/ServicePointService_1.0/findNearestByAddress.json?consumerId=454d8060-0a7d-4fdd-b0c9-165d518adc90&countryCode=DK&postalCode="+postcode
+        }).done(function(result) {
+            alert(result);
+        });
+    }
 <?php
 if(!$nodelivery){
 ?>
@@ -427,6 +436,10 @@ echo JHTML::_ ('form.token');
 						<option value="Gør Det Selv Shop">Gør Det Selv Shop</option>
 						<option value="Tårnby Torv Isenkram">Tårnby Torv Isenkram</option>
 						</select>
+					</div>
+                    <div>
+					<input name="virtuemart_shipmentmethod_id" type="radio" value="1" onchange="changeDelivery(this.value)" id="ship1" />
+					<span>Afhentning 0,00 DKK</span>
 					</div>
 				</div>
 
