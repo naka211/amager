@@ -292,12 +292,16 @@ jQuery(document).ready(function(){
 			jQuery("#payTotal").html(total+" DKK");
 			jQuery("#shippingfee").val(0);
 			jQuery("#location").removeAttr("disabled", "disabled");
+
+            generatePickup(jQuery("#zipcode").val());
 		} else {
 			jQuery("#shipPrice").html("<?php echo $fee;?>,00 DKK");
 			var total = formatMoney(parseFloat(Number(jQuery("#subtotal").val()) + Number(<?php echo $fee;?>)));
 			jQuery("#payTotal").html(total+" DKK");
 			jQuery("#shippingfee").val(<?php echo $fee;?>);
 			jQuery("#location").attr( "disabled", "disabled" );
+            
+            jQuery("#location_area").html("");
 		}
 	}
 
@@ -309,13 +313,38 @@ jQuery(document).ready(function(){
 	}
 	//isST process
     
-    requestPostdanmark = function(postcode){
+    jQuery("#zipcode").blur(function(){
+        if(jQuery("#ship1").prop("checked")) {
+            generatePickup(jQuery("#zipcode").val());
+        }
+    });
+    
+    generatePickup = function(postcode){
+        var html = '';
+        html += '<input name="location" type="radio" value="Amager Isenkram" /><span> Amager Isenkram</span><br/><input name="location" type="radio" value="Gør Det Selv Shop" /><span> Gør Det Selv Shop</span><br/><input name="location" type="radio" value="Tårnby Torv Isenkram" /><span> Tårnby Torv Isenkram</span><br/>';
+        
         jQuery.ajax({
-            type: "GET",
-            url: "http://api.postnord.com/wsp/rest/BusinessLocationLocator/Logistics/ServicePointService_1.0/findNearestByAddress.json?consumerId=454d8060-0a7d-4fdd-b0c9-165d518adc90&countryCode=DK&postalCode="+postcode
+            type: "POST",
+            url: "<?php echo JURI::base();?>index.php?option=com_virtuemart&controller=cart&task=requestPostdanmark",
+            data: {post: postcode}
         }).done(function(result) {
-            alert(result);
+            if(result){
+                var data = jQuery.parseJSON(result);
+                var shops = data.servicePointInformationResponse.servicePoints;
+                var length = shops.length;
+                for(var i =0; i<length; i++){
+                    var company = shops[i].name;
+                    var streetNumber = shops[i].deliveryAddress.streetNumber;
+                    var streetName = shops[i].deliveryAddress.streetName;
+                    var zipcode = shops[i].deliveryAddress.postalCode;
+                    var city = shops[i].deliveryAddress.city;
+                    var txt = company +' - '+ streetNumber + ' - ' + streetName + ' - ' + zipcode + ' ' + city;
+                    html += '<input name="location" type="radio" value="'+txt+'" /><span> '+txt+'</span><br/>';
+                }
+            }
+            jQuery("#location_area").html(html);
         });
+        
     }
 <?php
 if(!$nodelivery){
@@ -430,17 +459,10 @@ echo JHTML::_ ('form.token');
 					<input name="virtuemart_shipmentmethod_id" type="radio" value="1" onchange="changeDelivery(this.value)" id="ship1" />
 					<span>Afhentning 0,00 DKK</span>
 					</div>
-					<div>
-						<select name="location" id="location" disabled="disabled">
-						<option selected="selected" value="Amager Isenkram">Amager Isenkram</option>
-						<option value="Gør Det Selv Shop">Gør Det Selv Shop</option>
-						<option value="Tårnby Torv Isenkram">Tårnby Torv Isenkram</option>
-						</select>
+					<div id="location_area" style="margin-left:10px;">
+                        
 					</div>
-                    <div>
-					<input name="virtuemart_shipmentmethod_id" type="radio" value="1" onchange="changeDelivery(this.value)" id="ship1" />
-					<span>Afhentning 0,00 DKK</span>
-					</div>
+                    
 				</div>
 
 				<div class="step3">

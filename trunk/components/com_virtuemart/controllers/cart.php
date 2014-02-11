@@ -89,6 +89,12 @@ class VirtueMartControllerCart extends JController {
         $mainframe = JFactory::getApplication();
         $mainframe->redirect('index.php/user/editaddresscheckoutBT.html');
     }
+    
+    function requestPostdanmark(){
+        $post = JRequest::getVar('post');
+        echo file_get_contents('http://api.postnord.com/wsp/rest/BusinessLocationLocator/Logistics/ServicePointService_1.0/findNearestByAddress.json?consumerId=454d8060-0a7d-4fdd-b0c9-165d518adc90&countryCode=DK&postalCode='.$post);       
+        exit;
+    }
 
 	/**
 	 * Add the product to the cart using Ajax
