@@ -357,9 +357,9 @@ class calculationHelper {
 // 			$this->productPrices['salesPriceWithDiscount'] = $this->product_override_price;
 		}
         //print_r($this->_cart);exit;
-        if($product->price_quantity_start){
+        /*if($product->price_quantity_start){
             $this->productPrices['salesPrice'] = $product->price_of_number;
-        }
+        }*/
         //T.Trung
         
         

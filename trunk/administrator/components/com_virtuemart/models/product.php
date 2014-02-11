@@ -731,11 +731,11 @@ class VirtueMartModelProduct extends VmModel {
 		$db->setQuery($q);
 		$product->prices = $db->loadAssocList();//print_r($product->prices);//exit;
 		//T.Trung
-		/*if($front){
+		if($front){
 			if(($product->prices[0]['price_quantity_start']<=$quantity) && ($product->prices[0]['price_quantity_end']>=$quantity)){
 				$product->prices[0]['product_override_price'] = $product->prices[0]['price_of_number'];
 			}
-		}*/
+		}
 		//end T.Trung
 		$err = $db->getErrorMsg();
 		if(!empty($err)){
