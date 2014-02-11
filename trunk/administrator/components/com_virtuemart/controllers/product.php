@@ -591,7 +591,7 @@ class VirtuemartControllerProduct extends VmController {
                             if($sheetData[$j]['G']){
                                 $tmp0 = $sheetData[$j]['G'] - $sheetData[$j]['F'];
                                 foreach($rules as $o){
-                                    if($o->num == $tmp0){
+                                    if((string)$o->num == (string)$tmp0){
                                         $rec["mprices"]["product_discount_id"] = array($o->id);
                                         break;
                                     }
