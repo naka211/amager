@@ -340,7 +340,7 @@ jQuery(document).ready(function(){
                     var streetName = shops[i].deliveryAddress.streetName;
                     var zipcode = shops[i].deliveryAddress.postalCode;
                     var city = shops[i].deliveryAddress.city;
-                    var txt = company +' - '+ streetNumber + ' - ' + streetName + ' - ' + zipcode + ' - ' + city;
+                    var txt = company +' - '+ streetNumber + ' ' + streetName + ' ' + zipcode + ' ' + city;
                     html += '<input name="location" type="radio" value="'+txt+'" /><span> '+txt+'</span><br/>';
                 }
             }
