@@ -321,7 +321,7 @@ jQuery(document).ready(function(){
     
     generatePickup = function(postcode){
         var html = '';
-        html += '<input name="location" type="radio" value="Amager Isenkram" /><span> Amager Isenkram</span><br/><input name="location" type="radio" value="Gør Det Selv Shop" /><span> Gør Det Selv Shop</span><br/><input name="location" type="radio" value="Tårnby Torv Isenkram" /><span> Tårnby Torv Isenkram</span><br/>';
+        html += '<input name="location" type="radio" value="Amager Isenkram" checked /><span> Amager Isenkram</span><br/><input name="location" type="radio" value="Gør Det Selv Shop" /><span> Gør Det Selv Shop</span><br/><input name="location" type="radio" value="Tårnby Torv Isenkram" /><span> Tårnby Torv Isenkram</span><br/>';
         
         jQuery.ajax({
             type: "POST",
@@ -338,7 +338,7 @@ jQuery(document).ready(function(){
                     var streetName = shops[i].deliveryAddress.streetName;
                     var zipcode = shops[i].deliveryAddress.postalCode;
                     var city = shops[i].deliveryAddress.city;
-                    var txt = company +' - '+ streetNumber + ' - ' + streetName + ' - ' + zipcode + ' ' + city;
+                    var txt = company +' - '+ streetNumber + ' - ' + streetName + ' - ' + zipcode + ' - ' + city;
                     html += '<input name="location" type="radio" value="'+txt+'" /><span> '+txt+'</span><br/>';
                 }
             }
