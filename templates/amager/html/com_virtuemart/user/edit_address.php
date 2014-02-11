@@ -320,6 +320,8 @@ jQuery(document).ready(function(){
     });
     
     generatePickup = function(postcode){
+        var loader = '<img src="<?php echo JURI::base() ;?>/images/zoomloader.gif"/>';
+		jQuery('#location_area').html(loader);
         var html = '';
         html += '<input name="location" type="radio" value="Amager Isenkram" checked /><span> Amager Isenkram</span><br/><input name="location" type="radio" value="Gør Det Selv Shop" /><span> Gør Det Selv Shop</span><br/><input name="location" type="radio" value="Tårnby Torv Isenkram" /><span> Tårnby Torv Isenkram</span><br/>';
         
