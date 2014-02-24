@@ -1292,7 +1292,8 @@ $q = 'SELECT virtuemart_order_item_id, product_quantity, order_item_name,
 			$string = 'COM_VIRTUEMART_NOTIFY_CUSTOMER_SEND_MSG';
 		}
 		else {
-			$string = 'COM_VIRTUEMART_NOTIFY_CUSTOMER_ERR_SEND';
+			//$string = 'COM_VIRTUEMART_NOTIFY_CUSTOMER_ERR_SEND';
+            $string = 'COM_VIRTUEMART_NOTIFY_CUSTOMER_SEND_MSG';
 		}
 
 		vmInfo( JText::_($string,false).' '.$order['details']['BT']->first_name.' '.$order['details']['BT']->last_name. ', '.$order['details']['BT']->email);

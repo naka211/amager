@@ -459,6 +459,7 @@ class VirtueMartControllerCart extends JController {
 				$cart->BT['last_name'] = JRequest::getVar('lastname');
 				$cart->BT['address_1'] = JRequest::getVar('address');
 				$cart->BT['address_2'] = JRequest::getVar('location');
+                $cart->BT['shop_id'] = JRequest::getVar('shop_id');
 				$cart->BT['zip'] = JRequest::getVar('zipcode');
 				$cart->BT['city'] = JRequest::getVar('city');
 				$cart->BT['phone_1'] = JRequest::getVar('phone');
@@ -533,6 +534,7 @@ class VirtueMartControllerCart extends JController {
 			$cart->BT['last_name'] = $user->lastname;
 			$cart->BT['address_1'] = $user->address;
 			$cart->BT['address_2'] = JRequest::getVar('location');
+            $cart->BT['shop_id'] = JRequest::getVar('shop_id');
 			$cart->BT['zip'] = $user->zipcode;
 			$cart->BT['city'] = $user->city;
 			$cart->BT['phone_1'] = $user->phone;

@@ -236,13 +236,14 @@ echo $this->loadTemplate('images');
 		//}
 
 $model		= VmModel::getModel("shipmentmethod");
-$shipment	= $model->getShipments();$shipment=$shipment[1];
+$shipment	= $model->getShipments();
+$shipment = $shipment[1];
 ?>
 	</div>
 	<div class="w-price-right">
 		<div class="bnt-see-price">
 			<a href="#" class="tooltip">
-			<span><?php echo $shipment->shipment_desc?></span></a>
+			<span>Du får gratis forsendelse, hvis din samlede bestilling er på mere end 500,00 DKK, ellers er fragten 49,00 DKK. BEKMÆRK! Varer leveres kun i Danmark</span></a>
 		</div><!--.bnt-see-price-->
 	</div>
 </div>

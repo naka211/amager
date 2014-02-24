@@ -118,6 +118,8 @@ function modChrome_amageruser1($module, &$params, &$attribs)
     	<div class="terms">
           <h2><?php echo $module->title; ?></h2>
           <?php echo $module->content; ?>
+          <div class="clear"></div>
+          <div class="epay"><img alt="" src="images/epay.gif"></div>
         </div>
 <?php };
 }

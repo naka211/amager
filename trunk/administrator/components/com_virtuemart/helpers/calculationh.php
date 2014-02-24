@@ -356,10 +356,16 @@ class calculationHelper {
 // 			$this->productPrices['discountedPriceWithoutTax'] = $this->product_override_price;
 // 			$this->productPrices['salesPriceWithDiscount'] = $this->product_override_price;
 		}
-        //print_r($this->_cart);exit;
-        /*if($product->price_quantity_start){
-            $this->productPrices['salesPrice'] = $product->price_of_number;
-        }*/
+
+        if($product->price_quantity_start){
+            foreach($this->_cart->products as $pro){
+                if($pro->virtuemart_product_id == $product->virtuemart_product_id){
+                    if($pro->quantity >= $product->price_quantity_start){
+                        $this->productPrices['salesPrice'] = $product->price_of_number;
+                    }
+                }
+            }
+        }
         //T.Trung
         
         
