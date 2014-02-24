@@ -18,8 +18,13 @@ $user = JUser::getInstance($user->id);
 $cart = VirtueMartCart::getCart();
 $cart->prepareCartViewData();
 //Shipping cost rule
-if($cart->pricesUnformatted['salesPrice'] <= 500)
-	$fee = 49; else $fee = 0;
+if($cart->pricesUnformatted['salesPrice'] <= 500){
+    $fee = 49;
+    $fee1 = 39;
+} else {
+    $fee = 0;
+    $fee1 = 0;
+}
 //[V] check if nodelivery att exists
 $nodelivery=false;
 foreach($cart->products as $item)
@@ -293,8 +298,9 @@ jQuery(document).ready(function(){
 			jQuery("#shippingfee").val(0);
 			jQuery("#location").removeAttr("disabled", "disabled");
 
-            generatePickup(jQuery("#zipcode").val());
-		} else {
+            jQuery("#location_area").html("");
+            generateShop();
+		} else if(val == 2){
 			jQuery("#shipPrice").html("<?php echo $fee;?>,00 DKK");
 			var total = formatMoney(parseFloat(Number(jQuery("#subtotal").val()) + Number(<?php echo $fee;?>)));
 			jQuery("#payTotal").html(total+" DKK");
@@ -302,7 +308,17 @@ jQuery(document).ready(function(){
 			jQuery("#location").attr( "disabled", "disabled" );
             
             jQuery("#location_area").html("");
-		}
+            jQuery("#location_area1").html("");
+		} else {
+            jQuery("#shipPrice").html("<?php echo $fee1;?>,00 DKK");
+			var total = formatMoney(parseFloat(Number(jQuery("#subtotal").val()) + Number(<?php echo $fee1;?>)));
+			jQuery("#payTotal").html(total+" DKK");
+			jQuery("#shippingfee").val(<?php echo $fee1;?>);
+			jQuery("#location").attr( "disabled", "disabled" );
+            
+            jQuery("#location_area1").html("");
+            generatePickup(jQuery("#zipcode").val());
+        }
 	}
 
 	formatMoney = function(num){
@@ -314,17 +330,21 @@ jQuery(document).ready(function(){
 	//isST process
     
     jQuery("#zipcode").blur(function(){
-        if(jQuery("#ship1").prop("checked")) {
+        if(jQuery("#ship3").prop("checked")) {
             generatePickup(jQuery("#zipcode").val());
         }
     });
+    
+    generateShop = function(){
+        html = '<input name="location" type="radio" value="Amager Isenkram - Amager Centret butik 139, Reberbanegade 3, 2300 København S" checked /><span> Amager Isenkram - Amager Centret butik 139, Reberbanegade 3, 2300 København S</span><br/><input name="location" type="radio" value="Gør Det Selv Shop - Amager Centret butik 132, Reberbanegade 3, 2300 København S" /><span> Gør Det Selv Shop - Amager Centret butik 132, Reberbanegade 3, 2300 København S</span><br/><input name="location" type="radio" value="Tårnby Torv Isenkram - Tårnby torv 9, 2770 Kastrup" /><span> Tårnby Torv Isenkram - Tårnby torv 9, 2770 Kastrup</span>';
+        jQuery("#location_area1").html(html);
+    }
     
     generatePickup = function(postcode){
         var loader = '<img src="<?php echo JURI::base() ;?>/images/zoomloader.gif"/>';
 		jQuery('#location_area').html(loader);
         var html = '';
-        html += '<input name="location" type="radio" value="Amager Isenkram" checked /><span> Amager Isenkram</span><br/><input name="location" type="radio" value="Gør Det Selv Shop" /><span> Gør Det Selv Shop</span><br/><input name="location" type="radio" value="Tårnby Torv Isenkram" /><span> Tårnby Torv Isenkram</span><br/>';
-        
+       
         jQuery.ajax({
             type: "POST",
             url: "<?php echo JURI::base();?>index.php?option=com_virtuemart&controller=cart&task=requestPostdanmark",
@@ -335,18 +355,30 @@ jQuery(document).ready(function(){
                 var shops = data.servicePointInformationResponse.servicePoints;
                 var length = shops.length;
                 for(var i =0; i<length; i++){
+                    var servicePointId = shops[i].servicePointId;
+                    if(i==0){
+                        var check = 'checked';
+                        setShopId(servicePointId);
+                    } else {
+                        check = 'servicePointId';
+                    }
+                 
                     var company = shops[i].name;
                     var streetNumber = shops[i].deliveryAddress.streetNumber;
                     var streetName = shops[i].deliveryAddress.streetName;
                     var zipcode = shops[i].deliveryAddress.postalCode;
                     var city = shops[i].deliveryAddress.city;
-                    var txt = company +' - '+ streetNumber + ' ' + streetName + ' ' + zipcode + ' ' + city;
-                    html += '<input name="location" type="radio" value="'+txt+'" /><span> '+txt+'</span><br/>';
+                    var txt = company +' - '+ streetNumber + ' ' + streetName + ', ' + zipcode + ' ' + city;
+                    html += '<input name="location" type="radio" value="'+txt+'" '+check+' onclick=setShopId('+servicePointId+') /><span> '+txt+'</span><br/>';
                 }
             }
             jQuery("#location_area").html(html);
         });
         
+    }
+    
+    setShopId = function(shopid){
+        jQuery('#shop_id').val(shopid);
     }
 <?php
 if(!$nodelivery){
@@ -444,31 +476,32 @@ echo JHTML::_ ('form.token');
 
 		<div class="nav-right" name="f2" action="" method="get">
 			<div class="w-step2-3">
-				<div class="step2">
 					<h2><div><img src="<?php echo JURI::base()."templates/".$template?>/img/step2.png" width="24" height="24" alt=""></div>Levering</h2>
 					<?php
 					$model		= VmModel::getModel("shipmentmethod");
 					$shipment	= $model->getShipments();
 					?>
-					<?php echo $shipment[1]->shipment_desc;?>
-<?php if(!$nodelivery){?>
+					<?php echo $shipment[0]->shipment_desc;?>
+                <?php if(!$nodelivery){?>
 					<div>
 					<input name="virtuemart_shipmentmethod_id" type="radio" value="2" checked="checked" onchange="changeDelivery(this.value)" id="ship2" />
-					<span>Forsendelse <?php echo number_format($fee,2,',','.').' DKK'; ?></span>
+					<span>Post Danmark - Med omdeling <?php echo number_format($fee,2,',','.').' DKK'; ?></span>
 					</div>
-<?php }?>
+                    <div>
+					<input name="virtuemart_shipmentmethod_id" type="radio" value="3" onchange="changeDelivery(this.value)" id="ship3" />
+					<span>Post Danmark - Uden omdeling/Døgnpost <?php echo number_format($fee1,2,',','.').' DKK'; ?></span>
+					</div>
+                    <div id="location_area"></div>
+                <?php }?>
 					<div>
 					<input name="virtuemart_shipmentmethod_id" type="radio" value="1" onchange="changeDelivery(this.value)" id="ship1" />
 					<span>Afhentning 0,00 DKK</span>
 					</div>
-					<div id="location_area" style="margin-left:10px;">
-                        
-					</div>
+					<div id="location_area1"></div>
                     
-				</div>
-
-				<div class="step3">
-				  <h2><div><img width="24" height="24" alt="" src="templates/amager/img/step3.png"></div>Betalingsmetode</h2>
+			</div>
+            <div class="step4" style="border-bottom: 1px solid #CACACA; padding-bottom:10px;">
+                <h2><div><img width="24" height="24" alt="" src="templates/amager/img/step3.png"></div>Betalingsmetode</h2>
 				  <p>Du kan betale med følgende betalingskort: </p>
 				  <ul>
 					<li><a href="#"><img width="37" height="19" alt="" src="templates/amager/img/icon-dk.png"></a></li>
@@ -478,13 +511,11 @@ echo JHTML::_ ('form.token');
 					<li><a href="#"><img width="37" height="19" alt="" src="templates/amager/img/visa2.png"></a></li>
 					<li><a href="#"><img width="95" height="19" alt="" src="templates/amager/img/icon-ean.png"></a></li>
 				  </ul>
-				</div>
-
-			</div>
+            </div>
 			<?php
-
 			$currencyDisplay = CurrencyDisplay::getInstance($cart->pricesCurrency);
 			?>
+            <input type="hidden" id="shop_id" name="shop_id" value="" />
 			<input type="hidden" id="subtotal" value="<?php echo $cart->pricesUnformatted['salesPrice']?>" />
 			<div class="step4">
 				<h2><div><img width="24" height="24" alt="" src="templates/amager/img/step4.png"></div>Ordreoversigt</h2>

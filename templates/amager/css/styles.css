@@ -273,9 +273,9 @@ a.prev span, a.next span {display: none}
 #w-footer ul { list-style: none; float: left; font-size: 12px}
 #w-footer ul li a { text-decoration: none; color: #e2e2e2}
 #w-footer ul li a:hover { color: #00b2ea;}
-#w-footer .terms { float: left; border-right: 1px solid #535559; padding-right: 42px}
+#w-footer .terms { float: left; border-right: 1px solid #535559; padding-right: 16px}
 #w-footer .customer-ser { float: left; margin-left: 30px; border-right: 1px solid #535559; padding-right: 42px; height: 129px}
-#w-footer .brand-we-sell { float: left; padding-left: 30px}
+#w-footer .brand-we-sell { float: left; padding-left: 16px}
 .brand-we-sell ul{ width: 740px;}
 .brand-we-sell ul.no-r { margin-right: 0px;}
 #w-footer .brand-we-sell ul li { float: left; width: 119px;}
@@ -724,15 +724,18 @@ padding: 0px 5px; font-style: italic; color: #919191; font-size: 13px}
 
 .w-list-pro .w-list-pro-title { background: #efefef; border-top: 2px solid #fff; border-right: 2px solid #fff; border-left: 2px solid #fff;
 text-align: center; overflow: hidden; padding: 10px; color: #000000}
-.nav-right .w-step2-3 { border-bottom: 1px solid #cacaca; overflow: hidden}
+.nav-right .w-step2-3 { border-bottom: 1px solid #cacaca; overflow: hidden; padding-bottom:10px;}
 .w-step2-3 .step2 { float: left; width: 300px; border-right: 1px solid #cacaca; padding-bottom: 13px;}
 .nav-left h2, .step2 h2, .step3 h2, .step4 h2 {color: #00b2ea; font-size: 18px; text-transform: none; margin-bottom: 10px}
+.w-step2-3 h2 {color: #00b2ea; font-size: 18px; text-transform: none; margin-bottom: 10px}
 .nav-left h2 div, .step2 h2 div, .step3 h2 div, .step4 h2 div { width: 24px; height: 24px; float: left; margin-right: 10px;}
+.w-step2-3 h2 div { width: 24px; height: 24px; float: left; margin-right: 10px;}
 .step2 select { width: 243px; height: 22px; border: 1px solid #cacaca; color: #919191; margin-top: 5px}
 .step2 div { margin-top: 3px;}
-.w-step2-3 .step3 { float: right; width: 310px; padding-left: 18px;}
+.w-step2-3 .step3 { float: right; width: 320px; padding-left: 8px;}
 .step3 ul { list-style: none; margin-top: 10px}
 .step3 ul li { float: left; margin-right: 5px}
+.step4 ul li { float: left; margin-right: 5px}
 .step4 { margin-top: 15px; overflow: hidden}
 .step4 .w-list-pro { border: 1px solid #cacaca; background: #fff}
 
@@ -1167,4 +1170,8 @@ span.icon { width: 14px; height: 12px;}
 {
     font-weight: bold;
     padding: 0;
+}
+.epay {
+    margin-top: 20px;
+    padding-left:40px;
 }

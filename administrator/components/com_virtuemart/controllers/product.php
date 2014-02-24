@@ -133,7 +133,7 @@ class VirtuemartControllerProduct extends VmController {
 			
 			for($l=0;$l<count($product_id);$l++){
 				for($k=0;$k<count($product_id[$l]);$k++){
-                    $sql1="SELECT pro.product_name, proSku.product_sku, proSku.variant_gruppe, proPrice.product_override_price  FROM #__virtuemart_products_da_dk AS pro,
+                    $sql1="SELECT pro.product_name, proSku.product_sku, proSku.variant_gruppe, proSku.product_delivery, proPrice.product_override_price  FROM #__virtuemart_products_da_dk AS pro,
                     #__virtuemart_products AS proSku, #__virtuemart_product_prices AS proPrice  WHERE pro.virtuemart_product_id=proSku.virtuemart_product_id AND proSku.virtuemart_product_id=proPrice.virtuemart_product_id
                     AND proSku.virtuemart_product_id=".$product_id[$l][$k]->virtuemart_product_id." GROUP BY proSku.product_sku";
                     $db->setQuery($sql1);
@@ -143,7 +143,7 @@ class VirtuemartControllerProduct extends VmController {
 
 			}	  
 //print_r($_product);exit;
-		$csv='"Vare nr.","Varenavn","Nu-pris","Side i Avis","Variant gruppe"';
+		$csv='"Vare nr.","Varenavn","Nu-pris","Side i Avis","Variant gruppe","Kun butik"';
 		for($j=0;$j<count($product_id);$j++){
 			for($m=0;$m<count($_product[$j]);$m++){	
 		
@@ -152,8 +152,9 @@ class VirtuemartControllerProduct extends VmController {
 					$product_price[$j] 		= $_product[$j][$m][0]->product_override_price;	
 					$side[$j][1]	   		= explode("-",$_catname[$j][0]->category_name);
 					$varriant_grupp[$j] 	= $_product[$j][$m][0]->variant_gruppe;
+                    $delivery = $_product[$j][$m][0]->product_delivery?"TRUE":"FALSE";
 						//print_r($side);exit;
-			$csv .= "\n".'"'.$product_sku[$j].'","'.$product_name[$j].'","'.$product_price[$j].'","'.$side[$j][1][1].'","'.$varriant_grupp[$j].'"';
+			$csv .= "\n".'"'.$product_sku[$j].'","'.$product_name[$j].'","'.$product_price[$j].'","'.$side[$j][1][1].'","'.$varriant_grupp[$j].'","'.$delivery.'"';
 			}
 		}
 		//die($csv);
@@ -576,19 +577,24 @@ class VirtuemartControllerProduct extends VmController {
                                 $rec["product_desc"] .= '. ';
                             }
                             
-                            foreach($brands as $o){
-                                if(strtolower($o->name) == strtolower($sheetData[$j]['D'])){
-                                    $rec["virtuemart_manufacturer_id"] = $o->id;
-                                    break;
+                            if($sheetData[$j]['D']){
+                                foreach($brands as $o){
+                                    if(mb_convert_case($o->name, MB_CASE_TITLE, "UTF-8") == mb_convert_case($sheetData[$j]['D'], MB_CASE_TITLE, "UTF-8")){
+                                        $rec["virtuemart_manufacturer_id"] = $o->id;
+                                        break;
+                                    }
                                 }
-								if(!$rec["virtuemart_manufacturer_id"]){
-									$manufacturer_id = $this->createManufacturer(mb_convert_case($sheetData[$j]['D'], MB_CASE_TITLE, "UTF-8"));
-									$rec["virtuemart_manufacturer_id"] = $manufacturer_id;
+                                if(!$rec["virtuemart_manufacturer_id"]){
+                                    $manufacturer_id = $this->createManufacturer(mb_convert_case($sheetData[$j]['D'], MB_CASE_TITLE, "UTF-8"));
+                                    $rec["virtuemart_manufacturer_id"] = $manufacturer_id;
+                                    $db->setQuery ('SELECT mf_name name, virtuemart_manufacturer_id id FROM `#__virtuemart_manufacturers_' . VMLANG . '`');
+                                    $brands = $db->loadObjectList();
                                 }
                             }
+                            
                             $rec["mprices"]["product_price"] = array(str_replace(',', '', $sheetData[$j]['F']));
                 
-                            if($sheetData[$j]['G']){
+                            if($sheetData[$j]['G'] && ($sheetData[$j]['G'] < $sheetData[$j]['F'])){
                                 $tmp0 = $sheetData[$j]['G'] - $sheetData[$j]['F'];
                                 foreach($rules as $o){
                                     if((string)$o->num == (string)$tmp0){
@@ -599,6 +605,8 @@ class VirtuemartControllerProduct extends VmController {
                                 if($rec["mprices"]["product_discount_id"][0] == -1){
 									$discount_id = $this->createRule($tmp0);
 									$rec["mprices"]["product_discount_id"] = array($discount_id);
+                                    $db->setQuery ('SELECT virtuemart_calc_id id, calc_name num FROM `#__virtuemart_calcs`');
+                                    $rules = $db->loadObjectList();
                                 }
                             }
                             $rec["mprices"]["product_override_price"] = array(str_replace(',', '', $sheetData[$j]['H']));
@@ -628,6 +636,11 @@ class VirtuemartControllerProduct extends VmController {
                             }
                             if($cat_tmp == 0){
                                 $cat_tmp = $this->createMainCategory($sheetData[$j]['P'], $sheetData[$j]['Q']);
+                                $db->setQuery ('SELECT b.category_name pname, a.category_child_id cid, c.category_name cname
+                                FROM `#__virtuemart_category_categories` as a
+                                RIGHT JOIN `#__virtuemart_categories_' . VMLANG . '` as b ON a.category_parent_id=b.virtuemart_category_id
+                                RIGHT JOIN `#__virtuemart_categories_' . VMLANG . '` as c ON a.category_child_id=c.virtuemart_category_id');
+                                $cats = $db->loadObjectList();
                             }
                             $rec["categories"] = array($cat_tmp, $catid);
                                 

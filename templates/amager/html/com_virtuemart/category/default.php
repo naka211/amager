@@ -57,14 +57,14 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 					$row_class="";
 ?>
 	<li<?php echo $row_class?>>
+        <a href="<?php echo $caturl ?>" title="<?php echo $category->category_name ?>">
 		<div class="cate-img">
-		<a href="<?php echo $caturl ?>" title="<?php echo $category->category_name ?>">
 		<?php echo $category->images[0]->displayMediaThumb ('width="115" height="104"', FALSE);?>
-			</a>
 		</div>
 		<p class="cate-title">
 		<?php echo $category->category_name ?>
 		</p>
+        </a>
 	</li>
 <?php
 				// Do we need to close the current row now?
