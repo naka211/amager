@@ -2,7 +2,14 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 <style>
-  #map_canvas1, #map_canvas2, #map_canvas3 {
+<?php 
+for($i = 1; $i < count($this->shops); $i++){
+?>
+#map_canvas<?php echo $i;?>, 
+<?php }
+echo '#map_canvas'.count($this->shops);
+?>
+{
     height: 328px;
 	width: 712px;
   }
@@ -34,57 +41,25 @@ function initialize<?php echo $i;?>() {
 }
 <?php $i++;}?>
 jQuery(document).ready(function() {
-	initialize1();
-	initialize2();
-	initialize3();
-
-	jQuery('#clickme1').click(function() 
-	 {
-          jQuery('#me1').animate(
-		  {
-               height: 'toggle'
-               }, 2000
-          );
-		  jQuery(this).hide(600);
-     });
-	 
-     jQuery('#clickme2').click(function() 
-	 {
-          jQuery('#me2').animate(
-		  {
-               height: 'toggle'
-               }, 2000
-          );
-		  jQuery(this).hide(600);
-     });
-	 
-	  jQuery('#clickme3').click(function() 
-	 {
-          jQuery('#me3').animate(
-		  {
-               height: 'toggle'
-               }, 2000
-          );
-		  jQuery(this).hide(600);
-     });
-	 
-	 
-	 
-	 jQuery("#luk1").click(function () 
-	{
-		jQuery("#me1").hide(600)
-		jQuery("#clickme1").show(600);
-	});
-	jQuery("#luk2").click(function () 
-	{		
-		jQuery("#me2").hide(600)
-		jQuery("#clickme2").show(600);
-	});
-	jQuery("#luk3").click(function () 
-	{
-		jQuery("#me3").hide(600)
-		jQuery("#clickme3").show(600);
-	});
+    <?php $i = 1;
+	foreach($this->shops as $shop){		
+	?>
+    initialize<?php echo $i;?>();
+    jQuery('#clickme<?php echo $i;?>').click(function() 
+    {
+      jQuery('#me<?php echo $i;?>').animate(
+      {
+           height: 'toggle'
+           }, 2000
+      );
+      jQuery(this).hide(600);
+    });
+    jQuery("#luk<?php echo $i;?>").click(function () 
+    {
+        jQuery("#me<?php echo $i;?>").hide(600)
+        jQuery("#clickme<?php echo $i;?>").show(600);
+    });
+    <?php $i++;}?>
 });
 </script>
 <?php 
@@ -104,10 +79,10 @@ $text = $db->loadResult();
 	foreach($this->shops as $shop){		
 	?>
     <div class="store-main">
-      <div class="store-img"> <img src="<?php echo JURI::base();?>components/com_boutique/img/<?php echo $shop->image;?>" alt="" /> </div>
+      <div class="store-img"> <img src="<?php echo JURI::base();?>components/com_boutique/img/<?php echo $shop->image;?>" alt="" height="204" width="333" /> </div>
       <!--.store-img-->
       <div class="store-content">
-        <h2><img src="images/<?php echo $shop->id;?>.png" width="160" height="13" alt="" /></h2>
+        <h2><?php echo $shop->name;?></h2>
         <div class="store-info">
          	<?php echo $shop->information;?>
             <p>
