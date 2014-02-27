@@ -235,7 +235,7 @@ class VirtuemartControllerProduct extends VmController {
      
      function createMainCategory($head_cat, $under_cat){
 		 $db = JFactory::getDBO();
-         $query = 'SELECT virtuemart_category_id FROM #__virtuemart_categories_da_dk WHERE category_name = "'.$head_cat.'"';
+         $query = 'SELECT cn.virtuemart_category_id FROM #__virtuemart_categories_da_dk cn INNER JOIN #__virtuemart_category_categories cc ON cn.virtuemart_category_id = cc.category_child_id WHERE cn.category_name = "'.$head_cat.'" AND cc.category_parent_id = 0';
          $db->setQuery($query);
 		 $head_cat_id = $db->loadResult();
          if(!$head_cat_id){
@@ -625,14 +625,10 @@ class VirtuemartControllerProduct extends VmController {
                 
                             $cat_tmp = 0;
                             foreach($cats as $o){
-                                $tmp0 = $this->strEncode($o->pname);
-                                $tmp1 = $this->strEncode($o->cname);
-                
-                                if($tmp0==$this->strEncode($sheetData[$j]['P']) AND $tmp1==$this->strEncode($sheetData[$j]['Q'])){
+                                if((mb_convert_case($o->pname, MB_CASE_TITLE, "UTF-8")==mb_convert_case($sheetData[$j]['P'], MB_CASE_TITLE, "UTF-8")) AND (mb_convert_case($o->cname, MB_CASE_TITLE, "UTF-8")==mb_convert_case($sheetData[$j]['Q'], MB_CASE_TITLE, "UTF-8"))){
                                     $cat_tmp = $o->cid;
                                     break;
                                 }
-                                
                             }
                             if($cat_tmp == 0){
                                 $cat_tmp = $this->createMainCategory($sheetData[$j]['P'], $sheetData[$j]['Q']);
