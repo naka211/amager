@@ -631,7 +631,7 @@ class VirtuemartControllerProduct extends VmController {
                                 }
                             }
                             if($cat_tmp == 0){
-                                $cat_tmp = $this->createMainCategory($sheetData[$j]['P'], $sheetData[$j]['Q']);
+                                $cat_tmp = $this->createMainCategory($sheetData[$j]['P'], mb_convert_case($sheetData[$j]['Q'], MB_CASE_TITLE, "UTF-8"));
                                 $db->setQuery ('SELECT b.category_name pname, a.category_child_id cid, c.category_name cname
                                 FROM `#__virtuemart_category_categories` as a
                                 RIGHT JOIN `#__virtuemart_categories_' . VMLANG . '` as b ON a.category_parent_id=b.virtuemart_category_id
