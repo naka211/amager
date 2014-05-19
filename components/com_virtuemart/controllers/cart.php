@@ -75,19 +75,34 @@ class VirtueMartControllerCart extends JController {
         $xml = simplexml_load_string(preg_replace("/<([a-z][a-z0-9]*)[^>]*?(\/?)>/i",'<$1$2>', $_POST['basket']),'SimpleXMLElement', LIBXML_NOCDATA);
         $virtuemart_product_ids = array();
         $quantities = array();
+        $pro_str = '';
         foreach($xml->item as $item){
-            $query = "SELECT virtuemart_product_id FROM #__virtuemart_products WHERE product_sku = '".$item->productid."'";
+            $query = "SELECT virtuemart_product_id, product_in_stock FROM #__virtuemart_products WHERE product_sku = '".$item->productid."'";
             $db->setQuery($query);
-            $product_id = $db->loadResult();
-            array_push($virtuemart_product_ids, $product_id);
-            array_push($quantities, $item->amount);
+            $product = $db->loadObject(); 
+            if(($product->virtuemart_product_id) && ($product->product_in_stock > $item->amount)){
+                array_push($virtuemart_product_ids, $product->virtuemart_product_id);
+                array_push($quantities, $item->amount);
+            } else {
+                $pro_str .= $product->virtuemart_product_id.',';
+            }
         }
-        $cart = VirtueMartCart::getCart();
-        $success = true;
-        $cart->add($virtuemart_product_ids, $success, $quantities);
-
-        $mainframe = JFactory::getApplication();
-        $mainframe->redirect('index.php/user/editaddresscheckoutBT.html');
+        $pro_str = rtrim($pro_str, ",");
+        if($pro_str){
+            $add_false = '?add_fail='.$pro_str;
+        } else {
+            $add_false = '';
+        }
+        if($virtuemart_product_ids){
+            $cart = VirtueMartCart::getCart();
+            $success = true;
+            $cart->add($virtuemart_product_ids, $success, $quantities);
+            $mainframe = JFactory::getApplication();
+            $mainframe->redirect('index.php/user/editaddresscheckoutBT.html'.$add_false);
+        } else {
+            $mainframe = JFactory::getApplication();
+            $mainframe->redirect('index.php'.$add_false);
+        }
     }
     
     function requestPostdanmark(){

@@ -258,8 +258,20 @@ class shopFunctionsF {
 	 * @param string $recipient shopper@whatever.com
 	 * @param bool $vendor true for notifying vendor of user action (e.g. registration)
 	 */
+     
+    function string_filter($str) {
+        $str = preg_replace("/(æ)/", 'ae', $str);
+        $str = preg_replace("/(å)/", 'a', $str);
+        $str = preg_replace("/(ø)/", 'o', $str);
+        
+        $str = preg_replace("/(Å)/", 'A', $str);
+        $str = preg_replace("/(Æ)/", 'AE', $str);
+        $str = preg_replace("/(Ø)/", 'O', $str);
 
-	private static function sendVmMail (&$view, $recipient, $noVendorMail=FALSE) { 
+        return $str;
+    }
+
+	function sendVmMail (&$view, $recipient, $noVendorMail=FALSE) {
 		$jlang =JFactory::getLanguage();
 		if(VmConfig::get('enableEnglish', 1)){
 		     $jlang->load('com_virtuemart', JPATH_SITE, 'en-GB', TRUE);
@@ -273,6 +285,7 @@ class shopFunctionsF {
 		ob_end_clean();
 
 		$subject = (isset($view->subject)) ? $view->subject : JText::_('COM_VIRTUEMART_DEFAULT_MESSAGE_SUBJECT');
+        //$subject = $this->string_filter($subject);
 		$mailer = JFactory::getMailer();
 		$mailer->addRecipient($recipient);
 		$mailer->setSubject($subject);
@@ -296,7 +309,7 @@ class shopFunctionsF {
 		}
 		
 		// live site
-		/*$from = 'Amager Isenkram<info@amagerisenkram.dk>';
+		$from = 'Amager Isenkram<info@amagerisenkram.dk>';
         $headers    = array
         (
             'MIME-Version: 1.0',
@@ -315,10 +328,10 @@ class shopFunctionsF {
             $to = 'ttih@amagerisenkram.dk, ah@amagerisenkram.dk, om@amagerisenkram.dk';
 		} else {
 			$to = $recipient;
-		}*/
+		}
 		// live site
 		// test site
-		$from = 'Amager Isenkram<info@amagerisenkram.dk>';
+		/*$from = 'Amager Isenkram<info@amagerisenkram.dk>';
         $headers    = array
         (
             'MIME-Version: 1.0',
@@ -333,11 +346,11 @@ class shopFunctionsF {
             'X-Originating-IP: ' . $_SERVER['SERVER_ADDR'],
         );
 
-		if($recipient == "thanh.trung@mwc.vn"){
-			$to = 'thanh.trung@mwc.vn, nttrung211@gmail.com';
+		if($recipient == "ttih@amagerisenkram.dk"){
+			$to = 'ttih@amagerisenkram.dk, ah@amagerisenkram.dk, om@amagerisenkram.dk, thanh.trung@mwc.vn, kim@mywebcreations.dk';
 		} else {
 			$to = $recipient;
-		}
+		}*/
 		
 		if(mail($to, $subject, $body, implode("\n", $headers), '-finfo@amagerisenkram.dk')) error_log(date('H:i:s m-d-Y', time()).' to :'.$to.'///', 3, "error.log");
 

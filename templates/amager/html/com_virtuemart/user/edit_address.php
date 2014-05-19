@@ -336,7 +336,7 @@ jQuery(document).ready(function(){
     });
     
     generateShop = function(){
-        html = '<input name="location" type="radio" value="Amager Isenkram - Amager Centret butik 139, Reberbanegade 3, 2300 København S" checked /><span> Amager Isenkram - Amager Centret butik 139, Reberbanegade 3, 2300 København S</span><br/><input name="location" type="radio" value="Gør Det Selv Shop - Amager Centret butik 132, Reberbanegade 3, 2300 København S" /><span> Gør Det Selv Shop - Amager Centret butik 132, Reberbanegade 3, 2300 København S</span><br/><input name="location" type="radio" value="Tårnby Torv Isenkram - Tårnby torv 9, 2770 Kastrup" /><span> Tårnby Torv Isenkram - Tårnby torv 9, 2770 Kastrup</span>';
+        html = '<input name="location" type="radio" value="Amager Isenkram - Amager Centret butik 139, Reberbanegade 3, 2300 København S" checked /><span> Amager Isenkram - Amager Centret butik 139, Reberbanegade 3, 2300 København S</span><br/><input name="location" type="radio" value="Gør Det Selv Shop - Amager Centret butik 132, Reberbanegade 3, 2300 København S" /><span> Gør Det Selv Shop - Amager Centret butik 132, Reberbanegade 3, 2300 København S</span><br/><input name="location" type="radio" value="Tårnby Torv Isenkram - Tårnby torv 9, 2770 Kastrup" /><span> Tårnby Torv Isenkram - Tårnby torv 9, 2770 Kastrup</span><br/><input name="location" type="radio" value="Spinderiet Isenkram - Valby Torvegade 18, 2500 Valby" /><span> Spinderiet Isenkram - Valby Torvegade 18, 2500 Valby</span><br/><input name="location" type="radio" value="City 2 Isenkram - Plan 2, City 2, 2630 Taastrup" /><span> City 2 Isenkram - Plan 2, City 2, 2630 Taastrup</span>';
         jQuery("#location_area1").html(html);
     }
     
@@ -491,13 +491,13 @@ echo JHTML::_ ('form.token');
 					<input name="virtuemart_shipmentmethod_id" type="radio" value="3" onchange="changeDelivery(this.value)" id="ship3" />
 					<span>Post Danmark - Uden omdeling/Døgnpost <?php echo number_format($fee1,2,',','.').' DKK'; ?></span>
 					</div>
-                    <div id="location_area"></div>
+                    <div id="location_area" style="margin-left:10px;"></div>
                 <?php }?>
 					<div>
 					<input name="virtuemart_shipmentmethod_id" type="radio" value="1" onchange="changeDelivery(this.value)" id="ship1" />
 					<span>Afhentning 0,00 DKK</span>
 					</div>
-					<div id="location_area1"></div>
+					<div id="location_area1" style="margin-left:10px;"></div>
                     
 			</div>
             <div class="step4" style="border-bottom: 1px solid #CACACA; padding-bottom:10px;">

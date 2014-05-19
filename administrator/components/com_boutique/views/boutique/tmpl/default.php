@@ -59,19 +59,25 @@ window.addEvent('domready', function() {
     <tr>
       <td align="right" class="key"><label for="title_on_link"><?php echo JText::_( 'Information' ); ?>: </label>
       </td>
-      <td><?php echo $editor->display( 'information', $this->boutique->information , '100%', '150', '75', '20' ) ; ?>
+      <td><?php echo $editor->display( 'information', $this->boutique->information , '100%', '250', '75', '20' ) ; ?>
       </td>
     </tr>
     <tr>
       <td align="right" class="key"><label for="title_on_link"><?php echo JText::_( 'Description' ); ?>: </label>
       </td>
-      <td><?php echo $editor->display( 'description', $this->boutique->description , '100%', '150', '75', '20' ) ; ?>
+      <td><?php echo $editor->display( 'description', $this->boutique->description , '100%', '350', '75', '20' ) ; ?>
       </td>
     </tr>
     <tr>
       <td align="right" class="key"><label for="title_on_link"><?php echo JText::_( 'Opening hour' ); ?>: </label>
       </td>
-      <td><?php echo $editor->display( 'opening', $this->boutique->opening , '100%', '150', '75', '20' ) ; ?>
+      <td><?php echo $editor->display( 'opening', $this->boutique->opening , '100%', '250', '75', '20' ) ; ?>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" class="key"><label for="title_on_link"><?php echo JText::_( 'Sunday opening' ); ?>: </label>
+      </td>
+      <td><?php echo $editor->display( 'sundayopen', $this->boutique->sundayopen , '100%', '250', '75', '20' ) ; ?>
       </td>
     </tr>
      <tr>

@@ -59,7 +59,7 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 	<li<?php echo $row_class?>>
         <a href="<?php echo $caturl ?>" title="<?php echo $category->category_name ?>">
 		<div class="cate-img">
-		<?php echo $category->images[0]->displayMediaThumb ('width="115" height="104"', FALSE);?>
+		<?php echo $category->images[0]->displayMediaThumb ('width="115"', FALSE);?>
 		</div>
 		<p class="cate-title">
 		<?php echo $category->category_name ?>
@@ -165,7 +165,9 @@ if (VmConfig::get ('showCategory', 1) and empty($this->keyword)) {
 						<div class="add-cart"><?php if($product->product_in_stock - $product->product_ordered < 1){?>
 						<span style="color: #F33;text-transform: uppercase;text-decoration: none;font-weight: bold;font-size: 16px;">UDSOLGT</span>
 <?php }else{?>
-						<a rel="<?php echo $product->virtuemart_product_id?>">Læg i Kurv
+	<?php if(!$product->product_delivery){?>
+        <a rel="<?php echo $product->virtuemart_product_id?>">Læg i Kurv</a>
+    <?php }?>
 <?php }?></div>
 					<?php if(!empty($product->prices['discountAmount'])){?>
 						<div class="sale-off"><img src="templates/<?php echo $template?>/img/tilbud.png" width="67" height="67" alt=""></div>

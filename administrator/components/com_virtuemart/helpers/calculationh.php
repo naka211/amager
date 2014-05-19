@@ -351,7 +351,8 @@ class calculationHelper {
 		//print_r($this->_now);exit;
 		//$down_time = explode(" ",$product->product_price_publish_down);
 		//print_r($down_time[0]." 23:59:59");exit;
-		if (($override==1) && (($product->product_price_publish_up <= $this->_now) && ($product->product_price_publish_down >= $this->_now))) {
+        $stop_date = date('Y-m-d H:i:s', strtotime($product->product_price_publish_down)+ 86400);
+		if (($override==1) && (($product->product_price_publish_up <= $this->_now) && ($stop_date >= $this->_now))) {
 			$this->productPrices['salesPrice'] = $product_override_price;
 // 			$this->productPrices['discountedPriceWithoutTax'] = $this->product_override_price;
 // 			$this->productPrices['salesPriceWithDiscount'] = $this->product_override_price;

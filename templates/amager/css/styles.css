@@ -248,6 +248,7 @@ border: none medium; margin-bottom: 5px; color: #d1d1d1; font-style: italic; lin
 .product ul li .price p.new-price { font-size: 17px; color: #000000; text-transform: uppercase}
 span.sale { color: black}
 .product ul li:hover {cursor: pointer; z-index: 50;}
+.product h3{height:57px;}
 
 #main-content .main-brand { background: #fff; padding: 15px; margin: 14px 0px 0px;}
 #main-content .main-brand-shadow { background: url(../img/shadow-logo.png) no-repeat; width: 747px; height: 8px; margin-bottom: 20px;}
@@ -422,7 +423,7 @@ div.pulse:hover {
 .banner-item .close:hover {background: url(../img/button.png) no-repeat scroll -723px -246px; width: 34px; height: 34px; position: absolute; top: 5px; right: 5px}
 
 #category ul { list-style: none}
-#category ul li { background: #fff; float: left; border: 2px solid #d5d5d5; padding: 5px 29px; margin: 14px 15px 0px 0px; position: relative}
+#category ul li { background: #fff; float: left; border: 2px solid #d5d5d5; padding: 5px 29px; margin: 14px 15px 0px 0px; position: relative; min-height:121px;}
 #category ul li.n-m-r { margin-right: 0px}
 #category ul li p.cate-title{ text-align: left; background: #f0f0f0 url(../img/bg-detail-pro.png) no-repeat 105% 50%; color: #000000;
 text-transform: uppercase; font-size: 13px; position: absolute; bottom: 1px; left: 1px; padding: 5px 0px 3px 0px; width: 172px;
@@ -1176,3 +1177,8 @@ span.icon { width: 14px; height: 12px;}
     padding-left:40px;
 }
 .store-content h2{ border-bottom: 1px solid #58595c; padding-bottom: 10px; margin-bottom: 10px; font-family: "Myriad Pro"; font-size: 18px; font-weight: bold; text-transform: uppercase; color: #00b2ea; }
+.pop_note {background: #fff !important;}
+.pop_note h3 {font-size: 17px; margin-bottom: 10px; }
+.pop_note p {margin-bottom: 10px;}
+a.btnNext {background: url(../img/btnNext.png) no-repeat 0 0; text-indent: -9999px; display: block; width: 114px; height: 31px; }
+a.btnNext:hover {background-position: 0 -31px; }

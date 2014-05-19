@@ -62,7 +62,7 @@ class BoutiqueModelBoutique extends JModel
 		$row->information  = JRequest::getVar('information','','post','string',JREQUEST_ALLOWRAW);
 		$row->description  = JRequest::getVar('description','','post','string',JREQUEST_ALLOWRAW);
 		$row->opening  = JRequest::getVar('opening','','post','string',JREQUEST_ALLOWRAW);
-		
+		$row->sundayopen  = JRequest::getVar('sundayopen','','post','string',JREQUEST_ALLOWRAW);
 
 		if($_FILES['txtimage']['name']){
 			$rand_image = mt_rand();
