@@ -20,7 +20,7 @@ if( !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not 
 /* Require the config */
 
 //Console::logSpeed('virtuemart start');
-
+//print_r($_REQUEST);exit; 
 if (!class_exists( 'VmConfig' )) require(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_virtuemart'.DS.'helpers'.DS.'config.php');
 VmConfig::loadConfig();
 
@@ -48,11 +48,10 @@ if(VmConfig::get('shop_is_offline',0)){
 	vmJsApi::jSite();
 	vmJsApi::cssSite();
 
-	$_controller = JRequest::getWord('view', JRequest::getWord('controller', 'virtuemart')) ;
+	$_controller = JRequest::getVar('view', JRequest::getVar('controller', 'virtuemart')) ;
 	$trigger = 'onVmSiteController';
 // 	$task = JRequest::getWord('task',JRequest::getWord('layout',$_controller) );		$this makes trouble!
-	$task = JRequest::getWord('task','') ;
-
+	$task = JRequest::getVar('task','') ;
 	if (($_controller == 'product' || $_controller == 'category') && ($task == 'save' || $task == 'edit') ) {
 		$app = JFactory::getApplication();
 
@@ -62,8 +61,9 @@ if(VmConfig::get('shop_is_offline',0)){
 				$jlang->load('com_virtuemart', JPATH_ADMINISTRATOR, null, true);
 				$basePath = JPATH_VM_ADMINISTRATOR;
 				$trigger = 'onVmAdminController';
+
 			} else {
-				$app->redirect('index.php?option=com_virtuemart', jText::_('COM_VIRTUEMART_RESTRICTED_ACCESS') );
+				$app->redirect('index.php', jText::_('COM_VIRTUEMART_RESTRICTED_ACCESS') );
 			}
 
 	} elseif($_controller) {

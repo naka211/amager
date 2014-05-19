@@ -77,7 +77,9 @@ foreach ( $productList as $product ) {
 <?php if($product->product_in_stock - $product->product_ordered < 1){?>
 						<span style="color: #F33;text-transform: uppercase;text-decoration: none;font-weight: bold;font-size: 16px;">UDSOLGT</span>
 <?php }else{?>
-						<a rel="<?php echo $product->virtuemart_product_id?>">Læg i Kurv</a>
+    <?php if(!$product->product_delivery){?>
+        <a rel="<?php echo $product->virtuemart_product_id?>">Læg i Kurv</a>
+    <?php }?>
 <?php }?>
 						</div>
 					<?php if(!empty($product->prices['discountAmount'])){?>

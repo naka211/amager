@@ -714,7 +714,8 @@ class VirtuemartControllerProduct extends VmController {
     }
 
 	function save($data = 0){
-	//die;
+    
+	//die('dadasdas');
         //echo "dd" ;die();
 		$data = JRequest::get('post');
 		//var_dump($data);die;

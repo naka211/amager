@@ -62,22 +62,18 @@ jQuery(document).ready(function() {
     <?php $i++;}?>
 });
 </script>
-<?php 
-$db = JFactory::getDBO();
-$db->setQuery('SELECT introtext FROM #__content WHERE id = 17');
-$text = $db->loadResult();
-?>
-<div class="w-frm-login reveal-modal" id="boutiqueArticle">	
-	<a href="javascript:void(0);" class="close-reveal-modal"></a>
-    <div class="frm-login" style="padding:15px;">
-		<?php echo $text;?>
-    </div>
-</div>
 <div id="butikker-page">
   <div class="store">
   	<?php $i = 1;
 	foreach($this->shops as $shop){		
 	?>
+    <div class="w-frm-login reveal-modal" id="boutiqueArticle<?php echo $shop->id;?>">	
+        <a href="javascript:void(0);" class="close-reveal-modal"></a>
+        <div class="frm-login" style="padding:15px;">
+            <?php echo $shop->sundayopen;?>
+        </div>
+    </div>
+    
     <div class="store-main">
       <div class="store-img"> <img src="<?php echo JURI::base();?>components/com_boutique/img/<?php echo $shop->image;?>" alt="" height="204" width="333" /> </div>
       <!--.store-img-->
@@ -86,7 +82,7 @@ $text = $db->loadResult();
         <div class="store-info">
          	<?php echo $shop->information;?>
             <p>
-            <a href="javascript:void(0);" data-reveal-id="boutiqueArticle">Søndagsåben Tryk her >></a>
+            <a href="javascript:void(0);" data-reveal-id="boutiqueArticle<?php echo $shop->id;?>">Søndagsåben Tryk her >></a>
             </p>
         </div>
         <!--.store-info-->

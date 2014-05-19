@@ -214,6 +214,9 @@ echo $this->loadTemplate('images');
 		echo $this->product->product_desc;
 	}
 
+    if($this->product->price_of_number && $this->product->price_quantity_start){
+        echo '<br /><br />Ved køb af '.$this->product->price_quantity_start.' eller flere er prisen '.str_replace('.', ',', number_format($this->product->price_of_number,2)).' kr. pr. stk.';
+    }
 	// Availability Image
 	$stockhandle = VmConfig::get('stockhandle', 'none');
 	if (($this->product->product_in_stock - $this->product->product_ordered) < 1){?>
@@ -243,7 +246,10 @@ $shipment = $shipment[1];
 	<div class="w-price-right">
 		<div class="bnt-see-price">
 			<a href="#" class="tooltip">
-			<span>Du får gratis forsendelse, hvis din samlede bestilling er på mere end 500,00 DKK, ellers er fragten 49,00 DKK. BEKMÆRK! Varer leveres kun i Danmark</span></a>
+			<span>Du får gratis forsendelse, hvis din samlede bestilling er på mere end 500 DKK.<br />
+Hvis din bestilling er under 500 DKK, vil fragten være 39 DKK uden omdeling og 49 DKK med omdeling.<br />
+BEKMÆRK! Varer leveres kun i Danmark med undtagelse af Grønland og Færøerne
+</span></a>
 		</div><!--.bnt-see-price-->
 	</div>
 </div>
@@ -251,7 +257,7 @@ $shipment = $shipment[1];
 		// Add To Cart Button
 // 			if (!empty($this->product->prices) and !empty($this->product->images[0]) and $this->product->images[0]->file_is_downloadable==0 ) {
 //		if (!VmConfig::get('use_as_catalog', 0) and !empty($this->product->prices['salesPrice'])) {
-		if(($this->product->product_in_stock - $this->product->product_ordered) > 0)
+		if((($this->product->product_in_stock - $this->product->product_ordered) > 0) && (!$this->product->product_delivery))
 			echo $this->loadTemplate('addtocart');
 //		}
 

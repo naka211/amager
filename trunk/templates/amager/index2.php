@@ -136,7 +136,32 @@ focusInput = function(){
 </head>
 
 <body>
-
+<?php 
+if(JRequest::getVar('add_fail')){
+    $db = JFactory::getDBO();
+    $query = 'SELECT pn.product_name, p.product_sku FROM #__virtuemart_products_da_dk pn INNER JOIN #__virtuemart_products p ON pn.virtuemart_product_id = p.virtuemart_product_id WHERE p.virtuemart_product_id IN ('.JRequest::getVar('add_fail').')';	
+	$db->setQuery($query);
+	$products = $db->loadObjectList();
+?>
+<script language="javascript">
+jQuery(document).ready( function(){
+    jQuery('#mynote').reveal();
+    jQuery('.btnNext').click(function(event) {
+        jQuery('#mynote').hide('slow/400/fast', function(){});
+        jQuery('.reveal-modal-bg').remove();     
+    });
+});
+</script>
+<div id="mynote" class="pop_note reveal-modal" style="top: 100px; opacity: 1; visibility: visible;"> <a class="close-reveal-modal" href="javascript:void(0)"></a>
+<h3>Der er et eller flere produkter, som desværre er udsolgt. </h3>
+<p>
+<?php foreach($products as $product){
+   echo $product->product_name.' Varenr. '.$product->product_sku.'<br />'; 
+}?>
+</p>
+<a title="" href="javascript:void(0);" class="btnNext">FORTSÆT &gt;</a>
+</div>
+<?php }?>
 <div id="header">
 	<div id="w-header">
 	<div class="logo"> <a href="./">Logo</a> </div>

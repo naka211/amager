@@ -19,7 +19,13 @@ JRequest::setVar("limit",20);
 ?>
 <div id="callout" class="banner-item">
 	<div class="banner-item-img" style="text-align: center;line-height: 212px">
-	<?php echo $this->manufacturerImage;?>
+    <?php if($this->manufacturer->images[0]->file_url){?>
+        <img src="<?php echo JURI::base().$this->manufacturer->images[0]->file_url;?>" />
+    <?php 
+        } else {
+        echo $this->manufacturerImage;
+        }
+    ?>
 	</div><!--.banner-item-img-->
 	<div class="banner-item-content">
 		<h2><?php echo $this->manufacturer->mf_name?></h2>
@@ -127,7 +133,9 @@ JRequest::setVar("limit",20);
 						<div class="add-cart"><?php if($product->product_in_stock - $product->product_ordered < 1){?>
 						<span style="color: #F33;text-transform: uppercase;text-decoration: none;font-weight: bold;font-size: 16px;">UDSOLGT</span>
 <?php }else{?>
-						<a rel="<?php echo $product->virtuemart_product_id?>">Læg i Kurv
+	<?php if(!$product->product_delivery){?>
+        <a rel="<?php echo $product->virtuemart_product_id?>">Læg i Kurv</a>
+    <?php }?>
 <?php }?></div>
 					<?php if(!empty($product->prices['discountAmount'])){?>
 						<div class="sale-off"><img src="templates/<?php echo $template?>/img/tilbud.png" width="67" height="67" alt=""></div>

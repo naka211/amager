@@ -139,14 +139,15 @@ class ContactControllerContact extends JControllerForm
 			$sitename	= $app->getCfg('sitename');
 			$copytext 	= JText::sprintf('COM_CONTACT_COPYTEXT_OF', $contact->name, $sitename);
 
-			$name		= $data['contact_name'];
-			$email		= $data['contact_email'];
+			$name		= $data['name'];
+			$email		= $data['email'];
 			$subject	= $data['contact_subject'];
-			$body		= $data['contact_message'];
-
+			$body		= $data['message'];
+            $phone		= $data['phone'];
+ 
 			// Prepare email body
-			$prefix = JText::sprintf('COM_CONTACT_ENQUIRY_TEXT', JURI::base());
-			$body	= $prefix."\n".$name.' <'.$email.'>'."\r\n\r\n".stripslashes($body);
+			//$prefix = JText::sprintf('COM_CONTACT_ENQUIRY_TEXT', JURI::base());
+			$body	= $name.' <'.$email.'> '.$phone."\r\n\r\n".stripslashes($data['message']);
 
 			$mail = JFactory::getMailer();
 			$mail->addRecipient($contact->email_to);

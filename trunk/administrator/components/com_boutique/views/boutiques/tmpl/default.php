@@ -13,10 +13,10 @@ JHtml::_('behavior.multiselect');
                 <th width="2%" align="center">
                     <?php echo JText::_( '#' ); ?>
                 </th>
-                <th width="15%">
+                <th width="10%">
                     Name
                 </th>
-                <th width="15%">
+                <th width="10%">
                     Information
                 </th>
                 <th width="20%">
@@ -24,6 +24,9 @@ JHtml::_('behavior.multiselect');
                 </th>
                 <th width="10%">
                     Opening hour
+                </th>
+                <th width="10%">
+                    Sunday opening
                 </th>
                 <th width="20%">
                     Image
@@ -57,6 +60,9 @@ JHtml::_('behavior.multiselect');
                     <?php echo $row->opening; ?>
                 </td>
                 <td align="center">
+                    <?php echo $row->sundayopen; ?>
+                </td>
+                <td align="center">
                     <?php echo "<img src='".JURI::root(false)."thumbnail/timthumb.php?src=".JURI::root(false)."components/com_boutique/img/".$row->image."&w=200&zc=1' title='".$row->name."' alt='".$row->name."' align='middle' />";?>
                 </td>	
 			</tr>
@@ -65,7 +71,7 @@ JHtml::_('behavior.multiselect');
         }
         ?>
                 <tr>
-                    <td colspan="12">
+                    <td colspan="9">
                         <?php echo $this->page->getListFooter(); ?>
                     </td>
                 </tr>

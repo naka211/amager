@@ -1,6 +1,5 @@
 <?php
 // No direct access.
-
 defined('_JEXEC') or die;
 session_start();
 //jimport('joomla.filesystem.file');
@@ -137,14 +136,12 @@ jQuery(document).ready( function(){
 <?php }?>
 jQuery(function() {
 	jQuery('#callout').find('a').click(function(e){
-		e.preventDefault();
+		//e.preventDefault();
 		if ( e.target.nodeName == 'SPAN'){
 			jQuery(this).parent().animate({'height':0},400, 'easeOutQuint',
 		function(){
 			jQuery(this).remove();});
 		}
-		else
-			window.location = "http://www.milla-petit.dk";
 	});
 });
 </script>
@@ -187,8 +184,8 @@ jQuery(document).ready( function(){
     <?php if(isset($_SESSION['cookieinfo1'])){?>
        jQuery('.CookieInfo').addClass('moveCookie');
     <?php }?>
+    
 });
-
 focusInput = function(){
 	/* Hide form input values on focus*/
 	jQuery('input:text').each(function(){
@@ -221,8 +218,6 @@ focusInput = function(){
 	$db->setQuery($query);
 	$articles = $db->loadObjectList();
     $tmp = json_decode($articles[0]->urls);
-    //$tmp1 = explode("//",$tmp->urla);
-    //$link = JURI::base()."images/".$tmp1[1];
     $link = $tmp->urla;
 ?>
 <?php if($articles[0]->state){?>
@@ -242,12 +237,38 @@ focusInput = function(){
     <!--hLibCookieInfo--> 
 </div>
 <?php }?>
+<?php 
+if(JRequest::getVar('add_fail')){
+    $query = 'SELECT pn.product_name, p.product_sku FROM #__virtuemart_products_da_dk pn INNER JOIN #__virtuemart_products p ON pn.virtuemart_product_id = p.virtuemart_product_id WHERE p.virtuemart_product_id IN ('.JRequest::getVar('add_fail').')';	
+	$db->setQuery($query);
+	$products = $db->loadObjectList();
+?>
+<script language="javascript">
+jQuery(document).ready( function(){
+    jQuery('#mynote').reveal();
+    jQuery('a.btnNext').click(function(event) {
+        jQuery('#mynote').hide('slow/400/fast', function(){});
+        jQuery('.reveal-modal-bg').remove();     
+    });
+});
+
+</script>
+<div id="mynote" class="pop_note reveal-modal" style="top: 100px; opacity: 1; visibility: visible;"> <a class="close-reveal-modal" href="javascript:void(0)"></a>
+<h3>Der er et eller flere produkter, som desværre er udsolgt. </h3>
+<p>
+<?php foreach($products as $product){
+   echo $product->product_name.' Varenr. '.$product->product_sku.'<br />'; 
+}?>
+</p>
+<a href="javascript:void(0);" class="btnNext">FORTSÆT &gt;</a>
+</div>
+<?php }?>
 <div id="CookieInfo" class="CookieInfo">
     <div class="cookie-content">
         <p><?php echo $articles[1]->introtext;?></p>
     </div>
     <!--Cookie-content--> 
-    <a class="bt-close-cookie" href="#">Luk</a> </div>
+    <a class="bt-close-cookie" href="javascript:void(0);">Luk</a> </div>
 <!--END hLibCookieInfo-->
 <div id="header">
     <div id="w-header">
@@ -332,7 +353,6 @@ focusInput = function(){
     
 </div>
 <!--#header-->
-
 <div id="page">
     <div id="nav-search">
         <div id="w-nav-search">

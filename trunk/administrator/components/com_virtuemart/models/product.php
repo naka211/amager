@@ -1356,7 +1356,6 @@ class VirtueMartModelProduct extends VmModel {
 	 * @access public
 	 */
 	public function store (&$product, $isChild = FALSE) {//print_r($product);exit;
-
 		JRequest::checkToken () or jexit ('Invalid Token');
 
 
