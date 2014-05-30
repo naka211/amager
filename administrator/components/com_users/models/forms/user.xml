@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
 	<fieldset name="user_details">
-		<field name="name" type="hidden"
+		<field name="name" type="text"
 			class="inputbox"
 			description="COM_USERS_USER_FIELD_NAME_DESC"
 			label="COM_USERS_USER_FIELD_NAME_LABEL"
@@ -9,16 +9,7 @@
 			size="30"
 		/>
 
-		<field name="email" type="email"
-			class="readonly"
-			readonly="true"
-			description="COM_USERS_USER_FIELD_EMAIL_DESC"
-			label="JGLOBAL_EMAIL"
-			size="30"
-			validate="email"
-		/>
-		
-		<field name="username" type="hidden"
+		<field name="username" type="text"
 			class="inputbox"
 			description="COM_USERS_USER_FIELD_USERNAME_DESC"
 			label="COM_USERS_USER_FIELD_USERNAME_LABEL"
@@ -26,80 +17,6 @@
 			size="30"
 		/>
 
-		<field name="company" type="text"
-			class="inputbox"
-			description="Company"
-			label="Company"
-		/>
-		<field name="cvr" type="text"
-			class="inputbox"
-			description="CVR-nr."
-			label="CVR-nr."
-		/>
-		
-		<field name="ean" type="text"
-			class="inputbox"
-			description="EAN-nr."
-			label="EAN-nr."
-		/>
-		<field name="authority" type="text"
-			class="inputbox"
-			description="Institution"
-			label="Institution"
-		/>
-		
-		<field name="order" type="text"
-			class="inputbox"
-			description="Order"
-			label="Order"
-		/>
-		<field name="person" type="text"
-			class="inputbox"
-			description="Contact person"
-			label="Contact person"
-		/>
-		
-		<field name="firstname" type="text"
-			class="inputbox"
-			description="Firstname"
-			label="Firstname"
-			required="true"
-		/>
-		
-		<field name="lastname" type="text"
-			class="inputbox"
-			description="Lastname"
-			label="Lastname"
-			required="true"
-		/>
-		
-		<field name="address" type="text"
-			class="inputbox"
-			description="Address"
-			label="Address"
-			required="true"
-		/>
-		
-		<field name="zipcode" type="text"
-			class="inputbox"
-			description="Zip code"
-			label="Zip code"
-			required="true"
-		/>
-		
-		<field name="city" type="text"
-			class="inputbox"
-			description="City"
-			label="City"
-			required="true"
-		/>
-		
-		<field name="phone" type="text"
-			class="inputbox"
-			description="Phone"
-			label="Phone"
-			required="true"
-		/>
 		<field name="password" type="password"
 			autocomplete="off"
 			class="inputbox validate-password"
@@ -118,6 +35,15 @@
 			size="30"
 			validate="equals"
 			field="password2"
+		/>
+
+		<field name="email" type="email"
+			class="inputbox"
+			description="COM_USERS_USER_FIELD_EMAIL_DESC"
+			label="JGLOBAL_EMAIL"
+			required="true"
+			size="30"
+			validate="email"
 		/>
 
 		<field

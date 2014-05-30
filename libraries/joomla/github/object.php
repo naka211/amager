@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  GitHub
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die();
@@ -12,20 +12,20 @@ defined('JPATH_PLATFORM') or die();
 /**
  * GitHub API object class for the Joomla Platform.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  GitHub
- * @since		11.3
+ * @since       11.3
  */
 abstract class JGithubObject
 {
 	/**
-	 * @var	JRegistry  Options for the GitHub object.
+	 * @var    JRegistry  Options for the GitHub object.
 	 * @since  11.3
 	 */
 	protected $options;
 
 	/**
-	 * @var	JGithubHttp  The HTTP client object to use in sending HTTP requests.
+	 * @var    JGithubHttp  The HTTP client object to use in sending HTTP requests.
 	 * @since  11.3
 	 */
 	protected $client;
@@ -33,10 +33,10 @@ abstract class JGithubObject
 	/**
 	 * Constructor.
 	 *
-	 * @param	JRegistry	&$options  GitHub options object.
-	 * @param	JGithubHttp  $client	The HTTP client object.
+	 * @param   JRegistry    &$options  GitHub options object.
+	 * @param   JGithubHttp  $client    The HTTP client object.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function __construct(JRegistry &$options = null, JGithubHttp $client = null)
 	{
@@ -49,13 +49,13 @@ abstract class JGithubObject
 	 * add appropriate pagination details if necessary and also prepend the API url
 	 * to have a complete URL for the request.
 	 *
-	 * @param	string	$path	URL to inflect
-	 * @param	integer  $page	Page to request
-	 * @param	integer  $limit  Number of results to return per page
+	 * @param   string   $path   URL to inflect
+	 * @param   integer  $page   Page to request
+	 * @param   integer  $limit  Number of results to return per page
 	 *
-	 * @return  string	The request URL.
+	 * @return  string   The request URL.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function fetchUrl($path, $page = 0, $limit = 0)
 	{

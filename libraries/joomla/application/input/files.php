@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,9 +14,9 @@ jimport('joomla.application.input');
 /**
  * Joomla! Input Files Class
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
- * @since		11.1
+ * @since       11.1
  */
 class JInputFiles extends JInput
 {
@@ -25,10 +25,10 @@ class JInputFiles extends JInput
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  $source	Ignored.
-	 * @param	array  $options  Array of configuration parameters (Optional)
+	 * @param   array  $source   Ignored.
+	 * @param   array  $options  Array of configuration parameters (Optional)
 	 *
-	 * @since	12.1
+	 * @since   12.1
 	 */
 	public function __construct(array $source = null, array $options = array())
 	{
@@ -51,13 +51,13 @@ class JInputFiles extends JInput
 	/**
 	 * Gets a value from the input data.
 	 *
-	 * @param	string  $name	 Name of the value to get.
-	 * @param	mixed	$default  Default value to return if variable does not exist.
-	 * @param	string  $filter	Filter to apply to the value.
+	 * @param   string  $name     Name of the value to get.
+	 * @param   mixed   $default  Default value to return if variable does not exist.
+	 * @param   string  $filter   Filter to apply to the value.
 	 *
 	 * @return  mixed  The filtered input value.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function get($name, $default = null, $filter = 'cmd')
 	{
@@ -82,11 +82,11 @@ class JInputFiles extends JInput
 	/**
 	 * Method to decode a data array.
 	 *
-	 * @param	array  $data  The data array to decode.
+	 * @param   array  $data  The data array to decode.
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function decodeData(array $data)
 	{
@@ -107,12 +107,12 @@ class JInputFiles extends JInput
 	/**
 	 * Sets a value
 	 *
-	 * @param	string  $name	Name of the value to set.
-	 * @param	mixed	$value  Value to assign to the input.
+	 * @param   string  $name   Name of the value to set.
+	 * @param   mixed   $value  Value to assign to the input.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function set($name, $value)
 	{

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Log
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -18,39 +18,39 @@ jimport('joomla.filesystem.folder');
  * This class is designed to use as a base for building formatted text files for output. By
  * default it emulates the SysLog style format output. This is a disk based output format.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Log
- * @since		11.1
+ * @since       11.1
  */
 class JLoggerFormattedText extends JLogger
 {
 	/**
-	 * @var	resource  The file pointer for the log file.
+	 * @var    resource  The file pointer for the log file.
 	 * @since  11.1
 	 */
 	protected $file;
 
 	/**
-	 * @var	string  The format for which each entry follows in the log file.  All fields must be named
+	 * @var    string  The format for which each entry follows in the log file.  All fields must be named
 	 * in all caps and be within curly brackets eg. {FOOBAR}.
 	 * @since  11.1
 	 */
 	protected $format = '{DATETIME}	{PRIORITY}	{CATEGORY}	{MESSAGE}';
 
 	/**
-	 * @var	array  The parsed fields from the format string.
+	 * @var    array  The parsed fields from the format string.
 	 * @since  11.1
 	 */
 	protected $fields = array();
 
 	/**
-	 * @var	string  The full filesystem path for the log file.
+	 * @var    string  The full filesystem path for the log file.
 	 * @since  11.1
 	 */
 	protected $path;
 
 	/**
-	 * @var	array  Translation array for JLogEntry priorities to text strings.
+	 * @var    array  Translation array for JLogEntry priorities to text strings.
 	 * @since  11.1
 	 */
 	protected $priorities = array(
@@ -66,9 +66,9 @@ class JLoggerFormattedText extends JLogger
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  &$options  Log object options.
+	 * @param   array  &$options  Log object options.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct(array &$options)
 	{
@@ -109,7 +109,7 @@ class JLoggerFormattedText extends JLogger
 	/**
 	 * Destructor.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __destruct()
 	{
@@ -122,11 +122,11 @@ class JLoggerFormattedText extends JLogger
 	/**
 	 * Method to add an entry to the log.
 	 *
-	 * @param	JLogEntry  $entry  The log entry object to add to the log.
+	 * @param   JLogEntry  $entry  The log entry object to add to the log.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  LogException
 	 */
 	public function addEntry(JLogEntry $entry)
@@ -191,7 +191,7 @@ class JLoggerFormattedText extends JLogger
 	 *
 	 * @return  string  The log file header
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function generateFileHeader()
 	{
@@ -225,7 +225,7 @@ class JLoggerFormattedText extends JLogger
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function initFile()
 	{
@@ -263,7 +263,7 @@ class JLoggerFormattedText extends JLogger
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function parseFields()
 	{

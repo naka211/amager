@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Document
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -15,10 +15,10 @@ jimport('joomla.environment.uri');
 /**
  * OpenSearch class, provides an easy interface to display an OpenSearch document
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Document
- * @see		 http://www.opensearch.org/
- * @since		11.1
+ * @see         http://www.opensearch.org/
+ * @since       11.1
  */
 class JDocumentOpensearch extends JDocument
 {
@@ -27,7 +27,7 @@ class JDocumentOpensearch extends JDocument
 	 *
 	 * required
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	private $_shortName = "";
@@ -37,7 +37,7 @@ class JDocumentOpensearch extends JDocument
 	 *
 	 * optional
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  11.1
 	 */
 	private $_images = array();
@@ -45,7 +45,7 @@ class JDocumentOpensearch extends JDocument
 	/**
 	 * The url collection
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	private $_urls = array();
@@ -53,7 +53,7 @@ class JDocumentOpensearch extends JDocument
 	/**
 	 * Class constructor
 	 *
-	 * @param	array  $options  Associative array of options
+	 * @param   array  $options  Associative array of options
 	 *
 	 * @since  11.1
 	 */
@@ -103,12 +103,12 @@ class JDocumentOpensearch extends JDocument
 	/**
 	 * Render the document
 	 *
-	 * @param	boolean  $cache	If true, cache the output
-	 * @param	array	$params  Associative array of attributes
+	 * @param   boolean  $cache   If true, cache the output
+	 * @param   array    $params  Associative array of attributes
 	 *
 	 * @return  The rendered data
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function render($cache = false, $params = array())
 	{
@@ -165,11 +165,11 @@ class JDocumentOpensearch extends JDocument
 	/**
 	 * Sets the short name
 	 *
-	 * @param	string  $name  The name.
+	 * @param   string  $name  The name.
 	 *
 	 * @return  JDocumentOpensearch instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setShortName($name)
 	{
@@ -181,11 +181,11 @@ class JDocumentOpensearch extends JDocument
 	/**
 	 * Adds an URL to the OpenSearch description.
 	 *
-	 * @param	JOpenSearchUrl  &$url  The url to add to the description.
+	 * @param   JOpenSearchUrl  &$url  The url to add to the description.
 	 *
 	 * @return  JDocumentOpensearch instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function addUrl(&$url)
 	{
@@ -197,11 +197,11 @@ class JDocumentOpensearch extends JDocument
 	/**
 	 * Adds an image to the OpenSearch description.
 	 *
-	 * @param	JOpenSearchImage  &$image  The image to add to the description.
+	 * @param   JOpenSearchImage  &$image  The image to add to the description.
 	 *
 	 * @return  JDocumentOpensearch instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function addImage(&$image)
 	{
@@ -214,9 +214,9 @@ class JDocumentOpensearch extends JDocument
 /**
  * JOpenSearchUrl is an internal class that stores the search URLs for the OpenSearch description
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Document
- * @since		11.1
+ * @since       11.1
  */
 class JOpenSearchUrl extends JObject
 {
@@ -226,7 +226,7 @@ class JOpenSearchUrl extends JObject
 	 *
 	 * required
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $type = 'text/html';
@@ -236,7 +236,7 @@ class JOpenSearchUrl extends JObject
 	 *
 	 * required
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $rel = 'results';
@@ -246,7 +246,7 @@ class JOpenSearchUrl extends JObject
 	 *
 	 * required
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $template;
@@ -255,9 +255,9 @@ class JOpenSearchUrl extends JObject
 /**
  * JOpenSearchImage is an internal class that stores Images for the OpenSearch Description
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Document
- * @since		11.1
+ * @since       11.1
  */
 class JOpenSearchImage extends JObject
 {
@@ -267,7 +267,7 @@ class JOpenSearchImage extends JObject
 	 *
 	 * required
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $type = "";
@@ -277,7 +277,7 @@ class JOpenSearchImage extends JObject
 	 *
 	 * required
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $data = "";
@@ -287,7 +287,7 @@ class JOpenSearchImage extends JObject
 	 *
 	 * required
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $width;
@@ -297,7 +297,7 @@ class JOpenSearchImage extends JObject
 	 *
 	 * required
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $height;

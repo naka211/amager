@@ -3,7 +3,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	templates.hathor
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  * @since		1.6
  *
@@ -640,7 +640,7 @@ button:hover, button:focus {
 }
 
 .icon-32-extension {
-	background-image: url(../images/toolbar/icon-32-extension.png);
+    background-image: url(../images/toolbar/icon-32-extension.png);
 }
 
 /**
@@ -1165,7 +1165,7 @@ a img.calendar {
 }
 
 .icon-32-print {
-	background-image: url(../images/toolbar/icon-32-print.png);
+    background-image: url(../images/toolbar/icon-32-print.png);
 }
 
 /**
@@ -1650,8 +1650,8 @@ table#acl-config th.acl-groups {
 
 #permissions-sliders ul#rules,
 #permissions-sliders ul#rules ul {
-	border:solid 0 #000000;
-	background:#ffffff;
+    border:solid 0 #000000;
+    background:#ffffff;
 }
 
 ul#rules li .pane-sliders .panel h3.title {
@@ -1680,15 +1680,15 @@ ul#rules li .pane-sliders .panel h3.title {
 }
 
 #permissions-sliders ul#rules table.group-rules td {
-	border-right:solid 1px #000000;
-	border-bottom:solid 1px #000000;
+    border-right:solid 1px #000000;
+    border-bottom:solid 1px #000000;
 }
 
 #permissions-sliders ul#rules table.group-rules th {
-	background:#e1d3c8;
-	border-right:solid 1px #000000;
-	border-bottom:solid 1px #000000;
-	color:#2c2c2c;
+    background:#e1d3c8;
+    border-right:solid 1px #000000;
+    border-bottom:solid 1px #000000;
+    color:#2c2c2c;
 }
 
 ul#rules table.aclmodify-table {
@@ -1704,7 +1704,7 @@ ul#rules table.group-rules td label {
 }
 
 #permissions-sliders  ul#rules  table.group-rules td {
-	background: #ffffff;
+   background: #ffffff;
 }
 
 #permissions-sliders span.level {

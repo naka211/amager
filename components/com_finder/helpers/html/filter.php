@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Site
+ * @package     Joomla.Site
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -14,9 +14,9 @@ JLoader::register('FinderHelperLanguage', JPATH_ADMINISTRATOR . '/components/com
 /**
  * Filter HTML Behaviors for Finder.
  *
- * @package	 Joomla.Site
+ * @package     Joomla.Site
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 abstract class JHtmlFilter
 {
@@ -24,11 +24,11 @@ abstract class JHtmlFilter
 	 * Method to generate filters using the slider widget and decorated
 	 * with the FinderFilter JavaScript behaviors.
 	 *
-	 * @param	array  $options  An array of configuration options. [optional]
+	 * @param   array  $options  An array of configuration options. [optional]
 	 *
 	 * @return  mixed  A rendered HTML widget on success, null otherwise.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function slider($options = array())
 	{
@@ -223,12 +223,12 @@ abstract class JHtmlFilter
 	/**
 	 * Method to generate filters using select box drop down controls.
 	 *
-	 * @param	FinderIndexerQuery  $query	A FinderIndexerQuery object.
-	 * @param	array				$options  An array of options.
+	 * @param   FinderIndexerQuery  $query    A FinderIndexerQuery object.
+	 * @param   array               $options  An array of options.
 	 *
 	 * @return  mixed  A rendered HTML widget on success, null otherwise.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function select($query, $options)
 	{
@@ -417,12 +417,12 @@ abstract class JHtmlFilter
 	/**
 	 * Method to generate fields for filtering dates
 	 *
-	 * @param	FinderIndexerQuery  $query	A FinderIndexerQuery object.
-	 * @param	array				$options  An array of options.
+	 * @param   FinderIndexerQuery  $query    A FinderIndexerQuery object.
+	 * @param   array               $options  An array of options.
 	 *
 	 * @return  mixed  A rendered HTML widget on success, null otherwise.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function dates($query, $options)
 	{

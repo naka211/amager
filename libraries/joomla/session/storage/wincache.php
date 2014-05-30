@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Session
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,19 +12,19 @@ defined('JPATH_PLATFORM') or die;
 /**
  * WINCACHE session storage handler for PHP
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Session
- * @see		 http://www.php.net/manual/en/function.session-set-save-handler.php
- * @since		11.1
+ * @see         http://www.php.net/manual/en/function.session-set-save-handler.php
+ * @since       11.1
  */
 class JSessionStorageWincache extends JSessionStorage
 {
 	/**
 	 * Constructor
 	 *
-	 * @param	array  $options  Optional parameters.
+	 * @param   array  $options  Optional parameters.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($options = array())
 	{
@@ -39,11 +39,11 @@ class JSessionStorageWincache extends JSessionStorage
 	/**
 	 * Read the data for a particular session identifier from the SessionHandler backend.
 	 *
-	 * @param	string  $id  The session identifier.
+	 * @param   string  $id  The session identifier.
 	 *
 	 * @return  string  The session data.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function read($id)
 	{
@@ -54,12 +54,12 @@ class JSessionStorageWincache extends JSessionStorage
 	/**
 	 * Write session data to the SessionHandler backend.
 	 *
-	 * @param	string  $id			The session identifier.
-	 * @param	string  $session_data  The session data.
+	 * @param   string  $id            The session identifier.
+	 * @param   string  $session_data  The session data.
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function write($id, $session_data)
 	{
@@ -70,7 +70,7 @@ class JSessionStorageWincache extends JSessionStorage
 	/**
 	 * Destroy the data for a particular session identifier in the SessionHandler backend.
 	 *
-	 * @param	string  $id  The session identifier.
+	 * @param   string  $id  The session identifier.
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 */

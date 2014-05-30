@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Log
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -18,50 +18,50 @@ jimport('joomla.log.logger');
  * table are based on the SysLog style of log output. This is designed to allow quick and
  * easy searching.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Log
- * @since		11.1
+ * @since       11.1
  */
 class JLoggerDatabase extends JLogger
 {
 	/**
-	 * @var	string  The name of the database driver to use for connecting to the database.
+	 * @var    string  The name of the database driver to use for connecting to the database.
 	 * @since  11.1
 	 */
 	protected $driver = 'mysql';
 
 	/**
-	 * @var	string  The host name (or IP) of the server with which to connect for the logger.
+	 * @var    string  The host name (or IP) of the server with which to connect for the logger.
 	 * @since  11.1
 	 */
 	protected $host = '127.0.0.1';
 
 	/**
-	 * @var	string  The database server user to connect as for the logger.
+	 * @var    string  The database server user to connect as for the logger.
 	 * @since  11.1
 	 */
 	protected $user = 'root';
 
 	/**
-	 * @var	string  The password to use for connecting to the database server.
+	 * @var    string  The password to use for connecting to the database server.
 	 * @since  11.1
 	 */
 	protected $password = '';
 
 	/**
-	 * @var	string  The name of the database table to use for the logger.
+	 * @var    string  The name of the database table to use for the logger.
 	 * @since  11.1
 	 */
 	protected $database = 'logging';
 
 	/**
-	 * @var	string  The database table to use for logging entries.
+	 * @var    string  The database table to use for logging entries.
 	 * @since  11.1
 	 */
 	protected $table = 'jos_';
 
 	/**
-	 * @var	JDatabase  The database connection object for the logger.
+	 * @var    JDatabase  The database connection object for the logger.
 	 * @since  11.1
 	 */
 	protected $dbo;
@@ -69,9 +69,9 @@ class JLoggerDatabase extends JLogger
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  &$options  Log object options.
+	 * @param   array  &$options  Log object options.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  LogException
 	 */
 	public function __construct(array &$options)
@@ -108,11 +108,11 @@ class JLoggerDatabase extends JLogger
 	/**
 	 * Method to add an entry to the log.
 	 *
-	 * @param	JLogEntry  $entry  The log entry object to add to the log.
+	 * @param   JLogEntry  $entry  The log entry object to add to the log.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function addEntry(JLogEntry $entry)
 	{
@@ -133,7 +133,7 @@ class JLoggerDatabase extends JLogger
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  LogException
 	 */
 	protected function connect()

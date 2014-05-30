@@ -1,9 +1,9 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_installer
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License, see LICENSE.php
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License, see LICENSE.php
  */
 
 // No direct access
@@ -12,9 +12,9 @@ defined('_JEXEC') or die;
 /**
  * Languages Installer Controller
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_installer
- * @since		2.5.7
+ * @since       2.5.7
  */
 class InstallerControllerLanguages extends JControllerLegacy
 {

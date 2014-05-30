@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,17 +14,17 @@ JLoader::register('JDatabaseQuerySQLSrv', dirname(__FILE__) . '/sqlsrvquery.php'
 /**
  * SQL Server database driver
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
- * @see		 http://msdn.microsoft.com/en-us/library/cc296152(SQL.90).aspx
- * @since		11.1
+ * @see         http://msdn.microsoft.com/en-us/library/cc296152(SQL.90).aspx
+ * @since       11.1
  */
 class JDatabaseSQLSrv extends JDatabase
 {
 	/**
 	 * The name of the database driver.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $name = 'sqlsrv';
@@ -35,7 +35,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 * same character is used for both sides of the quoted name, else the first character will be
 	 * used for the opening quote and the second for the closing quote.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $nameQuote = '[]';
@@ -44,13 +44,13 @@ class JDatabaseSQLSrv extends JDatabase
 	 * The null or zero representation of a timestamp for the database driver.  This should be
 	 * defined in child classes to hold the appropriate value for the engine.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $nullDate = '1900-01-01 00:00:00';
 
 	/**
-	 * @var	string  The minimum supported database version.
+	 * @var    string  The minimum supported database version.
 	 * @since  12.1
 	 */
 	protected $dbMinimum = '10.50.1600.1';
@@ -60,7 +60,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function test()
 	{
@@ -70,9 +70,9 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  $options  List of options used to configure the connection
+	 * @param   array  $options  List of options used to configure the connection
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function __construct($options)
 	{
@@ -143,7 +143,7 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Destructor.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __destruct()
 	{
@@ -156,11 +156,11 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Get table constraints
 	 *
-	 * @param	string  $tableName  The name of the database table.
+	 * @param   string  $tableName  The name of the database table.
 	 *
 	 * @return  array  Any constraints available for the table.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function getTableConstraints($tableName)
 	{
@@ -176,13 +176,13 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Rename constraints.
 	 *
-	 * @param	array	$constraints  Array(strings) of table constraints
-	 * @param	string  $prefix		A string
-	 * @param	string  $backup		A string
+	 * @param   array   $constraints  Array(strings) of table constraints
+	 * @param   string  $prefix       A string
+	 * @param   string  $backup       A string
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function renameConstraints($constraints = array(), $prefix = null, $backup = null)
 	{
@@ -199,12 +199,12 @@ class JDatabaseSQLSrv extends JDatabase
 	 * The escaping for MSSQL isn't handled in the driver though that would be nice.  Because of this we need
 	 * to handle the escaping ourselves.
 	 *
-	 * @param	string	$text	The string to be escaped.
-	 * @param	boolean  $extra  Optional parameter to provide extra escaping.
+	 * @param   string   $text   The string to be escaped.
+	 * @param   boolean  $extra  Optional parameter to provide extra escaping.
 	 *
 	 * @return  string  The escaped string.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function escape($text, $extra = false)
 	{
@@ -229,7 +229,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  boolean  True if connected to the database engine.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function connected()
 	{
@@ -240,12 +240,12 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Drops a table from the database.
 	 *
-	 * @param	string	$tableName  The name of the database table to drop.
-	 * @param	boolean  $ifExists	Optionally specify that the table must exist before it is dropped.
+	 * @param   string   $tableName  The name of the database table to drop.
+	 * @param   boolean  $ifExists   Optionally specify that the table must exist before it is dropped.
 	 *
 	 * @return  JDatabaseSQLSrv  Returns this object to support chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function dropTable($tableName, $ifExists = true)
@@ -273,7 +273,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  integer  The number of affected rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getAffectedRows()
 	{
@@ -285,7 +285,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  mixed  The collation in use by the database or boolean false if not supported.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getCollation()
 	{
@@ -298,7 +298,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  JDatabaseExporterSQLAzure  An exporter object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getExporter()
@@ -320,7 +320,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  JDatabaseImporterSQLAzure  An importer object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getImporter()
@@ -340,11 +340,11 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Get the number of returned rows for the previous executed SQL statement.
 	 *
-	 * @param	resource  $cursor  An optional database cursor resource to extract the row count from.
+	 * @param   resource  $cursor  An optional database cursor resource to extract the row count from.
 	 *
-	 * @return  integer	The number of returned rows.
+	 * @return  integer   The number of returned rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getNumRows($cursor = null)
 	{
@@ -354,11 +354,11 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Get the current or query, or new JDatabaseQuery object.
 	 *
-	 * @param	boolean  $new  False to return the last query set, True to return a new JDatabaseQuery object.
+	 * @param   boolean  $new  False to return the last query set, True to return a new JDatabaseQuery object.
 	 *
 	 * @return  mixed  The current value of the internal SQL variable or a new JDatabaseQuery object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getQuery($new = false)
@@ -381,12 +381,12 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Retrieves field information about the given tables.
 	 *
-	 * @param	mixed	$table	 A table name
-	 * @param	boolean  $typeOnly  True to only return field types.
+	 * @param   mixed    $table     A table name
+	 * @param   boolean  $typeOnly  True to only return field types.
 	 *
 	 * @return  array  An array of fields.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getTableColumns($table, $typeOnly = true)
@@ -426,11 +426,11 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * This is unsupported by MSSQL.
 	 *
-	 * @param	mixed  $tables  A table name or a list of table names.
+	 * @param   mixed  $tables  A table name or a list of table names.
 	 *
 	 * @return  array  A list of the create SQL for the tables.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getTableCreate($tables)
@@ -441,11 +441,11 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Get the details list of keys for a table.
 	 *
-	 * @param	string  $table  The name of the table.
+	 * @param   string  $table  The name of the table.
 	 *
 	 * @return  array  An array of the column specification for the table.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getTableKeys($table)
@@ -457,12 +457,12 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	* Method to quote and optionally escape a string to database requirements for insertion into the database.
 	*
-	* @param	string	$text	The string to quote.
-	* @param	boolean  $escape  True to escape the string, false to leave it unchanged.
+	* @param   string   $text    The string to quote.
+	* @param   boolean  $escape  True to escape the string, false to leave it unchanged.
 	*
 	* @return  string  The quoted input string.
 	*
-	* @since	11.1
+	* @since   11.1
 	*/
 	public function quote($text, $escape = true)
 	{
@@ -474,7 +474,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  array  An array of all the tables in the database.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getTableList()
@@ -491,7 +491,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  string  The database connector version.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getVersion()
 	{
@@ -504,7 +504,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  boolean  True if supported.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function hasUTF()
 	{
@@ -514,13 +514,13 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Inserts a row into a table based on an object's properties.
 	 *
-	 * @param	string  $table	The name of the database table to insert into.
-	 * @param	object  &$object  A reference to an object whose public properties match the table fields.
-	 * @param	string  $key	  The name of the primary key. If provided the object property is updated.
+	 * @param   string  $table    The name of the database table to insert into.
+	 * @param   object  &$object  A reference to an object whose public properties match the table fields.
+	 * @param   string  $key      The name of the primary key. If provided the object property is updated.
 	 *
-	 * @return  boolean	True on success.
+	 * @return  boolean    True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function insertObject($table, &$object, $key = null)
@@ -569,7 +569,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  integer  The value of the auto-increment field from the last inserted row.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function insertid()
 	{
@@ -583,7 +583,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  mixed  The return value or null if the query failed.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function loadResult()
@@ -615,7 +615,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  mixed  A database cursor resource on success, boolean false on failure.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function execute()
@@ -643,7 +643,7 @@ class JDatabaseSQLSrv extends JDatabase
 
 		// Take a local copy so that we don't modify the original query and cause issues later
 		$sql = $this->replacePrefix((string) $this->sql);
-		if ($this->limit > 0 || $this->offset > 0)
+		if (!($this->sql instanceof JDatabaseQuery) && ($this->limit > 0 || $this->offset > 0))
 		{
 			$sql = $this->limit($sql, $this->limit, $this->offset);
 		}
@@ -709,12 +709,12 @@ class JDatabaseSQLSrv extends JDatabase
 	 * This function replaces a string identifier <var>$prefix</var> with the string held is the
 	 * <var>tablePrefix</var> class variable.
 	 *
-	 * @param	string  $sql	 The SQL statement to prepare.
-	 * @param	string  $prefix  The common table prefix.
+	 * @param   string  $sql     The SQL statement to prepare.
+	 * @param   string  $prefix  The common table prefix.
 	 *
 	 * @return  string  The processed SQL statement.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function replacePrefix($sql, $prefix = '#__')
 	{
@@ -804,11 +804,11 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Select a database for use.
 	 *
-	 * @param	string  $database  The name of the database to select for use.
+	 * @param   string  $database  The name of the database to select for use.
 	 *
 	 * @return  boolean  True if the database was successfully selected.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function select($database)
@@ -843,7 +843,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setUTF()
 	{
@@ -855,7 +855,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function transactionCommit()
@@ -869,7 +869,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function transactionRollback()
@@ -883,7 +883,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function transactionStart()
@@ -895,11 +895,11 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Method to fetch a row from the result set cursor as an array.
 	 *
-	 * @param	mixed  $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   mixed  $cursor  The optional result set cursor from which to fetch the row.
 	 *
 	 * @return  mixed  Either the next row from the result set or false if there are no more rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function fetchArray($cursor = null)
 	{
@@ -909,11 +909,11 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Method to fetch a row from the result set cursor as an associative array.
 	 *
-	 * @param	mixed  $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   mixed  $cursor  The optional result set cursor from which to fetch the row.
 	 *
 	 * @return  mixed  Either the next row from the result set or false if there are no more rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function fetchAssoc($cursor = null)
 	{
@@ -923,12 +923,12 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Method to fetch a row from the result set cursor as an object.
 	 *
-	 * @param	mixed	$cursor  The optional result set cursor from which to fetch the row.
-	 * @param	string  $class	The class name to use for the returned row object.
+	 * @param   mixed   $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   string  $class   The class name to use for the returned row object.
 	 *
-	 * @return  mixed	Either the next row from the result set or false if there are no more rows.
+	 * @return  mixed   Either the next row from the result set or false if there are no more rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function fetchObject($cursor = null, $class = 'stdClass')
 	{
@@ -938,11 +938,11 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Method to free up the memory used for the result set.
 	 *
-	 * @param	mixed  $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   mixed  $cursor  The optional result set cursor from which to fetch the row.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function freeResult($cursor = null)
 	{
@@ -952,11 +952,11 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Diagnostic method to return explain information for a query.
 	 *
-	 * @return	  string  The explain output.
+	 * @return      string  The explain output.
 	 *
 	 * @deprecated  12.1
-	 * @see		 http://msdn.microsoft.com/en-us/library/aa259203%28SQL.80%29.aspx
-	 * @since		11.1
+	 * @see         http://msdn.microsoft.com/en-us/library/aa259203%28SQL.80%29.aspx
+	 * @since       11.1
 	 */
 	public function explain()
 	{
@@ -1018,12 +1018,12 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Execute a query batch.
 	 *
-	 * @param	boolean  $abortOnError	 Abort on error.
-	 * @param	boolean  $transactionSafe  Transaction safe queries.
+	 * @param   boolean  $abortOnError     Abort on error.
+	 * @param   boolean  $transactionSafe  Transaction safe queries.
 	 *
 	 * @return  mixed  A database resource if successful, false if not.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.1
 	 */
 	public function queryBatch($abortOnError = true, $transactionSafe = false)
@@ -1075,12 +1075,12 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Method to check and see if a field exists in a table.
 	 *
-	 * @param	string  $table  The table in which to verify the field.
-	 * @param	string  $field  The field to verify.
+	 * @param   string  $table  The table in which to verify the field.
+	 * @param   string  $field  The field to verify.
 	 *
 	 * @return  boolean  True if the field exists in the table.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function checkFieldExists($table, $field)
 	{
@@ -1102,27 +1102,38 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Method to wrap an SQL statement to provide a LIMIT and OFFSET behavior for scrolling through a result set.
 	 *
-	 * @param	string	$sql	 The SQL statement to process.
-	 * @param	integer  $limit	The maximum affected rows to set.
-	 * @param	integer  $offset  The affected row offset to set.
+	 * @param   string   $sql     The SQL statement to process.
+	 * @param   integer  $limit   The maximum affected rows to set.
+	 * @param   integer  $offset  The affected row offset to set.
 	 *
-	 * @return  string	The processed SQL statement.
+	 * @return  string   The processed SQL statement.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function limit($sql, $limit, $offset)
 	{
+		if ($limit == 0 && $offset == 0)
+		{
+			return $sql;
+		}
+
+		$start = $offset + 1;
+		$end   = $offset + $limit;
+
 		$orderBy = stristr($sql, 'ORDER BY');
+
 		if (is_null($orderBy) || empty($orderBy))
 		{
 			$orderBy = 'ORDER BY (select 0)';
 		}
+
 		$sql = str_ireplace($orderBy, '', $sql);
 
-		$rowNumberText = ',ROW_NUMBER() OVER (' . $orderBy . ') AS RowNumber FROM ';
+		$rowNumberText = ', ROW_NUMBER() OVER (' . $orderBy . ') AS RowNumber FROM ';
 
-		$sql = preg_replace('/\\s+FROM/', '\\1 ' . $rowNumberText . ' ', $sql, 1);
-		$sql = 'SELECT TOP ' . $this->limit . ' * FROM (' . $sql . ') _myResults WHERE RowNumber > ' . $this->offset;
+		$sql = preg_replace('/\sFROM\s/i', $rowNumberText, $sql, 1);
+		$sql = 'SELECT * FROM (' . $sql . ') _myResults WHERE RowNumber BETWEEN ' . $start . ' AND ' . $end;
+		echo $sql;
 
 		return $sql;
 	}
@@ -1130,14 +1141,14 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Renames a table in the database.
 	 *
-	 * @param	string  $oldTable  The name of the table to be renamed
-	 * @param	string  $newTable  The new name for the table.
-	 * @param	string  $backup	Table prefix
-	 * @param	string  $prefix	For the table - used to rename constraints in non-mysql databases
+	 * @param   string  $oldTable  The name of the table to be renamed
+	 * @param   string  $newTable  The new name for the table.
+	 * @param   string  $backup    Table prefix
+	 * @param   string  $prefix    For the table - used to rename constraints in non-mysql databases
 	 *
 	 * @return  JDatabase  Returns this object to support chaining.
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 * @throws  JDatabaseException
 	 */
 	public function renameTable($oldTable, $newTable, $backup = null, $prefix = null)
@@ -1161,11 +1172,11 @@ class JDatabaseSQLSrv extends JDatabase
 	/**
 	 * Locks a table in the database.
 	 *
-	 * @param	string  $tableName  The name of the table to lock.
+	 * @param   string  $tableName  The name of the table to lock.
 	 *
 	 * @return  JDatabase  Returns this object to support chaining.
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 * @throws  JDatabaseException
 	 */
 	public function lockTable($tableName)
@@ -1178,7 +1189,7 @@ class JDatabaseSQLSrv extends JDatabase
 	 *
 	 * @return  JDatabase  Returns this object to support chaining.
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 * @throws  JDatabaseException
 	 */
 	public function unlockTables()

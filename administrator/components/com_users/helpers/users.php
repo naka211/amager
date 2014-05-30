@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 // No direct access.
@@ -13,14 +13,14 @@ defined('_JEXEC') or die;
 /**
  * Users component helper.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
- * @since		1.6
+ * @since       1.6
  */
 class UsersHelper
 {
 	/**
-	 * @var	JObject  A cache for the available actions.
+	 * @var    JObject  A cache for the available actions.
 	 * @since  1.6
 	 */
 	protected static $actions;
@@ -28,11 +28,11 @@ class UsersHelper
 	/**
 	 * Configure the Linkbar.
 	 *
-	 * @param	string  $vName  The name of the active view.
+	 * @param   string  $vName  The name of the active view.
 	 *
 	 * @return  void
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public static function addSubmenu($vName)
 	{
@@ -77,8 +77,8 @@ class UsersHelper
 	 *
 	 * @return  JObject
 	 *
-	 * @since	1.6
-	 * @todo	Refactor to work with notes
+	 * @since   1.6
+	 * @todo    Refactor to work with notes
 	 */
 	public static function getActions()
 	{
@@ -103,7 +103,7 @@ class UsersHelper
 	 *
 	 * @return  array  An array of JHtmlOption elements.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	static function getStateOptions()
 	{
@@ -120,7 +120,7 @@ class UsersHelper
 	 *
 	 * @return  array  An array of JHtmlOption elements.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	static function getActiveOptions()
 	{
@@ -137,7 +137,7 @@ class UsersHelper
 	 *
 	 * @return  array  An array of JHtmlOption elements.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	static function getGroups()
 	{
@@ -172,7 +172,7 @@ class UsersHelper
 	 *
 	 * @return  array
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function getRangeOptions()
 	{

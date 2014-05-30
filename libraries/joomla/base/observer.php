@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Base
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,9 +12,9 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Abstract observer class to implement the observer design pattern
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Base
- * @since		11.1
+ * @since       11.1
  * @deprecated  12.3
  * @codeCoverageIgnore
  */
@@ -23,7 +23,7 @@ abstract class JObserver extends JObject
 	/**
 	 * Event object to observe.
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  11.1
 	 * @deprecated  12.3
 	 */
@@ -32,9 +32,9 @@ abstract class JObserver extends JObject
 	/**
 	 * Constructor
 	 *
-	 * @param	object  &$subject  The object to observe.
+	 * @param   object  &$subject  The object to observe.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3
 	 */
 	public function __construct(&$subject)
@@ -49,11 +49,11 @@ abstract class JObserver extends JObject
 	/**
 	 * Method to update the state of observable objects
 	 *
-	 * @param	array  &$args  An array of arguments to pass to the listener.
+	 * @param   array  &$args  An array of arguments to pass to the listener.
 	 *
 	 * @return  mixed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3
 	 */
 	public abstract function update(&$args);

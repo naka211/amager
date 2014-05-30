@@ -8304,7 +8304,7 @@ var Table = this.Table = function(){
 
 	this.length = 0;
 	var keys = [],
-		values = [];
+	    values = [];
 	
 	this.set = function(key, value){
 		var index = keys.indexOf(key);
@@ -9522,7 +9522,7 @@ HtmlTable = Class.refactor(HtmlTable, {
 			index += offset;
 		} else {
 			var limit = 0,
-				count = 0;
+			    count = 0;
 			if (offset > 0){
 				while (count < offset && index < this.body.rows.length -1){
 					if (this.body.rows[++index].isDisplayed()) count++;
@@ -10260,8 +10260,8 @@ provides: [Locale.cs-CZ.Date]
 (function(){
 
 // Czech language pluralization rules, see http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html
-// one -> n is 1;			1
-// few -> n in 2..4;		 2-4
+// one -> n is 1;            1
+// few -> n in 2..4;         2-4
 // other -> everything else  0, 5-999, 1.31, 2.31, 5.31...
 var pluralize = function (n, one, few, other){
 	if (n == 1) return one;

@@ -3,7 +3,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	templates.hathor
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  * @since		1.6
  */
@@ -24,9 +24,9 @@
 	position: absolute;
 	visibility:	hidden;
 	/*
-		Netscape/Mozilla renders borders by increasing
-		their z-index.  The following line is necessary
-		to cover any borders underneath
+	   Netscape/Mozilla renders borders by increasing
+	   their z-index.  The following line is necessary
+	   to cover any borders underneath
 	*/
 	z-index:	100;
 	border:		0;

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Image
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,14 +12,14 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Class to manipulate an image.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Image
- * @since		11.3
+ * @since       11.3
  */
 abstract class JImageFilter
 {
 	/**
-	 * @var	resource  The image resource handle.
+	 * @var    resource  The image resource handle.
 	 * @since  11.3
 	 */
 	protected $handle;
@@ -27,9 +27,9 @@ abstract class JImageFilter
 	/**
 	 * Class constructor.
 	 *
-	 * @param	resource  $handle  The image resource on which to apply the filter.
+	 * @param   resource  $handle  The image resource on which to apply the filter.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  InvalidArgumentException
 	 */
 	public function __construct($handle)
@@ -47,11 +47,11 @@ abstract class JImageFilter
 	/**
 	 * Method to apply a filter to an image resource.
 	 *
-	 * @param	array  $options  An array of options for the filter.
+	 * @param   array  $options  An array of options for the filter.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	abstract public function execute(array $options = array());
 }

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -17,16 +17,16 @@ jimport('joomla.filesystem.support.stringcontroller');
  * This class allows you to use a PHP string in the same way that
  * you would normally use a regular stream wrapper
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
- * @since		11.1
+ * @since       11.1
  */
 class JStreamString
 {
 	/**
 	 * The current string
 	 *
-	 * @var	string
+	 * @var   string
 	 * @since  11.1
 	 */
 	protected $_currentstring;
@@ -35,7 +35,7 @@ class JStreamString
 	 *
 	 * The path
 	 *
-	 * @var	string
+	 * @var   string
 	 * @since  11.1
 	 */
 	protected $_path;
@@ -44,7 +44,7 @@ class JStreamString
 	 *
 	 * The mode
 	 *
-	 * @var	string
+	 * @var   string
 	 * @since  11.1
 	 */
 	protected $_mode;
@@ -52,7 +52,7 @@ class JStreamString
 	/**
 	 *
 	 * Enter description here ...
-	 * @var	string
+	 * @var   string
 	 *
 	 * @since  11.1
 	 */
@@ -61,7 +61,7 @@ class JStreamString
 	/**
 	 *
 	 * Enter description here ...
-	 * @var	string
+	 * @var   string
 	 *
 	 * @since  11.1
 	 */
@@ -70,7 +70,7 @@ class JStreamString
 	/**
 	 * Current position
 	 *
-	 * @var	integer
+	 * @var   integer
 	 * @since  11.1
 	 */
 	protected $_pos;
@@ -78,7 +78,7 @@ class JStreamString
 	/**
 	 * Length of the string
 	 *
-	 * @var	string
+	 * @var   string
 	 *
 	 * @since  11.1
 	 */
@@ -87,24 +87,24 @@ class JStreamString
 	/**
 	 * Statistics for a file
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 *
-	 * @see	http://us.php.net/manual/en/function.stat.php
+	 * @see    http://us.php.net/manual/en/function.stat.php
 	 */
 	protected $_stat;
 
 	/**
 	 * Method to open a file or URL.
 	 *
-	 * @param	string	$path		  The stream path.
-	 * @param	string	$mode		  Not used.
-	 * @param	integer  $options		Not used.
-	 * @param	string	&$opened_path  Not used.
+	 * @param   string   $path          The stream path.
+	 * @param   string   $mode          Not used.
+	 * @param   integer  $options       Not used.
+	 * @param   string   &$opened_path  Not used.
 	 *
 	 * @return  boolean
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function stream_open($path, $mode, $options, &$opened_path)
 	{
@@ -129,8 +129,8 @@ class JStreamString
 	 *
 	 * @return  array
 	 *
-	 * @see	 http://www.php.net/manual/en/streamwrapper.stream-stat.php
-	 * @since	11.1
+	 * @see     http://www.php.net/manual/en/streamwrapper.stream-stat.php
+	 * @since   11.1
 	 */
 	public function stream_stat()
 	{
@@ -140,13 +140,13 @@ class JStreamString
 	/**
 	 * Method to retrieve information about a file.
 	 *
-	 * @param	string	$path	File path or URL to stat
-	 * @param	integer  $flags  Additional flags set by the streams API
+	 * @param   string   $path   File path or URL to stat
+	 * @param   integer  $flags  Additional flags set by the streams API
 	 *
 	 * @return  array
 	 *
-	 * @see	 http://php.net/manual/en/streamwrapper.url-stat.php
-	 * @since	11.1
+	 * @see     http://php.net/manual/en/streamwrapper.url-stat.php
+	 * @since   11.1
 	 */
 	public function url_stat($path, $flags = 0)
 	{
@@ -175,13 +175,13 @@ class JStreamString
 	 * and moving to the end of the string defined by the current position plus the
 	 * given number.
 	 *
-	 * @param	integer  $count  Bytes of data from the current position should be returned.
+	 * @param   integer  $count  Bytes of data from the current position should be returned.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
-	 * @see	 http://www.php.net/manual/en/streamwrapper.stream-read.php
+	 * @see     http://www.php.net/manual/en/streamwrapper.stream-read.php
 	 */
 	public function stream_read($count)
 	{
@@ -194,12 +194,12 @@ class JStreamString
 	/**
 	 * Stream write, always returning false.
 	 *
-	 * @param	string  $data  The data to write.
+	 * @param   string  $data  The data to write.
 	 *
 	 * @return  boolean
 	 *
-	 * @since	11.1
-	 * @note	Updating the string is not supported.
+	 * @since   11.1
+	 * @note    Updating the string is not supported.
 	 */
 	public function stream_write($data)
 	{
@@ -212,7 +212,7 @@ class JStreamString
 	 *
 	 * @return  integer  The position
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function stream_tell()
 	{
@@ -224,7 +224,7 @@ class JStreamString
 	 *
 	 * @return  boolean  True if at end of field.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function stream_eof()
 	{
@@ -239,12 +239,12 @@ class JStreamString
 	/**
 	 * Stream offset
 	 *
-	 * @param	integer  $offset  The starting offset.
-	 * @param	integer  $whence  SEEK_SET, SEEK_CUR, SEEK_END
+	 * @param   integer  $offset  The starting offset.
+	 * @param   integer  $whence  SEEK_SET, SEEK_CUR, SEEK_END
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function stream_seek($offset, $whence)
 	{
@@ -285,8 +285,8 @@ class JStreamString
 	 *
 	 * @return  boolean
 	 *
-	 * @since	11.1
-	 * @note	Data storage is not supported
+	 * @since   11.1
+	 * @note    Data storage is not supported
 	 */
 	public function stream_flush()
 	{

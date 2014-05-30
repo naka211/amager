@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Cache
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,36 +12,36 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Joomla Cache output type object
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Cache
- * @since		11.1
+ * @since       11.1
  */
 class JCacheControllerOutput extends JCacheController
 {
 	/**
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected $_id;
 
 	/**
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected $_group;
 
 	/**
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected $_locktest = null;
 
 	/**
 	 * Start the cache
 	 *
-	 * @param	string  $id	 The cache data id
-	 * @param	string  $group  The cache data group
+	 * @param   string  $id     The cache data id
+	 * @param   string  $group  The cache data group
 	 *
 	 * @return  boolean  True if the cache is hit (false else)
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function start($id, $group = null)
 	{
@@ -94,7 +94,7 @@ class JCacheControllerOutput extends JCacheController
 	 *
 	 * @return  boolean  True if cache stored
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function end()
 	{

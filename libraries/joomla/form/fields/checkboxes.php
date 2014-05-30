@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,17 +14,17 @@ defined('JPATH_PLATFORM') or die;
  * Displays options as a list of check boxes.
  * Multiselect may be forced to be true.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
- * @see		 JFormFieldCheckbox
- * @since		11.1
+ * @see         JFormFieldCheckbox
+ * @since       11.1
  */
 class JFormFieldCheckboxes extends JFormField
 {
 	/**
 	 * The form field type.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $type = 'Checkboxes';
@@ -32,7 +32,7 @@ class JFormFieldCheckboxes extends JFormField
 	/**
 	 * Flag to tell the field to always be in multiple values mode.
 	 *
-	 * @var	boolean
+	 * @var    boolean
 	 * @since  11.1
 	 */
 	protected $forceMultiple = true;
@@ -42,7 +42,7 @@ class JFormFieldCheckboxes extends JFormField
 	 *
 	 * @return  string  The field input markup.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function getInput()
 	{
@@ -91,7 +91,7 @@ class JFormFieldCheckboxes extends JFormField
 	 *
 	 * @return  array  The field option objects.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function getOptions()
 	{

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,16 +12,16 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Extension object
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
- * @since		11.1
+ * @since       11.1
  */
 class JExtension extends JObject
 {
 	/**
 	 * Filename of the extension
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $filename = '';
@@ -29,7 +29,7 @@ class JExtension extends JObject
 	/**
 	 * Type of the extension
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $type = '';
@@ -37,7 +37,7 @@ class JExtension extends JObject
 	/**
 	 * Unique Identifier for the extension
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $id = '';
@@ -45,7 +45,7 @@ class JExtension extends JObject
 	/**
 	 * The status of the extension
 	 *
-	 * @var	boolean
+	 * @var    boolean
 	 * @since  11.1
 	 */
 	public $published = false;
@@ -54,7 +54,7 @@ class JExtension extends JObject
 	 * String representation of client. Valid for modules, templates and languages.
 	 * Set by default to site.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $client = 'site';
@@ -78,7 +78,7 @@ class JExtension extends JObject
 	/**
 	 * An object representation of the extension params
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  11.1
 	 */
 	public $params = null;
@@ -86,7 +86,7 @@ class JExtension extends JObject
 	/**
 	 * Constructor
 	 *
-	 * @param	SimpleXMLElement  $element  A SimpleXMLElement from which to load data from
+	 * @param   SimpleXMLElement  $element  A SimpleXMLElement from which to load data from
 	 *
 	 * @since  11.1
 	 */

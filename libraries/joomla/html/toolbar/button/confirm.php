@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,33 +12,33 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Renders a standard button with a confirm dialog
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
- * @since		11.1
+ * @since       11.1
  */
 class JButtonConfirm extends JButton
 {
 	/**
 	 * Button type
 	 *
-	 * @var	string
+	 * @var    string
 	 */
 	protected $_name = 'Confirm';
 
 	/**
 	 * Fetch the HTML for the button
 	 *
-	 * @param	string	$type	  Unused string.
-	 * @param	string	$msg		Message to render
-	 * @param	string	$name	  Name to be used as apart of the id
-	 * @param	string	$text	  Button text
-	 * @param	string	$task	  The task associated with the button
-	 * @param	boolean  $list	  True to allow use of lists
-	 * @param	boolean  $hideMenu  True to hide the menu on click
+	 * @param   string   $type      Unused string.
+	 * @param   string   $msg       Message to render
+	 * @param   string   $name      Name to be used as apart of the id
+	 * @param   string   $text      Button text
+	 * @param   string   $task      The task associated with the button
+	 * @param   boolean  $list      True to allow use of lists
+	 * @param   boolean  $hideMenu  True to hide the menu on click
 	 *
-	 * @return  string	HTML string for the button
+	 * @return  string   HTML string for the button
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function fetchButton($type = 'Confirm', $msg = '', $name = '', $text = '', $task = '', $list = true, $hideMenu = false)
 	{
@@ -59,18 +59,19 @@ class JButtonConfirm extends JButton
 	/**
 	 * Get the button CSS Id
 	 *
-	 * @param	string	$type	  Button type
-	 * @param	string	$name	  Name to be used as apart of the id
-	 * @param	string	$text	  Button text
-	 * @param	string	$task	  The task associated with the button
-	 * @param	boolean  $list	  True to allow use of lists
-	 * @param	boolean  $hideMenu  True to hide the menu on click
+	 * @param   string   $type      Button type
+	 * @param   object   $msg   	The message
+	 * @param   string   $name      Name to be used as apart of the id
+	 * @param   string   $text      Button text
+	 * @param   string   $task      The task associated with the button
+	 * @param   boolean  $list      True to allow use of lists
+	 * @param   boolean  $hideMenu  True to hide the menu on click
 	 *
 	 * @return  string  Button CSS Id
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
-	public function fetchId($type = 'Confirm', $name = '', $text = '', $task = '', $list = true, $hideMenu = false)
+	public function fetchId($type = 'Confirm', $msg = '', $name = '', $text = '', $task = '', $list = true, $hideMenu = false)
 	{
 		return $this->_parent->getName() . '-' . $name;
 	}
@@ -78,14 +79,14 @@ class JButtonConfirm extends JButton
 	/**
 	 * Get the JavaScript command for the button
 	 *
-	 * @param	object	$msg	The message to display.
-	 * @param	string	$name  Not used.
-	 * @param	string	$task  The task used by the application
-	 * @param	boolean  $list  True is requires a list confirmation.
+	 * @param   object   $msg   The message to display.
+	 * @param   string   $name  Not used.
+	 * @param   string   $task  The task used by the application
+	 * @param   boolean  $list  True is requires a list confirmation.
 	 *
 	 * @return  string  JavaScript command string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _getCommand($msg, $name, $task, $list)
 	{

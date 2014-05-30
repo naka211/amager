@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -17,16 +17,16 @@ jimport('joomla.application.component.controller');
  * Controller (controllers are where you put all the actual code) Provides basic
  * functionality, such as rendering views (aka displaying templates).
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
- * @since		11.1
+ * @since       11.1
  */
 class JControllerAdmin extends JController
 {
 	/**
 	 * The URL option for the component.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $option;
@@ -34,7 +34,7 @@ class JControllerAdmin extends JController
 	/**
 	 * The prefix to use with controller messages.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $text_prefix;
@@ -42,7 +42,7 @@ class JControllerAdmin extends JController
 	/**
 	 * The URL view list variable.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $view_list;
@@ -50,10 +50,10 @@ class JControllerAdmin extends JController
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  $config  An optional associative array of configuration settings.
+	 * @param   array  $config  An optional associative array of configuration settings.
 	 *
-	 * @see	 JController
-	 * @since	11.1
+	 * @see     JController
+	 * @since   11.1
 	 */
 	public function __construct($config = array())
 	{
@@ -104,7 +104,7 @@ class JControllerAdmin extends JController
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function delete()
 	{
@@ -144,12 +144,12 @@ class JControllerAdmin extends JController
 	/**
 	 * Display is not supported by this controller.
 	 *
-	 * @param	boolean  $cachable	If true, the view output will be cached
-	 * @param	array	$urlparams  An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
+	 * @param   boolean  $cachable   If true, the view output will be cached
+	 * @param   array    $urlparams  An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
 	 *
 	 * @return  JController  A JController object to support chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function display($cachable = false, $urlparams = false)
 	{
@@ -161,7 +161,7 @@ class JControllerAdmin extends JController
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function publish()
 	{
@@ -222,7 +222,7 @@ class JControllerAdmin extends JController
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function reorder()
 	{
@@ -256,7 +256,7 @@ class JControllerAdmin extends JController
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function saveorder()
 	{
@@ -298,7 +298,7 @@ class JControllerAdmin extends JController
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function checkin()
 	{

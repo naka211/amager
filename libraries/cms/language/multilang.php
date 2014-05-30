@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Libraries
+ * @package     Joomla.Libraries
  * @subpackage  Language
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,9 +12,9 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Utitlity class for multilang
  *
- * @package	 Joomla.Libraries
+ * @package     Joomla.Libraries
  * @subpackage  Language
- * @since		2.5.4
+ * @since       2.5.4
  */
 class JLanguageMultilang
 {
@@ -24,7 +24,7 @@ class JLanguageMultilang
 	 *
 	 * @return  boolean  True if site is supporting multiple languages; false otherwise.
 	 *
-	 * @since	2.5.4
+	 * @since   2.5.4
 	 */
 	public static function isEnabled()
 	{

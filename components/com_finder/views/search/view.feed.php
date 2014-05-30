@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Site
+ * @package     Joomla.Site
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -12,25 +12,26 @@ defined('_JEXEC') or die;
 /**
  * Search feed view class for the Finder package.
  *
- * @package	 Joomla.Site
+ * @package     Joomla.Site
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderViewSearch extends JViewLegacy
 {
 	/**
 	 * Method to display the view.
 	 *
-	 * @param	string  $tpl  A template file to load. [optional]
+	 * @param   string  $tpl  A template file to load. [optional]
 	 *
 	 * @return  mixed  JError object on failure, void on success.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function display($tpl = null)
 	{
 		// Get the application
 		$app = JFactory::getApplication();
+
 		// Adjust the list limit to the feed limit.
 		$app->input->set('limit', $app->getCfg('feed_limit'));
 
@@ -72,6 +73,12 @@ class FinderViewSearch extends JViewLegacy
 		// Set the document link.
 		$this->document->link = JRoute::_($query->toURI());
 
+		// If we don't have any results, we are done.
+		if (empty($results))
+		{
+			return;
+		}
+
 		// Convert the results to feed entries.
 		foreach ($results as $result)
 		{
@@ -92,7 +99,7 @@ class FinderViewSearch extends JViewLegacy
 				$item->category = $node->title;
 			}
 
-			// loads item info into rss array
+			// Loads item info into rss array.
 			$this->document->addItem($item);
 		}
 	}

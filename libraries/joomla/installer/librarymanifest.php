@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,9 +14,9 @@ jimport('joomla.filesystem.file');
 /**
  * Joomla! Library Manifest File
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
- * @since		11.1
+ * @since       11.1
  */
 class JLibraryManifest extends JObject
 {
@@ -98,9 +98,9 @@ class JLibraryManifest extends JObject
 	/**
 	 * Constructor
 	 *
-	 * @param	string  $xmlpath  Path to an XML file to load the manifest from.
+	 * @param   string  $xmlpath  Path to an XML file to load the manifest from.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($xmlpath = '')
 	{
@@ -113,11 +113,11 @@ class JLibraryManifest extends JObject
 	/**
 	 * Load a manifest from a file
 	 *
-	 * @param	string  $xmlfile  Path to file to load
+	 * @param   string  $xmlfile  Path to file to load
 	 *
 	 * @return  boolean
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function loadManifestFromXML($xmlfile)
 	{

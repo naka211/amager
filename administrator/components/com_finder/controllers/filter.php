@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -14,21 +14,21 @@ jimport('joomla.application.component.controllerform');
 /**
  * Indexer controller class for Finder.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderControllerFilter extends JControllerForm
 {
 	/**
 	 * Method to save a record.
 	 *
-	 * @param	string  $key	 The name of the primary key of the URL variable. [optional]
-	 * @param	string  $urlVar  The name of the URL variable if different from the primary key (sometimes required to avoid router collisions). [optional]
+	 * @param   string  $key     The name of the primary key of the URL variable. [optional]
+	 * @param   string  $urlVar  The name of the URL variable if different from the primary key (sometimes required to avoid router collisions). [optional]
 	 *
 	 * @return  boolean  True if successful, false otherwise.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function save($key = null, $urlVar = null)
 	{

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Site
+ * @package     Joomla.Site
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -14,11 +14,11 @@ defined('_JEXEC') or die;
 /**
  * Method to build a SEF route.
  *
- * @param	array  &$query  An array of route variables.
+ * @param   array  &$query  An array of route variables.
  *
  * @return  array  An array of route segments.
  *
- * @since	2.5
+ * @since   2.5
  */
 function FinderBuildRoute(&$query)
 {
@@ -92,11 +92,11 @@ function FinderBuildRoute(&$query)
 /**
  * Method to parse a SEF route.
  *
- * @param	array  $segments  An array of route segments.
+ * @param   array  $segments  An array of route segments.
  *
  * @return  array  An array of route variables.
  *
- * @since	2.5
+ * @since   2.5
  */
 function FinderParseRoute($segments)
 {

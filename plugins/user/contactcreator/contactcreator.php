@@ -21,10 +21,10 @@ class plgUserContactCreator extends JPlugin
 	/**
 	 * Constructor
 	 *
-	 * @access	  protected
-	 * @param		object  $subject The object to observe
-	 * @param		array	$config  An array that holds the plugin configuration
-	 * @since		1.5
+	 * @access      protected
+	 * @param       object  $subject The object to observe
+	 * @param       array   $config  An array that holds the plugin configuration
+	 * @since       1.5
 	 */
 	public function __construct(& $subject, $config)
 	{
@@ -79,6 +79,7 @@ class plgUserContactCreator extends JPlugin
 		$contact->user_id = $user_id;
 		$contact->email_to = $user['email'];
 		$contact->catid = $category;
+		$contact->language = '*';
 
 		$autowebpage = $this->params->get('autowebpage', '');
 

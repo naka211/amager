@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -14,22 +14,22 @@ jimport('joomla.application.component.controlleradmin');
 /**
  * Index controller class for Finder.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderControllerIndex extends JControllerAdmin
 {
 	/**
 	 * Method to get a model object, loading it if required.
 	 *
-	 * @param	string  $name	The model name. Optional.
-	 * @param	string  $prefix  The class prefix. Optional.
-	 * @param	array	$config  Configuration array for model. Optional.
+	 * @param   string  $name    The model name. Optional.
+	 * @param   string  $prefix  The class prefix. Optional.
+	 * @param   array   $config  Configuration array for model. Optional.
 	 *
 	 * @return  object  The model.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function getModel($name = 'Index', $prefix = 'FinderModel', $config = array('ignore_request' => true))
 	{
@@ -42,7 +42,7 @@ class FinderControllerIndex extends JControllerAdmin
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function purge()
 	{

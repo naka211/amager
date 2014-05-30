@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_joomlaupdate
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE.txt
- * @since		2.5.4
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @since       2.5.4
  */
 
 defined('_JEXEC') or die;
@@ -12,9 +12,9 @@ defined('_JEXEC') or die;
 /**
  * The Joomla! update controller for the Update view
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_joomlaupdate
- * @since		2.5.4
+ * @since       2.5.4
  */
 class JoomlaupdateControllerUpdate extends JControllerLegacy
 {
@@ -110,8 +110,8 @@ class JoomlaupdateControllerUpdate extends JControllerLegacy
 	/**
 	 * Method to display a view.
 	 *
-	 * @param	boolean  $cachable	If true, the view output will be cached
-	 * @param	array	$urlparams  An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
+	 * @param	boolean  $cachable   If true, the view output will be cached
+	 * @param	array    $urlparams  An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
 	 *
 	 * @return	JController		This object to support chaining.
 	 *

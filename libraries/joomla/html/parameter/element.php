@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,10 +14,10 @@ defined('JPATH_PLATFORM') or die;
  *
  * The JElement is the base class for all JElement types
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Parameter
- * @since		11.1
- * @deprecated  12.1	Use JFormField instead
+ * @since       11.1
+ * @deprecated  12.1    Use JFormField instead
  */
 class JElement extends JObject
 {
@@ -27,7 +27,7 @@ class JElement extends JObject
 	 * This has to be set in the final
 	 * renderer classes.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $_name = null;
@@ -35,7 +35,7 @@ class JElement extends JObject
 	/**
 	 * Reference to the object that instantiated the element
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  11.1
 	 */
 	protected $_parent = null;
@@ -43,9 +43,9 @@ class JElement extends JObject
 	/**
 	 * Constructor
 	 *
-	 * @param	string  $parent  Element parent
+	 * @param   string  $parent  Element parent
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($parent = null)
 	{
@@ -60,8 +60,8 @@ class JElement extends JObject
 	 *
 	 * @return  string  type of the parameter
 	 *
-	 * @since	11.1
-	 * @deprecated	12.1
+	 * @since   11.1
+	 * @deprecated    12.1
 	 */
 	public function getName()
 	{
@@ -74,14 +74,14 @@ class JElement extends JObject
 	/**
 	 * Method to render an xml element
 	 *
-	 * @param	string  &$xmlElement	Name of the element
-	 * @param	string  $value		 Value of the element
-	 * @param	string  $control_name  Name of the control
+	 * @param   string  &$xmlElement   Name of the element
+	 * @param   string  $value         Value of the element
+	 * @param   string  $control_name  Name of the control
 	 *
 	 * @return  array  Attributes of an element
 	 *
-	 * @deprecated	12.1
-	 * @since	11.1
+	 * @deprecated    12.1
+	 * @since   11.1
 	 */
 	public function render(&$xmlElement, $value, $control_name = 'params')
 	{
@@ -107,16 +107,16 @@ class JElement extends JObject
 	/**
 	 * Method to get a tool tip from an XML element
 	 *
-	 * @param	string		$label		 Label attribute for the element
-	 * @param	string		$description	Description attribute for the element
-	 * @param	JXMLElement  &$xmlElement	The element object
-	 * @param	string		$control_name  Control name
-	 * @param	string		$name		  Name attribut
+	 * @param   string       $label         Label attribute for the element
+	 * @param   string       $description   Description attribute for the element
+	 * @param   JXMLElement  &$xmlElement   The element object
+	 * @param   string       $control_name  Control name
+	 * @param   string       $name          Name attribut
 	 *
 	 * @return  string
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function fetchTooltip($label, $description, &$xmlElement, $control_name = '', $name = '')
 	{
@@ -140,15 +140,15 @@ class JElement extends JObject
 	/**
 	 * Fetch an element
 	 *
-	 * @param	string		$name		  Name attribute of the element
-	 * @param	string		$value		 Value attribute of the element
-	 * @param	JXMLElement  &$xmlElement	Element object
-	 * @param	string		$control_name  Control name of the element
+	 * @param   string       $name          Name attribute of the element
+	 * @param   string       $value         Value attribute of the element
+	 * @param   JXMLElement  &$xmlElement   Element object
+	 * @param   string       $control_name  Control name of the element
 	 *
 	 * @return  void
 	 *
-	 * @deprecated	12.1
-	 * @since	11.1
+	 * @deprecated    12.1
+	 * @since   11.1
 	 */
 	public function fetchElement($name, $value, &$xmlElement, $control_name)
 	{

@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	Templates.hathor
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  * @since		1.6
  */
@@ -47,7 +47,7 @@ $saveOrder	= $listOrder == 'ordering';
 				<option value=""><?php echo JText::_('COM_PLUGINS_OPTION_FOLDER');?></option>
 				<?php echo JHtml::_('select.options', PluginsHelper::folderOptions(), 'value', 'text', $this->state->get('filter.folder'));?>
 			</select>
-			<label class="selectlabel" for="filter_access">
+            <label class="selectlabel" for="filter_access">
 				<?php echo JText::_('JOPTION_SELECT_ACCESS'); ?>
 			</label>
 			<select name="filter_access" class="inputbox" id="filter_access">
@@ -86,7 +86,7 @@ $saveOrder	= $listOrder == 'ordering';
 				<th class="nowrap width-10">
 					<?php echo JHtml::_('grid.sort', 'COM_PLUGINS_ELEMENT_HEADING', 'element', $listDirn, $listOrder); ?>
 				</th>
-				<th class="title access-col">
+                <th class="title access-col">
 					<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ACCESS', 'access', $listDirn, $listOrder); ?>
 				</th>
 				<th class="nowrap id-col">
@@ -144,7 +144,7 @@ $saveOrder	= $listOrder == 'ordering';
 				<td class="nowrap center">
 					<?php echo $this->escape($item->element);?>
 				</td>
-				<td class="center">
+                <td class="center">
 					<?php echo $this->escape($item->access_level); ?>
 				</td>
 				<td class="center">

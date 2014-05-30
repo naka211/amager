@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,16 +12,16 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Application helper functions
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
- * @since		11.1
+ * @since       11.1
  */
 class JApplicationHelper
 {
 	/**
 	 * Client information array
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected static $_clients = null;
@@ -29,11 +29,11 @@ class JApplicationHelper
 	/**
 	 * Return the name of the request component [main component]
 	 *
-	 * @param	string  $default  The default option
+	 * @param   string  $default  The default option
 	 *
 	 * @return  string  Option (e.g. com_something)
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getComponentName($default = null)
 	{
@@ -62,12 +62,12 @@ class JApplicationHelper
 	 * This method will return a client information array if called
 	 * with no arguments which can be used to add custom application information.
 	 *
-	 * @param	integer  $id	  A client identifier
-	 * @param	boolean  $byName  If True, find the client by its name
+	 * @param   integer  $id      A client identifier
+	 * @param   boolean  $byName  If True, find the client by its name
 	 *
 	 * @return  mixed  Object describing the client or false if not known
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getClientInfo($id = null, $byName = false)
 	{
@@ -126,11 +126,11 @@ class JApplicationHelper
 	/**
 	 * Adds information for a client.
 	 *
-	 * @param	mixed  $client  A client identifier either an array or object
+	 * @param   mixed  $client  A client identifier either an array or object
 	 *
 	 * @return  boolean  True if the information is added. False on error
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function addClientInfo($client)
 	{
@@ -159,12 +159,12 @@ class JApplicationHelper
 	/**
 	 * Get a path
 	 *
-	 * @param	string  $varname	  Identify location or type of xml
-	 * @param	string  $user_option  Option (e.g. com_something) used to find path.
+	 * @param   string  $varname      Identify location or type of xml
+	 * @param   string  $user_option  Option (e.g. com_something) used to find path.
 	 *
 	 * @return  string  The requested path
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.1
 	 */
 	public static function getPath($varname, $user_option = null)
@@ -284,13 +284,13 @@ class JApplicationHelper
 	 *
 	 * XML Root tag should be 'install' except for languages which use meta file.
 	 *
-	 * @param	string  $path  Full path to XML file.
+	 * @param   string  $path  Full path to XML file.
 	 *
 	 * @return  array  XML metadata.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  13.3  Use JInstaller::parseXMLInstallFile instead.
-	 * @note	This method must remain as is to allow updates from 2.5.4 and earlier sites to work.
+	 * @note    This method must remain as is to allow updates from 2.5.4 and earlier sites to work.
 	 */
 	public static function parseXMLInstallFile($path)
 	{
@@ -340,7 +340,7 @@ class JApplicationHelper
 	 *
 	 * XML Root tag  for languages which is meta file.
 	 *
-	 * @param	string  $path  Full path to XML file.
+	 * @param   string  $path  Full path to XML file.
 	 *
 	 * @return  array  XML metadata.
 	 */
@@ -386,12 +386,12 @@ class JApplicationHelper
 	/**
 	 * Tries to find a file in the administrator or site areas
 	 *
-	 * @param	string	$path		A file name
-	 * @param	integer  $checkAdmin  0 to check site only, 1 to check site and admin, -1 to check admin only
+	 * @param   string   $path        A file name
+	 * @param   integer  $checkAdmin  0 to check site only, 1 to check site and admin, -1 to check admin only
 	 *
-	 * @return  string	File name or null
+	 * @return  string   File name or null
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.1
 	 */
 	protected static function _checkPath($path, $checkAdmin = 1)

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Error
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -26,19 +26,19 @@ define('JERROR_ILLEGAL_MODE', 3);
  * - Sebastian Mordziol	<argh@php-tools.net>
  * - Stephan Schmidt		<scst@php-tools.net>
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Error
- * @since		11.1
- * @deprecated  12.1	Use PHP Exception
+ * @since       11.1
+ * @deprecated  12.1   Use PHP Exception
  */
 abstract class JError
 {
 	/**
 	 * Legacy error handling marker
 	 *
-	 * @var	boolean  True to enable legacy error handling using JError, false to use exception handling.  This flag
-	 *				  is present to allow an easy transition into exception handling for code written against the
-	 *				  existing JError API in Joomla.
+	 * @var    boolean  True to enable legacy error handling using JError, false to use exception handling.  This flag
+	 *                  is present to allow an easy transition into exception handling for code written against the
+	 *                  existing JError API in Joomla.
 	 * @since  11.1
 	 */
 	public static $legacy = false;
@@ -46,7 +46,7 @@ abstract class JError
 	/**
 	 * Array of message levels
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected static $levels = array(E_NOTICE => 'Notice', E_WARNING => 'Warning', E_ERROR => 'Error');
@@ -63,11 +63,11 @@ abstract class JError
 	 * Method to determine if a value is an exception object.  This check supports
 	 * both JException and PHP5 Exception objects
 	 *
-	 * @param	mixed  &$object  Object to check
+	 * @param   mixed  &$object  Object to check
 	 *
 	 * @return  boolean  True if argument is an exception, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
 	 * @deprecated  12.1
 	 */
@@ -83,12 +83,12 @@ abstract class JError
 	/**
 	 * Method for retrieving the last exception object in the error stack
 	 *
-	 * @param	boolean  $unset  True to remove the error from the stack.
+	 * @param   boolean  $unset  True to remove the error from the stack.
 	 *
 	 * @return  mixed  Last exception object in the error stack or boolean false if none exist
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getError($unset = false)
 	{
@@ -117,7 +117,7 @@ abstract class JError
 	 * @return  array  Chronological array of errors that have been stored during script execution
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getErrors()
 	{
@@ -130,11 +130,11 @@ abstract class JError
 	/**
 	 * Method to add non-JError thrown JExceptions to the JError stack for debugging purposes
 	 *
-	 * @param	JException  &$e  Add an exception to the stack.
+	 * @param   JException  &$e  Add an exception to the stack.
 	 *
 	 * @return  void
 	 *
-	 * @since		11.1
+	 * @since       11.1
 	 * @deprecated  12.1
 	 */
 	public static function addToStack(JException &$e)
@@ -148,21 +148,21 @@ abstract class JError
 	/**
 	 * Create a new JException object given the passed arguments
 	 *
-	 * @param	integer  $level	  The error level - use any of PHP's own error levels for
-	 *								this: E_ERROR, E_WARNING, E_NOTICE, E_USER_ERROR,
-	 *								E_USER_WARNING, E_USER_NOTICE.
-	 * @param	string	$code		The application-internal error code for this error
-	 * @param	string	$msg		The error message, which may also be shown the user if need be.
-	 * @param	mixed	$info		Optional: Additional error information (usually only
-	 *								developer-relevant information that the user should never see,
-	 *								like a database DSN).
-	 * @param	boolean  $backtrace  Add a stack backtrace to the exception.
+	 * @param   integer  $level      The error level - use any of PHP's own error levels for
+	 *                               this: E_ERROR, E_WARNING, E_NOTICE, E_USER_ERROR,
+	 *                               E_USER_WARNING, E_USER_NOTICE.
+	 * @param   string   $code       The application-internal error code for this error
+	 * @param   string   $msg        The error message, which may also be shown the user if need be.
+	 * @param   mixed    $info       Optional: Additional error information (usually only
+	 *                               developer-relevant information that the user should never see,
+	 *                               like a database DSN).
+	 * @param   boolean  $backtrace  Add a stack backtrace to the exception.
 	 *
-	 * @return  mixed	The JException object
+	 * @return  mixed    The JException object
 	 *
-	 * @since		11.1
+	 * @since       11.1
 	 * @deprecated  12.1  Use PHP Exception
-	 * @see		 JException
+	 * @see         JException
 	 */
 	public static function raise($level, $code, $msg, $info = null, $backtrace = false)
 	{
@@ -179,13 +179,13 @@ abstract class JError
 	/**
 	 * Throw an error
 	 *
-	 * @param	object  &$exception  An exception to throw.
+	 * @param   object  &$exception  An exception to throw.
 	 *
 	 * @return  reference
 	 *
 	 * @deprecated  12.1  Use PHP Exception
-	 * @see	 JException
-	 * @since	11.1
+	 * @see     JException
+	 * @since   11.1
 	 */
 	public static function throwError(&$exception)
 	{
@@ -231,17 +231,17 @@ abstract class JError
 	/**
 	 * Wrapper method for the raise() method with predefined error level of E_ERROR and backtrace set to true.
 	 *
-	 * @param	string  $code  The application-internal error code for this error
-	 * @param	string  $msg	The error message, which may also be shown the user if need be.
-	 * @param	mixed	$info  Optional: Additional error information (usually only
-	 *						 developer-relevant information that the user should
-	 *						 never see, like a database DSN).
+	 * @param   string  $code  The application-internal error code for this error
+	 * @param   string  $msg   The error message, which may also be shown the user if need be.
+	 * @param   mixed   $info  Optional: Additional error information (usually only
+	 *                         developer-relevant information that the user should
+	 *                         never see, like a database DSN).
 	 *
 	 * @return  object  $error  The configured JError object
 	 *
-	 * @deprecated	12.1		Use PHP Exception
-	 * @see		raise()
-	 * @since	11.1
+	 * @deprecated   12.1       Use PHP Exception
+	 * @see        raise()
+	 * @since   11.1
 	 */
 	public static function raiseError($code, $msg, $info = null)
 	{
@@ -255,18 +255,18 @@ abstract class JError
 	 * Wrapper method for the {@link raise()} method with predefined error level of E_WARNING and
 	 * backtrace set to false.
 	 *
-	 * @param	string  $code  The application-internal error code for this error
-	 * @param	string  $msg	The error message, which may also be shown the user if need be.
-	 * @param	mixed	$info  Optional: Additional error information (usually only
-	 *						 developer-relevant information that
-	 *						 the user should never see, like a database DSN).
+	 * @param   string  $code  The application-internal error code for this error
+	 * @param   string  $msg   The error message, which may also be shown the user if need be.
+	 * @param   mixed   $info  Optional: Additional error information (usually only
+	 *                         developer-relevant information that
+	 *                         the user should never see, like a database DSN).
 	 *
 	 * @return  object  The configured JError object
 	 *
 	 * @deprecated  12.1  Use PHP Exception
-	 * @see		JError
-	 * @see		raise()
-	 * @since	  11.1
+	 * @see        JError
+	 * @see        raise()
+	 * @since      11.1
 	 */
 	public static function raiseWarning($code, $msg, $info = null)
 	{
@@ -280,17 +280,17 @@ abstract class JError
 	 * Wrapper method for the {@link raise()} method with predefined error
 	 * level of E_NOTICE and backtrace set to false.
 	 *
-	 * @param	string  $code  The application-internal error code for this error
-	 * @param	string  $msg	The error message, which may also be shown the user if need be.
-	 * @param	mixed	$info  Optional: Additional error information (usually only
-	 *						 developer-relevant information that the user
-	 *						 should never see, like a database DSN).
+	 * @param   string  $code  The application-internal error code for this error
+	 * @param   string  $msg   The error message, which may also be shown the user if need be.
+	 * @param   mixed   $info  Optional: Additional error information (usually only
+	 *                         developer-relevant information that the user
+	 *                         should never see, like a database DSN).
 	 *
-	 * @return  object	The configured JError object
+	 * @return  object   The configured JError object
 	 *
-	 * @deprecated		12.1	Use PHP Exception
-	 * @see	 raise()
-	 * @since	11.1
+	 * @deprecated       12.1   Use PHP Exception
+	 * @see     raise()
+	 * @since   11.1
 	 */
 	public static function raiseNotice($code, $msg, $info = null)
 	{
@@ -303,13 +303,13 @@ abstract class JError
 	/**
 	 * Method to get the current error handler settings for a specified error level.
 	 *
-	 * @param	integer  $level  The error level to retrieve. This can be any of PHP's
-	 *							own error levels, e.g. E_ALL, E_NOTICE...
+	 * @param   integer  $level  The error level to retrieve. This can be any of PHP's
+	 *                           own error levels, e.g. E_ALL, E_NOTICE...
 	 *
-	 * @return  array	All error handling details
+	 * @return  array    All error handling details
 	 *
-	 * @deprecated	12.1  Use PHP Exception
-	 * @since	11.1
+	 * @deprecated   12.1  Use PHP Exception
+	 * @since   11.1
 	 */
 	public static function getErrorHandling($level)
 	{
@@ -337,14 +337,14 @@ abstract class JError
 	 * - E_ERROR | E_WARNING = Set the handling for errors and warnings
 	 * - E_ALL ^ E_ERROR = Set the handling for all levels except errors
 	 *
-	 * @param	integer  $level	The error level for which to set the error handling
-	 * @param	string	$mode	 The mode to use for the error handling.
-	 * @param	mixed	$options  Optional: Any options needed for the given mode.
+	 * @param   integer  $level    The error level for which to set the error handling
+	 * @param   string   $mode     The mode to use for the error handling.
+	 * @param   mixed    $options  Optional: Any options needed for the given mode.
 	 *
 	 * @return  mixed  True on success or a JException object if failed.
 	 *
 	 * @deprecated  12.1  Use PHP Exception
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function setErrorHandling($level, $mode, $options = null)
 	{
@@ -414,8 +414,8 @@ abstract class JError
 	 * @return  void
 	 *
 	 * @deprecated  12.1
-	 * @see	 set_error_handler
-	 * @since	11.1
+	 * @see     set_error_handler
+	 * @since   11.1
 	 */
 	public static function attachHandler()
 	{
@@ -431,8 +431,8 @@ abstract class JError
 	 * @return  void
 	 *
 	 * @deprecated  12.1
-	 * @see	 restore_error_handler
-	 * @since	11.1
+	 * @see     restore_error_handler
+	 * @since   11.1
 	 */
 	public static function detachHandler()
 	{
@@ -450,14 +450,14 @@ abstract class JError
 	 * - E_WARNING
 	 * - E_NOTICE
 	 *
-	 * @param	integer  $level	Error level to register
-	 * @param	string	$name	 Human readable name for the error level
-	 * @param	string	$handler  Error handler to set for the new error level [optional]
+	 * @param   integer  $level    Error level to register
+	 * @param   string   $name     Human readable name for the error level
+	 * @param   string   $handler  Error handler to set for the new error level [optional]
 	 *
 	 * @return  boolean  True on success; false if the level already has been registered
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function registerErrorLevel($level, $name, $handler = 'ignore')
 	{
@@ -479,12 +479,12 @@ abstract class JError
 	 * Translate an error level integer to a human readable string
 	 * e.g. E_ERROR will be translated to 'Error'
 	 *
-	 * @param	integer  $level  Error level to translate
+	 * @param   integer  $level  Error level to translate
 	 *
 	 * @return  mixed  Human readable error level name or boolean false if it doesn't exist
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 
 	public static function translateErrorLevel($level)
@@ -504,14 +504,14 @@ abstract class JError
 	 * Ignore error handler
 	 * - Ignores the error
 	 *
-	 * @param	object  &$error	Exception object to handle
-	 * @param	array	$options  Handler options
+	 * @param   object  &$error   Exception object to handle
+	 * @param   array   $options  Handler options
 	 *
-	 * @return  object	The exception object
+	 * @return  object   The exception object
 	 *
 	 * @deprecated  12.1
-	 * @see	 raise()
-	 * @since	11.1
+	 * @see     raise()
+	 * @since   11.1
 	 */
 	public static function handleIgnore(&$error, $options)
 	{
@@ -525,14 +525,14 @@ abstract class JError
 	 * Echo error handler
 	 * - Echos the error message to output
 	 *
-	 * @param	object  &$error	Exception object to handle
-	 * @param	array	$options  Handler options
+	 * @param   object  &$error   Exception object to handle
+	 * @param   array   $options  Handler options
 	 *
 	 * @return  object  The exception object
 	 *
 	 * @deprecated  12.1
-	 * @see		 raise()
-	 * @since		11.1
+	 * @see         raise()
+	 * @since       11.1
 	 */
 	public static function handleEcho(&$error, $options)
 	{
@@ -599,14 +599,14 @@ abstract class JError
 	 * Verbose error handler
 	 * - Echos the error message to output as well as related info
 	 *
-	 * @param	object  &$error	Exception object to handle
-	 * @param	array	$options  Handler options
+	 * @param   object  &$error   Exception object to handle
+	 * @param   array   $options  Handler options
 	 *
 	 * @return  object  The exception object
 	 *
 	 * @deprecated  12.1
-	 * @see		 raise()
-	 * @since		11.1
+	 * @see         raise()
+	 * @since       11.1
 	 */
 	public static function handleVerbose(&$error, $options)
 	{
@@ -646,14 +646,14 @@ abstract class JError
 	 * Die error handler
 	 * - Echos the error message to output and then dies
 	 *
-	 * @param	object  &$error	Exception object to handle
-	 * @param	array	$options  Handler options
+	 * @param   object  &$error   Exception object to handle
+	 * @param   array   $options  Handler options
 	 *
 	 * @return  object  The exception object
 	 *
 	 * @deprecated  12.1
-	 * @see		 raise()
-	 * @since		11.1
+	 * @see         raise()
+	 * @since       11.1
 	 */
 	public static function handleDie(&$error, $options)
 	{
@@ -688,14 +688,14 @@ abstract class JError
 	 * Message error handler
 	 * Enqueues the error message into the system queue
 	 *
-	 * @param	object  &$error	Exception object to handle
-	 * @param	array	$options  Handler options
+	 * @param   object  &$error   Exception object to handle
+	 * @param   array   $options  Handler options
 	 *
 	 * @return  object  The exception object
 	 *
 	 * @deprecated  12.1
-	 * @see		 raise()
-	 * @since		11.1
+	 * @see         raise()
+	 * @since       11.1
 	 */
 	public static function handleMessage(&$error, $options)
 	{
@@ -713,14 +713,14 @@ abstract class JError
 	 * Log error handler
 	 * Logs the error message to a system log file
 	 *
-	 * @param	object  &$error	Exception object to handle
-	 * @param	array	$options  Handler options
+	 * @param   object  &$error   Exception object to handle
+	 * @param   array   $options  Handler options
 	 *
 	 * @return  object  The exception object
 	 *
 	 * @deprecated  12.1
-	 * @see		 raise()
-	 * @since		11.1
+	 * @see         raise()
+	 * @since       11.1
 	 */
 	public static function handleLog(&$error, $options)
 	{
@@ -748,14 +748,14 @@ abstract class JError
 	 * Callback error handler
 	 * - Send the error object to a callback method for error handling
 	 *
-	 * @param	object  &$error	Exception object to handle
-	 * @param	array	$options  Handler options
+	 * @param   object  &$error   Exception object to handle
+	 * @param   array   $options  Handler options
 	 *
 	 * @return  object  The exception object
 	 *
 	 * @deprecated  12.1
-	 * @see		 raise()
-	 * @since		11.1
+	 * @see         raise()
+	 * @since       11.1
 	 */
 	public static function handleCallback(&$error, $options)
 	{
@@ -768,12 +768,12 @@ abstract class JError
 	/**
 	 * Display a custom error page and exit gracefully
 	 *
-	 * @param	object  &$error  Exception object
+	 * @param   object  &$error  Exception object
 	 *
 	 * @return  void
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function customErrorPage(&$error)
 	{
@@ -793,8 +793,14 @@ abstract class JError
 			// Push the error object into the document
 			$document->setError($error);
 
+			// If site is offline and it's a 404 error, just go to index (to see offline message, instead of 404)
+			if ($error->getCode() == '404' && JFactory::getConfig()->get('offline') == 1)
+			{
+				JFactory::getApplication()->redirect('index.php');
+			}
+
 			@ob_end_clean();
-			$document->setTitle(JText::_('Error') . ': ' . $error->get('code'));
+			$document->setTitle(JText::_('Error') . ': ' . $error->getCode());
 			$data = $document->render(false, array('template' => $template, 'directory' => JPATH_THEMES, 'debug' => $config->get('debug')));
 
 			// Failsafe to get the error displayed.
@@ -823,15 +829,15 @@ abstract class JError
 	/**
 	 * Display a message to the user
 	 *
-	 * @param	integer  $level  The error level - use any of PHP's own error levels
-	 *					for this: E_ERROR, E_WARNING, E_NOTICE, E_USER_ERROR,
-	 *					E_USER_WARNING, E_USER_NOTICE.
-	 * @param	string	$msg	Error message, shown to user if need be.
+	 * @param   integer  $level  The error level - use any of PHP's own error levels
+	 *                   for this: E_ERROR, E_WARNING, E_NOTICE, E_USER_ERROR,
+	 *                   E_USER_WARNING, E_USER_NOTICE.
+	 * @param   string   $msg    Error message, shown to user if need be.
 	 *
 	 * @return  void
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function customErrorHandler($level, $msg)
 	{
@@ -844,12 +850,12 @@ abstract class JError
 	/**
 	 * Render the backtrace
 	 *
-	 * @param	integer  $error  The error
+	 * @param   integer  $error  The error
 	 *
 	 * @return  string  Contents of the backtrace
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function renderBacktrace($error)
 	{

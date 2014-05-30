@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Access
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,16 +12,16 @@ defined('JPATH_PLATFORM') or die;
 /**
  * JAccessRule class.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Access
- * @since		11.4
+ * @since       11.4
  */
 class JAccessRule
 {
 	/**
 	 * A named array
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $data = array();
@@ -32,9 +32,9 @@ class JAccessRule
 	 * The input array must be in the form: array(-42 => true, 3 => true, 4 => false)
 	 * or an equivalent JSON encoded string.
 	 *
-	 * @param	mixed  $identities  A JSON format string (probably from the database) or a named array.
+	 * @param   mixed  $identities  A JSON format string (probably from the database) or a named array.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($identities)
 	{
@@ -52,7 +52,7 @@ class JAccessRule
 	 *
 	 * @return  array  A named array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getData()
 	{
@@ -62,11 +62,11 @@ class JAccessRule
 	/**
 	 * Merges the identities
 	 *
-	 * @param	mixed  $identities  An integer or array of integers representing the identities to check.
+	 * @param   mixed  $identities  An integer or array of integers representing the identities to check.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function mergeIdentities($identities)
 	{
@@ -87,12 +87,12 @@ class JAccessRule
 	/**
 	 * Merges the values for an identity.
 	 *
-	 * @param	integer  $identity  The identity.
-	 * @param	boolean  $allow	 The value for the identity (true == allow, false == deny).
+	 * @param   integer  $identity  The identity.
+	 * @param   boolean  $allow     The value for the identity (true == allow, false == deny).
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function mergeIdentity($identity, $allow)
 	{
@@ -120,11 +120,11 @@ class JAccessRule
 	 * The identity is an integer where +ve represents a user group,
 	 * and -ve represents a user.
 	 *
-	 * @param	mixed  $identities  An integer or array of integers representing the identities to check.
+	 * @param   mixed  $identities  An integer or array of integers representing the identities to check.
 	 *
 	 * @return  mixed  True if allowed, false for an explicit deny, null for an implicit deny.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function allow($identities)
 	{
@@ -167,7 +167,7 @@ class JAccessRule
 	 *
 	 * @return  string  JSON encoded string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __toString()
 	{
@@ -178,9 +178,9 @@ class JAccessRule
 /**
  * Deprecated class placeholder.  You should use JAccessRule instead.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Access
- * @since		11.1
+ * @since       11.1
  * @deprecated  12.3
  */
 class JRule extends JAccessRule
@@ -191,9 +191,9 @@ class JRule extends JAccessRule
 	 * The input array must be in the form: array(-42 => true, 3 => true, 4 => false)
 	 * or an equivalent JSON encoded string.
 	 *
-	 * @param	mixed  $identities  A JSON format string (probably from the database) or a named array.
+	 * @param   mixed  $identities  A JSON format string (probably from the database) or a named array.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3
 	 */
 	public function __construct($identities)

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Plugin
+ * @package     Joomla.Plugin
  * @subpackage  System.Highlight
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_BASE') or die;
@@ -14,9 +14,9 @@ jimport('joomla.application.component.helper');
 /**
  * System plugin to highlight terms.
  *
- * @package	 Joomla.Plugin
+ * @package     Joomla.Plugin
  * @subpackage  System.Highlight
- * @since		2.5
+ * @since       2.5
  */
 class PlgSystemHighlight extends JPlugin
 {
@@ -29,7 +29,7 @@ class PlgSystemHighlight extends JPlugin
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function onAfterDispatch()
 	{
@@ -57,7 +57,7 @@ class PlgSystemHighlight extends JPlugin
 
 		// Get the terms to highlight from the request.
 		$terms = $input->request->get('highlight', null, 'base64');
-		$terms = $terms ? unserialize(base64_decode($terms)) : null;
+		$terms = $terms ? json_decode(base64_decode($terms)) : null;
 
 		// Check the terms.
 		if (empty($terms))
@@ -71,7 +71,7 @@ class PlgSystemHighlight extends JPlugin
 		$cleanTerms = array();
 		foreach ($terms as $term)
 		{
-			$cleanTerms[] = $filter->clean($term, 'string');
+			$cleanTerms[] = htmlspecialchars($filter->clean($term, 'string'));
 		}
 
 		// Activate the highlighter.

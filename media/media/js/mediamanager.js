@@ -1,5 +1,5 @@
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -22,17 +22,17 @@ var MediaManager = this.MediaManager = {
 
 		this.frame		= window.frames['folderframe'];
 		this.frameurl	= this.frame.location.href;
-		//this.frameurl	= window.frames['folderframe'].location.href;
+		//this.frameurl   = window.frames['folderframe'].location.href;
 
 		this.tree = new MooTreeControl({ div: 'media-tree_tree', mode: 'folders', grid: true, theme: '../media/system/images/mootree.gif', onClick:
 				function(node){
 					target = node.data.target != null ? node.data.target : '_self';
 
 					// Get the current URL.
-						uri = this._getUriObject(this.frameurl);
-						current	= uri.file+'?'+uri.query;
+				   	uri = this._getUriObject(this.frameurl);
+				   	current	= uri.file+'?'+uri.query;
 
-					if (current != 'undefined?undefined' && current != node.data.url) {
+					if (current != 'undefined?undefined' && current != encodeURI(node.data.url)) {
 						window.frames[target].location.href = node.data.url;
 					}
 				}.bind(this)
@@ -142,8 +142,8 @@ var MediaManager = this.MediaManager = {
 			var key = unescape( KeyVal[0] );
 			var val = unescape( KeyVal[1] ).replace(/\+ /g, ' ');
 			params[key] = val;
-		}
-		return params;
+	   }
+	   return params;
 	},
 
 	_setFrameUrl: function(url)

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,16 +14,16 @@ jimport('joomla.database.table');
 /**
  * Users table
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Table
- * @since		11.1
+ * @since       11.1
  */
 class JTableUser extends JTable
 {
 	/**
 	 * Associative array of user names => group ids
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	public $groups;
@@ -31,7 +31,7 @@ class JTableUser extends JTable
 	/**
 	 * Constructor
 	 *
-	 * @param	JDatabase  &$db  A database connector object.
+	 * @param   JDatabase  &$db  A database connector object.
 	 *
 	 * @since  11.1
 	 */
@@ -48,13 +48,13 @@ class JTableUser extends JTable
 	 * Method to load a user, user groups, and any other necessary data
 	 * from the database so that it can be bound to the user object.
 	 *
-	 * @param	integer  $userId  An optional user id.
-	 * @param	boolean  $reset	False if row not found or on error
+	 * @param   integer  $userId  An optional user id.
+	 * @param   boolean  $reset   False if row not found or on error
 	 * (internal error state set in that case).
 	 *
 	 * @return  boolean  True on success, false on failure.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function load($userId = null, $reset = true)
 	{
@@ -126,12 +126,12 @@ class JTableUser extends JTable
 	/**
 	 * Method to bind the user, user groups, and any other necessary data.
 	 *
-	 * @param	array  $array	The data to bind.
-	 * @param	mixed  $ignore  An array or space separated list of fields to ignore.
+	 * @param   array  $array   The data to bind.
+	 * @param   mixed  $ignore  An array or space separated list of fields to ignore.
 	 *
 	 * @return  boolean  True on success, false on failure.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function bind($array, $ignore = '')
 	{
@@ -177,7 +177,7 @@ class JTableUser extends JTable
 	 *
 	 * @return  boolean  True if satisfactory
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function check()
 	{
@@ -194,7 +194,8 @@ class JTableUser extends JTable
 			return false;
 		}
 
-		if (preg_match("#[<>\"'%;()&]#i", $this->username) || strlen(utf8_decode($this->username)) < 2)
+		if (preg_match('#[<>"\'%;()&\\\\]|\\.\\./#', $this->username) || strlen(utf8_decode($this->username)) < 2
+			|| trim($this->username) != $this->username)
 		{
 			$this->setError(JText::sprintf('JLIB_DATABASE_ERROR_VALID_AZ09', 2));
 			return false;
@@ -270,12 +271,12 @@ class JTableUser extends JTable
 	 * a new row will be inserted into the database with the properties from the
 	 * JTable instance.
 	 *
-	 * @param	boolean  $updateNulls  True to update fields even if they are null.
+	 * @param   boolean  $updateNulls  True to update fields even if they are null.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @link	http://docs.joomla.org/JTable/store
-	 * @since	11.1
+	 * @link    http://docs.joomla.org/JTable/store
+	 * @since   11.1
 	 */
 	public function store($updateNulls = false)
 	{
@@ -351,11 +352,11 @@ class JTableUser extends JTable
 	/**
 	 * Method to delete a user, user groups, and any other necessary data from the database.
 	 *
-	 * @param	integer  $userId  An optional user id.
+	 * @param   integer  $userId  An optional user id.
 	 *
 	 * @return  boolean  True on success, false on failure.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function delete($userId = null)
 	{
@@ -434,12 +435,12 @@ class JTableUser extends JTable
 	/**
 	 * Updates last visit time of user
 	 *
-	 * @param	integer  $timeStamp  The timestamp, defaults to 'now'.
-	 * @param	integer  $userId	 The user id (optional).
+	 * @param   integer  $timeStamp  The timestamp, defaults to 'now'.
+	 * @param   integer  $userId     The user id (optional).
 	 *
 	 * @return  boolean  False if an error occurs
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setLastVisit($timeStamp = null, $userId = null)
 	{

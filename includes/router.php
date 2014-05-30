@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	Application
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -343,7 +343,7 @@ class JRouterSite extends JRouter
 		if (file_exists($path) && !empty($query)) {
 			require_once $path;
 			$function	= substr($component, 4).'BuildRoute';
-			$function	= str_replace(array("-", "."), "", $function);
+			$function   = str_replace(array("-", "."), "", $function);
 			$parts		= $function($query);
 
 			// encode the route segments

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,20 +12,20 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Utility class working with users
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
- * @since		11.4
+ * @since       11.4
  */
 abstract class JHtmlUser
 {
 	/**
 	 * Displays a list of user groups.
 	 *
-	 * @param	boolean  true to include super admin groups, false to exclude them
+	 * @param   boolean  true to include super admin groups, false to exclude them
 	 *
 	 * @return  array  An array containing a list of user groups.
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 */
 	public static function groups($includeSuperAdmin = false)
 	{
@@ -74,7 +74,7 @@ abstract class JHtmlUser
 	 *
 	 * @return  string
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 */
 	public static function userlist()
 	{

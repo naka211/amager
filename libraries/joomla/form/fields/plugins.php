@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,16 +14,16 @@ JFormHelper::loadFieldClass('list');
 /**
  * Form Field class for the Joomla Framework.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
- * @since		11.4
+ * @since       11.4
  */
 class JFormFieldPlugins extends JFormFieldList
 {
 	/**
 	 * The field type.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.4
 	 */
 	protected $type = 'Plugins';
@@ -33,7 +33,7 @@ class JFormFieldPlugins extends JFormFieldList
 	 *
 	 * @return	array		An array of JHtml options.
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 */
 	protected function getOptions()
 	{
@@ -43,7 +43,7 @@ class JFormFieldPlugins extends JFormFieldList
 		if (!empty($folder))
 		{
 			// Get list of plugins
-			$db	 = JFactory::getDbo();
+			$db     = JFactory::getDbo();
 			$query  = $db->getQuery(true);
 			$query->select('element AS value, name AS text');
 			$query->from('#__extensions');
@@ -59,10 +59,8 @@ class JFormFieldPlugins extends JFormFieldList
 			{
 				$source = JPATH_PLUGINS . '/' . $folder . '/' . $item->value;
 				$extension = 'plg_' . $folder . '_' . $item->value;
-					$lang->load($extension . '.sys', JPATH_ADMINISTRATOR, null, false, false)
-				||	$lang->load($extension . '.sys', $source, null, false, false)
-				||	$lang->load($extension . '.sys', JPATH_ADMINISTRATOR, $lang->getDefault(), false, false)
-				||	$lang->load($extension . '.sys', $source, $lang->getDefault(), false, false);
+					$lang->load($extension . '.sys', JPATH_ADMINISTRATOR, null, false, true)
+				||	$lang->load($extension . '.sys', $source, null, false, true);
 				$options[$i]->text = JText::_($item->text);
 			}
 

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Session
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,16 +12,16 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Custom session storage handler for PHP
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Session
- * @see		 http://www.php.net/manual/en/function.session-set-save-handler.php
- * @todo		When dropping compatibility with PHP 5.3 use the SessionHandlerInterface and the SessionHandler class
- * @since		11.1
+ * @see         http://www.php.net/manual/en/function.session-set-save-handler.php
+ * @todo        When dropping compatibility with PHP 5.3 use the SessionHandlerInterface and the SessionHandler class
+ * @since       11.1
  */
 abstract class JSessionStorage extends JObject
 {
 	/**
-	 * @var	array  JSessionStorage instances container.
+	 * @var    array  JSessionStorage instances container.
 	 * @since  11.3
 	 */
 	protected static $instances = array();
@@ -29,9 +29,9 @@ abstract class JSessionStorage extends JObject
 	/**
 	 * Constructor
 	 *
-	 * @param	array  $options  Optional parameters.
+	 * @param   array  $options  Optional parameters.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($options = array())
 	{
@@ -41,12 +41,12 @@ abstract class JSessionStorage extends JObject
 	/**
 	 * Returns a session storage handler object, only creating it if it doesn't already exist.
 	 *
-	 * @param	string  $name	 The session store to instantiate
-	 * @param	array	$options  Array of options
+	 * @param   string  $name     The session store to instantiate
+	 * @param   array   $options  Array of options
 	 *
 	 * @return  JSessionStorage
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getInstance($name = 'none', $options = array())
 	{
@@ -82,7 +82,7 @@ abstract class JSessionStorage extends JObject
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function register()
 	{
@@ -96,12 +96,12 @@ abstract class JSessionStorage extends JObject
 	/**
 	 * Open the SessionHandler backend.
 	 *
-	 * @param	string  $save_path	 The path to the session object.
-	 * @param	string  $session_name  The name of the session.
+	 * @param   string  $save_path     The path to the session object.
+	 * @param   string  $session_name  The name of the session.
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function open($save_path, $session_name)
 	{
@@ -113,7 +113,7 @@ abstract class JSessionStorage extends JObject
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function close()
 	{
@@ -124,11 +124,11 @@ abstract class JSessionStorage extends JObject
 	 * Read the data for a particular session identifier from the
 	 * SessionHandler backend.
 	 *
-	 * @param	string  $id  The session identifier.
+	 * @param   string  $id  The session identifier.
 	 *
 	 * @return  string  The session data.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function read($id)
 	{
@@ -138,12 +138,12 @@ abstract class JSessionStorage extends JObject
 	/**
 	 * Write session data to the SessionHandler backend.
 	 *
-	 * @param	string  $id			The session identifier.
-	 * @param	string  $session_data  The session data.
+	 * @param   string  $id            The session identifier.
+	 * @param   string  $session_data  The session data.
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function write($id, $session_data)
 	{
@@ -154,11 +154,11 @@ abstract class JSessionStorage extends JObject
 	 * Destroy the data for a particular session identifier in the
 	 * SessionHandler backend.
 	 *
-	 * @param	string  $id  The session identifier.
+	 * @param   string  $id  The session identifier.
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function destroy($id)
 	{
@@ -168,11 +168,11 @@ abstract class JSessionStorage extends JObject
 	/**
 	 * Garbage collect stale sessions from the SessionHandler backend.
 	 *
-	 * @param	integer  $maxlifetime  The maximum age of a session.
+	 * @param   integer  $maxlifetime  The maximum age of a session.
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function gc($maxlifetime = null)
 	{
@@ -184,7 +184,7 @@ abstract class JSessionStorage extends JObject
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function test()
 	{

@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -186,7 +186,7 @@ class UsersControllerReset extends UsersController
 			// Get the route to the next page.
 			$itemid = UsersHelperRoute::getLoginRoute();
 			$itemid = $itemid !== null ? '&Itemid='.$itemid : '';
-			$route	= 'index.php?option=com_users&view=reset&layout=complete&complete=1';
+			$route	= 'index.php?option=com_users&view=login'.$itemid;
 
 			// Proceed to the login form.
 			$message = JText::_('COM_USERS_RESET_COMPLETE_SUCCESS');

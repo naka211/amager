@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -15,10 +15,10 @@ JFormHelper::loadFieldClass('list');
  * Form Field class for the Joomla Platform.
  * Provides a list of installed editors.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
- * @see		 JFormFieldEditor
- * @since		11.1
+ * @see         JFormFieldEditor
+ * @since       11.1
  * @deprecated  21.1 Use JFormFieldPlugins instead (with folder="editors")
  */
 class JFormFieldEditors extends JFormFieldList
@@ -26,7 +26,7 @@ class JFormFieldEditors extends JFormFieldList
 	/**
 	 * The form field type.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $type = 'Editors';
@@ -36,7 +36,7 @@ class JFormFieldEditors extends JFormFieldList
 	 *
 	 * @return  array  The field option objects.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function getOptions()
 	{
@@ -59,10 +59,8 @@ class JFormFieldEditors extends JFormFieldList
 		$lang = JFactory::getLanguage();
 		foreach ($options as $i => $option)
 		{
-			$lang->load('plg_editors_' . $option->value, JPATH_ADMINISTRATOR, null, false, false)
-				|| $lang->load('plg_editors_' . $option->value, JPATH_PLUGINS . '/editors/' . $option->value, null, false, false)
-				|| $lang->load('plg_editors_' . $option->value, JPATH_ADMINISTRATOR, $lang->getDefault(), false, false)
-				|| $lang->load('plg_editors_' . $option->value, JPATH_PLUGINS . '/editors/' . $option->value, $lang->getDefault(), false, false);
+				$lang->load('plg_editors_' . $option->value, JPATH_ADMINISTRATOR, null, false, true)
+			||	$lang->load('plg_editors_' . $option->value, JPATH_PLUGINS . '/editors/' . $option->value, null, false, true);
 			$options[$i]->text = JText::_($option->text);
 		}
 

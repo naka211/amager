@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -14,19 +14,19 @@ jimport('joomla.application.component.modellist');
 /**
  * Filters model class for Finder.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderModelFilters extends JModelList
 {
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  $config  An associative array of configuration settings. [optional]
+	 * @param   array  $config  An associative array of configuration settings. [optional]
 	 *
-	 * @since	2.5
-	 * @see	 JController
+	 * @since   2.5
+	 * @see     JController
 	 */
 	public function __construct($config = array())
 	{
@@ -50,7 +50,7 @@ class FinderModelFilters extends JModelList
 	 *
 	 * @return  JDatabaseQuery  A JDatabaseQuery object
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function getListQuery()
 	{
@@ -94,11 +94,11 @@ class FinderModelFilters extends JModelList
 	 * different modules that might need different sets of data or different
 	 * ordering requirements.
 	 *
-	 * @param	string  $id  A prefix for the store id. [optional]
+	 * @param   string  $id  A prefix for the store id. [optional]
 	 *
 	 * @return  string  A store id.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function getStoreId($id = '')
 	{
@@ -112,12 +112,12 @@ class FinderModelFilters extends JModelList
 	/**
 	 * Method to auto-populate the model state.  Calling getState in this method will result in recursion.
 	 *
-	 * @param	string  $ordering	An optional ordering field. [optional]
-	 * @param	string  $direction  An optional direction. [optional]
+	 * @param   string  $ordering   An optional ordering field. [optional]
+	 * @param   string  $direction  An optional direction. [optional]
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{

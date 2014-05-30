@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,31 +14,31 @@ require_once dirname(__FILE__) . '/list.php';
 /**
  * Parameter to display a list of the layouts for a component view from the extension or default template overrides.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Parameter
- * @see		 JFormFieldComponentLayout
- * @note		When replacing take note that JFormFieldComponentLayout does not end in s.
- * @since		11.1
+ * @see         JFormFieldComponentLayout
+ * @note        When replacing take note that JFormFieldComponentLayout does not end in s.
+ * @since       11.1
  * @deprecated  Use JFormFieldComponentLayouts instead
  */
 class JElementComponentLayouts extends JElementList
 {
 	/**
-	 * @var	string
+	 * @var    string
 	 */
 	protected $_name = 'ComponentLayouts';
 
 	/**
 	 * Get the options for the list.
 	 *
-	 * @param	JXMLElement  &$node  JXMLElement node object containing the settings for the element
+	 * @param   JXMLElement  &$node  JXMLElement node object containing the settings for the element
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
 	 * @deprecated  12.1
-	 * @see		 JFormFieldComponentLayout
+	 * @see         JFormFieldComponentLayout
 	 */
 	protected function _getOptions(&$node)
 	{

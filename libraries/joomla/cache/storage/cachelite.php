@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Cache
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,31 +12,31 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Cache lite storage handler
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Cache
- * @see		 http://pear.php.net/package/Cache_Lite/
- * @since		11.1
+ * @see         http://pear.php.net/package/Cache_Lite/
+ * @since       11.1
  */
 class JCacheStorageCachelite extends JCacheStorage
 {
 	/**
-	 * @var	object
+	 * @var    object
 	 * @since  11.1
 	 */
 	protected static $CacheLiteInstance = null;
 
 	/**
 	 * @var
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected $_root;
 
 	/**
 	 * Constructor
 	 *
-	 * @param	array  $options  Optional parameters.
+	 * @param   array  $options  Optional parameters.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($options = array())
 	{
@@ -64,11 +64,11 @@ class JCacheStorageCachelite extends JCacheStorage
 	 * Only initializes the engine if it does not already exist.
 	 * Note this is a protected method
 	 *
-	 * @param	array  $cloptions  optional parameters
+	 * @param   array  $cloptions  optional parameters
 	 *
 	 * @return  object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function initCache($cloptions)
 	{
@@ -82,13 +82,13 @@ class JCacheStorageCachelite extends JCacheStorage
 	/**
 	 * Get cached data from a file by id and group
 	 *
-	 * @param	string	$id		 The cache data id.
-	 * @param	string	$group	  The cache data group.
-	 * @param	boolean  $checkTime  True to verify cache time expiration threshold.
+	 * @param   string   $id         The cache data id.
+	 * @param   string   $group      The cache data group.
+	 * @param   boolean  $checkTime  True to verify cache time expiration threshold.
 	 *
 	 * @return  mixed  Boolean false on failure or a cached data string.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function get($id, $group, $checkTime = true)
 	{
@@ -105,7 +105,7 @@ class JCacheStorageCachelite extends JCacheStorage
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getAll()
 	{
@@ -135,13 +135,13 @@ class JCacheStorageCachelite extends JCacheStorage
 	/**
 	 * Store the data to a file by id and group
 	 *
-	 * @param	string  $id	 The cache data id.
-	 * @param	string  $group  The cache data group.
-	 * @param	string  $data	The data to store in cache.
+	 * @param   string  $id     The cache data id.
+	 * @param   string  $group  The cache data group.
+	 * @param   string  $data   The data to store in cache.
 	 *
 	 * @return  boolean  True on success, false otherwise
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function store($id, $group, $data)
 	{
@@ -178,12 +178,12 @@ class JCacheStorageCachelite extends JCacheStorage
 	/**
 	 * Remove a cached data file by id and group
 	 *
-	 * @param	string  $id	 The cache data id
-	 * @param	string  $group  The cache data group
+	 * @param   string  $id     The cache data id
+	 * @param   string  $group  The cache data group
 	 *
 	 * @return  boolean  True on success, false otherwise
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function remove($id, $group)
 	{
@@ -204,14 +204,14 @@ class JCacheStorageCachelite extends JCacheStorage
 	/**
 	 * Clean cache for a group given a mode.
 	 *
-	 * @param	string  $group  The cache data group.
-	 * @param	string  $mode	The mode for cleaning cache [group|notgroup].
-	 * group mode	: cleans all cache in the group
+	 * @param   string  $group  The cache data group.
+	 * @param   string  $mode   The mode for cleaning cache [group|notgroup].
+	 * group mode    : cleans all cache in the group
 	 * notgroup mode : cleans all cache not in the group
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function clean($group, $mode = null)
 	{
@@ -279,7 +279,7 @@ class JCacheStorageCachelite extends JCacheStorage
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function gc()
 	{
@@ -316,7 +316,7 @@ class JCacheStorageCachelite extends JCacheStorage
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function test()
 	{

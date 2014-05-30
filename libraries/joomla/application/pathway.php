@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,26 +14,26 @@ defined('JPATH_PLATFORM') or die;
  *
  * The user's navigated path within the application.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
- * @since		11.1
+ * @since       11.1
  */
 class JPathway extends JObject
 {
 	/**
-	 * @var	array  Array to hold the pathway item objects
+	 * @var    array  Array to hold the pathway item objects
 	 * @since  11.1
 	 */
 	protected $_pathway = null;
 
 	/**
-	 * @var	integer  Integer number of items in the pathway
+	 * @var    integer  Integer number of items in the pathway
 	 * @since  11.1
 	 */
 	protected $_count = 0;
 
 	/**
-	 * @var	array  JPathway instances container.
+	 * @var    array  JPathway instances container.
 	 * @since  11.3
 	 */
 	protected static $instances = array();
@@ -41,9 +41,9 @@ class JPathway extends JObject
 	/**
 	 * Class constructor
 	 *
-	 * @param	array  $options  The class options.
+	 * @param   array  $options  The class options.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($options = array())
 	{
@@ -54,12 +54,12 @@ class JPathway extends JObject
 	/**
 	 * Returns a JPathway object
 	 *
-	 * @param	string  $client	The name of the client
-	 * @param	array	$options  An associative array of options
+	 * @param   string  $client   The name of the client
+	 * @param   array   $options  An associative array of options
 	 *
 	 * @return  JPathway  A JPathway object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getInstance($client, $options = array())
 	{
@@ -94,7 +94,7 @@ class JPathway extends JObject
 	 *
 	 * @return  array  Array of pathway items
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getPathway()
 	{
@@ -107,11 +107,11 @@ class JPathway extends JObject
 	/**
 	 * Set the JPathway items array.
 	 *
-	 * @param	array  $pathway  An array of pathway objects.
+	 * @param   array  $pathway  An array of pathway objects.
 	 *
 	 * @return  array  The previous pathway data.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setPathway($pathway)
 	{
@@ -129,7 +129,7 @@ class JPathway extends JObject
 	 *
 	 * @return  array  Array of names of pathway items
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getPathwayNames()
 	{
@@ -149,12 +149,12 @@ class JPathway extends JObject
 	/**
 	 * Create and add an item to the pathway.
 	 *
-	 * @param	string  $name  The name of the item.
-	 * @param	string  $link  The link to the item.
+	 * @param   string  $name  The name of the item.
+	 * @param   string  $link  The link to the item.
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function addItem($name, $link = '')
 	{
@@ -173,12 +173,12 @@ class JPathway extends JObject
 	/**
 	 * Set item name.
 	 *
-	 * @param	integer  $id	The id of the item on which to set the name.
-	 * @param	string	$name  The name to set.
+	 * @param   integer  $id    The id of the item on which to set the name.
+	 * @param   string   $name  The name to set.
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setItemName($id, $name)
 	{
@@ -197,12 +197,12 @@ class JPathway extends JObject
 	/**
 	 * Create and return a new pathway object.
 	 *
-	 * @param	string  $name  Name of the item
-	 * @param	string  $link  Link to the item
+	 * @param   string  $name  Name of the item
+	 * @param   string  $link  Link to the item
 	 *
 	 * @return  JPathway  Pathway item object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _makeItem($name, $link)
 	{

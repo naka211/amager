@@ -1890,13 +1890,13 @@ var regexp = new RegExp(
 puts "\t\t" + DATA.read.gsub(/\(\?x\)|\s+#.*$|\s+|\\$|\\n/,'')
 __END__
 	"(?x)^(?:\
-	  \\s* ( , ) \\s*				# Separator		  \n\
-	| \\s* ( <combinator>+ ) \\s*	# Combinator		 \n\
-	|	  ( \\s+ )				 # CombinatorChildren \n\
-	|	  ( <unicode>+ | \\* )	 # Tag				\n\
-	| \\#  ( <unicode>+		)	 # ID				 \n\
-	| \\.  ( <unicode>+		)	 # ClassName		  \n\
-	|								# Attribute		  \n\
+	  \\s* ( , ) \\s*               # Separator          \n\
+	| \\s* ( <combinator>+ ) \\s*   # Combinator         \n\
+	|      ( \\s+ )                 # CombinatorChildren \n\
+	|      ( <unicode>+ | \\* )     # Tag                \n\
+	| \\#  ( <unicode>+       )     # ID                 \n\
+	| \\.  ( <unicode>+       )     # ClassName          \n\
+	|                               # Attribute          \n\
 	\\[  \
 		\\s* (<unicode1>+)  (?:  \
 			\\s* ([*^$!~|]?=)  (?:  \
@@ -1906,7 +1906,7 @@ __END__
 			)  \
 		)?  \\s*  \
 	\\](?!\\]) \n\
-	|	:+ ( <unicode>+ )(?:\
+	|   :+ ( <unicode>+ )(?:\
 	\\( (?:\
 		(?:([\"'])([^\\12]*)\\12)|((?:\\([^)]+\\)|[^()]*)+)\
 	) \\)\
@@ -1992,10 +1992,10 @@ function parser(
 		var test, regexp;
 
 		switch (attributeOperator){
-			case '^=' : regexp = new RegExp(		'^'+ escapeRegExp(attributeValue)			); break;
-			case '$=' : regexp = new RegExp(			escapeRegExp(attributeValue) +'$'		); break;
+			case '^=' : regexp = new RegExp(       '^'+ escapeRegExp(attributeValue)            ); break;
+			case '$=' : regexp = new RegExp(            escapeRegExp(attributeValue) +'$'       ); break;
 			case '~=' : regexp = new RegExp( '(^|\\s)'+ escapeRegExp(attributeValue) +'(\\s|$)' ); break;
-			case '|=' : regexp = new RegExp(		'^'+ escapeRegExp(attributeValue) +'(-|$)'	); break;
+			case '|=' : regexp = new RegExp(       '^'+ escapeRegExp(attributeValue) +'(-|$)'   ); break;
 			case  '=' : test = function(value){
 				return attributeValue == value;
 			}; break;
@@ -2005,7 +2005,7 @@ function parser(
 			case '!=' : test = function(value){
 				return attributeValue != value;
 			}; break;
-			default	: test = function(value){
+			default   : test = function(value){
 				return !!value;
 			};
 		}
@@ -2473,13 +2473,13 @@ local.search = function(context, expression, append, first){
 		combinator = 'combinator:' + currentBit.combinator;
 		if (!this[combinator]) continue search;
 
-		tag		= (this.isXMLDocument) ? currentBit.tag : currentBit.tag.toUpperCase();
-		id		 = currentBit.id;
+		tag        = (this.isXMLDocument) ? currentBit.tag : currentBit.tag.toUpperCase();
+		id         = currentBit.id;
 		classList  = currentBit.classList;
-		classes	= currentBit.classes;
+		classes    = currentBit.classes;
 		attributes = currentBit.attributes;
-		pseudos	= currentBit.pseudos;
-		lastBit	= (j === (currentExpression.length - 1));
+		pseudos    = currentBit.pseudos;
+		lastBit    = (j === (currentExpression.length - 1));
 
 		this.bitUniques = {};
 
@@ -3241,7 +3241,7 @@ Array.mirror(Elements);
 /*<ltIE8>*/
 var createElementAcceptsHTML;
 try {
-	createElementAcceptsHTML = (document.createElement('<input name=x>').name == 'x');
+    createElementAcceptsHTML = (document.createElement('<input name=x>').name == 'x');
 } catch (e){}
 
 var escapeQuotes = function(html){
@@ -6285,7 +6285,7 @@ var doScrollWorks = function(){
 	return false;
 };
 // If doScroll works already, it can't be used to determine domready
-//	e.g. in an iframe
+//   e.g. in an iframe
 if (testElement.doScroll && !doScrollWorks()){
 	checks.push(doScrollWorks);
 	shouldPoll = true;

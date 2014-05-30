@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,18 +14,18 @@ jimport('joomla.database.table');
 /**
  * Session table
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Table
- * @since		11.1
+ * @since       11.1
  */
 class JTableSession extends JTable
 {
 	/**
 	 * Constructor
 	 *
-	 * @param	JDatabase  &$db  A database connector object.
+	 * @param   JDatabase  &$db  A database connector object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct(&$db)
 	{
@@ -38,12 +38,12 @@ class JTableSession extends JTable
 	/**
 	 * Insert a session
 	 *
-	 * @param	string	$sessionId  The session id
-	 * @param	integer  $clientId	The id of the client application
+	 * @param   string   $sessionId  The session id
+	 * @param   integer  $clientId   The id of the client application
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function insert($sessionId, $clientId)
 	{
@@ -67,11 +67,11 @@ class JTableSession extends JTable
 	/**
 	 * Updates the session
 	 *
-	 * @param	boolean  $updateNulls  True to update fields even if they are null.
+	 * @param   boolean  $updateNulls  True to update fields even if they are null.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function update($updateNulls = false)
 	{
@@ -92,12 +92,12 @@ class JTableSession extends JTable
 	/**
 	 * Destroys the pre-existing session
 	 *
-	 * @param	integer  $userId	 Identifier of the user for this session.
-	 * @param	array	$clientIds  Array of client ids for which session(s) will be destroyed
+	 * @param   integer  $userId     Identifier of the user for this session.
+	 * @param   array    $clientIds  Array of client ids for which session(s) will be destroyed
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function destroy($userId, $clientIds = array())
 	{
@@ -122,11 +122,11 @@ class JTableSession extends JTable
 	/**
 	 * Purge old sessions
 	 *
-	 * @param	integer  $maxLifetime  Session age in seconds
+	 * @param   integer  $maxLifetime  Session age in seconds
 	 *
 	 * @return  mixed  Resource on success, null on fail
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function purge($maxLifetime = 1440)
 	{
@@ -143,11 +143,11 @@ class JTableSession extends JTable
 	/**
 	 * Find out if a user has a one or more active sessions
 	 *
-	 * @param	integer  $userid  The identifier of the user
+	 * @param   integer  $userid  The identifier of the user
 	 *
 	 * @return  boolean  True if a session for this user exists
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function exists($userid)
 	{
@@ -171,11 +171,11 @@ class JTableSession extends JTable
 	 *
 	 * We must override it because of the non-integer primary key
 	 *
-	 * @param	integer  $oid  The object id (optional).
+	 * @param   integer  $oid  The object id (optional).
 	 *
 	 * @return  mixed  True if successful otherwise an error message
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function delete($oid = null)
 	{

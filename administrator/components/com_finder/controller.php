@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -12,14 +12,14 @@ defined('_JEXEC') or die;
 /**
  * Base controller class for Finder.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderController extends JControllerLegacy
 {
 	/**
-	 * @var	string  The default view.
+	 * @var    string  The default view.
 	 * @since  2.5
 	 */
 	protected $default_view = 'index';
@@ -27,8 +27,8 @@ class FinderController extends JControllerLegacy
 	/**
 	 * Method to display a view.
 	 *
-	 * @param	boolean  $cachable	If true, the view output will be cached
-	 * @param	array	$urlparams  An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
+	 * @param   boolean  $cachable   If true, the view output will be cached
+	 * @param   array    $urlparams  An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
 	 *
 	 * @return	JController  A JController object to support chaining.
 	 *

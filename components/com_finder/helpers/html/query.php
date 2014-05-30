@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Site
+ * @package     Joomla.Site
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -12,20 +12,20 @@ defined('_JEXEC') or die;
 /**
  * Query HTML behavior class for Finder.
  *
- * @package	 Joomla.Site
+ * @package     Joomla.Site
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 abstract class JHtmlQuery
 {
 	/**
 	 * Method to get the explained (human-readable) search query.
 	 *
-	 * @param	FinderIndexerQuery  $query  A FinderIndexerQuery object to explain.
+	 * @param   FinderIndexerQuery  $query  A FinderIndexerQuery object to explain.
 	 *
 	 * @return  mixed  String if there is data to explain, null otherwise.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function explained(FinderIndexerQuery $query)
 	{
@@ -112,11 +112,11 @@ abstract class JHtmlQuery
 	/**
 	 * Method to get the suggested search query.
 	 *
-	 * @param	FinderIndexerQuery  $query  A FinderIndexerQuery object.
+	 * @param   FinderIndexerQuery  $query  A FinderIndexerQuery object.
 	 *
 	 * @return  mixed  String if there is a suggestion, false otherwise.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function suggested(FinderIndexerQuery $query)
 	{

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -15,16 +15,16 @@ jimport('joomla.installer.packagemanifest');
 /**
  * Package installer
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
- * @since		11.1
+ * @since       11.1
  */
 class JInstallerPackage extends JAdapterInstance
 {
 	/**
 	 * Method of system
 	 *
-	 * @var	string
+	 * @var    string
 	 *
 	 * @since  11.1
 	 */
@@ -33,11 +33,11 @@ class JInstallerPackage extends JAdapterInstance
 	/**
 	 * Load language from a path
 	 *
-	 * @param	string  $path  The path of the language.
+	 * @param   string  $path  The path of the language.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function loadLanguage($path)
 	{
@@ -45,10 +45,8 @@ class JInstallerPackage extends JAdapterInstance
 		$extension = 'pkg_' . strtolower(JFilterInput::getInstance()->clean((string) $this->manifest->packagename, 'cmd'));
 		$lang = JFactory::getLanguage();
 		$source = $path;
-		$lang->load($extension . '.sys', $source, null, false, false)
-			|| $lang->load($extension . '.sys', JPATH_SITE, null, false, false)
-			|| $lang->load($extension . '.sys', $source, $lang->getDefault(), false, false)
-			|| $lang->load($extension . '.sys', JPATH_SITE, $lang->getDefault(), false, false);
+			$lang->load($extension . '.sys', $source, null, false, true)
+		||	$lang->load($extension . '.sys', JPATH_SITE, null, false, true);
 	}
 
 	/**
@@ -56,7 +54,7 @@ class JInstallerPackage extends JAdapterInstance
 	 *
 	 * @return  int  The extension id
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function install()
 	{
@@ -329,7 +327,7 @@ class JInstallerPackage extends JAdapterInstance
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function update()
 	{
@@ -340,11 +338,11 @@ class JInstallerPackage extends JAdapterInstance
 	/**
 	 * Custom uninstall method
 	 *
-	 * @param	integer  $id  The id of the package to uninstall.
+	 * @param   integer  $id  The id of the package to uninstall.
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function uninstall($id)
 	{
@@ -482,14 +480,14 @@ class JInstallerPackage extends JAdapterInstance
 	/**
 	 * Gets the extension id.
 	 *
-	 * @param	string	$type	The extension type.
-	 * @param	string	$id	  The name of the extension (the element field).
-	 * @param	integer  $client  The application id (0: Joomla CMS site; 1: Joomla CMS administrator).
-	 * @param	string	$group	The extension group (mainly for plugins).
+	 * @param   string   $type    The extension type.
+	 * @param   string   $id      The name of the extension (the element field).
+	 * @param   integer  $client  The application id (0: Joomla CMS site; 1: Joomla CMS administrator).
+	 * @param   string   $group   The extension group (mainly for plugins).
 	 *
 	 * @return  integer
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _getExtensionID($type, $id, $client, $group)
 	{
@@ -538,7 +536,7 @@ class JInstallerPackage extends JAdapterInstance
 	 *
 	 * @return  boolean  Result of operation, true if updated, false on failure
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function refreshManifestCache()
 	{

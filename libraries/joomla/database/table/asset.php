@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,17 +14,17 @@ jimport('joomla.database.tablenested');
 /**
  * Table class supporting modified pre-order tree traversal behavior.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
- * @link		http://docs.joomla.org/JTableAsset
- * @since		11.1
+ * @link        http://docs.joomla.org/JTableAsset
+ * @since       11.1
  */
 class JTableAsset extends JTableNested
 {
 	/**
 	 * The primary key of the asset.
 	 *
-	 * @var	integer
+	 * @var    integer
 	 * @since  11.1
 	 */
 	public $id = null;
@@ -32,7 +32,7 @@ class JTableAsset extends JTableNested
 	/**
 	 * The unique name of the asset.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $name = null;
@@ -40,7 +40,7 @@ class JTableAsset extends JTableNested
 	/**
 	 * The human readable title of the asset.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $title = null;
@@ -48,7 +48,7 @@ class JTableAsset extends JTableNested
 	/**
 	 * The rules for the asset stored in a JSON string
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $rules = null;
@@ -56,9 +56,9 @@ class JTableAsset extends JTableNested
 	/**
 	 * Constructor
 	 *
-	 * @param	JDatabase  &$db  A database connector object
+	 * @param   JDatabase  &$db  A database connector object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct(&$db)
 	{
@@ -68,11 +68,11 @@ class JTableAsset extends JTableNested
 	/**
 	 * Method to load an asset by it's name.
 	 *
-	 * @param	string  $name  The name of the asset.
+	 * @param   string  $name  The name of the asset.
 	 *
 	 * @return  integer
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function loadByName($name)
 	{
@@ -104,7 +104,7 @@ class JTableAsset extends JTableNested
 	 * @return  boolean  True if the instance is sane and able to be stored in the database.
 	 *
 	 * @link	http://docs.joomla.org/JTable/check
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function check()
 	{

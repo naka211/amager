@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -21,8 +21,8 @@ class plgAuthenticationLdap extends JPlugin
 	 * This method should handle any authentication and report back to the subject
 	 *
 	 * @access	public
-	 * @param	array	$credentials Array holding the user credentials
-	 * @param	array	$options	Array of extra options
+	 * @param   array	$credentials Array holding the user credentials
+	 * @param	array   $options	Array of extra options
 	 * @param	object	$response	Authentication response object
 	 * @return	object	boolean
 	 * @since 1.5

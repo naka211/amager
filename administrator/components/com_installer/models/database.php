@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_installer
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -99,7 +99,7 @@ class InstallerModelDatabase extends InstallerModel
 	 *
 	 * @param JSchemaChangeSet
 	 *
-	 * @return	mixed  string schema version if success, false if fail
+	 * @return   mixed  string schema version if success, false if fail
 	 */
 	public function fixSchemaVersion($changeSet)
 	{
@@ -139,7 +139,7 @@ class InstallerModelDatabase extends InstallerModel
 	/**
 	 * Get current version from #__extensions table
 	 *
-	 * @return  mixed	version if successful, false if fail
+	 * @return  mixed   version if successful, false if fail
 	 */
 
 	public function getUpdateVersion()
@@ -153,7 +153,7 @@ class InstallerModelDatabase extends InstallerModel
 	/**
 	 * Fix Joomla version in #__extensions table if wrong (doesn't equal JVersion short version)
 	 *
-	 * @return	mixed  string update version if success, false if fail
+	 * @return   mixed  string update version if success, false if fail
 	 */
 	public function fixUpdateVersion()
 	{

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_menus
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
@@ -14,9 +14,9 @@ jimport('joomla.application.component.controllerform');
 /**
  * The Menu Item Controller
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_menus
- * @since		1.6
+ * @since       1.6
  */
 class MenusControllerItem extends JControllerForm
 {
@@ -25,7 +25,7 @@ class MenusControllerItem extends JControllerForm
 	 *
 	 * @return  mixed  True if the record can be added, a JError object if not.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function add()
 	{
@@ -50,11 +50,11 @@ class MenusControllerItem extends JControllerForm
 	/**
 	 * Method to run batch operations.
 	 *
-	 * @param	object  $model  The model.
+	 * @param   object  $model  The model.
 	 *
 	 * @return  boolean	 True if successful, false otherwise and internal error is set.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function batch($model = null)
 	{
@@ -72,11 +72,11 @@ class MenusControllerItem extends JControllerForm
 	/**
 	 * Method to cancel an edit.
 	 *
-	 * @param	string  $key  The name of the primary key of the URL variable.
+	 * @param   string  $key  The name of the primary key of the URL variable.
 	 *
 	 * @return  boolean  True if access level checks pass, false otherwise.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function cancel($key = null)
 	{
@@ -98,13 +98,13 @@ class MenusControllerItem extends JControllerForm
 	/**
 	 * Method to edit an existing record.
 	 *
-	 * @param	string  $key	 The name of the primary key of the URL variable.
-	 * @param	string  $urlVar  The name of the URL variable if different from the primary key
+	 * @param   string  $key     The name of the primary key of the URL variable.
+	 * @param   string  $urlVar  The name of the URL variable if different from the primary key
 	 * (sometimes required to avoid router collisions).
 	 *
 	 * @return  boolean  True if access level check and checkout passes, false otherwise.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function edit($key = null, $urlVar = null)
 	{
@@ -125,12 +125,12 @@ class MenusControllerItem extends JControllerForm
 	/**
 	 * Method to save a record.
 	 *
-	 * @param	string  $key	 The name of the primary key of the URL variable.
-	 * @param	string  $urlVar  The name of the URL variable if different from the primary key (sometimes required to avoid router collisions).
+	 * @param   string  $key     The name of the primary key of the URL variable.
+	 * @param   string  $urlVar  The name of the URL variable if different from the primary key (sometimes required to avoid router collisions).
 	 *
 	 * @return  boolean  True if successful, false otherwise.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function save($key = null, $urlVar = null)
 	{
@@ -178,12 +178,35 @@ class MenusControllerItem extends JControllerForm
 		// Validate the posted data.
 		// This post is made up of two forms, one for the item and one for params.
 		$form = $model->getForm($data);
+
 		if (!$form)
 		{
 			JError::raiseError(500, $model->getError());
 
 			return false;
 		}
+
+		if ($data['type'] == 'url')
+		{
+			 $data['link'] = str_replace(array('"', '>', '<'), '', $data['link']);
+
+			if (strstr($data['link'], ':'))
+			{
+				$segments = explode(':', $data['link']);
+				$protocol = strtolower($segments[0]);
+				$scheme = array('http', 'https', 'ftp', 'ftps', 'gopher', 'mailto', 'news', 'prospero', 'telnet', 'rlogin', 'tn3270', 'wais', 'url',
+					'mid', 'cid', 'nntp', 'tel', 'urn', 'ldap', 'file', 'fax', 'modem', 'git');
+
+				if (!in_array($protocol, $scheme))
+				{
+					$app->enqueueMessage(JText::_('JLIB_APPLICATION_ERROR_SAVE_NOT_PERMITTED'), 'warning');
+					$this->setRedirect(JRoute::_('index.php?option=' . $this->option . '&view=' . $this->view_item . $this->getRedirectToItemAppend($recordId), false));
+
+					return false;
+				}
+			}
+		}
+
 		$data = $model->validate($form, $data);
 
 		// Check for the special 'request' entry.
@@ -297,7 +320,7 @@ class MenusControllerItem extends JControllerForm
 	 *
 	 * @return  void
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	function setType()
 	{

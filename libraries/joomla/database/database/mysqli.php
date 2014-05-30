@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -17,17 +17,17 @@ JLoader::register('JDatabaseImporterMySQLi', dirname(__FILE__) . '/mysqliimporte
 /**
  * MySQLi database driver
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
- * @see		 http://php.net/manual/en/book.mysqli.php
- * @since		11.1
+ * @see         http://php.net/manual/en/book.mysqli.php
+ * @since       11.1
  */
 class JDatabaseMySQLi extends JDatabaseMySQL
 {
 	/**
 	 * The name of the database driver.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $name = 'mysqli';
@@ -35,9 +35,9 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  $options  List of options used to configure the connection
+	 * @param   array  $options  List of options used to configure the connection
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function __construct($options)
 	{
@@ -132,11 +132,11 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	/**
 	 * Destructor.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __destruct()
 	{
-		if (is_callable($this->connection, 'close'))
+		if (is_callable(array($this->connection, 'close')))
 		{
 			mysqli_close($this->connection);
 		}
@@ -145,12 +145,12 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	/**
 	 * Method to escape a string for usage in an SQL statement.
 	 *
-	 * @param	string	$text	The string to be escaped.
-	 * @param	boolean  $extra  Optional parameter to provide extra escaping.
+	 * @param   string   $text   The string to be escaped.
+	 * @param   boolean  $extra  Optional parameter to provide extra escaping.
 	 *
 	 * @return  string  The escaped string.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function escape($text, $extra = false)
 	{
@@ -169,7 +169,7 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function test()
 	{
@@ -181,7 +181,7 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	 *
 	 * @return  boolean  True if connected to the database engine.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function connected()
 	{
@@ -198,7 +198,7 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	 *
 	 * @return  integer  The number of affected rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getAffectedRows()
 	{
@@ -210,7 +210,7 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	 *
 	 * @return  JDatabaseExporterMySQLi  An exporter object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getExporter()
@@ -232,7 +232,7 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	 *
 	 * @return  JDatabaseImporterMySQLi  An importer object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getImporter()
@@ -252,11 +252,11 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	/**
 	 * Get the number of returned rows for the previous executed SQL statement.
 	 *
-	 * @param	resource  $cursor  An optional database cursor resource to extract the row count from.
+	 * @param   resource  $cursor  An optional database cursor resource to extract the row count from.
 	 *
-	 * @return  integer	The number of returned rows.
+	 * @return  integer   The number of returned rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getNumRows($cursor = null)
 	{
@@ -266,11 +266,11 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	/**
 	 * Get the current or query, or new JDatabaseQuery object.
 	 *
-	 * @param	boolean  $new  False to return the last query set, True to return a new JDatabaseQuery object.
+	 * @param   boolean  $new  False to return the last query set, True to return a new JDatabaseQuery object.
 	 *
 	 * @return  mixed  The current value of the internal SQL variable or a new JDatabaseQuery object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getQuery($new = false)
@@ -295,7 +295,7 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	 *
 	 * @return  string  The database connector version.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getVersion()
 	{
@@ -307,7 +307,7 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	 *
 	 * @return  boolean  True if supported.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated 12.1
 	 */
 	public function hasUTF()
@@ -321,7 +321,7 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	 *
 	 * @return  integer  The value of the auto-increment field from the last inserted row.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function insertid()
 	{
@@ -333,7 +333,7 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	 *
 	 * @return  mixed  A database cursor resource on success, boolean false on failure.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function execute()
@@ -410,11 +410,11 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	/**
 	 * Select a database for use.
 	 *
-	 * @param	string  $database  The name of the database to select for use.
+	 * @param   string  $database  The name of the database to select for use.
 	 *
 	 * @return  boolean  True if the database was successfully selected.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function select($database)
@@ -448,7 +448,7 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setUTF()
 	{
@@ -458,11 +458,11 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	/**
 	 * Method to fetch a row from the result set cursor as an array.
 	 *
-	 * @param	mixed  $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   mixed  $cursor  The optional result set cursor from which to fetch the row.
 	 *
 	 * @return  mixed  Either the next row from the result set or false if there are no more rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function fetchArray($cursor = null)
 	{
@@ -472,11 +472,11 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	/**
 	 * Method to fetch a row from the result set cursor as an associative array.
 	 *
-	 * @param	mixed  $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   mixed  $cursor  The optional result set cursor from which to fetch the row.
 	 *
 	 * @return  mixed  Either the next row from the result set or false if there are no more rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function fetchAssoc($cursor = null)
 	{
@@ -486,12 +486,12 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	/**
 	 * Method to fetch a row from the result set cursor as an object.
 	 *
-	 * @param	mixed	$cursor  The optional result set cursor from which to fetch the row.
-	 * @param	string  $class	The class name to use for the returned row object.
+	 * @param   mixed   $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   string  $class   The class name to use for the returned row object.
 	 *
-	 * @return  mixed	Either the next row from the result set or false if there are no more rows.
+	 * @return  mixed   Either the next row from the result set or false if there are no more rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function fetchObject($cursor = null, $class = 'stdClass')
 	{
@@ -501,11 +501,11 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	/**
 	 * Method to free up the memory used for the result set.
 	 *
-	 * @param	mixed  $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   mixed  $cursor  The optional result set cursor from which to fetch the row.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function freeResult($cursor = null)
 	{
@@ -515,13 +515,13 @@ class JDatabaseMySQLi extends JDatabaseMySQL
 	/**
 	 * Execute a query batch.
 	 *
-	 * @param	boolean  $abortOnError	 Abort on error.
-	 * @param	boolean  $transactionSafe  Transaction safe queries.
+	 * @param   boolean  $abortOnError     Abort on error.
+	 * @param   boolean  $transactionSafe  Transaction safe queries.
 	 *
 	 * @return  mixed  A database resource if successful, false if not.
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function queryBatch($abortOnError = true, $transactionSafe = false)
 	{

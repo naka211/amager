@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -15,9 +15,9 @@ jimport('joomla.base.adapterinstance');
 /**
  * Template installer
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
- * @since		11.1
+ * @since       11.1
  */
 class JInstallerTemplate extends JAdapterInstance
 {
@@ -30,11 +30,11 @@ class JInstallerTemplate extends JAdapterInstance
 	/**
 	 * Custom loadLanguage method
 	 *
-	 * @param	string  $path  The path where to find language files.
+	 * @param   string  $path  The path where to find language files.
 	 *
 	 * @return  JInstallerTemplate
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function loadLanguage($path = null)
 	{
@@ -63,10 +63,8 @@ class JInstallerTemplate extends JAdapterInstance
 		$extension = "tpl_$name";
 		$lang = JFactory::getLanguage();
 		$source = $path ? $path : ($this->parent->extension->client_id ? JPATH_ADMINISTRATOR : JPATH_SITE) . '/templates/' . $name;
-		$lang->load($extension . '.sys', $source, null, false, false)
-			|| $lang->load($extension . '.sys', constant('JPATH_' . strtoupper($client)), null, false, false)
-			|| $lang->load($extension . '.sys', $source, $lang->getDefault(), false, false)
-			|| $lang->load($extension . '.sys', constant('JPATH_' . strtoupper($client)), $lang->getDefault(), false, false);
+			$lang->load($extension . '.sys', $source, null, false, true)
+		||	$lang->load($extension . '.sys', constant('JPATH_' . strtoupper($client)), null, false, true);
 	}
 
 	/**
@@ -74,7 +72,7 @@ class JInstallerTemplate extends JAdapterInstance
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function install()
 	{
@@ -316,7 +314,7 @@ class JInstallerTemplate extends JAdapterInstance
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function update()
 	{
@@ -326,11 +324,11 @@ class JInstallerTemplate extends JAdapterInstance
 	/**
 	 * Custom uninstall method
 	 *
-	 * @param	integer  $id  The extension ID
+	 * @param   integer  $id  The extension ID
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function uninstall($id)
 	{
@@ -575,7 +573,7 @@ class JInstallerTemplate extends JAdapterInstance
 	 *
 	 * @return  boolean  Result of operation, true if updated, false on failure
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function refreshManifestCache()
 	{

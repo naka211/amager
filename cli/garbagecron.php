@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Cli
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -38,7 +38,7 @@ JError::$legacy = true;
  * Cron job to trash expired cache data
  *
  * @package  Joomla.CLI
- * @since	2.5
+ * @since    2.5
  */
 class GarbageCron extends JApplicationCli
 {
@@ -47,7 +47,7 @@ class GarbageCron extends JApplicationCli
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function doExecute()
 	{

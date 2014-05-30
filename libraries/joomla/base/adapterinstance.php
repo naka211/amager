@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Base
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,16 +12,16 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Adapter Instance Class
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Base
- * @since		11.1
+ * @since       11.1
  */
 class JAdapterInstance extends JObject
 {
 	/**
 	 * Parent
 	 *
-	 * @var	JInstaller
+	 * @var    JInstaller
 	 * @since  11.1
 	 */
 	protected $parent = null;
@@ -29,7 +29,7 @@ class JAdapterInstance extends JObject
 	/**
 	 * Database
 	 *
-	 * @var	JDatabase
+	 * @var    JDatabase
 	 * @since  11.1
 	 */
 	protected $db = null;
@@ -37,11 +37,11 @@ class JAdapterInstance extends JObject
 	/**
 	 * Constructor
 	 *
-	 * @param	JAdapter	&$parent  Parent object
-	 * @param	JDatabase  &$db	  Database object
-	 * @param	array	  $options  Configuration Options
+	 * @param   JAdapter   &$parent  Parent object
+	 * @param   JDatabase  &$db      Database object
+	 * @param   array      $options  Configuration Options
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct(&$parent, &$db, $options = array())
 	{
@@ -60,7 +60,7 @@ class JAdapterInstance extends JObject
 	 *
 	 * @return  object parent
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getParent()
 	{

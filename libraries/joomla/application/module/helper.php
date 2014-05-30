@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,21 +14,21 @@ jimport('joomla.application.component.helper');
 /**
  * Module helper class
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
- * @since		11.1
+ * @since       11.1
  */
 abstract class JModuleHelper
 {
 	/**
 	 * Get module by name (real, eg 'Breadcrumbs' or folder, eg 'mod_breadcrumbs')
 	 *
-	 * @param	string  $name	The name of the module
-	 * @param	string  $title  The title of the module, optional
+	 * @param   string  $name   The name of the module
+	 * @param   string  $title  The title of the module, optional
 	 *
 	 * @return  object  The Module object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function &getModule($name, $title = null)
 	{
@@ -54,16 +54,16 @@ abstract class JModuleHelper
 		// If we didn't find it, and the name is mod_something, create a dummy object
 		if (is_null($result) && substr($name, 0, 4) == 'mod_')
 		{
-			$result			= new stdClass;
-			$result->id		= 0;
-			$result->title	 = '';
-			$result->module	= $name;
+			$result            = new stdClass;
+			$result->id        = 0;
+			$result->title     = '';
+			$result->module    = $name;
 			$result->position  = '';
-			$result->content	= '';
+			$result->content   = '';
 			$result->showtitle = 0;
-			$result->control	= '';
-			$result->params	= '';
-			$result->user	  = 0;
+			$result->control   = '';
+			$result->params    = '';
+			$result->user      = 0;
 		}
 
 		return $result;
@@ -72,11 +72,11 @@ abstract class JModuleHelper
 	/**
 	 * Get modules by position
 	 *
-	 * @param	string  $position  The position of the module
+	 * @param   string  $position  The position of the module
 	 *
 	 * @return  array  An array of module objects
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function &getModules($position)
 	{
@@ -111,11 +111,11 @@ abstract class JModuleHelper
 	/**
 	 * Checks if a module is enabled
 	 *
-	 * @param	string  $module  The module name
+	 * @param   string  $module  The module name
 	 *
 	 * @return  boolean
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function isEnabled($module)
 	{
@@ -127,12 +127,12 @@ abstract class JModuleHelper
 	/**
 	 * Render the module.
 	 *
-	 * @param	object  $module	A module object.
-	 * @param	array	$attribs  An array of attributes for the module (probably from the XML).
+	 * @param   object  $module   A module object.
+	 * @param   array   $attribs  An array of attributes for the module (probably from the XML).
 	 *
 	 * @return  string  The HTML content of the module output.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function renderModule($module, $attribs = array())
 	{
@@ -165,10 +165,8 @@ abstract class JModuleHelper
 		{
 			$lang = JFactory::getLanguage();
 			// 1.5 or Core then 1.6 3PD
-			$lang->load($module->module, JPATH_BASE, null, false, false) ||
-				$lang->load($module->module, dirname($path), null, false, false) ||
-				$lang->load($module->module, JPATH_BASE, $lang->getDefault(), false, false) ||
-				$lang->load($module->module, dirname($path), $lang->getDefault(), false, false);
+				$lang->load($module->module, JPATH_BASE, null, false, true)
+			||	$lang->load($module->module, dirname($path), null, false, true);
 
 			$content = '';
 			ob_start();
@@ -238,12 +236,12 @@ abstract class JModuleHelper
 	/**
 	 * Get the path to a layout for a module
 	 *
-	 * @param	string  $module  The name of the module
-	 * @param	string  $layout  The name of the module layout. If alternative layout, in the form template:filename.
+	 * @param   string  $module  The name of the module
+	 * @param   string  $layout  The name of the module layout. If alternative layout, in the form template:filename.
 	 *
 	 * @return  string  The path to the module layout
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getLayoutPath($module, $layout = 'default')
 	{
@@ -284,7 +282,7 @@ abstract class JModuleHelper
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected static function &_load()
 	{
@@ -403,20 +401,20 @@ abstract class JModuleHelper
 	 *
 	 * Caching modes:
 	 * To be set in XML:
-	 * 'static'	  One cache file for all pages with the same module parameters
-	 * 'oldstatic'	1.5 definition of module caching, one cache file for all pages
+	 * 'static'      One cache file for all pages with the same module parameters
+	 * 'oldstatic'   1.5 definition of module caching, one cache file for all pages
 	 * with the same module id and user aid,
-	 * 'itemid'	  Changes on itemid change, to be called from inside the module:
-	 * 'safeuri'	 Id created from $cacheparams->modeparams array,
-	 * 'id'		  Module sets own cache id's
+	 * 'itemid'      Changes on itemid change, to be called from inside the module:
+	 * 'safeuri'     Id created from $cacheparams->modeparams array,
+	 * 'id'          Module sets own cache id's
 	 *
-	 * @param	object  $module		Module object
-	 * @param	object  $moduleparams  Module parameters
-	 * @param	object  $cacheparams	Module cache parameters - id or url parameters, depending on the module cache mode
+	 * @param   object  $module        Module object
+	 * @param   object  $moduleparams  Module parameters
+	 * @param   object  $cacheparams   Module cache parameters - id or url parameters, depending on the module cache mode
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
 	 * @link JFilterInput::clean()
 	 */

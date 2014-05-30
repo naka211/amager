@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_cache
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -70,7 +70,7 @@ class CacheModelCache extends JModelList
 	public function getData()
 	{
 		if (empty($this->_data)) {
-			$cache 	= $this->getCache();
+		    $cache 	= $this->getCache();
 			$data 	= $cache->getAll();
 
 			if ($data != false) {

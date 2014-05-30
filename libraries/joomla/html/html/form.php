@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,9 +12,9 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Utility class for form elements
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
- * @since		11.1
+ * @since       11.1
  */
 abstract class JHtmlForm
 {
@@ -25,8 +25,8 @@ abstract class JHtmlForm
 	 *
 	 * @return  string  A hidden input field with a token
 	 *
-	 * @see	 JSession::checkToken
-	 * @since	11.1
+	 * @see     JSession::checkToken
+	 * @since   11.1
 	 */
 	public static function token()
 	{

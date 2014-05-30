@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -16,17 +16,17 @@ JLoader::register('JDatabaseImporterMySQL', dirname(__FILE__) . '/mysqlimporter.
 /**
  * MySQL database driver
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
- * @see		 http://dev.mysql.com/doc/
- * @since		11.1
+ * @see         http://dev.mysql.com/doc/
+ * @since       11.1
  */
 class JDatabaseMySQL extends JDatabase
 {
 	/**
 	 * The name of the database driver.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $name = 'mysql';
@@ -37,7 +37,7 @@ class JDatabaseMySQL extends JDatabase
 	 * same character is used for both sides of the quoted name, else the first character will be
 	 * used for the opening quote and the second for the closing quote.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $nameQuote = '`';
@@ -46,13 +46,13 @@ class JDatabaseMySQL extends JDatabase
 	 * The null or zero representation of a timestamp for the database driver.  This should be
 	 * defined in child classes to hold the appropriate value for the engine.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $nullDate = '0000-00-00 00:00:00';
 
 	/**
-	 * @var	string  The minimum supported database version.
+	 * @var    string  The minimum supported database version.
 	 * @since  12.1
 	 */
 	protected $dbMinimum = '5.0.4';
@@ -60,9 +60,9 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  $options  Array of database options with keys: host, user, password, database, select.
+	 * @param   array  $options  Array of database options with keys: host, user, password, database, select.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function __construct($options)
 	{
@@ -125,7 +125,7 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Destructor.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __destruct()
 	{
@@ -138,12 +138,12 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Method to escape a string for usage in an SQL statement.
 	 *
-	 * @param	string	$text	The string to be escaped.
-	 * @param	boolean  $extra  Optional parameter to provide extra escaping.
+	 * @param   string   $text   The string to be escaped.
+	 * @param   boolean  $extra  Optional parameter to provide extra escaping.
 	 *
 	 * @return  string  The escaped string.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function escape($text, $extra = false)
 	{
@@ -162,7 +162,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function test()
 	{
@@ -174,7 +174,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  boolean  True if connected to the database engine.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function connected()
 	{
@@ -189,12 +189,12 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Drops a table from the database.
 	 *
-	 * @param	string	$tableName  The name of the database table to drop.
-	 * @param	boolean  $ifExists	Optionally specify that the table must exist before it is dropped.
+	 * @param   string   $tableName  The name of the database table to drop.
+	 * @param   boolean  $ifExists   Optionally specify that the table must exist before it is dropped.
 	 *
 	 * @return  JDatabaseMySQL  Returns this object to support chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function dropTable($tableName, $ifExists = true)
@@ -213,7 +213,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  integer  The number of affected rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getAffectedRows()
 	{
@@ -225,7 +225,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  mixed  The collation in use by the database (string) or boolean false if not supported.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getCollation()
@@ -240,7 +240,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  JDatabaseExporterMySQL  An exporter object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getExporter()
@@ -262,7 +262,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  JDatabaseImporterMySQL  An importer object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getImporter()
@@ -282,11 +282,11 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Get the number of returned rows for the previous executed SQL statement.
 	 *
-	 * @param	resource  $cursor  An optional database cursor resource to extract the row count from.
+	 * @param   resource  $cursor  An optional database cursor resource to extract the row count from.
 	 *
-	 * @return  integer	The number of returned rows.
+	 * @return  integer   The number of returned rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getNumRows($cursor = null)
 	{
@@ -296,11 +296,11 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Get the current or query, or new JDatabaseQuery object.
 	 *
-	 * @param	boolean  $new  False to return the last query set, True to return a new JDatabaseQuery object.
+	 * @param   boolean  $new  False to return the last query set, True to return a new JDatabaseQuery object.
 	 *
 	 * @return  mixed  The current value of the internal SQL variable or a new JDatabaseQuery object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getQuery($new = false)
@@ -323,11 +323,11 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Shows the table CREATE statement that creates the given tables.
 	 *
-	 * @param	mixed  $tables  A table name or a list of table names.
+	 * @param   mixed  $tables  A table name or a list of table names.
 	 *
 	 * @return  array  A list of the create SQL for the tables.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getTableCreate($tables)
@@ -353,12 +353,12 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Retrieves field information about a given table.
 	 *
-	 * @param	string	$table	 The name of the database table.
-	 * @param	boolean  $typeOnly  True to only return field types.
+	 * @param   string   $table     The name of the database table.
+	 * @param   boolean  $typeOnly  True to only return field types.
 	 *
 	 * @return  array  An array of fields for the database table.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getTableColumns($table, $typeOnly = true)
@@ -392,11 +392,11 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Get the details list of keys for a table.
 	 *
-	 * @param	string  $table  The name of the table.
+	 * @param   string  $table  The name of the table.
 	 *
 	 * @return  array  An array of the column specification for the table.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getTableKeys($table)
@@ -413,7 +413,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  array  An array of all the tables in the database.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function getTableList()
@@ -430,7 +430,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  string  The database connector version.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getVersion()
 	{
@@ -442,7 +442,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  boolean  True if supported.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated 12.1
 	 */
 	public function hasUTF()
@@ -456,7 +456,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  integer  The value of the auto-increment field from the last inserted row.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function insertid()
 	{
@@ -466,11 +466,11 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Locks a table in the database.
 	 *
-	 * @param	string  $table  The name of the table to unlock.
+	 * @param   string  $table  The name of the table to unlock.
 	 *
 	 * @return  JDatabaseMySQL  Returns this object to support chaining.
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 * @throws  JDatabaseException
 	 */
 	public function lockTable($table)
@@ -485,7 +485,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  mixed  A database cursor resource on success, boolean false on failure.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function execute()
@@ -562,14 +562,14 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Renames a table in the database.
 	 *
-	 * @param	string  $oldTable  The name of the table to be renamed
-	 * @param	string  $newTable  The new name for the table.
-	 * @param	string  $backup	Not used by MySQL.
-	 * @param	string  $prefix	Not used by MySQL.
+	 * @param   string  $oldTable  The name of the table to be renamed
+	 * @param   string  $newTable  The new name for the table.
+	 * @param   string  $backup    Not used by MySQL.
+	 * @param   string  $prefix    Not used by MySQL.
 	 *
 	 * @return  JDatabase  Returns this object to support chaining.
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 * @throws  JDatabaseException
 	 */
 	public function renameTable($oldTable, $newTable, $backup = null, $prefix = null)
@@ -582,11 +582,11 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Select a database for use.
 	 *
-	 * @param	string  $database  The name of the database to select for use.
+	 * @param   string  $database  The name of the database to select for use.
 	 *
 	 * @return  boolean  True if the database was successfully selected.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function select($database)
@@ -620,7 +620,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setUTF()
 	{
@@ -632,7 +632,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function transactionCommit()
@@ -646,7 +646,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function transactionRollback()
@@ -660,7 +660,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function transactionStart()
@@ -672,11 +672,11 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Method to fetch a row from the result set cursor as an array.
 	 *
-	 * @param	mixed  $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   mixed  $cursor  The optional result set cursor from which to fetch the row.
 	 *
 	 * @return  mixed  Either the next row from the result set or false if there are no more rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function fetchArray($cursor = null)
 	{
@@ -686,11 +686,11 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Method to fetch a row from the result set cursor as an associative array.
 	 *
-	 * @param	mixed  $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   mixed  $cursor  The optional result set cursor from which to fetch the row.
 	 *
 	 * @return  mixed  Either the next row from the result set or false if there are no more rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function fetchAssoc($cursor = null)
 	{
@@ -700,12 +700,12 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Method to fetch a row from the result set cursor as an object.
 	 *
-	 * @param	mixed	$cursor  The optional result set cursor from which to fetch the row.
-	 * @param	string  $class	The class name to use for the returned row object.
+	 * @param   mixed   $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   string  $class   The class name to use for the returned row object.
 	 *
-	 * @return  mixed	Either the next row from the result set or false if there are no more rows.
+	 * @return  mixed   Either the next row from the result set or false if there are no more rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function fetchObject($cursor = null, $class = 'stdClass')
 	{
@@ -715,11 +715,11 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Method to free up the memory used for the result set.
 	 *
-	 * @param	mixed  $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   mixed  $cursor  The optional result set cursor from which to fetch the row.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function freeResult($cursor = null)
 	{
@@ -729,9 +729,9 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Diagnostic method to return explain information for a query.
 	 *
-	 * @return	  string  The explain output.
+	 * @return      string  The explain output.
 	 *
-	 * @since		11.1
+	 * @since       11.1
 	 * @deprecated  12.1
 	 */
 	public function explain()
@@ -788,13 +788,13 @@ class JDatabaseMySQL extends JDatabase
 	/**
 	 * Execute a query batch.
 	 *
-	 * @param	boolean  $abortOnError	 Abort on error.
-	 * @param	boolean  $transactionSafe  Transaction safe queries.
+	 * @param   boolean  $abortOnError     Abort on error.
+	 * @param   boolean  $transactionSafe  Transaction safe queries.
 	 *
 	 * @return  mixed  A database resource if successful, false if not.
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function queryBatch($abortOnError = true, $transactionSafe = false)
 	{
@@ -843,7 +843,7 @@ class JDatabaseMySQL extends JDatabase
 	 *
 	 * @return  JDatabaseMySQL  Returns this object to support chaining.
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 * @throws  JDatabaseException
 	 */
 	public function unlockTables()

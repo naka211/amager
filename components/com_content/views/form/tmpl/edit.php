@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -145,7 +145,7 @@ endif;
 		<div class="formelm">
 		<?php echo $this->form->getLabel('catid'); ?>
 		<span class="category">
-			<?php	echo $this->form->getInput('catid'); ?>
+			<?php   echo $this->form->getInput('catid'); ?>
 		</span>
 
 		</div>

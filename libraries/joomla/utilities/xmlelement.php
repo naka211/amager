@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Utilities
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,9 +12,9 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Wrapper class for php SimpleXMLElement.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Utilities
- * @since		11.1
+ * @since       11.1
  * @deprecated  13.3 Use SimpleXMLElement instead.
  */
 class JXMLElement extends SimpleXMLElement
@@ -24,7 +24,7 @@ class JXMLElement extends SimpleXMLElement
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated 13.3  Use SimpleXMLElement::getName() instead.
 	 */
 	public function name()
@@ -39,7 +39,7 @@ class JXMLElement extends SimpleXMLElement
 	 * @return  string
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function data()
 	{
@@ -52,14 +52,14 @@ class JXMLElement extends SimpleXMLElement
 	/**
 	 * Legacy method gets an elements attribute by name.
 	 *
-	 * @param	string  $name  Attribute to get
+	 * @param   string  $name  Attribute to get
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
-	 * @deprecated	12.1
-	 * @see			SimpleXMLElement::attributes
+	 * @deprecated    12.1
+	 * @see           SimpleXMLElement::attributes
 	 */
 	public function getAttribute($name)
 	{
@@ -72,13 +72,13 @@ class JXMLElement extends SimpleXMLElement
 	/**
 	 * Return a well-formed XML string based on SimpleXML element
 	 *
-	 * @param	boolean  $compressed  Should we use indentation and newlines ?
-	 * @param	integer  $indent	  Indention level.
-	 * @param	integer  $level		The level within the document which informs the indentation.
+	 * @param   boolean  $compressed  Should we use indentation and newlines ?
+	 * @param   integer  $indent      Indention level.
+	 * @param   integer  $level       The level within the document which informs the indentation.
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated 13.3  Use SimpleXMLElement::asXML() instead.
 	 */
 	public function asFormattedXML($compressed = false, $indent = "\t", $level = 0)

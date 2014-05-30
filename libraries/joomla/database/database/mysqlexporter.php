@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,16 +12,16 @@ defined('JPATH_PLATFORM') or die;
 /**
  * MySQL export driver.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
- * @since		11.1
+ * @since       11.1
  */
 class JDatabaseExporterMySQL
 {
 	/**
 	 * An array of cached data.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $cache = array();
@@ -29,7 +29,7 @@ class JDatabaseExporterMySQL
 	/**
 	 * The database connector to use for exporting structure and/or data.
 	 *
-	 * @var	JDatabaseMySQL
+	 * @var    JDatabaseMySQL
 	 * @since  11.1
 	 */
 	protected $db = null;
@@ -37,7 +37,7 @@ class JDatabaseExporterMySQL
 	/**
 	 * An array input sources (table names).
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $from = array();
@@ -45,7 +45,7 @@ class JDatabaseExporterMySQL
 	/**
 	 * The type of output format (xml).
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $asFormat = 'xml';
@@ -53,7 +53,7 @@ class JDatabaseExporterMySQL
 	/**
 	 * An array of options for the exporter.
 	 *
-	 * @var	JObject
+	 * @var    JObject
 	 * @since  11.1
 	 */
 	protected $options = null;
@@ -63,7 +63,7 @@ class JDatabaseExporterMySQL
 	 *
 	 * Sets up the default options for the exporter.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct()
 	{
@@ -87,7 +87,7 @@ class JDatabaseExporterMySQL
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  Exception if an error is encountered.
 	 */
 	public function __toString()
@@ -114,7 +114,7 @@ class JDatabaseExporterMySQL
 	 *
 	 * @return  JDatabaseExporterMySQL  Method supports chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function asXml()
 	{
@@ -128,7 +128,7 @@ class JDatabaseExporterMySQL
 	 *
 	 * @return  string  An XML string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  Exception if an error occurs.
 	 */
 	protected function buildXml()
@@ -152,7 +152,7 @@ class JDatabaseExporterMySQL
 	 *
 	 * @return  array  An array of XML lines (strings).
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  Exception if an error occurs.
 	 */
 	protected function buildXmlStructure()
@@ -172,14 +172,14 @@ class JDatabaseExporterMySQL
 
 			foreach ($fields as $field)
 			{
-				$buffer[] = '	<field Field="' . $field->Field . '"' . ' Type="' . $field->Type . '"' . ' Null="' . $field->Null . '"' . ' Key="' .
+				$buffer[] = '   <field Field="' . $field->Field . '"' . ' Type="' . $field->Type . '"' . ' Null="' . $field->Null . '"' . ' Key="' .
 					$field->Key . '"' . (isset($field->Default) ? ' Default="' . $field->Default . '"' : '') . ' Extra="' . $field->Extra . '"' .
 					' />';
 			}
 
 			foreach ($keys as $key)
 			{
-				$buffer[] = '	<key Table="' . $table . '"' . ' Non_unique="' . $key->Non_unique . '"' . ' Key_name="' . $key->Key_name . '"' .
+				$buffer[] = '   <key Table="' . $table . '"' . ' Non_unique="' . $key->Non_unique . '"' . ' Key_name="' . $key->Key_name . '"' .
 					' Seq_in_index="' . $key->Seq_in_index . '"' . ' Column_name="' . $key->Column_name . '"' . ' Collation="' . $key->Collation . '"' .
 					' Null="' . $key->Null . '"' . ' Index_type="' . $key->Index_type . '"' . ' Comment="' . htmlspecialchars($key->Comment) . '"' .
 					' />';
@@ -196,7 +196,7 @@ class JDatabaseExporterMySQL
 	 *
 	 * @return  JDatabaseExporterMySQL  Method supports chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
 	 * @throws  Exception if an error is encountered.
 	 */
@@ -220,11 +220,11 @@ class JDatabaseExporterMySQL
 	/**
 	 * Get the generic name of the table, converting the database prefix to the wildcard string.
 	 *
-	 * @param	string  $table  The name of the table.
+	 * @param   string  $table  The name of the table.
 	 *
 	 * @return  string  The name of the table with the database prefix replaced with #__.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function getGenericTableName($table)
 	{
@@ -240,11 +240,11 @@ class JDatabaseExporterMySQL
 	/**
 	 * Specifies a list of table names to export.
 	 *
-	 * @param	mixed  $from  The name of a single table, or an array of the table names to export.
+	 * @param   mixed  $from  The name of a single table, or an array of the table names to export.
 	 *
 	 * @return  JDatabaseExporterMySQL  Method supports chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  Exception if input is not a string or array.
 	 */
 	public function from($from)
@@ -268,11 +268,11 @@ class JDatabaseExporterMySQL
 	/**
 	 * Sets the database connector to use for exporting structure and/or data from MySQL.
 	 *
-	 * @param	JDatabaseMySQL  $db  The database connector.
+	 * @param   JDatabaseMySQL  $db  The database connector.
 	 *
 	 * @return  JDatabaseExporterMySQL  Method supports chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setDbo(JDatabaseMySQL $db)
 	{
@@ -284,11 +284,11 @@ class JDatabaseExporterMySQL
 	/**
 	 * Sets an internal option to export the structure of the input table(s).
 	 *
-	 * @param	boolean  $setting  True to export the structure, false to not.
+	 * @param   boolean  $setting  True to export the structure, false to not.
 	 *
 	 * @return  JDatabaseExporterMySQL  Method supports chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function withStructure($setting = true)
 	{

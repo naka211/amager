@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,16 +14,16 @@ jimport('joomla.base.adapterinstance');
 /**
  * Language installer
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
- * @since		11.1
+ * @since       11.1
  */
 class JInstallerLanguage extends JAdapterInstance
 {
 	/**
 	 * Core language pack flag
 	 *
-	 * @var	boolean
+	 * @var    boolean
 	 * @since  11.1
 	 */
 	protected $_core = false;
@@ -37,7 +37,7 @@ class JInstallerLanguage extends JAdapterInstance
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function install()
 	{
@@ -101,10 +101,10 @@ class JInstallerLanguage extends JAdapterInstance
 	/**
 	 * Install function that is designed to handle individual clients
 	 *
-	 * @param	string	$cname	 Cname @todo: not used
-	 * @param	string	$basePath  The base name.
-	 * @param	integer  $clientId  The client id.
-	 * @param	object	&$element  The XML element.
+	 * @param   string   $cname     Cname @todo: not used
+	 * @param   string   $basePath  The base name.
+	 * @param   integer  $clientId  The client id.
+	 * @param   object   &$element  The XML element.
 	 *
 	 * @return  boolean
 	 *
@@ -297,7 +297,7 @@ class JInstallerLanguage extends JAdapterInstance
 	 *
 	 * @return  boolean  True on success, false on failure
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function update()
 	{
@@ -447,11 +447,11 @@ class JInstallerLanguage extends JAdapterInstance
 	/**
 	 * Custom uninstall method
 	 *
-	 * @param	string  $eid  The tag of the language to uninstall
+	 * @param   string  $eid  The tag of the language to uninstall
 	 *
 	 * @return  mixed  Return value for uninstall method in component uninstall file
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function uninstall($eid)
 	{
@@ -608,7 +608,7 @@ class JInstallerLanguage extends JAdapterInstance
 	 *
 	 * @return  integer  The extension id
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function discover_install()
 	{
@@ -643,7 +643,7 @@ class JInstallerLanguage extends JAdapterInstance
 	 *
 	 * @return  boolean result of operation, true if updated, false on failure
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function refreshManifestCache()
 	{

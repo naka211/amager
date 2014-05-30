@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,9 +12,9 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Extended Utility class for batch processing widgets.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
- * @since		11.1
+ * @since       11.1
  */
 abstract class JHtmlBatch
 {
@@ -23,7 +23,7 @@ abstract class JHtmlBatch
 	 *
 	 * @return  string  The necessary HTML for the widget.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function access()
 	{
@@ -47,11 +47,11 @@ abstract class JHtmlBatch
 	/**
 	 * Displays a batch widget for moving or copying items.
 	 *
-	 * @param	string  $extension  The extension that owns the category.
+	 * @param   string  $extension  The extension that owns the category.
 	 *
 	 * @return  string  The necessary HTML for the widget.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function item($extension)
 	{
@@ -74,7 +74,7 @@ abstract class JHtmlBatch
 	 *
 	 * @return  string  The necessary HTML for the widget.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public static function language()
 	{
@@ -96,11 +96,11 @@ abstract class JHtmlBatch
 	/**
 	 * Display a batch widget for the user selector.
 	 *
-	 * @param	boolean  $noUser  Choose to display a "no user" option
+	 * @param   boolean  $noUser  Choose to display a "no user" option
 	 *
 	 * @return  string  The necessary HTML for the widget.
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 */
 	public static function user($noUser = true)
 	{

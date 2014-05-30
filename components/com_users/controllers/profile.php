@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -79,33 +79,12 @@ class UsersControllerProfile extends UsersController
 
 		// Get the user data.
 		$data = JRequest::getVar('jform', array(), 'post', 'array');
-		$data['mwctype'] = JRequest::getVar('mwctype');
-		$data['email'] = JRequest::getVar('email');
-		$data['firstname'] = JRequest::getVar('firstname');
-		$data['lastname'] = JRequest::getVar('lastname');
-		$data['address'] = JRequest::getVar('address');
-		$data['zipcode'] = JRequest::getVar('zipcode');
-		$data['city'] = JRequest::getVar('city');
-		$data['phone'] = JRequest::getVar('phone');
-		$data['password1'] = JRequest::getVar('password1');
-		$data['password2'] = JRequest::getVar('password2');
-		
-		$data['company'] = JRequest::getVar('company');
-		$data['cvr'] = JRequest::getVar('cvr');
-		
-		$data['ean'] = JRequest::getVar('ean');
-		$data['authority'] = JRequest::getVar('authority');
-		$data['order'] = JRequest::getVar('order');
-		$data['person'] = JRequest::getVar('person');
-		
-		$data['username'] = JRequest::getVar('username');
-		$data['name'] = JRequest::getVar('name');
-		
+
 		// Force the ID to this user.
 		$data['id'] = $userId;
 
 		// Validate the posted data.
-		/*$form = $model->getForm();
+		$form = $model->getForm();
 		if (!$form) {
 			JError::raiseError(500, $model->getError());
 			return false;
@@ -135,7 +114,7 @@ class UsersControllerProfile extends UsersController
 			$userId = (int) $app->getUserState('com_users.edit.profile.id');
 			$this->setRedirect(JRoute::_('index.php?option=com_users&view=profile&layout=edit&user_id='.$userId, false));
 			return false;
-		}*/
+		}
 
 		// Attempt to save the data.
 		$return	= $model->save($data);
@@ -176,8 +155,7 @@ class UsersControllerProfile extends UsersController
 
 				// Redirect to the list screen.
 				$this->setMessage(JText::_('COM_USERS_PROFILE_SAVE_SUCCESS'));
-				//$this->setRedirect(JRoute::_(($redirect = $app->getUserState('com_users.edit.profile.redirect')) ? $redirect : 'index.php?option=com_users&view=profile&user_id='.$return, false));
-				$this->setRedirect('index.php?option=com_users&view=profile&layout=edit&ran='.rand(), false);
+				$this->setRedirect(JRoute::_(($redirect = $app->getUserState('com_users.edit.profile.redirect')) ? $redirect : 'index.php?option=com_users&view=profile&user_id='.$return, false));
 				break;
 		}
 

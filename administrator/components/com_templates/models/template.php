@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_templates
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -56,10 +56,8 @@ class TemplatesModelTemplate extends JModelLegacy
 			$lang	= JFactory::getLanguage();
 
 			// Load the core and/or local language file(s).
-			$lang->load('tpl_'.$template->element, $client->path, null, false, false)
-				||	$lang->load('tpl_'.$template->element, $client->path.'/templates/'.$template->element, null, false, false)
-				||	$lang->load('tpl_'.$template->element, $client->path, $lang->getDefault(), false, false)
-				||	$lang->load('tpl_'.$template->element, $client->path.'/templates/'.$template->element, $lang->getDefault(), false, false);
+				$lang->load('tpl_' . $template->element, $client->path, null, false, true)
+			||	$lang->load('tpl_' . $template->element, $client->path . '/templates/' . $template->element, null, false, true);
 
 			// Check if the template path exists.
 
@@ -152,7 +150,7 @@ class TemplatesModelTemplate extends JModelLegacy
 	/**
 	 * Method to check if new template name already exists
 	 *
-	 * @return	boolean	true if name is not used, false otherwise
+	 * @return	boolean   true if name is not used, false otherwise
 	 * @since	2.5
 	 */
 	public function checkNewName()
@@ -169,7 +167,7 @@ class TemplatesModelTemplate extends JModelLegacy
 	/**
 	 * Method to check if new template name already exists
 	 *
-	 * @return	string	 name of current template
+	 * @return	string     name of current template
 	 * @since	2.5
 	 */
 	public function getFromName()
@@ -180,7 +178,7 @@ class TemplatesModelTemplate extends JModelLegacy
 	/**
 	 * Method to check if new template name already exists
 	 *
-	 * @return	boolean	true if name is not used, false otherwise
+	 * @return	boolean   true if name is not used, false otherwise
 	 * @since	2.5
 	 */
 	public function copy()
@@ -220,7 +218,7 @@ class TemplatesModelTemplate extends JModelLegacy
 	/**
 	 * Method to delete tmp folder
 	 *
-	 * @return	boolean	true if delete successful, false otherwise
+	 * @return	boolean   true if delete successful, false otherwise
 	 * @since	2.5
 	 */
 	public function cleanup()
@@ -238,7 +236,7 @@ class TemplatesModelTemplate extends JModelLegacy
 	/**
 	 * Method to rename the template in the XML files and rename the language files
 	 *
-	 * @return	boolean	true if successful, false otherwise
+	 * @return	boolean   true if successful, false otherwise
 	 * @since	2.5
 	 */
 	protected function fixTemplateName()

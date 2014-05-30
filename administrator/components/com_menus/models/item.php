@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_menus
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 // No direct access.
@@ -20,9 +20,9 @@ require_once JPATH_COMPONENT.'/helpers/menus.php';
 /**
  * Menu Item Model for Menus.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_menus
- * @since		1.6
+ * @since       1.6
  */
 class MenusModelItem extends JModelAdmin
 {
@@ -94,13 +94,13 @@ class MenusModelItem extends JModelAdmin
 	/**
 	 * Method to perform batch operations on an item or a set of items.
 	 *
-	 * @param	array  $commands  An array of commands to perform.
-	 * @param	array  $pks		An array of item ids.
-	 * @param	array  $contexts  An array of item contexts.
+	 * @param   array  $commands  An array of commands to perform.
+	 * @param   array  $pks       An array of item ids.
+	 * @param   array  $contexts  An array of item contexts.
 	 *
 	 * @return  boolean  Returns true on success, false on failure.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function batch($commands, $pks, $contexts)
 	{
@@ -177,13 +177,13 @@ class MenusModelItem extends JModelAdmin
 	/**
 	 * Batch copy menu items to a new menu or parent.
 	 *
-	 * @param	integer  $value	 The new menu or sub-item.
-	 * @param	array	$pks		An array of row IDs.
-	 * @param	array	$contexts  An array of item contexts.
+	 * @param   integer  $value     The new menu or sub-item.
+	 * @param   array    $pks       An array of row IDs.
+	 * @param   array    $contexts  An array of item contexts.
 	 *
 	 * @return  mixed  An array of new IDs on success, boolean false on failure.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function batchCopy($value, $pks, $contexts)
 	{
@@ -368,13 +368,13 @@ class MenusModelItem extends JModelAdmin
 	/**
 	 * Batch move menu items to a new menu or parent.
 	 *
-	 * @param	integer  $value	 The new menu or sub-item.
-	 * @param	array	$pks		An array of row IDs.
-	 * @param	array	$contexts  An array of item contexts.
+	 * @param   integer  $value     The new menu or sub-item.
+	 * @param   array    $pks       An array of row IDs.
+	 * @param   array    $contexts  An array of item contexts.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function batchMove($value, $pks, $contexts)
 	{
@@ -671,10 +671,8 @@ class MenusModelItem extends JModelAdmin
 				if (isset($args['option'])) {
 					// Load the language file for the component.
 					$lang = JFactory::getLanguage();
-					$lang->load($args['option'], JPATH_ADMINISTRATOR, null, false, false)
-					||	$lang->load($args['option'], JPATH_ADMINISTRATOR.'/components/'.$args['option'], null, false, false)
-					||	$lang->load($args['option'], JPATH_ADMINISTRATOR, $lang->getDefault(), false, false)
-					||	$lang->load($args['option'], JPATH_ADMINISTRATOR.'/components/'.$args['option'], $lang->getDefault(), false, false);
+						$lang->load($args['option'], JPATH_ADMINISTRATOR, null, false, true)
+					||	$lang->load($args['option'], JPATH_ADMINISTRATOR . '/components/' . $args['option'], null, false, true);
 
 					// Determine the component id.
 					$component = JComponentHelper::getComponent($args['option']);
@@ -928,7 +926,8 @@ class MenusModelItem extends JModelAdmin
 			}
 		}
 
-		if ($formFile) {
+		if ($formFile)
+		{
 			// If an XML file was found in the component, load it first.
 			// We need to qualify the full path to avoid collisions with component file names.
 
@@ -943,15 +942,48 @@ class MenusModelItem extends JModelAdmin
 
 			// Get the help data from the XML file if present.
 			$help = $xml->xpath('/metadata/layout/help');
-			if (!empty($help)) {
-				$helpKey = trim((string) $help[0]['key']);
-				$helpURL = trim((string) $help[0]['url']);
-				$helpLoc = trim((string) $help[0]['local']);
+		}
+		else
+		{
 
-				$this->helpKey = $helpKey ? $helpKey : $this->helpKey;
-				$this->helpURL = $helpURL ? $helpURL : $this->helpURL;
-				$this->helpLocal = (($helpLoc == 'true') || ($helpLoc == '1') || ($helpLoc == 'local')) ? true : false;
+			// We don't have a component. Load the form XML to get the help path
+
+			$xmlFile = JPath::find(JPATH_ROOT . '/administrator/components/com_menus/models/forms', 'item_' . $type . '.xml');
+
+
+
+			// Attempt to load the xml file.
+
+			if ($xmlFile && !$xml = simplexml_load_file($xmlFile))
+			{
+
+				throw new Exception(JText::_('JERROR_LOADFILE_FAILED'));
+
 			}
+
+
+
+			// Get the help data from the XML file if present.
+
+			$help = $xml->xpath('/form/help');
+		}
+
+		if (!empty($help))
+		{
+
+			$helpKey = trim((string) $help[0]['key']);
+
+			$helpURL = trim((string) $help[0]['url']);
+
+			$helpLoc = trim((string) $help[0]['local']);
+
+
+
+			$this->helpKey = $helpKey ? $helpKey : $this->helpKey;
+
+			$this->helpURL = $helpURL ? $helpURL : $this->helpURL;
+
+			$this->helpLocal = (($helpLoc == 'true') || ($helpLoc == '1') || ($helpLoc == 'local')) ? true : false;
 
 		}
 
@@ -1359,9 +1391,9 @@ class MenusModelItem extends JModelAdmin
 	/**
 	 * Method to change the title & alias.
 	 *
-	 * @param	integer  $parent_id  The id of the parent.
-	 * @param	string	$alias	  The alias.
-	 * @param	string	$title	  The title.
+	 * @param   integer  $parent_id  The id of the parent.
+	 * @param   string   $alias      The alias.
+	 * @param   string   $title      The title.
 	 *
 	 * @return  array  Contains the modified title and alias.
 	 *

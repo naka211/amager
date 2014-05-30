@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Access
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,16 +14,16 @@ jimport('joomla.utilities.arrayhelper');
 /**
  * Class that handles all access authorisation routines.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Access
- * @since		11.1
+ * @since       11.1
  */
 class JAccess
 {
 	/**
 	 * Array of view levels
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected static $viewLevels = array();
@@ -31,7 +31,7 @@ class JAccess
 	/**
 	 * Array of rules for the asset
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected static $assetRules = array();
@@ -39,7 +39,7 @@ class JAccess
 	/**
 	 * Array of user groups.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected static $userGroups = array();
@@ -47,7 +47,7 @@ class JAccess
 	/**
 	 * Array of user group paths.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected static $userGroupPaths = array();
@@ -55,7 +55,7 @@ class JAccess
 	/**
 	 * Array of cached groups by user.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected static $groupsByUser = array();
@@ -65,7 +65,7 @@ class JAccess
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public static function clearStatics()
 	{
@@ -79,13 +79,13 @@ class JAccess
 	/**
 	 * Method to check if a user is authorised to perform an action, optionally on an asset.
 	 *
-	 * @param	integer  $userId  Id of the user for which to check authorisation.
-	 * @param	string	$action  The name of the action to authorise.
-	 * @param	mixed	$asset	Integer asset id or the name of the asset as a string.  Defaults to the global asset node.
+	 * @param   integer  $userId  Id of the user for which to check authorisation.
+	 * @param   string   $action  The name of the action to authorise.
+	 * @param   mixed    $asset   Integer asset id or the name of the asset as a string.  Defaults to the global asset node.
 	 *
 	 * @return  boolean  True if authorised.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function check($userId, $action, $asset = null)
 	{
@@ -120,13 +120,13 @@ class JAccess
 	/**
 	 * Method to check if a group is authorised to perform an action, optionally on an asset.
 	 *
-	 * @param	integer  $groupId  The path to the group for which to check authorisation.
-	 * @param	string	$action	The name of the action to authorise.
-	 * @param	mixed	$asset	Integer asset id or the name of the asset as a string.  Defaults to the global asset node.
+	 * @param   integer  $groupId  The path to the group for which to check authorisation.
+	 * @param   string   $action   The name of the action to authorise.
+	 * @param   mixed    $asset    Integer asset id or the name of the asset as a string.  Defaults to the global asset node.
 	 *
 	 * @return  boolean  True if authorised.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function checkGroup($groupId, $action, $asset = null)
 	{
@@ -159,11 +159,11 @@ class JAccess
 	 * Gets the parent groups that a leaf group belongs to in its branch back to the root of the tree
 	 * (including the leaf group id).
 	 *
-	 * @param	mixed  $groupId  An integer or array of integers representing the identities to check.
+	 * @param   mixed  $groupId  An integer or array of integers representing the identities to check.
 	 *
 	 * @return  mixed  True if allowed, false for an explicit deny, null for an implicit deny.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected static function getGroupPath($groupId)
 	{
@@ -207,12 +207,12 @@ class JAccess
 	 * only the rules explicitly set for the asset or the summation of all inherited rules from
 	 * parent assets and explicit rules.
 	 *
-	 * @param	mixed	$asset	  Integer asset id or the name of the asset as a string.
-	 * @param	boolean  $recursive  True to return the rules object with inherited rules.
+	 * @param   mixed    $asset      Integer asset id or the name of the asset as a string.
+	 * @param   boolean  $recursive  True to return the rules object with inherited rules.
 	 *
-	 * @return  JAccessRules	JAccessRules object for the asset.
+	 * @return  JAccessRules   JAccessRules object for the asset.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getAssetRules($asset, $recursive = false)
 	{
@@ -229,11 +229,11 @@ class JAccess
 		// If the asset identifier is numeric assume it is a primary key, else lookup by name.
 		if (is_numeric($asset))
 		{
-			$query->where('(a.id = ' . (int) $asset . ($recursive ? ' OR a.parent_id=0' : '') . ')');
+			$query->where('(a.id = ' . (int) $asset . ')');
 		}
 		else
 		{
-			$query->where('(a.name = ' . $db->quote($asset) . ($recursive ? ' OR a.parent_id=0' : '') . ')');
+			$query->where('(a.name = ' . $db->quote($asset) . ')');
 		}
 
 		// If we want the rules cascading up to the global asset node we need a self-join.
@@ -273,12 +273,12 @@ class JAccess
 	 * only the groups explicitly mapped to the user or all groups both explicitly mapped and inherited
 	 * by the user.
 	 *
-	 * @param	integer  $userId	 Id of the user for which to get the list of groups.
-	 * @param	boolean  $recursive  True to include inherited user groups.
+	 * @param   integer  $userId     Id of the user for which to get the list of groups.
+	 * @param   boolean  $recursive  True to include inherited user groups.
 	 *
-	 * @return  array	List of user group ids to which the user is mapped.
+	 * @return  array    List of user group ids to which the user is mapped.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getGroupsByUser($userId, $recursive = true)
 	{
@@ -344,13 +344,13 @@ class JAccess
 	/**
 	 * Method to return a list of user Ids contained in a Group
 	 *
-	 * @param	integer  $groupId	The group Id
-	 * @param	boolean  $recursive  Recursively include all child groups (optional)
+	 * @param   integer  $groupId    The group Id
+	 * @param   boolean  $recursive  Recursively include all child groups (optional)
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
-	 * @todo	This method should move somewhere else
+	 * @since   11.1
+	 * @todo    This method should move somewhere else
 	 */
 	public static function getUsersByGroup($groupId, $recursive = false)
 	{
@@ -380,11 +380,11 @@ class JAccess
 	/**
 	 * Method to return a list of view levels for which the user is authorised.
 	 *
-	 * @param	integer  $userId  Id of the user for which to get the list of authorised view levels.
+	 * @param   integer  $userId  Id of the user for which to get the list of authorised view levels.
 	 *
-	 * @return  array	List of view levels for which the user is authorised.
+	 * @return  array    List of view levels for which the user is authorised.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getAuthorisedViewLevels($userId)
 	{
@@ -440,12 +440,12 @@ class JAccess
 	/**
 	 * Method to return a list of actions for which permissions can be set given a component and section.
 	 *
-	 * @param	string  $component  The component from which to retrieve the actions.
-	 * @param	string  $section	The name of the section within the component from which to retrieve the actions.
+	 * @param   string  $component  The component from which to retrieve the actions.
+	 * @param   string  $section    The name of the section within the component from which to retrieve the actions.
 	 *
 	 * @return  array  List of actions available for the given component and section.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
 	 * @deprecated  12.3  Use JAccess::getActionsFromFile or JAccess::getActionsFromData instead.
 	 *
@@ -472,12 +472,12 @@ class JAccess
 	/**
 	 * Method to return a list of actions from a file for which permissions can be set.
 	 *
-	 * @param	string  $file	The path to the XML file.
-	 * @param	string  $xpath  An optional xpath to search for the fields.
+	 * @param   string  $file   The path to the XML file.
+	 * @param   string  $xpath  An optional xpath to search for the fields.
 	 *
-	 * @return  boolean|array	False if case of error or the list of actions available.
+	 * @return  boolean|array   False if case of error or the list of actions available.
 	 *
-	 * @since	12.1
+	 * @since   12.1
 	 */
 	public static function getActionsFromFile($file, $xpath = "/access/section[@name='component']/")
 	{
@@ -496,12 +496,12 @@ class JAccess
 	/**
 	 * Method to return a list of actions from a string or from an xml for which permissions can be set.
 	 *
-	 * @param	string|SimpleXMLElement  $data	The XML string or an XML element.
-	 * @param	string					$xpath  An optional xpath to search for the fields.
+	 * @param   string|SimpleXMLElement  $data   The XML string or an XML element.
+	 * @param   string                   $xpath  An optional xpath to search for the fields.
 	 *
-	 * @return  boolean|array	False if case of error or the list of actions available.
+	 * @return  boolean|array   False if case of error or the list of actions available.
 	 *
-	 * @since	12.1
+	 * @since   12.1
 	 */
 	public static function getActionsFromData($data, $xpath = "/access/section[@name='component']/")
 	{

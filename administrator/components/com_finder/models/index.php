@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -14,16 +14,16 @@ jimport('joomla.application.component.modellist');
 /**
  * Index model class for Finder.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderModelIndex extends JModelList
 {
 	/**
 	 * The event to trigger after deleting the data.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	protected $event_after_delete = 'onContentAfterDelete';
@@ -31,7 +31,7 @@ class FinderModelIndex extends JModelList
 	/**
 	 * The event to trigger before deleting the data.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	protected $event_before_delete = 'onContentBeforeDelete';
@@ -39,10 +39,10 @@ class FinderModelIndex extends JModelList
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  $config  An associative array of configuration settings. [optional]
+	 * @param   array  $config  An associative array of configuration settings. [optional]
 	 *
-	 * @since	2.5
-	 * @see	 JController
+	 * @since   2.5
+	 * @see     JController
 	 */
 	public function __construct($config = array())
 	{
@@ -63,11 +63,11 @@ class FinderModelIndex extends JModelList
 	/**
 	 * Method to test whether a record can be deleted.
 	 *
-	 * @param	object  $record  A record object.
+	 * @param   object  $record  A record object.
 	 *
 	 * @return  boolean  True if allowed to delete the record. Defaults to the permission for the component.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function canDelete($record)
 	{
@@ -78,11 +78,11 @@ class FinderModelIndex extends JModelList
 	/**
 	 * Method to test whether a record can be deleted.
 	 *
-	 * @param	object  $record  A record object.
+	 * @param   object  $record  A record object.
 	 *
 	 * @return  boolean  True if allowed to change the state of the record. Defaults to the permission for the component.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function canEditState($record)
 	{
@@ -93,11 +93,11 @@ class FinderModelIndex extends JModelList
 	/**
 	 * Method to delete one or more records.
 	 *
-	 * @param	array  &$pks  An array of record primary keys.
+	 * @param   array  &$pks  An array of record primary keys.
 	 *
 	 * @return  boolean  True if successful, false if an error occurs.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function delete(&$pks)
 	{
@@ -170,7 +170,7 @@ class FinderModelIndex extends JModelList
 	 *
 	 * @return  JDatabaseQuery  A JDatabaseQuery object
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function getListQuery()
 	{
@@ -215,9 +215,9 @@ class FinderModelIndex extends JModelList
  	/**
 	 * Method to get the state of the Smart Search plug-ins.
 	 *
-	 * @return  array	Array of relevant plug-ins and whether they are enabled or not.
+	 * @return  array   Array of relevant plug-ins and whether they are enabled or not.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function getPluginState()
 	{
@@ -243,11 +243,11 @@ class FinderModelIndex extends JModelList
 	 * different modules that might need different sets of data or different
 	 * ordering requirements.
 	 *
-	 * @param	string  $id  A prefix for the store id. [optional]
+	 * @param   string  $id  A prefix for the store id. [optional]
 	 *
 	 * @return  string  A store id.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function getStoreId($id = '')
 	{
@@ -262,13 +262,13 @@ class FinderModelIndex extends JModelList
 	/**
 	 * Returns a JTable object, always creating it.
 	 *
-	 * @param	string  $type	The table type to instantiate. [optional]
-	 * @param	string  $prefix  A prefix for the table class name. [optional]
-	 * @param	array	$config  Configuration array for model. [optional]
+	 * @param   string  $type    The table type to instantiate. [optional]
+	 * @param   string  $prefix  A prefix for the table class name. [optional]
+	 * @param   array   $config  Configuration array for model. [optional]
 	 *
 	 * @return  JTable  A database object
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function getTable($type = 'Link', $prefix = 'FinderTable', $config = array())
 	{
@@ -280,7 +280,7 @@ class FinderModelIndex extends JModelList
 	 *
 	 * @return  boolean  True on success, false on failure.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function purge()
 	{
@@ -373,12 +373,12 @@ class FinderModelIndex extends JModelList
 	/**
 	 * Method to auto-populate the model state.  Calling getState in this method will result in recursion.
 	 *
-	 * @param	string  $ordering	An optional ordering field. [optional]
-	 * @param	string  $direction  An optional direction. [optional]
+	 * @param   string  $ordering   An optional ordering field. [optional]
+	 * @param   string  $direction  An optional direction. [optional]
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{
@@ -403,12 +403,12 @@ class FinderModelIndex extends JModelList
 	/**
 	 * Method to change the published state of one or more records.
 	 *
-	 * @param	array	&$pks	A list of the primary keys to change.
-	 * @param	integer  $value  The value of the published state. [optional]
+	 * @param   array    &$pks   A list of the primary keys to change.
+	 * @param   integer  $value  The value of the published state. [optional]
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function publish(&$pks, $value = 1)
 	{

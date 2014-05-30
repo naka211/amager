@@ -1,9 +1,9 @@
 <?php
 /**
- * @package	Joomla.Platform
+ * @package    Joomla.Platform
  *
- * @copyright  Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	GNU General Public License version 2 or later; see LICENSE
+ * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,14 +12,14 @@ defined('JPATH_PLATFORM') or die;
  * Static class to handle loading of libraries.
  *
  * @package  Joomla.Platform
- * @since	11.1
+ * @since    11.1
  */
 abstract class JLoader
 {
 	/**
 	 * Container for already imported library paths.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected static $classes = array();
@@ -27,7 +27,7 @@ abstract class JLoader
 	/**
 	 * Container for already imported library paths.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected static $imported = array();
@@ -35,7 +35,7 @@ abstract class JLoader
 	/**
 	 * Container for registered library class prefixes and path lookups.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  12.1
 	 */
 	protected static $prefixes = array();
@@ -43,14 +43,14 @@ abstract class JLoader
 	/**
 	 * Method to discover classes of a given type in a given path.
 	 *
-	 * @param	string	$classPrefix  The class name prefix to use for discovery.
-	 * @param	string	$parentPath	Full path to the parent folder for the classes to discover.
-	 * @param	boolean  $force		True to overwrite the autoload path value for the class if it already exists.
-	 * @param	boolean  $recurse	  Recurse through all child directories as well as the parent path.
+	 * @param   string   $classPrefix  The class name prefix to use for discovery.
+	 * @param   string   $parentPath   Full path to the parent folder for the classes to discover.
+	 * @param   boolean  $force        True to overwrite the autoload path value for the class if it already exists.
+	 * @param   boolean  $recurse      Recurse through all child directories as well as the parent path.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function discover($classPrefix, $parentPath, $force = true, $recurse = false)
 	{
@@ -98,7 +98,7 @@ abstract class JLoader
 	 *
 	 * @return  array  The array of class => path values for the autoloader.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getClassList()
 	{
@@ -108,12 +108,12 @@ abstract class JLoader
 	/**
 	 * Loads a class from specified directories.
 	 *
-	 * @param	string  $key	The class name to look for (dot notation).
-	 * @param	string  $base  Search this directory for the class.
+	 * @param   string  $key   The class name to look for (dot notation).
+	 * @param   string  $base  Search this directory for the class.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function import($key, $base = null)
 	{
@@ -174,11 +174,11 @@ abstract class JLoader
 	/**
 	 * Load the file for a class.
 	 *
-	 * @param	string  $class  The class to be loaded.
+	 * @param   string  $class  The class to be loaded.
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function load($class)
 	{
@@ -204,13 +204,13 @@ abstract class JLoader
 	/**
 	 * Directly register a class to the autoload list.
 	 *
-	 * @param	string	$class  The class name to register.
-	 * @param	string	$path	Full path to the file that holds the class to register.
-	 * @param	boolean  $force  True to overwrite the autoload path value for the class if it already exists.
+	 * @param   string   $class  The class name to register.
+	 * @param   string   $path   Full path to the file that holds the class to register.
+	 * @param   boolean  $force  True to overwrite the autoload path value for the class if it already exists.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function register($class, $path, $force = true)
 	{
@@ -235,13 +235,13 @@ abstract class JLoader
 	 * set to true then any registered lookups for the given prefix will be overwritten with the current
 	 * lookup path.
 	 *
-	 * @param	string	$prefix  The class prefix to register.
-	 * @param	string	$path	Absolute file path to the library root where classes with the given prefix can be found.
-	 * @param	boolean  $reset	True to reset the prefix with only the given lookup path.
+	 * @param   string   $prefix  The class prefix to register.
+	 * @param   string   $path    Absolute file path to the library root where classes with the given prefix can be found.
+	 * @param   boolean  $reset   True to reset the prefix with only the given lookup path.
 	 *
 	 * @return  void
 	 *
-	 * @since	12.1
+	 * @since   12.1
 	 */
 	public static function registerPrefix($prefix, $path, $reset = false)
 	{
@@ -271,7 +271,7 @@ abstract class JLoader
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public static function setup()
 	{
@@ -286,11 +286,11 @@ abstract class JLoader
 	/**
 	 * Autoload a class based on name.
 	 *
-	 * @param	string  $class  The class to be loaded.
+	 * @param   string  $class  The class to be loaded.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	private static function _autoload($class)
 	{
@@ -306,12 +306,12 @@ abstract class JLoader
 	/**
 	 * Load a class based on name and lookup array.
 	 *
-	 * @param	string  $class	The class to be loaded (wihtout prefix).
-	 * @param	array	$lookup  The array of base paths to use for finding the class file.
+	 * @param   string  $class   The class to be loaded (wihtout prefix).
+	 * @param   array   $lookup  The array of base paths to use for finding the class file.
 	 *
 	 * @return  void
 	 *
-	 * @since	12.1
+	 * @since   12.1
 	 */
 	private static function _load($class, $lookup)
 	{
@@ -340,12 +340,12 @@ abstract class JLoader
  *
  * This function provides a single exit point for the platform.
  *
- * @param	mixed  $message  Exit code or string. Defaults to zero.
+ * @param   mixed  $message  Exit code or string. Defaults to zero.
  *
  * @return  void
  *
  * @codeCoverageIgnore
- * @since	11.1
+ * @since   11.1
  */
 function jexit($message = 0)
 {
@@ -355,11 +355,11 @@ function jexit($message = 0)
 /**
  * Intelligent file importer.
  *
- * @param	string  $path  A dot syntax path.
+ * @param   string  $path  A dot syntax path.
  *
  * @return  boolean  True on success.
  *
- * @since	11.1
+ * @since   11.1
  */
 function jimport($path)
 {

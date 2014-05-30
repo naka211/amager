@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_categories
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
@@ -14,16 +14,16 @@ jimport('joomla.application.component.controllerform');
 /**
  * The Category Controller
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_categories
- * @since		1.6
+ * @since       1.6
  */
 class CategoriesControllerCategory extends JControllerForm
 {
 	/**
 	 * The extension for which the categories apply.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  1.6
 	 */
 	protected $extension;
@@ -34,7 +34,7 @@ class CategoriesControllerCategory extends JControllerForm
 	 * @param  array  $config  An optional associative array of configuration settings.
 	 *
 	 * @since  1.6
-	 * @see	JController
+	 * @see    JController
 	 */
 	public function __construct($config = array())
 	{
@@ -50,11 +50,11 @@ class CategoriesControllerCategory extends JControllerForm
 	/**
 	 * Method to check if you can add a new record.
 	 *
-	 * @param	array  $data  An array of input data.
+	 * @param   array  $data  An array of input data.
 	 *
 	 * @return  boolean
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function allowAdd($data = array())
 	{
@@ -65,12 +65,12 @@ class CategoriesControllerCategory extends JControllerForm
 	/**
 	 * Method to check if you can edit a record.
 	 *
-	 * @param	array	$data  An array of input data.
-	 * @param	string  $key	The name of the key for the primary key.
+	 * @param   array   $data  An array of input data.
+	 * @param   string  $key   The name of the key for the primary key.
 	 *
 	 * @return  boolean
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function allowEdit($data = array(), $key = 'parent_id')
 	{
@@ -122,11 +122,11 @@ class CategoriesControllerCategory extends JControllerForm
 	/**
 	 * Method to run batch operations.
 	 *
-	 * @param	object  $model  The model.
+	 * @param   object  $model  The model.
 	 *
 	 * @return  boolean	 True if successful, false otherwise and internal error is set.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function batch($model = null)
 	{
@@ -144,12 +144,12 @@ class CategoriesControllerCategory extends JControllerForm
 	/**
 	 * Gets the URL arguments to append to an item redirect.
 	 *
-	 * @param	integer  $recordId  The primary key id for the item.
-	 * @param	string	$urlVar	The name of the URL variable for the id.
+	 * @param   integer  $recordId  The primary key id for the item.
+	 * @param   string   $urlVar    The name of the URL variable for the id.
 	 *
 	 * @return  string  The arguments to append to the redirect URL.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function getRedirectToItemAppend($recordId = null, $urlVar = 'id')
 	{
@@ -164,7 +164,7 @@ class CategoriesControllerCategory extends JControllerForm
 	 *
 	 * @return  string  The arguments to append to the redirect URL.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function getRedirectToListAppend()
 	{

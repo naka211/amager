@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -17,80 +17,80 @@ jimport('joomla.event.dispatcher');
 /**
  * Base class for a Joomla! Web application.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
- * @since		11.4
+ * @since       11.4
  */
 class JApplicationWeb
 {
 	/**
-	 * @var	JInput  The application input object.
+	 * @var    JInput  The application input object.
 	 * @since  11.3
 	 */
 	public $input;
 
 	/**
-	 * @var	string  Character encoding string.
+	 * @var    string  Character encoding string.
 	 * @since  11.3
 	 */
 	public $charSet = 'utf-8';
 
 	/**
-	 * @var	string  Response mime type.
+	 * @var    string  Response mime type.
 	 * @since  11.3
 	 */
 	public $mimeType = 'text/html';
 
 	/**
-	 * @var	JDate  The body modified date for response headers.
+	 * @var    JDate  The body modified date for response headers.
 	 * @since  11.3
 	 */
 	public $modifiedDate;
 
 	/**
-	 * @var	JWebClient  The application client object.
+	 * @var    JWebClient  The application client object.
 	 * @since  11.3
 	 */
 	public $client;
 
 	/**
-	 * @var	JRegistry  The application configuration object.
+	 * @var    JRegistry  The application configuration object.
 	 * @since  11.3
 	 */
 	protected $config;
 
 	/**
-	 * @var	JDispatcher  The application dispatcher object.
+	 * @var    JDispatcher  The application dispatcher object.
 	 * @since  11.3
 	 */
 	protected $dispatcher;
 
 	/**
-	 * @var	JDocument  The application document object.
+	 * @var    JDocument  The application document object.
 	 * @since  11.3
 	 */
 	protected $document;
 
 	/**
-	 * @var	JLanguage  The application language object.
+	 * @var    JLanguage  The application language object.
 	 * @since  11.3
 	 */
 	protected $language;
 
 	/**
-	 * @var	JSession  The application session object.
+	 * @var    JSession  The application session object.
 	 * @since  11.3
 	 */
 	protected $session;
 
 	/**
-	 * @var	object  The application response object.
+	 * @var    object  The application response object.
 	 * @since  11.3
 	 */
 	protected $response;
 
 	/**
-	 * @var	JApplicationWeb  The application instance.
+	 * @var    JApplicationWeb  The application instance.
 	 * @since  11.3
 	 */
 	protected static $instance;
@@ -98,17 +98,17 @@ class JApplicationWeb
 	/**
 	 * Class constructor.
 	 *
-	 * @param	mixed  $input	An optional argument to provide dependency injection for the application's
-	 *						  input object.  If the argument is a JInput object that object will become
-	 *						  the application's input object, otherwise a default input object is created.
-	 * @param	mixed  $config  An optional argument to provide dependency injection for the application's
-	 *						  config object.  If the argument is a JRegistry object that object will become
-	 *						  the application's config object, otherwise a default config object is created.
-	 * @param	mixed  $client  An optional argument to provide dependency injection for the application's
-	 *						  client object.  If the argument is a JWebClient object that object will become
-	 *						  the application's client object, otherwise a default client object is created.
+	 * @param   mixed  $input   An optional argument to provide dependency injection for the application's
+	 *                          input object.  If the argument is a JInput object that object will become
+	 *                          the application's input object, otherwise a default input object is created.
+	 * @param   mixed  $config  An optional argument to provide dependency injection for the application's
+	 *                          config object.  If the argument is a JRegistry object that object will become
+	 *                          the application's config object, otherwise a default config object is created.
+	 * @param   mixed  $client  An optional argument to provide dependency injection for the application's
+	 *                          client object.  If the argument is a JWebClient object that object will become
+	 *                          the application's client object, otherwise a default client object is created.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function __construct(JInput $input = null, JRegistry $config = null, JWebClient $client = null)
 	{
@@ -167,11 +167,11 @@ class JApplicationWeb
 	 *
 	 * This method must be invoked as: $web = JApplicationWeb::getInstance();
 	 *
-	 * @param	string  $name  The name (optional) of the JApplicationWeb class to instantiate.
+	 * @param   string  $name  The name (optional) of the JApplicationWeb class to instantiate.
 	 *
 	 * @return  JApplicationWeb
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public static function getInstance($name = null)
 	{
@@ -194,33 +194,33 @@ class JApplicationWeb
 	/**
 	 * Initialise the application.
 	 *
-	 * @param	mixed  $session	 An optional argument to provide dependency injection for the application's
-	 *							  session object.  If the argument is a JSession object that object will become
-	 *							  the application's session object, if it is false then there will be no session
-	 *							  object, and if it is null then the default session object will be created based
-	 *							  on the application's loadSession() method.
-	 * @param	mixed  $document	An optional argument to provide dependency injection for the application's
-	 *							  document object.  If the argument is a JDocument object that object will become
-	 *							  the application's document object, if it is false then there will be no document
-	 *							  object, and if it is null then the default document object will be created based
-	 *							  on the application's loadDocument() method.
-	 * @param	mixed  $language	An optional argument to provide dependency injection for the application's
-	 *							  language object.  If the argument is a JLanguage object that object will become
-	 *							  the application's language object, if it is false then there will be no language
-	 *							  object, and if it is null then the default language object will be created based
-	 *							  on the application's loadLanguage() method.
-	 * @param	mixed  $dispatcher  An optional argument to provide dependency injection for the application's
-	 *							  event dispatcher.  If the argument is a JDispatcher object that object will become
-	 *							  the application's event dispatcher, if it is null then the default event dispatcher
-	 *							  will be created based on the application's loadDispatcher() method.
+	 * @param   mixed  $session     An optional argument to provide dependency injection for the application's
+	 *                              session object.  If the argument is a JSession object that object will become
+	 *                              the application's session object, if it is false then there will be no session
+	 *                              object, and if it is null then the default session object will be created based
+	 *                              on the application's loadSession() method.
+	 * @param   mixed  $document    An optional argument to provide dependency injection for the application's
+	 *                              document object.  If the argument is a JDocument object that object will become
+	 *                              the application's document object, if it is false then there will be no document
+	 *                              object, and if it is null then the default document object will be created based
+	 *                              on the application's loadDocument() method.
+	 * @param   mixed  $language    An optional argument to provide dependency injection for the application's
+	 *                              language object.  If the argument is a JLanguage object that object will become
+	 *                              the application's language object, if it is false then there will be no language
+	 *                              object, and if it is null then the default language object will be created based
+	 *                              on the application's loadLanguage() method.
+	 * @param   mixed  $dispatcher  An optional argument to provide dependency injection for the application's
+	 *                              event dispatcher.  If the argument is a JDispatcher object that object will become
+	 *                              the application's event dispatcher, if it is null then the default event dispatcher
+	 *                              will be created based on the application's loadDispatcher() method.
 	 *
 	 * @return  JApplicationWeb  Instance of $this to allow chaining.
 	 *
-	 * @see	 loadSession()
-	 * @see	 loadDocument()
-	 * @see	 loadLanguage()
-	 * @see	 loadDispatcher()
-	 * @since	11.3
+	 * @see     loadSession()
+	 * @see     loadDocument()
+	 * @see     loadLanguage()
+	 * @see     loadDispatcher()
+	 * @since   11.3
 	 */
 	public function initialise($session = null, $document = null, $language = null, $dispatcher = null)
 	{
@@ -292,7 +292,7 @@ class JApplicationWeb
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function execute()
 	{
@@ -342,7 +342,7 @@ class JApplicationWeb
 	 * @return  void
 	 *
 	 * @codeCoverageIgnore
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function doExecute()
 	{
@@ -356,7 +356,7 @@ class JApplicationWeb
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function render()
 	{
@@ -393,7 +393,7 @@ class JApplicationWeb
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function compress()
 	{
@@ -463,7 +463,7 @@ class JApplicationWeb
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function respond()
 	{
@@ -504,12 +504,12 @@ class JApplicationWeb
 	 * or "303 See Other" code in the header pointing to the new location. If the headers have already been
 	 * sent this will be accomplished using a JavaScript statement.
 	 *
-	 * @param	string	$url	The URL to redirect to. Can only be http/https URL
-	 * @param	boolean  $moved  True if the page is 301 Permanently Moved, otherwise 303 See Other is assumed.
+	 * @param   string   $url    The URL to redirect to. Can only be http/https URL
+	 * @param   boolean  $moved  True if the page is 301 Permanently Moved, otherwise 303 See Other is assumed.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function redirect($url, $moved = false)
 	{
@@ -600,12 +600,12 @@ class JApplicationWeb
 	/**
 	 * Exit the application.
 	 *
-	 * @param	integer  $code  The exit code (optional; default is 0).
+	 * @param   integer  $code  The exit code (optional; default is 0).
 	 *
 	 * @return  void
 	 *
 	 * @codeCoverageIgnore
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function close($code = 0)
 	{
@@ -615,11 +615,11 @@ class JApplicationWeb
 	/**
 	 * Load an object or array into the application configuration object.
 	 *
-	 * @param	mixed  $data  Either an array or object to be loaded into the configuration object.
+	 * @param   mixed  $data  Either an array or object to be loaded into the configuration object.
 	 *
 	 * @return  JApplicationWeb  Instance of $this to allow chaining.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function loadConfiguration($data)
 	{
@@ -639,12 +639,12 @@ class JApplicationWeb
 	/**
 	 * Registers a handler to a particular event group.
 	 *
-	 * @param	string	$event	The event name.
-	 * @param	callback  $handler  The handler, a function or an instance of a event object.
+	 * @param   string    $event    The event name.
+	 * @param   callback  $handler  The handler, a function or an instance of a event object.
 	 *
 	 * @return  JApplicationWeb  Instance of $this to allow chaining.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function registerEvent($event, $handler)
 	{
@@ -659,12 +659,12 @@ class JApplicationWeb
 	/**
 	 * Calls all handlers associated with an event group.
 	 *
-	 * @param	string  $event  The event name.
-	 * @param	array	$args	An array of arguments (optional).
+	 * @param   string  $event  The event name.
+	 * @param   array   $args   An array of arguments (optional).
 	 *
-	 * @return  array	An array of results from each function call, or null if no dispatcher is defined.
+	 * @return  array   An array of results from each function call, or null if no dispatcher is defined.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function triggerEvent($event, array $args = null)
 	{
@@ -679,12 +679,12 @@ class JApplicationWeb
 	/**
 	 * Returns a property of the object or the default value if the property is not set.
 	 *
-	 * @param	string  $key	  The name of the property.
-	 * @param	mixed	$default  The default value (optional) if none is set.
+	 * @param   string  $key      The name of the property.
+	 * @param   mixed   $default  The default value (optional) if none is set.
 	 *
-	 * @return  mixed	The value of the configuration.
+	 * @return  mixed   The value of the configuration.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function get($key, $default = null)
 	{
@@ -694,12 +694,12 @@ class JApplicationWeb
 	/**
 	 * Modifies a property of the object, creating it if it does not already exist.
 	 *
-	 * @param	string  $key	The name of the property.
-	 * @param	mixed	$value  The value of the property to set (optional).
+	 * @param   string  $key    The name of the property.
+	 * @param   mixed   $value  The value of the property to set (optional).
 	 *
-	 * @return  mixed	Previous value of the property
+	 * @return  mixed   Previous value of the property
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function set($key, $value = null)
 	{
@@ -713,11 +713,11 @@ class JApplicationWeb
 	 * Set/get cachable state for the response.  If $allow is set, sets the cachable state of the
 	 * response.  Always returns the current state.
 	 *
-	 * @param	boolean  $allow  True to allow browser caching.
+	 * @param   boolean  $allow  True to allow browser caching.
 	 *
 	 * @return  boolean
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function allowCache($allow = null)
 	{
@@ -734,13 +734,13 @@ class JApplicationWeb
 	 * with the given name will be replaced by the new one.  The headers are stored
 	 * in an internal array to be sent when the site is sent to the browser.
 	 *
-	 * @param	string	$name	 The name of the header to set.
-	 * @param	string	$value	The value of the header to set.
-	 * @param	boolean  $replace  True to replace any headers with the same name.
+	 * @param   string   $name     The name of the header to set.
+	 * @param   string   $value    The value of the header to set.
+	 * @param   boolean  $replace  True to replace any headers with the same name.
 	 *
 	 * @return  JApplicationWeb  Instance of $this to allow chaining.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function setHeader($name, $value, $replace = false)
 	{
@@ -775,7 +775,7 @@ class JApplicationWeb
 	 *
 	 * @return  array
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function getHeaders()
 	{
@@ -787,7 +787,7 @@ class JApplicationWeb
 	 *
 	 * @return  JApplicationWeb  Instance of $this to allow chaining.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function clearHeaders()
 	{
@@ -801,7 +801,7 @@ class JApplicationWeb
 	 *
 	 * @return  JApplicationWeb  Instance of $this to allow chaining.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function sendHeaders()
 	{
@@ -827,11 +827,11 @@ class JApplicationWeb
 	/**
 	 * Set body content.  If body content already defined, this will replace it.
 	 *
-	 * @param	string  $content  The content to set as the response body.
+	 * @param   string  $content  The content to set as the response body.
 	 *
 	 * @return  JApplicationWeb  Instance of $this to allow chaining.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function setBody($content)
 	{
@@ -843,11 +843,11 @@ class JApplicationWeb
 	/**
 	 * Prepend content to the body content
 	 *
-	 * @param	string  $content  The content to prepend to the response body.
+	 * @param   string  $content  The content to prepend to the response body.
 	 *
 	 * @return  JApplicationWeb  Instance of $this to allow chaining.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function prependBody($content)
 	{
@@ -859,11 +859,11 @@ class JApplicationWeb
 	/**
 	 * Append content to the body content
 	 *
-	 * @param	string  $content  The content to append to the response body.
+	 * @param   string  $content  The content to append to the response body.
 	 *
 	 * @return  JApplicationWeb  Instance of $this to allow chaining.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function appendBody($content)
 	{
@@ -875,11 +875,11 @@ class JApplicationWeb
 	/**
 	 * Return the body content
 	 *
-	 * @param	boolean  $asArray  True to return the body as an array of strings.
+	 * @param   boolean  $asArray  True to return the body as an array of strings.
 	 *
 	 * @return  mixed  The response body either as an array or concatenated string.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function getBody($asArray = false)
 	{
@@ -891,7 +891,7 @@ class JApplicationWeb
 	 *
 	 * @return  JDocument  The document object
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function getDocument()
 	{
@@ -903,7 +903,7 @@ class JApplicationWeb
 	 *
 	 * @return  JLanguage  The language object
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function getLanguage()
 	{
@@ -915,7 +915,7 @@ class JApplicationWeb
 	 *
 	 * @return  JSession  The session object
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function getSession()
 	{
@@ -929,8 +929,8 @@ class JApplicationWeb
 	 * @return  boolean  True if the connection is valid and normal.
 	 *
 	 * @codeCoverageIgnore
-	 * @see	 connection_status()
-	 * @since	11.3
+	 * @see     connection_status()
+	 * @since   11.3
 	 */
 	protected function checkConnectionAlive()
 	{
@@ -944,8 +944,8 @@ class JApplicationWeb
 	 * @return  boolean  True if the headers have already been sent.
 	 *
 	 * @codeCoverageIgnore
-	 * @see	 headers_sent()
-	 * @since	11.3
+	 * @see     headers_sent()
+	 * @since   11.3
 	 */
 	protected function checkHeadersSent()
 	{
@@ -957,7 +957,7 @@ class JApplicationWeb
 	 *
 	 * @return  string  The requested URI
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function detectRequestUri()
 	{
@@ -1007,13 +1007,13 @@ class JApplicationWeb
 	 * will extend this method in child classes to provide configuration data from whatever data source is relevant
 	 * for your specific application.
 	 *
-	 * @param	string  $file	The path and filename of the configuration file. If not provided, configuration.php
-	 *						  in JPATH_BASE will be used.
-	 * @param	string  $class  The class name to instantiate.
+	 * @param   string  $file   The path and filename of the configuration file. If not provided, configuration.php
+	 *                          in JPATH_BASE will be used.
+	 * @param   string  $class  The class name to instantiate.
 	 *
-	 * @return  mixed	Either an array or object to be loaded into the configuration object.
+	 * @return  mixed   Either an array or object to be loaded into the configuration object.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function fetchConfigurationData($file = '', $class = 'JConfig')
 	{
@@ -1053,17 +1053,17 @@ class JApplicationWeb
 	 * Method to send a header to the client.  We are wrapping this to isolate the header() function
 	 * from our code base for testing reasons.
 	 *
-	 * @param	string	$string	The header string.
-	 * @param	boolean  $replace  The optional replace parameter indicates whether the header should
-	 *							 replace a previous similar header, or add a second header of the same type.
-	 * @param	integer  $code	 Forces the HTTP response code to the specified value. Note that
-	 *							 this parameter only has an effect if the string is not empty.
+	 * @param   string   $string   The header string.
+	 * @param   boolean  $replace  The optional replace parameter indicates whether the header should
+	 *                             replace a previous similar header, or add a second header of the same type.
+	 * @param   integer  $code     Forces the HTTP response code to the specified value. Note that
+	 *                             this parameter only has an effect if the string is not empty.
 	 *
 	 * @return  void
 	 *
 	 * @codeCoverageIgnore
-	 * @see	 header()
-	 * @since	11.3
+	 * @see     header()
+	 * @since   11.3
 	 */
 	protected function header($string, $replace = true, $code = null)
 	{
@@ -1077,7 +1077,7 @@ class JApplicationWeb
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function loadDispatcher()
 	{
@@ -1091,7 +1091,7 @@ class JApplicationWeb
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function loadDocument()
 	{
@@ -1105,7 +1105,7 @@ class JApplicationWeb
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function loadLanguage()
 	{
@@ -1119,7 +1119,7 @@ class JApplicationWeb
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function loadSession()
 	{
@@ -1160,12 +1160,12 @@ class JApplicationWeb
 	/**
 	 * Method to load the system URI strings for the application.
 	 *
-	 * @param	string  $requestUri  An optional request URI to use instead of detecting one from the
-	 *								server environment variables.
+	 * @param   string  $requestUri  An optional request URI to use instead of detecting one from the
+	 *                               server environment variables.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function loadSystemUris($requestUri = null)
 	{
@@ -1229,9 +1229,9 @@ class JApplicationWeb
 /**
  * Deprecated class placeholder.  You should use JApplicationWeb instead.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
- * @since		11.3
+ * @since       11.3
  * @deprecated  12.3
  */
 class JWeb extends JApplicationWeb

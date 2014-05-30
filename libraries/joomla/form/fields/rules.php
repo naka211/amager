@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -13,17 +13,17 @@ defined('JPATH_PLATFORM') or die;
  * Form Field class for the Joomla Platform.
  * Field for assigning permissions to groups for a given asset
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
- * @see		 JAccess
- * @since		11.1
+ * @see         JAccess
+ * @since       11.1
  */
 class JFormFieldRules extends JFormField
 {
 	/**
 	 * The form field type.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $type = 'Rules';
@@ -36,7 +36,7 @@ class JFormFieldRules extends JFormField
 	 *
 	 * @return  string  The field input markup.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function getInput()
 	{
@@ -203,7 +203,7 @@ class JFormFieldRules extends JFormField
 					// This is where we show the current effective settings considering currrent group, path and cascade.
 					// Check whether this is a component or global. Change the text slightly.
 
-					if (JAccess::checkGroup($group->value, 'core.admin') !== true)
+					if (JAccess::checkGroup($group->value, 'core.admin', $assetId) !== true)
 					{
 						if ($inheritedRule === null)
 						{
@@ -298,7 +298,7 @@ class JFormFieldRules extends JFormField
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function getUserGroups()
 	{

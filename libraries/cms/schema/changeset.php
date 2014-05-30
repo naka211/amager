@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 CMS.Library
+ * @package     CMS.Library
  * @subpackage  Schema
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -19,30 +19,30 @@ JLoader::register('JSchemaChangeitem', JPATH_LIBRARIES . '/cms/schema/changeitem
  * the database when this database was created or updated. This enables the
  * Installation Manager to check that the current database schema is up to date.
  *
- * @package	 CMS.Library
+ * @package     CMS.Library
  * @subpackage  Schema
- * @since		2.5
+ * @since       2.5
  */
 class JSchemaChangeset extends JObject
 {
 	/**
 	 * Array of JSchemaChangeItem objects
 	 *
-	 * @var	string
+	 * @var    string
 	 */
 	protected $changeItems = array();
 
 	/**
 	* JDatabase object
 	*
-	* @var	string
+	* @var    string
 	*/
 	protected $db = null;
 
 	/**
 	* Folder where SQL update files will be found
 	*
-	* @var	string
+	* @var    string
 	*/
 	protected $folder = null;
 
@@ -50,10 +50,10 @@ class JSchemaChangeset extends JObject
 	 * Constructor: builds array of $changeItems by processing the .sql files in a folder.
 	 * The folder for the Joomla core updates is administrator/components/com_admin/sql/updates/<database>.
 	 *
-	 * @param	JDatabase  $db	  The current database object
-	 * @param	string	 $folder  The full path to the folder containing the update queries
+	 * @param   JDatabase  $db      The current database object
+	 * @param   string     $folder  The full path to the folder containing the update queries
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function __construct($db, $folder = null)
 	{
@@ -71,12 +71,12 @@ class JSchemaChangeset extends JObject
 	 * Returns the existing JSchemaChangeset object if it exists.
 	 * Otherwise, it creates a new one.
 	 *
-	 * @param	JDatabase  $db	  The current database object
-	 * @param	string	 $folder  The full path to the folder containing the update queries
+	 * @param   JDatabase  $db      The current database object
+	 * @param   string     $folder  The full path to the folder containing the update queries
 	 *
-	 * @return  JSchemaChangeSet	The (possibly chached) instance of JSchemaChangeSet
+	 * @return  JSchemaChangeSet    The (possibly chached) instance of JSchemaChangeSet
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function getInstance($db, $folder)
 	{
@@ -93,9 +93,9 @@ class JSchemaChangeset extends JObject
 	 * Note these are not database errors but rather situations where
 	 * the current schema is not up to date.
 	 *
-	 * @return	array Array of errors if any.
+	 * @return   array Array of errors if any.
 	 *
-	 * @since	2.5
+	 * @since    2.5
 	 */
 	public function check()
 	{
@@ -116,7 +116,7 @@ class JSchemaChangeset extends JObject
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function fix()
 	{
@@ -132,7 +132,7 @@ class JSchemaChangeset extends JObject
 	*
 	* @return  array  associative array of changeitems grouped by unchecked, ok, error, and skipped
 	*
-	* @since	2.5
+	* @since   2.5
 	*/
 	public function getStatus()
 	{
@@ -166,7 +166,7 @@ class JSchemaChangeset extends JObject
 	 *
 	 * @return  string  the schema version for the database
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function getSchema()
 	{
@@ -180,7 +180,7 @@ class JSchemaChangeset extends JObject
 	 *
 	 * @return  array  list of sql update full-path names
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	private function getUpdateFiles()
 	{
@@ -196,19 +196,20 @@ class JSchemaChangeset extends JObject
 		{
 			$this->folder = JPATH_ADMINISTRATOR . '/components/com_admin/sql/updates/';
 		}
-		return JFolder::files($this->folder . '/' . $sqlFolder, '\.sql$', 1, true);
+		return JFolder::files($this->folder . '/' . $sqlFolder, '\.sql$', 1, true, array('.svn', 'CVS', '.DS_Store', '__MACOSX'),
+		array('^\..*', '.*~'), true);
 	}
 
 	/**
 	 * Get array of SQL queries
 	 *
-	 * @param	array  $sqlfiles  Array of .sql update filenames.
+	 * @param   array  $sqlfiles  Array of .sql update filenames.
 	 *
 	 * @return  array  Array of stdClass objects where:
-	 *					file=filename,
-	 *					update_query = text of SQL update query
+	 *                    file=filename,
+	 *                    update_query = text of SQL update query
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	private function getUpdateQueries(array $sqlfiles)
 	{

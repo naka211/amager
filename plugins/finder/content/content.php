@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Plugin
+ * @package     Joomla.Plugin
  * @subpackage  Finder.Content
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_BASE') or die;
@@ -17,16 +17,16 @@ require_once JPATH_ADMINISTRATOR . '/components/com_finder/helpers/indexer/adapt
 /**
  * Finder adapter for com_content.
  *
- * @package	 Joomla.Plugin
+ * @package     Joomla.Plugin
  * @subpackage  Finder.Content
- * @since		2.5
+ * @since       2.5
  */
 class plgFinderContent extends FinderIndexerAdapter
 {
 	/**
 	 * The plugin identifier.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	protected $context = 'Content';
@@ -34,7 +34,7 @@ class plgFinderContent extends FinderIndexerAdapter
 	/**
 	 * The extension name.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	protected $extension = 'com_content';
@@ -42,7 +42,7 @@ class plgFinderContent extends FinderIndexerAdapter
 	/**
 	 * The sublayout to use when rendering the results.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	protected $layout = 'article';
@@ -50,7 +50,7 @@ class plgFinderContent extends FinderIndexerAdapter
 	/**
 	 * The type of content that the adapter indexes.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	protected $type_title = 'Article';
@@ -58,7 +58,7 @@ class plgFinderContent extends FinderIndexerAdapter
 	/**
 	 * The table name.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	protected $table = '#__content';
@@ -66,10 +66,10 @@ class plgFinderContent extends FinderIndexerAdapter
 	/**
 	 * Constructor
 	 *
-	 * @param	object  &$subject  The object to observe
-	 * @param	array	$config	An array that holds the plugin configuration
+	 * @param   object  &$subject  The object to observe
+	 * @param   array   $config    An array that holds the plugin configuration
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function __construct(&$subject, $config)
 	{
@@ -82,13 +82,13 @@ class plgFinderContent extends FinderIndexerAdapter
 	 * changed. This is fired when the item category is published or unpublished
 	 * from the list view.
 	 *
-	 * @param	string	$extension  The extension whose category has been updated.
-	 * @param	array	$pks		A list of primary key ids of the content that has changed state.
-	 * @param	integer  $value	  The value of the state that the content has been changed to.
+	 * @param   string   $extension  The extension whose category has been updated.
+	 * @param   array    $pks        A list of primary key ids of the content that has changed state.
+	 * @param   integer  $value      The value of the state that the content has been changed to.
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function onFinderCategoryChangeState($extension, $pks, $value)
 	{
@@ -102,12 +102,12 @@ class plgFinderContent extends FinderIndexerAdapter
 	/**
 	 * Method to remove the link information for items that have been deleted.
 	 *
-	 * @param	string  $context  The context of the action being performed.
-	 * @param	JTable  $table	A JTable object containing the record to be deleted
+	 * @param   string  $context  The context of the action being performed.
+	 * @param   JTable  $table    A JTable object containing the record to be deleted
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 * @throws  Exception on database error.
 	 */
 	public function onFinderAfterDelete($context, $table)
@@ -131,13 +131,13 @@ class plgFinderContent extends FinderIndexerAdapter
 	/**
 	 * Method to determine if the access level of an item changed.
 	 *
-	 * @param	string	$context  The context of the content passed to the plugin.
-	 * @param	JTable	$row	  A JTable object
-	 * @param	boolean  $isNew	If the content has just been created
+	 * @param   string   $context  The context of the content passed to the plugin.
+	 * @param   JTable   $row      A JTable object
+	 * @param   boolean  $isNew    If the content has just been created
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 * @throws  Exception on database error.
 	 */
 	public function onFinderAfterSave($context, $row, $isNew)
@@ -174,13 +174,13 @@ class plgFinderContent extends FinderIndexerAdapter
 	 * This event is fired before the data is actually saved so we are going
 	 * to queue the item to be indexed later.
 	 *
-	 * @param	string	$context  The context of the content passed to the plugin.
-	 * @param	JTable	$row	 A JTable object
-	 * @param	boolean  $isNew	If the content is just about to be created
+	 * @param   string   $context  The context of the content passed to the plugin.
+	 * @param   JTable   $row     A JTable object
+	 * @param   boolean  $isNew    If the content is just about to be created
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 * @throws  Exception on database error.
 	 */
 	public function onFinderBeforeSave($context, $row, $isNew)
@@ -213,13 +213,13 @@ class plgFinderContent extends FinderIndexerAdapter
 	 * from outside the edit screen. This is fired when the item is published,
 	 * unpublished, archived, or unarchived from the list view.
 	 *
-	 * @param	string	$context  The context for the content passed to the plugin.
-	 * @param	array	$pks	  A list of primary key ids of the content that has changed state.
-	 * @param	integer  $value	The value of the state that the content has been changed to.
+	 * @param   string   $context  The context for the content passed to the plugin.
+	 * @param   array    $pks      A list of primary key ids of the content that has changed state.
+	 * @param   integer  $value    The value of the state that the content has been changed to.
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function onFinderChangeState($context, $pks, $value)
 	{
@@ -238,12 +238,12 @@ class plgFinderContent extends FinderIndexerAdapter
 	/**
 	 * Method to index an item. The item must be a FinderIndexerResult object.
 	 *
-	 * @param	FinderIndexerResult  $item	The item to index as an FinderIndexerResult object.
-	 * @param	string				$format  The item format
+	 * @param   FinderIndexerResult  $item    The item to index as an FinderIndexerResult object.
+	 * @param   string               $format  The item format
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 * @throws  Exception on database error.
 	 */
 	protected function index(FinderIndexerResult $item, $format = 'html')
@@ -270,7 +270,7 @@ class plgFinderContent extends FinderIndexerAdapter
 
 		// Build the necessary route and path information.
 		$item->url = $this->getURL($item->id, $this->extension, $this->layout);
-		$item->route = ContentHelperRoute::getArticleRoute($item->slug, $item->catslug);
+		$item->route = ContentHelperRoute::getArticleRoute($item->slug, $item->catslug, $item->language);
 		$item->path = FinderIndexerHelper::getContentPath($item->route);
 
 		// Get the menu title if it exists.
@@ -322,7 +322,7 @@ class plgFinderContent extends FinderIndexerAdapter
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function setup()
 	{
@@ -335,11 +335,11 @@ class plgFinderContent extends FinderIndexerAdapter
 	/**
 	 * Method to get the SQL query used to retrieve the list of content items.
 	 *
-	 * @param	mixed  $sql  A JDatabaseQuery object or null.
+	 * @param   mixed  $sql  A JDatabaseQuery object or null.
 	 *
 	 * @return  JDatabaseQuery  A database object.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function getListQuery($sql = null)
 	{

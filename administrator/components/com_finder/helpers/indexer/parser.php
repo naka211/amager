@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -12,20 +12,20 @@ defined('_JEXEC') or die;
 /**
  * Parser base class for the Finder indexer package.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 abstract class FinderIndexerParser
 {
 	/**
 	 * Method to get a parser, creating it if necessary.
 	 *
-	 * @param	string  $format  The type of parser to load.
+	 * @param   string  $format  The type of parser to load.
 	 *
 	 * @return  FinderIndexerParser  A FinderIndexerParser instance.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 * @throws  Exception on invalid parser.
 	 */
 	public static function getInstance($format)
@@ -71,11 +71,11 @@ abstract class FinderIndexerParser
 	 * batch out its parsing functionality to deal with the inefficiencies of
 	 * regular expressions. We will parse recursively in 2KB chunks.
 	 *
-	 * @param	string  $input  The input to parse.
+	 * @param   string  $input  The input to parse.
 	 *
 	 * @return  string  The plain text input.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function parse($input)
 	{
@@ -122,11 +122,11 @@ abstract class FinderIndexerParser
 	/**
 	 * Method to process input and extract the plain text.
 	 *
-	 * @param	string  $input  The input to process.
+	 * @param   string  $input  The input to process.
 	 *
 	 * @return  string  The plain text input.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	abstract protected function process($input);
 }

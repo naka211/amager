@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_contact
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -23,13 +23,13 @@ class ContactModelContact extends JModelAdmin
 	/**
 	 * Method to perform batch operations on an item or a set of items.
 	 *
-	 * @param	array  $commands  An array of commands to perform.
-	 * @param	array  $pks		An array of item ids.
-	 * @param	array  $contexts  An array of item contexts.
+	 * @param   array  $commands  An array of commands to perform.
+	 * @param   array  $pks       An array of item ids.
+	 * @param   array  $contexts  An array of item contexts.
 	 *
 	 * @return  boolean  Returns true on success, false on failure.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function batch($commands, $pks, $contexts)
 	{
@@ -119,9 +119,9 @@ class ContactModelContact extends JModelAdmin
 	/**
 	 * Batch copy items to a new category or current.
 	 *
-	 * @param	integer  $value	 The new category.
-	 * @param	array	$pks		An array of row IDs.
-	 * @param	array	$contexts  An array of item contexts.
+	 * @param   integer  $value     The new category.
+	 * @param   array    $pks       An array of row IDs.
+	 * @param   array    $contexts  An array of item contexts.
 	 *
 	 * @return  mixed  An array of new IDs on success, boolean false on failure.
 	 *
@@ -238,13 +238,13 @@ class ContactModelContact extends JModelAdmin
 	/**
 	 * Batch change a linked user.
 	 *
-	 * @param	integer  $value	 The new value matching a User ID.
-	 * @param	array	$pks		An array of row IDs.
-	 * @param	array	$contexts  An array of item contexts.
+	 * @param   integer  $value     The new value matching a User ID.
+	 * @param   array    $pks       An array of row IDs.
+	 * @param   array    $contexts  An array of item contexts.
 	 *
 	 * @return  boolean  True if successful, false otherwise and internal error is set.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function batchUser($value, $pks, $contexts)
 	{

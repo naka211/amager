@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -16,29 +16,29 @@ JLoader::discover('JInput', dirname(__FILE__) . '/input');
  *
  * This is an abstracted input class used to manage retrieving data from the application environment.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
- * @since		11.1
+ * @since       11.1
  *
- * @method	  integer  getInt()		getInt($name, $default)	Get a signed integer.
- * @method	  integer  getUint()	  getUint($name, $default)	Get an unsigned integer.
- * @method	  float	getFloat()	 getFloat($name, $default)  Get a floating-point number.
- * @method	  boolean  getBool()	  getBool($name, $default)	Get a boolean.
- * @method	  string	getWord()	  getWord($name, $default)
- * @method	  string	getAlnum()	 getAlnum($name, $default)
- * @method	  string	getCmd()		getCmd($name, $default)
- * @method	  string	getBase64()	getBase64($name, $default)
- * @method	  string	getString()	getString($name, $default)
- * @method	  string	getHtml()	  getHtml($name, $default)
- * @method	  string	getPath()	  getPath($name, $default)
- * @method	  string	getUsername()  getUsername($name, $default)
+ * @method      integer  getInt()       getInt($name, $default)    Get a signed integer.
+ * @method      integer  getUint()      getUint($name, $default)   Get an unsigned integer.
+ * @method      float    getFloat()     getFloat($name, $default)  Get a floating-point number.
+ * @method      boolean  getBool()      getBool($name, $default)   Get a boolean.
+ * @method      string   getWord()      getWord($name, $default)
+ * @method      string   getAlnum()     getAlnum($name, $default)
+ * @method      string   getCmd()       getCmd($name, $default)
+ * @method      string   getBase64()    getBase64($name, $default)
+ * @method      string   getString()    getString($name, $default)
+ * @method      string   getHtml()      getHtml($name, $default)
+ * @method      string   getPath()      getPath($name, $default)
+ * @method      string   getUsername()  getUsername($name, $default)
  */
 class JInput
 {
 	/**
 	 * Options array for the JInput instance.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $options = array();
@@ -46,7 +46,7 @@ class JInput
 	/**
 	 * Filter object to use.
 	 *
-	 * @var	JFilterInput
+	 * @var    JFilterInput
 	 * @since  11.1
 	 */
 	protected $filter = null;
@@ -54,7 +54,7 @@ class JInput
 	/**
 	 * Input data.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $data = array();
@@ -62,7 +62,7 @@ class JInput
 	/**
 	 * Input objects
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $inputs = array();
@@ -70,10 +70,10 @@ class JInput
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  $source	Source data (Optional, default is $_REQUEST)
-	 * @param	array  $options  Array of configuration parameters (Optional)
+	 * @param   array  $source   Source data (Optional, default is $_REQUEST)
+	 * @param   array  $options  Array of configuration parameters (Optional)
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($source = null, array $options = array())
 	{
@@ -102,11 +102,11 @@ class JInput
 	/**
 	 * Magic method to get an input object
 	 *
-	 * @param	mixed  $name  Name of the input object to retrieve.
+	 * @param   mixed  $name  Name of the input object to retrieve.
 	 *
 	 * @return  JInput  The request input object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __get($name)
 	{
@@ -135,13 +135,13 @@ class JInput
 	/**
 	 * Gets a value from the input data.
 	 *
-	 * @param	string  $name	 Name of the value to get.
-	 * @param	mixed	$default  Default value to return if variable does not exist.
-	 * @param	string  $filter	Filter to apply to the value.
+	 * @param   string  $name     Name of the value to get.
+	 * @param   mixed   $default  Default value to return if variable does not exist.
+	 * @param   string  $filter   Filter to apply to the value.
 	 *
 	 * @return  mixed  The filtered input value.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function get($name, $default = null, $filter = 'cmd')
 	{
@@ -156,12 +156,12 @@ class JInput
 	/**
 	 * Gets an array of values from the request.
 	 *
-	 * @param	array  $vars		Associative array of keys and filter types to apply.
-	 * @param	mixed  $datasource  Array to retrieve data from, or null
+	 * @param   array  $vars        Associative array of keys and filter types to apply.
+	 * @param   mixed  $datasource  Array to retrieve data from, or null
 	 *
 	 * @return  mixed  The filtered input data.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getArray(array $vars, $datasource = null)
 	{
@@ -198,12 +198,12 @@ class JInput
 	/**
 	 * Sets a value
 	 *
-	 * @param	string  $name	Name of the value to set.
-	 * @param	mixed	$value  Value to assign to the input.
+	 * @param   string  $name   Name of the value to set.
+	 * @param   mixed   $value  Value to assign to the input.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function set($name, $value)
 	{
@@ -213,12 +213,12 @@ class JInput
 	/**
 	 * Define a value. The value will only be set if there's no value for the name or if it is null.
 	 *
-	 * @param	string  $name	Name of the value to define.
-	 * @param	mixed	$value  Value to assign to the input.
+	 * @param   string  $name   Name of the value to define.
+	 * @param   mixed   $value  Value to assign to the input.
 	 *
 	 * @return  void
 	 *
-	 * @since	12.1
+	 * @since   12.1
 	 */
 	public function def($name, $value)
 	{
@@ -233,12 +233,12 @@ class JInput
 	/**
 	 * Magic method to get filtered input data.
 	 *
-	 * @param	mixed	$name		Name of the value to get.
-	 * @param	string  $arguments  Default value to return if variable does not exist.
+	 * @param   mixed   $name       Name of the value to get.
+	 * @param   string  $arguments  Default value to return if variable does not exist.
 	 *
 	 * @return  boolean  The filtered boolean input value.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __call($name, $arguments)
 	{
@@ -260,9 +260,9 @@ class JInput
 	/**
 	 * Gets the request method.
 	 *
-	 * @return  string	The request method.
+	 * @return  string   The request method.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getMethod()
 	{

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Base
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,9 +12,9 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Abstract observable class to implement the observer design pattern
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Base
- * @since		11.1
+ * @since       11.1
  * @deprecated  12.3
  * @codeCoverageIgnore
  */
@@ -23,7 +23,7 @@ class JObservable extends JObject
 	/**
 	 * An array of Observer objects to notify
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 * @deprecated  12.3
 	 */
@@ -32,7 +32,7 @@ class JObservable extends JObject
 	/**
 	 * The state of the observable object
 	 *
-	 * @var	mixed
+	 * @var    mixed
 	 * @since  11.1
 	 * @deprecated  12.3
 	 */
@@ -41,7 +41,7 @@ class JObservable extends JObject
 	/**
 	 * A multi dimensional array of [function][] = key for observers
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 * @deprecated  12.3
 	 */
@@ -62,9 +62,9 @@ class JObservable extends JObject
 	/**
 	 * Get the state of the JObservable object
 	 *
-	 * @return  mixed	The state of the object.
+	 * @return  mixed    The state of the object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3
 	 */
 	public function getState()
@@ -75,9 +75,9 @@ class JObservable extends JObject
 	/**
 	 * Update each attached observer object and return an array of their return values
 	 *
-	 * @return  array	Array of return values from the observers
+	 * @return  array    Array of return values from the observers
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3
 	 */
 	public function notify()
@@ -94,11 +94,11 @@ class JObservable extends JObject
 	/**
 	 * Attach an observer object
 	 *
-	 * @param	object  $observer  An observer object to attach
+	 * @param   object  $observer  An observer object to attach
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3
 	 */
 	public function attach($observer)
@@ -163,11 +163,11 @@ class JObservable extends JObject
 	/**
 	 * Detach an observer object
 	 *
-	 * @param	object  $observer  An observer object to detach.
+	 * @param   object  $observer  An observer object to detach.
 	 *
 	 * @return  boolean  True if the observer object was detached.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3
 	 */
 	public function detach($observer)

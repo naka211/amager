@@ -263,6 +263,7 @@ jQuery(document).ready( function(){
 <a href="javascript:void(0);" class="btnNext">FORTSÆT &gt;</a>
 </div>
 <?php }?>
+<?php if(isset($_SESSION['cookieinfo1'])){?>
 <div id="CookieInfo" class="CookieInfo">
     <div class="cookie-content">
         <p><?php echo $articles[1]->introtext;?></p>
@@ -270,6 +271,7 @@ jQuery(document).ready( function(){
     <!--Cookie-content--> 
     <a class="bt-close-cookie" href="javascript:void(0);">Luk</a> </div>
 <!--END hLibCookieInfo-->
+<?php }?>
 <div id="header">
     <div id="w-header">
         <div class="logo"> <a href="./">Logo</a> </div>

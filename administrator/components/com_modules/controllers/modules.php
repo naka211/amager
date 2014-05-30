@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -48,13 +48,13 @@ class ModulesControllerModules extends JControllerAdmin
 	/**
 	 * Method to get a model object, loading it if required.
 	 *
-	 * @param	string  $name	The model name. Optional.
-	 * @param	string  $prefix  The class prefix. Optional.
-	 * @param	array	$config  Configuration array for model. Optional.
+	 * @param   string  $name    The model name. Optional.
+	 * @param   string  $prefix  The class prefix. Optional.
+	 * @param   array   $config  Configuration array for model. Optional.
 	 *
 	 * @return  object  The model.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function getModel($name = 'Module', $prefix = 'ModulesModel', $config = array('ignore_request' => true))
 	{

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -19,16 +19,16 @@ JLoader::register('FinderIndexer', dirname(__FILE__) . '/indexer.php');
  * declared will be pushed into the elements array and can be accessed
  * explicitly using the getElement() method.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderIndexerResult
 {
 	/**
 	 * An array of extra result properties.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  2.5
 	 */
 	protected $elements = array();
@@ -37,7 +37,7 @@ class FinderIndexerResult
 	 * This array tells the indexer which properties should be indexed and what
 	 * weights to use for those properties.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  2.5
 	 */
 	protected $instructions = array(
@@ -53,7 +53,7 @@ class FinderIndexerResult
 	 * the item so that it can be filtered by type, label, category,
 	 * or whatever.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  2.5
 	 */
 	protected $taxonomy = array();
@@ -61,7 +61,7 @@ class FinderIndexerResult
 	/**
 	 * The content URL.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	public $url;
@@ -69,7 +69,7 @@ class FinderIndexerResult
 	/**
 	 * The content route.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	public $route;
@@ -77,7 +77,7 @@ class FinderIndexerResult
 	/**
 	 * The content title.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	public $title;
@@ -85,7 +85,7 @@ class FinderIndexerResult
 	/**
 	 * The content description.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	public $description;
@@ -93,7 +93,7 @@ class FinderIndexerResult
 	/**
 	 * The published state of the result.
 	 *
-	 * @var	integer
+	 * @var    integer
 	 * @since  2.5
 	 */
 	public $published;
@@ -101,7 +101,7 @@ class FinderIndexerResult
 	/**
 	 * The content published state.
 	 *
-	 * @var	integer
+	 * @var    integer
 	 * @since  2.5
 	 */
 	public $state;
@@ -109,7 +109,7 @@ class FinderIndexerResult
 	/**
 	 * The content access level.
 	 *
-	 * @var	integer
+	 * @var    integer
 	 * @since  2.5
 	 */
 	public $access;
@@ -117,7 +117,7 @@ class FinderIndexerResult
 	/**
 	 * The content language.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	public $language = '*';
@@ -125,7 +125,7 @@ class FinderIndexerResult
 	/**
 	 * The publishing start date.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	public $publish_start_date;
@@ -133,7 +133,7 @@ class FinderIndexerResult
 	/**
 	 * The publishing end date.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	public $publish_end_date;
@@ -141,7 +141,7 @@ class FinderIndexerResult
 	/**
 	 * The generic start date.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	public $start_date;
@@ -149,7 +149,7 @@ class FinderIndexerResult
 	/**
 	 * The generic end date.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	public $end_date;
@@ -157,7 +157,7 @@ class FinderIndexerResult
 	/**
 	 * The item list price.
 	 *
-	 * @var	mixed
+	 * @var    mixed
 	 * @since  2.5
 	 */
 	public $list_price;
@@ -165,7 +165,7 @@ class FinderIndexerResult
 	/**
 	 * The item sale price.
 	 *
-	 * @var	mixed
+	 * @var    mixed
 	 * @since  2.5
 	 */
 	public $sale_price;
@@ -173,7 +173,7 @@ class FinderIndexerResult
 	/**
 	 * The content type id. This is set by the adapter.
 	 *
-	 * @var	integer
+	 * @var    integer
 	 * @since  2.5
 	 */
 	public $type_id;
@@ -182,12 +182,12 @@ class FinderIndexerResult
 	 * The magic set method is used to push additional values into the elements
 	 * array in order to preserve the cleanliness of the object.
 	 *
-	 * @param	string  $name	The name of the element.
-	 * @param	mixed	$value  The value of the element.
+	 * @param   string  $name   The name of the element.
+	 * @param   mixed   $value  The value of the element.
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function __set($name, $value)
 	{
@@ -198,11 +198,11 @@ class FinderIndexerResult
 	 * The magic get method is used to retrieve additional element values
 	 * from the elements array.
 	 *
-	 * @param	string  $name  The name of the element.
+	 * @param   string  $name  The name of the element.
 	 *
 	 * @return  mixed  The value of the element if set, null otherwise.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function __get($name)
 	{
@@ -221,11 +221,11 @@ class FinderIndexerResult
 	 * The magic isset method is used to check the state of additional element
 	 * values in the elements array.
 	 *
-	 * @param	string  $name  The name of the element.
+	 * @param   string  $name  The name of the element.
 	 *
 	 * @return  boolean  True if set, false otherwise.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function __isset($name)
 	{
@@ -236,11 +236,11 @@ class FinderIndexerResult
 	 * The magic unset method is used to unset additional element values in the
 	 * elements array.
 	 *
-	 * @param	string  $name  The name of the element.
+	 * @param   string  $name  The name of the element.
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function __unset($name)
 	{
@@ -250,11 +250,11 @@ class FinderIndexerResult
 	/**
 	 * Method to retrieve additional element values from the elements array.
 	 *
-	 * @param	string  $name  The name of the element.
+	 * @param   string  $name  The name of the element.
 	 *
 	 * @return  mixed  The value of the element if set, null otherwise.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function getElement($name)
 	{
@@ -272,12 +272,12 @@ class FinderIndexerResult
 	/**
 	 * Method to set additional element values in the elements array.
 	 *
-	 * @param	string  $name	The name of the element.
-	 * @param	mixed	$value  The value of the element.
+	 * @param   string  $name   The name of the element.
+	 * @param   mixed   $value  The value of the element.
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function setElement($name, $value)
 	{
@@ -289,7 +289,7 @@ class FinderIndexerResult
 	 *
 	 * @return  array  An array of processing instructions.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function getInstructions()
 	{
@@ -299,12 +299,12 @@ class FinderIndexerResult
 	/**
 	 * Method to add a processing instruction for an item property.
 	 *
-	 * @param	string  $group	 The group to associate the property with.
-	 * @param	string  $property  The property to process.
+	 * @param   string  $group     The group to associate the property with.
+	 * @param   string  $property  The property to process.
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function addInstruction($group, $property)
 	{
@@ -323,12 +323,12 @@ class FinderIndexerResult
 	/**
 	 * Method to remove a processing instruction for an item property.
 	 *
-	 * @param	string  $group	 The group to associate the property with.
-	 * @param	string  $property  The property to process.
+	 * @param   string  $group     The group to associate the property with.
+	 * @param   string  $property  The property to process.
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function removeInstruction($group, $property)
 	{
@@ -349,11 +349,11 @@ class FinderIndexerResult
 	/**
 	 * Method to get the taxonomy maps for an item.
 	 *
-	 * @param	string  $branch  The taxonomy branch to get. [optional]
+	 * @param   string  $branch  The taxonomy branch to get. [optional]
 	 *
 	 * @return  array  An array of taxonomy maps.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function getTaxonomy($branch = null)
 	{
@@ -372,14 +372,14 @@ class FinderIndexerResult
 	/**
 	 * Method to add a taxonomy map for an item.
 	 *
-	 * @param	string	$branch  The title of the taxonomy branch to add the node to.
-	 * @param	string	$title	The title of the taxonomy node.
-	 * @param	integer  $state	The published state of the taxonomy node. [optional]
-	 * @param	integer  $access  The access level of the taxonomy node. [optional]
+	 * @param   string   $branch  The title of the taxonomy branch to add the node to.
+	 * @param   string   $title   The title of the taxonomy node.
+	 * @param   integer  $state   The published state of the taxonomy node. [optional]
+	 * @param   integer  $access  The access level of the taxonomy node. [optional]
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function addTaxonomy($branch, $title, $state = 1, $access = 1)
 	{

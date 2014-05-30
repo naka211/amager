@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -29,16 +29,16 @@ jimport('joomla.filesystem.file');
  * Note: All exceptions thrown from within this class should be caught
  * by the controller.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderIndexer
 {
 	/**
 	 * The title context identifier.
 	 *
-	 * @var	integer
+	 * @var    integer
 	 * @since  2.5
 	 */
 	const TITLE_CONTEXT = 1;
@@ -46,7 +46,7 @@ class FinderIndexer
 	/**
 	 * The text context identifier.
 	 *
-	 * @var	integer
+	 * @var    integer
 	 * @since  2.5
 	 */
 	const TEXT_CONTEXT = 2;
@@ -54,7 +54,7 @@ class FinderIndexer
 	/**
 	 * The meta context identifier.
 	 *
-	 * @var	integer
+	 * @var    integer
 	 * @since  2.5
 	 */
 	const META_CONTEXT = 3;
@@ -62,7 +62,7 @@ class FinderIndexer
 	/**
 	 * The path context identifier.
 	 *
-	 * @var	integer
+	 * @var    integer
 	 * @since  2.5
 	 */
 	const PATH_CONTEXT = 4;
@@ -70,7 +70,7 @@ class FinderIndexer
 	/**
 	 * The misc context identifier.
 	 *
-	 * @var	integer
+	 * @var    integer
 	 * @since  2.5
 	 */
 	const MISC_CONTEXT = 5;
@@ -78,7 +78,7 @@ class FinderIndexer
 	/**
 	 * The indexer state object.
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  2.5
 	 */
 	public static $state;
@@ -86,7 +86,7 @@ class FinderIndexer
 	/**
 	 * The indexer profiler object.
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  2.5
 	 */
 	public static $profiler;
@@ -96,7 +96,7 @@ class FinderIndexer
 	 *
 	 * @return  object  The indexer state object.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function getState()
 	{
@@ -159,11 +159,11 @@ class FinderIndexer
 	/**
 	 * Method to set the indexer state.
 	 *
-	 * @param	object  $data  A new indexer state object.
+	 * @param   object  $data  A new indexer state object.
 	 *
 	 * @return  boolean  True on success, false on failure.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function setState($data)
 	{
@@ -188,7 +188,7 @@ class FinderIndexer
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function resetState()
 	{
@@ -203,12 +203,12 @@ class FinderIndexer
 	/**
 	 * Method to index a content item.
 	 *
-	 * @param	FinderIndexerResult  $item	The content item to index.
-	 * @param	string				$format  The format of the content. [optional]
+	 * @param   FinderIndexerResult  $item    The content item to index.
+	 * @param   string               $format  The format of the content. [optional]
 	 *
 	 * @return  integer  The ID of the record in the links table.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 * @throws  Exception on database error.
 	 */
 	public static function index($item, $format = 'html')
@@ -514,9 +514,9 @@ class FinderIndexer
 				' t.term_id, t1.term, t1.stem, t1.common, t1.phrase, t1.weight, t1.context,' .
 				' ROUND( t1.weight * COUNT( t2.term ) * %F, 8 ) AS context_weight' .
 				' FROM (' .
-				'	SELECT DISTINCT t1.term, t1.stem, t1.common, t1.phrase, t1.weight, t1.context' .
-				'	FROM ' . $db->quoteName('#__finder_tokens') . ' AS t1' .
-				'	WHERE t1.context = %d' .
+				'   SELECT DISTINCT t1.term, t1.stem, t1.common, t1.phrase, t1.weight, t1.context' .
+				'   FROM ' . $db->quoteName('#__finder_tokens') . ' AS t1' .
+				'   WHERE t1.context = %d' .
 				' ) AS t1' .
 				' JOIN ' . $db->quoteName('#__finder_tokens') . ' AS t2 ON t2.term = t1.term' .
 				' LEFT JOIN ' . $db->quoteName('#__finder_terms') . ' AS t ON t.term = t1.term' .
@@ -816,11 +816,11 @@ class FinderIndexer
 	/**
 	 * Method to remove a link from the index.
 	 *
-	 * @param	integer  $linkId  The id of the link.
+	 * @param   integer  $linkId  The id of the link.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 * @throws  Exception on database error.
 	 */
 	public static function remove($linkId)
@@ -910,7 +910,7 @@ class FinderIndexer
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 * @throws  Exception on database error.
 	 */
 	public static function optimize()
@@ -1012,11 +1012,11 @@ class FinderIndexer
 	/**
 	 * Method to get a content item's signature.
 	 *
-	 * @param	object  $item  The content item to index.
+	 * @param   object  $item  The content item to index.
 	 *
 	 * @return  string  The content item's signature.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected static function getSignature($item)
 	{
@@ -1035,17 +1035,17 @@ class FinderIndexer
 	/**
 	 * Method to parse input, tokenize it, and then add it to the database.
 	 *
-	 * @param	mixed	$input	String or resource to use as input. A resource
-	 *							 input will automatically be chunked to conserve
-	 *							 memory. Strings will be chunked if longer than
-	 *							 2K in size.
-	 * @param	integer  $context  The context of the input. See context constants.
-	 * @param	string	$lang	 The language of the input.
-	 * @param	string	$format	The format of the input.
+	 * @param   mixed    $input    String or resource to use as input. A resource
+	 *                             input will automatically be chunked to conserve
+	 *                             memory. Strings will be chunked if longer than
+	 *                             2K in size.
+	 * @param   integer  $context  The context of the input. See context constants.
+	 * @param   string   $lang     The language of the input.
+	 * @param   string   $format   The format of the input.
 	 *
 	 * @return  integer  The number of tokens extracted from the input.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected static function tokenizeToDB($input, $context, $lang, $format)
 	{
@@ -1190,12 +1190,12 @@ class FinderIndexer
 	/**
 	 * Method to add a set of tokens to the database.
 	 *
-	 * @param	mixed  $tokens	An array or single FinderIndexerToken object.
-	 * @param	mixed  $context  The context of the tokens. See context constants. [optional]
+	 * @param   mixed  $tokens   An array or single FinderIndexerToken object.
+	 * @param   mixed  $context  The context of the tokens. See context constants. [optional]
 	 *
 	 * @return  integer  The number of tokens inserted into the database.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 * @throws  Exception on database error.
 	 */
 	protected static function addTokensToDB($tokens, $context = '')
@@ -1253,13 +1253,13 @@ class FinderIndexer
 	 * Method to switch the token tables from Memory tables to MyISAM tables
 	 * when they are close to running out of memory.
 	 *
-	 * @param	boolean  $memory  Flag to control how they should be toggled.
+	 * @param   boolean  $memory  Flag to control how they should be toggled.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 * @throws  Exception on database error.
-	 * @todo	PostgreSQL doesn't support setting ENGINEs, determine how to handle setting tables
+	 * @todo    PostgreSQL doesn't support setting ENGINEs, determine how to handle setting tables
 	 */
 	protected static function toggleTables($memory)
 	{

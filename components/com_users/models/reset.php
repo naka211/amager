@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -163,9 +163,7 @@ class UsersModelReset extends JModelForm
 		}
 
 		// Generate the new password hash.
-		$salt		= JUserHelper::genRandomPassword(32);
-		$crypted	= JUserHelper::getCryptedPassword($data['password1'], $salt);
-		$password	= $crypted.':'.$salt;
+		$password = JUserHelper::hashPassword($data['password1']);
 
 		// Update the user object.
 		$user->password			= $password;
@@ -399,7 +397,7 @@ class UsersModelReset extends JModelForm
 	/**
 	 * Method to check if user reset limit has been exceeded within the allowed time period.
 	 *
-	 * @param	JUser  the user doing the password reset
+	 * @param   JUser  the user doing the password reset
 	 *
 	 * @return  boolean true if user can do the reset, false if limit exceeded
 	 *

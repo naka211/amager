@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Error
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,27 +12,27 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Joomla! Exception object.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Error
- * @since		11.1
+ * @since       11.1
  * @deprecated  12.1
  */
 class JException extends Exception
 {
 	/**
-	 * @var	string  Error level.
+	 * @var    string  Error level.
 	 * @since  11.1
 	 */
 	protected $level = null;
 
 	/**
-	 * @var	string  Error code.
+	 * @var    string  Error code.
 	 * @since  11.1
 	 */
 	protected $code = null;
 
 	/**
-	 * @var	string  Error message.
+	 * @var    string  Error message.
 	 * @since  11.1
 	 */
 	protected $message = null;
@@ -41,7 +41,7 @@ class JException extends Exception
 	 * Additional info about the error relevant to the developer,
 	 * for example, if a database connect fails, the dsn used
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $info = '';
@@ -49,7 +49,7 @@ class JException extends Exception
 	/**
 	 * Name of the file the error occurred in [Available if backtrace is enabled]
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $file = null;
@@ -57,7 +57,7 @@ class JException extends Exception
 	/**
 	 * Line number the error occurred in [Available if backtrace is enabled]
 	 *
-	 * @var	int
+	 * @var    int
 	 * @since  11.1
 	 */
 	protected $line = 0;
@@ -65,7 +65,7 @@ class JException extends Exception
 	/**
 	 * Name of the method the error occurred in [Available if backtrace is enabled]
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $function = null;
@@ -73,13 +73,13 @@ class JException extends Exception
 	/**
 	 * Name of the class the error occurred in [Available if backtrace is enabled]
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $class = null;
 
 	/**
-	 * @var	string  Error type.
+	 * @var    string  Error type.
 	 * @since  11.1
 	 */
 	protected $type = null;
@@ -87,13 +87,13 @@ class JException extends Exception
 	/**
 	 * Arguments recieved by the method the error occurred in [Available if backtrace is enabled]
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $args = array();
 
 	/**
-	 * @var	mixed  Backtrace information.
+	 * @var    mixed  Backtrace information.
 	 * @since  11.1
 	 */
 	protected $backtrace = null;
@@ -102,13 +102,13 @@ class JException extends Exception
 	 * Constructor
 	 * - used to set up the error with all needed error details.
 	 *
-	 * @param	string	$msg		The error message
-	 * @param	string	$code		The error code from the application
-	 * @param	integer  $level	  The error level (use the PHP constants E_ALL, E_NOTICE etc.).
-	 * @param	string	$info		Optional: The additional error information.
-	 * @param	boolean  $backtrace  True if backtrace information is to be collected
+	 * @param   string   $msg        The error message
+	 * @param   string   $code       The error code from the application
+	 * @param   integer  $level      The error level (use the PHP constants E_ALL, E_NOTICE etc.).
+	 * @param   string   $info       Optional: The additional error information.
+	 * @param   boolean  $backtrace  True if backtrace information is to be collected
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
 	 * @deprecated  12.1
 	 */
@@ -174,7 +174,7 @@ class JException extends Exception
 	 *
 	 * @return  string  Error message
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
 	 * @deprecated  12.1
 	 */
@@ -186,10 +186,10 @@ class JException extends Exception
 	/**
 	 * Returns to error message
 	 *
-	 * @return  string	Error message
+	 * @return  string   Error message
 	 *
-	 * @since	11.1
-	 * @deprecated	12.1
+	 * @since   11.1
+	 * @deprecated    12.1
 	 */
 	public function toString()
 	{
@@ -199,14 +199,14 @@ class JException extends Exception
 	/**
 	 * Returns a property of the object or the default value if the property is not set.
 	 *
-	 * @param	string  $property  The name of the property
-	 * @param	mixed	$default	The default value
+	 * @param   string  $property  The name of the property
+	 * @param   mixed   $default   The default value
 	 *
 	 * @return  mixed  The value of the property or null
 	 *
 	 * @deprecated  12.1
-	 * @see		 getProperties()
-	 * @since		11.1
+	 * @see         getProperties()
+	 * @since       11.1
 	 */
 	public function get($property, $default = null)
 	{
@@ -220,13 +220,13 @@ class JException extends Exception
 	/**
 	 * Returns an associative array of object properties
 	 *
-	 * @param	boolean  $public  If true, returns only the public properties
+	 * @param   boolean  $public  If true, returns only the public properties
 	 *
 	 * @return  array  Object properties
 	 *
-	 * @deprecated	12.1
-	 * @see	 get()
-	 * @since	11.1
+	 * @deprecated    12.1
+	 * @see     get()
+	 * @since   11.1
 	 */
 	public function getProperties($public = true)
 	{
@@ -247,12 +247,12 @@ class JException extends Exception
 	/**
 	 * Get the most recent error message
 	 *
-	 * @param	integer  $i		 Option error index
-	 * @param	boolean  $toString  Indicates if JError objects should return their error message
+	 * @param   integer  $i         Option error index
+	 * @param   boolean  $toString  Indicates if JError objects should return their error message
 	 *
 	 * @return  string  Error message
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
 	 * @deprecated  12.1
 	 */
@@ -291,7 +291,7 @@ class JException extends Exception
 	 *
 	 * @return  array  Array of error messages or JErrors
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
 	 * @deprecated  12.1
 	 */
@@ -306,14 +306,14 @@ class JException extends Exception
 	/**
 	 * Modifies a property of the object, creating it if it does not already exist.
 	 *
-	 * @param	string  $property  The name of the property
-	 * @param	mixed	$value	 The value of the property to set
+	 * @param   string  $property  The name of the property
+	 * @param   mixed   $value     The value of the property to set
 	 *
 	 * @return  mixed  Previous value of the property
 	 *
 	 * @deprecated  12.1
-	 * @see		 setProperties()
-	 * @since		11.1
+	 * @see         setProperties()
+	 * @since       11.1
 	 */
 	public function set($property, $value = null)
 	{
@@ -328,13 +328,13 @@ class JException extends Exception
 	/**
 	 * Set the object properties based on a named array/hash
 	 *
-	 * @param	mixed  $properties  Either and associative array or another object
+	 * @param   mixed  $properties  Either and associative array or another object
 	 *
 	 * @return  boolean
 	 *
 	 * @deprecated  12.1
-	 * @see		 set()
-	 * @since		11.1
+	 * @see         set()
+	 * @since       11.1
 	 */
 	public function setProperties($properties)
 	{
@@ -360,11 +360,11 @@ class JException extends Exception
 	/**
 	 * Add an error message
 	 *
-	 * @param	string  $error  Error message
+	 * @param   string  $error  Error message
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
 	 * @deprecated  12.1
 	 */

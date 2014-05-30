@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,14 +12,14 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Utility class for javascript behaviors
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
- * @since		11.1
+ * @since       11.1
  */
 abstract class JHtmlBehavior
 {
 	/**
-	 * @var	array	array containing information for loaded files
+	 * @var   array   array containing information for loaded files
 	 */
 	protected static $loaded = array();
 
@@ -28,12 +28,12 @@ abstract class JHtmlBehavior
 	 *
 	 * If debugging mode is on an uncompressed version of MooTools is included for easier debugging.
 	 *
-	 * @param	string	$extras  MooTools file to load
-	 * @param	boolean  $debug	Is debugging mode on? [optional]
+	 * @param   string   $extras  MooTools file to load
+	 * @param   boolean  $debug   Is debugging mode on? [optional]
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function framework($extras = false, $debug = null)
 	{
@@ -67,13 +67,13 @@ abstract class JHtmlBehavior
 	/**
 	 * Deprecated. Use JHtmlBehavior::framework() instead.
 	 *
-	 * @param	boolean  $debug  Is debugging mode on? [optional]
+	 * @param   boolean  $debug  Is debugging mode on? [optional]
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
-	 * @deprecated	12.1
+	 * @deprecated    12.1
 	 */
 	public static function mootools($debug = null)
 	{
@@ -86,11 +86,11 @@ abstract class JHtmlBehavior
 	/**
 	 * Add unobtrusive javascript support for image captions.
 	 *
-	 * @param	string  $selector  The selector for which a caption behaviour is to be applied.
+	 * @param   string  $selector  The selector for which a caption behaviour is to be applied.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function caption($selector = 'img.caption')
 	{
@@ -126,7 +126,7 @@ abstract class JHtmlBehavior
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function formvalidation()
 	{
@@ -149,7 +149,7 @@ abstract class JHtmlBehavior
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function switcher()
 	{
@@ -186,7 +186,7 @@ abstract class JHtmlBehavior
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function combobox()
 	{
@@ -210,23 +210,23 @@ abstract class JHtmlBehavior
 	 *
 	 * Uses the core Tips class in MooTools.
 	 *
-	 * @param	string  $selector  The class selector for the tooltip.
-	 * @param	array	$params	An array of options for the tooltip.
-	 *							 Options for the tooltip can be:
-	 *							 - maxTitleChars  integer	The maximum number of characters in the tooltip title (defaults to 50).
-	 *							 - offsets		object	The distance of your tooltip from the mouse (defaults to {'x': 16, 'y': 16}).
-	 *							 - showDelay	  integer	The millisecond delay the show event is fired (defaults to 100).
-	 *							 - hideDelay	  integer	The millisecond delay the hide hide is fired (defaults to 100).
-	 *							 - className	  string	The className your tooltip container will get.
-	 *							 - fixed		  boolean	If set to true, the toolTip will not follow the mouse.
-	 *							 - onShow		 function  The default function for the show event, passes the tip element
-	 *								and the currently hovered element.
-	 *							 - onHide		 function  The default function for the hide event, passes the currently
-	 *								hovered element.
+	 * @param   string  $selector  The class selector for the tooltip.
+	 * @param   array   $params    An array of options for the tooltip.
+	 *                             Options for the tooltip can be:
+	 *                             - maxTitleChars  integer   The maximum number of characters in the tooltip title (defaults to 50).
+	 *                             - offsets        object    The distance of your tooltip from the mouse (defaults to {'x': 16, 'y': 16}).
+	 *                             - showDelay      integer   The millisecond delay the show event is fired (defaults to 100).
+	 *                             - hideDelay      integer   The millisecond delay the hide hide is fired (defaults to 100).
+	 *                             - className      string    The className your tooltip container will get.
+	 *                             - fixed          boolean   If set to true, the toolTip will not follow the mouse.
+	 *                             - onShow         function  The default function for the show event, passes the tip element
+	 *                               and the currently hovered element.
+	 *                             - onHide         function  The default function for the hide event, passes the currently
+	 *                               hovered element.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function tooltip($selector = '.hasTip', $params = array())
 	{
@@ -281,23 +281,23 @@ abstract class JHtmlBehavior
 	/**
 	 * Add unobtrusive javascript support for modal links.
 	 *
-	 * @param	string  $selector  The selector for which a modal behaviour is to be applied.
-	 * @param	array	$params	An array of parameters for the modal behaviour.
-	 *							 Options for the modal behaviour can be:
-	 *							- ajaxOptions
-	 *							- size
-	 *							- shadow
-	 *							- overlay
-	 *							- onOpen
-	 *							- onClose
-	 *							- onUpdate
-	 *							- onResize
-	 *							- onShow
-	 *							- onHide
+	 * @param   string  $selector  The selector for which a modal behaviour is to be applied.
+	 * @param   array   $params    An array of parameters for the modal behaviour.
+	 *                             Options for the modal behaviour can be:
+	 *                            - ajaxOptions
+	 *                            - size
+	 *                            - shadow
+	 *                            - overlay
+	 *                            - onOpen
+	 *                            - onClose
+	 *                            - onUpdate
+	 *                            - onResize
+	 *                            - onShow
+	 *                            - onHide
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function modal($selector = 'a.modal', $params = array())
 	{
@@ -364,11 +364,11 @@ abstract class JHtmlBehavior
 	/**
 	 * JavaScript behavior to allow shift select in grids
 	 *
-	 * @param	string  $id  The id of the form for which a multiselect behaviour is to be applied.
+	 * @param   string  $id  The id of the form for which a multiselect behaviour is to be applied.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function multiselect($id = 'adminForm')
 	{
@@ -396,176 +396,27 @@ abstract class JHtmlBehavior
 	}
 
 	/**
-	 * Add unobtrusive javascript support for the advanced uploader.
-	 *
-	 * @param	string  $id			An index.
-	 * @param	array	$params		An array of options for the uploader.
-	 * @param	string  $upload_queue  The HTML id of the upload queue element (??).
+	 * This method does nothing.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
-	public static function uploader($id = 'file-upload', $params = array(), $upload_queue = 'upload-queue')
+	public static function uploader()
 	{
-		// Include MooTools framework
-		self::framework();
-
-		JHtml::_('script', 'system/swf.js', true, true);
-		JHtml::_('script', 'system/progressbar.js', true, true);
-		JHtml::_('script', 'system/uploader.js', true, true);
-
-		$document = JFactory::getDocument();
-
-		if (!isset(self::$loaded[__METHOD__]))
-		{
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_FILENAME');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_UPLOAD_COMPLETED');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_ERROR_OCCURRED');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_ALL_FILES');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_PROGRESS_OVERALL');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_CURRENT_TITLE');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_REMOVE');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_REMOVE_TITLE');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_CURRENT_FILE');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_CURRENT_PROGRESS');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_FILE_ERROR');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_FILE_SUCCESSFULLY_UPLOADED');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_VALIDATION_ERROR_DUPLICATE');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_VALIDATION_ERROR_SIZELIMITMIN');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_VALIDATION_ERROR_SIZELIMITMAX');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_VALIDATION_ERROR_FILELISTMAX');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_VALIDATION_ERROR_FILELISTSIZEMAX');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_ERROR_HTTPSTATUS');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_ERROR_SECURITYERROR');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_ERROR_IOERROR');
-			JText::script('JLIB_HTML_BEHAVIOR_UPLOADER_ALL_FILES');
-		}
-
-		if (isset(self::$loaded[__METHOD__][$id]))
-		{
-			return;
-		}
-
-		$onFileSuccess = '\\function(file, response) {
-			var json = new Hash(JSON.decode(response, true) || {});
-
-			if (json.get(\'status\') == \'1\') {
-				file.element.addClass(\'file-success\');
-				file.info.set(\'html\', \'<strong>\' + Joomla.JText._(\'JLIB_HTML_BEHAVIOR_UPLOADER_FILE_SUCCESSFULLY_UPLOADED\') + \'</strong>\');
-			} else {
-				file.element.addClass(\'file-failed\');
-				file.info.set(\'html\', \'<strong>\' +
-					Joomla.JText._(\'JLIB_HTML_BEHAVIOR_UPLOADER_ERROR_OCCURRED\',
-						\'An Error Occurred\').substitute({ error: json.get(\'error\') }) + \'</strong>\');
-			}
-		}';
-
-		// Setup options object
-		$opt['verbose']			= true;
-		$opt['url']				= (isset($params['targetURL'])) ? $params['targetURL'] : null;
-		$opt['path']			= (isset($params['swf'])) ? $params['swf'] : JURI::root(true) . '/media/system/swf/uploader.swf';
-		$opt['height']			= (isset($params['height'])) && $params['height'] ? (int) $params['height'] : null;
-		$opt['width']			= (isset($params['width'])) && $params['width'] ? (int) $params['width'] : null;
-		$opt['multiple']		= (isset($params['multiple']) && !($params['multiple'])) ? false : true;
-		$opt['queued']			= (isset($params['queued']) && !($params['queued'])) ? (int) $params['queued'] : null;
-		$opt['target']			= (isset($params['target'])) ? $params['target'] : '\\document.id(\'upload-browse\')';
-		$opt['instantStart']	= (isset($params['instantStart']) && ($params['instantStart'])) ? true : false;
-		$opt['allowDuplicates']	= (isset($params['allowDuplicates']) && !($params['allowDuplicates'])) ? false : true;
-		// limitSize is the old parameter name.  Remove in 1.7
-		$opt['fileSizeMax']		= (isset($params['limitSize']) && ($params['limitSize'])) ? (int) $params['limitSize'] : null;
-		// fileSizeMax is the new name.  If supplied, it will override the old value specified for limitSize
-		$opt['fileSizeMax']		= (isset($params['fileSizeMax']) && ($params['fileSizeMax'])) ? (int) $params['fileSizeMax'] : $opt['fileSizeMax'];
-		$opt['fileSizeMin']		= (isset($params['fileSizeMin']) && ($params['fileSizeMin'])) ? (int) $params['fileSizeMin'] : null;
-		// limitFiles is the old parameter name.  Remove in 1.7
-		$opt['fileListMax']		= (isset($params['limitFiles']) && ($params['limitFiles'])) ? (int) $params['limitFiles'] : null;
-		// fileListMax is the new name.  If supplied, it will override the old value specified for limitFiles
-		$opt['fileListMax']		= (isset($params['fileListMax']) && ($params['fileListMax'])) ? (int) $params['fileListMax'] : $opt['fileListMax'];
-		$opt['fileListSizeMax'] = (isset($params['fileListSizeMax']) && ($params['fileListSizeMax'])) ? (int) $params['fileListSizeMax'] : null;
-		// types is the old parameter name.  Remove in 1.7
-		$opt['typeFilter']		= (isset($params['types'])) ? '\\' . $params['types']
-		: '\\{Joomla.JText._(\'JLIB_HTML_BEHAVIOR_UPLOADER_ALL_FILES\'): \'*.*\'}';
-		$opt['typeFilter']		= (isset($params['typeFilter'])) ? '\\' . $params['typeFilter'] : $opt['typeFilter'];
-
-		// Optional functions
-		$opt['createReplacement']	= (isset($params['createReplacement'])) ? '\\' . $params['createReplacement'] : null;
-		$opt['onFileComplete']		= (isset($params['onFileComplete'])) ? '\\' . $params['onFileComplete'] : null;
-		$opt['onBeforeStart']		= (isset($params['onBeforeStart'])) ? '\\' . $params['onBeforeStart'] : null;
-		$opt['onStart']				= (isset($params['onStart'])) ? '\\' . $params['onStart'] : null;
-		$opt['onComplete']			= (isset($params['onComplete'])) ? '\\' . $params['onComplete'] : null;
-		$opt['onFileSuccess']		= (isset($params['onFileSuccess'])) ? '\\' . $params['onFileSuccess'] : $onFileSuccess;
-
-		if (!isset($params['startButton']))
-		{
-			$params['startButton'] = 'upload-start';
-		}
-
-		if (!isset($params['clearButton']))
-		{
-			$params['clearButton'] = 'upload-clear';
-		}
-
-		$opt['onLoad'] = '\\function() {
-				document.id(\'' . $id
-			. '\').removeClass(\'hide\'); // we show the actual UI
-				document.id(\'upload-noflash\').destroy(); // ... and hide the plain form
-
-				// We relay the interactions with the overlayed flash to the link
-				this.target.addEvents({
-					click: function() {
-						return false;
-					},
-					mouseenter: function() {
-						this.addClass(\'hover\');
-					},
-					mouseleave: function() {
-						this.removeClass(\'hover\');
-						this.blur();
-					},
-					mousedown: function() {
-						this.focus();
-					}
-				});
-
-				// Interactions for the 2 other buttons
-
-				document.id(\'' . $params['clearButton']
-			. '\').addEvent(\'click\', function() {
-					Uploader.remove(); // remove all files
-					return false;
-				});
-
-				document.id(\'' . $params['startButton']
-			. '\').addEvent(\'click\', function() {
-					Uploader.start(); // start upload
-					return false;
-				});
-			}';
-
-		$options = JHtmlBehavior::_getJSObject($opt);
-
-		// Attach tooltips to document
-		$uploaderInit = 'window.addEvent(\'domready\', function(){
-				var Uploader = new FancyUpload2(document.id(\'' . $id . '\'), document.id(\'' . $upload_queue . '\'), ' . $options . ' );
-				});';
-		$document->addScriptDeclaration($uploaderInit);
-
-		// Set static array
-		self::$loaded[__METHOD__][$id] = true;
-
 		return;
 	}
 
 	/**
 	 * Add unobtrusive javascript support for a collapsible tree.
 	 *
-	 * @param	string  $id	  An index
-	 * @param	array	$params  An array of options.
-	 * @param	array	$root	The root node
+	 * @param   string  $id      An index
+	 * @param   array   $params  An array of options.
+	 * @param   array   $root    The root node
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function tree($id, $params = array(), $root = array())
 	{
@@ -625,7 +476,7 @@ abstract class JHtmlBehavior
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function calendar()
 	{
@@ -655,7 +506,7 @@ abstract class JHtmlBehavior
 	 *
 	 * @return  void
 	 *
-	 * @since	11.2
+	 * @since   11.2
 	 */
 	public static function colorpicker()
 	{
@@ -703,7 +554,7 @@ abstract class JHtmlBehavior
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function keepalive()
 	{
@@ -745,17 +596,17 @@ abstract class JHtmlBehavior
 	/**
 	 * Highlight some words via Javascript.
 	 *
-	 * @param	array	$terms	  Array of words that should be highlighted.
-	 * @param	string  $start	  ID of the element that marks the begin of the section in which words
-	 *							  should be highlighted. Note this element will be removed from the DOM.
-	 * @param	string  $end		ID of the element that end this section.
-	 *							  Note this element will be removed from the DOM.
-	 * @param	string  $className  Class name of the element highlights are wrapped in.
-	 * @param	string  $tag		Tag that will be used to wrap the highlighted words.
+	 * @param   array   $terms      Array of words that should be highlighted.
+	 * @param   string  $start      ID of the element that marks the begin of the section in which words
+	 *                              should be highlighted. Note this element will be removed from the DOM.
+	 * @param   string  $end        ID of the element that end this section.
+	 *                              Note this element will be removed from the DOM.
+	 * @param   string  $className  Class name of the element highlights are wrapped in.
+	 * @param   string  $tag        Tag that will be used to wrap the highlighted words.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 */
 	public static function highlighter(array $terms, $start = 'highlighter-start', $end = 'highlighter-end', $className = 'highlight', $tag = 'span')
 	{
@@ -797,11 +648,11 @@ abstract class JHtmlBehavior
 	/**
 	 * Break us out of any containing iframes
 	 *
-	 * @param	string  $location  Location to display in
+	 * @param   string  $location  Location to display in
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function noframes($location = 'top.location.href')
 	{
@@ -828,11 +679,11 @@ abstract class JHtmlBehavior
 	/**
 	 * Internal method to get a JavaScript object notation string from an array
 	 *
-	 * @param	array  $array  The array to convert to JavaScript object notation
+	 * @param   array  $array  The array to convert to JavaScript object notation
 	 *
 	 * @return  string  JavaScript object notation representation of the array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected static function _getJSObject($array = array())
 	{
@@ -894,7 +745,7 @@ abstract class JHtmlBehavior
 	 *
 	 * @return  string  JavaScript that translates the object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected static function _calendartranslation()
 	{

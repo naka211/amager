@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,20 +14,20 @@ jimport('joomla.filesystem.path');
 /**
  * A File handling class
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
- * @since		11.1
+ * @since       11.1
  */
 class JFile
 {
 	/**
 	 * Gets the extension of a file name
 	 *
-	 * @param	string  $file  The file name
+	 * @param   string  $file  The file name
 	 *
 	 * @return  string  The file extension
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getExt($file)
 	{
@@ -39,11 +39,11 @@ class JFile
 	/**
 	 * Strips the last extension off of a file name
 	 *
-	 * @param	string  $file  The file name
+	 * @param   string  $file  The file name
 	 *
 	 * @return  string  The file name without the extension
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function stripExt($file)
 	{
@@ -53,14 +53,17 @@ class JFile
 	/**
 	 * Makes file name safe to use
 	 *
-	 * @param	string  $file  The name of the file [not full path]
+	 * @param   string  $file  The name of the file [not full path]
 	 *
 	 * @return  string  The sanitised string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function makeSafe($file)
 	{
+		// Remove any trailing dots, as those aren't ever valid file names.
+		$file = rtrim($file, '.');
+
 		$regex = array('#(\.){2,}#', '#[^A-Za-z0-9\.\_\- ]#', '#^\.#');
 
 		return preg_replace($regex, '', $file);
@@ -69,14 +72,14 @@ class JFile
 	/**
 	 * Copies a file
 	 *
-	 * @param	string	$src		  The path to the source file
-	 * @param	string	$dest		 The path to the destination file
-	 * @param	string	$path		 An optional base path to prefix to the file names
-	 * @param	boolean  $use_streams  True to use streams
+	 * @param   string   $src          The path to the source file
+	 * @param   string   $dest         The path to the destination file
+	 * @param   string   $path         An optional base path to prefix to the file names
+	 * @param   boolean  $use_streams  True to use streams
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function copy($src, $dest, $path = null, $use_streams = false)
 	{
@@ -154,11 +157,11 @@ class JFile
 	/**
 	 * Delete a file or array of files
 	 *
-	 * @param	mixed  $file  The file name or an array of file names
+	 * @param   mixed  $file  The file name or an array of file names
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function delete($file)
 	{
@@ -186,7 +189,12 @@ class JFile
 		foreach ($files as $file)
 		{
 			$file = JPath::clean($file);
-
+			
+			if (!is_file($file))
+			{
+				continue;
+			}
+			
 			// Try making the file writable first. If it's read-only, it can't be deleted
 			// on Windows, even if the parent folder is writable
 			@chmod($file, 0777);
@@ -222,14 +230,14 @@ class JFile
 	/**
 	 * Moves a file
 	 *
-	 * @param	string	$src		  The path to the source file
-	 * @param	string	$dest		 The path to the destination file
-	 * @param	string	$path		 An optional base path to prefix to the file names
-	 * @param	boolean  $use_streams  True to use streams
+	 * @param   string   $src          The path to the source file
+	 * @param   string   $dest         The path to the destination file
+	 * @param   string   $path         An optional base path to prefix to the file names
+	 * @param   boolean  $use_streams  True to use streams
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function move($src, $dest, $path = '', $use_streams = false)
 	{
@@ -300,15 +308,15 @@ class JFile
 	/**
 	 * Read the contents of a file
 	 *
-	 * @param	string	$filename	The full file path
-	 * @param	boolean  $incpath	Use include path
-	 * @param	integer  $amount	 Amount of file to read
-	 * @param	integer  $chunksize  Size of chunks to read
-	 * @param	integer  $offset	 Offset of the file
+	 * @param   string   $filename   The full file path
+	 * @param   boolean  $incpath    Use include path
+	 * @param   integer  $amount     Amount of file to read
+	 * @param   integer  $chunksize  Size of chunks to read
+	 * @param   integer  $offset     Offset of the file
 	 *
 	 * @return  mixed  Returns file contents or boolean False if failed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function read($filename, $incpath = false, $amount = 0, $chunksize = 8192, $offset = 0)
 	{
@@ -364,13 +372,13 @@ class JFile
 	/**
 	 * Write contents to a file
 	 *
-	 * @param	string	$file		 The full file path
-	 * @param	string	&$buffer	  The buffer to write
-	 * @param	boolean  $use_streams  Use streams
+	 * @param   string   $file         The full file path
+	 * @param   string   &$buffer      The buffer to write
+	 * @param   boolean  $use_streams  Use streams
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function write($file, &$buffer, $use_streams = false)
 	{
@@ -425,13 +433,13 @@ class JFile
 	/**
 	 * Moves an uploaded file to a destination folder
 	 *
-	 * @param	string	$src		  The name of the php (temporary) uploaded file
-	 * @param	string	$dest		 The path (including filename) to move the uploaded file to
-	 * @param	boolean  $use_streams  True to use streams
+	 * @param   string   $src          The name of the php (temporary) uploaded file
+	 * @param   string   $dest         The path (including filename) to move the uploaded file to
+	 * @param   boolean  $use_streams  True to use streams
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function upload($src, $dest, $use_streams = false)
 	{
@@ -512,11 +520,11 @@ class JFile
 	/**
 	 * Wrapper for the standard file_exists function
 	 *
-	 * @param	string  $file  File path
+	 * @param   string  $file  File path
 	 *
 	 * @return  boolean  True if path is a file
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function exists($file)
 	{
@@ -526,11 +534,11 @@ class JFile
 	/**
 	 * Returns the name, without any path.
 	 *
-	 * @param	string  $file  File path
+	 * @param   string  $file  File path
 	 *
 	 * @return  string  filename
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getName($file)
 	{

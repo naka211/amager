@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License, see LICENSE.php
  */
 
@@ -49,12 +49,12 @@ class LoginModelLogin extends JModelLegacy
 	/**
 	 * Get the administrator login module by name (real, eg 'login' or folder, eg 'mod_login')
 	 *
-	 * @param	string  $name	The name of the module
-	 * @param	string  $title  The title of the module, optional
+	 * @param   string  $name   The name of the module
+	 * @param   string  $title  The title of the module, optional
 	 *
 	 * @return  object  The Module object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getLoginModule($name = 'mod_login', $title = null)
 	{
@@ -96,11 +96,11 @@ class LoginModelLogin extends JModelLegacy
 	 * This is put in as a failsafe to avoid super user lock out caused by an unpublished
 	 * login module or by a module set to have a viewing access level that is not Public.
 	 *
-	 * @param	string  $name	The name of the module
+	 * @param   string  $name   The name of the module
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected static function _load($module)
 	{

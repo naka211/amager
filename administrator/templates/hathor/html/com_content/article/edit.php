@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	Templates.hathor
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  * @since		1.6
  */
@@ -187,8 +187,8 @@ endif;
 				</ul>
 				</fieldset>
 				<?php // We need to make a separate space for the configuration
-					  // so that those fields always show to those wih permissions ?>
-				<?php if ( $this->canDo->get('core.admin')	):  ?>
+				      // so that those fields always show to those wih permissions ?>
+				<?php if ( $this->canDo->get('core.admin')   ):  ?>
 					<?php  echo JHtml::_('sliders.panel', JText::_('COM_CONTENT_SLIDER_EDITOR_CONFIG'), 'configure-sliders'); ?>
 						<fieldset  class="panelform" >
 							<ul class="adminformlist">

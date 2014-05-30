@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -19,59 +19,59 @@ jimport('joomla.utilities.utility');
  * where as the legacy JFile static class treated files in a rather
  * atomic manner.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
  *
  * This class adheres to the stream wrapper operations:
  *
- * @see		 http://php.net/manual/en/function.stream-get-wrappers.php
- * @see		 http://php.net/manual/en/intro.stream.php PHP Stream Manual
- * @see		 http://php.net/manual/en/wrappers.php Stream Wrappers
- * @see		 http://php.net/manual/en/filters.php Stream Filters
- * @see		 http://php.net/manual/en/transports.php Socket Transports (used by some options, particularly HTTP proxy)
- * @since		11.1
+ * @see         http://php.net/manual/en/function.stream-get-wrappers.php
+ * @see         http://php.net/manual/en/intro.stream.php PHP Stream Manual
+ * @see         http://php.net/manual/en/wrappers.php Stream Wrappers
+ * @see         http://php.net/manual/en/filters.php Stream Filters
+ * @see         http://php.net/manual/en/transports.php Socket Transports (used by some options, particularly HTTP proxy)
+ * @since       11.1
  */
 class JStream extends JObject
 {
 	// Publicly settable vars (protected to let our parent read them)
 	/**
 	 * File Mode
-	 * @var	integer
+	 * @var    integer
 	 * @since  11.1
 	 * */
 	protected $filemode = 0644;
 
 	/**
 	 * Directory Mode
-	 * @var	integer
+	 * @var   integer
 	 * @since  11.1
 	 * */
 	protected $dirmode = 0755;
 
 	/**
 	 * Default Chunk Size
-	 * @var	integer
+	 * @var    integer
 	 * @since  11.1
 	 */
 	protected $chunksize = 8192;
 
 	/**
 	 * Filename
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $filename;
 
 	/**
 	 * Prefix of the connection for writing
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $writeprefix;
 
 	/**
 	 * Prefix of the connection for reading
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $readprefix;
@@ -79,7 +79,7 @@ class JStream extends JObject
 	/**
 	 *
 	 *Read Processing method
-	 * @var	string  gz, bz, f
+	 * @var   string  gz, bz, f
 	 * If a scheme is detected, fopen will be defaulted
 	 * To use compression with a network stream use a filter
 	 * @since  11.1
@@ -88,21 +88,21 @@ class JStream extends JObject
 
 	/**
 	 * Filters applied to the current stream
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $filters = array();
 
 	/**
 	 * File Handle
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $_fh;
 
 	/**
 	 * File size
-	 * @var	integer
+	 * @var    integer
 	 * @since  11.1
 	 */
 	protected $_filesize;
@@ -131,11 +131,11 @@ class JStream extends JObject
 	/**
 	 * Constructor
 	 *
-	 * @param	string  $writeprefix  Prefix of the stream (optional). Unlike the JPATH_*, this has a final path separator!
-	 * @param	string  $readprefix	The read prefix (optional).
-	 * @param	array	$context	  The context options (optional).
+	 * @param   string  $writeprefix  Prefix of the stream (optional). Unlike the JPATH_*, this has a final path separator!
+	 * @param   string  $readprefix   The read prefix (optional).
+	 * @param   array   $context      The context options (optional).
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($writeprefix = '', $readprefix = '', $context = array())
 	{
@@ -148,7 +148,7 @@ class JStream extends JObject
 	/**
 	 * Destructor
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __destruct()
 	{
@@ -164,18 +164,18 @@ class JStream extends JObject
 	 *
 	 * Open a stream with some lazy loading smarts
 	 *
-	 * @param	string	$filename			  Filename
-	 * @param	string	$mode				  Mode string to use
-	 * @param	boolean	$use_include_path	  Use the PHP include path
-	 * @param	resource  $context				Context to use when opening
-	 * @param	boolean	$use_prefix			Use a prefix to open the file
-	 * @param	boolean	$relative			  Filename is a relative path (if false, strips JPATH_ROOT to make it relative)
-	 * @param	boolean	$detectprocessingmode  Detect the processing method for the file and use the appropriate function
-	 *											to handle output automatically
+	 * @param   string    $filename              Filename
+	 * @param   string    $mode                  Mode string to use
+	 * @param   boolean   $use_include_path      Use the PHP include path
+	 * @param   resource  $context               Context to use when opening
+	 * @param   boolean   $use_prefix            Use a prefix to open the file
+	 * @param   boolean   $relative              Filename is a relative path (if false, strips JPATH_ROOT to make it relative)
+	 * @param   boolean   $detectprocessingmode  Detect the processing method for the file and use the appropriate function
+	 *                                           to handle output automatically
 	 *
 	 * @return  boolean
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function open($filename, $mode = 'r', $use_include_path = false, $context = null,
 		$use_prefix = false, $relative = false, $detectprocessingmode = false)
@@ -292,7 +292,7 @@ class JStream extends JObject
 	 *
 	 * @return  boolean
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function close()
 	{
@@ -353,7 +353,7 @@ class JStream extends JObject
 	 *
 	 * @return  boolean
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function eof()
 	{
@@ -399,7 +399,7 @@ class JStream extends JObject
 	 *
 	 * @return  mixed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function filesize()
 	{
@@ -465,11 +465,11 @@ class JStream extends JObject
 	/**
 	 * Get a line from the stream source.
 	 *
-	 * @param	integer  $length  The number of bytes (optional) to read.
+	 * @param   integer  $length  The number of bytes (optional) to read.
 	 *
 	 * @return  mixed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function gets($length = 0)
 	{
@@ -520,12 +520,12 @@ class JStream extends JObject
 	 *
 	 * Handles user space streams appropriately otherwise any read will return 8192
 	 *
-	 * @param	integer  $length  Length of data to read
+	 * @param   integer  $length  Length of data to read
 	 *
 	 * @return  mixed
 	 *
-	 * @see	 http://php.net/manual/en/function.fread.php
-	 * @since	11.1
+	 * @see     http://php.net/manual/en/function.fread.php
+	 * @since   11.1
 	 */
 	public function read($length = 0)
 	{
@@ -619,13 +619,13 @@ class JStream extends JObject
 	 *
 	 * Note: the return value is different to that of fseek
 	 *
-	 * @param	integer  $offset  Offset to use when seeking.
-	 * @param	integer  $whence  Seek mode to use.
+	 * @param   integer  $offset  Offset to use when seeking.
+	 * @param   integer  $whence  Seek mode to use.
 	 *
 	 * @return  boolean  True on success, false on failure
 	 *
 	 * @see http://php.net/manual/en/function.fseek.php
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function seek($offset, $whence = SEEK_SET)
 	{
@@ -677,7 +677,7 @@ class JStream extends JObject
 	 *
 	 * @return  mixed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function tell()
 	{
@@ -731,14 +731,14 @@ class JStream extends JObject
 	 * JStream::set('chunksize', newsize);)
 	 * Note: This doesn't support gzip/bzip2 writing like reading does
 	 *
-	 * @param	string	&$string  Reference to the string to write.
-	 * @param	integer  $length	Length of the string to write.
-	 * @param	integer  $chunk	Size of chunks to write in.
+	 * @param   string   &$string  Reference to the string to write.
+	 * @param   integer  $length   Length of the string to write.
+	 * @param   integer  $chunk    Size of chunks to write in.
 	 *
 	 * @return  boolean
 	 *
-	 * @see	 http://php.net/manual/en/function.fwrite.php
-	 * @since	11.1
+	 * @see     http://php.net/manual/en/function.fwrite.php
+	 * @since   11.1
 	 */
 	public function write(&$string, $length = 0, $chunk = 0)
 	{
@@ -806,12 +806,12 @@ class JStream extends JObject
 	/**
 	 * Chmod wrapper
 	 *
-	 * @param	string  $filename  File name.
-	 * @param	mixed	$mode	  Mode to use.
+	 * @param   string  $filename  File name.
+	 * @param   mixed   $mode      Mode to use.
 	 *
 	 * @return  boolean
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function chmod($filename = '', $mode = 0)
 	{
@@ -875,8 +875,8 @@ class JStream extends JObject
 	 *
 	 * @return  array  header/metadata
 	 *
-	 * @see	 http://php.net/manual/en/function.stream-get-meta-data.php
-	 * @since	11.1
+	 * @see     http://php.net/manual/en/function.stream-get-meta-data.php
+	 * @since   11.1
 	 */
 	public function get_meta_data()
 	{
@@ -896,7 +896,7 @@ class JStream extends JObject
 	 *
 	 * @return  mixed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function _buildContext()
 	{
@@ -916,12 +916,12 @@ class JStream extends JObject
 	 *
 	 * Format is the same as the options for stream_context_create
 	 *
-	 * @param	array  $context  Options to create the context with
+	 * @param   array  $context  Options to create the context with
 	 *
 	 * @return  void
 	 *
-	 * @see		http://php.net/stream_context_create
-	 * @since	11.1
+	 * @see       http://php.net/stream_context_create
+	 * @since   11.1
 	 */
 	public function setContextOptions($context)
 	{
@@ -932,15 +932,15 @@ class JStream extends JObject
 	/**
 	 * Adds a particular options to the context
 	 *
-	 * @param	string  $wrapper  The wrapper to use
-	 * @param	string  $name	 The option to set
-	 * @param	string  $value	The value of the option
+	 * @param   string  $wrapper  The wrapper to use
+	 * @param   string  $name     The option to set
+	 * @param   string  $value    The value of the option
 	 *
 	 * @return  void
 	 *
-	 * @see	 http://php.net/stream_context_create Stream Context Creation
-	 * @see	 http://php.net/manual/en/context.php Context Options for various streams
-	 * @since	11.1
+	 * @see     http://php.net/stream_context_create Stream Context Creation
+	 * @see     http://php.net/manual/en/context.php Context Options for various streams
+	 * @since   11.1
 	 */
 	public function addContextEntry($wrapper, $name, $value)
 	{
@@ -951,13 +951,13 @@ class JStream extends JObject
 	/**
 	 * Deletes a particular setting from a context
 	 *
-	 * @param	string  $wrapper  The wrapper to use
-	 * @param	string  $name	 The option to unset
+	 * @param   string  $wrapper  The wrapper to use
+	 * @param   string  $name     The option to unset
 	 *
 	 * @return  void
 	 *
-	 * @see	 http://php.net/stream_context_create
-	 * @since	11.1
+	 * @see     http://php.net/stream_context_create
+	 * @since   11.1
 	 */
 	public function deleteContextEntry($wrapper, $name)
 	{
@@ -990,7 +990,7 @@ class JStream extends JObject
 	 *
 	 * @return  mixed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function applyContextToStream()
 	{
@@ -1020,14 +1020,14 @@ class JStream extends JObject
 	 * Stream filters
 	 * Append a filter to the chain
 	 *
-	 * @param	string	$filtername  The key name of the filter.
-	 * @param	integer  $read_write  Optional. Defaults to STREAM_FILTER_READ.
-	 * @param	array	$params	  An array of params for the stream_filter_append call.
+	 * @param   string   $filtername  The key name of the filter.
+	 * @param   integer  $read_write  Optional. Defaults to STREAM_FILTER_READ.
+	 * @param   array    $params      An array of params for the stream_filter_append call.
 	 *
 	 * @return  mixed
 	 *
-	 * @see	 http://php.net/manual/en/function.stream-filter-append.php
-	 * @since	11.1
+	 * @see     http://php.net/manual/en/function.stream-filter-append.php
+	 * @since   11.1
 	 */
 	public function appendFilter($filtername, $read_write = STREAM_FILTER_READ, $params = array())
 	{
@@ -1061,14 +1061,14 @@ class JStream extends JObject
 	/**
 	 * Prepend a filter to the chain
 	 *
-	 * @param	string	$filtername  The key name of the filter.
-	 * @param	integer  $read_write  Optional. Defaults to STREAM_FILTER_READ.
-	 * @param	array	$params	  An array of params for the stream_filter_prepend call.
+	 * @param   string   $filtername  The key name of the filter.
+	 * @param   integer  $read_write  Optional. Defaults to STREAM_FILTER_READ.
+	 * @param   array    $params      An array of params for the stream_filter_prepend call.
 	 *
 	 * @return  mixed
 	 *
-	 * @see	 http://php.net/manual/en/function.stream-filter-prepend.php
-	 * @since	11.1
+	 * @see     http://php.net/manual/en/function.stream-filter-prepend.php
+	 * @since   11.1
 	 */
 	public function prependFilter($filtername, $read_write = STREAM_FILTER_READ, $params = array())
 	{
@@ -1103,12 +1103,12 @@ class JStream extends JObject
 	 * Remove a filter, either by resource (handed out from the append or prepend function)
 	 * or via getting the filter list)
 	 *
-	 * @param	resource  &$resource  The resource.
-	 * @param	boolean	$byindex	The index of the filter.
+	 * @param   resource  &$resource  The resource.
+	 * @param   boolean   $byindex    The index of the filter.
 	 *
-	 * @return  boolean	Result of operation
+	 * @return  boolean   Result of operation
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function removeFilter(&$resource, $byindex = false)
 	{
@@ -1141,15 +1141,15 @@ class JStream extends JObject
 	/**
 	 * Copy a file from src to dest
 	 *
-	 * @param	string	$src		 The file path to copy from.
-	 * @param	string	$dest		The file path to copy to.
-	 * @param	resource  $context	 A valid context resource (optional) created with stream_context_create.
-	 * @param	boolean	$use_prefix  Controls the use of a prefix (optional).
-	 * @param	boolean	$relative	Determines if the filename given is relative. Relative paths do not have JPATH_ROOT stripped.
+	 * @param   string    $src         The file path to copy from.
+	 * @param   string    $dest        The file path to copy to.
+	 * @param   resource  $context     A valid context resource (optional) created with stream_context_create.
+	 * @param   boolean   $use_prefix  Controls the use of a prefix (optional).
+	 * @param   boolean   $relative    Determines if the filename given is relative. Relative paths do not have JPATH_ROOT stripped.
 	 *
 	 * @return  mixed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function copy($src, $dest, $context = null, $use_prefix = true, $relative = false)
 	{
@@ -1242,15 +1242,15 @@ class JStream extends JObject
 	/**
 	 * Moves a file
 	 *
-	 * @param	string	$src		 The file path to move from.
-	 * @param	string	$dest		The file path to move to.
-	 * @param	resource  $context	 A valid context resource (optional) created with stream_context_create.
-	 * @param	boolean	$use_prefix  Controls the use of a prefix (optional).
-	 * @param	boolean	$relative	Determines if the filename given is relative. Relative paths do not have JPATH_ROOT stripped.
+	 * @param   string    $src         The file path to move from.
+	 * @param   string    $dest        The file path to move to.
+	 * @param   resource  $context     A valid context resource (optional) created with stream_context_create.
+	 * @param   boolean   $use_prefix  Controls the use of a prefix (optional).
+	 * @param   boolean   $relative    Determines if the filename given is relative. Relative paths do not have JPATH_ROOT stripped.
 	 *
 	 * @return  mixed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function move($src, $dest, $context = null, $use_prefix = true, $relative = false)
 	{
@@ -1296,14 +1296,14 @@ class JStream extends JObject
 	/**
 	 * Delete a file
 	 *
-	 * @param	string	$filename	The file path to delete.
-	 * @param	resource  $context	 A valid context resource (optional) created with stream_context_create.
-	 * @param	boolean	$use_prefix  Controls the use of a prefix (optional).
-	 * @param	boolean	$relative	Determines if the filename given is relative. Relative paths do not have JPATH_ROOT stripped.
+	 * @param   string    $filename    The file path to delete.
+	 * @param   resource  $context     A valid context resource (optional) created with stream_context_create.
+	 * @param   boolean   $use_prefix  Controls the use of a prefix (optional).
+	 * @param   boolean   $relative    Determines if the filename given is relative. Relative paths do not have JPATH_ROOT stripped.
 	 *
 	 * @return  mixed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function delete($filename, $context = null, $use_prefix = true, $relative = false)
 	{
@@ -1346,15 +1346,15 @@ class JStream extends JObject
 	/**
 	 * Upload a file
 	 *
-	 * @param	string	$src		 The file path to copy from (usually a temp folder).
-	 * @param	string	$dest		The file path to copy to.
-	 * @param	resource  $context	 A valid context resource (optional) created with stream_context_create.
-	 * @param	boolean	$use_prefix  Controls the use of a prefix (optional).
-	 * @param	boolean	$relative	Determines if the filename given is relative. Relative paths do not have JPATH_ROOT stripped.
+	 * @param   string    $src         The file path to copy from (usually a temp folder).
+	 * @param   string    $dest        The file path to copy to.
+	 * @param   resource  $context     A valid context resource (optional) created with stream_context_create.
+	 * @param   boolean   $use_prefix  Controls the use of a prefix (optional).
+	 * @param   boolean   $relative    Determines if the filename given is relative. Relative paths do not have JPATH_ROOT stripped.
 	 *
 	 * @return  mixed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function upload($src, $dest, $context = null, $use_prefix = true, $relative = false)
 	{
@@ -1374,12 +1374,12 @@ class JStream extends JObject
 	/**
 	 * Writes a chunk of data to a file.
 	 *
-	 * @param	string  $filename  The file name.
-	 * @param	string  &$buffer	The data to write to the file.
+	 * @param   string  $filename  The file name.
+	 * @param   string  &$buffer   The data to write to the file.
 	 *
 	 * @return  boolean
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function writeFile($filename, &$buffer)
 	{
@@ -1398,14 +1398,14 @@ class JStream extends JObject
 	/**
 	 * Determine the appropriate 'filename' of a file
 	 *
-	 * @param	string	$filename	Original filename of the file
-	 * @param	string	$mode		Mode string to retrieve the filename
-	 * @param	boolean  $use_prefix  Controls the use of a prefix
-	 * @param	boolean  $relative	Determines if the filename given is relative. Relative paths do not have JPATH_ROOT stripped.
+	 * @param   string   $filename    Original filename of the file
+	 * @param   string   $mode        Mode string to retrieve the filename
+	 * @param   boolean  $use_prefix  Controls the use of a prefix
+	 * @param   boolean  $relative    Determines if the filename given is relative. Relative paths do not have JPATH_ROOT stripped.
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function _getFilename($filename, $mode, $use_prefix, $relative)
 	{
@@ -1444,7 +1444,7 @@ class JStream extends JObject
 	 *
 	 * @return  File handler
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getFileHandle()
 	{

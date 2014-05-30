@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -32,7 +32,7 @@ $class = ' class="first"';
 					<?php echo JHtml::_('content.prepare', $child->description, '', 'com_content.category'); ?>
 				</div>
 			<?php endif; ?>
-			<?php endif; ?>
+            <?php endif; ?>
 
 			<?php if ( $this->params->get('show_cat_num_articles', 1)) : ?>
 			<dl>

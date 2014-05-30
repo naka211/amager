@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,31 +14,31 @@ require_once dirname(__FILE__) . '/list.php';
 /**
  * Renders a select list of Asset Groups
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Parameter
- * @since		11.1
+ * @since       11.1
  * @deprecated  Use JFormFieldContentLanguage instead.
- * @note		Be careful in replacing to note that JFormFieldConentLanguage does not end in s.
+ * @note        Be careful in replacing to note that JFormFieldConentLanguage does not end in s.
  */
 class JElementContentLanguages extends JElementList
 {
 	/**
 	 * Element name
 	 *
-	 * @var	string
+	 * @var    string
 	 */
 	protected $_name = 'ContentLanguages';
 
 	/**
 	 * Get the options for the element
 	 *
-	 * @param	JXMLElement  &$node  JXMLElement node object containing the settings for the element
+	 * @param   JXMLElement  &$node  JXMLElement node object containing the settings for the element
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
-	 * @deprecated	12.1  Use JFormFieldContentLanguage::getOptions instead
+	 * @deprecated    12.1  Use JFormFieldContentLanguage::getOptions instead
 	 */
 	protected function _getOptions(&$node)
 	{

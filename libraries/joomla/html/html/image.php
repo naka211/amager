@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,9 +12,9 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Utility class working with images.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
- * @since		11.1
+ * @since       11.1
  */
 abstract class JHtmlImage
 {
@@ -24,19 +24,19 @@ abstract class JHtmlImage
 	 * Also can be used in conjunction with the menulist param to create the chosen image
 	 * load the default or use no image.
 	 *
-	 * @param	string	$file		The file name, eg foobar.png.
-	 * @param	string	$folder	 The path to the image.
-	 * @param	integer  $altFile	Empty: use $file and $folder, -1: show no image, not-empty: use $altFile and $altFolder.
-	 * @param	string	$altFolder  Another path.  Only used for the contact us form based on the value of the imagelist param.
-	 * @param	string	$alt		Alternative text.
-	 * @param	array	$attribs	An associative array of attributes to add.
-	 * @param	boolean  $asTag	  True (default) to display full tag, false to return just the path.
+	 * @param   string   $file       The file name, eg foobar.png.
+	 * @param   string   $folder     The path to the image.
+	 * @param   integer  $altFile    Empty: use $file and $folder, -1: show no image, not-empty: use $altFile and $altFolder.
+	 * @param   string   $altFolder  Another path.  Only used for the contact us form based on the value of the imagelist param.
+	 * @param   string   $alt        Alternative text.
+	 * @param   array    $attribs    An associative array of attributes to add.
+	 * @param   boolean  $asTag      True (default) to display full tag, false to return just the path.
 	 *
-	 * @return  string	The value for the src or if $asTag is true, the full img html.
+	 * @return  string   The value for the src or if $asTag is true, the full img html.
 	 *
-	 * @since	11.1
+	 * @since    11.1
 	 *
-	 * @deprecated	12.1
+	 * @deprecated    12.1
 	 */
 	public static function site($file, $folder = '/images/system/', $altFile = null, $altFolder = '/images/system/', $alt = null, $attribs = null,
 		$asTag = true)
@@ -111,17 +111,17 @@ abstract class JHtmlImage
 	 * Also can be used in conjunction with the menulist param to create the chosen image
 	 * load the default or use no image
 	 *
-	 * @param	string	$file		The file name, eg foobar.png.
-	 * @param	string	$folder	 The path to the image.
-	 * @param	integer  $altFile	Empty: use $file and $folder, -1: show no image, not-empty: use $altFile and $altFolder.
-	 * @param	string	$altFolder  Another path.  Only used for the contact us form based on the value of the imagelist param.
-	 * @param	string	$alt		Alternative text.
-	 * @param	array	$attribs	An associative array of attributes to add.
-	 * @param	boolean  $asTag	  True (default) to display full tag, false to return just the path.
+	 * @param   string   $file       The file name, eg foobar.png.
+	 * @param   string   $folder     The path to the image.
+	 * @param   integer  $altFile    Empty: use $file and $folder, -1: show no image, not-empty: use $altFile and $altFolder.
+	 * @param   string   $altFolder  Another path.  Only used for the contact us form based on the value of the imagelist param.
+	 * @param   string   $alt        Alternative text.
+	 * @param   array    $attribs    An associative array of attributes to add.
+	 * @param   boolean  $asTag      True (default) to display full tag, false to return just the path.
 	 *
-	 * @return  string	The src or the full img tag if $asTag is true.
+	 * @return  string   The src or the full img tag if $asTag is true.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
 	 * @deprecated  12.1
 	 */

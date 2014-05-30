@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -17,21 +17,21 @@ jimport('joomla.filesystem.path');
 /**
  * Installer helper class
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
- * @since		11.1
+ * @since       11.1
  */
 abstract class JInstallerHelper
 {
 	/**
 	 * Downloads a package
 	 *
-	 * @param	string  $url	 URL of file to download
-	 * @param	string  $target  Download target filename [optional]
+	 * @param   string  $url     URL of file to download
+	 * @param   string  $target  Download target filename [optional]
 	 *
 	 * @return  mixed  Path to downloaded package or boolean false on failure
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function downloadPackage($url, $target = false)
 	{
@@ -46,23 +46,50 @@ abstract class JInstallerHelper
 		$version = new JVersion;
 		ini_set('user_agent', $version->getUserAgent('Installer'));
 
-		// Open the remote server socket for reading
-		$inputHandle = @ fopen($url, "r");
-		$error = strstr($php_errormsg, 'failed to open stream:');
-		if (!$inputHandle)
+		$http = JHttpFactory::getHttp();
+
+		// load installer plugins, and allow url and headers modification
+		$headers = array();
+		JPluginHelper::importPlugin('installer');
+		$dispatcher	= JDispatcher::getInstance();
+		$results = $dispatcher->trigger('onInstallerBeforePackageDownload', array(&$url, &$headers));
+		
+		try
 		{
-			JError::raiseWarning(42, JText::sprintf('JLIB_INSTALLER_ERROR_DOWNLOAD_SERVER_CONNECT', $error));
+			$response = $http->get($url, $headers);
+		}
+		catch (Exception $exc)
+		{
+			$response = null;
+		}
+
+		if (is_null($response))
+		{
+			JError::raiseWarning(42, JText::_('JLIB_INSTALLER_ERROR_DOWNLOAD_SERVER_CONNECT'));
+
 			return false;
 		}
 
-		$meta_data = stream_get_meta_data($inputHandle);
-		foreach ($meta_data['wrapper_data'] as $wrapper_data)
+		if (302 == $response->code && isset($response->headers['Location']))
 		{
-			if (substr($wrapper_data, 0, strlen("Content-Disposition")) == "Content-Disposition")
+			return self::downloadPackage($response->headers['Location']);
+		}
+		elseif (200 != $response->code)
+		{
+			if ($response->body === '')
 			{
-				$contentfilename = explode("\"", $wrapper_data);
-				$target = $contentfilename[1];
+				$response->body = $php_errormsg;
 			}
+
+			JError::raiseWarning(42, JText::sprintf('JLIB_INSTALLER_ERROR_DOWNLOAD_SERVER_CONNECT', $response->body));
+
+			return false;
+		}
+
+		if (isset($response->headers['Content-Disposition']))
+		{
+			$contentfilename = explode("\"", $response->headers['Content-Disposition']);
+			$target = $contentfilename[1];
 		}
 
 		// Set the target path if not given
@@ -75,24 +102,8 @@ abstract class JInstallerHelper
 			$target = $config->get('tmp_path') . '/' . basename($target);
 		}
 
-		// Initialise contents buffer
-		$contents = null;
-
-		while (!feof($inputHandle))
-		{
-			$contents .= fread($inputHandle, 4096);
-			if ($contents === false)
-			{
-				JError::raiseWarning(44, JText::sprintf('JLIB_INSTALLER_ERROR_FAILED_READING_NETWORK_RESOURCES', $php_errormsg));
-				return false;
-			}
-		}
-
 		// Write buffer to file
-		JFile::write($target, $contents);
-
-		// Close file pointer resource
-		fclose($inputHandle);
+		JFile::write($target, $response->body);
 
 		// Restore error tracking to what it was before
 		ini_set('track_errors', $track_errors);
@@ -108,11 +119,11 @@ abstract class JInstallerHelper
 	 * Unpacks a file and verifies it as a Joomla element package
 	 * Supports .gz .tar .tar.gz and .zip
 	 *
-	 * @param	string  $p_filename  The uploaded package filename or install directory
+	 * @param   string  $p_filename  The uploaded package filename or install directory
 	 *
 	 * @return  array  Two elements: extractdir and packagefile
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function unpack($p_filename)
 	{
@@ -181,11 +192,11 @@ abstract class JInstallerHelper
 	/**
 	 * Method to detect the extension type from a package directory
 	 *
-	 * @param	string  $p_dir  Path to package directory
+	 * @param   string  $p_dir  Path to package directory
 	 *
 	 * @return  mixed  Extension type string or boolean false on fail
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function detectType($p_dir)
 	{
@@ -226,11 +237,11 @@ abstract class JInstallerHelper
 	/**
 	 * Gets a file name out of a url
 	 *
-	 * @param	string  $url  URL to get name from
+	 * @param   string  $url  URL to get name from
 	 *
-	 * @return  mixed	String filename or boolean false if failed
+	 * @return  mixed   String filename or boolean false if failed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getFilenameFromURL($url)
 	{
@@ -245,12 +256,12 @@ abstract class JInstallerHelper
 	/**
 	 * Clean up temporary uploaded package and unpacked extension
 	 *
-	 * @param	string  $package	Path to the uploaded package file
-	 * @param	string  $resultdir  Path to the unpacked extension
+	 * @param   string  $package    Path to the uploaded package file
+	 * @param   string  $resultdir  Path to the unpacked extension
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function cleanupInstall($package, $resultdir)
 	{
@@ -278,11 +289,11 @@ abstract class JInstallerHelper
 	 * Splits contents of a sql file into array of discreet queries.
 	 * Queries need to be delimited with end of statement marker ';'
 	 *
-	 * @param	string  $sql  The SQL statement.
+	 * @param   string  $sql  The SQL statement.
 	 *
 	 * @return  array  Array of queries
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function splitSql($sql)
 	{

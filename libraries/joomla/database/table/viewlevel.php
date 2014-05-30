@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,18 +14,18 @@ jimport('joomla.database.table');
 /**
  * Viewlevels table class.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
- * @since		11.1
+ * @since       11.1
  */
 class JTableViewlevel extends JTable
 {
 	/**
 	 * Constructor
 	 *
-	 * @param	JDatabase  &$db  Database object.
+	 * @param   JDatabase  &$db  Database object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct(&$db)
 	{
@@ -35,12 +35,12 @@ class JTableViewlevel extends JTable
 	/**
 	 * Method to bind the data.
 	 *
-	 * @param	array  $array	The data to bind.
-	 * @param	mixed  $ignore  An array or space separated list of fields to ignore.
+	 * @param   array  $array   The data to bind.
+	 * @param   mixed  $ignore  An array or space separated list of fields to ignore.
 	 *
 	 * @return  boolean  True on success, false on failure.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function bind($array, $ignore = '')
 	{
@@ -61,7 +61,7 @@ class JTableViewlevel extends JTable
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function check()
 	{

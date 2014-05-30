@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -38,8 +38,7 @@ class UsersControllerUser extends UsersController
 
 		// Set the return URL if empty.
 		if (empty($data['return'])) {
-			//$data['return'] = 'index.php?option=com_users&view=profile';
-			$data['return'] = JURI::current();
+			$data['return'] = 'index.php?option=com_users&view=profile';
 		}
 
 		// Set the return URL in the user state to allow modification by plugins
@@ -55,25 +54,16 @@ class UsersControllerUser extends UsersController
 		$credentials['username'] = $data['username'];
 		$credentials['password'] = $data['password'];
 
-		if($options['remember']){
-			setcookie("username", $credentials['username'], time()+360000000, '/');
-			setcookie("password", $credentials['password'], time()+360000000, '/');
-		}
-		
 		// Perform the log in.
-		if (TRUE === $app->login($credentials, $options)) {
+		if (true === $app->login($credentials, $options)) {
 			// Success
 			$app->setUserState('users.login.form.data', array());
 			$app->redirect(JRoute::_($app->getUserState('users.login.form.return'), false));
-			//$this->setRedirect('index.php');
 		} else {
-			echo '<script>alert("Email eller password er ikke korrekt. Venligst prøv igen!");window.history.go(-1);</script>';
-			exit;
 			// Login failed !
 			$data['remember'] = (int)$options['remember'];
 			$app->setUserState('users.login.form.data', $data);
-			//$app->redirect(JRoute::_('index.php?option=com_users&view=login', false));
-			$this->setRedirect('index.php');
+			$app->redirect(JRoute::_('index.php?option=com_users&view=login', false));
 		}
 	}
 
@@ -84,7 +74,7 @@ class UsersControllerUser extends UsersController
 	 */
 	public function logout()
 	{
-		//JSession::checkToken('request') or jexit(JText::_('JInvalid_Token'));
+		JSession::checkToken('request') or jexit(JText::_('JInvalid_Token'));
 
 		$app = JFactory::getApplication();
 
@@ -97,15 +87,13 @@ class UsersControllerUser extends UsersController
 			$return = JRequest::getVar('return', '', 'method', 'base64');
 			$return = base64_decode($return);
 			if (!JURI::isInternal($return)) {
-				$return = 'index.php';
+				$return = '';
 			}
 
 			// Redirect the user.
 			$app->redirect(JRoute::_($return, false));
-			//$this->setRedirect('index.php');
 		} else {
-			//$app->redirect(JRoute::_('index.php?option=com_users&view=login', false));
-			$app->redirect(JRoute::_('index.php', false));
+			$app->redirect(JRoute::_('index.php?option=com_users&view=login', false));
 		}
 	}
 

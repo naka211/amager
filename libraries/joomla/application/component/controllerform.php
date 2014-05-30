@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,17 +14,17 @@ jimport('joomla.application.component.controller');
 /**
  * Controller tailored to suit most form-based admin operations.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
- * @since		11.1
- * @todo		Add ability to set redirect manually to better cope with frontend usage.
+ * @since       11.1
+ * @todo        Add ability to set redirect manually to better cope with frontend usage.
  */
 class JControllerForm extends JController
 {
 	/**
 	 * The context for storing internal data, e.g. record.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $context;
@@ -32,7 +32,7 @@ class JControllerForm extends JController
 	/**
 	 * The URL option for the component.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $option;
@@ -40,7 +40,7 @@ class JControllerForm extends JController
 	/**
 	 * The URL view item variable.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $view_item;
@@ -48,7 +48,7 @@ class JControllerForm extends JController
 	/**
 	 * The URL view list variable.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $view_list;
@@ -56,7 +56,7 @@ class JControllerForm extends JController
 	/**
 	 * The prefix to use with controller messages.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $text_prefix;
@@ -64,10 +64,10 @@ class JControllerForm extends JController
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  $config  An optional associative array of configuration settings.
+	 * @param   array  $config  An optional associative array of configuration settings.
 	 *
-	 * @see	 JController
-	 * @since	11.1
+	 * @see     JController
+	 * @since   11.1
 	 */
 	public function __construct($config = array())
 	{
@@ -140,7 +140,7 @@ class JControllerForm extends JController
 	 *
 	 * @return  mixed  True if the record can be added, a JError object if not.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function add()
 	{
@@ -184,11 +184,11 @@ class JControllerForm extends JController
 	 *
 	 * Extended classes can override this if necessary.
 	 *
-	 * @param	array  $data  An array of input data.
+	 * @param   array  $data  An array of input data.
 	 *
 	 * @return  boolean
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function allowAdd($data = array())
 	{
@@ -201,12 +201,12 @@ class JControllerForm extends JController
 	 *
 	 * Extended classes can override this if necessary.
 	 *
-	 * @param	array	$data  An array of input data.
-	 * @param	string  $key	The name of the key for the primary key; default is id.
+	 * @param   array   $data  An array of input data.
+	 * @param   string  $key   The name of the key for the primary key; default is id.
 	 *
 	 * @return  boolean
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function allowEdit($data = array(), $key = 'id')
 	{
@@ -218,12 +218,12 @@ class JControllerForm extends JController
 	 *
 	 * Extended classes can override this if necessary.
 	 *
-	 * @param	array	$data  An array of input data.
-	 * @param	string  $key	The name of the key for the primary key.
+	 * @param   array   $data  An array of input data.
+	 * @param   string  $key   The name of the key for the primary key.
 	 *
 	 * @return  boolean
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function allowSave($data, $key = 'id')
 	{
@@ -243,7 +243,7 @@ class JControllerForm extends JController
 	/**
 	 * Method to run batch operations.
 	 *
-	 * @param	JModel  $model  The model of the component being processed.
+	 * @param   JModel  $model  The model of the component being processed.
 	 *
 	 * @return	boolean	 True if successful, false otherwise and internal error is set.
 	 *
@@ -289,11 +289,11 @@ class JControllerForm extends JController
 	/**
 	 * Method to cancel an edit.
 	 *
-	 * @param	string  $key  The name of the primary key of the URL variable.
+	 * @param   string  $key  The name of the primary key of the URL variable.
 	 *
 	 * @return  boolean  True if access level checks pass, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function cancel($key = null)
 	{
@@ -370,13 +370,13 @@ class JControllerForm extends JController
 	/**
 	 * Method to edit an existing record.
 	 *
-	 * @param	string  $key	 The name of the primary key of the URL variable.
-	 * @param	string  $urlVar  The name of the URL variable if different from the primary key
+	 * @param   string  $key     The name of the primary key of the URL variable.
+	 * @param   string  $urlVar  The name of the URL variable if different from the primary key
 	 * (sometimes required to avoid router collisions).
 	 *
 	 * @return  boolean  True if access level check and checkout passes, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function edit($key = null, $urlVar = null)
 	{
@@ -455,13 +455,13 @@ class JControllerForm extends JController
 	/**
 	 * Method to get a model object, loading it if required.
 	 *
-	 * @param	string  $name	The model name. Optional.
-	 * @param	string  $prefix  The class prefix. Optional.
-	 * @param	array	$config  Configuration array for model. Optional.
+	 * @param   string  $name    The model name. Optional.
+	 * @param   string  $prefix  The class prefix. Optional.
+	 * @param   array   $config  Configuration array for model. Optional.
 	 *
 	 * @return  object  The model.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getModel($name = '', $prefix = '', $config = array('ignore_request' => true))
 	{
@@ -476,16 +476,16 @@ class JControllerForm extends JController
 	/**
 	 * Gets the URL arguments to append to an item redirect.
 	 *
-	 * @param	integer  $recordId  The primary key id for the item.
-	 * @param	string	$urlVar	The name of the URL variable for the id.
+	 * @param   integer  $recordId  The primary key id for the item.
+	 * @param   string   $urlVar    The name of the URL variable for the id.
 	 *
 	 * @return  string  The arguments to append to the redirect URL.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function getRedirectToItemAppend($recordId = null, $urlVar = 'id')
 	{
-		$tmpl	= JRequest::getCmd('tmpl');
+		$tmpl   = JRequest::getCmd('tmpl');
 		$layout = JRequest::getCmd('layout', 'edit');
 		$append = '';
 
@@ -513,7 +513,7 @@ class JControllerForm extends JController
 	 *
 	 * @return  string  The arguments to append to the redirect URL.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function getRedirectToListAppend()
 	{
@@ -533,12 +533,12 @@ class JControllerForm extends JController
 	 * Function that allows child controller access to model data
 	 * after the data has been saved.
 	 *
-	 * @param	JModel  &$model	 The data model object.
-	 * @param	array	$validData  The validated data.
+	 * @param   JModel  &$model     The data model object.
+	 * @param   array   $validData  The validated data.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function postSaveHook(JModel &$model, $validData = array())
 	{
@@ -547,12 +547,12 @@ class JControllerForm extends JController
 	/**
 	 * Method to save a record.
 	 *
-	 * @param	string  $key	 The name of the primary key of the URL variable.
-	 * @param	string  $urlVar  The name of the URL variable if different from the primary key (sometimes required to avoid router collisions).
+	 * @param   string  $key     The name of the primary key of the URL variable.
+	 * @param   string  $urlVar  The name of the URL variable if different from the primary key (sometimes required to avoid router collisions).
 	 *
 	 * @return  boolean  True if successful, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function save($key = null, $urlVar = null)
 	{
@@ -560,7 +560,7 @@ class JControllerForm extends JController
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 		// Initialise variables.
-		$app	= JFactory::getApplication();
+		$app   = JFactory::getApplication();
 		$lang  = JFactory::getLanguage();
 		$model = $this->getModel();
 		$table = $model->getTable();

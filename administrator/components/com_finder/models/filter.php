@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -14,16 +14,16 @@ jimport('joomla.application.component.modeladmin');
 /**
  * Filter model class for Finder.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderModelFilter extends JModelAdmin
 {
 	/**
 	 * The prefix to use with controller messages.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	protected $text_prefix = 'COM_FINDER';
@@ -31,7 +31,7 @@ class FinderModelFilter extends JModelAdmin
 	/**
 	 * Model context string.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	protected $context = 'com_finder.filter';
@@ -39,12 +39,12 @@ class FinderModelFilter extends JModelAdmin
 	/**
 	 * Custom clean cache method.
 	 *
-	 * @param	string	$group	  The component name. [optional]
-	 * @param	integer  $client_id  The client ID. [optional]
+	 * @param   string   $group      The component name. [optional]
+	 * @param   integer  $client_id  The client ID. [optional]
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function cleanCache($group = 'com_finder', $client_id = 1)
 	{
@@ -56,7 +56,7 @@ class FinderModelFilter extends JModelAdmin
 	 *
 	 * @return  mixed  The filter data.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function getFilter()
 	{
@@ -98,12 +98,12 @@ class FinderModelFilter extends JModelAdmin
 	/**
 	 * Method to get the record form.
 	 *
-	 * @param	array	$data	  Data for the form. [optional]
-	 * @param	boolean  $loadData  True if the form is to load its own data (default case), false if not. [optional]
+	 * @param   array    $data      Data for the form. [optional]
+	 * @param   boolean  $loadData  True if the form is to load its own data (default case), false if not. [optional]
 	 *
 	 * @return  mixed  A JForm object on success, false on failure
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
@@ -121,13 +121,13 @@ class FinderModelFilter extends JModelAdmin
 	/**
 	 * Returns a JTable object, always creating it.
 	 *
-	 * @param	string  $type	The table type to instantiate. [optional]
-	 * @param	string  $prefix  A prefix for the table class name. [optional]
-	 * @param	array	$config  Configuration array for model. [optional]
+	 * @param   string  $type    The table type to instantiate. [optional]
+	 * @param   string  $prefix  A prefix for the table class name. [optional]
+	 * @param   array   $config  Configuration array for model. [optional]
 	 *
 	 * @return  JTable  A database object
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function getTable($type = 'Filter', $prefix = 'FinderTable', $config = array())
 	{
@@ -139,7 +139,7 @@ class FinderModelFilter extends JModelAdmin
 	 *
 	 * @return  mixed  The data for the form.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function loadFormData()
 	{

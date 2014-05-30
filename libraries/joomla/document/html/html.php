@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Document
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -15,16 +15,16 @@ jimport('joomla.utilities.utility');
 /**
  * DocumentHTML class, provides an easy interface to parse and display a HTML document
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Document
- * @since		11.1
+ * @since       11.1
  */
 class JDocumentHTML extends JDocument
 {
 	/**
 	 * Array of Header <link> tags
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	public $_links = array();
@@ -32,7 +32,7 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Array of custom tags
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	public $_custom = array();
@@ -40,7 +40,7 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Name of the template
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $template = null;
@@ -48,7 +48,7 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Base url
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $baseurl = null;
@@ -56,7 +56,7 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Array of template parameters
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	public $params = null;
@@ -64,7 +64,7 @@ class JDocumentHTML extends JDocument
 	/**
 	 * File name
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	public $_file = null;
@@ -72,7 +72,7 @@ class JDocumentHTML extends JDocument
 	/**
 	 * String holding parsed template
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $_template = '';
@@ -80,7 +80,7 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Array of parsed template JDoc tags
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $_template_tags = array();
@@ -88,7 +88,7 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Integer with caching setting
 	 *
-	 * @var	integer
+	 * @var    integer
 	 * @since  11.1
 	 */
 	protected $_caching = null;
@@ -96,9 +96,9 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Class constructor
 	 *
-	 * @param	array  $options  Associative array of options
+	 * @param   array  $options  Associative array of options
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($options = array())
 	{
@@ -116,32 +116,32 @@ class JDocumentHTML extends JDocument
 	 *
 	 * @return  array  The document head data in array form
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getHeadData()
 	{
 		$data = array();
-		$data['title']		= $this->title;
+		$data['title']       = $this->title;
 		$data['description'] = $this->description;
-		$data['link']		= $this->link;
-		$data['metaTags']	= $this->_metaTags;
-		$data['links']		= $this->_links;
+		$data['link']        = $this->link;
+		$data['metaTags']    = $this->_metaTags;
+		$data['links']       = $this->_links;
 		$data['styleSheets'] = $this->_styleSheets;
-		$data['style']		= $this->_style;
-		$data['scripts']	 = $this->_scripts;
-		$data['script']	  = $this->_script;
-		$data['custom']	  = $this->_custom;
+		$data['style']       = $this->_style;
+		$data['scripts']     = $this->_scripts;
+		$data['script']      = $this->_script;
+		$data['custom']      = $this->_custom;
 		return $data;
 	}
 
 	/**
 	 * Set the HTML document head data
 	 *
-	 * @param	array  $data  The document head data in array form
+	 * @param   array  $data  The document head data in array form
 	 *
 	 * @return  JDocumentHTML instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setHeadData($data)
 	{
@@ -167,11 +167,11 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Merge the HTML document head data
 	 *
-	 * @param	array  $data  The document head data in array form
+	 * @param   array  $data  The document head data in array form
 	 *
 	 * @return  JDocumentHTML instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function mergeHeadData($data)
 	{
@@ -248,14 +248,14 @@ class JDocumentHTML extends JDocument
 	 * ('rev' refers to reverse relation, 'rel' indicates normal, forward relation.)
 	 * Typical tag: <link href="index.php" rel="Start">
 	 *
-	 * @param	string  $href	  The link that is being related.
-	 * @param	string  $relation  Relation of link.
-	 * @param	string  $relType	Relation type attribute.  Either rel or rev (default: 'rel').
-	 * @param	array	$attribs	Associative array of remaining attributes.
+	 * @param   string  $href      The link that is being related.
+	 * @param   string  $relation  Relation of link.
+	 * @param   string  $relType   Relation type attribute.  Either rel or rev (default: 'rel').
+	 * @param   array   $attribs   Associative array of remaining attributes.
 	 *
 	 * @return  JDocumentHTML instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function addHeadLink($href, $relation, $relType = 'rel', $attribs = array())
 	{
@@ -273,13 +273,13 @@ class JDocumentHTML extends JDocument
 	 * the left of the url in the address bar. Some browsers display
 	 * it on the tab, as well.
 	 *
-	 * @param	string  $href	  The link that is being related.
-	 * @param	string  $type	  File type
-	 * @param	string  $relation  Relation of link
+	 * @param   string  $href      The link that is being related.
+	 * @param   string  $type      File type
+	 * @param   string  $relation  Relation of link
 	 *
 	 * @return  JDocumentHTML instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function addFavicon($href, $type = 'image/vnd.microsoft.icon', $relation = 'shortcut icon')
 	{
@@ -292,11 +292,11 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Adds a custom HTML string to the head block
 	 *
-	 * @param	string  $html  The HTML to add to the head
+	 * @param   string  $html  The HTML to add to the head
 	 *
 	 * @return  JDocumentHTML instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function addCustomTag($html)
 	{
@@ -308,13 +308,13 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Get the contents of a document include
 	 *
-	 * @param	string  $type	 The type of renderer
-	 * @param	string  $name	 The name of the element to render
-	 * @param	array	$attribs  Associative array of remaining attributes.
+	 * @param   string  $type     The type of renderer
+	 * @param   string  $name     The name of the element to render
+	 * @param   array   $attribs  Associative array of remaining attributes.
 	 *
 	 * @return  The output of the renderer
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getBuffer($type = null, $name = null, $attribs = array())
 	{
@@ -377,12 +377,12 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Set the contents a document includes
 	 *
-	 * @param	string  $content  The content to be set in the buffer.
-	 * @param	array	$options  Array of optional elements.
+	 * @param   string  $content  The content to be set in the buffer.
+	 * @param   array   $options  Array of optional elements.
 	 *
 	 * @return  JDocumentHTML instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setBuffer($content, $options = array())
 	{
@@ -403,11 +403,11 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Parses the template and populates the buffer
 	 *
-	 * @param	array  $params  Parameters for fetching the template
+	 * @param   array  $params  Parameters for fetching the template
 	 *
 	 * @return  JDocumentHTML instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function parse($params = array())
 	{
@@ -417,12 +417,12 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Outputs the template to the browser.
 	 *
-	 * @param	boolean  $caching  If true, cache the output
-	 * @param	array	$params	Associative array of attributes
+	 * @param   boolean  $caching  If true, cache the output
+	 * @param   array    $params   Associative array of attributes
 	 *
 	 * @return  The rendered data
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function render($caching = false, $params = array())
 	{
@@ -445,11 +445,11 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Count the modules based on the given condition
 	 *
-	 * @param	string  $condition  The condition to use
+	 * @param   string  $condition  The condition to use
 	 *
 	 * @return  integer  Number of modules found
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function countModules($condition)
 	{
@@ -474,7 +474,7 @@ class JDocumentHTML extends JDocument
 	 *
 	 * @return  integer  Number of child menu items
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function countMenuChildren()
 	{
@@ -507,12 +507,12 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Load a template file
 	 *
-	 * @param	string  $directory  The name of the template
-	 * @param	string  $filename	The actual filename
+	 * @param   string  $directory  The name of the template
+	 * @param   string  $filename   The actual filename
 	 *
 	 * @return  string  The contents of the template
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _loadTemplate($directory, $filename)
 	{
@@ -554,11 +554,11 @@ class JDocumentHTML extends JDocument
 	/**
 	 * Fetch the template, and initialise the params
 	 *
-	 * @param	array  $params  Parameters to determine the template
+	 * @param   array  $params  Parameters to determine the template
 	 *
 	 * @return  JDocumentHTML instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _fetchTemplate($params = array())
 	{
@@ -575,12 +575,9 @@ class JDocumentHTML extends JDocument
 
 		// Load the language file for the template
 		$lang = JFactory::getLanguage();
-		// 1.5 or core then 1.6
 
-		$lang->load('tpl_' . $template, JPATH_BASE, null, false, false)
-			|| $lang->load('tpl_' . $template, $directory . '/' . $template, null, false, false)
-			|| $lang->load('tpl_' . $template, JPATH_BASE, $lang->getDefault(), false, false)
-			|| $lang->load('tpl_' . $template, $directory . '/' . $template, $lang->getDefault(), false, false);
+			$lang->load('tpl_' . $template, JPATH_BASE, null, false, true)
+		||	$lang->load('tpl_' . $template, $directory . '/' . $template, null, false, true);
 
 		// Assign the variables
 		$this->template = $template;
@@ -600,7 +597,7 @@ class JDocumentHTML extends JDocument
 	 *
 	 * @return  JDocumentHTML instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _parseTemplate()
 	{
@@ -642,7 +639,7 @@ class JDocumentHTML extends JDocument
 	 *
 	 * @return string rendered template
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _renderTemplate()
 	{

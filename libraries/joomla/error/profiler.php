@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Error
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -13,50 +13,50 @@ defined('JPATH_PLATFORM') or die;
  * Utility class to assist in the process of benchmarking the execution
  * of sections of code to understand where time is being spent.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Error
- * @since		11.1
+ * @since       11.1
  */
 class JProfiler extends JObject
 {
 	/**
-	 * @var	integer  The start time.
+	 * @var    integer  The start time.
 	 * @since  11.1
 	 */
 	protected $_start = 0;
 
 	/**
-	 * @var	string  The prefix to use in the output
+	 * @var    string  The prefix to use in the output
 	 * @since  11.1
 	 */
 	protected $_prefix = '';
 
 	/**
-	 * @var	array  The buffer of profiling messages.
+	 * @var    array  The buffer of profiling messages.
 	 * @since  11.1
 	 */
 	protected $_buffer = null;
 
 	/**
-	 * @var	float
+	 * @var    float
 	 * @since  11.1
 	 */
 	protected $_previous_time = 0.0;
 
 	/**
-	 * @var	float
+	 * @var    float
 	 * @since  11.1
 	 */
 	protected $_previous_mem = 0.0;
 
 	/**
-	 * @var	boolean  Boolean if the OS is Windows.
+	 * @var    boolean  Boolean if the OS is Windows.
 	 * @since  11.1
 	 */
 	protected $_iswin = false;
 
 	/**
-	 * @var	array  JProfiler instances container.
+	 * @var    array  JProfiler instances container.
 	 * @since  11.3
 	 */
 	protected static $instances = array();
@@ -64,7 +64,7 @@ class JProfiler extends JObject
 	/**
 	 * Constructor
 	 *
-	 * @param	string  $prefix  Prefix for mark messages
+	 * @param   string  $prefix  Prefix for mark messages
 	 *
 	 * @since  11.1
 	 */
@@ -80,11 +80,11 @@ class JProfiler extends JObject
 	 * Returns the global Profiler object, only creating it
 	 * if it doesn't already exist.
 	 *
-	 * @param	string  $prefix  Prefix used to distinguish profiler objects.
+	 * @param   string  $prefix  Prefix used to distinguish profiler objects.
 	 *
 	 * @return  JProfiler  The Profiler object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getInstance($prefix = '')
 	{
@@ -102,11 +102,11 @@ class JProfiler extends JObject
 	 * The mark is returned as text enclosed in <div> tags
 	 * with a CSS class of 'profiler'.
 	 *
-	 * @param	string  $label  A label for the time mark
+	 * @param   string  $label  A label for the time mark
 	 *
 	 * @return  string  Mark enclosed in <div> tags
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function mark($label)
 	{
@@ -141,7 +141,7 @@ class JProfiler extends JObject
 	 *
 	 * @return  float The current time
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getmicrotime()
 	{
@@ -155,8 +155,8 @@ class JProfiler extends JObject
 	 *
 	 * @return  integer  The memory usage
 	 *
-	 * @link	PHP_MANUAL#memory_get_usage
-	 * @since	11.1
+	 * @link    PHP_MANUAL#memory_get_usage
+	 * @since   11.1
 	 */
 	public function getMemory()
 	{

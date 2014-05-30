@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  String
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,9 +12,9 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Joomla Platform String Normalize Class
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  String
- * @since		11.3
+ * @since       11.3
  * @deprecated  12.1
  */
 abstract class JStringNormalize extends JStringNormalise
@@ -25,20 +25,20 @@ abstract class JStringNormalize extends JStringNormalise
 /**
  * Joomla Platform String Normalise Class
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  String
- * @since		11.3
+ * @since       11.3
  */
 abstract class JStringNormalise
 {
 	/**
 	 * Method to convert a string into camel case.
 	 *
-	 * @param	string  $input  The string input.
+	 * @param   string  $input  The string input.
 	 *
 	 * @return  string  The camel case string.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public static function toCamelCase($input)
 	{
@@ -53,11 +53,11 @@ abstract class JStringNormalise
 	/**
 	 * Method to convert a string into dash separated form.
 	 *
-	 * @param	string  $input  The string input.
+	 * @param   string  $input  The string input.
 	 *
 	 * @return  string  The dash separated string.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public static function toDashSeparated($input)
 	{
@@ -73,11 +73,11 @@ abstract class JStringNormalise
 	/**
 	 * Method to convert a string into space separated form.
 	 *
-	 * @param	string  $input  The string input.
+	 * @param   string  $input  The string input.
 	 *
 	 * @return  string  The space separated string.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public static function toSpaceSeparated($input)
 	{
@@ -93,11 +93,11 @@ abstract class JStringNormalise
 	/**
 	 * Method to convert a string into underscore separated form.
 	 *
-	 * @param	string  $input  The string input.
+	 * @param   string  $input  The string input.
 	 *
 	 * @return  string  The underscore separated string.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public static function toUnderscoreSeparated($input)
 	{
@@ -113,11 +113,11 @@ abstract class JStringNormalise
 	/**
 	 * Method to convert a string into variable form.
 	 *
-	 * @param	string  $input  The string input.
+	 * @param   string  $input  The string input.
 	 *
 	 * @return  string  The variable string.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public static function toVariable($input)
 	{
@@ -141,11 +141,11 @@ abstract class JStringNormalise
 	/**
 	 * Method to convert a string into key form.
 	 *
-	 * @param	string  $input  The string input.
+	 * @param   string  $input  The string input.
 	 *
 	 * @return  string  The key string.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public static function toKey($input)
 	{

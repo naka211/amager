@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Site
+ * @package     Joomla.Site
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -12,9 +12,9 @@ defined('_JEXEC') or die;
 /**
  * Search HTML view class for the Finder package.
  *
- * @package	 Joomla.Site
+ * @package     Joomla.Site
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderViewSearch extends JViewLegacy
 {
@@ -26,11 +26,11 @@ class FinderViewSearch extends JViewLegacy
 	/**
 	 * Method to display the view.
 	 *
-	 * @param	string  $tpl  A template file to load. [optional]
+	 * @param   string  $tpl  A template file to load. [optional]
 	 *
 	 * @return  mixed  JError object on failure, void on success.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function display($tpl = null)
 	{
@@ -114,7 +114,7 @@ class FinderViewSearch extends JViewLegacy
 	 *
 	 * @return  string  A string of hidden input form fields
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function getFields()
 	{
@@ -145,11 +145,11 @@ class FinderViewSearch extends JViewLegacy
 	/**
 	 * Method to get the layout file for a search result object.
 	 *
-	 * @param	string  $layout  The layout file to check. [optional]
+	 * @param   string  $layout  The layout file to check. [optional]
 	 *
 	 * @return  string  The layout file to use.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function getLayoutFile($layout = null)
 	{
@@ -167,11 +167,11 @@ class FinderViewSearch extends JViewLegacy
 	/**
 	 * Prepares the document
 	 *
-	 * @param	FinderIndexerQuery  $query  The search query
+	 * @param   FinderIndexerQuery  $query  The search query
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function prepareDocument($query)
 	{

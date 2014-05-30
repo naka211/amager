@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Document
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -16,16 +16,16 @@ jimport('joomla.filter.filteroutput');
 /**
  * Document class, provides an easy interface to parse and display a document
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Document
- * @since		11.1
+ * @since       11.1
  */
 class JDocument extends JObject
 {
 	/**
 	 * Document title
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $title = '';
@@ -33,7 +33,7 @@ class JDocument extends JObject
 	/**
 	 * Document description
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $description = '';
@@ -41,7 +41,7 @@ class JDocument extends JObject
 	/**
 	 * Document full URL
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $link = '';
@@ -49,7 +49,7 @@ class JDocument extends JObject
 	/**
 	 * Document base URL
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $base = '';
@@ -57,7 +57,7 @@ class JDocument extends JObject
 	/**
 	 * Contains the document language setting
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $language = 'en-gb';
@@ -65,7 +65,7 @@ class JDocument extends JObject
 	/**
 	 * Contains the document direction setting
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $direction = 'ltr';
@@ -73,14 +73,14 @@ class JDocument extends JObject
 	/**
 	 * Document generator
 	 *
-	 * @var	string
+	 * @var    string
 	 */
 	public $_generator = 'Joomla! - Open Source Content Management';
 
 	/**
 	 * Document modified date
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $_mdate = '';
@@ -88,7 +88,7 @@ class JDocument extends JObject
 	/**
 	 * Tab string
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $_tab = "\11";
@@ -96,7 +96,7 @@ class JDocument extends JObject
 	/**
 	 * Contains the line end string
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $_lineEnd = "\12";
@@ -104,7 +104,7 @@ class JDocument extends JObject
 	/**
 	 * Contains the character encoding string
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $_charset = 'utf-8';
@@ -112,7 +112,7 @@ class JDocument extends JObject
 	/**
 	 * Document mime type
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $_mime = '';
@@ -120,7 +120,7 @@ class JDocument extends JObject
 	/**
 	 * Document namespace
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $_namespace = '';
@@ -128,7 +128,7 @@ class JDocument extends JObject
 	/**
 	 * Document profile
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $_profile = '';
@@ -136,7 +136,7 @@ class JDocument extends JObject
 	/**
 	 * Array of linked scripts
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	public $_scripts = array();
@@ -144,7 +144,7 @@ class JDocument extends JObject
 	/**
 	 * Array of scripts placed in the header
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	public $_script = array();
@@ -152,7 +152,7 @@ class JDocument extends JObject
 	/**
 	 * Array of linked style sheets
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	public $_styleSheets = array();
@@ -160,7 +160,7 @@ class JDocument extends JObject
 	/**
 	 * Array of included style declarations
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	public $_style = array();
@@ -168,7 +168,7 @@ class JDocument extends JObject
 	/**
 	 * Array of meta tags
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	public $_metaTags = array();
@@ -176,7 +176,7 @@ class JDocument extends JObject
 	/**
 	 * The rendering engine
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  11.1
 	 */
 	public $_engine = null;
@@ -184,7 +184,7 @@ class JDocument extends JObject
 	/**
 	 * The document type
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $_type = null;
@@ -192,13 +192,13 @@ class JDocument extends JObject
 	/**
 	 * Array of buffered output
 	 *
-	 * @var	mixed (depends on the renderer)
+	 * @var    mixed (depends on the renderer)
 	 * @since  11.1
 	 */
 	public static $_buffer = null;
 
 	/**
-	 * @var	array  JDocument instances container.
+	 * @var    array  JDocument instances container.
 	 * @since  11.3
 	 */
 	protected static $instances = array();
@@ -206,9 +206,9 @@ class JDocument extends JObject
 	/**
 	 * Class constructor.
 	 *
-	 * @param	array  $options  Associative array of options
+	 * @param   array  $options  Associative array of options
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($options = array())
 	{
@@ -254,12 +254,12 @@ class JDocument extends JObject
 	 * Returns the global JDocument object, only creating it
 	 * if it doesn't already exist.
 	 *
-	 * @param	string  $type		The document type to instantiate
-	 * @param	array	$attributes  Array of attributes
+	 * @param   string  $type        The document type to instantiate
+	 * @param   array   $attributes  Array of attributes
 	 *
 	 * @return  object  The document object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getInstance($type = 'html', $attributes = array())
 	{
@@ -310,11 +310,11 @@ class JDocument extends JObject
 	/**
 	 * Set the document type
 	 *
-	 * @param	string  $type  Type document is to set to
+	 * @param   string  $type  Type document is to set to
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setType($type)
 	{
@@ -328,7 +328,7 @@ class JDocument extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getType()
 	{
@@ -340,7 +340,7 @@ class JDocument extends JObject
 	 *
 	 * @return  The contents of the document buffer
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getBuffer()
 	{
@@ -350,12 +350,12 @@ class JDocument extends JObject
 	/**
 	 * Set the contents of the document buffer
 	 *
-	 * @param	string  $content  The content to be set in the buffer.
-	 * @param	array	$options  Array of optional elements.
+	 * @param   string  $content  The content to be set in the buffer.
+	 * @param   array   $options  Array of optional elements.
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setBuffer($content, $options = array())
 	{
@@ -367,12 +367,12 @@ class JDocument extends JObject
 	/**
 	 * Gets a meta tag.
 	 *
-	 * @param	string	$name		Value of name or http-equiv tag
-	 * @param	boolean  $httpEquiv  META type "http-equiv" defaults to null
+	 * @param   string   $name       Value of name or http-equiv tag
+	 * @param   boolean  $httpEquiv  META type "http-equiv" defaults to null
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getMetaData($name, $httpEquiv = false)
 	{
@@ -404,14 +404,14 @@ class JDocument extends JObject
 	/**
 	 * Sets or alters a meta tag.
 	 *
-	 * @param	string	$name		Value of name or http-equiv tag
-	 * @param	string	$content	 Value of the content tag
-	 * @param	boolean  $http_equiv  META type "http-equiv" defaults to null
-	 * @param	boolean  $sync		Should http-equiv="content-type" by synced with HTTP-header?
+	 * @param   string   $name        Value of name or http-equiv tag
+	 * @param   string   $content     Value of the content tag
+	 * @param   boolean  $http_equiv  META type "http-equiv" defaults to null
+	 * @param   boolean  $sync        Should http-equiv="content-type" by synced with HTTP-header?
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setMetaData($name, $content, $http_equiv = false, $sync = true)
 	{
@@ -449,14 +449,14 @@ class JDocument extends JObject
 	/**
 	 * Adds a linked script to the page
 	 *
-	 * @param	string	$url	URL to the linked script
-	 * @param	string	$type	Type of script. Defaults to 'text/javascript'
-	 * @param	boolean  $defer  Adds the defer attribute.
-	 * @param	boolean  $async  Adds the async attribute.
+	 * @param   string   $url    URL to the linked script
+	 * @param   string   $type   Type of script. Defaults to 'text/javascript'
+	 * @param   boolean  $defer  Adds the defer attribute.
+	 * @param   boolean  $async  Adds the async attribute.
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function addScript($url, $type = "text/javascript", $defer = false, $async = false)
 	{
@@ -470,12 +470,12 @@ class JDocument extends JObject
 	/**
 	 * Adds a script to the page
 	 *
-	 * @param	string  $content  Script
-	 * @param	string  $type	 Scripting mime (defaults to 'text/javascript')
+	 * @param   string  $content  Script
+	 * @param   string  $type     Scripting mime (defaults to 'text/javascript')
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function addScriptDeclaration($content, $type = 'text/javascript')
 	{
@@ -494,14 +494,14 @@ class JDocument extends JObject
 	/**
 	 * Adds a linked stylesheet to the page
 	 *
-	 * @param	string  $url	  URL to the linked style sheet
-	 * @param	string  $type	 Mime encoding type
-	 * @param	string  $media	Media type that this stylesheet applies to
-	 * @param	array	$attribs  Array of attributes
+	 * @param   string  $url      URL to the linked style sheet
+	 * @param   string  $type     Mime encoding type
+	 * @param   string  $media    Media type that this stylesheet applies to
+	 * @param   array   $attribs  Array of attributes
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function addStyleSheet($url, $type = 'text/css', $media = null, $attribs = array())
 	{
@@ -515,12 +515,12 @@ class JDocument extends JObject
 	/**
 	 * Adds a stylesheet declaration to the page
 	 *
-	 * @param	string  $content  Style declarations
-	 * @param	string  $type	 Type of stylesheet (defaults to 'text/css')
+	 * @param   string  $content  Style declarations
+	 * @param   string  $type     Type of stylesheet (defaults to 'text/css')
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function addStyleDeclaration($content, $type = 'text/css')
 	{
@@ -539,11 +539,11 @@ class JDocument extends JObject
 	/**
 	 * Sets the document charset
 	 *
-	 * @param	string  $type  Charset encoding string
+	 * @param   string  $type  Charset encoding string
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setCharset($type = 'utf-8')
 	{
@@ -557,7 +557,7 @@ class JDocument extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getCharset()
 	{
@@ -567,11 +567,11 @@ class JDocument extends JObject
 	/**
 	 * Sets the global document language declaration. Default is English (en-gb).
 	 *
-	 * @param	string  $lang  The language to be set
+	 * @param   string  $lang  The language to be set
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setLanguage($lang = "en-gb")
 	{
@@ -585,7 +585,7 @@ class JDocument extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getLanguage()
 	{
@@ -595,11 +595,11 @@ class JDocument extends JObject
 	/**
 	 * Sets the global document direction declaration. Default is left-to-right (ltr).
 	 *
-	 * @param	string  $dir  The language direction to be set
+	 * @param   string  $dir  The language direction to be set
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setDirection($dir = "ltr")
 	{
@@ -613,7 +613,7 @@ class JDocument extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getDirection()
 	{
@@ -623,11 +623,11 @@ class JDocument extends JObject
 	/**
 	 * Sets the title of the document
 	 *
-	 * @param	string  $title  The title to be set
+	 * @param   string  $title  The title to be set
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setTitle($title)
 	{
@@ -641,7 +641,7 @@ class JDocument extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getTitle()
 	{
@@ -651,11 +651,11 @@ class JDocument extends JObject
 	/**
 	 * Sets the base URI of the document
 	 *
-	 * @param	string  $base  The base URI to be set
+	 * @param   string  $base  The base URI to be set
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setBase($base)
 	{
@@ -669,7 +669,7 @@ class JDocument extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getBase()
 	{
@@ -679,11 +679,11 @@ class JDocument extends JObject
 	/**
 	 * Sets the description of the document
 	 *
-	 * @param	string  $description  The description to set
+	 * @param   string  $description  The description to set
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setDescription($description)
 	{
@@ -697,7 +697,7 @@ class JDocument extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since    11.1
 	 */
 	public function getDescription()
 	{
@@ -707,11 +707,11 @@ class JDocument extends JObject
 	/**
 	 * Sets the document link
 	 *
-	 * @param	string  $url  A url
+	 * @param   string  $url  A url
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setLink($url)
 	{
@@ -725,7 +725,7 @@ class JDocument extends JObject
 	 *
 	 * @return string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getLink()
 	{
@@ -735,11 +735,11 @@ class JDocument extends JObject
 	/**
 	 * Sets the document generator
 	 *
-	 * @param	string  $generator  The generator to be set
+	 * @param   string  $generator  The generator to be set
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setGenerator($generator)
 	{
@@ -753,7 +753,7 @@ class JDocument extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getGenerator()
 	{
@@ -763,11 +763,11 @@ class JDocument extends JObject
 	/**
 	 * Sets the document modified date
 	 *
-	 * @param	string  $date  The date to be set
+	 * @param   string  $date  The date to be set
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setModifiedDate($date)
 	{
@@ -781,7 +781,7 @@ class JDocument extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getModifiedDate()
 	{
@@ -797,14 +797,14 @@ class JDocument extends JObject
 	 * ({@link http://www.w3.org/TR/xhtml-media-types/
 	 * http://www.w3.org/TR/xhtml-media-types/}) for more details.
 	 *
-	 * @param	string	$type  The document type to be sent
-	 * @param	boolean  $sync  Should the type be synced with HTML?
+	 * @param   string   $type  The document type to be sent
+	 * @param   boolean  $sync  Should the type be synced with HTML?
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
-	 * @link	http://www.w3.org/TR/xhtml-media-types
+	 * @link    http://www.w3.org/TR/xhtml-media-types
 	 */
 	public function setMimeEncoding($type = 'text/html', $sync = true)
 	{
@@ -824,7 +824,7 @@ class JDocument extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getMimeEncoding()
 	{
@@ -834,11 +834,11 @@ class JDocument extends JObject
 	/**
 	 * Sets the line end style to Windows, Mac, Unix or a custom string.
 	 *
-	 * @param	string  $style  "win", "mac", "unix" or custom string.
+	 * @param   string  $style  "win", "mac", "unix" or custom string.
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setLineEnd($style)
 	{
@@ -865,7 +865,7 @@ class JDocument extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function _getLineEnd()
 	{
@@ -875,11 +875,11 @@ class JDocument extends JObject
 	/**
 	 * Sets the string used to indent HTML
 	 *
-	 * @param	string  $string  String used to indent ("\11", "\t", '  ', etc.).
+	 * @param   string  $string  String used to indent ("\11", "\t", '  ', etc.).
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setTab($string)
 	{
@@ -893,7 +893,7 @@ class JDocument extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function _getTab()
 	{
@@ -903,11 +903,11 @@ class JDocument extends JObject
 	/**
 	 * Load a renderer
 	 *
-	 * @param	string  $type  The renderer type
+	 * @param   string  $type  The renderer type
 	 *
 	 * @return  JDocumentRenderer  Object or null if class does not exist
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function loadRenderer($type)
 	{
@@ -940,11 +940,11 @@ class JDocument extends JObject
 	/**
 	 * Parses the document and prepares the buffers
 	 *
-	 * @param	array  $params  The array of parameters
+	 * @param   array  $params  The array of parameters
 	 *
 	 * @return  JDocument instance of $this to allow chaining
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function parse($params = array())
 	{
@@ -954,12 +954,12 @@ class JDocument extends JObject
 	/**
 	 * Outputs the document
 	 *
-	 * @param	boolean  $cache	If true, cache the output
-	 * @param	array	$params  Associative array of attributes
+	 * @param   boolean  $cache   If true, cache the output
+	 * @param   array    $params  Associative array of attributes
 	 *
 	 * @return  The rendered data
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function render($cache = false, $params = array())
 	{

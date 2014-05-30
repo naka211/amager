@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,16 +12,16 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Utility class for categories
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
- * @since		11.1
+ * @since       11.1
  */
 abstract class JHtmlCategory
 {
 	/**
 	 * Cached array of the category items.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected static $items = array();
@@ -29,13 +29,13 @@ abstract class JHtmlCategory
 	/**
 	 * Returns an array of categories for the given extension.
 	 *
-	 * @param	string  $extension  The extension option e.g. com_something.
-	 * @param	array	$config	 An array of configuration options. By default, only
-	 *							  published and unpublished categories are returned.
+	 * @param   string  $extension  The extension option e.g. com_something.
+	 * @param   array   $config     An array of configuration options. By default, only
+	 *                              published and unpublished categories are returned.
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function options($extension, $config = array('filter.published' => array(0, 1)))
 	{
@@ -90,12 +90,12 @@ abstract class JHtmlCategory
 	/**
 	 * Returns an array of categories for the given extension.
 	 *
-	 * @param	string  $extension  The extension option.
-	 * @param	array	$config	 An array of configuration options. By default, only published and unpublished categories are returned.
+	 * @param   string  $extension  The extension option.
+	 * @param   array   $config     An array of configuration options. By default, only published and unpublished categories are returned.
 	 *
-	 * @return  array	Categories for the extension
+	 * @return  array   Categories for the extension
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function categories($extension, $config = array('filter.published' => array(0, 1)))
 	{

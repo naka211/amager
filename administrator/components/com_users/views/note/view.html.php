@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -12,16 +12,16 @@ defined('_JEXEC') or die;
 /**
  * User note edit view
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
- * @since		2.5
+ * @since       2.5
  */
 class UsersViewNote extends JViewLegacy
 {
 	/**
 	 * The edit form.
 	 *
-	 * @var	JForm
+	 * @var    JForm
 	 * @since  2.5
 	 */
 	protected $form;
@@ -29,7 +29,7 @@ class UsersViewNote extends JViewLegacy
 	/**
 	 * The item data.
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  2.5
 	 */
 	protected $item;
@@ -37,7 +37,7 @@ class UsersViewNote extends JViewLegacy
 	/**
 	 * The model state.
 	 *
-	 * @var	JObject
+	 * @var    JObject
 	 * @since  2.5
 	 */
 	protected $state;
@@ -45,11 +45,11 @@ class UsersViewNote extends JViewLegacy
 	/**
 	 * Override the display method for the view.
 	 *
-	 * @param	string  $tpl  The name of the template file to parse; automatically searches through the template paths.
+	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
 	 *
 	 * @return  mixed  A string if successful, otherwise a JError object.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function display($tpl = null)
 	{
@@ -76,7 +76,7 @@ class UsersViewNote extends JViewLegacy
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function addToolbar()
 	{

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -15,43 +15,43 @@ defined('JPATH_PLATFORM') or die;
  * Controller (Controllers are where you put all the actual code.) Provides basic
  * functionality, such as rendering views (aka displaying templates).
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
- * @since		11.1
+ * @since       11.1
  */
 class JController extends JObject
 {
 	/**
 	 * ACO Section for the controller.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
-	 * @deprecated	12.1
+	 * @deprecated    12.1
 	 */
 	protected $_acoSection;
 
 	/**
 	 * Default ACO Section value for the controller.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
-	 * @deprecated	12.1
+	 * @deprecated    12.1
 	 */
 	protected $_acoSectionValue;
 
 	/**
 	 * The base path of the controller
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
-	 * @note	Replaces _basePath.
+	 * @note   Replaces _basePath.
 	 */
 	protected $basePath;
 
 	/**
 	 * The default view for the display method.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $default_view;
@@ -59,52 +59,52 @@ class JController extends JObject
 	/**
 	 * The mapped task that was performed.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
-	 * @note	Replaces _doTask.
+	 * @note   Replaces _doTask.
 	 */
 	protected $doTask;
 
 	/**
 	 * Redirect message.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
-	 * @note	Replaces _message.
+	 * @note   Replaces _message.
 	 */
 	protected $message;
 
 	/**
 	 * Redirect message type.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
-	 * @note	Replaces _messageType.
+	 * @note   Replaces _messageType.
 	 */
 	protected $messageType;
 
 	/**
 	 * Array of class methods
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
-	 * @note	Replaces _methods.
+	 * @note   Replaces _methods.
 	 */
 	protected $methods;
 
 	/**
 	 * The name of the controller
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
-	 * @note	Replaces _name.
+	 * @note   Replaces _name.
 	 */
 	protected $name;
 
 	/**
 	 * The prefix of the models
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $model_prefix;
@@ -112,41 +112,41 @@ class JController extends JObject
 	/**
 	 * The set of search directories for resources (views).
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
-	 * @note	Replaces _path.
+	 * @note   Replaces _path.
 	 */
 	protected $paths;
 
 	/**
 	 * URL for redirection.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
-	 * @note	Replaces _redirect.
+	 * @note   Replaces _redirect.
 	 */
 	protected $redirect;
 
 	/**
 	 * Current or most recently performed task.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
-	 * @note	Replaces _task.
+	 * @note   Replaces _task.
 	 */
 	protected $task;
 
 	/**
 	 * Array of class methods to call for a given task.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
-	 * @note	Replaces _taskMap.
+	 * @note   Replaces _taskMap.
 	 */
 	protected $taskMap;
 
 	/**
-	 * @var	JController  JController instance container.
+	 * @var    JController  JController instance container.
 	 * @since  11.3
 	 */
 	protected static $instance;
@@ -154,8 +154,8 @@ class JController extends JObject
 	/**
 	 * Adds to the stack of model paths in LIFO order.
 	 *
-	 * @param	mixed	$path	The directory (string), or list of directories (array) to add.
-	 * @param	string  $prefix  A prefix for models
+	 * @param   mixed   $path    The directory (string), or list of directories (array) to add.
+	 * @param   string  $prefix  A prefix for models
 	 *
 	 * @return  void
 	 */
@@ -168,13 +168,13 @@ class JController extends JObject
 	/**
 	 * Create the filename for a resource.
 	 *
-	 * @param	string  $type	The resource type to create the filename for.
-	 * @param	array	$parts  An associative array of filename information. Optional.
+	 * @param   string  $type   The resource type to create the filename for.
+	 * @param   array   $parts  An associative array of filename information. Optional.
 	 *
 	 * @return  string  The filename.
 	 *
-	 * @note	Replaced _createFileName.
-	 * @since	11.1
+	 * @note    Replaced _createFileName.
+	 * @since   11.1
 	 */
 	protected static function createFileName($type, $parts = array())
 	{
@@ -218,12 +218,12 @@ class JController extends JObject
 	/**
 	 * Method to get a singleton controller instance.
 	 *
-	 * @param	string  $prefix  The prefix for the controller.
-	 * @param	array	$config  An array of optional constructor options.
+	 * @param   string  $prefix  The prefix for the controller.
+	 * @param   array   $config  An array of optional constructor options.
 	 *
 	 * @return  JController
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  Exception if the controller cannot be loaded.
 	 */
 	public static function getInstance($prefix, $config = array())
@@ -313,11 +313,11 @@ class JController extends JObject
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  $config  An optional associative array of configuration settings.
+	 * @param   array  $config  An optional associative array of configuration settings.
 	 * Recognized key values include 'name', 'default_task', 'model_path', and
 	 * 'view_path' (this list is not meant to be comprehensive).
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($config = array())
 	{
@@ -439,13 +439,13 @@ class JController extends JObject
 	/**
 	 * Adds to the search path for templates and resources.
 	 *
-	 * @param	string  $type  The path type (e.g. 'model', 'view').
-	 * @param	mixed	$path  The directory string  or stream array to search.
+	 * @param   string  $type  The path type (e.g. 'model', 'view').
+	 * @param   mixed   $path  The directory string  or stream array to search.
 	 *
 	 * @return  JController  A JController object to support chaining.
 	 *
-	 * @since	11.1
-	 * @note	Replaces _addPath.
+	 * @since   11.1
+	 * @note    Replaces _addPath.
 	 */
 	protected function addPath($type, $path)
 	{
@@ -473,7 +473,7 @@ class JController extends JObject
 	/**
 	 * Add one or more view paths to the controller's stack, in LIFO order.
 	 *
-	 * @param	mixed  $path  The directory (string) or list of directories (array) to add.
+	 * @param   mixed  $path  The directory (string) or list of directories (array) to add.
 	 *
 	 * @return  JController  This object to support chaining.
 	 */
@@ -487,13 +487,13 @@ class JController extends JObject
 	/**
 	 * Authorisation check
 	 *
-	 * @param	string  $task  The ACO Section Value to check access on
+	 * @param   string  $task  The ACO Section Value to check access on
 	 *
 	 * @return  boolean  True if authorised
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
-	 * @deprecated  12.1	Use JAuthorise
+	 * @deprecated  12.1   Use JAuthorise
 	 */
 	public function authorize($task)
 	{
@@ -505,11 +505,11 @@ class JController extends JObject
 	/**
 	 * Authorisation check
 	 *
-	 * @param	string  $task  The ACO Section Value to check access on.
+	 * @param   string  $task  The ACO Section Value to check access on.
 	 *
 	 * @return  boolean  True if authorised
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3
 	 */
 	public function authorise($task)
@@ -538,12 +538,12 @@ class JController extends JObject
 	/**
 	 * Method to check whether an ID is in the edit list.
 	 *
-	 * @param	string	$context  The context for the session storage.
-	 * @param	integer  $id		The ID of the record to add to the edit list.
+	 * @param   string   $context  The context for the session storage.
+	 * @param   integer  $id       The ID of the record to add to the edit list.
 	 *
 	 * @return  boolean  True if the ID is in the edit list.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function checkEditId($context, $id)
 	{
@@ -581,14 +581,14 @@ class JController extends JObject
 	/**
 	 * Method to load and return a model object.
 	 *
-	 * @param	string  $name	The name of the model.
-	 * @param	string  $prefix  Optional model prefix.
-	 * @param	array	$config  Configuration array for the model. Optional.
+	 * @param   string  $name    The name of the model.
+	 * @param   string  $prefix  Optional model prefix.
+	 * @param   array   $config  Configuration array for the model. Optional.
 	 *
-	 * @return  mixed	Model object on success; otherwise null failure.
+	 * @return  mixed   Model object on success; otherwise null failure.
 	 *
-	 * @since	11.1
-	 * @note	Replaces _createModel.
+	 * @since   11.1
+	 * @note    Replaces _createModel.
 	 */
 	protected function createModel($name, $prefix = '', $config = array())
 	{
@@ -609,15 +609,15 @@ class JController extends JObject
 	 * Note the "name, prefix, type" order of parameters, which differs from the
 	 * "name, type, prefix" order used in related public methods.
 	 *
-	 * @param	string  $name	The name of the view.
-	 * @param	string  $prefix  Optional prefix for the view class name.
-	 * @param	string  $type	The type of view.
-	 * @param	array	$config  Configuration array for the view. Optional.
+	 * @param   string  $name    The name of the view.
+	 * @param   string  $prefix  Optional prefix for the view class name.
+	 * @param   string  $type    The type of view.
+	 * @param   array   $config  Configuration array for the view. Optional.
 	 *
 	 * @return  mixed  View object on success; null or error result on failure.
 	 *
-	 * @since	11.1
-	 * @note	Replaces _createView.
+	 * @since   11.1
+	 * @note    Replaces _createView.
 	 */
 	protected function createView($name, $prefix = '', $type = '', $config = array())
 	{
@@ -660,12 +660,12 @@ class JController extends JObject
 	 * This function is provide as a default implementation, in most cases
 	 * you will need to override it in your own controllers.
 	 *
-	 * @param	boolean  $cachable	If true, the view output will be cached
-	 * @param	array	$urlparams  An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
+	 * @param   boolean  $cachable   If true, the view output will be cached
+	 * @param   array    $urlparams  An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
 	 *
 	 * @return  JController  A JController object to support chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function display($cachable = false, $urlparams = false)
 	{
@@ -728,11 +728,11 @@ class JController extends JObject
 	/**
 	 * Execute a task by triggering a method in the derived class.
 	 *
-	 * @param	string  $task  The task to perform. If no matching task is found, the '__default' task is executed, if defined.
+	 * @param   string  $task  The task to perform. If no matching task is found, the '__default' task is executed, if defined.
 	 *
-	 * @return  mixed	The value returned by the called method, false in error case.
+	 * @return  mixed   The value returned by the called method, false in error case.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function execute($task)
 	{
@@ -770,13 +770,13 @@ class JController extends JObject
 	/**
 	 * Method to get a model object, loading it if required.
 	 *
-	 * @param	string  $name	The model name. Optional.
-	 * @param	string  $prefix  The class prefix. Optional.
-	 * @param	array	$config  Configuration array for model. Optional.
+	 * @param   string  $name    The model name. Optional.
+	 * @param   string  $prefix  The class prefix. Optional.
+	 * @param   array   $config  Configuration array for model. Optional.
 	 *
 	 * @return  object  The model.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getModel($name = '', $prefix = '', $config = array())
 	{
@@ -820,7 +820,7 @@ class JController extends JObject
 	 *
 	 * @return  string  The name of the dispatcher
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getName()
 	{
@@ -842,7 +842,7 @@ class JController extends JObject
 	 *
 	 * @return  string  The task that is being performed or was most recently performed.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getTask()
 	{
@@ -854,7 +854,7 @@ class JController extends JObject
 	 *
 	 * @return  array  Array[i] of task names.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getTasks()
 	{
@@ -864,14 +864,14 @@ class JController extends JObject
 	/**
 	 * Method to get a reference to the current view and load it if necessary.
 	 *
-	 * @param	string  $name	The view name. Optional, defaults to the controller name.
-	 * @param	string  $type	The view type. Optional.
-	 * @param	string  $prefix  The class prefix. Optional.
-	 * @param	array	$config  Configuration array for view. Optional.
+	 * @param   string  $name    The view name. Optional, defaults to the controller name.
+	 * @param   string  $type    The view type. Optional.
+	 * @param   string  $prefix  The class prefix. Optional.
+	 * @param   array   $config  Configuration array for view. Optional.
 	 *
 	 * @return  object  Reference to the view or an error.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getView($name = '', $type = '', $prefix = '', $config = array())
 	{
@@ -912,12 +912,12 @@ class JController extends JObject
 	/**
 	 * Method to add a record ID to the edit list.
 	 *
-	 * @param	string	$context  The context for the session storage.
-	 * @param	integer  $id		The ID of the record to add to the edit list.
+	 * @param   string   $context  The context for the session storage.
+	 * @param   integer  $id       The ID of the record to add to the edit list.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function holdEditId($context, $id)
 	{
@@ -953,7 +953,7 @@ class JController extends JObject
 	 *
 	 * @return  boolean  False if no redirect exists.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function redirect()
 	{
@@ -969,11 +969,11 @@ class JController extends JObject
 	/**
 	 * Register the default task to perform if a mapping is not found.
 	 *
-	 * @param	string  $method  The name of the method in the derived class to perform if a named task is not found.
+	 * @param   string  $method  The name of the method in the derived class to perform if a named task is not found.
 	 *
 	 * @return  JController  A JController object to support chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function registerDefaultTask($method)
 	{
@@ -985,12 +985,12 @@ class JController extends JObject
 	/**
 	 * Register (map) a task to a method in the class.
 	 *
-	 * @param	string  $task	The task.
-	 * @param	string  $method  The name of the method in the derived class to perform for this task.
+	 * @param   string  $task    The task.
+	 * @param   string  $method  The name of the method in the derived class to perform for this task.
 	 *
 	 * @return  JController  A JController object to support chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function registerTask($task, $method)
 	{
@@ -1005,11 +1005,11 @@ class JController extends JObject
 	/**
 	 * Unregister (unmap) a task in the class.
 	 *
-	 * @param	string  $task  The task.
+	 * @param   string  $task  The task.
 	 *
 	 * @return  JController  This object to support chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function unregisterTask($task)
 	{
@@ -1021,12 +1021,12 @@ class JController extends JObject
 	/**
 	 * Method to check whether an ID is in the edit list.
 	 *
-	 * @param	string	$context  The context for the session storage.
-	 * @param	integer  $id		The ID of the record to add to the edit list.
+	 * @param   string   $context  The context for the session storage.
+	 * @param   integer  $id       The ID of the record to add to the edit list.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function releaseEditId($context, $id)
 	{
@@ -1060,14 +1060,14 @@ class JController extends JObject
 	/**
 	 * Sets the access control levels.
 	 *
-	 * @param	string  $section  The ACO section (eg, the component).
-	 * @param	string  $value	The ACO section value (if using a constant value).
+	 * @param   string  $section  The ACO section (eg, the component).
+	 * @param   string  $value    The ACO section value (if using a constant value).
 	 *
 	 * @return  void
 	 *
 	 * @deprecated  12.1  Use JAccess
-	 * @see	 Jaccess
-	 * @since	11.1
+	 * @see     Jaccess
+	 * @since   11.1
 	 */
 	public function setAccessControl($section, $value = null)
 	{
@@ -1080,12 +1080,12 @@ class JController extends JObject
 	/**
 	 * Sets the internal message that is passed with a redirect
 	 *
-	 * @param	string  $text  Message to display on redirect.
-	 * @param	string  $type  Message type (since 11.1). Optional, defaults to 'message'.
+	 * @param   string  $text  Message to display on redirect.
+	 * @param   string  $type  Message type (since 11.1). Optional, defaults to 'message'.
 	 *
 	 * @return  string  Previous message
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setMessage($text, $type = 'message')
 	{
@@ -1099,13 +1099,13 @@ class JController extends JObject
 	/**
 	 * Sets an entire array of search paths for resources.
 	 *
-	 * @param	string  $type  The type of path to set, typically 'view' or 'model'.
-	 * @param	string  $path  The new set of search paths. If null or false, resets to the current directory only.
+	 * @param   string  $type  The type of path to set, typically 'view' or 'model'.
+	 * @param   string  $path  The new set of search paths. If null or false, resets to the current directory only.
 	 *
 	 * @return  void
 	 *
-	 * @note	Replaces _setPath.
-	 * @since	11.1
+	 * @note    Replaces _setPath.
+	 * @since   11.1
 	 */
 	protected function setPath($type, $path)
 	{
@@ -1119,13 +1119,13 @@ class JController extends JObject
 	/**
 	 * Set a URL for browser redirection.
 	 *
-	 * @param	string  $url	URL to redirect to.
-	 * @param	string  $msg	Message to display on redirect. Optional, defaults to value set internally by controller, if any.
-	 * @param	string  $type  Message type. Optional, defaults to 'message' or the type set by a previous call to setMessage.
+	 * @param   string  $url   URL to redirect to.
+	 * @param   string  $msg   Message to display on redirect. Optional, defaults to value set internally by controller, if any.
+	 * @param   string  $type  Message type. Optional, defaults to 'message' or the type set by a previous call to setMessage.
 	 *
 	 * @return  JController  This object to support chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setRedirect($url, $msg = null, $type = null)
 	{

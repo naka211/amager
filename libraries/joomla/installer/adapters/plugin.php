@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,16 +14,16 @@ jimport('joomla.base.adapterinstance');
 /**
  * Plugin installer
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
- * @since		11.1
+ * @since       11.1
  */
 class JInstallerPlugin extends JAdapterInstance
 {
 	/**
 	 * Install function routing
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 * */
 	protected $route = 'install';
@@ -69,11 +69,11 @@ class JInstallerPlugin extends JAdapterInstance
 	/**
 	 * Custom loadLanguage method
 	 *
-	 * @param	string  $path  The path where to find language files.
+	 * @param   string  $path  The path where to find language files.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function loadLanguage($path = null)
 	{
@@ -109,10 +109,8 @@ class JInstallerPlugin extends JAdapterInstance
 				{
 					$source = "$path/$folder";
 				}
-				$lang->load($extension . '.sys', $source, null, false, false)
-					|| $lang->load($extension . '.sys', JPATH_ADMINISTRATOR, null, false, false)
-					|| $lang->load($extension . '.sys', $source, $lang->getDefault(), false, false)
-					|| $lang->load($extension . '.sys', JPATH_ADMINISTRATOR, $lang->getDefault(), false, false);
+					$lang->load($extension . '.sys', $source, null, false, true)
+				||	$lang->load($extension . '.sys', JPATH_ADMINISTRATOR, null, false, true);
 			}
 		}
 	}
@@ -122,7 +120,7 @@ class JInstallerPlugin extends JAdapterInstance
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function install()
 	{
@@ -500,9 +498,9 @@ class JInstallerPlugin extends JAdapterInstance
 	/**
 	 * Custom update method
 	 *
-	 * @return	boolean  True on success
+	 * @return   boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since    11.1
 	 */
 	public function update()
 	{
@@ -518,11 +516,11 @@ class JInstallerPlugin extends JAdapterInstance
 	/**
 	 * Custom uninstall method
 	 *
-	 * @param	integer  $id  The id of the plugin to uninstall
+	 * @param   integer  $id  The id of the plugin to uninstall
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function uninstall($id)
 	{
@@ -711,7 +709,7 @@ class JInstallerPlugin extends JAdapterInstance
 	 *
 	 * @return  array  JExtension) list of extensions available
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function discover()
 	{
@@ -778,7 +776,7 @@ class JInstallerPlugin extends JAdapterInstance
 	 *
 	 * @return  mixed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function discover_install()
 	{
@@ -828,7 +826,7 @@ class JInstallerPlugin extends JAdapterInstance
 	 *
 	 * @return  boolean  Result of operation, true if updated, false on failure.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function refreshManifestCache()
 	{

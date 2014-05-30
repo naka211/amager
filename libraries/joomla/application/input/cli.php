@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,16 +14,16 @@ jimport('joomla.application.input');
 /**
  * Joomla! Input CLI Class
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
- * @since		11.1
+ * @since       11.1
  */
 class JInputCLI extends JInput
 {
 	/**
 	 * The executable that was called to run the CLI script.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $executable;
@@ -32,7 +32,7 @@ class JInputCLI extends JInput
 	 * The additional arguments passed to the script that are not associated
 	 * with a specific argument name.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	public $args = array();
@@ -40,10 +40,10 @@ class JInputCLI extends JInput
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  $source	Source data (Optional, default is $_REQUEST)
-	 * @param	array  $options  Array of configuration parameters (Optional)
+	 * @param   array  $source   Source data (Optional, default is $_REQUEST)
+	 * @param   array  $options  Array of configuration parameters (Optional)
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct(array $source = null, array $options = array())
 	{
@@ -68,7 +68,7 @@ class JInputCLI extends JInput
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function parseArguments()
 	{

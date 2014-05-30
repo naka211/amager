@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Filter
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -15,50 +15,50 @@ defined('JPATH_PLATFORM') or die;
  * Forked from the php input filter library by: Daniel Morris <dan@rootcube.com>
  * Original Contributors: Gianpaolo Racca, Ghislain Picard, Marco Wandschneider, Chris Tobin and Andrew Eddie.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Filter
- * @since		11.1
+ * @since       11.1
  */
 class JFilterInput extends JObject
 {
 	/**
-	 * @var	array  A container for JFilterInput instances.
+	 * @var    array  A container for JFilterInput instances.
 	 * @since  11.3
 	 */
 	protected static $instances = array();
 
 	/**
-	 * @var	array  An array of permitted tags.
+	 * @var    array  An array of permitted tags.
 	 * @since  11.1
 	 */
 	public $tagsArray;
 
 	/**
-	 * @var	array  An array of permitted tag attributes.
+	 * @var    array  An array of permitted tag attributes.
 	 * @since  11.1
 	 */
 	public $attrArray;
 
 	/**
-	 * @var	integer  Method for tags: WhiteList method = 0 (default), BlackList method = 1
+	 * @var    integer  Method for tags: WhiteList method = 0 (default), BlackList method = 1
 	 * @since  11.1
 	 */
 	public $tagsMethod;
 
 	/**
-	 * @var	integer  Method for attributes: WhiteList method = 0 (default), BlackList method = 1
+	 * @var    integer  Method for attributes: WhiteList method = 0 (default), BlackList method = 1
 	 * @since  11.1
 	 */
 	public $attrMethod;
 
 	/**
-	 * @var	integer  Only auto clean essentials = 0, Allow clean blacklisted tags/attr = 1
+	 * @var    integer  Only auto clean essentials = 0, Allow clean blacklisted tags/attr = 1
 	 * @since  11.1
 	 */
 	public $xssAuto;
 
 	/**
-	 * @var	array  A list of the default blacklisted tags.
+	 * @var    array  A list of the default blacklisted tags.
 	 * @since  11.1
 	 */
 	public $tagBlacklist = array(
@@ -87,8 +87,8 @@ class JFilterInput extends JObject
 	);
 
 	/**
-	 * @var	array	 A list of the default blacklisted tag attributes.  All event handlers implicit.
-	 * @since	11.1
+	 * @var    array     A list of the default blacklisted tag attributes.  All event handlers implicit.
+	 * @since   11.1
 	 */
 	public $attrBlacklist = array(
 		'action',
@@ -101,13 +101,13 @@ class JFilterInput extends JObject
 	/**
 	 * Constructor for inputFilter class. Only first parameter is required.
 	 *
-	 * @param	array	$tagsArray	List of user-defined tags
-	 * @param	array	$attrArray	List of user-defined attributes
-	 * @param	integer  $tagsMethod  WhiteList method = 0, BlackList method = 1
-	 * @param	integer  $attrMethod  WhiteList method = 0, BlackList method = 1
-	 * @param	integer  $xssAuto	 Only auto clean essentials = 0, Allow clean blacklisted tags/attr = 1
+	 * @param   array    $tagsArray   List of user-defined tags
+	 * @param   array    $attrArray   List of user-defined attributes
+	 * @param   integer  $tagsMethod  WhiteList method = 0, BlackList method = 1
+	 * @param   integer  $attrMethod  WhiteList method = 0, BlackList method = 1
+	 * @param   integer  $xssAuto     Only auto clean essentials = 0, Allow clean blacklisted tags/attr = 1
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($tagsArray = array(), $attrArray = array(), $tagsMethod = 0, $attrMethod = 0, $xssAuto = 1)
 	{
@@ -126,15 +126,15 @@ class JFilterInput extends JObject
 	/**
 	 * Returns an input filter object, only creating it if it doesn't already exist.
 	 *
-	 * @param	array	$tagsArray	List of user-defined tags
-	 * @param	array	$attrArray	List of user-defined attributes
-	 * @param	integer  $tagsMethod  WhiteList method = 0, BlackList method = 1
-	 * @param	integer  $attrMethod  WhiteList method = 0, BlackList method = 1
-	 * @param	integer  $xssAuto	 Only auto clean essentials = 0, Allow clean blacklisted tags/attr = 1
+	 * @param   array    $tagsArray   List of user-defined tags
+	 * @param   array    $attrArray   List of user-defined attributes
+	 * @param   integer  $tagsMethod  WhiteList method = 0, BlackList method = 1
+	 * @param   integer  $attrMethod  WhiteList method = 0, BlackList method = 1
+	 * @param   integer  $xssAuto     Only auto clean essentials = 0, Allow clean blacklisted tags/attr = 1
 	 *
 	 * @return  JFilterInput  The JFilterInput object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function &getInstance($tagsArray = array(), $attrArray = array(), $tagsMethod = 0, $attrMethod = 0, $xssAuto = 1)
 	{
@@ -152,12 +152,12 @@ class JFilterInput extends JObject
 	 * Method to be called by another php script. Processes for XSS and
 	 * specified bad code.
 	 *
-	 * @param	mixed	$source  Input string/array-of-string to be 'cleaned'
-	 * @param	string  $type	Return type for the variable (INT, UINT, FLOAT, BOOLEAN, WORD, ALNUM, CMD, BASE64, STRING, ARRAY, PATH, NONE)
+	 * @param   mixed   $source  Input string/array-of-string to be 'cleaned'
+	 * @param   string  $type    Return type for the variable (INT, UINT, FLOAT, BOOLEAN, WORD, ALNUM, CMD, BASE64, STRING, ARRAY, PATH, NONE)
 	 *
 	 * @return  mixed  'Cleaned' version of input parameter
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function clean($source, $type = 'string')
 	{
@@ -265,11 +265,11 @@ class JFilterInput extends JObject
 	/**
 	 * Function to determine if contents of an attribute are safe
 	 *
-	 * @param	array  $attrSubSet  A 2 element array for attribute's name, value
+	 * @param   array  $attrSubSet  A 2 element array for attribute's name, value
 	 *
 	 * @return  boolean  True if bad code is detected
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function checkAttribute($attrSubSet)
 	{
@@ -284,11 +284,11 @@ class JFilterInput extends JObject
 	/**
 	 * Internal method to iteratively remove all unwanted tags and attributes
 	 *
-	 * @param	string  $source  Input string to be 'cleaned'
+	 * @param   string  $source  Input string to be 'cleaned'
 	 *
 	 * @return  string  'Cleaned' version of input parameter
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _remove($source)
 	{
@@ -307,11 +307,11 @@ class JFilterInput extends JObject
 	/**
 	 * Internal method to strip a string of certain tags
 	 *
-	 * @param	string  $source  Input string to be 'cleaned'
+	 * @param   string  $source  Input string to be 'cleaned'
 	 *
 	 * @return  string  'Cleaned' version of input parameter
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _cleanTags($source)
 	{
@@ -531,11 +531,11 @@ class JFilterInput extends JObject
 	/**
 	 * Internal method to strip a tag of certain attributes
 	 *
-	 * @param	array  $attrSet  Array of attribute pairs to filter
+	 * @param   array  $attrSet  Array of attribute pairs to filter
 	 *
 	 * @return  array  Filtered array of attribute pairs
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _cleanAttributes($attrSet)
 	{
@@ -555,7 +555,8 @@ class JFilterInput extends JObject
 			// Split into name/value pairs
 			$attrSubSet = explode('=', trim($attrSet[$i]), 2);
 			// Take the last attribute in case there is an attribute with no value
-			$attrSubSet[0] = array_pop(explode(' ', trim($attrSubSet[0])));
+			$attrSubSet_0 = explode(' ', trim($attrSubSet[0]));
+			$attrSubSet[0] = array_pop($attrSubSet_0);
 
 			// Remove all "non-regular" attribute names
 			// AND blacklisted attributes
@@ -628,11 +629,11 @@ class JFilterInput extends JObject
 	/**
 	 * Try to convert to plaintext
 	 *
-	 * @param	string  $source  The source string.
+	 * @param   string  $source  The source string.
 	 *
 	 * @return  string  Plaintext string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _decode($source)
 	{
@@ -641,7 +642,14 @@ class JFilterInput extends JObject
 		if (!is_array($ttr))
 		{
 			// Entity decode
-			$trans_tbl = get_html_translation_table(HTML_ENTITIES);
+			if (version_compare(PHP_VERSION, '5.3.4', '>='))
+			{
+				$trans_tbl = get_html_translation_table(HTML_ENTITIES, ENT_COMPAT, 'ISO-8859-1');
+			}
+			else
+			{
+				$trans_tbl = get_html_translation_table(HTML_ENTITIES, ENT_COMPAT);
+			}
 			foreach ($trans_tbl as $k => $v)
 			{
 				$ttr[$v] = utf8_encode($k);
@@ -649,20 +657,21 @@ class JFilterInput extends JObject
 		}
 		$source = strtr($source, $ttr);
 		// Convert decimal
-		$source = preg_replace('/&#(\d+);/me', "utf8_encode(chr(\\1))", $source); // decimal notation
+		$source = preg_replace_callback('/&#(\d+);/m', "callbackJFilterInputConvertDecimal", $source); // decimal notation
 		// Convert hex
-		$source = preg_replace('/&#x([a-f0-9]+);/mei', "utf8_encode(chr(0x\\1))", $source); // hex notation
+		$source = preg_replace_callback('/&#x([a-f0-9]+);/mi', "callbackJFilterInputConvertHex", $source); // hex notation
+
 		return $source;
 	}
 
 	/**
 	 * Escape < > and " inside attribute values
 	 *
-	 * @param	string  $source  The source string.
+	 * @param   string  $source  The source string.
 	 *
 	 * @return  string  Filtered string
 	 *
-	 * @since	11.1
+	 * @since    11.1
 	 */
 	protected function _escapeAttributeValues($source)
 	{
@@ -710,11 +719,11 @@ class JFilterInput extends JObject
 	/**
 	 * Remove CSS Expressions in the form of <property>:expression(...)
 	 *
-	 * @param	string  $source  The source string.
+	 * @param   string  $source  The source string.
 	 *
 	 * @return  string  Filtered string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _stripCSSExpressions($source)
 	{
@@ -738,5 +747,35 @@ class JFilterInput extends JObject
 			}
 		}
 		return $return;
+	}
+}
+
+if (! function_exists('callbackJFilterInputConvertDecimal'))
+{
+	/**
+	 * Decimal decode callback for JFilterInput::_decode.
+	 *
+	 * @param   $matches
+	 *
+	 * @return  string
+	 */
+	function callbackJFilterInputConvertDecimal($matches)
+	{
+		return utf8_encode(chr($matches[1]));
+	}
+}
+
+if (! function_exists('callbackJFilterInputConvertHex'))
+{
+	/**
+	 * Hex decode callback for JFilterInput::_decode.
+	 *
+	 * @param   $matches
+	 *
+	 * @return  string
+	 */
+	function callbackJFilterInputConvertHex($matches)
+	{
+		return utf8_encode(chr('0x' . $matches[1]));
 	}
 }

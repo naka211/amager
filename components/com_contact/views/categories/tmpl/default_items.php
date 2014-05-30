@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	com_contact
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -32,7 +32,7 @@ if (count($this->items[$this->parent->id]) > 0 && $this->maxLevelcat != 0) :
 				<?php echo JHtml::_('content.prepare', $item->description, '', 'com_contact.categories'); ?>
 			</div>
 		<?php endif; ?>
-		<?php endif; ?>
+        <?php endif; ?>
 
 		<?php if ($this->params->get('show_cat_items_cat') == 1) :?>
 			<dl><dt>
