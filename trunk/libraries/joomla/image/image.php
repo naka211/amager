@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Image
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,9 +12,9 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Class to manipulate an image.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Image
- * @since		11.3
+ * @since       11.3
  */
 class JImage
 {
@@ -37,19 +37,19 @@ class JImage
 	const SCALE_OUTSIDE = 3;
 
 	/**
-	 * @var	resource  The image resource handle.
+	 * @var    resource  The image resource handle.
 	 * @since  11.3
 	 */
 	protected $handle;
 
 	/**
-	 * @var	string  The source image path.
+	 * @var    string  The source image path.
 	 * @since  11.3
 	 */
 	protected $path = null;
 
 	/**
-	 * @var	array  Whether or not different image formats are supported.
+	 * @var    array  Whether or not different image formats are supported.
 	 * @since  11.3
 	 */
 	protected static $formats = array();
@@ -57,9 +57,9 @@ class JImage
 	/**
 	 * Class constructor.
 	 *
-	 * @param	mixed  $source  Either a file path for a source image or a GD resource handler for an image.
+	 * @param   mixed  $source  Either a file path for a source image or a GD resource handler for an image.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  RuntimeException
 	 */
 	public function __construct($source = null)
@@ -100,11 +100,11 @@ class JImage
 	 * result object has values for image width, height, type, attributes, mime type, bits,
 	 * and channels.
 	 *
-	 * @param	string  $path  The filesystem path to the image for which to get properties.
+	 * @param   string  $path  The filesystem path to the image for which to get properties.
 	 *
 	 * @return  object
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  InvalidArgumentException
 	 * @throws  RuntimeException
 	 */
@@ -143,16 +143,16 @@ class JImage
 	/**
 	 * Method to crop the current image.
 	 *
-	 * @param	mixed	$width	  The width of the image section to crop in pixels or a percentage.
-	 * @param	mixed	$height	 The height of the image section to crop in pixels or a percentage.
-	 * @param	integer  $left		The number of pixels from the left to start cropping.
-	 * @param	integer  $top		The number of pixels from the top to start cropping.
-	 * @param	bool	 $createNew  If true the current image will be cloned, cropped and returned; else
-	 *								the current image will be cropped and returned.
+	 * @param   mixed    $width      The width of the image section to crop in pixels or a percentage.
+	 * @param   mixed    $height     The height of the image section to crop in pixels or a percentage.
+	 * @param   integer  $left       The number of pixels from the left to start cropping.
+	 * @param   integer  $top        The number of pixels from the top to start cropping.
+	 * @param   bool     $createNew  If true the current image will be cloned, cropped and returned; else
+	 *                               the current image will be cropped and returned.
 	 *
 	 * @return  JImage
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  LogicException
 	 */
 	public function crop($width, $height, $left, $top, $createNew = true)
@@ -221,13 +221,13 @@ class JImage
 	/**
 	 * Method to apply a filter to the image by type.  Two examples are: grayscale and sketchy.
 	 *
-	 * @param	string  $type	 The name of the image filter to apply.
-	 * @param	array	$options  An array of options for the filter.
+	 * @param   string  $type     The name of the image filter to apply.
+	 * @param   array   $options  An array of options for the filter.
 	 *
 	 * @return  JImage
 	 *
-	 * @since	11.3
-	 * @see	 JImageFilter
+	 * @since   11.3
+	 * @see     JImageFilter
 	 * @throws  LogicException
 	 * @throws  RuntimeException
 	 */
@@ -253,7 +253,7 @@ class JImage
 	 *
 	 * @return  integer
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  LogicException
 	 */
 	public function getHeight()
@@ -272,7 +272,7 @@ class JImage
 	 *
 	 * @return  integer
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  LogicException
 	 */
 	public function getWidth()
@@ -303,7 +303,7 @@ class JImage
 	 *
 	 * @return  bool
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function isLoaded()
 	{
@@ -321,7 +321,7 @@ class JImage
 	 *
 	 * @return  bool
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  LogicException
 	 */
 	public function isTransparent()
@@ -338,11 +338,11 @@ class JImage
 	/**
 	 * Method to load a file into the JImage object as the resource.
 	 *
-	 * @param	string  $path  The filesystem path to load as an image.
+	 * @param   string  $path  The filesystem path to load as an image.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  InvalidArgumentException
 	 * @throws  RuntimeException
 	 */
@@ -442,15 +442,15 @@ class JImage
 	/**
 	 * Method to resize the current image.
 	 *
-	 * @param	mixed	$width		The width of the resized image in pixels or a percentage.
-	 * @param	mixed	$height		The height of the resized image in pixels or a percentage.
-	 * @param	bool	 $createNew	If true the current image will be cloned, resized and returned; else
+	 * @param   mixed    $width        The width of the resized image in pixels or a percentage.
+	 * @param   mixed    $height       The height of the resized image in pixels or a percentage.
+	 * @param   bool     $createNew    If true the current image will be cloned, resized and returned; else
 	 * the current image will be resized and returned.
-	 * @param	integer  $scaleMethod  Which method to use for scaling
+	 * @param   integer  $scaleMethod  Which method to use for scaling
 	 *
 	 * @return  JImage
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  LogicException
 	 */
 	public function resize($width, $height, $createNew = true, $scaleMethod = self::SCALE_INSIDE)
@@ -516,14 +516,14 @@ class JImage
 	/**
 	 * Method to rotate the current image.
 	 *
-	 * @param	mixed	$angle		The angle of rotation for the image
-	 * @param	integer  $background  The background color to use when areas are added due to rotation
-	 * @param	bool	 $createNew	If true the current image will be cloned, rotated and returned; else
+	 * @param   mixed    $angle       The angle of rotation for the image
+	 * @param   integer  $background  The background color to use when areas are added due to rotation
+	 * @param   bool     $createNew   If true the current image will be cloned, rotated and returned; else
 	 * the current image will be rotated and returned.
 	 *
 	 * @return  JImage
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  LogicException
 	 */
 	public function rotate($angle, $background = -1, $createNew = true)
@@ -572,14 +572,14 @@ class JImage
 	/**
 	 * Method to write the current image out to a file.
 	 *
-	 * @param	string	$path	 The filesystem path to save the image.
-	 * @param	integer  $type	 The image type to save the file as.
-	 * @param	array	$options  The image type options to use in saving the file.
+	 * @param   string   $path     The filesystem path to save the image.
+	 * @param   integer  $type     The image type to save the file as.
+	 * @param   array    $options  The image type options to use in saving the file.
 	 *
 	 * @return  void
 	 *
-	 * @see	 http://www.php.net/manual/image.constants.php
-	 * @since	11.3
+	 * @see     http://www.php.net/manual/image.constants.php
+	 * @since   11.3
 	 * @throws  LogicException
 	 */
 	public function toFile($path, $type = IMAGETYPE_JPEG, array $options = array())
@@ -609,11 +609,11 @@ class JImage
 	/**
 	 * Method to get an image filter instance of a specified type.
 	 *
-	 * @param	string  $type  The image filter type to get.
+	 * @param   string  $type  The image filter type to get.
 	 *
 	 * @return  JImageFilter
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  RuntimeException
 	 */
 	protected function getFilterInstance($type)
@@ -648,13 +648,13 @@ class JImage
 	/**
 	 * Method to get the new dimensions for a resized image.
 	 *
-	 * @param	integer  $width		The width of the resized image in pixels.
-	 * @param	integer  $height		The height of the resized image in pixels.
-	 * @param	integer  $scaleMethod  The method to use for scaling
+	 * @param   integer  $width        The width of the resized image in pixels.
+	 * @param   integer  $height       The height of the resized image in pixels.
+	 * @param   integer  $scaleMethod  The method to use for scaling
 	 *
 	 * @return  object
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  InvalidArgumentException
 	 */
 	protected function prepareDimensions($width, $height, $scaleMethod)
@@ -698,12 +698,12 @@ class JImage
 	/**
 	 * Method to sanitize a height value.
 	 *
-	 * @param	mixed  $height  The input height value to sanitize.
-	 * @param	mixed  $width	The input width value for reference.
+	 * @param   mixed  $height  The input height value to sanitize.
+	 * @param   mixed  $width   The input width value for reference.
 	 *
 	 * @return  integer
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function sanitizeHeight($height, $width)
 	{
@@ -727,11 +727,11 @@ class JImage
 	/**
 	 * Method to sanitize an offset value like left or top.
 	 *
-	 * @param	mixed  $offset  An offset value.
+	 * @param   mixed  $offset  An offset value.
 	 *
 	 * @return  integer
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function sanitizeOffset($offset)
 	{
@@ -741,12 +741,12 @@ class JImage
 	/**
 	 * Method to sanitize a width value.
 	 *
-	 * @param	mixed  $width	The input width value to sanitize.
-	 * @param	mixed  $height  The input height value for reference.
+	 * @param   mixed  $width   The input width value to sanitize.
+	 * @param   mixed  $height  The input height value for reference.
 	 *
 	 * @return  integer
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function sanitizeWidth($width, $height)
 	{

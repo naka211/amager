@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTTP
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die();
@@ -12,14 +12,14 @@ defined('JPATH_PLATFORM') or die();
 /**
  * HTTP transport class for using cURL.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTTP
- * @since		11.3
+ * @since       11.3
  */
 class JHttpTransportCurl implements JHttpTransport
 {
 	/**
-	 * @var	JRegistry  The client options.
+	 * @var    JRegistry  The client options.
 	 * @since  11.3
 	 */
 	protected $options;
@@ -27,9 +27,9 @@ class JHttpTransportCurl implements JHttpTransport
 	/**
 	 * Constructor.
 	 *
-	 * @param	JRegistry  &$options  Client options object.
+	 * @param   JRegistry  &$options  Client options object.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  RuntimeException
 	 */
 	public function __construct(JRegistry &$options)
@@ -45,16 +45,16 @@ class JHttpTransportCurl implements JHttpTransport
 	/**
 	 * Send a request to the server and return a JHttpResponse object with the response.
 	 *
-	 * @param	string	$method	 The HTTP method for sending the request.
-	 * @param	JUri	 $uri		The URI to the resource to request.
-	 * @param	mixed	$data		Either an associative array or a string to be sent with the request.
-	 * @param	array	$headers	An array of request headers to send with the request.
-	 * @param	integer  $timeout	Read timeout in seconds.
-	 * @param	string	$userAgent  The optional user agent string to send with the request.
+	 * @param   string   $method     The HTTP method for sending the request.
+	 * @param   JUri     $uri        The URI to the resource to request.
+	 * @param   mixed    $data       Either an associative array or a string to be sent with the request.
+	 * @param   array    $headers    An array of request headers to send with the request.
+	 * @param   integer  $timeout    Read timeout in seconds.
+	 * @param   string   $userAgent  The optional user agent string to send with the request.
 	 *
 	 * @return  JHttpResponse
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function request($method, JUri $uri, $data = null, array $headers = null, $timeout = null, $userAgent = null)
 	{
@@ -112,7 +112,7 @@ class JHttpTransportCurl implements JHttpTransport
 		// If an explicit user agent is given use it.
 		if (isset($userAgent))
 		{
-			$headers[CURLOPT_USERAGENT] = $userAgent;
+			$options[CURLOPT_USERAGENT] = $userAgent;
 		}
 
 		// Set the request URL.
@@ -137,11 +137,11 @@ class JHttpTransportCurl implements JHttpTransport
 	/**
 	 * Method to get a response object from a server response.
 	 *
-	 * @param	string  $content  The complete server response, including headers.
+	 * @param   string  $content  The complete server response, including headers.
 	 *
 	 * @return  JHttpResponse
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  UnexpectedValueException
 	 */
 	protected function getResponse($content)
@@ -179,5 +179,17 @@ class JHttpTransportCurl implements JHttpTransport
 		}
 
 		return $return;
+	}
+
+	/**
+	 * Method to check if HTTP transport cURL is available for use
+	 *
+	 * @return boolean true if available, else false
+	 *
+	 * @since   12.1
+	 */
+	static public function isSupported()
+	{
+		return function_exists('curl_version') && curl_version();
 	}
 }

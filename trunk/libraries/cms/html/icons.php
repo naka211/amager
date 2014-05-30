@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla
+ * @package     Joomla
  * @subpackage  Form
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('JPATH_BASE') or die;
@@ -21,11 +21,11 @@ abstract class JHtmlIcons
 	/**
 	 * Method to generate html code for a list of buttons
 	 *
-	 * @param	array	$buttons  Array of buttons
+	 * @param   array   $buttons  Array of buttons
 	 *
 	 * @return  string
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function buttons($buttons)
 	{
@@ -40,11 +40,11 @@ abstract class JHtmlIcons
 	/**
 	 * Method to generate html code for a list of buttons
 	 *
-	 * @param	array|object	$button  Button properties
+	 * @param   array|object   $button  Button properties
 	 *
 	 * @return  string
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function button($button)
 	{

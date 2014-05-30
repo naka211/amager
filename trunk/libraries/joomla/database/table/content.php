@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -15,18 +15,18 @@ jimport('joomla.database.table');
 /**
  * Content table
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Table
- * @since		11.1
+ * @since       11.1
  */
 class JTableContent extends JTable
 {
 	/**
 	 * Constructor
 	 *
-	 * @param	JDatabase  &$db  A database connector object
+	 * @param   JDatabase  &$db  A database connector object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct(&$db)
 	{
@@ -40,7 +40,7 @@ class JTableContent extends JTable
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _getAssetName()
 	{
@@ -53,7 +53,7 @@ class JTableContent extends JTable
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _getAssetTitle()
 	{
@@ -63,12 +63,12 @@ class JTableContent extends JTable
 	/**
 	 * Method to get the parent asset id for the record
 	 *
-	 * @param	JTable	$table  A JTable object (optional) for the asset parent
-	 * @param	integer  $id	 The id (optional) of the content.
+	 * @param   JTable   $table  A JTable object (optional) for the asset parent
+	 * @param   integer  $id     The id (optional) of the content.
 	 *
 	 * @return  integer
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _getAssetParentId($table = null, $id = null)
 	{
@@ -106,14 +106,14 @@ class JTableContent extends JTable
 	/**
 	 * Overloaded bind function
 	 *
-	 * @param	array  $array	Named array
-	 * @param	mixed  $ignore  An optional array or space separated list of properties
+	 * @param   array  $array   Named array
+	 * @param   mixed  $ignore  An optional array or space separated list of properties
 	 * to ignore while binding.
 	 *
 	 * @return  mixed  Null if operation was satisfactory, otherwise returns an error string
 	 *
-	 * @see	 JTable::bind
-	 * @since	11.1
+	 * @see     JTable::bind
+	 * @since   11.1
 	 */
 	public function bind($array, $ignore = '')
 	{
@@ -163,8 +163,8 @@ class JTableContent extends JTable
 	 *
 	 * @return  boolean  True on success, false on failure
 	 *
-	 * @see	 JTable::check
-	 * @since	11.1
+	 * @see     JTable::check
+	 * @since   11.1
 	 */
 	public function check()
 	{
@@ -231,11 +231,11 @@ class JTableContent extends JTable
 	/**
 	 * Overrides JTable::store to set modified data and user id.
 	 *
-	 * @param	boolean  $updateNulls  True to update fields even if they are null.
+	 * @param   boolean  $updateNulls  True to update fields even if they are null.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function store($updateNulls = false)
 	{
@@ -277,13 +277,13 @@ class JTableContent extends JTable
 	 * table. The method respects checked out rows by other users and will attempt
 	 * to checkin rows that it can after adjustments are made.
 	 *
-	 * @param	mixed	$pks	 An optional array of primary key values to update.  If not set the instance property value is used.
-	 * @param	integer  $state	The publishing state. eg. [0 = unpublished, 1 = published]
-	 * @param	integer  $userId  The user id of the user performing the operation.
+	 * @param   mixed    $pks     An optional array of primary key values to update.  If not set the instance property value is used.
+	 * @param   integer  $state   The publishing state. eg. [0 = unpublished, 1 = published]
+	 * @param   integer  $userId  The user id of the user performing the operation.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function publish($pks = null, $state = 1, $userId = 0)
 	{
@@ -364,11 +364,11 @@ class JTableContent extends JTable
 	/**
 	 * Converts record to XML
 	 *
-	 * @param	boolean  $mapKeysToText  Map foreign keys to text values
+	 * @param   boolean  $mapKeysToText  Map foreign keys to text values
 	 *
 	 * @return  string  Record in XML format
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.1
 	 * @codeCoverageIgnore
 	 */

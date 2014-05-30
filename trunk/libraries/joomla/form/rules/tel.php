@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,26 +12,26 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Form Rule class for the Joomla Platform
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
- * @since		11.1
+ * @since       11.1
  */
 class JFormRuleTel extends JFormRule
 {
 	/**
 	 * Method to test the url for a valid parts.
 	 *
-	 * @param	SimpleXMLElement  &$element  The SimpleXMLElement object representing the <field /> tag for the form field object.
-	 * @param	mixed			 $value	 The form field value to validate.
-	 * @param	string			$group	 The field name group control value. This acts as as an array container for the field.
-	 *										For example if the field has name="foo" and the group value is set to "bar" then the
-	 *										full field name would end up being "bar[foo]".
-	 * @param	object			&$input	An optional JRegistry object with the entire data set to validate against the entire form.
-	 * @param	object			&$form	 The form object for which the field is being tested.
+	 * @param   SimpleXMLElement  &$element  The SimpleXMLElement object representing the <field /> tag for the form field object.
+	 * @param   mixed             $value     The form field value to validate.
+	 * @param   string            $group     The field name group control value. This acts as as an array container for the field.
+	 *                                       For example if the field has name="foo" and the group value is set to "bar" then the
+	 *                                       full field name would end up being "bar[foo]".
+	 * @param   object            &$input    An optional JRegistry object with the entire data set to validate against the entire form.
+	 * @param   object            &$form     The form object for which the field is being tested.
 	 *
 	 * @return  boolean  True if the value is valid, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JException on invalid rule.
 	 */
 	public function test(&$element, $value, $group = null, &$input = null, &$form = null)
@@ -81,7 +81,7 @@ class JFormRuleTel extends JFormRule
 			//If the rule is set but no plan is selected just check that there are between
 			//7 and 15 digits inclusive and no illegal characters (but common number separators
 			//are allowed).
-			$cleanvalue = preg_replace('/[+. -(\)]/', '', $value);
+			$cleanvalue = preg_replace('/[+. \-(\)]/', '', $value);
 			$regex = '/^[0-9]{7,15}?$/';
 			if (preg_match($regex, $cleanvalue) == true)
 			{

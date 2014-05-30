@@ -3,7 +3,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	templates.hathor
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  * @since		1.6
  *
@@ -67,9 +67,9 @@ a:visited {
 	border: 1px solid #738498;
 	background: #c3d2e5;
 	background: -moz-linear-gradient(
-		center top,
-		#a5bbd4,
-		#c3d2e5 70%
+	    center top,
+	    #a5bbd4,
+	    #c3d2e5 70%
 	);
 }
 
@@ -221,12 +221,12 @@ div.toolbar-list a {
 	border-bottom: 1px solid #738498;
 	background: #c3d2e5;
 	background: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0.00, #a5bbd4),
-		color-stop(0.7, #c3d2e5)
+	    color-stop(0.00, #a5bbd4),
+	    color-stop(0.7, #c3d2e5)
 	);
 	background: -moz-linear-gradient(center top,
-		#a5bbd4,
-		#c3d2e5 70%
+	    #a5bbd4,
+	    #c3d2e5 70%
 	);
 }
 
@@ -257,12 +257,12 @@ div.toolbar-list li.button a.inactive {
 .pane-sliders .panel h3 {
 	background: #c3d2e5;
 	background: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0.00, #a5bbd4),
-		color-stop(0.7, #c3d2e5)
+	    color-stop(0.00, #a5bbd4),
+	    color-stop(0.7, #c3d2e5)
 	);
 	background: -moz-linear-gradient(center top,
-		#a5bbd4,
-		#c3d2e5 70%
+	    #a5bbd4,
+	    #c3d2e5 70%
 	);
 	color: #054993;
 }
@@ -302,12 +302,12 @@ dl.tabs dt {
 	border: 1px solid #738498;
 	background: #c3d2e5;
 	background: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0.00, #a5bbd4),
-		color-stop(0.7, #c3d2e5)
+	    color-stop(0.00, #a5bbd4),
+	    color-stop(0.7, #c3d2e5)
 	);
 	background: -moz-linear-gradient(center top,
-		#a5bbd4,
-		#c3d2e5 70%
+	    #a5bbd4,
+	    #c3d2e5 70%
 	);
 	color: #054993;
 }
@@ -367,12 +367,12 @@ div.current fieldset.adminform {
 #login-page #element-box.login {
 	background: #c3d2e5;
 	background: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0.00, #a5bbd4),
-		color-stop(0.7, #c3d2e5)
+	    color-stop(0.00, #a5bbd4),
+	    color-stop(0.7, #c3d2e5)
 	);
 	background: -moz-linear-gradient(center top,
-		#a5bbd4,
-		#c3d2e5 70%
+	    #a5bbd4,
+	    #c3d2e5 70%
 	);
 }
 
@@ -400,12 +400,12 @@ div.current fieldset.adminform {
 	border-bottom: 1px solid #738498;
 	background: #c3d2e5;
 	background: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0.00, #a5bbd4),
-		color-stop(0.7, #c3d2e5)
+	    color-stop(0.00, #a5bbd4),
+	    color-stop(0.7, #c3d2e5)
 	);
 	background: -moz-linear-gradient(center top,
-		#a5bbd4,
-		#c3d2e5 70%
+	    #a5bbd4,
+	    #c3d2e5 70%
 	);
 }
 
@@ -486,12 +486,12 @@ input[type="button"], input[type="submit"], input[type="reset"] {
 	color: #054993;
 	background-color: #c3d2e5;
 	background: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0.00, #a5bbd4),
-		color-stop(0.7, #c3d2e5)
+	    color-stop(0.00, #a5bbd4),
+	    color-stop(0.7, #c3d2e5)
 	);
 	background: -moz-linear-gradient(center top,
-		#a5bbd4,
-		#c3d2e5 70%
+	    #a5bbd4,
+	    #c3d2e5 70%
 	);
 }
 
@@ -638,12 +638,12 @@ table.adminlist tbody tr.row0 td,
 table.adminlist tbody tr.row0 th {
 	background: #c3d2e5;
 	background: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0.00, #a5bbd4),
-		color-stop(0.7, #c3d2e5)
+	    color-stop(0.00, #a5bbd4),
+	    color-stop(0.7, #c3d2e5)
 	);
 	background: -moz-linear-gradient(center top,
-		#a5bbd4,
-		#c3d2e5 70%
+	    #a5bbd4,
+	    #c3d2e5 70%
 	);
 }
 
@@ -668,12 +668,12 @@ table.adminlist tr td.btns a {
 	border: 1px solid #738498;
 	background-color: #c3d2e5;
 	background: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0.00, #a5bbd4),
-		color-stop(0.7, #c3d2e5)
+	    color-stop(0.00, #a5bbd4),
+	    color-stop(0.7, #c3d2e5)
 	);
 	background: -moz-linear-gradient(center top,
-		#a5bbd4,
-		#c3d2e5 70%
+	    #a5bbd4,
+	    #c3d2e5 70%
 	);
 	color: #054993;
 }
@@ -708,12 +708,12 @@ button {
 	border: 1px solid #738498;
 	background-color: #c3d2e5;
 	background: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0.00, #a5bbd4),
-		color-stop(0.7, #c3d2e5)
+	    color-stop(0.00, #a5bbd4),
+	    color-stop(0.7, #c3d2e5)
 	);
 	background: -moz-linear-gradient(center top,
-		#a5bbd4,
-		#c3d2e5 70%
+	    #a5bbd4,
+	    #c3d2e5 70%
 	);
 }
 
@@ -732,12 +732,12 @@ button:hover, button:focus {
 	color: #054993;
 	background: #c3d2e5;
 	background: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0.00, #a5bbd4),
-		color-stop(0.7, #c3d2e5)
+	    color-stop(0.00, #a5bbd4),
+	    color-stop(0.7, #c3d2e5)
 	);
 	background: -moz-linear-gradient(center top,
-		#a5bbd4,
-		#c3d2e5 70%
+	    #a5bbd4,
+	    #c3d2e5 70%
 	);
 }
 
@@ -757,12 +757,12 @@ button:hover, button:focus {
 	border: 1px solid #738498;
 	background-color: #c3d2e5;
 	background: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0.00, #a5bbd4),
-		color-stop(0.7, #c3d2e5)
+	    color-stop(0.00, #a5bbd4),
+	    color-stop(0.7, #c3d2e5)
 	);
 	background: -moz-linear-gradient(center top,
-		#a5bbd4,
-		#c3d2e5 70%
+	    #a5bbd4,
+	    #c3d2e5 70%
 	);
 }
 
@@ -797,7 +797,7 @@ button:hover, button:focus {
 }
 
 .icon-32-extension {
-	background-image: url(../images/toolbar/icon-32-extension.png);
+    background-image: url(../images/toolbar/icon-32-extension.png);
 }
 
 /**
@@ -1322,7 +1322,7 @@ a img.calendar {
 }
 
 .icon-32-print {
-	background-image: url(../images/toolbar/icon-32-print.png);
+    background-image: url(../images/toolbar/icon-32-print.png);
 }
 
 /**
@@ -1807,8 +1807,8 @@ table#acl-config th.acl-groups {
 
 #permissions-sliders ul#rules,
 #permissions-sliders ul#rules ul {
-	border:solid 0 #738498;
-	background:#ffffff;
+    border:solid 0 #738498;
+    background:#ffffff;
 }
 
 ul#rules li .pane-sliders .panel h3.title {
@@ -1836,15 +1836,15 @@ ul#rules li .pane-sliders .panel h3.title {
 }
 
 #permissions-sliders ul#rules table.group-rules td {
-	border-right: solid 1px #738498;
-	border-bottom: solid 1px #738498;
+    border-right: solid 1px #738498;
+    border-bottom: solid 1px #738498;
 }
 
 #permissions-sliders ul#rules table.group-rules th {
-	background: #e5d9c3;
-	border-right: solid 1px #738498;
-	border-bottom: solid 1px #738498;
-	color: #2c2c2c;
+    background: #e5d9c3;
+    border-right: solid 1px #738498;
+    border-bottom: solid 1px #738498;
+    color: #2c2c2c;
 }
 
 ul#rules table.aclmodify-table {
@@ -1860,7 +1860,7 @@ ul#rules table.group-rules td label {
 }
 
 #permissions-sliders  ul#rules  table.group-rules td {
-	background: #ffffff;
+   background: #ffffff;
 }
 
 #permissions-sliders span.level {
@@ -1925,12 +1925,12 @@ table.adminlist tbody td.check-d {
 #menu ul { /* all lists */
 	background: #c3d2e5;
 	background: -moz-linear-gradient(
-		center top,
-		#a5bbd4,
-		#c3d2e5 70%
+	    center top,
+	    #a5bbd4,
+	    #c3d2e5 70%
 	);background: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0.00, #a5bbd4),
-		color-stop(0.7, #c3d2e5)
+	    color-stop(0.00, #a5bbd4),
+	    color-stop(0.7, #c3d2e5)
 	);
 	color: #2c2c2c;
 }
@@ -1965,12 +1965,12 @@ table.adminlist tbody td.check-d {
 	color: #738498;
 	background-color: #c3d2e5;
 	background: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0.00, #a5bbd4),
-		color-stop(0.7, #c3d2e5)
+	    color-stop(0.00, #a5bbd4),
+	    color-stop(0.7, #c3d2e5)
 	);
 	background: -moz-linear-gradient(center top,
-		#a5bbd4,
-		#c3d2e5 70%
+	    #a5bbd4,
+	    #c3d2e5 70%
 	);
 }
 
@@ -2033,12 +2033,12 @@ table.adminlist tbody td.check-d {
 #submenu a, #submenu span.nolink {
 	background: #c3d2e5;
 	background: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0.00, #a5bbd4),
-		color-stop(0.7, #c3d2e5)
+	    color-stop(0.00, #a5bbd4),
+	    color-stop(0.7, #c3d2e5)
 	);
 	background: -moz-linear-gradient(center top,
-		#a5bbd4,
-		#c3d2e5 70%
+	    #a5bbd4,
+	    #c3d2e5 70%
 	);
 	border: 1px solid #738498;
 	color: #054993;

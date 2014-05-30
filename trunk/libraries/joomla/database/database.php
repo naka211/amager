@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,9 +14,9 @@ jimport('joomla.filesystem.folder');
 /**
  * Database interface class.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
- * @since		11.2
+ * @since       11.2
  */
 interface JDatabaseInterface
 {
@@ -25,7 +25,7 @@ interface JDatabaseInterface
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.2
+	 * @since   11.2
 	 */
 	public static function test();
 }
@@ -33,16 +33,16 @@ interface JDatabaseInterface
 /**
  * Database connector class.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
- * @since		11.1
+ * @since       11.1
  */
 abstract class JDatabase implements JDatabaseInterface
 {
 	/**
 	 * The name of the database.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.4
 	 */
 	private $_database;
@@ -50,123 +50,123 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * The name of the database driver.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $name;
 
 	/**
-	 * @var	resource  The database connection resource.
+	 * @var    resource  The database connection resource.
 	 * @since  11.1
 	 */
 	protected $connection;
 
 	/**
-	 * @var	integer  The number of SQL statements executed by the database driver.
+	 * @var    integer  The number of SQL statements executed by the database driver.
 	 * @since  11.1
 	 */
 	protected $count = 0;
 
 	/**
-	 * @var	resource  The database connection cursor from the last query.
+	 * @var    resource  The database connection cursor from the last query.
 	 * @since  11.1
 	 */
 	protected $cursor;
 
 	/**
-	 * @var	boolean  The database driver debugging state.
+	 * @var    boolean  The database driver debugging state.
 	 * @since  11.1
 	 */
 	protected $debug = false;
 
 	/**
-	 * @var	integer  The affected row limit for the current SQL statement.
+	 * @var    integer  The affected row limit for the current SQL statement.
 	 * @since  11.1
 	 */
 	protected $limit = 0;
 
 	/**
-	 * @var	array  The log of executed SQL statements by the database driver.
+	 * @var    array  The log of executed SQL statements by the database driver.
 	 * @since  11.1
 	 */
 	protected $log = array();
 
 	/**
-	 * @var	string  The character(s) used to quote SQL statement names such as table names or field names,
-	 *				 etc.  The child classes should define this as necessary.  If a single character string the
-	 *				 same character is used for both sides of the quoted name, else the first character will be
-	 *				 used for the opening quote and the second for the closing quote.
+	 * @var    string  The character(s) used to quote SQL statement names such as table names or field names,
+	 *                 etc.  The child classes should define this as necessary.  If a single character string the
+	 *                 same character is used for both sides of the quoted name, else the first character will be
+	 *                 used for the opening quote and the second for the closing quote.
 	 * @since  11.1
 	 */
 	protected $nameQuote;
 
 	/**
-	 * @var	string  The null or zero representation of a timestamp for the database driver.  This should be
-	 *				 defined in child classes to hold the appropriate value for the engine.
+	 * @var    string  The null or zero representation of a timestamp for the database driver.  This should be
+	 *                 defined in child classes to hold the appropriate value for the engine.
 	 * @since  11.1
 	 */
 	protected $nullDate;
 
 	/**
-	 * @var	integer  The affected row offset to apply for the current SQL statement.
+	 * @var    integer  The affected row offset to apply for the current SQL statement.
 	 * @since  11.1
 	 */
 	protected $offset = 0;
 
 	/**
-	 * @var	mixed  The current SQL statement to execute.
+	 * @var    mixed  The current SQL statement to execute.
 	 * @since  11.1
 	 */
 	protected $sql;
 
 	/**
-	 * @var	string  The common database table prefix.
+	 * @var    string  The common database table prefix.
 	 * @since  11.1
 	 */
 	protected $tablePrefix;
 
 	/**
-	 * @var	boolean  True if the database engine supports UTF-8 character encoding.
+	 * @var    boolean  True if the database engine supports UTF-8 character encoding.
 	 * @since  11.1
 	 */
 	protected $utf = true;
 
 	/**
-	 * @var		 integer  The database error number
-	 * @since		11.1
+	 * @var         integer  The database error number
+	 * @since       11.1
 	 * @deprecated  12.1
 	 */
 	protected $errorNum = 0;
 
 	/**
-	 * @var		 string  The database error message
-	 * @since		11.1
+	 * @var         string  The database error message
+	 * @since       11.1
 	 * @deprecated  12.1
 	 */
 	protected $errorMsg;
 
 	/**
-	 * @var		 boolean  If true then there are fields to be quoted for the query.
-	 * @since		11.1
+	 * @var         boolean  If true then there are fields to be quoted for the query.
+	 * @since       11.1
 	 * @deprecated  12.1
 	 */
 	protected $hasQuoted = false;
 
 	/**
-	 * @var		 array  The fields that are to be quoted.
-	 * @since		11.1
+	 * @var         array  The fields that are to be quoted.
+	 * @since       11.1
 	 * @deprecated  12.1
 	 */
 	protected $quoted = array();
 
 	/**
-	 * @var	array  JDatabase instances container.
+	 * @var    array  JDatabase instances container.
 	 * @since  11.1
 	 */
 	protected static $instances = array();
 
 	/**
-	 * @var	string  The minimum supported database version.
+	 * @var    string  The minimum supported database version.
 	 * @since  12.1
 	 */
 	protected $dbMinimum;
@@ -178,7 +178,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  array  An array of available database connectors.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getConnectors()
 	{
@@ -245,11 +245,11 @@ abstract class JDatabase implements JDatabaseInterface
 	 * Instances are unique to the given options and new objects are only created when a unique options array is
 	 * passed into the method.  This ensures that we don't end up with unnecessary database connection resources.
 	 *
-	 * @param	array  $options  Parameters to be passed to the database driver.
+	 * @param   array  $options  Parameters to be passed to the database driver.
 	 *
 	 * @return  JDatabase  A database object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getInstance($options = array())
 	{
@@ -357,11 +357,11 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Splits a string of multiple queries into an array of individual queries.
 	 *
-	 * @param	string  $sql  Input SQL string with which to split into individual queries.
+	 * @param   string  $sql  Input SQL string with which to split into individual queries.
 	 *
 	 * @return  array  The queries from the input string separated into an array.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function splitSql($sql)
 	{
@@ -414,12 +414,12 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Magic method to provide method alias support for quote() and quoteName().
 	 *
-	 * @param	string  $method  The called method.
-	 * @param	array	$args	The array of arguments passed to the method.
+	 * @param   string  $method  The called method.
+	 * @param   array   $args    The array of arguments passed to the method.
 	 *
 	 * @return  string  The aliased method's return value or null.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __call($method, $args)
 	{
@@ -443,9 +443,9 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  $options  List of options used to configure the connection
+	 * @param   array  $options  List of options used to configure the connection
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function __construct($options)
 	{
@@ -466,12 +466,12 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Adds a field or array of field names to the list that are to be quoted.
 	 *
-	 * @param	mixed  $quoted  Field name or array of names.
+	 * @param   mixed  $quoted  Field name or array of names.
 	 *
 	 * @return  void
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function addQuoted($quoted)
 	{
@@ -495,19 +495,19 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  boolean  True if connected to the database engine.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	abstract public function connected();
 
 	/**
 	 * Drops a table from the database.
 	 *
-	 * @param	string	$table	 The name of the database table to drop.
-	 * @param	boolean  $ifExists  Optionally specify that the table must exist before it is dropped.
+	 * @param   string   $table     The name of the database table to drop.
+	 * @param   boolean  $ifExists  Optionally specify that the table must exist before it is dropped.
 	 *
 	 * @return  JDatabase  Returns this object to support chaining.
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 * @throws  JDatabaseException
 	 */
 	public abstract function dropTable($table, $ifExists = true);
@@ -515,57 +515,57 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Method to escape a string for usage in an SQL statement.
 	 *
-	 * @param	string	$text	The string to be escaped.
-	 * @param	boolean  $extra  Optional parameter to provide extra escaping.
+	 * @param   string   $text   The string to be escaped.
+	 * @param   boolean  $extra  Optional parameter to provide extra escaping.
 	 *
-	 * @return  string	The escaped string.
+	 * @return  string   The escaped string.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	abstract public function escape($text, $extra = false);
 
 	/**
 	 * Method to fetch a row from the result set cursor as an array.
 	 *
-	 * @param	mixed  $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   mixed  $cursor  The optional result set cursor from which to fetch the row.
 	 *
 	 * @return  mixed  Either the next row from the result set or false if there are no more rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	abstract protected function fetchArray($cursor = null);
 
 	/**
 	 * Method to fetch a row from the result set cursor as an associative array.
 	 *
-	 * @param	mixed  $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   mixed  $cursor  The optional result set cursor from which to fetch the row.
 	 *
 	 * @return  mixed  Either the next row from the result set or false if there are no more rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	abstract protected function fetchAssoc($cursor = null);
 
 	/**
 	 * Method to fetch a row from the result set cursor as an object.
 	 *
-	 * @param	mixed	$cursor  The optional result set cursor from which to fetch the row.
-	 * @param	string  $class	The class name to use for the returned row object.
+	 * @param   mixed   $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   string  $class   The class name to use for the returned row object.
 	 *
-	 * @return  mixed	Either the next row from the result set or false if there are no more rows.
+	 * @return  mixed   Either the next row from the result set or false if there are no more rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	abstract protected function fetchObject($cursor = null, $class = 'stdClass');
 
 	/**
 	 * Method to free up the memory used for the result set.
 	 *
-	 * @param	mixed  $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   mixed  $cursor  The optional result set cursor from which to fetch the row.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	abstract protected function freeResult($cursor = null);
 
@@ -574,7 +574,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  integer  The number of affected rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	abstract public function getAffectedRows();
 
@@ -583,7 +583,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  mixed  The collation in use by the database or boolean false if not supported.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	abstract public function getCollation();
 
@@ -593,7 +593,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  resource  The underlying database connection resource.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getConnection()
 	{
@@ -605,7 +605,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  integer
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getCount()
 	{
@@ -617,7 +617,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  string
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 */
 	protected function getDatabase()
 	{
@@ -629,7 +629,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  string  The format string.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getDateFormat()
 	{
@@ -637,11 +637,24 @@ abstract class JDatabase implements JDatabaseInterface
 	}
 
 	/**
+	 * Get the row limit for the current SQL statement.
+	 *
+	 * @return  integer  The affected row limit for the current SQL statement.
+	 *
+	 * @since   2.5.17 (CMS Only)
+	 * @deprecated  3.0  Required for SQLSRV support for 2.5 only
+	 */
+	public function getLimit()
+	{
+		return $this->limit;
+	}
+
+	/**
 	 * Get the database driver SQL statement log.
 	 *
 	 * @return  array  SQL statements executed by the database driver.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getLog()
 	{
@@ -653,7 +666,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  string  The minimum version number for the database driver.
 	 *
-	 * @since	12.1
+	 * @since   12.1
 	 */
 	public function getMinimum()
 	{
@@ -665,7 +678,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  string  Null or zero representation of a timestamp.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getNullDate()
 	{
@@ -675,20 +688,33 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Get the number of returned rows for the previous executed SQL statement.
 	 *
-	 * @param	resource  $cursor  An optional database cursor resource to extract the row count from.
+	 * @param   resource  $cursor  An optional database cursor resource to extract the row count from.
 	 *
-	 * @return  integer	The number of returned rows.
+	 * @return  integer   The number of returned rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	abstract public function getNumRows($cursor = null);
+
+	/**
+	 * Get the row offset for the current SQL statement.
+	 *
+	 * @return  integer  The affected row offset to apply for the current SQL statement.
+	 *
+	 * @since   2.5.17 (CMS Only)
+	 * @deprecated  3.0  Required for SQLSRV support for 2.5 only
+	 */
+	public function getOffset()
+	{
+		return $this->offset;
+	}
 
 	/**
 	 * Get the common table prefix for the database driver.
 	 *
 	 * @return  string  The common database table prefix.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getPrefix()
 	{
@@ -698,11 +724,11 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Get the current query object or a new JDatabaseQuery object.
 	 *
-	 * @param	boolean  $new  False to return the current query object, True to return a new JDatabaseQuery object.
+	 * @param   boolean  $new  False to return the current query object, True to return a new JDatabaseQuery object.
 	 *
 	 * @return  JDatabaseQuery  The current query object or a new object extending the JDatabaseQuery class.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	abstract public function getQuery($new = false);
@@ -710,12 +736,12 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Retrieves field information about the given tables.
 	 *
-	 * @param	string	$table	 The name of the database table.
-	 * @param	boolean  $typeOnly  True (default) to only return field types.
+	 * @param   string   $table     The name of the database table.
+	 * @param   boolean  $typeOnly  True (default) to only return field types.
 	 *
 	 * @return  array  An array of fields by table.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	abstract public function getTableColumns($table, $typeOnly = true);
@@ -723,11 +749,11 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Shows the table CREATE statement that creates the given tables.
 	 *
-	 * @param	mixed  $tables  A table name or a list of table names.
+	 * @param   mixed  $tables  A table name or a list of table names.
 	 *
 	 * @return  array  A list of the create SQL for the tables.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	abstract public function getTableCreate($tables);
@@ -735,11 +761,11 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Retrieves field information about the given tables.
 	 *
-	 * @param	mixed  $tables  A table name or a list of table names.
+	 * @param   mixed  $tables  A table name or a list of table names.
 	 *
 	 * @return  array  An array of keys for the table(s).
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	abstract public function getTableKeys($tables);
@@ -749,7 +775,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  array  An array of all the tables in the database.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	abstract public function getTableList();
@@ -759,7 +785,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  boolean  True if the database engine supports UTF-8 character encoding.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getUTFSupport()
 	{
@@ -771,7 +797,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  string  The database connector version.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	abstract public function getVersion();
 
@@ -780,7 +806,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  boolean  True if supported.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
 	 * @deprecated  12.1
 	 */
@@ -791,20 +817,20 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  integer  The value of the auto-increment field from the last inserted row.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	abstract public function insertid();
 
 	/**
 	 * Inserts a row into a table based on an object's properties.
 	 *
-	 * @param	string  $table	The name of the database table to insert into.
-	 * @param	object  &$object  A reference to an object whose public properties match the table fields.
-	 * @param	string  $key	  The name of the primary key. If provided the object property is updated.
+	 * @param   string  $table    The name of the database table to insert into.
+	 * @param   object  &$object  A reference to an object whose public properties match the table fields.
+	 * @param   string  $key      The name of the primary key. If provided the object property is updated.
 	 *
-	 * @return  boolean	True on success.
+	 * @return  boolean    True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function insertObject($table, &$object, $key = null)
@@ -858,7 +884,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  boolean  True if the database version is supported
 	 *
-	 * @since	12.1
+	 * @since   12.1
 	 */
 	public function isMinimumVersion()
 	{
@@ -871,7 +897,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  mixed  The return value or null if the query failed.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function loadAssoc()
@@ -905,13 +931,13 @@ abstract class JDatabase implements JDatabaseInterface
 	 * NOTE: Chosing to key the result array by a non-unique field name can result in unwanted
 	 * behavior and should be avoided.
 	 *
-	 * @param	string  $key	 The name of a field on which to key the result array.
-	 * @param	string  $column  An optional column name. Instead of the whole row, only this column value will be in
+	 * @param   string  $key     The name of a field on which to key the result array.
+	 * @param   string  $column  An optional column name. Instead of the whole row, only this column value will be in
 	 * the result array.
 	 *
-	 * @return  mixed	The return value or null if the query failed.
+	 * @return  mixed   The return value or null if the query failed.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function loadAssocList($key = null, $column = null)
@@ -949,11 +975,11 @@ abstract class JDatabase implements JDatabaseInterface
 	 * Method to get an array of values from the <var>$offset</var> field in each row of the result set from
 	 * the database query.
 	 *
-	 * @param	integer  $offset  The row offset to use to build the result array.
+	 * @param   integer  $offset  The row offset to use to build the result array.
 	 *
-	 * @return  mixed	The return value or null if the query failed.
+	 * @return  mixed    The return value or null if the query failed.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function loadColumn($offset = 0)
@@ -982,11 +1008,11 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Method to get the next row in the result set from the database query as an object.
 	 *
-	 * @param	string  $class  The class name to use for the returned row object.
+	 * @param   string  $class  The class name to use for the returned row object.
 	 *
-	 * @return  mixed	The result of the query as an array, false if there are no more rows.
+	 * @return  mixed   The result of the query as an array, false if there are no more rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function loadNextObject($class = 'stdClass')
@@ -1017,7 +1043,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  mixed  The result of the query as an array, false if there are no more rows.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function loadNextRow()
@@ -1046,11 +1072,11 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Method to get the first row of the result set from the database query as an object.
 	 *
-	 * @param	string  $class  The class name to use for the returned row object.
+	 * @param   string  $class  The class name to use for the returned row object.
 	 *
-	 * @return  mixed	The return value or null if the query failed.
+	 * @return  mixed   The return value or null if the query failed.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function loadObject($class = 'stdClass')
@@ -1083,12 +1109,12 @@ abstract class JDatabase implements JDatabaseInterface
 	 * NOTE: Choosing to key the result array by a non-unique field name can result in unwanted
 	 * behavior and should be avoided.
 	 *
-	 * @param	string  $key	The name of a field on which to key the result array.
-	 * @param	string  $class  The class name to use for the returned row objects.
+	 * @param   string  $key    The name of a field on which to key the result array.
+	 * @param   string  $class  The class name to use for the returned row objects.
 	 *
-	 * @return  mixed	The return value or null if the query failed.
+	 * @return  mixed   The return value or null if the query failed.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function loadObjectList($key = '', $class = 'stdClass')
@@ -1126,7 +1152,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  mixed  The return value or null if the query failed.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function loadResult()
@@ -1158,7 +1184,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  mixed  The return value or null if the query failed.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function loadRow()
@@ -1191,11 +1217,11 @@ abstract class JDatabase implements JDatabaseInterface
 	 * NOTE: Choosing to key the result array by a non-unique field can result in unwanted
 	 * behavior and should be avoided.
 	 *
-	 * @param	string  $key  The name of a field on which to key the result array.
+	 * @param   string  $key  The name of a field on which to key the result array.
 	 *
-	 * @return  mixed	The return value or null if the query failed.
+	 * @return  mixed   The return value or null if the query failed.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function loadRowList($key = null)
@@ -1231,11 +1257,11 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Locks a table in the database.
 	 *
-	 * @param	string  $tableName  The name of the table to unlock.
+	 * @param   string  $tableName  The name of the table to unlock.
 	 *
 	 * @return  JDatabase  Returns this object to support chaining.
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 * @throws  JDatabaseException
 	 */
 	public abstract function lockTable($tableName);
@@ -1245,7 +1271,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  mixed  A database cursor resource on success, boolean false on failure.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function query()
@@ -1258,7 +1284,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  mixed  A database cursor resource on success, boolean false on failure.
 	 *
-	 * @since	12.1
+	 * @since   12.1
 	 * @throws  JDatabaseException
 	 */
 	abstract public function execute();
@@ -1266,12 +1292,12 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Method to quote and optionally escape a string to database requirements for insertion into the database.
 	 *
-	 * @param	string	$text	The string to quote.
-	 * @param	boolean  $escape  True (default) to escape the string, false to leave it unchanged.
+	 * @param   string   $text    The string to quote.
+	 * @param   boolean  $escape  True (default) to escape the string, false to leave it unchanged.
 	 *
 	 * @return  string  The quoted input string.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function quote($text, $escape = true)
 	{
@@ -1282,14 +1308,14 @@ abstract class JDatabase implements JDatabaseInterface
 	 * Wrap an SQL statement identifier name such as column, table or database names in quotes to prevent injection
 	 * risks and reserved word conflicts.
 	 *
-	 * @param	mixed  $name  The identifier name to wrap in quotes, or an array of identifier names to wrap in quotes.
+	 * @param   mixed  $name  The identifier name to wrap in quotes, or an array of identifier names to wrap in quotes.
 	 * 							Each type supports dot-notation name.
-	 * @param	mixed  $as	The AS query part associated to $name. It can be string or array, in latter case it has to be
+	 * @param   mixed  $as    The AS query part associated to $name. It can be string or array, in latter case it has to be
 	 * 							same length of $name; if is null there will not be any AS part for string or array element.
 	 *
 	 * @return  mixed  The quote wrapped name, same type of $name.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function quoteName($name, $as = null)
 	{
@@ -1332,7 +1358,7 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Quote strings coming from quoteName call.
 	 *
-	 * @param	array  $strArr  Array of strings coming from quoteName dot-explosion.
+	 * @param   array  $strArr  Array of strings coming from quoteName dot-explosion.
 	 *
 	 * @return  string  Dot-imploded string of quoted parts.
 	 *
@@ -1367,12 +1393,12 @@ abstract class JDatabase implements JDatabaseInterface
 	 * This function replaces a string identifier <var>$prefix</var> with the string held is the
 	 * <var>tablePrefix</var> class variable.
 	 *
-	 * @param	string  $sql	 The SQL statement to prepare.
-	 * @param	string  $prefix  The common table prefix.
+	 * @param   string  $sql     The SQL statement to prepare.
+	 * @param   string  $prefix  The common table prefix.
 	 *
 	 * @return  string  The processed SQL statement.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function replacePrefix($sql, $prefix = '#__')
 	{
@@ -1461,14 +1487,14 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Renames a table in the database.
 	 *
-	 * @param	string  $oldTable  The name of the table to be renamed
-	 * @param	string  $newTable  The new name for the table.
-	 * @param	string  $backup	Table prefix
-	 * @param	string  $prefix	For the table - used to rename constraints in non-mysql databases
+	 * @param   string  $oldTable  The name of the table to be renamed
+	 * @param   string  $newTable  The new name for the table.
+	 * @param   string  $backup    Table prefix
+	 * @param   string  $prefix    For the table - used to rename constraints in non-mysql databases
 	 *
 	 * @return  JDatabase  Returns this object to support chaining.
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 * @throws  JDatabaseException
 	 */
 	public abstract function renameTable($oldTable, $newTable, $backup = null, $prefix = null);
@@ -1476,11 +1502,11 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Select a database for use.
 	 *
-	 * @param	string  $database  The name of the database to select for use.
+	 * @param   string  $database  The name of the database to select for use.
 	 *
 	 * @return  boolean  True if the database was successfully selected.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	abstract public function select($database);
@@ -1488,11 +1514,11 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Sets the database debugging state for the driver.
 	 *
-	 * @param	boolean  $level  True to enable debugging.
+	 * @param   boolean  $level  True to enable debugging.
 	 *
 	 * @return  boolean  The old debugging level.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setDebug($level)
 	{
@@ -1505,13 +1531,13 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Sets the SQL statement string for later execution.
 	 *
-	 * @param	mixed	$query	The SQL statement to set either as a JDatabaseQuery object or a string.
-	 * @param	integer  $offset  The affected row offset to set.
-	 * @param	integer  $limit	The maximum affected rows to set.
+	 * @param   mixed    $query   The SQL statement to set either as a JDatabaseQuery object or a string.
+	 * @param   integer  $offset  The affected row offset to set.
+	 * @param   integer  $limit   The maximum affected rows to set.
 	 *
 	 * @return  JDatabase  This object to support method chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setQuery($query, $offset = 0, $limit = 0)
 	{
@@ -1527,7 +1553,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	abstract public function setUTF();
 
@@ -1536,7 +1562,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	abstract public function transactionCommit();
@@ -1546,7 +1572,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	abstract public function transactionRollback();
@@ -1556,7 +1582,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	abstract public function transactionStart();
@@ -1564,11 +1590,11 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Method to truncate a table.
 	 *
-	 * @param	string  $table  The table to truncate
+	 * @param   string  $table  The table to truncate
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  JDatabaseException
 	 */
 	public function truncateTable($table)
@@ -1580,14 +1606,14 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Updates a row in a table based on an object's properties.
 	 *
-	 * @param	string	$table	The name of the database table to update.
-	 * @param	object	&$object  A reference to an object whose public properties match the table fields.
-	 * @param	string	$key	  The name of the primary key.
-	 * @param	boolean  $nulls	True to update null fields or false to ignore them.
+	 * @param   string   $table    The name of the database table to update.
+	 * @param   object   &$object  A reference to an object whose public properties match the table fields.
+	 * @param   string   $key      The name of the primary key.
+	 * @param   boolean  $nulls    True to update null fields or false to ignore them.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 */
 	public function updateObject($table, &$object, $key, $nulls = false)
@@ -1655,7 +1681,7 @@ abstract class JDatabase implements JDatabaseInterface
 	 *
 	 * @return  JDatabase  Returns this object to support chaining.
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 * @throws  JDatabaseException
 	 */
 	public abstract function unlockTables();
@@ -1667,12 +1693,12 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Sets the debug level on or off
 	 *
-	 * @param	integer  $level  0 to disable debugging and 1 to enable it.
+	 * @param   integer  $level  0 to disable debugging and 1 to enable it.
 	 *
 	 * @return  void
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function debug($level)
 	{
@@ -1688,19 +1714,19 @@ abstract class JDatabase implements JDatabaseInterface
 	 * @return  string  The explain output.
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	abstract public function explain();
 
 	/**
 	 * Gets the error message from the database connection.
 	 *
-	 * @param	boolean  $escaped  True to escape the message string for use in JavaScript.
+	 * @param   boolean  $escaped  True to escape the message string for use in JavaScript.
 	 *
 	 * @return  string  The error message for the most recent query.
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getErrorMsg($escaped = false)
 	{
@@ -1720,9 +1746,9 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Gets the error number from the database connection.
 	 *
-	 * @return	  integer  The error number for the most recent query.
+	 * @return      integer  The error number for the most recent query.
 	 *
-	 * @since		11.1
+	 * @since       11.1
 	 * @deprecated  12.1
 	 */
 	public function getErrorNum()
@@ -1736,12 +1762,12 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Method to escape a string for usage in an SQL statement.
 	 *
-	 * @param	string	$text	The string to be escaped.
-	 * @param	boolean  $extra  Optional parameter to provide extra escaping.
+	 * @param   string   $text   The string to be escaped.
+	 * @param   boolean  $extra  Optional parameter to provide extra escaping.
 	 *
 	 * @return  string  The escaped string.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.1
 	 */
 	public function getEscaped($text, $extra = false)
@@ -1755,12 +1781,12 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Retrieves field information about the given tables.
 	 *
-	 * @param	mixed	$tables	A table name or a list of table names.
-	 * @param	boolean  $typeOnly  True to only return field types.
+	 * @param   mixed    $tables    A table name or a list of table names.
+	 * @param   boolean  $typeOnly  True to only return field types.
 	 *
 	 * @return  array  An array of fields by table.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 * @deprecated  12.1
 	 */
@@ -1784,9 +1810,9 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Get the total number of SQL statements executed by the database driver.
 	 *
-	 * @return	  integer
+	 * @return      integer
 	 *
-	 * @since		11.1
+	 * @since       11.1
 	 * @deprecated  12.1
 	 */
 	public function getTicker()
@@ -1800,12 +1826,12 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Checks if field name needs to be quoted.
 	 *
-	 * @param	string  $field  The field name to be checked.
+	 * @param   string  $field  The field name to be checked.
 	 *
 	 * @return  bool
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function isQuoted($field)
 	{
@@ -1826,11 +1852,11 @@ abstract class JDatabase implements JDatabaseInterface
 	 * Method to get an array of values from the <var>$offset</var> field in each row of the result set from
 	 * the database query.
 	 *
-	 * @param	integer  $offset  The row offset to use to build the result array.
+	 * @param   integer  $offset  The row offset to use to build the result array.
 	 *
-	 * @return  mixed	The return value or null if the query failed.
+	 * @return  mixed    The return value or null if the query failed.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  JDatabaseException
 	 * @deprecated  12.1
 	 */
@@ -1846,11 +1872,11 @@ abstract class JDatabase implements JDatabaseInterface
 	 * Wrap an SQL statement identifier name such as column, table or database names in quotes to prevent injection
 	 * risks and reserved word conflicts.
 	 *
-	 * @param	string  $name  The identifier name to wrap in quotes.
+	 * @param   string  $name  The identifier name to wrap in quotes.
 	 *
 	 * @return  string  The quote wrapped name.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.1
 	 */
 	public function nameQuote($name)
@@ -1864,25 +1890,25 @@ abstract class JDatabase implements JDatabaseInterface
 	/**
 	 * Execute a query batch.
 	 *
-	 * @param	boolean  $abortOnError	 Abort on error.
-	 * @param	boolean  $transactionSafe  Transaction safe queries.
+	 * @param   boolean  $abortOnError     Abort on error.
+	 * @param   boolean  $transactionSafe  Transaction safe queries.
 	 *
 	 * @return  mixed  A database resource if successful, false if not.
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	abstract public function queryBatch($abortOnError = true, $transactionSafe = false);
 
 	/**
 	 * Return the most recent error message for the database connector.
 	 *
-	 * @param	boolean  $showSQL  True to display the SQL statement sent to the database as well as the error.
+	 * @param   boolean  $showSQL  True to display the SQL statement sent to the database as well as the error.
 	 *
 	 * @return  string  The error message for the most recent query.
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function stderr($showSQL = false)
 	{

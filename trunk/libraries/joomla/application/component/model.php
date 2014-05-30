@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -15,16 +15,16 @@ defined('JPATH_PLATFORM') or die;
  * Acts as a Factory class for application specific objects and
  * provides many supporting API functions.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
- * @since		11.1
+ * @since       11.1
  */
 abstract class JModel extends JObject
 {
 	/**
 	 * Indicates if the internal state has been set
 	 *
-	 * @var	boolean
+	 * @var    boolean
 	 * @since  11.1
 	 */
 	protected $__state_set = null;
@@ -32,7 +32,7 @@ abstract class JModel extends JObject
 	/**
 	 * Database Connector
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  11.1
 	 */
 	protected $_db;
@@ -40,8 +40,8 @@ abstract class JModel extends JObject
 	/**
 	 * The model (base) name
 	 *
-	 * @var	string
-	 * @note	Replaces _name variable in 11.1
+	 * @var    string
+	 * @note   Replaces _name variable in 11.1
 	 * @since  11.1
 	 */
 	protected $name;
@@ -49,7 +49,7 @@ abstract class JModel extends JObject
 	/**
 	 * The URL option for the component.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $option = null;
@@ -57,8 +57,8 @@ abstract class JModel extends JObject
 	/**
 	 * A state object
 	 *
-	 * @var	string
-	 * @note	Replaces _state variable in 11.1
+	 * @var    string
+	 * @note   Replaces _state variable in 11.1
 	 * @since  11.1
 	 */
 	protected $state;
@@ -66,8 +66,8 @@ abstract class JModel extends JObject
 	/**
 	 * The event to trigger when cleaning cache.
 	 *
-	 * @var	  string
-	 * @since	11.1
+	 * @var      string
+	 * @since    11.1
 	 */
 	protected $event_clean_cache = null;
 
@@ -75,12 +75,12 @@ abstract class JModel extends JObject
 	 * Add a directory where JModel should search for models. You may
 	 * either pass a string or an array of directories.
 	 *
-	 * @param	mixed	$path	A path or array[sting] of paths to search.
-	 * @param	string  $prefix  A prefix for models.
+	 * @param   mixed   $path    A path or array[sting] of paths to search.
+	 * @param   string  $prefix  A prefix for models.
 	 *
 	 * @return  array  An array with directory elements. If prefix is equal to '', all directories are returned.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function addIncludePath($path = '', $prefix = '')
 	{
@@ -122,11 +122,11 @@ abstract class JModel extends JObject
 	/**
 	 * Adds to the stack of model table paths in LIFO order.
 	 *
-	 * @param	mixed  $path  The directory as a string or directories as an array to add.
+	 * @param   mixed  $path  The directory as a string or directories as an array to add.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function addTablePath($path)
 	{
@@ -137,12 +137,12 @@ abstract class JModel extends JObject
 	/**
 	 * Create the filename for a resource
 	 *
-	 * @param	string  $type	The resource type to create the filename for.
-	 * @param	array	$parts  An associative array of filename information.
+	 * @param   string  $type   The resource type to create the filename for.
+	 * @param   array   $parts  An associative array of filename information.
 	 *
 	 * @return  string  The filename
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected static function _createFileName($type, $parts = array())
 	{
@@ -161,13 +161,13 @@ abstract class JModel extends JObject
 	/**
 	 * Returns a Model object, always creating it
 	 *
-	 * @param	string  $type	The model type to instantiate
-	 * @param	string  $prefix  Prefix for the model class name. Optional.
-	 * @param	array	$config  Configuration array for model. Optional.
+	 * @param   string  $type    The model type to instantiate
+	 * @param   string  $prefix  Prefix for the model class name. Optional.
+	 * @param   array   $config  Configuration array for model. Optional.
 	 *
-	 * @return  mixed	A model object or false on failure
+	 * @return  mixed   A model object or false on failure
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getInstance($type, $prefix = '', $config = array())
 	{
@@ -204,9 +204,9 @@ abstract class JModel extends JObject
 	/**
 	 * Constructor
 	 *
-	 * @param	array  $config  An array of configuration options (name, state, dbo, table_path, ignore_request).
+	 * @param   array  $config  An array of configuration options (name, state, dbo, table_path, ignore_request).
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($config = array())
 	{
@@ -287,13 +287,13 @@ abstract class JModel extends JObject
 	/**
 	 * Gets an array of objects from the results of database query.
 	 *
-	 * @param	string	$query		The query.
-	 * @param	integer  $limitstart  Offset.
-	 * @param	integer  $limit		The number of records.
+	 * @param   string   $query       The query.
+	 * @param   integer  $limitstart  Offset.
+	 * @param   integer  $limit       The number of records.
 	 *
 	 * @return  array  An array of results.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _getList($query, $limitstart = 0, $limit = 0)
 	{
@@ -306,11 +306,11 @@ abstract class JModel extends JObject
 	/**
 	 * Returns a record count for the query
 	 *
-	 * @param	string  $query  The query.
+	 * @param   string  $query  The query.
 	 *
 	 * @return  integer  Number of rows for query
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _getListCount($query)
 	{
@@ -323,14 +323,14 @@ abstract class JModel extends JObject
 	/**
 	 * Method to load and return a model object.
 	 *
-	 * @param	string  $name	The name of the view
-	 * @param	string  $prefix  The class prefix. Optional.
-	 * @param	array	$config  Configuration settings to pass to JTable::getInstance
+	 * @param   string  $name    The name of the view
+	 * @param   string  $prefix  The class prefix. Optional.
+	 * @param   array   $config  Configuration settings to pass to JTable::getInstance
 	 *
 	 * @return  mixed  Model object or boolean false if failed
 	 *
-	 * @since	11.1
-	 * @see	 JTable::getInstance
+	 * @since   11.1
+	 * @see     JTable::getInstance
 	 */
 	protected function _createTable($name, $prefix = 'Table', $config = array())
 	{
@@ -365,7 +365,7 @@ abstract class JModel extends JObject
 	 *
 	 * @return  string  The name of the model
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getName()
 	{
@@ -385,12 +385,12 @@ abstract class JModel extends JObject
 	/**
 	 * Method to get model state variables
 	 *
-	 * @param	string  $property  Optional parameter name
-	 * @param	mixed	$default	Optional default value
+	 * @param   string  $property  Optional parameter name
+	 * @param   mixed   $default   Optional default value
 	 *
 	 * @return  object  The property where specified, the state object where omitted
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getState($property = null, $default = null)
 	{
@@ -409,13 +409,13 @@ abstract class JModel extends JObject
 	/**
 	 * Method to get a table object, load it if necessary.
 	 *
-	 * @param	string  $name	 The table name. Optional.
-	 * @param	string  $prefix	The class prefix. Optional.
-	 * @param	array	$options  Configuration array for model. Optional.
+	 * @param   string  $name     The table name. Optional.
+	 * @param   string  $prefix   The class prefix. Optional.
+	 * @param   array   $options  Configuration array for model. Optional.
 	 *
 	 * @return  JTable  A JTable object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getTable($name = '', $prefix = 'Table', $options = array())
 	{
@@ -443,8 +443,8 @@ abstract class JModel extends JObject
 	 *
 	 * @return  void
 	 *
-	 * @note	Calling getState in this method will result in recursion.
-	 * @since	11.1
+	 * @note    Calling getState in this method will result in recursion.
+	 * @since   11.1
 	 */
 	protected function populateState()
 	{
@@ -453,11 +453,11 @@ abstract class JModel extends JObject
 	/**
 	 * Method to set the database driver object
 	 *
-	 * @param	JDatabase  &$db  A JDatabase based object
+	 * @param   JDatabase  &$db  A JDatabase based object
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setDbo(&$db)
 	{
@@ -467,12 +467,12 @@ abstract class JModel extends JObject
 	/**
 	 * Method to set model state variables
 	 *
-	 * @param	string  $property  The name of the property.
-	 * @param	mixed	$value	 The value of the property to set or null.
+	 * @param   string  $property  The name of the property.
+	 * @param   mixed   $value     The value of the property to set or null.
 	 *
 	 * @return  mixed  The previous value of the property or null if not set.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setState($property, $value = null)
 	{
@@ -482,12 +482,12 @@ abstract class JModel extends JObject
 	/**
 	 * Clean the cache
 	 *
-	 * @param	string	$group	  The cache group
-	 * @param	integer  $client_id  The ID of the client
+	 * @param   string   $group      The cache group
+	 * @param   integer  $client_id  The ID of the client
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function cleanCache($group = null, $client_id = 0)
 	{

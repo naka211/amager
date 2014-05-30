@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -18,16 +18,16 @@ defined('JPATH_PLATFORM') or die;
  * @contributor  Michael Slusarz <slusarz@horde.org>
  * @contributor  Michael Cochrane <mike@graftonhall.co.nz>
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
- * @since		11.1
+ * @since       11.1
  */
 class JArchiveGzip extends JObject
 {
 	/**
 	 * Gzip file flags.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	private $_flags = array('FTEXT' => 0x01, 'FHCRC' => 0x02, 'FEXTRA' => 0x04, 'FNAME' => 0x08, 'FCOMMENT' => 0x10);
@@ -35,7 +35,7 @@ class JArchiveGzip extends JObject
 	/**
 	 * Gzip file data buffer
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	private $_data = null;
@@ -43,13 +43,13 @@ class JArchiveGzip extends JObject
 	/**
 	 * Extract a Gzip compressed file to a given path
 	 *
-	 * @param	string  $archive	  Path to ZIP archive to extract
-	 * @param	string  $destination  Path to extract archive to
-	 * @param	array	$options	  Extraction options [unused]
+	 * @param   string  $archive      Path to ZIP archive to extract
+	 * @param   string  $destination  Path to extract archive to
+	 * @param   array   $options      Extraction options [unused]
 	 *
 	 * @return  boolean  True if successful
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function extract($archive, $destination, $options = array ())
 	{
@@ -134,7 +134,7 @@ class JArchiveGzip extends JObject
 	 *
 	 * @return  boolean  True if supported
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public static function isSupported()
 	{
@@ -146,7 +146,7 @@ class JArchiveGzip extends JObject
 	 *
 	 * @return  integer  Data position marker for archive
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function _getFilePosition()
 	{

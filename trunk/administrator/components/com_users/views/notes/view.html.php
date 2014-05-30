@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -12,16 +12,16 @@ defined('_JEXEC') or die;
 /**
  * User notes list view
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
- * @since		2.5
+ * @since       2.5
  */
 class UsersViewNotes extends JViewLegacy
 {
 	/**
 	 * A list of user note objects.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  2.5
 	 */
 	protected $items;
@@ -29,7 +29,7 @@ class UsersViewNotes extends JViewLegacy
 	/**
 	 * The pagination object.
 	 *
-	 * @var	JPagination
+	 * @var    JPagination
 	 * @since  2.5
 	 */
 	protected $pagination;
@@ -37,7 +37,7 @@ class UsersViewNotes extends JViewLegacy
 	/**
 	 * The model state.
 	 *
-	 * @var	JObject
+	 * @var    JObject
 	 * @since  2.5
 	 */
 	protected $state;
@@ -45,7 +45,7 @@ class UsersViewNotes extends JViewLegacy
 	/**
 	 * The model state.
 	 *
-	 * @var	JUser
+	 * @var    JUser
 	 * @since  2.5
 	 */
 	protected $user;
@@ -53,11 +53,11 @@ class UsersViewNotes extends JViewLegacy
 	/**
 	 * Override the display method for the view.
 	 *
-	 * @param	string  $tpl  The name of the template file to parse; automatically searches through the template paths.
+	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
 	 *
 	 * @return  mixed  A string if successful, otherwise a JError object.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function display($tpl = null)
 	{
@@ -91,7 +91,7 @@ class UsersViewNotes extends JViewLegacy
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function addToolbar()
 	{

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Updater
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,9 +14,9 @@ jimport('joomla.updater.updateadapter');
 /**
  * Collection Update Adapter Class
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Updater
- * @since		11.1
+ * @since       11.1
  * */
 
 class JUpdaterCollection extends JUpdateAdapter
@@ -24,7 +24,7 @@ class JUpdaterCollection extends JUpdateAdapter
 	/**
 	 * Root of the tree
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  11.1
 	 */
 	protected $base;
@@ -32,7 +32,7 @@ class JUpdaterCollection extends JUpdateAdapter
 	/**
 	 * Tree of objects
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $parent = array(0);
@@ -40,7 +40,7 @@ class JUpdaterCollection extends JUpdateAdapter
 	/**
 	 * Used to control if an item has a child or not
 	 *
-	 * @var	boolean
+	 * @var    boolean
 	 * @since  11.1
 	 */
 	protected $pop_parent = 0;
@@ -62,7 +62,7 @@ class JUpdaterCollection extends JUpdateAdapter
 	 *
 	 * @return  object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _getStackLocation()
 	{
@@ -73,9 +73,9 @@ class JUpdaterCollection extends JUpdateAdapter
 	/**
 	 * Get the parent tag
 	 *
-	 * @return  string	parent
+	 * @return  string   parent
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _getParent()
 	{
@@ -85,20 +85,25 @@ class JUpdaterCollection extends JUpdateAdapter
 	/**
 	 * Opening an XML element
 	 *
-	 * @param	object  $parser  Parser object
-	 * @param	string  $name	Name of element that is opened
-	 * @param	array	$attrs	Array of attributes for the element
+	 * @param   object  $parser  Parser object
+	 * @param   string  $name    Name of element that is opened
+	 * @param   array   $attrs   Array of attributes for the element
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function _startElement($parser, $name, $attrs = array())
 	{
 		array_push($this->_stack, $name);
 		$tag = $this->_getStackLocation();
+
 		// Reset the data
-		eval('$this->' . $tag . '->_data = "";');
+		if (isset($this->$tag))
+		{
+			$this->$tag->_data = "";
+		}
+
 		switch ($name)
 		{
 			case 'CATEGORY':
@@ -168,12 +173,12 @@ class JUpdaterCollection extends JUpdateAdapter
 	 * Closing an XML element
 	 * Note: This is a protected function though has to be exposed externally as a callback
 	 *
-	 * @param	object  $parser  Parser object
-	 * @param	string  $name	Name of the element closing
+	 * @param   object  $parser  Parser object
+	 * @param   string  $name    Name of the element closing
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _endElement($parser, $name)
 	{
@@ -195,22 +200,24 @@ class JUpdaterCollection extends JUpdateAdapter
 	/**
 	 * Finds an update
 	 *
-	 * @param	array  $options  Options to use: update_site_id: the unique ID of the update site to look at
+	 * @param   array  $options  Options to use: update_site_id: the unique ID of the update site to look at
 	 *
 	 * @return  array  Update_sites and updates discovered
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function findUpdate($options)
 	{
-		$url = $options['location'];
+		$url = trim($options['location']);
 		$this->_update_site_id = $options['update_site_id'];
+
 		if (substr($url, -4) != '.xml')
 		{
 			if (substr($url, -1) != '/')
 			{
 				$url .= '/';
 			}
+
 			$url .= 'update.xml';
 		}
 
@@ -219,7 +226,18 @@ class JUpdaterCollection extends JUpdateAdapter
 		$this->updates = array();
 		$dbo = $this->parent->getDBO();
 
-		if (!($fp = @fopen($url, "r")))
+		$http = JHttpFactory::getHttp();
+
+		try
+		{
+			$response = $http->get($url);
+		}
+		catch (Exception $exc)
+		{
+			$response = null;
+		}
+
+		if (is_null($response) || ($response->code != 200))
 		{
 			$query = $dbo->getQuery(true);
 			$query->update('#__update_sites');
@@ -231,6 +249,7 @@ class JUpdaterCollection extends JUpdateAdapter
 			JLog::add("Error parsing url: " . $url, JLog::WARNING, 'updater');
 			$app = JFactory::getApplication();
 			$app->enqueueMessage(JText::sprintf('JLIB_UPDATER_ERROR_COLLECTION_OPEN_URL', $url), 'warning');
+
 			return false;
 		}
 
@@ -238,16 +257,15 @@ class JUpdaterCollection extends JUpdateAdapter
 		xml_set_object($this->xml_parser, $this);
 		xml_set_element_handler($this->xml_parser, '_startElement', '_endElement');
 
-		while ($data = fread($fp, 8192))
+		if (!xml_parse($this->xml_parser, $response->body))
 		{
-			if (!xml_parse($this->xml_parser, $data, feof($fp)))
-			{
-				JLog::add("Error parsing url: " . $url, JLog::WARNING, 'updater');
-				$app = JFactory::getApplication();
-				$app->enqueueMessage(JText::sprintf('JLIB_UPDATER_ERROR_COLLECTION_PARSE_URL', $url), 'warning');
-				return false;
-			}
+			JLog::add("Error parsing url: " . $url, JLog::WARNING, 'updater');
+			$app = JFactory::getApplication();
+			$app->enqueueMessage(JText::sprintf('JLIB_UPDATER_ERROR_COLLECTION_PARSE_URL', $url), 'warning');
+
+			return false;
 		}
+
 		// TODO: Decrement the bad counter if non-zero
 		return array('update_sites' => $this->update_sites, 'updates' => $this->updates);
 	}

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Libraries
+ * @package     Joomla.Libraries
  * @subpackage  Captcha
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -24,7 +24,7 @@ class JCaptcha extends JObject
 	/**
 	 * An array of Observer objects to notify
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  2.5
 	 */
 	protected $_observers = array();
@@ -32,7 +32,7 @@ class JCaptcha extends JObject
 	/**
 	 * The state of the observable object
 	 *
-	 * @var	mixed
+	 * @var    mixed
 	 * @since  2.5
 	 */
 	protected $_state = null;
@@ -40,7 +40,7 @@ class JCaptcha extends JObject
 	/**
 	 * A multi dimensional array of [function][] = key for observers
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  2.5
 	 */
 	protected $_methods = array();
@@ -227,9 +227,9 @@ class JCaptcha extends JObject
 		/**
 	 * Get the state of the JEditor object
 	 *
-	 * @return  mixed	The state of the object.
+	 * @return  mixed    The state of the object.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function getState()
 	{
@@ -239,11 +239,11 @@ class JCaptcha extends JObject
 	/**
 	 * Attach an observer object
 	 *
-	 * @param	object  $observer  An observer object to attach
+	 * @param   object  $observer  An observer object to attach
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function attach($observer)
 	{
@@ -307,11 +307,11 @@ class JCaptcha extends JObject
 	/**
 	 * Detach an observer object
 	 *
-	 * @param	object  $observer  An observer object to detach.
+	 * @param   object  $observer  An observer object to detach.
 	 *
 	 * @return  boolean  True if the observer object was detached.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function detach($observer)
 	{

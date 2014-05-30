@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 CMS.Library
+ * @package     CMS.Library
  * @subpackage  Schema
  *
-* @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+* @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -12,9 +12,9 @@ defined('_JEXEC') or die;
 /**
  * Checks the database schema against one MySQL DDL query to see if it has been run.
  *
- * @package	 CMS.Library
+ * @package     CMS.Library
  * @subpackage  Schema
- * @since		2.5
+ * @since       2.5
  */
 class JSchemaChangeitemsqlsrv extends JSchemaChangeitem
 {
@@ -134,10 +134,10 @@ class JSchemaChangeitemsqlsrv extends JSchemaChangeitem
 	 * Replaces name quote character with normal quote for literal.
 	 * Drops trailing semi-colon. Injects the database prefix.
 	 *
-	 * @param	string  $string  The input string to be cleaned up.
+	 * @param   string  $string  The input string to be cleaned up.
 	 * @return  string  The modified string.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	private function fixQuote($string)
 	{

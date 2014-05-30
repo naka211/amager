@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,9 +14,9 @@ JFormHelper::loadFieldClass('filelist');
 /**
  * Supports an HTML select list of image
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
- * @since		11.1
+ * @since       11.1
  */
 class JFormFieldImageList extends JFormFieldFileList
 {
@@ -24,7 +24,7 @@ class JFormFieldImageList extends JFormFieldFileList
 	/**
 	 * The form field type.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $type = 'ImageList';
@@ -35,7 +35,7 @@ class JFormFieldImageList extends JFormFieldFileList
 	 *
 	 * @return  array  The field option objects.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function getOptions()
 	{

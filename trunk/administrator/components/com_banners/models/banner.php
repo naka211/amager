@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_banners
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 // No direct access.
@@ -15,14 +15,14 @@ jimport('joomla.application.component.modeladmin');
 /**
  * Banner model.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_banners
- * @since		1.6
+ * @since       1.6
  */
 class BannersModelBanner extends JModelAdmin
 {
 	/**
-	 * @var	string  The prefix to use with controller messages.
+	 * @var    string  The prefix to use with controller messages.
 	 * @since  1.6
 	 */
 	protected $text_prefix = 'COM_BANNERS_BANNER';
@@ -30,9 +30,9 @@ class BannersModelBanner extends JModelAdmin
 	/**
 	 * Method to perform batch operations on an item or a set of items.
 	 *
-	 * @param	array	$commands	An array of commands to perform.
-	 * @param	array	$pks		An array of item ids.
-	 * @param	array	$contexts	An array of item contexts.
+	 * @param   array   $commands   An array of commands to perform.
+	 * @param   array   $pks        An array of item ids.
+	 * @param   array   $contexts   An array of item contexts.
 	 *
 	 * @return	boolean	 Returns true on success, false on failure.
 	 *
@@ -116,13 +116,13 @@ class BannersModelBanner extends JModelAdmin
 	/**
 	 * Batch client changes for a group of banners.
 	 *
-	 * @param	string  $value	 The new value matching a client.
-	 * @param	array	$pks		An array of row IDs.
-	 * @param	array	$contexts  An array of item contexts.
+	 * @param   string  $value     The new value matching a client.
+	 * @param   array   $pks       An array of row IDs.
+	 * @param   array   $contexts  An array of item contexts.
 	 *
 	 * @return  boolean  True if successful, false otherwise and internal error is set.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function batchClient($value, $pks, $contexts)
 	{
@@ -160,9 +160,9 @@ class BannersModelBanner extends JModelAdmin
 	/**
 	 * Batch copy items to a new category or current.
 	 *
-	 * @param	integer  $value	 The new category.
-	 * @param	array	$pks		An array of row IDs.
-	 * @param	array	$contexts  An array of item contexts.
+	 * @param   integer  $value     The new category.
+	 * @param   array    $pks       An array of row IDs.
+	 * @param   array    $contexts  An array of item contexts.
 	 *
 	 * @return  mixed  An array of new IDs on success, boolean false on failure.
 	 *
@@ -279,11 +279,11 @@ class BannersModelBanner extends JModelAdmin
 	/**
 	 * Method to test whether a record can be deleted.
 	 *
-	 * @param	object  $record  A record object.
+	 * @param   object  $record  A record object.
 	 *
 	 * @return  boolean  True if allowed to delete the record. Defaults to the permission set in the component.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function canDelete($record)
 	{
@@ -309,11 +309,11 @@ class BannersModelBanner extends JModelAdmin
 	/**
 	 * Method to test whether a record can have its state changed.
 	 *
-	 * @param	object  $record  A record object.
+	 * @param   object  $record  A record object.
 	 *
 	 * @return  boolean  True if allowed to change the state of the record. Defaults to the permission set in the component.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function canEditState($record)
 	{
@@ -334,13 +334,13 @@ class BannersModelBanner extends JModelAdmin
 	/**
 	 * Returns a JTable object, always creating it.
 	 *
-	 * @param	string  $type	The table type to instantiate. [optional]
-	 * @param	string  $prefix  A prefix for the table class name. [optional]
-	 * @param	array	$config  Configuration array for model. [optional]
+	 * @param   string  $type    The table type to instantiate. [optional]
+	 * @param   string  $prefix  A prefix for the table class name. [optional]
+	 * @param   array   $config  Configuration array for model. [optional]
 	 *
 	 * @return  JTable  A database object
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function getTable($type = 'Banner', $prefix = 'BannersTable', $config = array())
 	{
@@ -350,12 +350,12 @@ class BannersModelBanner extends JModelAdmin
 	/**
 	 * Method to get the record form.
 	 *
-	 * @param	array	$data	  Data for the form. [optional]
-	 * @param	boolean  $loadData  True if the form is to load its own data (default case), false if not. [optional]
+	 * @param   array    $data      Data for the form. [optional]
+	 * @param   boolean  $loadData  True if the form is to load its own data (default case), false if not. [optional]
 	 *
 	 * @return  mixed  A JForm object on success, false on failure
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
@@ -405,7 +405,7 @@ class BannersModelBanner extends JModelAdmin
 	 *
 	 * @return  mixed  The data for the form.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function loadFormData()
 	{
@@ -430,12 +430,12 @@ class BannersModelBanner extends JModelAdmin
 	/**
 	 * Method to stick records.
 	 *
-	 * @param	array	&$pks	The ids of the items to publish.
-	 * @param	integer  $value  The value of the published state
+	 * @param   array    &$pks   The ids of the items to publish.
+	 * @param   integer  $value  The value of the published state
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	function stick(&$pks, $value = 1)
 	{
@@ -471,11 +471,11 @@ class BannersModelBanner extends JModelAdmin
 	/**
 	 * A protected method to get a set of ordering conditions.
 	 *
-	 * @param	JTable  $table  A record object.
+	 * @param   JTable  $table  A record object.
 	 *
 	 * @return  array  An array of conditions to add to add to ordering queries.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function getReorderConditions($table)
 	{

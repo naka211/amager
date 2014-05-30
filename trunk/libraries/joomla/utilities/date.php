@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Utilities
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -13,9 +13,9 @@ defined('JPATH_PLATFORM') or die;
  * JDate is a class that stores a date and provides logic to manipulate
  * and render that date in a variety of formats.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Utilities
- * @since		11.1
+ * @since       11.1
  */
 class JDate extends DateTime
 {
@@ -27,7 +27,7 @@ class JDate extends DateTime
 	/**
 	 * The format string to be applied when using the __toString() magic method.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public static $format = 'Y-m-d H:i:s';
@@ -35,7 +35,7 @@ class JDate extends DateTime
 	/**
 	 * Placeholder for a DateTimeZone object with GMT as the time zone.
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  11.1
 	 */
 	protected static $gmt;
@@ -44,7 +44,7 @@ class JDate extends DateTime
 	 * Placeholder for a DateTimeZone object with the default server
 	 * time zone as the time zone.
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  11.1
 	 */
 	protected static $stz;
@@ -53,9 +53,9 @@ class JDate extends DateTime
 	 * An array of offsets and time zone strings representing the available
 	 * options from Joomla! CMS 1.5 and below.
 	 *
-	 * @deprecated	12.1
+	 * @deprecated    12.1
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected static $offsets = array('-12' => 'Etc/GMT-12', '-11' => 'Pacific/Midway', '-10' => 'Pacific/Honolulu', '-9.5' => 'Pacific/Marquesas',
@@ -71,7 +71,7 @@ class JDate extends DateTime
 	/**
 	 * The DateTimeZone object for usage in rending dates as strings.
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  11.1
 	 */
 	protected $_tz;
@@ -79,10 +79,10 @@ class JDate extends DateTime
 	/**
 	 * Constructor.
 	 *
-	 * @param	string  $date  String in a format accepted by strtotime(), defaults to "now".
-	 * @param	mixed	$tz	Time zone to be used for the date.
+	 * @param   string  $date  String in a format accepted by strtotime(), defaults to "now".
+	 * @param   mixed   $tz    Time zone to be used for the date.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
 	 * @throws  JException
 	 */
@@ -130,11 +130,11 @@ class JDate extends DateTime
 	/**
 	 * Magic method to access properties of the date given by class to the format method.
 	 *
-	 * @param	string  $name  The name of the property.
+	 * @param   string  $name  The name of the property.
 	 *
-	 * @return  mixed	A value if the property name is valid, null otherwise.
+	 * @return  mixed   A value if the property name is valid, null otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __get($name)
 	{
@@ -207,7 +207,7 @@ class JDate extends DateTime
 	 *
 	 * @return  string  The date as a formatted string.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __toString()
 	{
@@ -217,12 +217,12 @@ class JDate extends DateTime
 	/**
 	 * Proxy for new JDate().
 	 *
-	 * @param	string  $date  String in a format accepted by strtotime(), defaults to "now".
-	 * @param	mixed	$tz	Time zone to be used for the date.
+	 * @param   string  $date  String in a format accepted by strtotime(), defaults to "now".
+	 * @param   mixed   $tz    Time zone to be used for the date.
 	 *
 	 * @return  JDate
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 * @throws  JException
 	 */
 	public static function getInstance($date = 'now', $tz = null)
@@ -233,12 +233,12 @@ class JDate extends DateTime
 	/**
 	 * Translates day of week number to a string.
 	 *
-	 * @param	integer  $day	The numeric day of the week.
-	 * @param	boolean  $abbr  Return the abbreviated day string?
+	 * @param   integer  $day   The numeric day of the week.
+	 * @param   boolean  $abbr  Return the abbreviated day string?
 	 *
 	 * @return  string  The day of the week.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function dayToString($day, $abbr = false)
 	{
@@ -264,13 +264,13 @@ class JDate extends DateTime
 	/**
 	 * Gets the date as a formatted string in a local calendar.
 	 *
-	 * @param	string	$format	 The date format specification string (see {@link PHP_MANUAL#date})
-	 * @param	boolean  $local	  True to return the date string in the local time zone, false to return it in GMT.
-	 * @param	boolean  $translate  True to translate localised strings
+	 * @param   string   $format     The date format specification string (see {@link PHP_MANUAL#date})
+	 * @param   boolean  $local      True to return the date string in the local time zone, false to return it in GMT.
+	 * @param   boolean  $translate  True to translate localised strings
 	 *
-	 * @return  string	The date string in the specified format format.
+	 * @return  string   The date string in the specified format format.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function calendar($format, $local = false, $translate = true)
 	{
@@ -280,13 +280,13 @@ class JDate extends DateTime
 	/**
 	 * Gets the date as a formatted string.
 	 *
-	 * @param	string	$format	 The date format specification string (see {@link PHP_MANUAL#date})
-	 * @param	boolean  $local	  True to return the date string in the local time zone, false to return it in GMT.
-	 * @param	boolean  $translate  True to translate localised strings
+	 * @param   string   $format     The date format specification string (see {@link PHP_MANUAL#date})
+	 * @param   boolean  $local      True to return the date string in the local time zone, false to return it in GMT.
+	 * @param   boolean  $translate  True to translate localised strings
 	 *
-	 * @return  string	The date string in the specified format format.
+	 * @return  string   The date string in the specified format format.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function format($format, $local = false, $translate = true)
 	{
@@ -343,11 +343,11 @@ class JDate extends DateTime
 	/**
 	 * Get the time offset from GMT in hours or seconds.
 	 *
-	 * @param	boolean  $hours  True to return the value in hours.
+	 * @param   boolean  $hours  True to return the value in hours.
 	 *
 	 * @return  float  The time offset from GMT either in hours or in seconds.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getOffsetFromGMT($hours = false)
 	{
@@ -357,12 +357,12 @@ class JDate extends DateTime
 	/**
 	 * Translates month number to a string.
 	 *
-	 * @param	integer  $month  The numeric month of the year.
-	 * @param	boolean  $abbr	If true, return the abbreviated month string
+	 * @param   integer  $month  The numeric month of the year.
+	 * @param   boolean  $abbr   If true, return the abbreviated month string
 	 *
 	 * @return  string  The month of the year.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function monthToString($month, $abbr = false)
 	{
@@ -398,13 +398,13 @@ class JDate extends DateTime
 	/**
 	 * Set the date offset (in hours).
 	 *
-	 * @param	float  $offset  The offset in hours.
+	 * @param   float  $offset  The offset in hours.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
-	 * @deprecated	12.1  Use setTimezone instead.
+	 * @deprecated    12.1  Use setTimezone instead.
 	 */
 	public function setOffset($offset)
 	{
@@ -426,11 +426,11 @@ class JDate extends DateTime
 	 * Method to wrap the setTimezone() function and set the internal
 	 * time zone object.
 	 *
-	 * @param	object  $tz  The new DateTimeZone object.
+	 * @param   object  $tz  The new DateTimeZone object.
 	 *
 	 * @return  DateTimeZone  The old DateTimeZone object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setTimezone($tz)
 	{
@@ -444,10 +444,10 @@ class JDate extends DateTime
 	 * Returns a string formatted according to the given format. Month and weekday names and
 	 * other language dependent strings respect the current locale
 	 *
-	 * @param	string	$format  The date format specification string (see {@link PHP_MANUAL#strftime})
-	 * @param	boolean  $local	True to return the date string in the local time zone, false to return it in GMT.
+	 * @param   string   $format  The date format specification string (see {@link PHP_MANUAL#strftime})
+	 * @param   boolean  $local   True to return the date string in the local time zone, false to return it in GMT.
 	 *
-	 * @return  string	The date as a formatted string.
+	 * @return  string   The date as a formatted string.
 	 *
 	 * @deprecated  Use JDate::format() instead.
 	 *
@@ -501,12 +501,12 @@ class JDate extends DateTime
 	 * Gets the date as an ISO 8601 string.  IETF RFC 3339 defines the ISO 8601 format
 	 * and it can be found at the IETF Web site.
 	 *
-	 * @param	boolean  $local  True to return the date string in the local time zone, false to return it in GMT.
+	 * @param   boolean  $local  True to return the date string in the local time zone, false to return it in GMT.
 	 *
 	 * @return  string  The date string in ISO 8601 format.
 	 *
-	 * @link	http://www.ietf.org/rfc/rfc3339.txt
-	 * @since	11.1
+	 * @link    http://www.ietf.org/rfc/rfc3339.txt
+	 * @since   11.1
 	 */
 	public function toISO8601($local = false)
 	{
@@ -516,12 +516,12 @@ class JDate extends DateTime
 	/**
 	 * Gets the date as an MySQL datetime string.
 	 *
-	 * @param	boolean  $local  True to return the date string in the local time zone, false to return it in GMT.
+	 * @param   boolean  $local  True to return the date string in the local time zone, false to return it in GMT.
 	 *
-	 * @return  string	The date string in MySQL datetime format.
+	 * @return  string   The date string in MySQL datetime format.
 	 *
 	 * @link http://dev.mysql.com/doc/refman/5.0/en/datetime.html
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated 12.1 Use JDate::toSql()
 	 */
 	public function toMySQL($local = false)
@@ -533,13 +533,13 @@ class JDate extends DateTime
 	/**
 	 * Gets the date as an SQL datetime string.
 	 *
-	 * @param	boolean	$local  True to return the date string in the local time zone, false to return it in GMT.
-	 * @param	JDatabase  $dbo	The database driver or null to use JFactory::getDbo()
+	 * @param   boolean    $local  True to return the date string in the local time zone, false to return it in GMT.
+	 * @param   JDatabase  $dbo    The database driver or null to use JFactory::getDbo()
 	 *
-	 * @return  string	 The date string in SQL datetime format.
+	 * @return  string     The date string in SQL datetime format.
 	 *
 	 * @link http://dev.mysql.com/doc/refman/5.0/en/datetime.html
-	 * @since	11.4
+	 * @since   11.4
 	 */
 	public function toSql($local = false, JDatabase $dbo = null)
 	{
@@ -554,12 +554,12 @@ class JDate extends DateTime
 	 * Gets the date as an RFC 822 string.  IETF RFC 2822 supercedes RFC 822 and its definition
 	 * can be found at the IETF Web site.
 	 *
-	 * @param	boolean  $local  True to return the date string in the local time zone, false to return it in GMT.
+	 * @param   boolean  $local  True to return the date string in the local time zone, false to return it in GMT.
 	 *
-	 * @return  string	The date string in RFC 822 format.
+	 * @return  string   The date string in RFC 822 format.
 	 *
-	 * @link	http://www.ietf.org/rfc/rfc2822.txt
-	 * @since	11.1
+	 * @link    http://www.ietf.org/rfc/rfc2822.txt
+	 * @since   11.1
 	 */
 	public function toRFC822($local = false)
 	{
@@ -571,7 +571,7 @@ class JDate extends DateTime
 	 *
 	 * @return  integer  The date as a UNIX timestamp.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function toUnix()
 	{

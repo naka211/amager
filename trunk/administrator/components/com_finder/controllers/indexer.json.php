@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -15,9 +15,9 @@ JLoader::register('FinderIndexer', JPATH_COMPONENT_ADMINISTRATOR . '/helpers/ind
 /**
  * Indexer controller class for Finder.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderControllerIndexer extends JControllerLegacy
 {
@@ -26,7 +26,7 @@ class FinderControllerIndexer extends JControllerLegacy
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function start()
 	{
@@ -93,7 +93,7 @@ class FinderControllerIndexer extends JControllerLegacy
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function batch()
 	{
@@ -214,7 +214,7 @@ class FinderControllerIndexer extends JControllerLegacy
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function optimize()
 	{
@@ -257,11 +257,11 @@ class FinderControllerIndexer extends JControllerLegacy
 	 * can be a Exception object for when an error has occurred or
 	 * a JObject for a good response.
 	 *
-	 * @param	mixed  $data  JObject on success, Exception on error. [optional]
+	 * @param   mixed  $data  JObject on success, Exception on error. [optional]
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function sendResponse($data = null)
 	{
@@ -306,18 +306,18 @@ class FinderControllerIndexer extends JControllerLegacy
 /**
  * Finder Indexer JSON Response Class
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderIndexerResponse
 {
 	/**
 	 * Class Constructor
 	 *
-	 * @param	mixed  $state  The processing state for the indexer
+	 * @param   mixed  $state  The processing state for the indexer
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function __construct($state)
 	{

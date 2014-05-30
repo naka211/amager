@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,9 +14,9 @@ defined('JPATH_PLATFORM') or die;
  *
  * The JButton is the base class for all JButton types
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
- * @since		11.1
+ * @since       11.1
  */
 abstract class JButton extends JObject
 {
@@ -25,21 +25,21 @@ abstract class JButton extends JObject
 	 *
 	 * This has to be set in the final renderer classes.
 	 *
-	 * @var	string
+	 * @var    string
 	 */
 	protected $_name = null;
 
 	/**
 	 * reference to the object that instantiated the element
 	 *
-	 * @var	JButton
+	 * @var    JButton
 	 */
 	protected $_parent = null;
 
 	/**
 	 * Constructor
 	 *
-	 * @param	object  $parent  The parent
+	 * @param   object  $parent  The parent
 	 */
 	public function __construct($parent = null)
 	{
@@ -49,7 +49,7 @@ abstract class JButton extends JObject
 	/**
 	 * Get the element name
 	 *
-	 * @return  string	type of the parameter
+	 * @return  string   type of the parameter
 	 */
 	public function getName()
 	{
@@ -59,7 +59,7 @@ abstract class JButton extends JObject
 	/**
 	 * Get the HTML to render the button
 	 *
-	 * @param	array  &$definition  Parameters to be passed
+	 * @param   array  &$definition  Parameters to be passed
 	 *
 	 * @return  string
 	 */
@@ -91,11 +91,11 @@ abstract class JButton extends JObject
 	 *
 	 * Can be redefined in the final class
 	 *
-	 * @param	string  $identifier  Icon identification string
+	 * @param   string  $identifier  Icon identification string
 	 *
 	 * @return  string  CSS class name
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function fetchIconClass($identifier)
 	{
@@ -109,7 +109,7 @@ abstract class JButton extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	abstract public function fetchButton();
 }

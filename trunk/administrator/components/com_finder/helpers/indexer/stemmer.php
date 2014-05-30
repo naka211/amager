@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -12,16 +12,16 @@ defined('_JEXEC') or die;
 /**
  * Stemmer base class for the Finder indexer package.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 abstract class FinderIndexerStemmer
 {
 	/**
 	 * An internal cache of stemmed tokens.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  2.5
 	 */
 	public $cache = array();
@@ -29,11 +29,11 @@ abstract class FinderIndexerStemmer
 	/**
 	 * Method to get a stemmer, creating it if necessary.
 	 *
-	 * @param	string  $adapter  The type of stemmer to load.
+	 * @param   string  $adapter  The type of stemmer to load.
 	 *
 	 * @return  FinderIndexerStemmer  A FinderIndexerStemmer instance.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 * @throws  Exception on invalid stemmer.
 	 */
 	public static function getInstance($adapter)
@@ -76,12 +76,12 @@ abstract class FinderIndexerStemmer
 	/**
 	 * Method to stem a token and return the root.
 	 *
-	 * @param	string  $token  The token to stem.
-	 * @param	string  $lang	The language of the token.
+	 * @param   string  $token  The token to stem.
+	 * @param   string  $lang   The language of the token.
 	 *
 	 * @return  string  The root token.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	abstract public function stem($token, $lang);
 }

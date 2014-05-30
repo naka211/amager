@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
@@ -14,19 +14,19 @@ jimport('joomla.application.component.modellist');
 /**
  * Methods supporting a list of user records.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
- * @since		1.6
+ * @since       1.6
  */
 class UsersModelUsers extends JModelList
 {
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  $config  An optional associative array of configuration settings.
+	 * @param   array  $config  An optional associative array of configuration settings.
 	 *
-	 * @see	 JController
-	 * @since	1.6
+	 * @see     JController
+	 * @since   1.6
 	 */
 	public function __construct($config = array())
 	{
@@ -55,7 +55,7 @@ class UsersModelUsers extends JModelList
 	 *
 	 * @return  void
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{
@@ -72,10 +72,10 @@ class UsersModelUsers extends JModelList
 		$search = $this->getUserStateFromRequest($this->context.'.filter.search', 'filter_search');
 		$this->setState('filter.search', $search);
 
-		$active = $this->getUserStateFromRequest($this->context.'.filter.active', 'filter_active');
+		$active = $this->getUserStateFromRequest($this->context.'.filter.active', 'filter_active', '*');
 		$this->setState('filter.active', $active);
 
-		$state = $this->getUserStateFromRequest($this->context.'.filter.state', 'filter_state');
+		$state = $this->getUserStateFromRequest($this->context.'.filter.state', 'filter_state', '*');
 		$this->setState('filter.state', $state);
 
 		$groupId = $this->getUserStateFromRequest($this->context.'.filter.group', 'filter_group_id', null, 'int');
@@ -113,11 +113,11 @@ class UsersModelUsers extends JModelList
 	 * different modules that might need different sets of data or different
 	 * ordering requirements.
 	 *
-	 * @param	string  $id  A prefix for the store id.
+	 * @param   string  $id  A prefix for the store id.
 	 *
 	 * @return  string  A store id.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function getStoreId($id = '')
 	{
@@ -136,7 +136,7 @@ class UsersModelUsers extends JModelList
 	 *
 	 * @return  mixed  An array of data items on success, false on failure.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function getItems()
 	{
@@ -251,7 +251,7 @@ class UsersModelUsers extends JModelList
 	 *
 	 * @return  JDatabaseQuery
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function getListQuery()
 	{
@@ -332,7 +332,7 @@ class UsersModelUsers extends JModelList
 		$range = $this->getState('filter.range');
 
 		// Apply the range filter.
-		if ($range = $this->getState('filter.range'))
+		if ($range)
 		{
 			jimport('joomla.utilities.date');
 

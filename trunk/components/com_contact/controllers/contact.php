@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	Contact
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -21,7 +21,7 @@ class ContactControllerContact extends JControllerForm
 	{
 		// Check for request forgeries.
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-//print_r($_POST);exit;
+
 		// Initialise variables.
 		$app	= JFactory::getApplication();
 		$model	= $this->getModel('contact');
@@ -30,11 +30,7 @@ class ContactControllerContact extends JControllerForm
 		$id		= (int)$stub;
 
 		// Get the data from POST
-		//$data = JRequest::getVar('jform', array(), 'post', 'array');
-		$data['name'] = JRequest::getVar('name');
-		$data['phone'] = JRequest::getVar('phone');
-		$data['email'] = JRequest::getVar('email');
-		$data['message'] = JRequest::getVar('message');
+		$data = JRequest::getVar('jform', array(), 'post', 'array');
 
 		$contact = $model->getItem($id);
 
@@ -60,7 +56,7 @@ class ContactControllerContact extends JControllerForm
 		$dispatcher	= JDispatcher::getInstance();
 
 		// Validate the posted data.
-		/*$form = $model->getForm();
+		$form = $model->getForm();
 		if (!$form) {
 			JError::raiseError(500, $model->getError());
 			return false;
@@ -86,7 +82,7 @@ class ContactControllerContact extends JControllerForm
 			// Redirect back to the contact form.
 			$this->setRedirect(JRoute::_('index.php?option=com_contact&view=contact&id='.$stub, false));
 			return false;
-		}*/
+		}
 
 		// Validation succeeded, continue with custom handlers
 		$results	= $dispatcher->trigger('onValidateContact', array(&$contact, &$data));
@@ -120,7 +116,7 @@ class ContactControllerContact extends JControllerForm
 		if ($contact->params->get('redirect')) {
 			$this->setRedirect($contact->params->get('redirect'), $msg);
 		} else {
-			$this->setRedirect(JRoute::_('index.php?option=com_contact&view=contact&id='.$stub.'&success=1', false), $msg);
+			$this->setRedirect(JRoute::_('index.php?option=com_contact&view=contact&id='.$stub, false), $msg);
 		}
 
 		return true;
@@ -139,15 +135,14 @@ class ContactControllerContact extends JControllerForm
 			$sitename	= $app->getCfg('sitename');
 			$copytext 	= JText::sprintf('COM_CONTACT_COPYTEXT_OF', $contact->name, $sitename);
 
-			$name		= $data['name'];
-			$email		= $data['email'];
+			$name		= $data['contact_name'];
+			$email		= $data['contact_email'];
 			$subject	= $data['contact_subject'];
-			$body		= $data['message'];
-            $phone		= $data['phone'];
- 
+			$body		= $data['contact_message'];
+
 			// Prepare email body
-			//$prefix = JText::sprintf('COM_CONTACT_ENQUIRY_TEXT', JURI::base());
-			$body	= $name.' <'.$email.'> '.$phone."\r\n\r\n".stripslashes($data['message']);
+			$prefix = JText::sprintf('COM_CONTACT_ENQUIRY_TEXT', JURI::base());
+			$body	= $prefix."\n".$name.' <'.$email.'>'."\r\n\r\n".stripslashes($body);
 
 			$mail = JFactory::getMailer();
 			$mail->addRecipient($contact->email_to);

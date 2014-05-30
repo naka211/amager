@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Site
+ * @package     Joomla.Site
  * @subpackage  mod_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -12,9 +12,9 @@ defined('_JEXEC') or die;
 /**
  * Finder module helper.
  *
- * @package	 Joomla.Site
+ * @package     Joomla.Site
  * @subpackage  mod_finder
- * @since		2.5
+ * @since       2.5
  */
 class ModFinderHelper
 {
@@ -22,11 +22,11 @@ class ModFinderHelper
 	 * Method to get hidden input fields for a get form so that control variables
 	 * are not lost upon form submission.
 	 *
-	 * @param	string  $route  The route to the page. [optional]
+	 * @param   string  $route  The route to the page. [optional]
 	 *
 	 * @return  string  A string of hidden input form fields
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function getGetFields($route = null)
 	{
@@ -53,11 +53,11 @@ class ModFinderHelper
 	/**
 	 * Get Smart Search query object.
 	 *
-	 * @param	JRegistry object containing module parameters.
+	 * @param   JRegistry object containing module parameters.
 	 *
 	 * @return  FinderIndexerQuery object
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function getQuery($params)
 	{

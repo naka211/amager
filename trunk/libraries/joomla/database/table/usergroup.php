@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,18 +14,18 @@ jimport('joomla.database.table');
 /**
  * Usergroup table class.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
- * @since		11.1
+ * @since       11.1
  */
 class JTableUsergroup extends JTable
 {
 	/**
 	 * Constructor
 	 *
-	 * @param	JDatabase  &$db  A database connector object
+	 * @param   JDatabase  &$db  A database connector object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct(&$db)
 	{
@@ -37,7 +37,7 @@ class JTableUsergroup extends JTable
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function check()
 	{
@@ -71,12 +71,12 @@ class JTableUsergroup extends JTable
 	/**
 	 * Method to recursively rebuild the nested set tree.
 	 *
-	 * @param	integer  $parent_id  The root of the tree to rebuild.
-	 * @param	integer  $left		The left id to start with in building the tree.
+	 * @param   integer  $parent_id  The root of the tree to rebuild.
+	 * @param   integer  $left       The left id to start with in building the tree.
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function rebuild($parent_id = 0, $left = 0)
 	{
@@ -119,11 +119,11 @@ class JTableUsergroup extends JTable
 	/**
 	 * Inserts a new row if id is zero or updates an existing row in the database table
 	 *
-	 * @param	boolean  $updateNulls  If false, null object variables are not updated
+	 * @param   boolean  $updateNulls  If false, null object variables are not updated
 	 *
 	 * @return  boolean  True if successful, false otherwise and an internal error message is set
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function store($updateNulls = false)
 	{
@@ -139,11 +139,11 @@ class JTableUsergroup extends JTable
 	/**
 	 * Delete this object and its dependencies
 	 *
-	 * @param	integer  $oid  The primary key of the user group to delete.
+	 * @param   integer  $oid  The primary key of the user group to delete.
 	 *
 	 * @return  mixed  Boolean or Exception.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function delete($oid = null)
 	{

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 // No direct access.
@@ -16,22 +16,22 @@ jimport('joomla.access.access');
 /**
  * User model.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
- * @since		1.6
+ * @since       1.6
  */
 class UsersModelUser extends JModelAdmin
 {
 	/**
 	 * Returns a reference to the a Table object, always creating it.
 	 *
-	 * @param	string  $type	The table type to instantiate
-	 * @param	string  $prefix  A prefix for the table class name. Optional.
-	 * @param	array	$config  Configuration array for model. Optional.
+	 * @param   string  $type    The table type to instantiate
+	 * @param   string  $prefix  A prefix for the table class name. Optional.
+	 * @param   array   $config  Configuration array for model. Optional.
 	 *
 	 * @return  JTable  A database object
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	*/
 	public function getTable($type = 'User', $prefix = 'JTable', $config = array())
 	{
@@ -43,11 +43,11 @@ class UsersModelUser extends JModelAdmin
 	/**
 	 * Method to get a single record.
 	 *
-	 * @param	integer  $pk  The id of the primary key.
+	 * @param   integer  $pk  The id of the primary key.
 	 *
 	 * @return  mixed	Object on success, false on failure.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function getItem($pk = null)
 	{
@@ -66,12 +66,12 @@ class UsersModelUser extends JModelAdmin
 	/**
 	 * Method to get the record form.
 	 *
-	 * @param	array	$data	  An optional array of data for the form to interogate.
-	 * @param	boolean  $loadData  True if the form is to load its own data (default case), false if not.
+	 * @param   array    $data      An optional array of data for the form to interogate.
+	 * @param   boolean  $loadData  True if the form is to load its own data (default case), false if not.
 	 *
 	 * @return  mixed  A JForm object on success, false on failure
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
@@ -80,6 +80,7 @@ class UsersModelUser extends JModelAdmin
 
 		// Get the form.
 		$form = $this->loadForm('com_users.user', 'user', array('control' => 'jform', 'load_data' => $loadData));
+
 		if (empty($form))
 		{
 			return false;
@@ -93,7 +94,7 @@ class UsersModelUser extends JModelAdmin
 	 *
 	 * @return  mixed  The data for the form.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function loadFormData()
 	{
@@ -125,13 +126,13 @@ class UsersModelUser extends JModelAdmin
 	/**
 	 * Override JModelAdmin::preprocessForm to ensure the correct plugin group is loaded.
 	 *
-	 * @param	JForm	$form	A JForm object.
-	 * @param	mixed	$data	The data expected for the form.
-	 * @param	string  $group  The name of the plugin group to import (defaults to "content").
+	 * @param   JForm   $form   A JForm object.
+	 * @param   mixed   $data   The data expected for the form.
+	 * @param   string  $group  The name of the plugin group to import (defaults to "content").
 	 *
 	 * @return  void
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 * @throws  Exception if there is an error in the form event.
 	 */
 	protected function preprocessForm(JForm $form, $data, $group = 'user')
@@ -142,11 +143,11 @@ class UsersModelUser extends JModelAdmin
 	/**
 	 * Method to save the form data.
 	 *
-	 * @param	array  $data  The form data.
+	 * @param   array  $data  The form data.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function save($data)
 	{
@@ -159,23 +160,28 @@ class UsersModelUser extends JModelAdmin
 		if ($data['block'] && $pk == $my->id && !$my->block)
 		{
 			$this->setError(JText::_('COM_USERS_USERS_ERROR_CANNOT_BLOCK_SELF'));
+
 			return false;
 		}
 
 		// Make sure that we are not removing ourself from Super Admin group
 		$iAmSuperAdmin = $my->authorise('core.admin');
+
 		if ($iAmSuperAdmin && $my->get('id') == $pk)
 		{
 			// Check that at least one of our new groups is Super Admin
 			$stillSuperAdmin = false;
 			$myNewGroups = $data['groups'];
+
 			foreach ($myNewGroups as $group)
 			{
 				$stillSuperAdmin = ($stillSuperAdmin) ? ($stillSuperAdmin) : JAccess::checkGroup($group, 'core.admin');
 			}
+
 			if (!$stillSuperAdmin)
 			{
 				$this->setError(JText::_('COM_USERS_USERS_ERROR_CANNOT_DEMOTE_SELF'));
+
 				return false;
 			}
 		}
@@ -184,6 +190,7 @@ class UsersModelUser extends JModelAdmin
 		if (!$user->bind($data))
 		{
 			$this->setError($user->getError());
+
 			return false;
 		}
 
@@ -191,6 +198,7 @@ class UsersModelUser extends JModelAdmin
 		if (!$user->save())
 		{
 			$this->setError($user->getError());
+
 			return false;
 		}
 
@@ -202,11 +210,11 @@ class UsersModelUser extends JModelAdmin
 	/**
 	 * Method to delete rows.
 	 *
-	 * @param	array  &$pks  An array of item ids.
+	 * @param   array  &$pks  An array of item ids.
 	 *
 	 * @return  boolean  Returns true on success, false on failure.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function delete(&$pks)
 	{
@@ -225,6 +233,7 @@ class UsersModelUser extends JModelAdmin
 		if (in_array($user->id, $pks))
 		{
 			$this->setError(JText::_('COM_USERS_USERS_ERROR_CANNOT_DELETE_SELF'));
+
 			return false;
 		}
 
@@ -235,6 +244,7 @@ class UsersModelUser extends JModelAdmin
 			{
 				// Access checks.
 				$allow = $user->authorise('core.delete', 'com_users');
+
 				// Don't allow non-super-admin to delete a super admin
 				$allow = (!$iAmSuperAdmin && JAccess::check($pk, 'core.admin')) ? false : $allow;
 
@@ -249,6 +259,7 @@ class UsersModelUser extends JModelAdmin
 					if (!$table->delete($pk))
 					{
 						$this->setError($table->getError());
+
 						return false;
 					}
 					else
@@ -267,6 +278,7 @@ class UsersModelUser extends JModelAdmin
 			else
 			{
 				$this->setError($table->getError());
+
 				return false;
 			}
 		}
@@ -277,12 +289,12 @@ class UsersModelUser extends JModelAdmin
 	/**
 	 * Method to block user records.
 	 *
-	 * @param	array	&$pks	The ids of the items to publish.
-	 * @param	integer  $value  The value of the published state
+	 * @param   array    &$pks   The ids of the items to publish.
+	 * @param   integer  $value  The value of the published state
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	function block(&$pks, $value = 1)
 	{
@@ -290,6 +302,7 @@ class UsersModelUser extends JModelAdmin
 		$app		= JFactory::getApplication();
 		$dispatcher	= JDispatcher::getInstance();
 		$user		= JFactory::getUser();
+
 		// Check if I am a Super Admin
 		$iAmSuperAdmin	= $user->authorise('core.admin');
 		$table		= $this->getTable();
@@ -305,12 +318,12 @@ class UsersModelUser extends JModelAdmin
 				// Cannot block yourself.
 				unset($pks[$i]);
 				JError::raiseWarning(403, JText::_('COM_USERS_USERS_ERROR_CANNOT_BLOCK_SELF'));
-
 			}
 			elseif ($table->load($pk))
 			{
 				$old	= $table->getProperties();
 				$allow	= $user->authorise('core.edit.state', 'com_users');
+
 				// Don't allow non-super-admin to delete a super admin
 				$allow = (!$iAmSuperAdmin && JAccess::check($pk, 'core.admin')) ? false : $allow;
 
@@ -329,22 +342,26 @@ class UsersModelUser extends JModelAdmin
 					}
 
 					$table->block = (int) $value;
-				// If unblocking, also change password reset count to zero to unblock reset
+
+					// If unblocking, also change password reset count to zero to unblock reset
 					if ($table->block === 0)
 					{
 						$table->resetCount = 0;
 					}
+
 					// Allow an exception to be thrown.
 					try
 					{
 						if (!$table->check())
 						{
 							$this->setError($table->getError());
+
 							return false;
 						}
 
 						// Trigger the onUserBeforeSave event.
 						$result = $dispatcher->trigger('onUserBeforeSave', array($old, false, $table->getProperties()));
+
 						if (in_array(false, $result, true))
 						{
 							// Plugin will have to raise it's own error or throw an exception.
@@ -355,6 +372,7 @@ class UsersModelUser extends JModelAdmin
 						if (!$table->store())
 						{
 							$this->setError($table->getError());
+
 							return false;
 						}
 
@@ -389,17 +407,18 @@ class UsersModelUser extends JModelAdmin
 	/**
 	 * Method to activate user records.
 	 *
-	 * @param	array  &$pks  The ids of the items to activate.
+	 * @param   array  &$pks  The ids of the items to activate.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	function activate(&$pks)
 	{
 		// Initialise variables.
 		$dispatcher	= JDispatcher::getInstance();
 		$user		= JFactory::getUser();
+
 		// Check if I am a Super Admin
 		$iAmSuperAdmin	= $user->authorise('core.admin');
 		$table		= $this->getTable();
@@ -414,6 +433,7 @@ class UsersModelUser extends JModelAdmin
 			{
 				$old	= $table->getProperties();
 				$allow	= $user->authorise('core.edit.state', 'com_users');
+
 				// Don't allow non-super-admin to delete a super admin
 				$allow = (!$iAmSuperAdmin && JAccess::check($pk, 'core.admin')) ? false : $allow;
 
@@ -433,11 +453,13 @@ class UsersModelUser extends JModelAdmin
 						if (!$table->check())
 						{
 							$this->setError($table->getError());
+
 							return false;
 						}
 
 						// Trigger the onUserBeforeSave event.
 						$result = $dispatcher->trigger('onUserBeforeSave', array($old, false, $table->getProperties()));
+
 						if (in_array(false, $result, true))
 						{
 							// Plugin will have to raise it's own error or throw an exception.
@@ -448,6 +470,7 @@ class UsersModelUser extends JModelAdmin
 						if (!$table->store())
 						{
 							$this->setError($table->getError());
+
 							return false;
 						}
 
@@ -476,13 +499,13 @@ class UsersModelUser extends JModelAdmin
 	/**
 	 * Method to perform batch operations on an item or a set of items.
 	 *
-	 * @param	array  $commands  An array of commands to perform.
-	 * @param	array  $pks		An array of item ids.
-	 * @param	array  $contexts  An array of item contexts.
+	 * @param   array  $commands  An array of commands to perform.
+	 * @param   array  $pks       An array of item ids.
+	 * @param   array  $contexts  An array of item contexts.
 	 *
 	 * @return  boolean  Returns true on success, false on failure.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function batch($commands, $pks, $contexts)
 	{
@@ -499,6 +522,7 @@ class UsersModelUser extends JModelAdmin
 		if (empty($pks))
 		{
 			$this->setError(JText::_('COM_USERS_USERS_NO_ITEM_SELECTED'));
+
 			return false;
 		}
 
@@ -512,12 +536,14 @@ class UsersModelUser extends JModelAdmin
 			{
 				return false;
 			}
+
 			$done = true;
 		}
 
 		if (!$done)
 		{
 			$this->setError(JText::_('JLIB_APPLICATION_ERROR_INSUFFICIENT_BATCH_INFORMATION'));
+
 			return false;
 		}
 
@@ -530,9 +556,9 @@ class UsersModelUser extends JModelAdmin
 	/**
 	 * Perform batch operations
 	 *
-	 * @param	integer  $group_id  The group ID which assignments are being edited
-	 * @param	array	$user_ids  An array of user IDs on which to operate
-	 * @param	string	$action	The action to perform
+	 * @param   integer  $group_id  The group ID which assignments are being edited
+	 * @param   array    $user_ids  An array of user IDs on which to operate
+	 * @param   string   $action    The action to perform
 	 *
 	 * @return  boolean  True on success, false on failure
 	 *
@@ -549,6 +575,7 @@ class UsersModelUser extends JModelAdmin
 		if ((!JFactory::getUser()->get('isRoot') && JAccess::checkGroup($group_id, 'core.admin')) || $group_id < 1)
 		{
 			$this->setError(JText::_('COM_USERS_ERROR_INVALID_GROUP'));
+
 			return false;
 		}
 
@@ -593,6 +620,7 @@ class UsersModelUser extends JModelAdmin
 			if (!$db->query())
 			{
 				$this->setError($db->getErrorMsg());
+
 				return false;
 			}
 		}
@@ -612,6 +640,7 @@ class UsersModelUser extends JModelAdmin
 			// Build the values clause for the assignment query.
 			$query->clear();
 			$groups = false;
+
 			foreach ($user_ids as $id)
 			{
 				if (!in_array($id, $users))
@@ -625,6 +654,7 @@ class UsersModelUser extends JModelAdmin
 			if (!$groups)
 			{
 				$this->setError(JText::_('COM_USERS_ERROR_NO_ADDITIONS'));
+
 				return false;
 			}
 
@@ -636,6 +666,7 @@ class UsersModelUser extends JModelAdmin
 			if (!$db->query())
 			{
 				$this->setError($db->getErrorMsg());
+
 				return false;
 			}
 		}
@@ -648,14 +679,16 @@ class UsersModelUser extends JModelAdmin
 	 *
 	 * @return  array  An array of groups
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function getGroups()
 	{
 		$user = JFactory::getUser();
+
 		if ($user->authorise('core.edit', 'com_users') && $user->authorise('core.manage', 'com_users'))
 		{
 			$model = JModelLegacy::getInstance('Groups', 'UsersModel', array('ignore_request' => true));
+
 			return $model->getItems();
 		}
 		else
@@ -667,24 +700,35 @@ class UsersModelUser extends JModelAdmin
 	/**
 	 * Gets the groups this object is assigned to
 	 *
-	 * @param	integer  $userId  The user ID to retrieve the groups for
+	 * @param   integer  $userId  The user ID to retrieve the groups for
 	 *
 	 * @return  array  An array of assigned groups
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function getAssignedGroups($userId = null)
 	{
 		// Initialise variables.
-		$userId = (!empty($userId)) ? $userId : (int)$this->getState('user.id');
+		$userId = (!empty($userId)) ? $userId : (int) $this->getState('user.id');
 
 		if (empty($userId))
 		{
 			$result = array();
-			$config = JComponentHelper::getParams('com_users');
-			if ($groupId = $config->get('new_usertype'))
+
+			$groupsIDs = $this->getForm()->getValue('groups');
+
+			if (!empty($groupsIDs))
 			{
-				$result[] = $groupId;
+				$result = $groupsIDs;
+			}
+			else
+			{
+				$config = JComponentHelper::getParams('com_users');
+
+				if ($groupId = $config->get('new_usertype'))
+				{
+					$result[] = $groupId;
+				}
 			}
 		}
 		else

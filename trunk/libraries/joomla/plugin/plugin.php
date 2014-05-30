@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Plugin
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,16 +12,16 @@ defined('JPATH_PLATFORM') or die;
 /**
  * JPlugin Class
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Plugin
- * @since		11.1
+ * @since       11.1
  */
 abstract class JPlugin extends JEvent
 {
 	/**
 	 * A JRegistry object holding the parameters for the plugin
 	 *
-	 * @var	JRegistry
+	 * @var    JRegistry
 	 * @since  11.1
 	 */
 	public $params = null;
@@ -29,7 +29,7 @@ abstract class JPlugin extends JEvent
 	/**
 	 * The name of the plugin
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $_name = null;
@@ -37,7 +37,7 @@ abstract class JPlugin extends JEvent
 	/**
 	 * The plugin type
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $_type = null;
@@ -45,12 +45,12 @@ abstract class JPlugin extends JEvent
 	/**
 	 * Constructor
 	 *
-	 * @param	object  &$subject  The object to observe
-	 * @param	array	$config	An optional associative array of configuration settings.
-	 *							 Recognized key values include 'name', 'group', 'params', 'language'
-	 *							 (this list is not meant to be comprehensive).
+	 * @param   object  &$subject  The object to observe
+	 * @param   array   $config    An optional associative array of configuration settings.
+	 *                             Recognized key values include 'name', 'group', 'params', 'language'
+	 *                             (this list is not meant to be comprehensive).
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct(&$subject, $config = array())
 	{
@@ -86,12 +86,12 @@ abstract class JPlugin extends JEvent
 	/**
 	 * Loads the plugin language file
 	 *
-	 * @param	string  $extension  The extension for which a language file should be loaded
-	 * @param	string  $basePath	The basepath to use
+	 * @param   string  $extension  The extension for which a language file should be loaded
+	 * @param   string  $basePath   The basepath to use
 	 *
 	 * @return  boolean  True, if the file has successfully loaded.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function loadLanguage($extension = '', $basePath = JPATH_ADMINISTRATOR)
 	{
@@ -101,9 +101,7 @@ abstract class JPlugin extends JEvent
 		}
 
 		$lang = JFactory::getLanguage();
-		return $lang->load(strtolower($extension), $basePath, null, false, false)
-			|| $lang->load(strtolower($extension), JPATH_PLUGINS . '/' . $this->_type . '/' . $this->_name, null, false, false)
-			|| $lang->load(strtolower($extension), $basePath, $lang->getDefault(), false, false)
-			|| $lang->load(strtolower($extension), JPATH_PLUGINS . '/' . $this->_type . '/' . $this->_name, $lang->getDefault(), false, false);
+		return $lang->load(strtolower($extension), $basePath, null, false, true)
+			|| $lang->load(strtolower($extension), JPATH_PLUGINS . '/' . $this->_type . '/' . $this->_name, null, false, true);
 	}
 }

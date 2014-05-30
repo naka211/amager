@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Log
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -19,14 +19,14 @@ jimport('joomla.log.logger');
  * the Windows based implementations this can be found in the Event Log. For Windows,
  * permissions may prevent PHP from properly outputting messages.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Log
- * @since		11.1
+ * @since       11.1
  */
 class JLoggerSysLog extends JLogger
 {
 	/**
-	 * @var	array  Translation array for JLogEntry priorities to SysLog priority names.
+	 * @var    array  Translation array for JLogEntry priorities to SysLog priority names.
 	 * @since  11.1
 	 */
 	protected $priorities = array(
@@ -42,9 +42,9 @@ class JLoggerSysLog extends JLogger
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  &$options  Log object options.
+	 * @param   array  &$options  Log object options.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct(array &$options)
 	{
@@ -95,7 +95,7 @@ class JLoggerSysLog extends JLogger
 	/**
 	 * Destructor.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __destruct()
 	{
@@ -105,11 +105,11 @@ class JLoggerSysLog extends JLogger
 	/**
 	 * Method to add an entry to the log.
 	 *
-	 * @param	JLogEntry  $entry  The log entry object to add to the log.
+	 * @param   JLogEntry  $entry  The log entry object to add to the log.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function addEntry(JLogEntry $entry)
 	{

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Base
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,9 +14,9 @@ jimport('joomla.base.node');
 /**
  * Tree Class.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Base
- * @since		11.1
+ * @since       11.1
  * @deprecated  12.3
  * @codeCoverageIgnore
  */
@@ -25,7 +25,7 @@ class JTree extends JObject
 	/**
 	 * Root node
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  11.1
 	 */
 	protected $_root = null;
@@ -33,7 +33,7 @@ class JTree extends JObject
 	/**
 	 * Current working node
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  11.1
 	 */
 	protected $_current = null;
@@ -41,7 +41,7 @@ class JTree extends JObject
 	/**
 	 * Constructor
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct()
 	{
@@ -54,12 +54,12 @@ class JTree extends JObject
 	/**
 	 * Method to add a child
 	 *
-	 * @param	array	&$node		The node to process
-	 * @param	boolean  $setCurrent  True to set as current working node
+	 * @param   array    &$node       The node to process
+	 * @param   boolean  $setCurrent  True to set as current working node
 	 *
 	 * @return  mixed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function addChild(&$node, $setCurrent = false)
 	{
@@ -77,7 +77,7 @@ class JTree extends JObject
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getParent()
 	{
@@ -91,7 +91,7 @@ class JTree extends JObject
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function reset()
 	{

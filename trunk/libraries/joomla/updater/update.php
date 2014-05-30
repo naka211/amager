@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Updater
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,116 +12,116 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Update class.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Updater
- * @since		11.1
+ * @since       11.1
  */
 class JUpdate extends JObject
 {
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $name;
 
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $description;
 
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $element;
 
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $type;
 
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $version;
 
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $infourl;
 
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $client;
 
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $group;
 
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $downloads;
 
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $tags;
 
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $maintainer;
 
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $maintainerurl;
 
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $category;
 
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $relationships;
 
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $targetplatform;
 
 	/**
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $_xml_parser;
 
 	/**
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $_stack = array('base');
 
 	/**
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $_state_store = array();
@@ -131,7 +131,7 @@ class JUpdate extends JObject
 	 *
 	 * @return  object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _getStackLocation()
 	{
@@ -143,7 +143,7 @@ class JUpdate extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _getLastTag()
 	{
@@ -153,21 +153,25 @@ class JUpdate extends JObject
 	/**
 	 * XML Start Element callback
 	 *
-	 * @param	object  $parser  Parser object
-	 * @param	string  $name	Name of the tag found
-	 * @param	array	$attrs	Attributes of the tag
+	 * @param   object  $parser  Parser object
+	 * @param   string  $name    Name of the tag found
+	 * @param   array   $attrs   Attributes of the tag
 	 *
 	 * @return  void
 	 *
-	 * @note	This is public because it is called externally
-	 * @since	11.1
+	 * @note    This is public because it is called externally
+	 * @since   11.1
 	 */
 	public function _startElement($parser, $name, $attrs = array())
 	{
 		array_push($this->_stack, $name);
 		$tag = $this->_getStackLocation();
+
 		// Reset the data
-		eval('$this->' . $tag . '->_data = "";');
+		if (isset($this->$tag))
+		{
+			$this->$tag->_data = "";
+		}
 
 		switch ($name)
 		{
@@ -181,6 +185,10 @@ class JUpdate extends JObject
 			// For everything else there's...the default!
 			default:
 				$name = strtolower($name);
+				if (!isset($this->_current_update->$name))
+				{
+					$this->_current_update->$name = new stdClass;
+				}
 				$this->_current_update->$name->_data = '';
 				foreach ($attrs as $key => $data)
 				{
@@ -194,8 +202,8 @@ class JUpdate extends JObject
 	/**
 	 * Callback for closing the element
 	 *
-	 * @param	object  $parser  Parser object
-	 * @param	string  $name	Name of element that was closed
+	 * @param   object  $parser  Parser object
+	 * @param   string  $name    Name of element that was closed
 	 *
 	 * @return  void
 	 *
@@ -250,13 +258,13 @@ class JUpdate extends JObject
 	/**
 	 * Character Parser Function
 	 *
-	 * @param	object  $parser  Parser object.
-	 * @param	object  $data	The data.
+	 * @param   object  $parser  Parser object.
+	 * @param   object  $data    The data.
 	 *
 	 * @return  void
 	 *
-	 * @note	This is public because its called externally.
-	 * @since	11.1
+	 * @note    This is public because its called externally.
+	 * @since   11.1
 	 */
 	public function _characterData($parser, $data)
 	{
@@ -265,21 +273,37 @@ class JUpdate extends JObject
 		//$this->$tag->_data .= $data;
 		// Throw the data for this item together
 		$tag = strtolower($tag);
-		$this->_current_update->$tag->_data .= $data;
+
+		//$this->_current_update->$tag->_data .= $data;
+		if (isset($this->_current_update->$tag))
+		{
+			$this->_current_update->$tag->_data .= $data;
+		}
 	}
 
 	/**
 	 * Loads an XML file from a URL.
 	 *
-	 * @param	string  $url  The URL.
+	 * @param   string  $url  The URL.
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function loadFromXML($url)
 	{
-		if (!($fp = @fopen($url, 'r')))
+		$http = JHttpFactory::getHttp();
+
+		try
+		{
+			$response = $http->get($url);
+		}
+		catch (Exception $exc)
+		{
+			$response = null;
+		}
+
+		if (is_null($response) || ($response->code != 200))
 		{
 			// TODO: Add a 'mark bad' setting here somehow
 			JError::raiseWarning('101', JText::sprintf('JLIB_UPDATER_ERROR_EXTENSION_OPEN_URL', $url));
@@ -291,18 +315,16 @@ class JUpdate extends JObject
 		xml_set_element_handler($this->xml_parser, '_startElement', '_endElement');
 		xml_set_character_data_handler($this->xml_parser, '_characterData');
 
-		while ($data = fread($fp, 8192))
+		if (!xml_parse($this->xml_parser, $response->body))
 		{
-			if (!xml_parse($this->xml_parser, $data, feof($fp)))
-			{
-				die(
-					sprintf(
-						"XML error: %s at line %d", xml_error_string(xml_get_error_code($this->xml_parser)),
-						xml_get_current_line_number($this->xml_parser)
-					)
-				);
-			}
+			die(
+				sprintf(
+					"XML error: %s at line %d", xml_error_string(xml_get_error_code($this->xml_parser)),
+					xml_get_current_line_number($this->xml_parser)
+				)
+			);
 		}
+
 		xml_parser_free($this->xml_parser);
 		return true;
 	}

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Utilities
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -37,10 +37,10 @@ defined('JPATH_PLATFORM') or die;
  * :simple.xml:
  * <?xml version="1.0" encoding="utf-8" standalone="yes"?>
  * <document>
- *	<node>
+ *   <node>
  *	<child gender="m">Tom Foo</child>
  *	<child gender="f">Tamara Bar</child>
- *	<node>
+ *   <node>
  * </document>
  *
  * ---
@@ -59,7 +59,7 @@ defined('JPATH_PLATFORM') or die;
  *
  * // access children
  * foreach($xml->root->node->children() as $child) {
- *	print $child->data();
+ *   print $child->data();
  * }
  * </code>
  *
@@ -67,10 +67,10 @@ defined('JPATH_PLATFORM') or die;
  * using datatype ANY (e.g. XHTML). With a DOM implementation you can
  * handle this.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Utilities
- * @see		 http://www.php.net/manual/en/book.simplexml.php
- * @since		11.1
+ * @see         http://www.php.net/manual/en/book.simplexml.php
+ * @since       11.1
  * @deprecated  12.1  Use SimpleXML instead
  */
 class JSimpleXML extends JObject
@@ -78,35 +78,35 @@ class JSimpleXML extends JObject
 	/**
 	 * The XML parser
 	 *
-	 * @var	 resource
-	 * @since	11.1
+	 * @var     resource
+	 * @since   11.1
 	 */
 	private $_parser = null;
 
 	/**
 	 * Document element
 	 *
-	 * @var	 object
-	 * @since	11.1
+	 * @var     object
+	 * @since   11.1
 	 */
 	public $document = null;
 
 	/**
 	 * Current object depth
 	 *
-	 * @var	  array
-	 * @since	11.1
+	 * @var      array
+	 * @since   11.1
 	 */
 	private $_stack = array();
 
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  $options  Options
+	 * @param   array  $options  Options
 	 *
-	 * @deprecated	12.1	Use SimpleXML instead.
-	 * @see			http://www.php.net/manual/en/book.simplexml.php
-	 * @since	11.1
+	 * @deprecated    12.1   Use SimpleXML instead.
+	 * @see           http://www.php.net/manual/en/book.simplexml.php
+	 * @since    11.1
 	 */
 	public function __construct($options = null)
 	{
@@ -145,15 +145,15 @@ class JSimpleXML extends JObject
 	 * JSimpleXMLElement with properties containing the data held within the XML document.
 	 * If any errors occur, it returns FALSE.
 	 *
-	 * @param	string  $string	 Well-formed XML string data
-	 * @param	string  $classname  currently ignored
+	 * @param   string  $string     Well-formed XML string data
+	 * @param   string  $classname  currently ignored
 	 *
 	 * @return  object  JSimpleXMLElement
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
-	 * @deprecated	12.1  Use simpleXML_load_string
-	 * @see			http://www.php.net/manual/en/function.simplexml-load-string.php
+	 * @deprecated    12.1  Use simpleXML_load_string
+	 * @see           http://www.php.net/manual/en/function.simplexml-load-string.php
 	 */
 	public function loadString($string, $classname = null)
 	{
@@ -172,14 +172,14 @@ class JSimpleXML extends JObject
 	 * to an object  of class JSimpleXMLElement. If any errors occur during file access or
 	 * interpretation, the function returns FALSE.
 	 *
-	 * @param	string  $path		Path to XML file containing a well-formed XML document
-	 * @param	string  $classname  currently ignored
+	 * @param   string  $path       Path to XML file containing a well-formed XML document
+	 * @param   string  $classname  currently ignored
 	 *
 	 * @return  boolean  True if successful, false if file empty
 	 *
-	 * @deprecated	 12.1  Use simplexml_load_file instead
-	 * @see			http://www.php.net/manual/en/function.simplexml-load-file.php
-	 * @since	11.1
+	 * @deprecated     12.1  Use simplexml_load_file instead
+	 * @see            http://www.php.net/manual/en/function.simplexml-load-file.php
+	 * @since   11.1
 	 */
 	public function loadFile($path, $classname = null)
 	{
@@ -214,14 +214,14 @@ class JSimpleXML extends JObject
 	 * This new object can then be used as a native JSimpleXML element. If any errors occur,
 	 * it returns FALSE.
 	 *
-	 * @param	string  $node		DOM  document
-	 * @param	string  $classname  currently ignored
+	 * @param   string  $node       DOM  document
+	 * @param   string  $classname  currently ignored
 	 *
 	 * @return  mixed  JSimpleXMLElement or false if any errors occur
 	 *
-	 * @deprecated	12.1	use simplexml_import_dom instead.
-	 * @see			http://www.php.net/manual/en/function.simplexml-import-dom.php
-	 * @since	11.1
+	 * @deprecated    12.1    use simplexml_import_dom instead.
+	 * @see           http://www.php.net/manual/en/function.simplexml-import-dom.php
+	 * @since   11.1
 	 */
 	public function importDOM($node, $classname = null)
 	{
@@ -236,9 +236,9 @@ class JSimpleXML extends JObject
 	 *
 	 * @return  resource  XML parser resource handle
 	 *
-	 * @deprecated	12.1	Use SimpleXMLElement
-	 * @see			http://www.php.net/manual/en/class.simplexmlelement.php
-	 * @since	11.1
+	 * @deprecated    12.1   Use SimpleXMLElement
+	 * @see           http://www.php.net/manual/en/class.simplexmlelement.php
+	 * @since   11.1
 	 */
 	public function getParser()
 	{
@@ -251,13 +251,13 @@ class JSimpleXML extends JObject
 	/**
 	 * Set the parser
 	 *
-	 * @param	resource  $parser  XML parser resource handle.
+	 * @param   resource  $parser  XML parser resource handle.
 	 *
 	 * @return  void
 	 *
-	 * @deprecated	12.1  Use SimpleXML
-	 * @see	 http://www.php.net/manual/en/class.simplexml.php
-	 * @since	11.1
+	 * @deprecated    12.1  Use SimpleXML
+	 * @see     http://www.php.net/manual/en/class.simplexml.php
+	 * @since   11.1
 	 */
 	public function setParser($parser)
 	{
@@ -272,13 +272,13 @@ class JSimpleXML extends JObject
 	 *
 	 * Parses an XML document. The handlers for the configured events are called as many times as necessary.
 	 *
-	 * @param	string  $data  data to parse
+	 * @param   string  $data  data to parse
 	 *
 	 * @return  void
 	 *
-	 * @deprecated	12.1
-	 * @see	 http://www.php.net/manual/en/class.simplexml.php
-	 * @since	11.1
+	 * @deprecated    12.1
+	 * @see     http://www.php.net/manual/en/class.simplexml.php
+	 * @since   11.1
 	 */
 	protected function _parse($data = '')
 	{
@@ -301,16 +301,16 @@ class JSimpleXML extends JObject
 	/**
 	 * Handles an XML parsing error
 	 *
-	 * @param	integer  $code  XML Error Code.
-	 * @param	integer  $line  Line on which the error happened.
-	 * @param	integer  $col	Column on which the error happened.
+	 * @param   integer  $code  XML Error Code.
+	 * @param   integer  $line  Line on which the error happened.
+	 * @param   integer  $col   Column on which the error happened.
 	 *
 	 * @return  void
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 *
-	 * @deprecated	12.1	Use PHP Exception
+	 * @deprecated   12.1   Use PHP Exception
 	 */
 	protected function _handleError($code, $line, $col)
 	{
@@ -326,9 +326,9 @@ class JSimpleXML extends JObject
 	 *
 	 * @return  object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
-	 * @deprecated	12.1
+	 * @deprecated   12.1
 	 */
 	protected function _getStackLocation()
 	{
@@ -347,13 +347,13 @@ class JSimpleXML extends JObject
 	/**
 	 * Handler function for the start of a tag
 	 *
-	 * @param	resource  $parser  The XML parser.
-	 * @param	string	$name	The name of the element.
-	 * @param	array	 $attrs	A key-value array (optional) of the attributes for the element.
+	 * @param   resource  $parser  The XML parser.
+	 * @param   string    $name    The name of the element.
+	 * @param   array     $attrs   A key-value array (optional) of the attributes for the element.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
 	 * @deprecated  12.1
 	 */
@@ -390,13 +390,13 @@ class JSimpleXML extends JObject
 	/**
 	 * Handler function for the end of a tag
 	 *
-	 * @param	resource  $parser  The XML parser.
-	 * @param	string	$name	The name of the element.
+	 * @param   resource  $parser  The XML parser.
+	 * @param   string    $name    The name of the element.
 	 *
 	 * @return  void
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _endElement($parser, $name)
 	{
@@ -410,13 +410,13 @@ class JSimpleXML extends JObject
 	/**
 	 * Handler function for the character data within a tag
 	 *
-	 * @param	resource  $parser  The XML parser.
-	 * @param	string	$data	The CDATA for the element.
+	 * @param   resource  $parser  The XML parser.
+	 * @param   string    $data    The CDATA for the element.
 	 *
 	 * @return  void
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _characterData($parser, $data)
 	{
@@ -445,11 +445,11 @@ class JSimpleXML extends JObject
  * To loop through all of the direct children of a specific tag for this object, it
  * is probably easier to use the arrays of the specific tag names, as explained above.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Utilities
- * @see		 http://www.php.net/manual/en/class.simplexmlelement.php
- * @since		11.1
- * @deprecated  12.1	Use SimpleXMLElement instead
+ * @see         http://www.php.net/manual/en/class.simplexmlelement.php
+ * @since       11.1
+ * @deprecated  12.1   Use SimpleXMLElement instead
  */
 class JSimpleXMLElement extends JObject
 {
@@ -457,51 +457,51 @@ class JSimpleXMLElement extends JObject
 	 * Array with the attributes of this XML element
 	 *
 	 * @var array
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public $_attributes = array();
 
 	/**
 	 * The name of the element
 	 *
-	 * @var	 string
-	 * @since	11.1
+	 * @var     string
+	 * @since   11.1
 	 */
 	public $_name = '';
 
 	/**
 	 * The data the element contains
 	 *
-	 * @var	 string
-	 * @since	11.1
+	 * @var     string
+	 * @since   11.1
 	 */
 	public $_data = '';
 
 	/**
 	 * Array of references to the objects of all direct children of this XML object
 	 *
-	 * @var	 array
-	 * @since	11.1
+	 * @var     array
+	 * @since   11.1
 	 */
 	public $_children = array();
 
 	/**
 	 * The level of this XML element
 	 *
-	 * @var	 int
-	 * @since	11.1
+	 * @var     int
+	 * @since   11.1
 	 */
 	public $_level = 0;
 
 	/**
 	 * Constructor, sets up all the default values
 	 *
-	 * @param	string	$name	The name of the element.
-	 * @param	array	$attrs  A key-value array (optional) of the attributes for the element.
-	 * @param	integer  $level  The level (optional) of the element.
+	 * @param   string   $name   The name of the element.
+	 * @param   array    $attrs  A key-value array (optional) of the attributes for the element.
+	 * @param   integer  $level  The level (optional) of the element.
 	 *
 	 * @deprecated  12.1 Use SimpleXMLElement
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($name, $attrs = array(), $level = 0)
 	{
@@ -523,8 +523,8 @@ class JSimpleXMLElement extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @deprecated	12.1
-	 * @since	11.1
+	 * @deprecated   12.1
+	 * @since   11.1
 	 */
 
 	public function name()
@@ -538,13 +538,13 @@ class JSimpleXMLElement extends JObject
 	/**
 	 * Get the an attribute of the element
 	 *
-	 * @param	string  $attribute  The name of the attribute
+	 * @param   string  $attribute  The name of the attribute
 	 *
-	 * @return  mixed	If an attribute is given will return the attribute if it exist.
-	 *				  If no attribute is given will return the complete attributes array
+	 * @return  mixed   If an attribute is given will return the attribute if it exist.
+	 *                  If no attribute is given will return the complete attributes array
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function attributes($attribute = null)
 	{
@@ -564,8 +564,8 @@ class JSimpleXMLElement extends JObject
 	 *
 	 * @return  string
 	 *
-	 * @deprecated	12.1  Use SimpleXMLElement
-	 * @since	11.1
+	 * @deprecated   12.1  Use SimpleXMLElement
+	 * @since   11.1
 	 */
 
 	public function data()
@@ -579,12 +579,12 @@ class JSimpleXMLElement extends JObject
 	/**
 	 * Set the data of the element
 	 *
-	 * @param	string  $data  The CDATA for the element.
+	 * @param   string  $data  The CDATA for the element.
 	 *
 	 * @return  string
 	 *
 	 * @deprecated  12.1  Use SimpleXMLElement
-	 * @since	11.1
+	 * @since   11.1
 	 */
 
 	public function setData($data)
@@ -600,8 +600,8 @@ class JSimpleXMLElement extends JObject
 	 *
 	 * @return  array
 	 *
-	 * @deprecated	12.1
-	 * @since	11.1
+	 * @deprecated   12.1
+	 * @since   11.1
 	 */
 
 	public function children()
@@ -615,10 +615,10 @@ class JSimpleXMLElement extends JObject
 	/**
 	 * Get the level of the element
 	 *
-	 * @return		integer
+	 * @return       integer
 	 *
-	 * @since	11.1
-	 * @deprecated	12.1
+	 * @since   11.1
+	 * @deprecated   12.1
 	 */
 	public function level()
 	{
@@ -631,13 +631,13 @@ class JSimpleXMLElement extends JObject
 	/**
 	 * Adds an attribute to the element
 	 *
-	 * @param	string  $name	The key
-	 * @param	array	$value  The value for the key
+	 * @param   string  $name   The key
+	 * @param   array   $value  The value for the key
 	 *
 	 * @return  void
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function addAttribute($name, $value)
 	{
@@ -651,12 +651,12 @@ class JSimpleXMLElement extends JObject
 	/**
 	 * Removes an attribute from the element
 	 *
-	 * @param	string  $name  The name of the attribute.
+	 * @param   string  $name  The name of the attribute.
 	 *
 	 * @return  void
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function removeAttribute($name)
 	{
@@ -669,14 +669,14 @@ class JSimpleXMLElement extends JObject
 	/**
 	 * Adds a direct child to the element
 	 *
-	 * @param	string	$name	The name of the element.
-	 * @param	array	$attrs  An key-value array of the element attributes.
-	 * @param	integer  $level  The level of the element (optional).
+	 * @param   string   $name   The name of the element.
+	 * @param   array    $attrs  An key-value array of the element attributes.
+	 * @param   integer  $level  The level of the element (optional).
 	 *
 	 * @return  JSimpleXMLElement  The added child object
 	 *
-	 * @deprecated	12.1
-	 * @since	11.1
+	 * @deprecated   12.1
+	 * @since   11.1
 	 */
 	public function addChild($name, $attrs = array(), $level = null)
 	{
@@ -713,11 +713,11 @@ class JSimpleXMLElement extends JObject
 	/**
 	 * Remove the child node.
 	 *
-	 * @param	JSimpleXmlElement  &$child  The child element to remove.
+	 * @param   JSimpleXmlElement  &$child  The child element to remove.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.1
 	 */
 	public function removeChild(&$child)
@@ -748,12 +748,12 @@ class JSimpleXMLElement extends JObject
 	/**
 	 * Get an element in the document by / separated path
 	 *
-	 * @param	string  $path  The / separated path to the element
+	 * @param   string  $path  The / separated path to the element
 	 *
 	 * @return  object  JSimpleXMLElement
 	 *
-	 * @deprecated	12.1
-	 * @since	11.1
+	 * @deprecated   12.1
+	 * @since   11.1
 	 */
 	public function getElementByPath($path)
 	{
@@ -793,13 +793,13 @@ class JSimpleXMLElement extends JObject
 	 * Traverses the tree calling the $callback(JSimpleXMLElement
 	 * $this, mixed $args=array()) function with each JSimpleXMLElement.
 	 *
-	 * @param	string  $callback  Function name
-	 * @param	array	$args	  The arguments (optional) for the function callback.
+	 * @param   string  $callback  Function name
+	 * @param   array   $args      The arguments (optional) for the function callback.
 	 *
 	 * @return  void
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function map($callback, $args = array())
 	{
@@ -820,12 +820,12 @@ class JSimpleXMLElement extends JObject
 	/**
 	 * Return a well-formed XML string based on SimpleXML element
 	 *
-	 * @param	boolean  $whitespace  True if whitespace should be prepended to the string
+	 * @param   boolean  $whitespace  True if whitespace should be prepended to the string
 	 *
 	 * @return  string
 	 *
-	 * @deprecated	12.1
-	 * @since	11.1
+	 * @deprecated   12.1
+	 * @since   11.1
 	 */
 	public function toString($whitespace = true)
 	{

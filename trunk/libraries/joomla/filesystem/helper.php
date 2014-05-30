@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -17,21 +17,21 @@ jimport('joomla.filesystem.folder');
  *
  * Holds support functions for the filesystem, particularly the stream
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
- * @since		11.1
+ * @since       11.1
  */
 class JFilesystemHelper
 {
 	/**
 	 * Remote file size function for streams that don't support it
 	 *
-	 * @param	string  $url  TODO Add text
+	 * @param   string  $url  TODO Add text
 	 *
 	 * @return  mixed
 	 *
-	 * @see	 http://www.php.net/manual/en/function.filesize.php#71098
-	 * @since	11.1
+	 * @see     http://www.php.net/manual/en/function.filesize.php#71098
+	 * @since   11.1
 	 */
 	public static function remotefsize($url)
 	{
@@ -120,13 +120,13 @@ class JFilesystemHelper
 	/**
 	 * Quick FTP chmod
 	 *
-	 * @param	string	$url	Link identifier
-	 * @param	integer  $mode  The new permissions, given as an octal value.
+	 * @param   string   $url   Link identifier
+	 * @param   integer  $mode  The new permissions, given as an octal value.
 	 *
 	 * @return  mixed
 	 *
-	 * @see	 http://www.php.net/manual/en/function.ftp-chmod.php
-	 * @since	11.1
+	 * @see     http://www.php.net/manual/en/function.ftp-chmod.php
+	 * @since   11.1
 	 */
 	public static function ftpChmod($url, $mode)
 	{
@@ -197,7 +197,7 @@ class JFilesystemHelper
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getWriteModes()
 	{
@@ -212,7 +212,7 @@ class JFilesystemHelper
 	 *
 	 * @return  array  Streams
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getSupported()
 	{
@@ -232,7 +232,7 @@ class JFilesystemHelper
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getTransports()
 	{
@@ -245,7 +245,7 @@ class JFilesystemHelper
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getFilters()
 	{
@@ -259,7 +259,7 @@ class JFilesystemHelper
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getJStreams()
 	{
@@ -276,11 +276,11 @@ class JFilesystemHelper
 	/**
 	 * Determine if a stream is a Joomla stream.
 	 *
-	 * @param	string  $streamname  The name of a stream
+	 * @param   string  $streamname  The name of a stream
 	 *
 	 * @return  boolean  True for a Joomla Stream
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function isJoomlaStream($streamname)
 	{

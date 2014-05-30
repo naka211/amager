@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Site
+ * @package     Joomla.Site
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -14,16 +14,16 @@ jimport('joomla.application.component.modellist');
 /**
  * Suggestions model class for the Finder package.
  *
- * @package	 Joomla.Site
+ * @package     Joomla.Site
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderModelSuggestions extends JModelList
 {
 	/**
 	 * Context string for the model type.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	protected $context = 'com_finder.suggestions';
@@ -33,7 +33,7 @@ class FinderModelSuggestions extends JModelList
 	 *
 	 * @return  array  An array of data items.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function getItems()
 	{
@@ -54,7 +54,7 @@ class FinderModelSuggestions extends JModelList
 	 *
 	 * @return  JDatabaseQuery  A database query
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function getListQuery()
 	{
@@ -80,11 +80,11 @@ class FinderModelSuggestions extends JModelList
 	 * different modules that might need different sets of data or different
 	 * ordering requirements.
 	 *
-	 * @param	string  $id  An identifier string to generate the store id. [optional]
+	 * @param   string  $id  An identifier string to generate the store id. [optional]
 	 *
 	 * @return  string  A store id.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function getStoreId($id = '')
 	{
@@ -104,7 +104,7 @@ class FinderModelSuggestions extends JModelList
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function populateState()
 	{

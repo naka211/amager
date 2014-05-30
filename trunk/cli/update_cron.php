@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Cli
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -48,7 +48,7 @@ require_once JPATH_CONFIGURATION . '/configuration.php';
  * them in the database, speeding up your administrator.
  *
  * @package  Joomla.CLI
- * @since	2.5
+ * @since    2.5
  */
 class Updatecron extends JApplicationCli
 {
@@ -57,7 +57,7 @@ class Updatecron extends JApplicationCli
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function doExecute()
 	{

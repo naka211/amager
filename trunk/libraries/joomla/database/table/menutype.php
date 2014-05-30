@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,16 +14,16 @@ jimport('joomla.database.table');
 /**
  * Menu Types table
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Table
- * @since		11.1
+ * @since       11.1
  */
 class JTableMenuType extends JTable
 {
 	/**
 	 * Constructor
 	 *
-	 * @param	JDatabase  &$db  A database connector object.
+	 * @param   JDatabase  &$db  A database connector object.
 	 *
 	 * @since  11.1
 	 */
@@ -37,8 +37,8 @@ class JTableMenuType extends JTable
 	 *
 	 * @return  boolean  True on success, false on failure
 	 *
-	 * @see	 JTable::check
-	 * @since	11.1
+	 * @see     JTable::check
+	 * @since   11.1
 	 */
 	public function check()
 	{
@@ -79,12 +79,12 @@ class JTableMenuType extends JTable
 	 * a new row will be inserted into the database with the properties from the
 	 * JTable instance.
 	 *
-	 * @param	boolean  $updateNulls  True to update fields even if they are null.
+	 * @param   boolean  $updateNulls  True to update fields even if they are null.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @link	http://docs.joomla.org/JTable/store
-	 * @since	11.1
+	 * @link    http://docs.joomla.org/JTable/store
+	 * @since   11.1
 	 */
 	public function store($updateNulls = false)
 	{
@@ -164,12 +164,12 @@ class JTableMenuType extends JTable
 	/**
 	 * Method to delete a row from the database table by primary key value.
 	 *
-	 * @param	mixed  $pk  An optional primary key value to delete.  If not set the instance property value is used.
+	 * @param   mixed  $pk  An optional primary key value to delete.  If not set the instance property value is used.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @link	http://docs.joomla.org/JTable/delete
-	 * @since	11.1
+	 * @link    http://docs.joomla.org/JTable/delete
+	 * @since   11.1
 	 */
 	public function delete($pk = null)
 	{

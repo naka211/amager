@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -18,9 +18,6 @@ $canDo = UsersHelper::getActions();
 
 // Get the form fieldsets.
 $fieldsets = $this->form->getFieldsets();
-
-$user =& JUser::getInstance(JRequest::getVar('id'));
-$customerArr = array(1=>"Privat", 2=>"Erhverv", 3=>"Offentlig instans");
 ?>
 
 <script type="text/javascript">
@@ -30,15 +27,6 @@ $customerArr = array(1=>"Privat", 2=>"Erhverv", 3=>"Offentlig instans");
 			Joomla.submitform(task, document.getElementById('user-form'));
 		}
 	}
-	window.addEvent('domready', function() {
-		$("jform_firstname").addEvent('keyup', function(){
-			$("jform_name").set("value", $("jform_firstname").get("value") +' '+$("jform_lastname").get("value"));
-		})
-		$("jform_lastname").addEvent("keyup", function(){
-			$("jform_name").set("value", $("jform_firstname").get("value") +' '+$("jform_lastname").get("value"));
-		})
-	});
-	
 </script>
 
 <form action="<?php echo JRoute::_('index.php?option=com_users&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="user-form" class="form-validate" enctype="multipart/form-data">
@@ -46,17 +34,9 @@ $customerArr = array(1=>"Privat", 2=>"Erhverv", 3=>"Offentlig instans");
 		<fieldset class="adminform">
 			<legend><?php echo JText::_('COM_USERS_USER_ACCOUNT_DETAILS'); ?></legend>
 			<ul class="adminformlist">
-            <label>Customer type</label>
-            <input type="text" readonly="readonly" class="readonly" size="22" value="<?php echo $customerArr[$user->mwctype];?>">
-            <input type="hidden" value="<?php echo $user->mwctype;?>" id="jform_mwctype" name="jform[mwctype]">
-			<?php foreach($this->form->getFieldset('user_details') as $field) ://print_r($field->fieldname);exit;
-				if(($user->mwctype != 2 && $field->fieldname != "company" && $field->fieldname != "cvr") || ($user->mwctype != 3 && $field->fieldname != "ean" && $field->fieldname != "authority" && $field->fieldname != "order" && $field->fieldname != "person")){
-			?>
+			<?php foreach($this->form->getFieldset('user_details') as $field) :?>
 				<li><?php echo $field->label; ?>
 				<?php echo $field->input; ?></li>
-                <?php 
-				}
-				?>
 			<?php endforeach; ?>
 			</ul>
 		</fieldset>

@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_config
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -237,7 +237,7 @@ class ConfigModelApplication extends JModelForm
 	 *
 	 * @param	JRegistry  $config	A JRegistry object containing all global config data.
 	 *
-	 * @return	bool		True on success, false on failure.
+	 * @return	bool	   True on success, false on failure.
 	 *
 	 * @since	2.5.4
 	 */

@@ -1,9 +1,9 @@
 <?php
 /**
- * @package	Joomla.Platform
+ * @package    Joomla.Platform
  *
- * @copyright  Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	GNU General Public License version 2 or later; see LICENSE
+ * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,66 +12,66 @@ defined('JPATH_PLATFORM') or die;
  * Joomla Platform Factory class
  *
  * @package  Joomla.Platform
- * @since	11.1
+ * @since    11.1
  */
 abstract class JFactory
 {
 	/**
-	 * @var	JApplication
+	 * @var    JApplication
 	 * @since  11.1
 	 */
 	public static $application = null;
 
 	/**
-	 * @var	JCache
+	 * @var    JCache
 	 * @since  11.1
 	 */
 	public static $cache = null;
 
 	/**
-	 * @var	JConfig
+	 * @var    JConfig
 	 * @since  11.1
 	 */
 	public static $config = null;
 
 	/**
-	 * @var	array
+	 * @var    array
 	 * @since  11.3
 	 */
 	public static $dates = array();
 
 	/**
-	 * @var	JSession
+	 * @var    JSession
 	 * @since  11.1
 	 */
 	public static $session = null;
 
 	/**
-	 * @var	JLanguage
+	 * @var    JLanguage
 	 * @since  11.1
 	 */
 	public static $language = null;
 
 	/**
-	 * @var	JDocument
+	 * @var    JDocument
 	 * @since  11.1
 	 */
 	public static $document = null;
 
 	/**
-	 * @var	JAccess
+	 * @var    JAccess
 	 * @since  11.1
 	 */
 	public static $acl = null;
 
 	/**
-	 * @var	JDatabase
+	 * @var    JDatabase
 	 * @since  11.1
 	 */
 	public static $database = null;
 
 	/**
-	 * @var	JMail
+	 * @var    JMail
 	 * @since  11.1
 	 */
 	public static $mailer = null;
@@ -81,14 +81,14 @@ abstract class JFactory
 	 *
 	 * Returns the global {@link JApplication} object, only creating it if it doesn't already exist.
 	 *
-	 * @param	mixed	$id	  A client identifier or name.
-	 * @param	array	$config  An optional associative array of configuration settings.
-	 * @param	string  $prefix  Application prefix
+	 * @param   mixed   $id      A client identifier or name.
+	 * @param   array   $config  An optional associative array of configuration settings.
+	 * @param   string  $prefix  Application prefix
 	 *
 	 * @return  JApplication object
 	 *
-	 * @see	 JApplication
-	 * @since	11.1
+	 * @see     JApplication
+	 * @since   11.1
 	 */
 	public static function getApplication($id = null, $config = array(), $prefix = 'J')
 	{
@@ -110,13 +110,13 @@ abstract class JFactory
 	 *
 	 * Returns the global {@link JRegistry} object, only creating it if it doesn't already exist.
 	 *
-	 * @param	string  $file  The path to the configuration file
-	 * @param	string  $type  The type of the configuration file
+	 * @param   string  $file  The path to the configuration file
+	 * @param   string  $type  The type of the configuration file
 	 *
 	 * @return  JRegistry
 	 *
-	 * @see	 JRegistry
-	 * @since	11.1
+	 * @see     JRegistry
+	 * @since   11.1
 	 */
 	public static function getConfig($file = null, $type = 'PHP')
 	{
@@ -138,12 +138,12 @@ abstract class JFactory
 	 *
 	 * Returns the global {@link JSession} object, only creating it if it doesn't already exist.
 	 *
-	 * @param	array  $options  An array containing session options
+	 * @param   array  $options  An array containing session options
 	 *
 	 * @return  JSession object
 	 *
-	 * @see	 JSession
-	 * @since	11.1
+	 * @see     JSession
+	 * @since   11.1
 	 */
 	public static function getSession($options = array())
 	{
@@ -162,8 +162,8 @@ abstract class JFactory
 	 *
 	 * @return  JLanguage object
 	 *
-	 * @see	 JLanguage
-	 * @since	11.1
+	 * @see     JLanguage
+	 * @since   11.1
 	 */
 	public static function getLanguage()
 	{
@@ -182,8 +182,8 @@ abstract class JFactory
 	 *
 	 * @return  JDocument object
 	 *
-	 * @see	 JDocument
-	 * @since	11.1
+	 * @see     JDocument
+	 * @since   11.1
 	 */
 	public static function getDocument()
 	{
@@ -200,12 +200,12 @@ abstract class JFactory
 	 *
 	 * Returns the global {@link JUser} object, only creating it if it doesn't already exist.
 	 *
-	 * @param	integer  $id  The user to load - Can be an integer or string - If string, it is converted to ID automatically.
+	 * @param   integer  $id  The user to load - Can be an integer or string - If string, it is converted to ID automatically.
 	 *
 	 * @return  JUser object
 	 *
-	 * @see	 JUser
-	 * @since	11.1
+	 * @see     JUser
+	 * @since   11.1
 	 */
 	public static function getUser($id = null)
 	{
@@ -238,13 +238,13 @@ abstract class JFactory
 	 *
 	 * Returns the global {@link JCache} object
 	 *
-	 * @param	string  $group	The cache group name
-	 * @param	string  $handler  The handler to use
-	 * @param	string  $storage  The storage method
+	 * @param   string  $group    The cache group name
+	 * @param   string  $handler  The handler to use
+	 * @param   string  $storage  The storage method
 	 *
 	 * @return  JCache object
 	 *
-	 * @see	 JCache
+	 * @see     JCache
 	 */
 	public static function getCache($group = '', $handler = 'callback', $storage = null)
 	{
@@ -294,19 +294,14 @@ abstract class JFactory
 	 *
 	 * @return  JDatabase object
 	 *
-	 * @see	 JDatabase
-	 * @since	11.1
+	 * @see     JDatabase
+	 * @since   11.1
 	 */
 	public static function getDbo()
 	{
 		if (!self::$database)
 		{
-			//get the debug configuration setting
-			$conf = self::getConfig();
-			$debug = $conf->get('debug');
-
 			self::$database = self::createDbo();
-			self::$database->setDebug($debug);
 		}
 
 		return self::$database;
@@ -319,8 +314,8 @@ abstract class JFactory
 	 *
 	 * @return  JMail object
 	 *
-	 * @see	 JMail
-	 * @since	11.1
+	 * @see     JMail
+	 * @since   11.1
 	 */
 	public static function getMailer()
 	{
@@ -336,12 +331,12 @@ abstract class JFactory
 	/**
 	 * Get a parsed XML Feed Source
 	 *
-	 * @param	string	$url		 Url for feed source.
-	 * @param	integer  $cache_time  Time to cache feed for (using internal cache mechanism).
+	 * @param   string   $url         Url for feed source.
+	 * @param   integer  $cache_time  Time to cache feed for (using internal cache mechanism).
 	 *
 	 * @return  mixed  SimplePie parsed object on success, false on failure.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getFeedParser($url, $cache_time = 0)
 	{
@@ -377,14 +372,14 @@ abstract class JFactory
 	/**
 	 * Get an XML document
 	 *
-	 * @param	string  $type	 The type of XML parser needed 'DOM', 'RSS' or 'Simple'
-	 * @param	array	$options  ['rssUrl'] the rss url to parse when using "RSS", ['cache_time'] with '
-	 *							 RSS' - feed cache time. If not defined defaults to 3600 sec
+	 * @param   string  $type     The type of XML parser needed 'DOM', 'RSS' or 'Simple'
+	 * @param   array   $options  ['rssUrl'] the rss url to parse when using "RSS", ['cache_time'] with '
+	 *                             RSS' - feed cache time. If not defined defaults to 3600 sec
 	 *
 	 * @return  object  Parsed XML document object
 	 *
-	 * @deprecated	12.1	Use JXMLElement instead.
-	 * @see			JXMLElement
+	 * @deprecated    12.1   Use JXMLElement instead.
+	 * @see           JXMLElement
 	 */
 	public static function getXMLParser($type = '', $options = array())
 	{
@@ -422,14 +417,14 @@ abstract class JFactory
 	/**
 	 * Reads a XML file.
 	 *
-	 * @param	string	$data	Full path and file name.
-	 * @param	boolean  $isFile  true to load a file or false to load a string.
+	 * @param   string   $data    Full path and file name.
+	 * @param   boolean  $isFile  true to load a file or false to load a string.
 	 *
-	 * @return  mixed	JXMLElement on success or false on error.
+	 * @return  mixed    JXMLElement on success or false on error.
 	 *
-	 * @see	 JXMLElement
-	 * @since	11.1
-	 * @todo	This may go in a separate class - error reporting may be improved.
+	 * @see     JXMLElement
+	 * @since   11.1
+	 * @todo    This may go in a separate class - error reporting may be improved.
 	 */
 	public static function getXML($data, $isFile = true)
 	{
@@ -471,11 +466,11 @@ abstract class JFactory
 	/**
 	 * Get an editor object.
 	 *
-	 * @param	string  $editor  The editor to load, depends on the editor plugins that are installed
+	 * @param   string  $editor  The editor to load, depends on the editor plugins that are installed
 	 *
 	 * @return  JEditor object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getEditor($editor = null)
 	{
@@ -494,12 +489,12 @@ abstract class JFactory
 	/**
 	 * Return a reference to the {@link JURI} object
 	 *
-	 * @param	string  $uri  Uri name.
+	 * @param   string  $uri  Uri name.
 	 *
 	 * @return  JURI object
 	 *
-	 * @see	 JURI
-	 * @since	11.1
+	 * @see     JURI
+	 * @since   11.1
 	 */
 	public static function getURI($uri = 'SERVER')
 	{
@@ -511,13 +506,13 @@ abstract class JFactory
 	/**
 	 * Return the {@link JDate} object
 	 *
-	 * @param	mixed  $time	  The initial time for the JDate object
-	 * @param	mixed  $tzOffset  The timezone offset.
+	 * @param   mixed  $time      The initial time for the JDate object
+	 * @param   mixed  $tzOffset  The timezone offset.
 	 *
 	 * @return  JDate object
 	 *
-	 * @see	 JDate
-	 * @since	11.1
+	 * @see     JDate
+	 * @since   11.1
 	 */
 	public static function getDate($time = 'now', $tzOffset = null)
 	{
@@ -565,14 +560,14 @@ abstract class JFactory
 	/**
 	 * Create a configuration object
 	 *
-	 * @param	string  $file		The path to the configuration file.
-	 * @param	string  $type		The type of the configuration file.
-	 * @param	string  $namespace  The namespace of the configuration file.
+	 * @param   string  $file       The path to the configuration file.
+	 * @param   string  $type       The type of the configuration file.
+	 * @param   string  $namespace  The namespace of the configuration file.
 	 *
 	 * @return  JRegistry
 	 *
-	 * @see	 JRegistry
-	 * @since	11.1
+	 * @see     JRegistry
+	 * @since   11.1
 	 * @deprecated 12.3
 	 */
 	protected static function _createConfig($file, $type = 'PHP', $namespace = '')
@@ -585,14 +580,14 @@ abstract class JFactory
 	/**
 	 * Create a configuration object
 	 *
-	 * @param	string  $file		The path to the configuration file.
-	 * @param	string  $type		The type of the configuration file.
-	 * @param	string  $namespace  The namespace of the configuration file.
+	 * @param   string  $file       The path to the configuration file.
+	 * @param   string  $type       The type of the configuration file.
+	 * @param   string  $namespace  The namespace of the configuration file.
 	 *
 	 * @return  JRegistry
 	 *
-	 * @see	 JRegistry
-	 * @since	11.1
+	 * @see     JRegistry
+	 * @since   11.1
 	 */
 	protected static function createConfig($file, $type = 'PHP', $namespace = '')
 	{
@@ -626,11 +621,11 @@ abstract class JFactory
 	/**
 	 * Create a session object
 	 *
-	 * @param	array  $options  An array containing session options
+	 * @param   array  $options  An array containing session options
 	 *
 	 * @return  JSession object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated 12.3
 	 */
 	protected static function _createSession($options = array())
@@ -643,11 +638,11 @@ abstract class JFactory
 	/**
 	 * Create a session object
 	 *
-	 * @param	array  $options  An array containing session options
+	 * @param   array  $options  An array containing session options
 	 *
 	 * @return  JSession object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected static function createSession($options = array())
 	{
@@ -672,8 +667,8 @@ abstract class JFactory
 	 *
 	 * @return  JDatabase object
 	 *
-	 * @see	 JDatabase
-	 * @since	11.1
+	 * @see     JDatabase
+	 * @since   11.1
 	 * @deprecated 12.3
 	 */
 	protected static function _createDbo()
@@ -688,8 +683,8 @@ abstract class JFactory
 	 *
 	 * @return  JDatabase object
 	 *
-	 * @see	 JDatabase
-	 * @since	11.1
+	 * @see     JDatabase
+	 * @since   11.1
 	 */
 	protected static function createDbo()
 	{
@@ -733,8 +728,8 @@ abstract class JFactory
 	 *
 	 * @return  JMail object
 	 *
-	 * @see	 JMail
-	 * @since	11.1
+	 * @see     JMail
+	 * @since   11.1
 	 * @deprecated 12.3
 	 */
 	protected static function _createMailer()
@@ -749,8 +744,8 @@ abstract class JFactory
 	 *
 	 * @return  JMail object
 	 *
-	 * @see	 JMail
-	 * @since	11.1
+	 * @see     JMail
+	 * @since   11.1
 	 */
 	protected static function createMailer()
 	{
@@ -796,8 +791,8 @@ abstract class JFactory
 	 *
 	 * @return  JLanguage object
 	 *
-	 * @see	 JLanguage
-	 * @since	11.1
+	 * @see     JLanguage
+	 * @since   11.1
 	 * @deprecated 12.3
 	 */
 	protected static function _createLanguage()
@@ -812,8 +807,8 @@ abstract class JFactory
 	 *
 	 * @return  JLanguage object
 	 *
-	 * @see	 JLanguage
-	 * @since	11.1
+	 * @see     JLanguage
+	 * @since   11.1
 	 */
 	protected static function createLanguage()
 	{
@@ -830,8 +825,8 @@ abstract class JFactory
 	 *
 	 * @return  JDocument object
 	 *
-	 * @see	 JDocument
-	 * @since	11.1
+	 * @see     JDocument
+	 * @since   11.1
 	 * @deprecated 12.3
 	 */
 	protected static function _createDocument()
@@ -846,8 +841,8 @@ abstract class JFactory
 	 *
 	 * @return  JDocument object
 	 *
-	 * @see	 JDocument
-	 * @since	11.1
+	 * @see     JDocument
+	 * @since   11.1
 	 */
 	protected static function createDocument()
 	{
@@ -867,15 +862,15 @@ abstract class JFactory
 	/**
 	 * Creates a new stream object with appropriate prefix
 	 *
-	 * @param	boolean  $use_prefix	Prefix the connections for writing
-	 * @param	boolean  $use_network  Use network if available for writing; use false to disable (e.g. FTP, SCP)
-	 * @param	string	$ua			UA User agent to use
-	 * @param	boolean  $uamask		User agent masking (prefix Mozilla)
+	 * @param   boolean  $use_prefix   Prefix the connections for writing
+	 * @param   boolean  $use_network  Use network if available for writing; use false to disable (e.g. FTP, SCP)
+	 * @param   string   $ua           UA User agent to use
+	 * @param   boolean  $uamask       User agent masking (prefix Mozilla)
 	 *
 	 * @return  JStream
 	 *
 	 * @see JStream
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getStream($use_prefix = true, $use_network = true, $ua = null, $uamask = false)
 	{

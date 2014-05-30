@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -17,16 +17,16 @@ require_once realpath(JPATH_ADMINISTRATOR . '/components/com_menus/helpers/menus
 /**
  * Supports an HTML grouped select list of menu item grouped by menu
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
- * @since		11.1
+ * @since       11.1
  */
 class JFormFieldMenuItem extends JFormFieldGroupedList
 {
 	/**
 	 * The form field type.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $type = 'MenuItem';
@@ -36,7 +36,7 @@ class JFormFieldMenuItem extends JFormFieldGroupedList
 	 *
 	 * @return  array  The field option objects as a nested array in groups.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function getGroups()
 	{

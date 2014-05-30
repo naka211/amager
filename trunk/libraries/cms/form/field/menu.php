@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Libraries
+ * @package     Joomla.Libraries
  * @subpackage  Form
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -17,16 +17,16 @@ require_once realpath(JPATH_ADMINISTRATOR . '/components/com_menus/helpers/menus
 /**
  * Supports an HTML select list of menus
  *
- * @package	 Joomla.Libraries
+ * @package     Joomla.Libraries
  * @subpackage  Form
- * @since		1.6.0
+ * @since       1.6.0
  */
 class JFormFieldMenu extends JFormFieldList
 {
 	/**
 	 * The form field type.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  1.6.0
 	 */
 	public $type = 'Menu';
@@ -36,7 +36,7 @@ class JFormFieldMenu extends JFormFieldList
 	 *
 	 * @return  array  The field option objects.
 	 *
-	 * @since	1.6.0
+	 * @since   1.6.0
 	 */
 	protected function getOptions()
 	{

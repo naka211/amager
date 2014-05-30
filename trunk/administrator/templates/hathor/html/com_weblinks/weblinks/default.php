@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	Templates.hathor
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  * @since		1.6
  */
@@ -49,7 +49,7 @@ $saveOrder	= $listOrder == 'a.ordering';
 				<?php echo JHtml::_('select.options', JHtml::_('category.options', 'com_weblinks'), 'value', 'text', $this->state->get('filter.category_id'));?>
 			</select>
 
-			<label class="selectlabel" for="filter_access">
+            <label class="selectlabel" for="filter_access">
 				<?php echo JText::_('JOPTION_SELECT_ACCESS'); ?>
 			</label>
 			<select name="filter_access" class="inputbox" id="filter_access">

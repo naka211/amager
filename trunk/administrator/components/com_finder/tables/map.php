@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -12,18 +12,18 @@ defined('_JEXEC') or die;
 /**
  * Map table class for the Finder package.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderTableMap extends JTable
 {
 	/**
 	 * Constructor
 	 *
-	 * @param	object  &$db  JDatabase connector object.
+	 * @param   object  &$db  JDatabase connector object.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function __construct(&$db)
 	{
@@ -35,14 +35,14 @@ class FinderTableMap extends JTable
 	 * table. The method respects checked out rows by other users and will attempt
 	 * to checkin rows that it can after adjustments are made.
 	 *
-	 * @param	mixed	$pks	 An array of primary key values to update.  If not
-	 *							set the instance property value is used. [optional]
-	 * @param	integer  $state	The publishing state. eg. [0 = unpublished, 1 = published] [optional]
-	 * @param	integer  $userId  The user id of the user performing the operation. [optional]
+	 * @param   mixed    $pks     An array of primary key values to update.  If not
+	 *                            set the instance property value is used. [optional]
+	 * @param   integer  $state   The publishing state. eg. [0 = unpublished, 1 = published] [optional]
+	 * @param   integer  $userId  The user id of the user performing the operation. [optional]
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function publish($pks = null, $state = 1, $userId = 0)
 	{

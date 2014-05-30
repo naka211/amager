@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,18 +14,18 @@ jimport('joomla.database.table');
 /**
  * Languages table.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
- * @since		11.1
+ * @since       11.1
  */
 class JTableLanguage extends JTable
 {
 	/**
 	 * Constructor
 	 *
-	 * @param	JDatabase  &$db  A database connector object
+	 * @param   JDatabase  &$db  A database connector object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct(&$db)
 	{
@@ -37,7 +37,7 @@ class JTableLanguage extends JTable
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function check()
 	{
@@ -53,11 +53,11 @@ class JTableLanguage extends JTable
 	/**
 	 * Overrides JTable::store to check unique fields.
 	 *
-	 * @param	boolean  $updateNulls  True to update fields even if they are null.
+	 * @param   boolean  $updateNulls  True to update fields even if they are null.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	11.4
+	 * @since   11.4
 	 */
 	public function store($updateNulls = false)
 	{

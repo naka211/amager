@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,9 +12,9 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Class to model a Web Client.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
- * @since		11.3
+ * @since       11.3
  */
 class JWebClient
 {
@@ -41,67 +41,67 @@ class JWebClient
 	const OPERA = 21;
 
 	/**
-	 * @var	integer  The detected platform on which the web client runs.
+	 * @var    integer  The detected platform on which the web client runs.
 	 * @since  11.3
 	 */
 	protected $platform;
 
 	/**
-	 * @var	boolean  True if the web client is a mobile device.
+	 * @var    boolean  True if the web client is a mobile device.
 	 * @since  11.3
 	 */
 	protected $mobile = false;
 
 	/**
-	 * @var	integer  The detected rendering engine used by the web client.
+	 * @var    integer  The detected rendering engine used by the web client.
 	 * @since  11.3
 	 */
 	protected $engine;
 
 	/**
-	 * @var	integer  The detected browser used by the web client.
+	 * @var    integer  The detected browser used by the web client.
 	 * @since  11.3
 	 */
 	protected $browser;
 
 	/**
-	 * @var	string  The detected browser version used by the web client.
+	 * @var    string  The detected browser version used by the web client.
 	 * @since  11.3
 	 */
 	protected $browserVersion;
 
 	/**
-	 * @var	array  The priority order detected accepted languages for the client.
+	 * @var    array  The priority order detected accepted languages for the client.
 	 * @since  11.3
 	 */
 	protected $languages = array();
 
 	/**
-	 * @var	array  The priority order detected accepted encodings for the client.
+	 * @var    array  The priority order detected accepted encodings for the client.
 	 * @since  11.3
 	 */
 	protected $encodings = array();
 
 	/**
-	 * @var	string  The web client's user agent string.
+	 * @var    string  The web client's user agent string.
 	 * @since  11.3
 	 */
 	protected $userAgent;
 
 	/**
-	 * @var	string  The web client's accepted encoding string.
+	 * @var    string  The web client's accepted encoding string.
 	 * @since  11.3
 	 */
 	protected $acceptEncoding;
 
 	/**
-	 * @var	string  The web client's accepted languages string.
+	 * @var    string  The web client's accepted languages string.
 	 * @since  11.3
 	 */
 	protected $acceptLanguage;
 
 	/**
-	 * @var	array  An array of flags determining whether or not a detection routine has been run.
+	 * @var    array  An array of flags determining whether or not a detection routine has been run.
 	 * @since  11.3
 	 */
 	protected $detection = array();
@@ -109,11 +109,11 @@ class JWebClient
 	/**
 	 * Class constructor.
 	 *
-	 * @param	mixed  $userAgent		The optional user-agent string to parse.
-	 * @param	mixed  $acceptEncoding  The optional client accept encoding string to parse.
-	 * @param	mixed  $acceptLanguage  The optional client accept language string to parse.
+	 * @param   mixed  $userAgent       The optional user-agent string to parse.
+	 * @param   mixed  $acceptEncoding  The optional client accept encoding string to parse.
+	 * @param   mixed  $acceptLanguage  The optional client accept language string to parse.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function __construct($userAgent = null, $acceptEncoding = null, $acceptLanguage = null)
 	{
@@ -151,11 +151,11 @@ class JWebClient
 	/**
 	 * Magic method to get an object property's value by name.
 	 *
-	 * @param	string  $name  Name of the property for which to return a value.
+	 * @param   string  $name  Name of the property for which to return a value.
 	 *
 	 * @return  mixed  The requested value if it exists.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function __get($name)
 	{
@@ -209,11 +209,11 @@ class JWebClient
 	/**
 	 * Detects the client browser and version in a user agent string.
 	 *
-	 * @param	string  $userAgent  The user-agent string to parse.
+	 * @param   string  $userAgent  The user-agent string to parse.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function detectBrowser($userAgent)
 	{
@@ -282,11 +282,11 @@ class JWebClient
 	/**
 	 * Method to detect the accepted response encoding by the client.
 	 *
-	 * @param	string  $acceptEncoding  The client accept encoding string to parse.
+	 * @param   string  $acceptEncoding  The client accept encoding string to parse.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function detectEncoding($acceptEncoding)
 	{
@@ -300,11 +300,11 @@ class JWebClient
 	/**
 	 * Detects the client rendering engine in a user agent string.
 	 *
-	 * @param	string  $userAgent  The user-agent string to parse.
+	 * @param   string  $userAgent  The user-agent string to parse.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function detectEngine($userAgent)
 	{
@@ -346,11 +346,11 @@ class JWebClient
 	/**
 	 * Method to detect the accepted languages by the client.
 	 *
-	 * @param	mixed  $acceptLanguage  The client accept language string to parse.
+	 * @param   mixed  $acceptLanguage  The client accept language string to parse.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function detectLanguage($acceptLanguage)
 	{
@@ -364,11 +364,11 @@ class JWebClient
 	/**
 	 * Detects the client platform in a user agent string.
 	 *
-	 * @param	string  $userAgent  The user-agent string to parse.
+	 * @param   string  $userAgent  The user-agent string to parse.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	protected function detectPlatform($userAgent)
 	{

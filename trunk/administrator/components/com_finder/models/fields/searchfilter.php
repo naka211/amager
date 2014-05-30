@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_BASE') or die();
@@ -14,16 +14,16 @@ JFormHelper::loadFieldClass('list');
 /**
  * Search Filter field for the Finder package.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class JFormFieldSearchFilter extends JFormFieldList
 {
 	/**
 	 * The form field type.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  1.7
 	 */
 	protected $type = 'SearchFilter';
@@ -33,7 +33,7 @@ class JFormFieldSearchFilter extends JFormFieldList
 	 *
 	 * @return  array  The field option objects.
 	 *
-	 * @since	1.7
+	 * @since   1.7
 	 */
 	public function getOptions()
 	{

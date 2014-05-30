@@ -1,9 +1,9 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_joomlaupdate
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
@@ -11,10 +11,10 @@ defined('_JEXEC') or die;
 /**
  * Joomla! update overview Model
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_joomlaupdate
- * @author	  nikosdion <nicholas@dionysopoulos.me>
- * @since		2.5.4
+ * @author      nikosdion <nicholas@dionysopoulos.me>
+ * @since       2.5.4
  */
 class JoomlaupdateModelDefault extends JModelLegacy
 {
@@ -95,7 +95,7 @@ class JoomlaupdateModelDefault extends JModelLegacy
 	/**
 	 * Makes sure that the Joomla! update cache is up-to-date
 	 *
-	 * @param	bool  $force  Force reload, ignoring the cache timeout
+	 * @param   bool  $force  Force reload, ignoring the cache timeout
 	 *
 	 * @return	void
 	 *
@@ -229,8 +229,8 @@ class JoomlaupdateModelDefault extends JModelLegacy
 	/**
 	 * Downloads a package file to a specific directory
 	 *
-	 * @param	string  $url	 The URL to download from
-	 * @param	string  $target  The directory to store the file
+	 * @param   string  $url     The URL to download from
+	 * @param   string  $target  The directory to store the file
 	 *
 	 * @return boolean True on success
 	 *

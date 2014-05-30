@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  User
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -32,9 +32,9 @@ define('JAUTHENTICATE_STATUS_FAILURE', 4);
 /**
  * Authentication class, provides an interface for the Joomla authentication system
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  User
- * @since		11.1
+ * @since       11.1
  */
 class JAuthentication extends JObject
 {
@@ -86,7 +86,7 @@ class JAuthentication extends JObject
 	/**
 	 * An array of Observer objects to notify
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $_observers = array();
@@ -94,7 +94,7 @@ class JAuthentication extends JObject
 	/**
 	 * The state of the observable object
 	 *
-	 * @var	mixed
+	 * @var    mixed
 	 * @since  11.1
 	 */
 	protected $_state = null;
@@ -102,13 +102,13 @@ class JAuthentication extends JObject
 	/**
 	 * A multi dimensional array of [function][] = key for observers
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $_methods = array();
 
 	/**
-	 * @var	JAuthentication  JAuthentication instances container.
+	 * @var    JAuthentication  JAuthentication instances container.
 	 * @since  11.3
 	 */
 	protected static $instance;
@@ -116,7 +116,7 @@ class JAuthentication extends JObject
 	/**
 	 * Constructor
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct()
 	{
@@ -134,7 +134,7 @@ class JAuthentication extends JObject
 	 *
 	 * @return  JAuthentication  The global JAuthentication object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getInstance()
 	{
@@ -149,9 +149,9 @@ class JAuthentication extends JObject
 	/**
 	 * Get the state of the JAuthentication object
 	 *
-	 * @return  mixed	The state of the object.
+	 * @return  mixed    The state of the object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getState()
 	{
@@ -161,11 +161,11 @@ class JAuthentication extends JObject
 	/**
 	 * Attach an observer object
 	 *
-	 * @param	object  $observer  An observer object to attach
+	 * @param   object  $observer  An observer object to attach
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function attach($observer)
 	{
@@ -229,11 +229,11 @@ class JAuthentication extends JObject
 	/**
 	 * Detach an observer object
 	 *
-	 * @param	object  $observer  An observer object to detach.
+	 * @param   object  $observer  An observer object to detach.
 	 *
 	 * @return  boolean  True if the observer object was detached.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function detach($observer)
 	{
@@ -265,13 +265,13 @@ class JAuthentication extends JObject
 	 * Finds out if a set of login credentials are valid by asking all observing
 	 * objects to run their respective authentication routines.
 	 *
-	 * @param	array  $credentials  Array holding the user credentials.
-	 * @param	array  $options	  Array holding user options.
+	 * @param   array  $credentials  Array holding the user credentials.
+	 * @param   array  $options      Array holding user options.
 	 *
 	 * @return  JAuthenticationResponse  Response object with status variable filled in for last plugin or first successful plugin.
 	 *
-	 * @see	 JAuthenticationResponse
-	 * @since	11.1
+	 * @see     JAuthenticationResponse
+	 * @since   11.1
 	 */
 	public function authenticate($credentials, $options = array())
 	{
@@ -337,8 +337,8 @@ class JAuthentication extends JObject
 	/**
 	 * Authorises that a particular user should be able to login
 	 *
-	 * @param	JAuthenticationResponse  $response  response including username of the user to authorise
-	 * @param	array					$options	list of options
+	 * @param   JAuthenticationResponse  $response  response including username of the user to authorise
+	 * @param   array                    $options   list of options
 	 *
 	 * @return  array[JAuthenticationResponse]  results of authorisation
 	 *
@@ -358,16 +358,16 @@ class JAuthentication extends JObject
 /**
  * Authentication response class, provides an object for storing user and error details
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  User
- * @since		11.1
+ * @since       11.1
  */
 class JAuthenticationResponse extends JObject
 {
 	/**
 	 * Response status (see status codes)
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $status = JAuthentication::STATUS_FAILURE;
@@ -375,7 +375,7 @@ class JAuthenticationResponse extends JObject
 	/**
 	 * The type of authentication that was successful
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $type = '';
@@ -383,7 +383,7 @@ class JAuthenticationResponse extends JObject
 	/**
 	 *  The error message
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $error_message = '';
@@ -391,7 +391,7 @@ class JAuthenticationResponse extends JObject
 	/**
 	 * Any UTF-8 string that the End User wants to use as a username.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $username = '';
@@ -399,7 +399,7 @@ class JAuthenticationResponse extends JObject
 	/**
 	 * Any UTF-8 string that the End User wants to use as a password.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $password = '';
@@ -407,7 +407,7 @@ class JAuthenticationResponse extends JObject
 	/**
 	 * The email address of the End User as specified in section 3.4.1 of [RFC2822]
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $email = '';
@@ -415,7 +415,7 @@ class JAuthenticationResponse extends JObject
 	/**
 	 * UTF-8 string free text representation of the End User's full name.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 *
 	 */
@@ -430,7 +430,7 @@ class JAuthenticationResponse extends JObject
 	 * For instance, if a End User wants to specify that his date of birth is in 1980, but
 	 * not the month or day, the value returned SHALL be "1980-00-00".
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $birthdate = '';
@@ -462,7 +462,7 @@ class JAuthenticationResponse extends JObject
 	/**
 	 * End User's preferred language as specified by ISO639.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $language = '';
@@ -470,7 +470,7 @@ class JAuthenticationResponse extends JObject
 	/**
 	 * ASCII string from TimeZone database
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $timezone = '';
@@ -478,7 +478,7 @@ class JAuthenticationResponse extends JObject
 	/**
 	 * Constructor
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct()
 	{

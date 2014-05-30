@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -24,9 +24,9 @@ class plgEditorTinymce extends JPlugin
 	 * Constructor
 	 *
 	 * @param  object  $subject  The object to observe
-	 * @param  array	$config	An array that holds the plugin configuration
+	 * @param  array   $config   An array that holds the plugin configuration
 	 *
-	 * @since		1.5
+	 * @since       1.5
 	 */
 	public function __construct(&$subject, $config)
 	{
@@ -639,7 +639,7 @@ class plgEditorTinymce extends JPlugin
 	/**
 	 * TinyMCE WYSIWYG Editor - set the editor content
 	 *
-	 * @param	string  The name of the editor
+	 * @param   string  The name of the editor
 	 *
 	 * @return  string
 	 */
@@ -651,7 +651,7 @@ class plgEditorTinymce extends JPlugin
 	/**
 	 * TinyMCE WYSIWYG Editor - copy editor content to form field
 	 *
-	 * @param	string  The name of the editor
+	 * @param   string  The name of the editor
 	 *
 	 * @return  string
 	 */
@@ -700,14 +700,14 @@ class plgEditorTinymce extends JPlugin
 	/**
 	 * Display the editor area.
 	 *
-	 * @param	string	The name of the editor area.
-	 * @param	string	The content of the field.
-	 * @param	string	The width of the editor area.
-	 * @param	string	The height of the editor area.
-	 * @param	int	  The number of columns for the editor area.
-	 * @param	int	  The number of rows for the editor area.
-	 * @param	boolean  True and the editor buttons will be displayed.
-	 * @param	string	An optional ID for the textarea. If not supplied the name is used.
+	 * @param   string   The name of the editor area.
+	 * @param   string   The content of the field.
+	 * @param   string   The width of the editor area.
+	 * @param   string   The height of the editor area.
+	 * @param   int      The number of columns for the editor area.
+	 * @param   int      The number of rows for the editor area.
+	 * @param   boolean  True and the editor buttons will be displayed.
+	 * @param   string   An optional ID for the textarea. If not supplied the name is used.
 	 *
 	 * @return  string
 	 */
@@ -777,7 +777,7 @@ class plgEditorTinymce extends JPlugin
 					$modal		= ($button->get('modal')) ? ' class="modal-button"' : null;
 					$href		= ($button->get('link')) ? ' href="'.JURI::base().$button->get('link').'"' : null;
 					$onclick	= ($button->get('onclick')) ? ' onclick="'.$button->get('onclick').'"' : 'onclick="IeCursorFix(); return false;"';
-					$title	  = ($button->get('title')) ? $button->get('title') : $button->get('text');
+					$title      = ($button->get('title')) ? $button->get('title') : $button->get('text');
 					$return .= '<div class="button2-left"><div class="' . $button->get('name')
 						. '"><a' . $modal . ' title="' . $title . '"' . $href . $onclick . ' rel="' . $button->get('options')
 						. '">' . $button->get('text') . "</a></div></div>\n";

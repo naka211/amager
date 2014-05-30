@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,16 +14,16 @@ jimport('joomla.filesystem.stream');
 /**
  * Bzip2 format adapter for the JArchive class
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
- * @since		11.1
+ * @since       11.1
  */
 class JArchiveBzip2 extends JObject
 {
 	/**
 	 * Bzip2 file data buffer
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	private $_data = null;
@@ -31,7 +31,7 @@ class JArchiveBzip2 extends JObject
 	/**
 	 * Constructor tries to load the bz2 extension if not loaded
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct()
 	{
@@ -41,13 +41,13 @@ class JArchiveBzip2 extends JObject
 	/**
 	 * Extract a Bzip2 compressed file to a given path
 	 *
-	 * @param	string  $archive	  Path to Bzip2 archive to extract
-	 * @param	string  $destination  Path to extract archive to
-	 * @param	array	$options	  Extraction options [unused]
+	 * @param   string  $archive      Path to Bzip2 archive to extract
+	 * @param   string  $destination  Path to extract archive to
+	 * @param   array   $options      Extraction options [unused]
 	 *
 	 * @return  boolean  True if successful
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function extract($archive, $destination, $options = array ())
 	{
@@ -135,7 +135,7 @@ class JArchiveBzip2 extends JObject
 	 *
 	 * @return  boolean  True if supported
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public static function isSupported()
 	{
@@ -149,7 +149,7 @@ class JArchiveBzip2 extends JObject
 	 *
 	 * @return  void
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	private static function loadExtension()
 	{

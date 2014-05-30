@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.CLI
+ * @package     Joomla.CLI
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 // Make sure we're being called from the command line, not a web interface
@@ -69,16 +69,16 @@ $lang->load('finder_cli', JPATH_SITE, null, false, false)
 /**
  * A command line cron job to run the Finder indexer.
  *
- * @package	 Joomla.CLI
+ * @package     Joomla.CLI
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderCli extends JApplicationCli
 {
 	/**
 	 * Start time for the index process
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	private $_time = null;
@@ -86,7 +86,7 @@ class FinderCli extends JApplicationCli
 	/**
 	 * Start time for each batch
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  2.5
 	 */
 	private $_qtime = null;
@@ -96,7 +96,7 @@ class FinderCli extends JApplicationCli
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function doExecute()
 	{
@@ -116,7 +116,7 @@ class FinderCli extends JApplicationCli
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	private function _index()
 	{

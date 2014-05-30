@@ -1,26 +1,26 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Language
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
 
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Language
- * @since	11.1
+ * @since   11.1
  */
 
 /**
  * Class to transliterate strings
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Language
- * @since		11.1
+ * @since       11.1
  */
 class JLanguageTransliterate
 {
@@ -28,12 +28,12 @@ class JLanguageTransliterate
 	/**
 	 * Returns strings transliterated from UTF-8 to Latin
 	 *
-	 * @param	string	$string  String to transliterate
-	 * @param	boolean  $case	Optionally specify upper or lower case. Default to null.
+	 * @param   string   $string  String to transliterate
+	 * @param   boolean  $case    Optionally specify upper or lower case. Default to null.
 	 *
 	 * @return  string  Transliterated string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function utf8_latin_to_ascii($string, $case = 0)
 	{

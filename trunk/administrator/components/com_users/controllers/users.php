@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 // No direct access.
@@ -15,14 +15,14 @@ jimport('joomla.application.component.controlleradmin');
 /**
  * Users list controller class.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
- * @since		1.6
+ * @since       1.6
  */
 class UsersControllerUsers extends JControllerAdmin
 {
 	/**
-	 * @var	string  The prefix to use with controller messages.
+	 * @var    string  The prefix to use with controller messages.
 	 * @since  1.6
 	 */
 	protected $text_prefix = 'COM_USERS_USERS';
@@ -30,12 +30,12 @@ class UsersControllerUsers extends JControllerAdmin
 	/**
 	 * Constructor.
 	 *
-	 * @param	array  $config  An optional associative array of configuration settings.
+	 * @param   array  $config  An optional associative array of configuration settings.
 	 *
 	 * @return  UsersControllerUsers
 	 *
-	 * @since	1.6
-	 * @see	 JController
+	 * @since   1.6
+	 * @see     JController
 	 */
 	public function __construct($config = array())
 	{
@@ -48,9 +48,9 @@ class UsersControllerUsers extends JControllerAdmin
 	/**
 	 * Proxy for getModel.
 	 *
-	 * @param	string  $name	The model name. Optional.
-	 * @param	string  $prefix  The class prefix. Optional.
-	 * @param	array	$config  Configuration array for model. Optional.
+	 * @param   string  $name    The model name. Optional.
+	 * @param   string  $prefix  The class prefix. Optional.
+	 * @param   array   $config  Configuration array for model. Optional.
 	 *
 	 * @return  object  The model.
 	 *
@@ -66,7 +66,7 @@ class UsersControllerUsers extends JControllerAdmin
 	 *
 	 * @return  void
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function changeBlock()
 	{
@@ -114,7 +114,7 @@ class UsersControllerUsers extends JControllerAdmin
 	 *
 	 * @return  void
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function activate()
 	{

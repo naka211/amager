@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Crypt
  *
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,26 +14,26 @@ defined('JPATH_PLATFORM') or die;
  *
  * @property-read  string  $type  The key type.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Crypt
- * @since		12.1
+ * @since       12.1
  */
 class JCryptKey
 {
 	/**
-	 * @var	string  The private key.
+	 * @var    string  The private key.
 	 * @since  12.1
 	 */
 	public $private;
 
 	/**
-	 * @var	string  The public key.
+	 * @var    string  The public key.
 	 * @since  12.1
 	 */
 	public $public;
 
 	/**
-	 * @var	string  The key type.
+	 * @var    string  The key type.
 	 * @since  12.1
 	 */
 	protected $type;
@@ -41,11 +41,11 @@ class JCryptKey
 	/**
 	 * Constructor.
 	 *
-	 * @param	string  $type	 The key type.
-	 * @param	string  $private  The private key.
-	 * @param	string  $public	The public key.
+	 * @param   string  $type     The key type.
+	 * @param   string  $private  The private key.
+	 * @param   string  $public   The public key.
 	 *
-	 * @since	12.1
+	 * @since   12.1
 	 */
 	public function __construct($type, $private = null, $public = null)
 	{
@@ -60,11 +60,11 @@ class JCryptKey
 	/**
 	 * Magic method to return some protected property values.
 	 *
-	 * @param	string  $name  The name of the property to return.
+	 * @param   string  $name  The name of the property to return.
 	 *
 	 * @return  mixed
 	 *
-	 * @since	12.1
+	 * @since   12.1
 	 */
 	public function __get($name)
 	{

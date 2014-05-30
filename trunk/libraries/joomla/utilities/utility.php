@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Utilities
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,32 +12,32 @@ defined('JPATH_PLATFORM') or die;
 /**
  * JUtility is a utility functions class
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Utilities
- * @since		11.1
+ * @since       11.1
  */
 class JUtility
 {
 	/**
 	 * Mail function (uses phpMailer)
 	 *
-	 * @param	string	$from		 From email address
-	 * @param	string	$fromname	 From name
-	 * @param	mixed	$recipient	Recipient email address(es)
-	 * @param	string	$subject	  Email subject
-	 * @param	string	$body		 Message body
-	 * @param	boolean  $mode		 False = plain text, true = HTML
-	 * @param	mixed	$cc			CC email address(es)
-	 * @param	mixed	$bcc		  BCC email address(es)
-	 * @param	mixed	$attachment	Attachment file name(s)
-	 * @param	mixed	$replyto	  Reply to email address(es)
-	 * @param	mixed	$replytoname  Reply to name(s)
+	 * @param   string   $from         From email address
+	 * @param   string   $fromname     From name
+	 * @param   mixed    $recipient    Recipient email address(es)
+	 * @param   string   $subject      Email subject
+	 * @param   string   $body         Message body
+	 * @param   boolean  $mode         False = plain text, true = HTML
+	 * @param   mixed    $cc           CC email address(es)
+	 * @param   mixed    $bcc          BCC email address(es)
+	 * @param   mixed    $attachment   Attachment file name(s)
+	 * @param   mixed    $replyto      Reply to email address(es)
+	 * @param   mixed    $replytoname  Reply to name(s)
 	 *
 	 * @return  boolean  True on success
 	 *
 	 * @deprecated  12.1
-	 * @see	 JMail::sendMail()
-	 * @since	11.1
+	 * @see     JMail::sendMail()
+	 * @since   11.1
 	 */
 	public static function sendMail($from, $fromname, $recipient, $subject, $body, $mode = 0, $cc = null, $bcc = null, $attachment = null,
 		$replyto = null, $replytoname = null)
@@ -54,19 +54,19 @@ class JUtility
 	/**
 	 * Sends mail to administrator for approval of a user submission
 	 *
-	 * @param	string  $adminName	Name of administrator
-	 * @param	string  $adminEmail  Email address of administrator
-	 * @param	string  $email		[NOT USED]
-	 * @param	string  $type		Type of item to approve
-	 * @param	string  $title		Title of item to approve
-	 * @param	string  $author	  Author of item to approve
-	 * @param	string  $url		 url
+	 * @param   string  $adminName   Name of administrator
+	 * @param   string  $adminEmail  Email address of administrator
+	 * @param   string  $email       [NOT USED]
+	 * @param   string  $type        Type of item to approve
+	 * @param   string  $title       Title of item to approve
+	 * @param   string  $author      Author of item to approve
+	 * @param   string  $url         url
 	 *
 	 * @return  boolean  True on success
 	 *
 	 * @deprecated  12.1
-	 * @see	 JMail::sendAdminMail()
-	 * @since	11.1
+	 * @see     JMail::sendAdminMail()
+	 * @since   11.1
 	 */
 	public static function sendAdminMail($adminName, $adminEmail, $email, $type, $title, $author, $url = null)
 	{
@@ -82,13 +82,13 @@ class JUtility
 	/**
 	 * Provides a secure hash based on a seed
 	 *
-	 * @param	string  $seed  Seed string.
+	 * @param   string  $seed  Seed string.
 	 *
 	 * @return  string
 	 *
 	 * @deprecated  12.1 Use JApplication::getHash() instead.
-	 * @see	 JApplication::getHash()
-	 * @since	11.1
+	 * @see     JApplication::getHash()
+	 * @since   11.1
 	 */
 	public static function getHash($seed)
 	{
@@ -101,13 +101,13 @@ class JUtility
 	/**
 	 * Method to determine a hash for anti-spoofing variable names
 	 *
-	 * @param	boolean  $forceNew  Force creation of a new token.
+	 * @param   boolean  $forceNew  Force creation of a new token.
 	 *
-	 * @return  string	Hashed var name
+	 * @return  string   Hashed var name
 	 *
 	 * @deprecated  12.1 Use JSession::getFormToken() instead
-	 * @see	 JSession::getFormToken()
-	 * @since	11.1
+	 * @see     JSession::getFormToken()
+	 * @since   11.1
 	 */
 	public static function getToken($forceNew = false)
 	{
@@ -121,11 +121,11 @@ class JUtility
 	/**
 	 * Method to extract key/value pairs out of a string with XML style attributes
 	 *
-	 * @param	string  $string  String containing XML style attributes
+	 * @param   string  $string  String containing XML style attributes
 	 *
 	 * @return  array  Key/Value pairs for the attributes
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function parseAttributes($string)
 	{
@@ -154,8 +154,8 @@ class JUtility
 	 * @return  boolean  True if Windows OS.
 	 *
 	 * @deprecated  12.1
-	 * @see	 JApplication::isWinOS()
-	 * @since	11.1
+	 * @see     JApplication::isWinOS()
+	 * @since   11.1
 	 */
 	public static function isWinOS()
 	{
@@ -170,13 +170,13 @@ class JUtility
 	/**
 	 * Method to dump the structure of a variable for debugging purposes
 	 *
-	 * @param	mixed	&$var	  A variable
-	 * @param	boolean  $htmlSafe  True to ensure all characters are htmlsafe
+	 * @param   mixed    &$var      A variable
+	 * @param   boolean  $htmlSafe  True to ensure all characters are htmlsafe
 	 *
 	 * @return  string
 	 *
 	 * @deprecated  12.1
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function dump(&$var, $htmlSafe = true)
 	{
@@ -192,15 +192,15 @@ class JUtility
 	 * Prepend a reference to an element to the beginning of an array.
 	 * Renumbers numeric keys, so $value is always inserted to $array[0]
 	 *
-	 * @param	array  &$array  Array to be modified
-	 * @param	mixed  &$value  Value to add
+	 * @param   array  &$array  Array to be modified
+	 * @param   mixed  &$value  Value to add
 	 *
 	 * @return  integer
 	 *
 	 * @deprecated  12.1
-	 * @see	 http://www.php.net/manual/en/function.array-unshift.php#40270
-	 * @note	 PHP no longer supports array_unshift of references.
-	 * @since	11.1
+	 * @see     http://www.php.net/manual/en/function.array-unshift.php#40270
+	 * @note     PHP no longer supports array_unshift of references.
+	 * @since   11.1
 	 */
 	public function array_unshift_ref(&$array, &$value)
 	{
@@ -216,13 +216,13 @@ class JUtility
 	/**
 	 * Return the byte value of a particular string
 	 *
-	 * @param	string  $val  String optionally with G, M or K suffix
+	 * @param   string  $val  String optionally with G, M or K suffix
 	 *
 	 * @return  integer  Size in bytes
 	 *
 	 * @deprecated  12.1
-	 * @see	 JHtmlNumber::bytes
-	 * @since	11.1
+	 * @see     JHtmlNumber::bytes
+	 * @since   11.1
 	 */
 	public function return_bytes($val)
 	{

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -12,9 +12,9 @@ defined('_JEXEC') or die;
 /**
  * Helper class for Finder.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderHelper
 {
@@ -27,11 +27,11 @@ class FinderHelper
 	/**
 	 * Configure the Linkbar.
 	 *
-	 * @param	string  $vName  The name of the active view.
+	 * @param   string  $vName  The name of the active view.
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function addSubmenu($vName)
 	{
@@ -57,7 +57,7 @@ class FinderHelper
 	 *
 	 * @return  JObject  A JObject containing the allowed actions.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function getActions()
 	{

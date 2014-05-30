@@ -1,9 +1,9 @@
 <?php
 /**
- * @package	Joomla.Site
+ * @package    Joomla.Site
  *
- * @copyright  Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	GNU General Public License version 2 or later; see LICENSE
+ * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
  * Version information class for the Joomla CMS.
  *
  * @package  Joomla.Site
- * @since	1.0
+ * @since    1.0
  */
 final class JVersion
 {
@@ -23,7 +23,7 @@ final class JVersion
 	public $RELEASE = '2.5';
 
 	/** @var  string  Maintenance version. */
-	public $DEV_LEVEL = '8';
+	public $DEV_LEVEL = '20';
 
 	/** @var  string  Development STATUS. */
 	public $DEV_STATUS = 'Stable';
@@ -35,7 +35,7 @@ final class JVersion
 	public $CODENAME = 'Ember';
 
 	/** @var  string  Release date. */
-	public $RELDATE = '8-November-2012';
+	public $RELDATE = '30-April-2014';
 
 	/** @var  string  Release time. */
 	public $RELTIME = '14:00';
@@ -44,7 +44,7 @@ final class JVersion
 	public $RELTZ = 'GMT';
 
 	/** @var  string  Copyright Notice. */
-	public $COPYRIGHT = 'Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.';
+	public $COPYRIGHT = 'Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.';
 
 	/** @var  string  Link text. */
 	public $URL = '<a href="http://www.joomla.org">Joomla!</a> is Free Software released under the GNU General Public License.';
@@ -52,12 +52,12 @@ final class JVersion
 	/**
 	 * Compares two a "PHP standardized" version number against the current Joomla version.
 	 *
-	 * @param	string  $minimum  The minimum version of the Joomla which is compatible.
+	 * @param   string  $minimum  The minimum version of the Joomla which is compatible.
 	 *
-	 * @return  bool	True if the version is compatible.
+	 * @return  bool    True if the version is compatible.
 	 *
-	 * @see	 http://www.php.net/version_compare
-	 * @since	1.0
+	 * @see     http://www.php.net/version_compare
+	 * @since   1.0
 	 */
 	public function isCompatible($minimum)
 	{
@@ -69,7 +69,7 @@ final class JVersion
 	 *
 	 * @return  string  Version suffix for help files.
 	 *
-	 * @since	1.0
+	 * @since   1.0
 	 */
 	public function getHelpVersion()
 	{
@@ -81,7 +81,7 @@ final class JVersion
 	 *
 	 * @return  string  Version string.
 	 *
-	 * @since	1.5
+	 * @since   1.5
 	 */
 	public function getShortVersion()
 	{
@@ -93,7 +93,7 @@ final class JVersion
 	 *
 	 * @return  string  Complete version string.
 	 *
-	 * @since	1.5
+	 * @since   1.5
 	 */
 	public function getLongVersion()
 	{
@@ -105,13 +105,13 @@ final class JVersion
 	/**
 	 * Returns the user agent.
 	 *
-	 * @param	string  $component	Name of the component.
-	 * @param	bool	$mask		 Mask as Mozilla/5.0 or not.
-	 * @param	bool	$add_version  Add version afterwards to component.
+	 * @param   string  $component    Name of the component.
+	 * @param   bool    $mask         Mask as Mozilla/5.0 or not.
+	 * @param   bool    $add_version  Add version afterwards to component.
 	 *
 	 * @return  string  User Agent.
 	 *
-	 * @since	1.0
+	 * @since   1.0
 	 */
 	public function getUserAgent($component = null, $mask = false, $add_version = true)
 	{

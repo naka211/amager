@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -15,9 +15,9 @@ jimport('joomla.base.adapterinstance');
 /**
  * File installer
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
- * @since		11.1
+ * @since       11.1
  */
 class JInstallerFile extends JAdapterInstance
 {
@@ -26,11 +26,11 @@ class JInstallerFile extends JAdapterInstance
 	/**
 	 * Custom loadLanguage method
 	 *
-	 * @param	string  $path  The path on which to find language files.
+	 * @param   string  $path  The path on which to find language files.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function loadLanguage($path)
 	{
@@ -38,10 +38,8 @@ class JInstallerFile extends JAdapterInstance
 		$extension = 'files_' . str_replace('files_', '', strtolower(JFilterInput::getInstance()->clean((string) $this->manifest->name, 'cmd')));
 		$lang = JFactory::getLanguage();
 		$source = $path;
-		$lang->load($extension . '.sys', $source, null, false, false)
-			|| $lang->load($extension . '.sys', JPATH_SITE, null, false, false)
-			|| $lang->load($extension . '.sys', $source, $lang->getDefault(), false, false)
-			|| $lang->load($extension . '.sys', JPATH_SITE, $lang->getDefault(), false, false);
+			$lang->load($extension . '.sys', $source, null, false, true)
+		||	$lang->load($extension . '.sys', JPATH_SITE, null, false, true);
 	}
 
 	/**
@@ -49,7 +47,7 @@ class JInstallerFile extends JAdapterInstance
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function install()
 	{
@@ -365,7 +363,7 @@ class JInstallerFile extends JAdapterInstance
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function update()
 	{
@@ -381,11 +379,11 @@ class JInstallerFile extends JAdapterInstance
 	/**
 	 * Custom uninstall method
 	 *
-	 * @param	string  $id  The id of the file to uninstall
+	 * @param   string  $id  The id of the file to uninstall
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function uninstall($id)
 	{
@@ -481,6 +479,7 @@ class JInstallerFile extends JAdapterInstance
 			// Second argument is the utf compatible version attribute
 			$utfresult = $this->parent->parseSQLFiles($this->manifest->uninstall->sql);
 
+			$db = JFactory::getDbo();
 			if ($utfresult === false)
 			{
 				// Install failed, rollback changes
@@ -488,8 +487,7 @@ class JInstallerFile extends JAdapterInstance
 				$retval = false;
 			}
 
-			// Remove the schema version
-			$db = JFactory::getDbo();
+ 			// Remove the schema version
 			$query = $db->getQuery(true);
 			$query->delete()
 				->from('#__schemas')
@@ -568,11 +566,11 @@ class JInstallerFile extends JAdapterInstance
 	/**
 	 * Function used to check if extension is already installed
 	 *
-	 * @param	string  $extension  The element name of the extension to install
+	 * @param   string  $extension  The element name of the extension to install
 	 *
 	 * @return  boolean  True if extension exists
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function extensionExistsInSystem($extension = null)
 	{
@@ -612,7 +610,7 @@ class JInstallerFile extends JAdapterInstance
 	 *
 	 * @return  boolean  none
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function populateFilesAndFolderList()
 	{
@@ -707,7 +705,7 @@ class JInstallerFile extends JAdapterInstance
 	 *
 	 * @return  boolean result of operation, true if updated, false on failure
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function refreshManifestCache()
 	{

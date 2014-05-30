@@ -1,9 +1,9 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_menus
  */
 
@@ -15,19 +15,19 @@ jimport('joomla.application.component.modellist');
 /**
  * Menu List Model for Menus.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_menus
- * @since		1.6
+ * @since       1.6
  */
 class MenusModelMenus extends JModelList
 {
 	/**
 	 * Constructor.
 	 *
-	 * @param	array	An optional associative array of configuration settings.
+	 * @param   array	An optional associative array of configuration settings.
 	 *
 	 * @see		JController
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	public function __construct($config = array())
 	{
@@ -48,7 +48,7 @@ class MenusModelMenus extends JModelList
 	 *
 	 * @return  mixed  An array of data items on success, false on failure.
 	 *
-	 * @since	1.6.1
+	 * @since   1.6.1
 	 */
 	public function getItems()
 	{
@@ -145,7 +145,7 @@ class MenusModelMenus extends JModelList
 	 *
 	 * @return  string  An SQL query
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function getListQuery()
 	{
@@ -171,12 +171,12 @@ class MenusModelMenus extends JModelList
 	 *
 	 * Note. Calling getState in this method will result in recursion.
 	 *
-	 * @param	string  $ordering	An optional ordering field.
-	 * @param	string  $direction  An optional direction (asc|desc).
+	 * @param   string  $ordering   An optional ordering field.
+	 * @param   string  $direction  An optional direction (asc|desc).
 	 *
 	 * @return  void
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{
@@ -192,7 +192,7 @@ class MenusModelMenus extends JModelList
 	 *
 	 * @return  integer
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function getModMenuId()
 	{

@@ -100,21 +100,21 @@ function toHexColor(color) {
 	matches = /^rgb\((\d{1,3}),(\d{1,3}),(\d{1,3})\)$/.exec(color);
 
 	if (matches) {
-		red	= toInt(matches[1]);
+		red   = toInt(matches[1]);
 		green = toInt(matches[2]);
 		blue  = toInt(matches[3]);
 	} else {
 		matches = /^([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/.exec(color);
 
 		if (matches) {
-			red	= toInt(matches[1], 16);
+			red   = toInt(matches[1], 16);
 			green = toInt(matches[2], 16);
 			blue  = toInt(matches[3], 16);
 		} else {
 			matches = /^([0-9a-f])([0-9a-f])([0-9a-f])$/.exec(color);
 
 			if (matches) {
-				red	= toInt(matches[1] + matches[1], 16);
+				red   = toInt(matches[1] + matches[1], 16);
 				green = toInt(matches[2] + matches[2], 16);
 				blue  = toInt(matches[3] + matches[3], 16);
 			} else {

@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	mod_articles_category
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -196,7 +196,7 @@ abstract class modArticlesCategoryHelper
 
 			if ($access || in_array($item->access, $authorised)) {
 				// We know that user has the privilege to view the article
-				$item->link = JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catslug));
+				$item->link = JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catslug, $item->language));
 			}
 			 else {
 				// Angie Fixed Routing
@@ -259,7 +259,7 @@ abstract class modArticlesCategoryHelper
 	* The goal is to get the proper length plain text string with as much of 
 	* the html intact as possible with all tags properly closed.
 	* 
-	* @param string	$html		The content of the introtext to be truncated
+	* @param string   $html       The content of the introtext to be truncated
 	* @param integer  $maxLength  The maximum number of charactes to render
 	* 
 	* @return  string  The truncated string

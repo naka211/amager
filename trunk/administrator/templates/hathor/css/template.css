@@ -3,7 +3,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	templates.hathor
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  * @since		1.6
  *
@@ -2275,9 +2275,9 @@ ul.config-option-list fieldset {
 */
 #permissions-sliders ul#rules,
 #permissions-sliders ul#rules ul {
-	margin: 0 !important;
-	padding: 0 !important;
-	list-style-type: none;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style-type: none;
 }
 
 #permissions-sliders ul#rules li {
@@ -2286,28 +2286,28 @@ ul.config-option-list fieldset {
 }
 
 #permissions-sliders ul#rules table.group-rules {
-	border-collapse: collapse;
-		margin: 5px;
-	width: 100%;
+    border-collapse: collapse;
+   	margin: 5px;
+    width: 100%;
 }
 
 #permissions-sliders ul#rules table.group-rules td {
-	padding: 4px;
-	vertical-align: middle;
-	text-align: left;
-	overflow: hidden;
+    padding: 4px;
+    vertical-align: middle;
+    text-align: left;
+    overflow: hidden;
 }
 
 #permissions-sliders ul#rules table.group-rules th {
-	font-size: 1.2em;
-	overflow: hidden;
-	font-weight: bold;
+    font-size: 1.2em;
+    overflow: hidden;
+    font-weight: bold;
 }
 
 #permissions-sliders .panel {
-	margin-bottom: 3px;
-	margin-left: 0;
-	border: 0;
+    margin-bottom: 3px;
+    margin-left: 0;
+    border: 0;
 }
 
 #permissions-sliders p.rule-desc {
@@ -2350,8 +2350,8 @@ table.group-rules td select {
 }
 
 #permissions-sliders  ul#rules  table.group-rules th {
-	text-align: left;
-	padding: 4px;
+    text-align: left;
+    padding: 4px;
 }
 
 #permissions-sliders ul#rules table.group-rules td label {
@@ -2584,21 +2584,21 @@ ul.helpmenu li {
 
 /* -- Update check badges -- */
 span.update-badge {
-	background-image: -moz-linear-gradient(center bottom , #FF0000 41%, #FC7E7E 79%);
+    background-image: -moz-linear-gradient(center bottom , #FF0000 41%, #FC7E7E 79%);
 	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.41, rgb(255,0,0)),color-stop(0.79, rgb(252,126,126)));
-	border: 2px solid white;
-	border-radius: 1.5em 1.5em 1.5em 1.5em;
-	color: white;
-	display: block;
-	float: left;
-	font-size: 1.2em;
-	font-weight: bold;
-	height: 1.2em;
-	left: 60px;
-	min-width: 1em;
-	padding: 0 0.1em 0;
-	position: relative;
-	top: -88px;
+    border: 2px solid white;
+    border-radius: 1.5em 1.5em 1.5em 1.5em;
+    color: white;
+    display: block;
+    float: left;
+    font-size: 1.2em;
+    font-weight: bold;
+    height: 1.2em;
+    left: 60px;
+    min-width: 1em;
+    padding: 0 0.1em 0;
+    position: relative;
+    top: -88px;
 }
 
 /* User Notes */

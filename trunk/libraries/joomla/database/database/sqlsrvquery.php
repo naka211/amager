@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,9 +12,9 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Query Building Class.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
- * @since		11.1
+ * @since       11.1
  */
 class JDatabaseQuerySQLSrv extends JDatabaseQuery
 {
@@ -24,7 +24,7 @@ class JDatabaseQuerySQLSrv extends JDatabaseQuery
 	 * same character is used for both sides of the quoted name, else the first character will be
 	 * used for the opening quote and the second for the closing quote.
 	 *
-	 * @var	string
+	 * @var    string
 	 *
 	 * @since  11.1
 	 */
@@ -34,7 +34,7 @@ class JDatabaseQuerySQLSrv extends JDatabaseQuery
 	 * The null or zero representation of a timestamp for the database driver.  This should be
 	 * defined in child classes to hold the appropriate value for the engine.
 	 *
-	 * @var	string
+	 * @var    string
 	 *
 	 * @since  11.1
 	 */
@@ -45,7 +45,7 @@ class JDatabaseQuerySQLSrv extends JDatabaseQuery
 	 *
 	 * @return  string	The completed query.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __toString()
 	{
@@ -53,6 +53,50 @@ class JDatabaseQuerySQLSrv extends JDatabaseQuery
 
 		switch ($this->type)
 		{
+			case 'select':
+				$query .= (string) $this->select;
+				$query .= (string) $this->from;
+
+				// Get the limit and offset values from JDatabase
+				$limit  = $this->db->getLimit();
+				$offset = $this->db->getOffset();
+
+				if ($limit > 0 || $offset > 0)
+				{
+					if ($this->order)
+					{
+						$query .= (string) $this->order;
+					}
+
+					$query = $this->processLimit($query, $limit, $offset);
+				}
+
+				if ($this->join)
+				{
+					// special case for joins
+					foreach ($this->join as $join)
+					{
+						$query .= (string) $join;
+					}
+				}
+
+				if ($this->where)
+				{
+					$query .= (string) $this->where;
+				}
+
+				if ($this->group)
+				{
+					$query .= (string) $this->group;
+				}
+
+				if ($this->having)
+				{
+					$query .= (string) $this->having;
+				}
+
+				break;
+
 			case 'insert':
 				$query .= (string) $this->insert;
 
@@ -102,11 +146,11 @@ class JDatabaseQuerySQLSrv extends JDatabaseQuery
 	 *
 	 * Ensure that the value is properly quoted before passing to the method.
 	 *
-	 * @param	string  $value  The value to cast as a char.
+	 * @param   string  $value  The value to cast as a char.
 	 *
 	 * @return  string  Returns the cast value.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function castAsChar($value)
 	{
@@ -116,7 +160,7 @@ class JDatabaseQuerySQLSrv extends JDatabaseQuery
 	/**
 	 * Gets the function to determine the length of a character string.
 	 *
-	 * @param	string  $field  A value.
+	 * @param   string  $field  A value.
 	 *
 	 * @return  string  The required char length call.
 	 *
@@ -130,12 +174,12 @@ class JDatabaseQuerySQLSrv extends JDatabaseQuery
 	/**
 	 * Concatenates an array of column names or values.
 	 *
-	 * @param	array	$values	 An array of values to concatenate.
-	 * @param	string  $separator  As separator to place between each value.
+	 * @param   array   $values     An array of values to concatenate.
+	 * @param   string  $separator  As separator to place between each value.
 	 *
 	 * @return  string  The concatenated values.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function concatenate($values, $separator = null)
 	{
@@ -154,7 +198,7 @@ class JDatabaseQuerySQLSrv extends JDatabaseQuery
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function currentTimestamp()
 	{
@@ -164,14 +208,55 @@ class JDatabaseQuerySQLSrv extends JDatabaseQuery
 	/**
 	 * Get the length of a string in bytes.
 	 *
-	 * @param	string  $value  The string to measure.
+	 * @param   string  $value  The string to measure.
 	 *
 	 * @return  integer
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function length($value)
 	{
 		return 'LEN(' . $value . ')';
+	}
+
+	/**
+	 * Method to modify a query already in string format with the needed
+	 * additions to make the query limited to a particular number of
+	 * results, or start at a particular offset.
+	 *
+	 * @param   string   $query   The query in string format
+	 * @param   integer  $limit   The limit for the result set
+	 * @param   integer  $offset  The offset for the result set
+	 *
+	 * @return  string
+	 *
+	 * @since   12.1
+	 */
+	public function processLimit($query, $limit, $offset = 0)
+	{
+		if ($limit == 0 && $offset == 0)
+		{
+			return $query;
+		}
+
+		$start = $offset + 1;
+		$end   = $offset + $limit;
+
+		$orderBy = stristr($query, 'ORDER BY');
+
+		if (is_null($orderBy) || empty($orderBy))
+		{
+			$orderBy = 'ORDER BY (select 0)';
+		}
+
+		$query = str_ireplace($orderBy, '', $query);
+
+		$rowNumberText = ', ROW_NUMBER() OVER (' . $orderBy . ') AS RowNumber FROM ';
+
+		$query = preg_replace('/\sFROM\s/i', $rowNumberText, $query, 1);
+		$query = 'SELECT * FROM (' . $query . ') _myResults WHERE RowNumber BETWEEN ' . $start . ' AND ' . $end;
+		echo $query;
+
+		return $query;
 	}
 }

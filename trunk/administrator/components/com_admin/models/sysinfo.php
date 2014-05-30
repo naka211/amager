@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -219,7 +219,7 @@ class AdminModelSysInfo extends JModelLegacy
 	}
 
 	private function _addDirectory($name, $path, $message = '') {
-		$this->directories[$name] = array('writable' => is_writable($path), 'message' => $message);
+	    $this->directories[$name] = array('writable' => is_writable($path), 'message' => $message);
 	}
 
 	/**

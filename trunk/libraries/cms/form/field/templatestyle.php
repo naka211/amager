@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Libraries
+ * @package     Joomla.Libraries
  * @subpackage  Form
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -15,16 +15,16 @@ JFormHelper::loadFieldClass('groupedlist');
  * Form Field class for the Joomla CMS.
  * Supports a select grouped list of template styles
  *
- * @package	 Joomla.Libraries
+ * @package     Joomla.Libraries
  * @subpackage  Form
- * @since		1.6
+ * @since       1.6
  */
 class JFormFieldTemplateStyle extends JFormFieldGroupedList
 {
 	/**
 	 * The form field type.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  1.6
 	 */
 	public $type = 'TemplateStyle';
@@ -37,7 +37,7 @@ class JFormFieldTemplateStyle extends JFormFieldGroupedList
 	 *
 	 * @return  array  The field option objects as a nested array in groups.
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function getGroups()
 	{
@@ -80,10 +80,8 @@ class JFormFieldTemplateStyle extends JFormFieldGroupedList
 			foreach ($styles as $style)
 			{
 				$template = $style->template;
-				$lang->load('tpl_' . $template . '.sys', $client->path, null, false, false)
-					|| $lang->load('tpl_' . $template . '.sys', $client->path . '/templates/' . $template, null, false, false)
-					|| $lang->load('tpl_' . $template . '.sys', $client->path, $lang->getDefault(), false, false)
-					|| $lang->load('tpl_' . $template . '.sys', $client->path . '/templates/' . $template, $lang->getDefault(), false, false);
+					$lang->load('tpl_' . $template . '.sys', $client->path, null, false, true)
+				||	$lang->load('tpl_' . $template . '.sys', $client->path . '/templates/' . $template, null, false, true);
 				$name = JText::_($style->name);
 
 				// Initialize the group if necessary.

@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -18,10 +18,10 @@ class plgQuickiconJoomlaupdate extends JPlugin
 	/**
 	 * Constructor
 	 *
-	 * @param		object  $subject The object to observe
-	 * @param		array	$config  An array that holds the plugin configuration
+	 * @param       object  $subject The object to observe
+	 * @param       array   $config  An array that holds the plugin configuration
 	 *
-	 * @since		2.5
+	 * @since       2.5
 	 */
 	public function __construct(& $subject, $config)
 	{
@@ -39,7 +39,7 @@ class plgQuickiconJoomlaupdate extends JPlugin
 	 * @return array A list of icon definition associative arrays, consisting of the
 	 *				 keys link, image, text and access.
 	 *
-	 * @since		2.5
+	 * @since       2.5
 	 */
 	public function onGetIcons($context)
 	{

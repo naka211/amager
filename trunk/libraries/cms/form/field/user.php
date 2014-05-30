@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Libraries
+ * @package     Joomla.Libraries
  * @subpackage  Form
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,16 +12,16 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Field to select a user id from a modal list.
  *
- * @package	 Joomla.Libraries
+ * @package     Joomla.Libraries
  * @subpackage  Form
- * @since		1.6.0
+ * @since       1.6.0
  */
 class JFormFieldUser extends JFormField
 {
 	/**
 	 * The form field type.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  1.6.0
 	 */
 	public $type = 'User';
@@ -31,7 +31,7 @@ class JFormFieldUser extends JFormField
 	 *
 	 * @return  string  The field input markup.
 	 *
-	 * @since	1.6.0
+	 * @since   1.6.0
 	 */
 	protected function getInput()
 	{
@@ -76,7 +76,7 @@ class JFormFieldUser extends JFormField
 		}
 		else
 		{
-			$table->username = JText::_('JLIB_FORM_SELECT_USER');
+			$table->name = JText::_('JLIB_FORM_SELECT_USER');
 		}
 
 		// Create a dummy text field with the user name.
@@ -108,7 +108,7 @@ class JFormFieldUser extends JFormField
 	 *
 	 * @return  mixed  array of filtering groups or null.
 	 *
-	 * @since	1.6.0
+	 * @since   1.6.0
 	 */
 	protected function getGroups()
 	{
@@ -120,7 +120,7 @@ class JFormFieldUser extends JFormField
 	 *
 	 * @return  mixed  Array of users to exclude or null to to not exclude them
 	 *
-	 * @since	1.6.0
+	 * @since   1.6.0
 	 */
 	protected function getExcluded()
 	{

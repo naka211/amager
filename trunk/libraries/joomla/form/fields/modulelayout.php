@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -15,16 +15,16 @@ jimport('joomla.filesystem.folder');
 /**
  * Form Field to display a list of the layouts for module display from the module or template overrides.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
- * @since		11.1
+ * @since       11.1
  */
 class JFormFieldModuleLayout extends JFormField
 {
 	/**
 	 * The form field type.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $type = 'ModuleLayout';
@@ -34,7 +34,7 @@ class JFormFieldModuleLayout extends JFormField
 	 *
 	 * @return  string  The field input.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function getInput()
 	{
@@ -77,10 +77,8 @@ class JFormFieldModuleLayout extends JFormField
 
 			// Load language file
 			$lang = JFactory::getLanguage();
-			$lang->load($module . '.sys', $client->path, null, false, false)
-				|| $lang->load($module . '.sys', $client->path . '/modules/' . $module, null, false, false)
-				|| $lang->load($module . '.sys', $client->path, $lang->getDefault(), false, false)
-				|| $lang->load($module . '.sys', $client->path . '/modules/' . $module, $lang->getDefault(), false, false);
+				$lang->load($module . '.sys', $client->path, null, false, true)
+			||	$lang->load($module . '.sys', $client->path . '/modules/' . $module, null, false, true);
 
 			// Get the database object and a new query object.
 			$db = JFactory::getDBO();
@@ -147,13 +145,8 @@ class JFormFieldModuleLayout extends JFormField
 				foreach ($templates as $template)
 				{
 					// Load language file
-					$lang->load('tpl_' . $template->element . '.sys', $client->path, null, false, false)
-						|| $lang->load('tpl_' . $template->element . '.sys', $client->path . '/templates/' . $template->element, null, false, false)
-						|| $lang->load('tpl_' . $template->element . '.sys', $client->path, $lang->getDefault(), false, false)
-						|| $lang->load(
-						'tpl_' . $template->element . '.sys', $client->path . '/templates/' . $template->element, $lang->getDefault(),
-						false, false
-					);
+						$lang->load('tpl_' . $template->element . '.sys', $client->path, null, false, true)
+					||	$lang->load('tpl_' . $template->element . '.sys', $client->path . '/templates/' . $template->element, null, false, true);
 
 					$template_path = JPath::clean($client->path . '/templates/' . $template->element . '/html/' . $module);
 

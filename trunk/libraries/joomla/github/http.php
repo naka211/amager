@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  GitHub
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die();
@@ -12,9 +12,9 @@ defined('JPATH_PLATFORM') or die();
 /**
  * HTTP client class for connecting to a GitHub instance.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  GitHub
- * @since		11.3
+ * @since       11.3
  */
 class JGithubHttp extends JHttp
 {
@@ -39,10 +39,10 @@ class JGithubHttp extends JHttp
 	/**
 	 * Constructor.
 	 *
-	 * @param	JRegistry		&$options	Client options object.
-	 * @param	JHttpTransport  $transport  The HTTP transport object.
+	 * @param   JRegistry       &$options   Client options object.
+	 * @param   JHttpTransport  $transport  The HTTP transport object.
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function __construct(JRegistry &$options = null, JHttpTransport $transport = null)
 	{
@@ -59,13 +59,13 @@ class JGithubHttp extends JHttp
 	/**
 	 * Method to send the PATCH command to the server.
 	 *
-	 * @param	string  $url	  Path to the resource.
-	 * @param	mixed	$data	 Either an associative array or a string to be sent with the request.
-	 * @param	array	$headers  An array of name-value pairs to include in the header of the request.
+	 * @param   string  $url      Path to the resource.
+	 * @param   mixed   $data     Either an associative array or a string to be sent with the request.
+	 * @param   array   $headers  An array of name-value pairs to include in the header of the request.
 	 *
 	 * @return  JHttpResponse
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public function patch($url, $data, array $headers = null)
 	{

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Document
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,16 +12,16 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Abstract class for a renderer
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Document
- * @since		11.1
+ * @since       11.1
  */
 class JDocumentRenderer extends JObject
 {
 	/**
 	 * Reference to the JDocument object that instantiated the renderer
 	 *
-	 * @var	JDocument
+	 * @var    JDocument
 	 * @since  11.1
 	 */
 	protected	$_doc = null;
@@ -29,7 +29,7 @@ class JDocumentRenderer extends JObject
 	/**
 	 * Renderer mime type
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $_mime = "text/html";
@@ -37,9 +37,9 @@ class JDocumentRenderer extends JObject
 	/**
 	 * Class constructor
 	 *
-	 * @param	JDocument  &$doc  A reference to the JDocument object that instantiated the renderer
+	 * @param   JDocument  &$doc  A reference to the JDocument object that instantiated the renderer
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct(&$doc)
 	{
@@ -49,13 +49,13 @@ class JDocumentRenderer extends JObject
 	/**
 	 * Renders a script and returns the results as a string
 	 *
-	 * @param	string  $name	 The name of the element to render
-	 * @param	array	$params	Array of values
-	 * @param	string  $content  Override the output of the renderer
+	 * @param   string  $name     The name of the element to render
+	 * @param   array   $params   Array of values
+	 * @param   string  $content  Override the output of the renderer
 	 *
 	 * @return  string  The output of the script
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function render($name, $params = null, $content = null)
 	{
@@ -66,7 +66,7 @@ class JDocumentRenderer extends JObject
 	 *
 	 * @return  string  The contentType
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getContentType()
 	{

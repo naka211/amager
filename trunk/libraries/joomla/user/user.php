@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  User
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,16 +12,16 @@ defined('JPATH_PLATFORM') or die;
 /**
  * User class.  Handles all application interaction with a user
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  User
- * @since		11.1
+ * @since       11.1
  */
 class JUser extends JObject
 {
 	/**
 	 * A cached switch for if this user has root access rights.
 	 *
-	 * @var	boolean
+	 * @var    boolean
 	 * @since  11.1
 	 */
 	protected $isRoot = null;
@@ -29,14 +29,14 @@ class JUser extends JObject
 	/**
 	 * Unique id
 	 *
-	 * @var	integer
+	 * @var    integer
 	 * @since  11.1
 	 */
 	public $id = null;
 
 	/**
 	 * The users real name (or nickname)
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $name = null;
@@ -44,7 +44,7 @@ class JUser extends JObject
 	/**
 	 * The login name
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $username = null;
@@ -52,7 +52,7 @@ class JUser extends JObject
 	/**
 	 * The email
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $email = null;
@@ -60,7 +60,7 @@ class JUser extends JObject
 	/**
 	 * MD5 encrypted password
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $password = null;
@@ -68,7 +68,7 @@ class JUser extends JObject
 	/**
 	 * Clear password, only available when a new password is set for a user
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $password_clear = '';
@@ -77,10 +77,10 @@ class JUser extends JObject
 	 * User type
 	 * Used in Joomla 1.0 and 1.5 for access control.
 	 *
-	 * @var	string
-	 * @deprecated	12.1
-	 * @see	$_authGroups
-	 * @see	JAccess
+	 * @var    string
+	 * @deprecated    12.1
+	 * @see    $_authGroups
+	 * @see    JAccess
 	 * @since  11.1
 	 */
 	public $usertype = null;
@@ -88,7 +88,7 @@ class JUser extends JObject
 	/**
 	 * Block status
 	 *
-	 * @var	integer
+	 * @var    integer
 	 * @since  11.1
 	 */
 	public $block = null;
@@ -96,7 +96,7 @@ class JUser extends JObject
 	/**
 	 * Should this user receive system email
 	 *
-	 * @var	integer
+	 * @var    integer
 	 * @since  11.1
 	 */
 	public $sendEmail = null;
@@ -104,7 +104,7 @@ class JUser extends JObject
 	/**
 	 * Date the user was registered
 	 *
-	 * @var	datetime
+	 * @var    datetime
 	 * @since  11.1
 	 */
 	public $registerDate = null;
@@ -112,7 +112,7 @@ class JUser extends JObject
 	/**
 	 * Date of last visit
 	 *
-	 * @var	datetime
+	 * @var    datetime
 	 * @since  11.1
 	 */
 	public $lastvisitDate = null;
@@ -120,7 +120,7 @@ class JUser extends JObject
 	/**
 	 * Activation hash
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $activation = null;
@@ -128,7 +128,7 @@ class JUser extends JObject
 	/**
 	 * User parameters
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $params = null;
@@ -136,7 +136,7 @@ class JUser extends JObject
 	/**
 	 * Array of ids of groups that user belongs to
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	public $groups = array();
@@ -144,7 +144,7 @@ class JUser extends JObject
 	/**
 	 * Guest status
 	 *
-	 * @var	boolean
+	 * @var    boolean
 	 * @since  11.1
 	 */
 	public $guest = null;
@@ -152,7 +152,7 @@ class JUser extends JObject
 	/**
 	 * Last Reset Time
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  Joomla 2.5.6
 	 */
 	public $lastResetTime = null;
@@ -160,14 +160,14 @@ class JUser extends JObject
 	/**
 	 * Count since last Reset Time
 	 *
-	 * @var	int
+	 * @var    int
 	 * @since  Joomla 2.5.6
 	 */
 	public $resetCount = null;
 
 	/**
 	 * User parameters
-	 * @var	object
+	 * @var    object
 	 * @since  11.1
 	 */
 	protected $_params = null;
@@ -175,7 +175,7 @@ class JUser extends JObject
 	/**
 	 * Authorised access groups
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $_authGroups = null;
@@ -183,7 +183,7 @@ class JUser extends JObject
 	/**
 	 * Authorised access levels
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $_authLevels = null;
@@ -191,7 +191,7 @@ class JUser extends JObject
 	/**
 	 * Authorised access actions
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $_authActions = null;
@@ -199,39 +199,23 @@ class JUser extends JObject
 	/**
 	 * Error message
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $_errorMsg = null;
 
 	/**
-	 * @var	array  JUser instances container.
+	 * @var    array  JUser instances container.
 	 * @since  11.3
 	 */
 	protected static $instances = array();
-	/*T.Trung*/
-	public $mwctype = null;
-	public $firstname = null;
-	public $lastname = null;
-	public $address = null;
-	public $zipcode = null;
-	public $city = null;
-	public $phone = null;
-	
-	public $company = null;
-	public $cvr = null;
-	
-	public $ean = null;
-	public $authority = null;
-	public $order = null;
-	public $person = null;
-	public $newsletter = null;
+
 	/**
 	 * Constructor activating the default information of the language
 	 *
-	 * @param	integer  $identifier  The primary key of the user to load (optional).
+	 * @param   integer  $identifier  The primary key of the user to load (optional).
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($identifier = 0)
 	{
@@ -257,11 +241,11 @@ class JUser extends JObject
 	 * Returns the global User object, only creating it if it
 	 * doesn't already exist.
 	 *
-	 * @param	integer  $identifier  The user to load - Can be an integer or string - If string, it is converted to ID automatically.
+	 * @param   integer  $identifier  The user to load - Can be an integer or string - If string, it is converted to ID automatically.
 	 *
 	 * @return  JUser  The User object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getInstance($identifier = 0)
 	{
@@ -292,12 +276,12 @@ class JUser extends JObject
 	/**
 	 * Method to get a parameter value
 	 *
-	 * @param	string  $key	  Parameter key
-	 * @param	mixed	$default  Parameter default value
+	 * @param   string  $key      Parameter key
+	 * @param   mixed   $default  Parameter default value
 	 *
 	 * @return  mixed  The value or the default if it did not exist
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getParam($key, $default = null)
 	{
@@ -307,12 +291,12 @@ class JUser extends JObject
 	/**
 	 * Method to set a parameter
 	 *
-	 * @param	string  $key	Parameter key
-	 * @param	mixed	$value  Parameter value
+	 * @param   string  $key    Parameter key
+	 * @param   mixed   $value  Parameter value
 	 *
 	 * @return  mixed  Set parameter value
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setParam($key, $value)
 	{
@@ -322,12 +306,12 @@ class JUser extends JObject
 	/**
 	 * Method to set a default parameter if it does not exist
 	 *
-	 * @param	string  $key	Parameter key
-	 * @param	mixed	$value  Parameter value
+	 * @param   string  $key    Parameter key
+	 * @param   mixed   $value  Parameter value
 	 *
 	 * @return  mixed  Set parameter value
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function defParam($key, $value)
 	{
@@ -337,14 +321,14 @@ class JUser extends JObject
 	/**
 	 * Proxy to authorise
 	 *
-	 * @param	string  $action	 The name of the action to check for permission.
-	 * @param	string  $assetname  The name of the asset on which to perform the action.
+	 * @param   string  $action     The name of the action to check for permission.
+	 * @param   string  $assetname  The name of the asset on which to perform the action.
 	 *
 	 * @return  boolean  True if authorised
 	 *
-	 * @deprecated	12.1
-	 * @note	Use the authorise method instead.
-	 * @since	11.1
+	 * @deprecated    12.1
+	 * @note    Use the authorise method instead.
+	 * @since   11.1
 	 */
 	public function authorize($action, $assetname = null)
 	{
@@ -358,12 +342,12 @@ class JUser extends JObject
 	 * Method to check JUser object authorisation against an access control
 	 * object and optionally an access extension object
 	 *
-	 * @param	string  $action	 The name of the action to check for permission.
-	 * @param	string  $assetname  The name of the asset on which to perform the action.
+	 * @param   string  $action     The name of the action to check for permission.
+	 * @param   string  $assetname  The name of the asset on which to perform the action.
 	 *
 	 * @return  boolean  True if authorised
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function authorise($action, $assetname = null)
 	{
@@ -408,8 +392,8 @@ class JUser extends JObject
 	 * @return  array
 	 *
 	 * @deprecated  12.1
-	 * @note	Use the getAuthorisedViewLevels method instead.
-	 * @since	11.1
+	 * @note    Use the getAuthorisedViewLevels method instead.
+	 * @since   11.1
 	 */
 	public function authorisedLevels()
 	{
@@ -422,12 +406,12 @@ class JUser extends JObject
 	/**
 	 * Method to return a list of all categories that a user has permission for a given action
 	 *
-	 * @param	string  $component  The component from which to retrieve the categories
-	 * @param	string  $action	 The name of the section within the component from which to retrieve the actions.
+	 * @param   string  $component  The component from which to retrieve the categories
+	 * @param   string  $action     The name of the section within the component from which to retrieve the actions.
 	 *
 	 * @return  array  List of categories that this group can do this action to (empty array if none). Categories must be published.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getAuthorisedCategories($component, $action)
 	{
@@ -454,7 +438,7 @@ class JUser extends JObject
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getAuthorisedViewLevels()
 	{
@@ -475,7 +459,7 @@ class JUser extends JObject
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getAuthorisedGroups()
 	{
@@ -494,11 +478,11 @@ class JUser extends JObject
 	/**
 	 * Pass through method to the table for setting the last visit date
 	 *
-	 * @param	integer  $timestamp  The timestamp, defaults to 'now'.
+	 * @param   integer  $timestamp  The timestamp, defaults to 'now'.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setLastVisit($timestamp = null)
 	{
@@ -516,12 +500,12 @@ class JUser extends JObject
 	 * file is the same as the usertype. The functionals has a static variable to store the parameters
 	 * setup file base path. You can call this function statically to set the base path if needed.
 	 *
-	 * @param	boolean  $loadsetupfile  If true, loads the parameters setup file. Default is false.
-	 * @param	path	 $path			Set the parameters setup file base path to be used to load the user parameters.
+	 * @param   boolean  $loadsetupfile  If true, loads the parameters setup file. Default is false.
+	 * @param   path     $path           Set the parameters setup file base path to be used to load the user parameters.
 	 *
-	 * @return  object	The user parameters object.
+	 * @return  object   The user parameters object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getParameters($loadsetupfile = false, $path = null)
 	{
@@ -558,11 +542,11 @@ class JUser extends JObject
 	/**
 	 * Method to get the user parameters
 	 *
-	 * @param	object  $params  The user parameters object
+	 * @param   object  $params  The user parameters object
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setParameters($params)
 	{
@@ -576,12 +560,12 @@ class JUser extends JObject
 	 * instantiate. You can call this function statically to set the table name if
 	 * needed.
 	 *
-	 * @param	string  $type	The user table name to be used
-	 * @param	string  $prefix  The user table prefix to be used
+	 * @param   string  $type    The user table name to be used
+	 * @param   string  $prefix  The user table prefix to be used
 	 *
 	 * @return  object  The user table object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getTable($type = null, $prefix = 'JTable')
 	{
@@ -608,11 +592,11 @@ class JUser extends JObject
 	/**
 	 * Method to bind an associative array of data to a user object
 	 *
-	 * @param	array  &$array  The associative array to bind to the object
+	 * @param   array  &$array  The associative array to bind to the object
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function bind(&$array)
 	{
@@ -636,9 +620,7 @@ class JUser extends JObject
 
 			$this->password_clear = JArrayHelper::getValue($array, 'password', '', 'string');
 
-			$salt = JUserHelper::genRandomPassword(32);
-			$crypt = JUserHelper::getCryptedPassword($array['password'], $salt);
-			$array['password'] = $crypt . ':' . $salt;
+			$array['password'] = JUserHelper::hashPassword($array['password']);
 
 			// Set the registration timestamp
 
@@ -673,9 +655,7 @@ class JUser extends JObject
 
 				$this->password_clear = JArrayHelper::getValue($array, 'password', '', 'string');
 
-				$salt = JUserHelper::genRandomPassword(32);
-				$crypt = JUserHelper::getCryptedPassword($array['password'], $salt);
-				$array['password'] = $crypt . ':' . $salt;
+				$array['password'] = JUserHelper::hashPassword($array['password']);
 			}
 			else
 			{
@@ -720,12 +700,12 @@ class JUser extends JObject
 	/**
 	 * Method to save the JUser object to the database
 	 *
-	 * @param	boolean  $updateOnly  Save the object only if not a new user
-	 *								Currently only used in the user reset password method.
+	 * @param   boolean  $updateOnly  Save the object only if not a new user
+	 *                                Currently only used in the user reset password method.
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  exception
 	 */
 	public function save($updateOnly = false)
@@ -734,6 +714,7 @@ class JUser extends JObject
 		$table = $this->getTable();
 		$this->params = (string) $this->_params;
 		$table->bind($this->getProperties());
+
 
 		// Allow an exception to be thrown.
 		try
@@ -773,8 +754,15 @@ class JUser extends JObject
 			// Check if I am a Super Admin
 			$iAmSuperAdmin = $my->authorise('core.admin');
 
+			$iAmRehashingSuperadmin = false;
+
+			if (($my->id == 0 && !$isNew) && $this->id == $oldUser->id && $oldUser->authorise('core.admin') && $oldUser->password != $this->password)
+			{
+				$iAmRehashingSuperadmin = true;
+			}
+
 			// We are only worried about edits to this account if I am not a Super Admin.
-			if ($iAmSuperAdmin != true)
+			if ($iAmSuperAdmin != true && $iAmRehashingSuperadmin != true)
 			{
 				if ($isNew)
 				{
@@ -857,7 +845,7 @@ class JUser extends JObject
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function delete()
 	{
@@ -885,11 +873,11 @@ class JUser extends JObject
 	/**
 	 * Method to load a JUser object by user id number
 	 *
-	 * @param	mixed  $id  The user id of the user to load
+	 * @param   mixed  $id  The user id of the user to load
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function load($id)
 	{

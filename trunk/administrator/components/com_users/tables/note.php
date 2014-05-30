@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -12,9 +12,9 @@ defined('_JEXEC') or die;
 /**
  * User notes table class
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
- * @since		2.5
+ * @since       2.5
  */
 class UsersTableNote extends JTable
 {
@@ -33,11 +33,11 @@ class UsersTableNote extends JTable
 	/**
 	 * Overloaded store method for the notes table.
 	 *
-	 * @param	boolean  $updateNulls  Toggle whether null values should be updated.
+	 * @param   boolean  $updateNulls  Toggle whether null values should be updated.
 	 *
 	 * @return  boolean  True on success, false on failure.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function store($updateNulls = false)
 	{
@@ -67,14 +67,14 @@ class UsersTableNote extends JTable
 	 * table.  The method respects checked out rows by other users and will attempt
 	 * to check-in rows that it can after adjustments are made.
 	 *
-	 * @param	mixed	$pks	 An optional array of primary key values to update.  If not set the instance property value is used.
-	 * @param	integer  $state	The publishing state. eg. [0 = unpublished, 1 = published]
-	 * @param	integer  $userId  The user id of the user performing the operation.
+	 * @param   mixed    $pks     An optional array of primary key values to update.  If not set the instance property value is used.
+	 * @param   integer  $state   The publishing state. eg. [0 = unpublished, 1 = published]
+	 * @param   integer  $userId  The user id of the user performing the operation.
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @link	http://docs.joomla.org/JTable/publish
-	 * @since	2.5
+	 * @link    http://docs.joomla.org/JTable/publish
+	 * @since   2.5
 	 */
 	public function publish($pks = null, $state = 1, $userId = 0)
 	{

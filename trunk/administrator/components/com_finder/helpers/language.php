@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -12,16 +12,16 @@ defined('_JEXEC') or die;
 /**
  * Finder language helper class.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_finder
- * @since		2.5
+ * @since       2.5
  */
 class FinderHelperLanguage
 {
 	/**
 	 * Method to return a plural language code for a taxonomy branch.
 	 *
-	 * @param	string  Branch title.
+	 * @param   string  Branch title.
 	 *
 	 * @return  string  Language key code.
 	 */
@@ -35,7 +35,7 @@ class FinderHelperLanguage
 	/**
 	 * Method to return a singular language code for a taxonomy branch.
 	 *
-	 * @param	string  Branch name.
+	 * @param   string  Branch name.
 	 *
 	 * @return  string  Language key code.
 	 */
@@ -52,7 +52,7 @@ class FinderHelperLanguage
 	 *
 	 * @return  boolean  True if site is supporting multiple languages; false otherwise.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 * @deprecated  3.0 Use JLanguageMultilang::isEnabled() instead.
 	 */
 	public static function isMultiLanguage()
@@ -66,7 +66,7 @@ class FinderHelperLanguage
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function loadComponentLanguage()
 	{
@@ -79,7 +79,7 @@ class FinderHelperLanguage
 	 *
 	 * @return  void
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public static function loadPluginLanguage()
 	{

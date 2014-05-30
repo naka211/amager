@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -18,16 +18,16 @@ defined('JPATH_PLATFORM') or die;
  * @contributor  Michael Slusarz <slusarz@horde.org>
  * @contributor  Michael Cochrane <mike@graftonhall.co.nz>
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
- * @since		11.1
+ * @since       11.1
  */
 class JArchiveTar extends JObject
 {
 	/**
 	 * Tar file types.
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	private $_types = array(
@@ -44,7 +44,7 @@ class JArchiveTar extends JObject
 	/**
 	 * Tar file data buffer
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	private $_data = null;
@@ -52,7 +52,7 @@ class JArchiveTar extends JObject
 	/**
 	 * Tar file metadata array
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	private $_metadata = null;
@@ -60,13 +60,13 @@ class JArchiveTar extends JObject
 	/**
 	 * Extract a ZIP compressed file to a given path
 	 *
-	 * @param	string  $archive	  Path to ZIP archive to extract
-	 * @param	string  $destination  Path to extract archive into
-	 * @param	array	$options	  Extraction options [unused]
+	 * @param   string  $archive      Path to ZIP archive to extract
+	 * @param   string  $destination  Path to extract archive into
+	 * @param   array   $options      Extraction options [unused]
 	 *
 	 * @return  boolean  True if successful
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function extract($archive, $destination, $options = array())
 	{
@@ -113,7 +113,7 @@ class JArchiveTar extends JObject
 	 *
 	 * @return  boolean  True if supported
 	 *
-	 * @since	11.3
+	 * @since   11.3
 	 */
 	public static function isSupported()
 	{
@@ -123,9 +123,9 @@ class JArchiveTar extends JObject
 	/**
 	 * Get the list of files/data from a Tar archive buffer.
 	 *
-	 * @param	string  &$data  The Tar archive buffer.
+	 * @param   string  &$data  The Tar archive buffer.
 	 *
-	 * @return	array  Archive metadata array
+	 * @return   array  Archive metadata array
 	 * <pre>
 	 * KEY: Position in the array
 	 * VALUES: 'attr'  --  File attributes
@@ -136,7 +136,7 @@ class JArchiveTar extends JObject
 	 * 'type'  --  File type
 	 * </pre>
 	 *
-	 * @since	11.1
+	 * @since    11.1
 	 */
 	protected function _getTarInfo(& $data)
 	{

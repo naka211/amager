@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,23 +14,23 @@ jimport('joomla.application.component.model');
 /**
  * Prototype item model.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Application
- * @since		11.1
+ * @since       11.1
  */
 abstract class JModelItem extends JModel
 {
 	/**
 	 * An item.
 	 *
-	 * @var	array
+	 * @var    array
 	 */
 	protected $_item = null;
 
 	/**
 	 * Model context string.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $_context = 'group.type';
@@ -42,11 +42,11 @@ abstract class JModelItem extends JModel
 	 * different modules that might need different sets of data or different
 	 * ordering requirements.
 	 *
-	 * @param	string  $id  A prefix for the store id.
+	 * @param   string  $id  A prefix for the store id.
 	 *
 	 * @return  string  A store id.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function getStoreId($id = '')
 	{

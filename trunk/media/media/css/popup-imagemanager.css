@@ -1,5 +1,5 @@
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -244,10 +244,10 @@ table.properties td {
 }
 
 legend {
-	color: #146295;
-	font-size: 1.2em;
-	font-weight: bold;
-	font-size:11px
+    color: #146295;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-size:11px
 }
 
 #uploadform legend
@@ -258,9 +258,9 @@ legend {
 
 
 input, select {
-	font-size: 0.909em;
-	border: 1px solid silver;
-	background: #fff;
+    font-size: 0.909em;
+    border: 1px solid silver;
+    background: #fff;
 }
 
 
@@ -273,9 +273,9 @@ fieldset textarea,
 fieldset select,
 fieldset img,
 fieldset button {
-	float: left;
-	width: auto;
-	margin: 5px 5px 5px 0px;
+    float: left;
+    width: auto;
+    margin: 5px 5px 5px 0px;
 }
 
  label.hidelabeltxt {
@@ -283,9 +283,9 @@ fieldset button {
 }
 #imageForm fieldset label,
 #uploadform fieldset label {
-	float: left;
-	clear: left;
-	display:block;
-	margin: 5px 0;
-	font-size:11px
+    float: left;
+    clear: left;
+    display:block;
+    margin: 5px 0;
+    font-size:11px
 }

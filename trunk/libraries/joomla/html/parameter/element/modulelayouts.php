@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,10 +14,10 @@ require_once dirname(__FILE__) . '/list.php';
 /**
  * Parameter to display a list of the layouts for a module from the module or default template overrides.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Parameter
- * @note		Note that JFormFieldModuleLayout does not end in s.
- * @since		11.1
+ * @note        Note that JFormFieldModuleLayout does not end in s.
+ * @since       11.1
  * @deprecated  Use JFormFieldModuleLayout instead
  */
 class JElementModuleLayouts extends JElementList
@@ -30,12 +30,12 @@ class JElementModuleLayouts extends JElementList
 	/**
 	 * Get the options for the list.
 	 *
-	 * @param	JXMLElement  &$node  JXMLElement node object containing the settings for the element
+	 * @param   JXMLElement  &$node  JXMLElement node object containing the settings for the element
 	 *
 	 * @return  string
 	 *
-	 * @deprecated	12.1	Use JFormFieldModuleLayouts::getInput instead.
-	 * @since	11.1
+	 * @deprecated    12.1   Use JFormFieldModuleLayouts::getInput instead.
+	 * @since   11.1
 	 */
 	protected function _getOptions(&$node)
 	{

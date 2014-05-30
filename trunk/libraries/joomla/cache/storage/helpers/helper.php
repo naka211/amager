@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Cache
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,16 +12,16 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Cache storage helper functions.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Cache
- * @since		11.1
+ * @since       11.1
  */
 class JCacheStorageHelper
 {
 	/**
 	 * Cache data group
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $group = '';
@@ -29,7 +29,7 @@ class JCacheStorageHelper
 	/**
 	 * Cached item size
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $size = 0;
@@ -37,7 +37,7 @@ class JCacheStorageHelper
 	/**
 	 * Counter
 	 *
-	 * @var	integer
+	 * @var    integer
 	 * @since  11.1
 	 */
 	public $count = 0;
@@ -45,9 +45,9 @@ class JCacheStorageHelper
 	/**
 	 * Constructor
 	 *
-	 * @param	string  $group  The cache data group
+	 * @param   string  $group  The cache data group
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($group)
 	{
@@ -57,15 +57,15 @@ class JCacheStorageHelper
 	/**
 	 * Increase cache items count.
 	 *
-	 * @param	string  $size  Cached item size
+	 * @param   string  $size  Cached item size
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function updateSize($size)
 	{
-		$this->size = number_format($this->size + $size, 2);
+		$this->size = number_format($this->size + $size, 2, '.', '');
 		$this->count++;
 	}
 }

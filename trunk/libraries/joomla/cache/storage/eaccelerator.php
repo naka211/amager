@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Cache
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,19 +12,19 @@ defined('JPATH_PLATFORM') or die;
 /**
  * eAccelerator cache storage handler
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Cache
- * @link		http://eaccelerator.net/
- * @since		11.1
+ * @link        http://eaccelerator.net/
+ * @since       11.1
  */
 class JCacheStorageEaccelerator extends JCacheStorage
 {
 	/**
 	 * Constructor
 	 *
-	 * @param	array  $options  Optional parameters.
+	 * @param   array  $options  Optional parameters.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct($options = array())
 	{
@@ -34,13 +34,13 @@ class JCacheStorageEaccelerator extends JCacheStorage
 	/**
 	 * Get cached data by id and group
 	 *
-	 * @param	string	$id		 The cache data id
-	 * @param	string	$group	  The cache data group
-	 * @param	boolean  $checkTime  True to verify cache time expiration threshold
+	 * @param   string   $id         The cache data id
+	 * @param   string   $group      The cache data group
+	 * @param   boolean  $checkTime  True to verify cache time expiration threshold
 	 *
 	 * @return  mixed  Boolean false on failure or a cached data string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function get($id, $group, $checkTime = true)
 	{
@@ -56,9 +56,9 @@ class JCacheStorageEaccelerator extends JCacheStorage
 	/**
 	 * Get all cached data
 	 *
-	 * @return  array	data
+	 * @return  array    data
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getAll()
 	{
@@ -101,13 +101,13 @@ class JCacheStorageEaccelerator extends JCacheStorage
 	/**
 	 * Store the data to by id and group
 	 *
-	 * @param	string  $id	 The cache data id
-	 * @param	string  $group  The cache data group
-	 * @param	string  $data	The data to store in cache
+	 * @param   string  $id     The cache data id
+	 * @param   string  $group  The cache data group
+	 * @param   string  $data   The data to store in cache
 	 *
 	 * @return  boolean  True on success, false otherwise
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function store($id, $group, $data)
 	{
@@ -118,12 +118,12 @@ class JCacheStorageEaccelerator extends JCacheStorage
 	/**
 	 * Remove a cached data entry by id and group
 	 *
-	 * @param	string  $id	 The cache data id
-	 * @param	string  $group  The cache data group
+	 * @param   string  $id     The cache data id
+	 * @param   string  $group  The cache data group
 	 *
 	 * @return  boolean  True on success, false otherwise
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function remove($id, $group)
 	{
@@ -134,14 +134,14 @@ class JCacheStorageEaccelerator extends JCacheStorage
 	/**
 	 * Clean cache for a group given a mode.
 	 *
-	 * @param	string  $group  The cache data group
-	 * @param	string  $mode	The mode for cleaning cache [group|notgroup]
-	 * group mode	: cleans all cache in the group
+	 * @param   string  $group  The cache data group
+	 * @param   string  $mode   The mode for cleaning cache [group|notgroup]
+	 * group mode    : cleans all cache in the group
 	 * notgroup mode : cleans all cache not in the group
 	 *
 	 * @return  boolean  True on success, false otherwise
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function clean($group, $mode = null)
 	{
@@ -170,7 +170,7 @@ class JCacheStorageEaccelerator extends JCacheStorage
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function gc()
 	{
@@ -182,7 +182,7 @@ class JCacheStorageEaccelerator extends JCacheStorage
 	 *
 	 * @return boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function test()
 	{
@@ -192,13 +192,13 @@ class JCacheStorageEaccelerator extends JCacheStorage
 	/**
 	 * Lock cached item
 	 *
-	 * @param	string	$id		The cache data id
-	 * @param	string	$group	 The cache data group
-	 * @param	integer  $locktime  Cached item max lock time
+	 * @param   string   $id        The cache data id
+	 * @param   string   $group     The cache data group
+	 * @param   integer  $locktime  Cached item max lock time
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function lock($id, $group, $locktime)
 	{
@@ -242,12 +242,12 @@ class JCacheStorageEaccelerator extends JCacheStorage
 	/**
 	 * Unlock cached item
 	 *
-	 * @param	string  $id	 The cache data id
-	 * @param	string  $group  The cache data group
+	 * @param   string  $id     The cache data id
+	 * @param   string  $group  The cache data group
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function unlock($id, $group = null)
 	{

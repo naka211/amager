@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,29 +12,29 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Renders a button separator
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
- * @since		11.1
+ * @since       11.1
  */
 class JButtonSeparator extends JButton
 {
 	/**
 	 * Button type
 	 *
-	 * @var	string
+	 * @var   string
 	 */
 	protected $_name = 'Separator';
 
 	/**
 	 * Get the HTML for a separator in the toolbar
 	 *
-	 * @param	array  &$definition  Class name and custom width
+	 * @param   array  &$definition  Class name and custom width
 	 *
 	 * @return  The HTML for the separator
 	 *
 	 * @since  11.1
 	 *
-	 * @see	JButton::render()
+	 * @see    JButton::render()
 	 */
 	public function render(&$definition)
 	{
@@ -55,7 +55,7 @@ class JButtonSeparator extends JButton
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function fetchButton()
 	{

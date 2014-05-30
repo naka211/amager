@@ -1,5 +1,5 @@
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -23,11 +23,11 @@ var JCaption = new Class({
 
 	createCaption: function(element)
 	{
-		var caption	= document.createTextNode(element.title);
+		var caption   = document.createTextNode(element.title);
 		var container = document.createElement("div");
-		var text	  = document.createElement("p");
-		var width	 = element.getAttribute("width");
-		var align	 = element.getAttribute("align");
+		var text      = document.createElement("p");
+		var width     = element.getAttribute("width");
+		var align     = element.getAttribute("align");
 
 		if(!width) {
 			width = element.width;
@@ -51,8 +51,8 @@ var JCaption = new Class({
 		if (element.title != "") {
 			container.appendChild(text);
 		}
-		container.className	= this.selector.replace('.', '_');
-		container.className	= container.className + " " + align;
+		container.className   = this.selector.replace('.', '_');
+		container.className   = container.className + " " + align;
 		container.setAttribute("style","float:"+align);
 
 		container.style.width = width + "px";

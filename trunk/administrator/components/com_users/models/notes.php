@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
@@ -14,9 +14,9 @@ jimport('joomla.application.component.modellist');
 /**
  * User notes model class.
  *
- * @package	 Joomla.Administrator
+ * @package     Joomla.Administrator
  * @subpackage  com_users
- * @since		2.5
+ * @since       2.5
  */
 class UsersModelNotes extends JModelList
 {
@@ -59,7 +59,7 @@ class UsersModelNotes extends JModelList
 	 *
 	 * @return  JDatabaseQuery  A JDatabaseQuery object to retrieve the data set.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function getListQuery()
 	{
@@ -153,11 +153,11 @@ class UsersModelNotes extends JModelList
 	 * different modules that might need different sets of data or different
 	 * ordering requirements.
 	 *
-	 * @param	string  $id  A prefix for the store id.
+	 * @param   string  $id  A prefix for the store id.
 	 *
 	 * @return  string  A store id.
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	protected function getStoreId($id = '')
 	{
@@ -174,7 +174,7 @@ class UsersModelNotes extends JModelList
 	 *
 	 * @return  JUser  The JUser object
 	 *
-	 * @since	2.5
+	 * @since   2.5
 	 */
 	public function getUser()
 	{
@@ -197,7 +197,7 @@ class UsersModelNotes extends JModelList
 	 *
 	 * @return  void
 	 *
-	 * @since	1.6
+	 * @since   1.6
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{

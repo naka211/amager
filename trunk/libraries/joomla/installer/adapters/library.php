@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -15,20 +15,20 @@ jimport('joomla.base.adapterinstance');
 /**
  * Library installer
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Installer
- * @since		11.1
+ * @since       11.1
  */
 class JInstallerLibrary extends JAdapterInstance
 {
 	/**
 	 * Custom loadLanguage method
 	 *
-	 * @param	string  $path  The path where to find language files.
+	 * @param   string  $path  The path where to find language files.
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function loadLanguage($path = null)
 	{
@@ -42,10 +42,8 @@ class JInstallerLibrary extends JAdapterInstance
 		$name = strtolower((string) $this->manifest->libraryname);
 		$lang = JFactory::getLanguage();
 		$source = $path ? $path : JPATH_PLATFORM . "/$name";
-		$lang->load($extension . '.sys', $source, null, false, false)
-			|| $lang->load($extension . '.sys', JPATH_SITE, null, false, false)
-			|| $lang->load($extension . '.sys', $source, $lang->getDefault(), false, false)
-			|| $lang->load($extension . '.sys', JPATH_SITE, $lang->getDefault(), false, false);
+			$lang->load($extension . '.sys', $source, null, false, true)
+		||	$lang->load($extension . '.sys', JPATH_SITE, null, false, true);
 	}
 
 	/**
@@ -53,7 +51,7 @@ class JInstallerLibrary extends JAdapterInstance
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function install()
 	{
@@ -192,7 +190,7 @@ class JInstallerLibrary extends JAdapterInstance
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function update()
 	{
@@ -229,11 +227,11 @@ class JInstallerLibrary extends JAdapterInstance
 	/**
 	 * Custom uninstall method
 	 *
-	 * @param	string  $id  The id of the library to uninstall.
+	 * @param   string  $id  The id of the library to uninstall.
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function uninstall($id)
 	{
@@ -326,7 +324,7 @@ class JInstallerLibrary extends JAdapterInstance
 	 *
 	 * @return  array  JExtension  list of extensions available
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function discover()
 	{
@@ -353,7 +351,7 @@ class JInstallerLibrary extends JAdapterInstance
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function discover_install()
 	{
@@ -393,7 +391,7 @@ class JInstallerLibrary extends JAdapterInstance
 	 *
 	 * @return  boolean  Result of operation, true if updated, false on failure
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function refreshManifestCache()
 	{

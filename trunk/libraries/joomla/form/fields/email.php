@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -13,18 +13,18 @@ defined('JPATH_PLATFORM') or die;
  * Form Field class for the Joomla Platform.
  * Provides and input field for e-mail addresses
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
- * @link		http://www.w3.org/TR/html-markup/input.email.html#input.email
- * @see		 JFormRuleEmail
- * @since		11.1
+ * @link        http://www.w3.org/TR/html-markup/input.email.html#input.email
+ * @see         JFormRuleEmail
+ * @since       11.1
  */
 class JFormFieldEMail extends JFormField
 {
 	/**
 	 * The form field type.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	protected $type = 'Email';
@@ -34,7 +34,7 @@ class JFormFieldEMail extends JFormField
 	 *
 	 * @return  string  The field input markup.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function getInput()
 	{
@@ -44,6 +44,9 @@ class JFormFieldEMail extends JFormField
 		$class = $this->element['class'] ? ' ' . (string) $this->element['class'] : '';
 		$readonly = ((string) $this->element['readonly'] == 'true') ? ' readonly="readonly"' : '';
 		$disabled = ((string) $this->element['disabled'] == 'true') ? ' disabled="disabled"' : '';
+
+		// " and \ are always forbidden in email unless escaped.
+		$this->value = str_replace(array('"','\\'), '', $this->value);
 
 		// Initialize JavaScript field attributes.
 		$onchange = $this->element['onchange'] ? ' onchange="' . (string) $this->element['onchange'] . '"' : '';

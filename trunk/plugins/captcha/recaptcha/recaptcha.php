@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Plugin
+ * @package     Joomla.Plugin
  * @subpackage  Captcha
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
@@ -13,17 +13,17 @@ jimport('joomla.environment.browser');
 
 /**
  * Recaptcha Plugin.
- * Based on the oficial recaptcha library( http://recaptcha.net/plugins/php/ )
+ * Based on the official recaptcha library( https://developers.google.com/recaptcha/docs/php )
  *
- * @package	 Joomla.Plugin
+ * @package     Joomla.Plugin
  * @subpackage  Captcha
- * @since		2.5
+ * @since       2.5
  */
 class plgCaptchaRecaptcha extends JPlugin
 {
-	const RECAPTCHA_API_SERVER = "http://api.recaptcha.net";
+	const RECAPTCHA_API_SERVER = "http://www.google.com/recaptcha/api";
 	const RECAPTCHA_API_SECURE_SERVER = "https://www.google.com/recaptcha/api";
-	const RECAPTCHA_VERIFY_SERVER = "api-verify.recaptcha.net";
+	const RECAPTCHA_VERIFY_SERVER = "www.google.com";
 
 	public function __construct($subject, $config)
 	{
@@ -115,7 +115,7 @@ class plgCaptchaRecaptcha extends JPlugin
 			return false;
 		}
 
-		$response = $this->_recaptcha_http_post(self::RECAPTCHA_VERIFY_SERVER, "/verify",
+		$response = $this->_recaptcha_http_post(self::RECAPTCHA_VERIFY_SERVER, "/recaptcha/api/verify",
 												array(
 													'privatekey'	=> $privatekey,
 													'remoteip'		=> $remoteip,
@@ -140,7 +140,7 @@ class plgCaptchaRecaptcha extends JPlugin
 	/**
 	 * Encodes the given data into a query string format.
 	 *
-	 * @param	string  $data  Array of string elements to be encoded
+	 * @param   string  $data  Array of string elements to be encoded
 	 *
 	 * @return  string  Encoded request
 	 *
@@ -162,12 +162,12 @@ class plgCaptchaRecaptcha extends JPlugin
 	/**
 	 * Submits an HTTP POST to a reCAPTCHA server.
 	 *
-	 * @param	string  $host
-	 * @param	string  $path
-	 * @param	array	$data
-	 * @param	int	 $port
+	 * @param   string  $host
+	 * @param   string  $path
+	 * @param   array   $data
+	 * @param   int     $port
 	 *
-	 * @return  array	Response
+	 * @return  array   Response
 	 *
 	 * @since  2.5
 	 */

@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -19,10 +19,10 @@ class plgSearchContacts extends JPlugin
 	/**
 	 * Constructor
 	 *
-	 * @access	  protected
-	 * @param		object  $subject The object to observe
-	 * @param		array	$config  An array that holds the plugin configuration
-	 * @since		1.5
+	 * @access      protected
+	 * @param       object  $subject The object to observe
+	 * @param       array   $config  An array that holds the plugin configuration
+	 * @since       1.5
 	 */
 	public function __construct(& $subject, $config)
 	{
@@ -122,7 +122,7 @@ class plgSearchContacts extends JPlugin
 			$query->select('a.name AS title, \'\' AS created, a.con_position, a.misc, '
 					.$case_when.','.$case_when1.', '
 					. $query->concatenate(array("a.name", "a.con_position", "a.misc"), ",").' AS text,'
-					. $query->concatenate(array($db->Quote($section), "c.title"), " / ").' AS section,'
+                    . $query->concatenate(array($db->Quote($section), "c.title"), " / ").' AS section,'
 					. '\'2\' AS browsernav');
 			$query->from('#__contact_details AS a');
 			$query->innerJoin('#__categories AS c ON c.id = a.catid');

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Utilities
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,9 +12,9 @@ defined('JPATH_PLATFORM') or die;
 /**
  * JSimpleCrypt is a very simple encryption algorithm for encrypting/decrypting strings
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Utilities
- * @since		11.1
+ * @since       11.1
  * @deprecated  12.3  Use JCrypt instead.
  */
 class JSimpleCrypt extends JObject
@@ -22,7 +22,7 @@ class JSimpleCrypt extends JObject
 	/**
 	 * Encryption/Decryption Key
 	 *
-	 * @var	string
+	 * @var    string
 	 */
 	protected $_key;
 
@@ -30,9 +30,9 @@ class JSimpleCrypt extends JObject
 	 * Object Constructor takes an optional key to be used for encryption/decryption. If no key is given then the
 	 * secret word from the configuration object is used.
 	 *
-	 * @param	string  $key  Optional encryption key
+	 * @param   string  $key  Optional encryption key
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3  Use JCrypt instead.
 	 */
 	public function __construct($key = null)
@@ -53,11 +53,11 @@ class JSimpleCrypt extends JObject
 	/**
 	 * Decrypt a string
 	 *
-	 * @param	string  $s  String to decrypt
+	 * @param   string  $s  String to decrypt
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3  Use JCrypt instead.
 	 */
 	public function decrypt($s)
@@ -71,11 +71,11 @@ class JSimpleCrypt extends JObject
 	/**
 	 * Encrypt a string
 	 *
-	 * @param	string  $s  String to encrypt
+	 * @param   string  $s  String to encrypt
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3  Use JCrypt instead.
 	 */
 	public function encrypt($s)
@@ -94,12 +94,12 @@ class JSimpleCrypt extends JObject
 	/**
 	 * Convert hex to an integer
 	 *
-	 * @param	string	$s  The hex string to convert.
-	 * @param	integer  $i  The offset?
+	 * @param   string   $s  The hex string to convert.
+	 * @param   integer  $i  The offset?
 	 *
 	 * @return  integer
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3  Use JCrypt instead.
 	 */
 	protected function _hexToInt($s, $i)
@@ -171,11 +171,11 @@ class JSimpleCrypt extends JObject
 	/**
 	 * Convert hex to an array of integers
 	 *
-	 * @param	string  $s  The hex string to convert to an integer array.
+	 * @param   string  $s  The hex string to convert to an integer array.
 	 *
 	 * @return  array  An array of integers.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3  Use JCrypt instead.
 	 */
 	protected function _hexToIntArray($s)
@@ -195,11 +195,11 @@ class JSimpleCrypt extends JObject
 	/**
 	 * Convert character string to integer
 	 *
-	 * @param	string  $c  The character to convert to an integer.
+	 * @param   string  $c  The character to convert to an integer.
 	 *
 	 * @return  integer
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3  Use JCrypt instead.
 	 */
 	protected function _charToInt($c)
@@ -212,11 +212,11 @@ class JSimpleCrypt extends JObject
 	/**
 	 * XorString
 	 *
-	 * @param	string  $ai  The string.
+	 * @param   string  $ai  The string.
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3  Use JCrypt instead.
 	 */
 	protected function _xorString($ai)
@@ -243,11 +243,11 @@ class JSimpleCrypt extends JObject
 	/**
 	 * Convert integer to hex
 	 *
-	 * @param	integer  $i  An integer value to convert.
+	 * @param   integer  $i  An integer value to convert.
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3  Use JCrypt instead.
 	 */
 	protected function _intToHex($i)
@@ -270,11 +270,11 @@ class JSimpleCrypt extends JObject
 	/**
 	 * Use xor encryption
 	 *
-	 * @param	string  $s  The string.
+	 * @param   string  $s  The string.
 	 *
 	 * @return  array  An array of integers
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @deprecated  12.3  Use JCrypt instead.
 	 */
 	protected function _xorCharString($s)

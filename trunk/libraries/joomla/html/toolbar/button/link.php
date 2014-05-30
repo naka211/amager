@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,29 +12,29 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Renders a link button
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
- * @since		11.1
+ * @since       11.1
  */
 class JButtonLink extends JButton
 {
 	/**
 	 * Button type
-	 * @var	string
+	 * @var    string
 	 */
 	protected $_name = 'Link';
 
 	/**
 	 * Fetch the HTML for the button
 	 *
-	 * @param	string  $type  Unused string.
-	 * @param	string  $name  Name to be used as apart of the id
-	 * @param	string  $text  Button text
-	 * @param	string  $url	The link url
+	 * @param   string  $type  Unused string.
+	 * @param   string  $name  Name to be used as apart of the id
+	 * @param   string  $text  Button text
+	 * @param   string  $url   The link url
 	 *
 	 * @return  string  HTML string for the button
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function fetchButton($type = 'Link', $name = 'back', $text = '', $url = null)
 	{
@@ -54,12 +54,12 @@ class JButtonLink extends JButton
 	/**
 	 * Get the button CSS Id
 	 *
-	 * @param	string  $type  The button type.
-	 * @param	string  $name  The name of the button.
+	 * @param   string  $type  The button type.
+	 * @param   string  $name  The name of the button.
 	 *
 	 * @return  string  Button CSS Id
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function fetchId($type = 'Link', $name = '')
 	{
@@ -69,11 +69,11 @@ class JButtonLink extends JButton
 	/**
 	 * Get the JavaScript command for the button
 	 *
-	 * @param	object  $url  Button definition
+	 * @param   object  $url  Button definition
 	 *
 	 * @return  string  JavaScript command string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _getCommand($url)
 	{

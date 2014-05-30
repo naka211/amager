@@ -1,5 +1,5 @@
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -206,8 +206,8 @@ var ImageManager = this.ImageManager = {
 			var key = unescape( KeyVal[0] );
 			var val = unescape( KeyVal[1] ).replace(/\+ /g, ' ');
 			params[key] = val;
-		}
-		return params;
+	   }
+	   return params;
 	},
 
 	refreshFrame: function()

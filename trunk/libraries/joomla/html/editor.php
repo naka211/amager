@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,16 +14,16 @@ jimport('joomla.event.dispatcher');
 /**
  * JEditor class to handle WYSIWYG editors
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
- * @since		11.1
+ * @since       11.1
  */
 class JEditor extends JObject
 {
 	/**
 	 * An array of Observer objects to notify
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $_observers = array();
@@ -31,7 +31,7 @@ class JEditor extends JObject
 	/**
 	 * The state of the observable object
 	 *
-	 * @var	mixed
+	 * @var    mixed
 	 * @since  11.1
 	 */
 	protected $_state = null;
@@ -39,7 +39,7 @@ class JEditor extends JObject
 	/**
 	 * A multi dimensional array of [function][] = key for observers
 	 *
-	 * @var	array
+	 * @var    array
 	 * @since  11.1
 	 */
 	protected $_methods = array();
@@ -73,7 +73,7 @@ class JEditor extends JObject
 	protected $author = null;
 
 	/**
-	 * @var	array  JEditor instances container.
+	 * @var    array  JEditor instances container.
 	 * @since  11.3
 	 */
 	protected static $instances = array();
@@ -81,7 +81,7 @@ class JEditor extends JObject
 	/**
 	 * Constructor
 	 *
-	 * @param	string  $editor  The editor name
+	 * @param   string  $editor  The editor name
 	 */
 	public function __construct($editor = 'none')
 	{
@@ -92,11 +92,11 @@ class JEditor extends JObject
 	 * Returns the global Editor object, only creating it
 	 * if it doesn't already exist.
 	 *
-	 * @param	string  $editor  The editor to use.
+	 * @param   string  $editor  The editor to use.
 	 *
 	 * @return  object  JEditor  The Editor object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getInstance($editor = 'none')
 	{
@@ -113,9 +113,9 @@ class JEditor extends JObject
 	/**
 	 * Get the state of the JEditor object
 	 *
-	 * @return  mixed	The state of the object.
+	 * @return  mixed    The state of the object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getState()
 	{
@@ -125,11 +125,11 @@ class JEditor extends JObject
 	/**
 	 * Attach an observer object
 	 *
-	 * @param	object  $observer  An observer object to attach
+	 * @param   object  $observer  An observer object to attach
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function attach($observer)
 	{
@@ -193,11 +193,11 @@ class JEditor extends JObject
 	/**
 	 * Detach an observer object
 	 *
-	 * @param	object  $observer  An observer object to detach.
+	 * @param   object  $observer  An observer object to detach.
 	 *
 	 * @return  boolean  True if the observer object was detached.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function detach($observer)
 	{
@@ -230,7 +230,7 @@ class JEditor extends JObject
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function initialise()
 	{
@@ -261,21 +261,21 @@ class JEditor extends JObject
 	/**
 	 * Display the editor area.
 	 *
-	 * @param	string	$name	 The control name.
-	 * @param	string	$html	 The contents of the text area.
-	 * @param	string	$width	The width of the text area (px or %).
-	 * @param	string	$height	The height of the text area (px or %).
-	 * @param	integer  $col	  The number of columns for the textarea.
-	 * @param	integer  $row	  The number of rows for the textarea.
-	 * @param	boolean  $buttons  True and the editor buttons will be displayed.
-	 * @param	string	$id		An optional ID for the textarea (note: since 1.6). If not supplied the name is used.
-	 * @param	string	$asset	The object asset
-	 * @param	object	$author	The author.
-	 * @param	array	$params	Associative array of editor parameters.
+	 * @param   string   $name     The control name.
+	 * @param   string   $html     The contents of the text area.
+	 * @param   string   $width    The width of the text area (px or %).
+	 * @param   string   $height   The height of the text area (px or %).
+	 * @param   integer  $col      The number of columns for the textarea.
+	 * @param   integer  $row      The number of rows for the textarea.
+	 * @param   boolean  $buttons  True and the editor buttons will be displayed.
+	 * @param   string   $id       An optional ID for the textarea (note: since 1.6). If not supplied the name is used.
+	 * @param   string   $asset    The object asset
+	 * @param   object   $author   The author.
+	 * @param   array    $params   Associative array of editor parameters.
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function display($name, $html, $width, $height, $col, $row, $buttons = true, $id = null, $asset = null, $author = null, $params = array())
 	{
@@ -322,11 +322,11 @@ class JEditor extends JObject
 	/**
 	 * Save the editor content
 	 *
-	 * @param	string  $editor  The name of the editor control
+	 * @param   string  $editor  The name of the editor control
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function save($editor)
 	{
@@ -358,11 +358,11 @@ class JEditor extends JObject
 	/**
 	 * Get the editor contents
 	 *
-	 * @param	string  $editor  The name of the editor control
+	 * @param   string  $editor  The name of the editor control
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getContent($editor)
 	{
@@ -388,12 +388,12 @@ class JEditor extends JObject
 	/**
 	 * Set the editor contents
 	 *
-	 * @param	string  $editor  The name of the editor control
-	 * @param	string  $html	The contents of the text area
+	 * @param   string  $editor  The name of the editor control
+	 * @param   string  $html    The contents of the text area
 	 *
 	 * @return  string
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setContent($editor, $html)
 	{
@@ -420,13 +420,13 @@ class JEditor extends JObject
 	/**
 	 * Get the editor extended buttons (usually from plugins)
 	 *
-	 * @param	string  $editor	The name of the editor.
-	 * @param	mixed	$buttons  Can be boolean or array, if boolean defines if the buttons are
-	 *							displayed, if array defines a list of buttons not to show.
+	 * @param   string  $editor   The name of the editor.
+	 * @param   mixed   $buttons  Can be boolean or array, if boolean defines if the buttons are
+	 *                            displayed, if array defines a list of buttons not to show.
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getButtons($editor, $buttons = true)
 	{
@@ -468,11 +468,11 @@ class JEditor extends JObject
 	/**
 	 * Load the editor
 	 *
-	 * @param	array  $config  Associative array of editor config paramaters
+	 * @param   array  $config  Associative array of editor config paramaters
 	 *
 	 * @return  mixed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function _loadEditor($config = array())
 	{

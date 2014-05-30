@@ -1,9 +1,9 @@
 <?php
 /**
- * @package	Joomla.Platform
+ * @package    Joomla.Platform
  *
- * @copyright  Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	GNU General Public License version 2 or later; see LICENSE
+ * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
 // Set the platform root path as a constant if necessary.
@@ -77,6 +77,9 @@ if (isset($_SERVER['HTTP_HOST']))
 
 // Import the base object library.
 JLoader::import('joomla.base.object');
+
+// Register PHPass
+JLoader::register('PasswordHash', JPATH_PLATFORM . '/phpass/PasswordHash.php');
 
 // Register classes that don't follow one file per class naming conventions.
 JLoader::register('JText', JPATH_PLATFORM . '/joomla/methods.php');

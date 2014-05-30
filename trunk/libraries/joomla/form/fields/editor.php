@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -15,18 +15,18 @@ jimport('joomla.html.editor');
  * Form Field class for the Joomla Platform.
  * An editarea field for content creation
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Form
- * @see		 JFormfieldEditors
- * @see		 JEditor
- * @since		11.1
+ * @see         JFormfieldEditors
+ * @see         JEditor
+ * @since       11.1
  */
 class JFormFieldEditor extends JFormField
 {
 	/**
 	 * The form field type.
 	 *
-	 * @var	string
+	 * @var    string
 	 * @since  11.1
 	 */
 	public $type = 'Editor';
@@ -34,7 +34,7 @@ class JFormFieldEditor extends JFormField
 	/**
 	 * The JEditor object.
 	 *
-	 * @var	object
+	 * @var    object
 	 * @since  11.1
 	 */
 	protected $editor;
@@ -44,7 +44,7 @@ class JFormFieldEditor extends JFormField
 	 *
 	 * @return  string  The field input markup.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function getInput()
 	{
@@ -91,7 +91,7 @@ class JFormFieldEditor extends JFormField
 	 *
 	 * @return  JEditor  The JEditor object.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	protected function &getEditor()
 	{
@@ -147,7 +147,7 @@ class JFormFieldEditor extends JFormField
 	 *
 	 * @return  string  The JEditor object output.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function save()
 	{

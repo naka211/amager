@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -88,7 +88,7 @@ class UsersModelRegistration extends JModelForm
 				$data['name'],
 				$data['email'],
 				$data['username'],
-				$data['siteurl'].'index.php?option=com_users&task=registration.activate&token='.$data['activation']
+				$data['activate']
 			);
 
 			// get all admin users
@@ -299,7 +299,6 @@ class UsersModelRegistration extends JModelForm
 	 */
 	public function register($temp)
 	{
-		//print_r($temp);exit;
 		$config = JFactory::getConfig();
 		$db		= $this->getDbo();
 		$params = JComponentHelper::getParams('com_users');
@@ -312,9 +311,9 @@ class UsersModelRegistration extends JModelForm
 		foreach ($temp as $k => $v) {
 			$data[$k] = $v;
 		}
-		//print_r($data);exit;
+
 		// Prepare the data for the user object.
-		//$data['email']		= $data['email1'];
+		$data['email']		= $data['email1'];
 		$data['password']	= $data['password1'];
 		$useractivation = $params->get('useractivation');
 		$sendpassword = $params->get('sendpassword', 1);
@@ -324,7 +323,7 @@ class UsersModelRegistration extends JModelForm
 			$data['activation'] = JApplication::getHash(JUserHelper::genRandomPassword());
 			$data['block'] = 1;
 		}
-		
+
 		// Bind the data.
 		if (!$user->bind($data)) {
 			$this->setError(JText::sprintf('COM_USERS_REGISTRATION_BIND_FAILED', $user->getError()));
@@ -333,12 +332,10 @@ class UsersModelRegistration extends JModelForm
 
 		// Load the users plugin group.
 		JPluginHelper::importPlugin('user');
-		//print_r($user);exit;
+
 		// Store the data.
 		if (!$user->save()) {
-			echo '<script>alert("'.$user->getError().'");window.history.go(-1);</script>';
-			exit;
-			$this->setError(JText::sprintf('COM_USERS_REGISTRATION_SAVE_FAILED', $user->getError()));
+			$this->setError($user->getError());
 			return false;
 		}
 
@@ -369,7 +366,7 @@ class UsersModelRegistration extends JModelForm
 					'COM_USERS_EMAIL_REGISTERED_WITH_ADMIN_ACTIVATION_BODY',
 					$data['name'],
 					$data['sitename'],
-					$data['siteurl'].'index.php?option=com_users&task=registration.activate&token='.$data['activation'],
+					$data['activate'],
 					$data['siteurl'],
 					$data['username'],
 					$data['password_clear']
@@ -381,7 +378,7 @@ class UsersModelRegistration extends JModelForm
 					'COM_USERS_EMAIL_REGISTERED_WITH_ADMIN_ACTIVATION_BODY_NOPW',
 					$data['name'],
 					$data['sitename'],
-					$data['siteurl'].'index.php?option=com_users&task=registration.activate&token='.$data['activation'],
+					$data['activate'],
 					$data['siteurl'],
 					$data['username']
 				);
@@ -406,7 +403,7 @@ class UsersModelRegistration extends JModelForm
 					'COM_USERS_EMAIL_REGISTERED_WITH_ACTIVATION_BODY',
 					$data['name'],
 					$data['sitename'],
-					$data['siteurl'].'index.php?option=com_users&task=registration.activate&token='.$data['activation'],
+					$data['activate'],
 					$data['siteurl'],
 					$data['username'],
 					$data['password_clear']
@@ -418,7 +415,7 @@ class UsersModelRegistration extends JModelForm
 					'COM_USERS_EMAIL_REGISTERED_WITH_ACTIVATION_BODY_NOPW',
 					$data['name'],
 					$data['sitename'],
-					$data['siteurl'].'index.php?option=com_users&task=registration.activate&token='.$data['activation'],
+					$data['activate'],
 					$data['siteurl'],
 					$data['username']
 				);
@@ -437,9 +434,7 @@ class UsersModelRegistration extends JModelForm
 				'COM_USERS_EMAIL_REGISTERED_BODY',
 				$data['name'],
 				$data['sitename'],
-				$data['siteurl'],
-				$data['username'],
-				$data['password_clear']
+				$data['siteurl']
 			);
 		}
 

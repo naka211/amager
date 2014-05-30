@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -85,7 +85,7 @@ class JFormFieldMenuOrdering extends JFormFieldList
 	 * Method to get the field input markup
 	 *
 	 * @return  string  The field input markup.
-	 * @since	1.7
+	 * @since   1.7
 	 */
 	protected function getInput()
 	{

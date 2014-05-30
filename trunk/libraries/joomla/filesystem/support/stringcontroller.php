@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,9 +12,9 @@ defined('JPATH_PLATFORM') or die;
 /**
  * String Controller
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  FileSystem
- * @since		11.1
+ * @since       11.1
  */
 class JStringController
 {
@@ -23,7 +23,7 @@ class JStringController
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function _getArray()
 	{
@@ -34,12 +34,12 @@ class JStringController
 	/**
 	 * Create a reference
 	 *
-	 * @param	string  $reference  The key
-	 * @param	string  &$string	The value
+	 * @param   string  $reference  The key
+	 * @param   string  &$string    The value
 	 *
 	 * @return  void
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function createRef($reference, &$string)
 	{
@@ -50,11 +50,11 @@ class JStringController
 	/**
 	 * Get reference
 	 *
-	 * @param	string  $reference  The key for the reference.
+	 * @param   string  $reference  The key for the reference.
 	 *
 	 * @return  mixed  False if not set, reference if it it exists
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function getRef($reference)
 	{

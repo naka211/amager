@@ -3,7 +3,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	templates.hathor
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  * @since		1.6
  *
@@ -1052,8 +1052,8 @@ span.icon-16-locked {
 
 #permissions-sliders ul#rules,
 #permissions-sliders ul#rules ul {
-	margin: 0 !important;
-	padding: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 #permissions-sliders ul#rules li {
@@ -1062,14 +1062,14 @@ span.icon-16-locked {
 }
 
 #permissions-sliders ul#rules table.group-rules td {
-	padding:4px;
-	vertical-align:middle;
-	text-align:right;
+    padding:4px;
+    vertical-align:middle;
+    text-align:right;
 }
 
 #permissions-sliders .panel {
-	margin-bottom: 3px;
-	margin-right: 0;
+    margin-bottom: 3px;
+    margin-right: 0;
 }
 
 ul#rules table.group-rules td label {
@@ -1089,8 +1089,8 @@ table.group-rules td select {
 }
 
 #permissions-sliders  ul#rules  table.group-rules th {
-	text-align: right;
-	padding: 4px;
+    text-align: right;
+    padding: 4px;
 }
 
 #permissions-sliders .pane-toggler  span {

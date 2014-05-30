@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,18 +14,18 @@ jimport('joomla.database.tablenested');
 /**
  * Menu table
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Table
- * @since		11.1
+ * @since       11.1
  */
 class JTableMenu extends JTableNested
 {
 	/**
 	 * Constructor
 	 *
-	 * @param	JDatabase  &$db  A database connector object
+	 * @param   JDatabase  &$db  A database connector object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct(&$db)
 	{
@@ -38,13 +38,13 @@ class JTableMenu extends JTableNested
 	/**
 	 * Overloaded bind function
 	 *
-	 * @param	array  $array	Named array
-	 * @param	mixed  $ignore  An optional array or space separated list of properties to ignore while binding.
+	 * @param   array  $array   Named array
+	 * @param   mixed  $ignore  An optional array or space separated list of properties to ignore while binding.
 	 *
 	 * @return  mixed  Null if operation was satisfactory, otherwise returns an error
 	 *
-	 * @see	 JTable::bind
-	 * @since	11.1
+	 * @see     JTable::bind
+	 * @since   11.1
 	 */
 	public function bind($array, $ignore = '')
 	{
@@ -83,8 +83,8 @@ class JTableMenu extends JTableNested
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @see	 JTable::check
-	 * @since	11.1
+	 * @see     JTable::check
+	 * @since   11.1
 	 */
 	public function check()
 	{
@@ -133,12 +133,12 @@ class JTableMenu extends JTableNested
 	/**
 	 * Overloaded store function
 	 *
-	 * @param	boolean  $updateNulls  True to update fields even if they are null.
+	 * @param   boolean  $updateNulls  True to update fields even if they are null.
 	 *
 	 * @return  mixed  False on failure, positive integer on success.
 	 *
-	 * @see	 JTable::store
-	 * @since	11.1
+	 * @see     JTable::store
+	 * @since   11.1
 	 */
 	public function store($updateNulls = false)
 	{

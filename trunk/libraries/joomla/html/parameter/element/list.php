@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,9 +12,9 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Renders a list element
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Parameter
- * @since		11.1
+ * @since       11.1
  * @deprecated  Use JFormFieldList instead
  */
 class JElementList extends JElement
@@ -22,18 +22,18 @@ class JElementList extends JElement
 	/**
 	 * Element type
 	 *
-	 * @var	string
+	 * @var    string
 	 */
 	protected $_name = 'List';
 
 	/**
 	 * Get the options for the element
 	 *
-	 * @param	JXMLElement  &$node  JXMLElement node object containing the settings for the element
+	 * @param   JXMLElement  &$node  JXMLElement node object containing the settings for the element
 	 *
 	 * @return  array
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 *
 	 * @deprecated  12.1  Use JFormFieldList::getOptions Instead
 	 */
@@ -55,15 +55,15 @@ class JElementList extends JElement
 	/**
 	 * Fetch the HTML code for the parameter element.
 	 *
-	 * @param	string			 $name		  The field name.
-	 * @param	mixed			  $value		 The value of the field.
-	 * @param	JSimpleXMLElement  &$node		 The current JSimpleXMLElement node.
-	 * @param	string			 $control_name  The name of the HTML control.
+	 * @param   string             $name          The field name.
+	 * @param   mixed              $value         The value of the field.
+	 * @param   JSimpleXMLElement  &$node         The current JSimpleXMLElement node.
+	 * @param   string             $control_name  The name of the HTML control.
 	 *
 	 * @return  string
 	 *
-	 * @deprecated	12.1
-	 * @since	11.1
+	 * @deprecated    12.1
+	 * @since   11.1
 	 */
 	public function fetchElement($name, $value, &$node, $control_name)
 	{

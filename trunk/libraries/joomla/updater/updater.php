@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Updater
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -19,14 +19,14 @@ jimport('joomla.utilities.arrayhelper');
 /**
  * Updater Class
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Updater
- * @since		11.1
+ * @since       11.1
  */
 class JUpdater extends JAdapter
 {
 	/**
-	 * @var	JUpdater  JUpdater instance container.
+	 * @var    JUpdater  JUpdater instance container.
 	 * @since  11.3
 	 */
 	protected static $instance;
@@ -34,7 +34,7 @@ class JUpdater extends JAdapter
 	/**
 	 * Constructor
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function __construct()
 	{
@@ -48,7 +48,7 @@ class JUpdater extends JAdapter
 	 *
 	 * @return  object  An installer object
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function &getInstance()
 	{
@@ -62,25 +62,18 @@ class JUpdater extends JAdapter
 	/**
 	 * Finds an update for an extension
 	 *
-	 * @param	integer  $eid			Extension Identifier; if zero use all sites
-	 * @param	integer  $cacheTimeout  How many seconds to cache update information; if zero, force reload the update information
+	 * @param   integer  $eid           Extension Identifier; if zero use all sites
+	 * @param   integer  $cacheTimeout  How many seconds to cache update information; if zero, force reload the update information
 	 *
 	 * @return  boolean True if there are updates
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function findUpdates($eid = 0, $cacheTimeout = 0)
 	{
-		// Check if fopen is allowed
-		$result = ini_get('allow_url_fopen');
-		if (empty($result))
-		{
-			JError::raiseWarning('101', JText::_('JLIB_UPDATER_ERROR_COLLECTION_FOPEN'));
-			return false;
-		}
-
 		$dbo = $this->getDBO();
 		$retval = false;
+
 		// Push it into an array
 		if (!is_array($eid))
 		{
@@ -199,15 +192,15 @@ class JUpdater extends JAdapter
 	/**
 	 * Multidimensional array safe unique test
 	 *
-	 * @param	array  $myArray  The source array.
+	 * @param   array  $myArray  The source array.
 	 *
 	 * @return  array
 	 *
-	 * @deprecated	12.1
-	 * @note	Use JArrayHelper::arrayUnique() instead.
-	 * @note	Borrowed from PHP.net
-	 * @see	 http://au2.php.net/manual/en/function.array-unique.php
-	 * @since	11.1
+	 * @deprecated    12.1
+	 * @note    Use JArrayHelper::arrayUnique() instead.
+	 * @note    Borrowed from PHP.net
+	 * @see     http://au2.php.net/manual/en/function.array-unique.php
+	 * @since   11.1
 	 *
 	 */
 	public function arrayUnique($myArray)
@@ -219,11 +212,11 @@ class JUpdater extends JAdapter
 	/**
 	 * Finds an update for an extension
 	 *
-	 * @param	integer  $id  Id of the extension
+	 * @param   integer  $id  Id of the extension
 	 *
 	 * @return  mixed
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function update($id)
 	{

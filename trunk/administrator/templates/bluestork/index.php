@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	Templates.bluestork
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -111,10 +111,5 @@ if ($this->params->get('highContrast')) {
 				echo JText::sprintf('JGLOBAL_ISFREESOFTWARE', $joomla) ?>
 		</p>
 	</div>
-<style>
-.ui-autocomplete{
-	z-index:999 !important;
-}
-</style>
 </body>
 </html>

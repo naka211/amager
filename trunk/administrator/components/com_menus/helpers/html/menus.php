@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -56,16 +56,16 @@ abstract class MenusHtmlMenus
 	/**
 	 * Returns a published state on a grid
 	 *
-	 * @param	integer		$value			The state value.
-	 * @param	integer		$i				The row index
-	 * @param	boolean		$enabled			An optional setting for access control on the action.
-	 * @param	string		$checkbox			An optional prefix for checkboxes.
+	 * @param   integer       $value			The state value.
+	 * @param   integer       $i				The row index
+	 * @param   boolean       $enabled			An optional setting for access control on the action.
+	 * @param   string        $checkbox			An optional prefix for checkboxes.
 	 *
-	 * @return  string		The Html code
+	 * @return  string        The Html code
 	 *
 	 * @see JHtmlJGrid::state
 	 *
-	 * @since	1.7.1
+	 * @since   1.7.1
 	 */
 	public static function state($value, $i, $enabled = true, $checkbox = 'cb')
 	{

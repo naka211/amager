@@ -1,9 +1,9 @@
 <?php
 /**
- * @package	Joomla.Platform
+ * @package    Joomla.Platform
  *
- * @copyright  Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	GNU General Public License version 2 or later; see LICENSE
+ * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -12,7 +12,7 @@ defined('JPATH_PLATFORM') or die;
  * Version information class for the Joomla Platform.
  *
  * @package  Joomla.Platform
- * @since	11.1
+ * @since    11.1
  */
 final class JPlatform
 {
@@ -35,19 +35,19 @@ final class JPlatform
 	// Release timezone.
 	const RELEASE_TIME_ZONE = 'GMT';
 	// Copyright Notice.
-	const COPYRIGHT = 'Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.';
+	const COPYRIGHT = 'Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.';
 	// Link text.
 	const LINK_TEXT = '<a href="http://www.joomla.org">Joomla!</a> is Free Software released under the GNU General Public License.';
 
 	/**
 	 * Compares two a "PHP standardized" version number against the current Joomla Platform version.
 	 *
-	 * @param	string  $minimum  The minimum version of the Joomla Platform which is compatible.
+	 * @param   string  $minimum  The minimum version of the Joomla Platform which is compatible.
 	 *
 	 * @return  boolean  True if the version is compatible.
 	 *
-	 * @see	 http://www.php.net/version_compare
-	 * @since	11.1
+	 * @see     http://www.php.net/version_compare
+	 * @since   11.1
 	 */
 	public static function isCompatible($minimum)
 	{
@@ -59,7 +59,7 @@ final class JPlatform
 	 *
 	 * @return  string  Version string.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getShortVersion()
 	{
@@ -71,7 +71,7 @@ final class JPlatform
 	 *
 	 * @return  string  Complete version string.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public static function getLongVersion()
 	{

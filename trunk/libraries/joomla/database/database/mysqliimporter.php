@@ -1,10 +1,10 @@
 <?php
 /**
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license	 GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -14,9 +14,9 @@ require_once dirname(__FILE__) . '/mysqlimporter.php';
 /**
  * MySQL import driver.
  *
- * @package	 Joomla.Platform
+ * @package     Joomla.Platform
  * @subpackage  Database
- * @since		11.1
+ * @since       11.1
  */
 class JDatabaseImporterMySQLi extends JDatabaseImporterMySQL
 {
@@ -25,7 +25,7 @@ class JDatabaseImporterMySQLi extends JDatabaseImporterMySQL
 	 *
 	 * @return  JDatabaseImporterMySQLi  Method supports chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 * @throws  Exception if an error is encountered.
 	 */
 	public function check()
@@ -48,11 +48,11 @@ class JDatabaseImporterMySQLi extends JDatabaseImporterMySQL
 	/**
 	 * Sets the database connector to use for exporting structure and/or data from MySQL.
 	 *
-	 * @param	JDatabaseMySQLi  $db  The database connector.
+	 * @param   JDatabaseMySQLi  $db  The database connector.
 	 *
 	 * @return  JDatabaseImporterMySQLi  Method supports chaining.
 	 *
-	 * @since	11.1
+	 * @since   11.1
 	 */
 	public function setDbo(JDatabaseMySQLi $db)
 	{
