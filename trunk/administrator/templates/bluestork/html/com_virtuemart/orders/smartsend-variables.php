@@ -28,20 +28,23 @@
 		$parameter['rcvid']['zipcode'] = $this->shipmentfields['fields']['zip']['value'];
 	/* agentto - delivery point */
 	/* leave this array empty if no delivery point is to be used */
-if(class_exists('plgVmShipmentPostnord')) {
-	$postnord = plgVmShipmentPostnord::getPostnordPluginData($this->orderID);
-}
+
+
+/*
+$company, $streetNumber, $streetName, $zipcode, $city parametes.$servicePointId 
+*/
+
 		$parameter['agentto'] = array(); 		//leave this line
-		$parameter['agentto']['type'] = (isset($postnord) && $postnord->service_point_id != '0' && $postnord->service_point_id != '' ? 'pupopt' : ''); 	//use 'pupopt' if a pickup location is choosen
-		$parameter['agentto']['id'] = (isset($postnord) && $postnord->service_point_id != '0' ? $postnord->service_point_id : ''); 		
-		$parameter['agentto']['parid'] = (isset($postnord) && $postnord->service_point_id != '0' ? $postnord->service_point_id : ''); 	//This is the id of the pickup location
-		$parameter['agentto']['name'] = (isset($postnord) && $postnord->service_point_id != '0' ? $postnord->service_point_id_name : '');
+		$parameter['agentto']['type'] = (isset($servicePointId) && $servicePointId != '0' && $servicePointId != '' ? 'pupopt' : ''); 	//use 'pupopt' if a pickup location is choosen
+		$parameter['agentto']['id'] = (isset($servicePointId) && $servicePointId != '0' ? $servicePointId : ''); 		
+		$parameter['agentto']['parid'] = (isset($servicePointId) && $servicePointId != '0' ? $servicePointId : ''); 	//This is the id of the pickup location
+		$parameter['agentto']['name'] = (isset($servicePointId) && $servicePointId != '0' ? $company : '');
 		$parameter['agentto']['contact'] = '';
-		$parameter['agentto']['address1'] = (isset($postnord) && $postnord->service_point_id != '0' ? $postnord->service_point_id_address : '');
+		$parameter['agentto']['address1'] = (isset($servicePointId) && $servicePointId != '0' ? $streetName.' '.$streetNumber : '');
 		$parameter['agentto']['address2'] = '';
-		$parameter['agentto']['city'] = (isset($postnord) && $postnord->service_point_id != '0' ? $postnord->service_point_id_city : '');
-		$parameter['agentto']['country'] = (isset($postnord) && $postnord->service_point_id != '0' ? 'DK' : '');
-		$parameter['agentto']['zipcode'] = (isset($postnord) && $postnord->service_point_id != '0' ? $postnord->service_point_id_postcode : '');
+		$parameter['agentto']['city'] = (isset($servicePointId) && $servicePointId != '0' ? $city : '');
+		$parameter['agentto']['country'] = (isset($servicePointId) && $servicePointId != '0' ? 'DK' : '');
+		$parameter['agentto']['zipcode'] = (isset($servicePointId) && $servicePointId != '0' ? $zipcode : '');
 	/* Generel info */
 		$parameter['phone'] = ''; 				//To be printed under the reciever, next to "contact"
 		$parameter['orderno'] = $this->orderbt->order_number;
@@ -69,5 +72,5 @@ if(class_exists('plgVmShipmentPostnord')) {
 		'parcelcontents' => (string) '',
 		'fromID' => (string) '1'
 	);
-
+echo $servicePointId; echo "hej"; echo $servicePointId ;
 ?>

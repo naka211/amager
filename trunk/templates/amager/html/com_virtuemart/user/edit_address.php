@@ -32,6 +32,8 @@ foreach($cart->products as $item)
 		$nodelivery=true;break;
 	}
 ///
+
+//print_r($cart);exit;
 ?>
 <script language="javascript" src="templates/amager/js/jquery.validate.js"></script>
 <div id="checkout-page">
@@ -317,7 +319,12 @@ jQuery(document).ready(function(){
 			jQuery("#location").attr( "disabled", "disabled" );
             
             jQuery("#location_area1").html("");
-            generatePickup(jQuery("#zipcode").val());
+			
+			if(jQuery("#zipcode2").val() != "Postnr. *" && jQuery("#zipcode2").val() != ""){
+				generatePickup(jQuery("#zipcode2").val());
+			} else {
+            	generatePickup(jQuery("#zipcode").val());
+			}
         }
 	}
 
@@ -331,7 +338,15 @@ jQuery(document).ready(function(){
     
     jQuery("#zipcode").blur(function(){
         if(jQuery("#ship3").prop("checked")) {
-            generatePickup(jQuery("#zipcode").val());
+			if(jQuery(".w-another-add").css("display")=="none"){
+				generatePickup(jQuery("#zipcode").val());
+			}
+        }
+    });
+	
+	jQuery("#zipcode2").blur(function(){
+        if(jQuery("#ship3").prop("checked")) {
+			generatePickup(jQuery("#zipcode2").val());
         }
     });
     
@@ -430,13 +445,17 @@ if(!$nodelivery){
 
 
 			jQuery("#ship1").removeAttr("disabled");
+			generatePickup(jQuery("#zipcode").val());
 		}else{
 			jQuery(".w-another-add").slideToggle();
 			STo();
 			jQuery("#STsameAsBT").val("0");
 
-			jQuery("#ship2").attr("checked", "checked");
 			jQuery("#ship1").attr("disabled", "disabled");
+			
+			if(jQuery("#zipcode2").val() != "Postnr. *" && jQuery("#zipcode2").val() != ""){
+				generatePickup(jQuery("#zipcode2").val());
+			}
 		}
 	});
 <?php
@@ -516,7 +535,7 @@ echo JHTML::_ ('form.token');
 			$currencyDisplay = CurrencyDisplay::getInstance($cart->pricesCurrency);
 			?>
             <input type="hidden" id="shop_id" name="shop_id" value="" />
-			<input type="hidden" id="subtotal" value="<?php echo $cart->pricesUnformatted['salesPrice']?>" />
+			<input type="hidden" id="subtotal" value="<?php echo $cart->pricesUnformatted['billTotal']?>" />
 			<div class="step4">
 				<h2><div><img width="24" height="24" alt="" src="templates/amager/img/step4.png"></div>Ordreoversigt</h2>
 				<div class="w-list-pro">
@@ -624,12 +643,17 @@ echo JHTML::_ ('form.token');
 						<div class="m-20">
 							<label>Heraf moms:</label><span><?php echo number_format($cart->pricesUnformatted['salesPrice']*0.2,2,',','.');?> DKK</span>
 						</div>
+						<?php if (!empty($cart->cartData['couponCode'])) { ?>
+						<div class="m-20">
+				      	<label><?php echo JText::_('COM_VIRTUEMART_COUPON_DISCOUNT');?>:</label><span><?php echo number_format ($cart->pricesUnformatted['salesPriceCoupon'],2,',','.').' DKK';?></span>
+				      	</div>
+				      	<?php } ?>
+						
 						<div class="n-b-b3 m-20 black">
-							<label>TOTAL INKL. MOMS:</label><span id="payTotal"><?php echo number_format($cart->pricesUnformatted['salesPrice']+$fee,2,',','.').' DKK'; ?></span>
+							<label>TOTAL INKL. MOMS:</label><span id="payTotal"><?php echo number_format($cart->pricesUnformatted['billTotal']+$fee,2,',','.').' DKK'; ?></span>
 						</div>
 					</div><!--.checkout-payment-right-->
 				</div><!--.checkout-payment-->
-
 			  </div>
 		</div>
 	</div>
@@ -645,4 +669,22 @@ echo JHTML::_ ('form.token');
 	</div>
 </div>
 </form>
+	<div class="frm_coupon" style="left: 130px; position: relative;">
+	<?php if($cart->products){?>
+		<?php if (empty($cart->cartData['couponCode'])) { ?>
+	
+	        <?php
+					if (VmConfig::get ('coupons_enable')) {
+						//if (!empty($this->layoutName) && $this->layoutName == 'default') {
+							echo $this->loadTemplate ('coupon');
+						//} 
+					}
+			?>
+						
+        <?php }
+        
+			}
+        
+        ?>
+    </div>
 </div>

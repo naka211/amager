@@ -31,9 +31,14 @@ if ($this->paymentResponseHtml) {
 // add something???
 $db = JFactory::getDBO();
 $orderid = JRequest::getVar('orderid');
-$query = "SELECT virtuemart_order_id, order_shipment, order_total, order_salesPrice, order_number FROM #__virtuemart_orders WHERE order_number = '".$orderid."'";
+$query = "SELECT virtuemart_order_id, order_shipment, order_total, order_salesPrice, order_number, coupon_code FROM #__virtuemart_orders WHERE order_number = '".$orderid."'";
 $db->setQuery($query);
 $order_info = $db->loadObject();
+
+if (!class_exists('CouponHelper')) {
+	require(JPATH_VM_SITE . DS . 'helpers' . DS . 'coupon.php');
+}
+CouponHelper::RemoveCoupon($order_info->coupon_code);
 
 $query = "SELECT * FROM #__virtuemart_order_userinfos WHERE address_type = 'BT' AND virtuemart_order_id = ".$order_info->virtuemart_order_id;
 $db->setQuery($query);
@@ -56,6 +61,41 @@ if($BT_info->address_type_name == 1 ){
 }
 ?>
 
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+    ga('create', 'UA-42732693-1', 'amagerisenkram.dk');
+
+    ga('require', 'ecommerce');
+
+    ga('ecommerce:addTransaction', {
+      'id': '<?php echo $orderid;?>',   
+      'affiliation': 'Amagerisenkram', 
+      'revenue': '<?php echo number_format($order_info->order_total,2,',','.');?>',  
+      'shipping': '<?php echo number_format($order_info->order_shipment,2,',','.');?>', 
+      'tax': '<?php echo number_format($order_info->order_salesPrice*0.2,2,',','.');?>',
+      'currency': 'DKK'            
+    });
+
+    <?php foreach($items as $item){?>
+    ga('ecommerce:addItem', {
+      'id': '<?php echo $orderid;?>',                     
+      'name': '<?php echo $item->order_item_name;?>',
+      'sku': '<?php echo $item->order_item_sku;?>',     
+      'price': '<?php echo number_format($item->product_subtotal_with_tax,2,',','.');?>',             
+      'quantity': '<?php echo $item->product_quantity;?>',
+      'currency': 'DKK'             
+    });
+    <?php }?>
+
+    ga('ecommerce:send');
+
+</script>
+
 <div id="tak-page">
   	<div id="w-tak-page">
   	<h2>Tak for din ordre</h2>
@@ -64,7 +104,7 @@ if($BT_info->address_type_name == 1 ){
 Har du spørgsmål, kan du kontakte os på +45 99 42 19 60<br>
 Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
 		<h4>Sporing af ordre online</h4>
-        <p>Ønsker du at tjekke din ordrestatus bedes du gå til Amager Isenkram onlineshop og klikke på Hvor er min ordre? øverst på shoppen</p>
+        <p>Ønsker du at tjekke din ordre status kan du spore din ordre her: <a href="http://www.postdanmark.dk/da/Sider/TrackTrace.aspx" target="_blank">http://www.postdanmark.dk/da/Sider/TrackTrace.aspx</a>.</p>
         <div class="order-list">
         <h2>ORDREOVERSIGT</h2>
         	<div class="main-info">
@@ -178,7 +218,7 @@ Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
         
         <div class="help-shipment">
         	<h4>Sådan tjekker du din ordrestatus</h4>
-            <p>Besøg  vores onlineshop og klik på Min Side øverst på shoppen for at se din ordrestatus.   
+            <p>Besøg  vores onlineshop og klik på Min konto øverst på shoppen for at se din ordrestatus.   
             Når din bestilling er accepteret af os, vil du modtage en forsendelsesbekræftelse per e-mail. 
             I denne finder du også dit forsendelsesnummer, så du kan spore din pakke online. </p>
             <h4>Sådan returnerer du en vare</h4>

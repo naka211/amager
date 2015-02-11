@@ -1,4 +1,4 @@
-﻿body{font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;	font-size:13px;	color:#3a3a3a; background:#302d28 url(../img/bg.gif) repeat}
+body{font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;	font-size:13px;	color:#3a3a3a; background:#302d28 url(../img/bg.gif) repeat}
 .clear { clear: both; float: none}
 h1{ font-size: 20px; color: #00b2ea; text-transform: uppercase; font-family: 'Fjalla One', sans-serif;  }
 h2{ font-size: 14px; font-weight: bold; color: #fff; text-transform: uppercase}
@@ -441,8 +441,9 @@ filter: alpha(opacity=80); opacity: 0.8; filter: alpha(opacity=80)}
 .store-content .store-info h3, .store-open h3 { color: #fff; font-weight: bold}
 .store-info p a { color: #00b2ea; text-decoration: none;}
 .store-content .store-open { float: right;}
-.store-open div { clear: both;}
-.store-open div label { width: 116px; float: left}
+.store-open div { clear: both; width:160px;}
+/*.store-open div label { width: 116px; float: left}*/
+.store-open div label { width: 70px; float: left;}
 .store-open div span { float: right}
 .bnt-seemore { margin-top: 10px; cursor: pointer}
 
@@ -683,7 +684,7 @@ border-bottom: 1px solid #cacaca; overflow: hidden; text-align: center}
 .pro-item .col4 { float: left; margin-left: 14px; width: 100px;}
 .pro-item .col5 { float: left; margin-left: 14px; width: 100px; text-align: right;}
 
-.info-payment { background: #faffdb; padding: 15px; width: 618px; border-right: 1px solid #cacaca; float: left; border-top: 1px solid #cacaca}
+.info-payment { background: #faffdb; padding: 15px; width: 618px; /*border-right: 1px solid #cacaca;*/ float: left; border-top: 1px solid #cacaca}
 .info-payment .info-payment-top { overflow: hidden;}
 .info-payment-top .func { margin: 0px; color: #505050;}
 .info-payment-bot {overflow: hidden; margin-top: 20px}
@@ -691,7 +692,7 @@ border-bottom: 1px solid #cacaca; overflow: hidden; text-align: center}
 .info-payment-bot ul { float: left; list-style: none; margin-left: 5px}
 .info-payment-bot ul li { float: left; margin-left: 5px}
 
-.total-vat { background: #fff; float: left; padding: 10px 15px 9px 15px; width: 288px; font-size: 16px; border-top: 1px solid #cacaca}
+.total-vat { background: #fff; float: left; padding: 10px 15px 9px 15px; width: 288px; font-size: 16px; border-top: 1px solid #cacaca; border-left: 1px solid #cacaca;}
 .total-vat div { padding: 5px 0px; border-bottom: 1px solid #e4e4e4; overflow: hidden; width: 288px}
 .total-vat div.n-b-b2 { border-bottom: 0px;}
 .total-vat label { float: left; width: 170px;}
@@ -1182,3 +1183,9 @@ span.icon { width: 14px; height: 12px;}
 .pop_note p {margin-bottom: 10px;}
 a.btnNext {background: url(../img/btnNext.png) no-repeat 0 0; text-indent: -9999px; display: block; width: 114px; height: 31px; }
 a.btnNext:hover {background-position: 0 -31px; }
+
+.graris {background: #E9F0EE; border: 1px solid #B9B8BE; color: #848484; float: left; margin: 0 0 10px 0; padding: 20px; float: left; margin-top: 10px; }
+.graris p {margin-bottom: 5px;}
+.frm_coupon input {width: 190px; float: left; margin-right: 5px; background-color: #fff; border: solid 1px #b9b9b9; padding: 4px 10px; font-style: italic; color: #818181; font-size: 13px; font-weight: inherit;}
+.frm_coupon a {float: right; margin-top: 0; display:block; background: #7cb719; padding: 3px 10px 2px; color: #fff; text-transform: uppercase; text-decoration: none;}
+.frm_coupon a:hover {background: #42630a; text-decoration: none;}
