@@ -79,6 +79,32 @@ class UsersControllerProfile extends UsersController
 
 		// Get the user data.
 		$data = JRequest::getVar('jform', array(), 'post', 'array');
+		
+		//T.Trung
+		if(!$data){
+			$data = array(
+				'mwctype' => JRequest::getVar('mwctype'),
+				'email1' => JRequest::getVar('email'),
+				'email2' => JRequest::getVar('email'),
+				'username' => JRequest::getVar('username'),
+				'name' => JRequest::getVar('firstname').' '.JRequest::getVar('lastname'),
+				'firstname' => JRequest::getVar('firstname'),
+				'lastname' => JRequest::getVar('lastname'),
+				'address' => JRequest::getVar('address'),
+				'zipcode' => JRequest::getVar('zipcode'),
+				'city' => JRequest::getVar('city'),
+				'phone' => JRequest::getVar('phone'),
+				'password1' => JRequest::getVar('password1'),
+				'password2' => JRequest::getVar('password2'),
+				'company' => JRequest::getVar('company'),
+				'cvr' => JRequest::getVar('cvr'),
+				'ean' => JRequest::getVar('ean'),
+				'authority' => JRequest::getVar('authority'),
+				'order' => JRequest::getVar('order'),
+				'person' => JRequest::getVar('person')
+			);
+		}
+		//T.Trung end
 
 		// Force the ID to this user.
 		$data['id'] = $userId;
@@ -91,7 +117,7 @@ class UsersControllerProfile extends UsersController
 		}
 
 		// Validate the posted data.
-		$data = $model->validate($form, $data);
+		//$data = $model->validate($form, $data);
 
 		// Check for errors.
 		if ($data === false) {
@@ -155,7 +181,7 @@ class UsersControllerProfile extends UsersController
 
 				// Redirect to the list screen.
 				$this->setMessage(JText::_('COM_USERS_PROFILE_SAVE_SUCCESS'));
-				$this->setRedirect(JRoute::_(($redirect = $app->getUserState('com_users.edit.profile.redirect')) ? $redirect : 'index.php?option=com_users&view=profile&user_id='.$return, false));
+				$this->setRedirect(JRoute::_(($redirect = $app->getUserState('com_users.edit.profile.redirect')) ? $redirect : 'index.php?option=com_users&view=profile&layout=edit&user_id='.$return, false));
 				break;
 		}
 

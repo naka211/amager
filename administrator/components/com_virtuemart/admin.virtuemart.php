@@ -27,7 +27,6 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 // vmTime('Smallest Unit','test');
 
 //This is for akeeba release system, it must be executed before any other task
-
 require_once JPATH_COMPONENT_ADMINISTRATOR.DS.'liveupdate'.DS.'liveupdate.php';
 if(JRequest::getCmd('view','') == 'liveupdate') {
     LiveUpdate::handleRequest();

@@ -5,7 +5,7 @@ defined('_JEXEC') or die;
 <div id="main-title">
 	<ul>
         <?php if(JRequest::getVar('view')!='virtuemart'){?>
-		<li class="n-bg"><a href="kategorier.php">Kategorier</a></li>
+		<li class="n-bg"><a href="kategorier.html">Kategorier</a></li>
         <?php }?>
 <?php for ($i = 0; $i < $count; $i ++) :
 	// Workaround for duplicate Home when using multilanguage

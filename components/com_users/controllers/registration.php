@@ -111,15 +111,42 @@ class UsersControllerRegistration extends UsersController
 
 		// Get the user data.
 		$requestData = JRequest::getVar('jform', array(), 'post', 'array');
-
+		
+		//T.Trung
+		if(!$requestData){
+			$requestData = array(
+				'mwctype' => JRequest::getVar('mwctype'),
+				'email1' => JRequest::getVar('email'),
+				'email2' => JRequest::getVar('email'),
+				'username' => JRequest::getVar('username'),
+				'name' => JRequest::getVar('firstname').' '.JRequest::getVar('lastname'),
+				'firstname' => JRequest::getVar('firstname'),
+				'lastname' => JRequest::getVar('lastname'),
+				'address' => JRequest::getVar('address'),
+				'zipcode' => JRequest::getVar('zipcode'),
+				'city' => JRequest::getVar('city'),
+				'phone' => JRequest::getVar('phone'),
+				'password1' => JRequest::getVar('password1'),
+				'password2' => JRequest::getVar('password2'),
+				'newsletter' => 1,
+				'company' => JRequest::getVar('company'),
+				'cvr' => JRequest::getVar('cvr'),
+				'ean' => JRequest::getVar('ean'),
+				'authority' => JRequest::getVar('authority'),
+				'order' => JRequest::getVar('order'),
+				'person' => JRequest::getVar('person')
+			);
+		}
+		//T.Trung end
+		
 		// Validate the posted data.
 		$form	= $model->getForm();
 		if (!$form) {
 			JError::raiseError(500, $model->getError());
 			return false;
 		}
-		$data	= $model->validate($form, $requestData);
-
+		//$data	= $model->validate($form, $requestData);
+		$data = $requestData;
 		// Check for validation errors.
 		if ($data === false) {
 			// Get the validation messages.
@@ -168,7 +195,8 @@ class UsersControllerRegistration extends UsersController
 			$this->setRedirect(JRoute::_('index.php?option=com_users&view=registration&layout=complete', false));
 		} else {
 			$this->setMessage(JText::_('COM_USERS_REGISTRATION_SAVE_SUCCESS'));
-			$this->setRedirect(JRoute::_('index.php?option=com_users&view=login', false));
+			//$this->setRedirect(JRoute::_('index.php?option=com_users&view=login', false));
+			$this->setRedirect(JRoute::_('index.php?option=com_users&view=registration&layout=complete', false));
 		}
 
 

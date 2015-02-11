@@ -45,7 +45,9 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
     	<td style="text-align: center; border-bottom: 1px dotted #CACACA; padding: 10px 0;" colspan="4"><img src="<?php echo JURI::base();?>templates/amager/img/logo.png" width="196" height="97" /></td>
     </tr>
   <tr>
-    <td colspan="4"><h2 style="color: #00b2ea; font-size: 20px; border-bottom: 1px dotted #CACACA; padding: 10px 0; margin: 0;">ORDREOVERSIGT</h2></td>
+    <td colspan="4">
+	<div style="padding-top:10px;">Ønsker du at tjekke din ordre status kan du spore din ordre her: http://www.postdanmark.dk/da/Sider/TrackTrace.aspx</div>
+	<h2 style="color: #00b2ea; font-size: 20px; border-bottom: 1px dotted #CACACA; padding: 10px 0; margin: 0;">ORDREOVERSIGT</h2></td>
   </tr>
   <tr height="30">
   	<td><strong>Ordrenummer:</strong></td>

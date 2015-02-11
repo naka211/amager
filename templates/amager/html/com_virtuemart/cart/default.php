@@ -104,14 +104,26 @@ $tmplURL=JURI::base()."templates/".$template;
 
 	<div class="total-vat">
 	<?php
-	$finalprice=$this->currencyDisplay->priceDisplay($this->cart->pricesUnformatted['salesPrice'],0,1.0,false,2);
+	$salesPrice=$this->currencyDisplay->priceDisplay($this->cart->pricesUnformatted['salesPrice'],0,1.0,false,2);
+	$finalprice= $this->currencyDisplay->priceDisplay($this->cart->pricesUnformatted['billTotal'],0,1.0,false,2);
+	
+	//var_dump($this->cart);
 	?>
 		<div>
-		<label>Subtotal inkl. moms:</label><span><?php echo $finalprice?></span>
+		<label>Subtotal inkl. moms:</label><span><?php echo $salesPrice?></span>
 		</div>
 		<div>
 		<label>Heraf moms:</label><span><?php echo $this->currencyDisplay->priceDisplay($this->cart->pricesUnformatted['salesPrice']*.2,0,1.0,false,2)?></span>
 		</div>
+		
+		
+		<?php if (!empty($this->cart->cartData['couponCode'])) { ?>
+		<div>
+      	<label><?php echo JText::_('COM_VIRTUEMART_COUPON_DISCOUNT');?>:</label><span><?php echo $this->currencyDisplay->priceDisplay ($this->cart->pricesUnformatted['salesPriceCoupon'])?></span>
+      	</div>
+      	<?php } ?>
+		
+		
 		<div class="n-b-b2">
 		<label class="black">TOTAL INKL. MOMS:</label><span class="black"><?php echo $finalprice?></span>
 		</div>
@@ -125,6 +137,17 @@ $tmplURL=JURI::base()."templates/".$template;
 	</form>
 </div>
 		<?php if($this->cart->products){?>
+		<?php if (empty($this->cart->cartData['couponCode'])) { ?>
+	
+	        <?php
+					if (VmConfig::get ('coupons_enable')) {
+						if (!empty($this->layoutName) && $this->layoutName == 'default') {
+							echo $this->loadTemplate ('coupon');
+						} 
+					}
+			?>
+						
+        <?php }?>
 	<div class="bnt-secure-payment">
     	<a href="<?php echo JRoute::_ ('index.php?option=com_virtuemart&view=user&layout=editaddresscheckoutBT')?>">Gå til sikker betaling</a>
 <?php

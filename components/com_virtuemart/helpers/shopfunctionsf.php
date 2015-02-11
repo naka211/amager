@@ -309,7 +309,7 @@ class shopFunctionsF {
 		}
 		
 		// live site
-		$from = 'Amager Isenkram<info@amagerisenkram.dk>';
+		/*$from = 'Amager Isenkram<info@amagerisenkram.dk>';
         $headers    = array
         (
             'MIME-Version: 1.0',
@@ -328,10 +328,10 @@ class shopFunctionsF {
             $to = 'ttih@amagerisenkram.dk, ah@amagerisenkram.dk, om@amagerisenkram.dk';
 		} else {
 			$to = $recipient;
-		}
+		}*/
 		// live site
 		// test site
-		/*$from = 'Amager Isenkram<info@amagerisenkram.dk>';
+		$from = 'Amager Isenkram<info@amagerisenkram.dk>';
         $headers    = array
         (
             'MIME-Version: 1.0',
@@ -346,11 +346,11 @@ class shopFunctionsF {
             'X-Originating-IP: ' . $_SERVER['SERVER_ADDR'],
         );
 
-		if($recipient == "ttih@amagerisenkram.dk"){
-			$to = 'ttih@amagerisenkram.dk, ah@amagerisenkram.dk, om@amagerisenkram.dk, thanh.trung@mwc.vn, kim@mywebcreations.dk';
+		if($recipient == "thanh.trung@mwc.vn"){
+			$to = 'thanh.trung@mwc.vn';
 		} else {
 			$to = $recipient;
-		}*/
+		}
 		
 		if(mail($to, $subject, $body, implode("\n", $headers), '-finfo@amagerisenkram.dk')) error_log(date('H:i:s m-d-Y', time()).' to :'.$to.'///', 3, "error.log");
 

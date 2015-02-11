@@ -164,7 +164,7 @@ if($pacsoftDisplayType == 'direct') {
 
 <div class="smartsend <?php echo $pacsoftSystem; ?>">
 
-<?
+<?php
 //FORM PART START - Only if one wishes to use the form solution
 if($pacsoftDisplayType == 'form' || $pacsoftDisplayType == 'both') {
 ?>
@@ -172,7 +172,7 @@ if($pacsoftDisplayType == 'form' || $pacsoftDisplayType == 'both') {
 <LINK REL=StyleSheet HREF="<?php echo $SmartSendURL; ?>css.css" TYPE="text/css" MEDIA="screen">						
 <form name="SmartSendForm" action="<?php echo $SmartSendURL; ?>server_request.php<?php if($pacsoftTest == 1) { echo "?test=1"; } ?>" method="post" target="_blank">
 
-<?
+<?php
 $i = 0;
 foreach ($pacsoftServices as $pacsoftServicesData) {
 ?>
@@ -348,7 +348,7 @@ $i++;
 
 </form>
 
-<?
+<?php
 }
 //FORM PART END
 

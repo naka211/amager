@@ -15,7 +15,9 @@ if($this->orderDetails['details']['BT']->address_type_name == 1 ){
 	</tr>
 
 	<tr>
-		<td colspan="4"><h2 style="color: #00b2ea; border-bottom: 1px dotted #CACACA; padding: 10px; margin: 0;">FAKTURA</h2></td>
+		<td colspan="4">
+		<div style="padding:10px 10px 0;">Ønsker du at tjekke din ordre status kan du spore din ordre her: <br />http://www.postdanmark.dk/da/Sider/TrackTrace.aspx</div>
+		<h2 style="color: #00b2ea; border-bottom: 1px dotted #CACACA; padding: 10px; margin: 0;">FAKTURA</h2></td>
 	</tr>
 
 	<tr>

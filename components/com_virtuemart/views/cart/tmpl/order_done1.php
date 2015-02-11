@@ -41,9 +41,14 @@ $vars['vendor'] = array('vendor_store_name' => $fromName );
 $db = JFactory::getDBO();
 $orderid = $this->cart->order_number;
 
-$query = "SELECT virtuemart_order_id, order_shipment, order_total, order_salesPrice, order_number FROM #__virtuemart_orders WHERE order_number = '".$orderid."'";
+$query = "SELECT virtuemart_order_id, order_shipment, order_total, order_salesPrice, order_number, coupon_code FROM #__virtuemart_orders WHERE order_number = '".$orderid."'";
 $db->setQuery($query);
 $order_info = $db->loadObject();
+
+if (!class_exists('CouponHelper')) {
+	require(JPATH_VM_SITE . DS . 'helpers' . DS . 'coupon.php');
+}
+CouponHelper::RemoveCoupon($order_info->coupon_code);
 
 if(!class_exists('VmModel'))require(JPATH_VM_ADMINISTRATOR.DS.'helpers'.DS.'vmmodel.php');
 $orderModel=VmModel::getModel('orders');
@@ -82,7 +87,7 @@ if($BT_info->address_type_name == 1 ){
 Har du spørgsmål, kan du kontakte os på +45 99 42 19 60<br>
 Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
 		<h4>Sporing af ordre online</h4>
-        <p>Ønsker du at tjekke din ordrestatus bedes du gå til Amager Isenkram onlineshop og klikke på Hvor er min ordre? øverst på shoppen</p>
+        <p>Ønsker du at tjekke din ordre status kan du spore din ordre her: <a href="http://www.postdanmark.dk/da/Sider/TrackTrace.aspx" target="_blank">http://www.postdanmark.dk/da/Sider/TrackTrace.aspx</a>.</p>
         <div class="order-list">
         <h2>ORDREOVERSIGT</h2>
         	<div class="main-info">
@@ -91,10 +96,10 @@ Mandag - Torsdag kl 09.00 - 17.00, Fredag kl 09.00 - 14.30</p><br>
             </div><!--.main-info-->
             <div class="cus-info">
             	<h4>Kundeoplysninger:</h4>
-                <?php if($BT_info->address_type_name == 2){?>
+                <?php if($BT_info->company){?>
                 <label>Firmanavn:</label><span><?php echo $BT_info->company;?></span><br>
                 <label>CVR-nr.:</label><span><?php echo $BT_info->cvr;?></span><br>
-                <?php } else if($BT_info->address_type_name == 3){?>
+                <?php } else if($BT_info->ean){?>
                 <label>EAN-nr.:</label><span><?php echo $BT_info->ean;?></span><br>
                 <label>Myndighed/Institution:</label><span><?php echo $BT_info->authority;?></span><br>
                 <label>Ordre- el. rekvisitionsnr.:</label><span><?php echo $BT_info->order1;?></span><br>

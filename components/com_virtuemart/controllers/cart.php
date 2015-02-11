@@ -251,7 +251,6 @@ class VirtueMartControllerCart extends JController {
 	 * @author Max Milbers
 	 */
 	public function setcoupon() {
-
 		/* Get the coupon_code of the cart */
 		$coupon_code = JRequest::getVar('coupon_code', ''); //TODO VAR OR INT OR WORD?
 		if ($coupon_code) {
@@ -266,7 +265,18 @@ class VirtueMartControllerCart extends JController {
 					$app = JFactory::getApplication();
 					$app->redirect(JRoute::_('index.php?option=com_virtuemart&view=cart&task=checkout'),$msg);
 				} else {
-					$app->redirect(JRoute::_('index.php?option=com_virtuemart&view=cart'),$msg);
+					/**
+					 * cam added
+					 * 12/06/2014
+					 * redirect on view cart and view user
+					 */
+					$myview = JRequest::getVar('redirect','cart');					
+					if($myview=='cart'){
+						$app->redirect(JRoute::_('index.php?option=com_virtuemart&view=cart'),$msg);
+					}else{
+						$app->redirect(JRoute::_('index.php?option=com_virtuemart&view=user&layout=editaddresscheckoutBT'),$msg);
+					}
+					
 				}
 			}
 		}
@@ -463,6 +473,10 @@ class VirtueMartControllerCart extends JController {
 				echo '<script>alert("E-mail adresse er allerede registeret!");window.history.go(-1);</script>';
 				exit;
 			} else {
+                if(JRequest::getVar('firstname') == '' || JRequest::getVar('firstname') == 'Fornavn *'){
+                    echo '<script>alert("Felter markeret med * skal udfyldes");window.history.go(-1);</script>';
+				    exit;
+                }
 				$cart->BT = array();
 				$cart->BT['email'] = JRequest::getVar('email');
 				$cart->BT['address_type_name'] = JRequest::getVar('mwctype');
@@ -589,7 +603,8 @@ class VirtueMartControllerCart extends JController {
             if(JRequest::getVar('mwctype') == 3){
                 $this->setRedirect( $siteURL . 'index.php?option=com_virtuemart&view=cart&layout=order_done1');
             } else {
-                $this->setRedirect('https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/'. $siteURL . 'index.php?option=com_virtuemart&view=cart&layout=order_done&tmpl=component&forcerelay=1&HTTP_COOKIE='.getenv("HTTP_COOKIE"));
+                //$this->setRedirect('https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/'. $siteURL . 'index.php?option=com_virtuemart&view=cart&layout=order_done&tmpl=component&forcerelay=1&HTTP_COOKIE='.getenv("HTTP_COOKIE"));
+				$this->setRedirect($siteURL . 'index.php?option=com_virtuemart&view=cart&layout=order_done');
             }
 			/*$view = $this->getView('cart', 'html');
 			$view->setLayout('order_done');

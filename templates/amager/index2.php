@@ -1,11 +1,12 @@
 <?php
 // No direct access.
 defined('_JEXEC') or die;
-if($opt.$view==in_array($opt.$view,array('com_virtuemartpluginresponse'))){
+/*if($opt.$view==in_array($opt.$view,array('com_virtuemartpluginresponse'))){
 	//if ( eregi("MSIE", getenv( "HTTP_USER_AGENT" ) ) || eregi("Internet Explorer", getenv("HTTP_USER_AGENT" ) ) || (eregi("chrome", $_SERVER['HTTP_USER_AGENT'])) ) {	
 		$tmplURL = 'https://relay.ditonlinebetalingssystem.dk/relay/v2/relay.cgi/'.JURI::base().'templates/amager/';
 	//}
-}
+}*/
+$tmplURL = JURI::base().'templates/amager/';
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >

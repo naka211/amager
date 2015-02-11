@@ -209,6 +209,16 @@ focusInput = function(){
 	}
 );
 </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+  ga('create', 'UA-51570269-1', 'amagerisenkram.dk');
+  ga('send', 'pageview');
+ 
+</script>
 </head>
 
 <body>
@@ -251,7 +261,6 @@ jQuery(document).ready( function(){
         jQuery('.reveal-modal-bg').remove();     
     });
 });
-
 </script>
 <div id="mynote" class="pop_note reveal-modal" style="top: 100px; opacity: 1; visibility: visible;"> <a class="close-reveal-modal" href="javascript:void(0)"></a>
 <h3>Der er et eller flere produkter, som desværre er udsolgt. </h3>
@@ -302,14 +311,16 @@ jQuery(document).ready( function(){
                     <div class="info-user">
                         <h3>Eksisterende bruger</h3>
                         <div>
-                            <input type="text" class="input" name="username" id="modlgn-username" value="<?php echo $username?$username:'Indtast din email';?>" />
+                            <input type="text" class="input" name="username" id="modlgn-username" value="<?php echo $username;?>" placeholder="Indtast din email"/>
                         </div>
                         <div>
-                            <input type="password" class="input" name="password" id="modlgn-passwd" value="<?php echo $password;?>" />
+                            <input type="password" class="input" name="password" id="modlgn-passwd" value="<?php echo $password;?>" placeholder="Indtast din adgangskode"/>
                         </div>
                         <!--<div class="btn-login">--> 
                         <!--<a href="index2.php">Login</a>-->
-                        <input type="submit" name="Submit" value=" " class="btn-login" />
+                        <input type="submit" name="Submit" value=" " id="btnsubmit" style="display:none;"/>
+						<input type="button" name="btnsubmit" value=" " class="btn-login" onclick="checksubmit()" />
+						
                         <!--</div>--><!--.bnt-login-->
                         <div class="chk">
                             <input type="checkbox" name="remember" value="1" <?php echo $username?'checked':'';?>/>
@@ -416,15 +427,18 @@ jQuery(document).ready( function(){
 <!--#footer-bottom--> 
 
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
- 
-  ga('create', 'UA-42732693-1', 'amagerisenkram.dk');
-  ga('send', 'pageview');
- 
+function checksubmit(){
+	var username = jQuery('.frm-login #modlgn-username').val();
+	var password = jQuery('.frm-login #modlgn-passwd').val();
+	if(username=='' || password==''){
+	
+	}else{
+		jQuery('.frm-login #btnsubmit').click();
+	}
+	
+}
 </script>
+
 </body>
 </html>
 <?php }?>

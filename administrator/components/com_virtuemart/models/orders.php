@@ -614,7 +614,7 @@ $q = 'SELECT virtuemart_order_item_id, product_quantity, order_item_name,
 			//set the virtuemart_order_id in the Request for 3rd party coupon components (by Seyi and Max)
 			JRequest::setVar ( 'virtuemart_order_id', $_orderData->virtuemart_order_id );
 			// If a gift coupon was used, remove it now
-			CouponHelper::RemoveCoupon($_cart->couponCode);
+			//CouponHelper::RemoveCoupon($_cart->couponCode);
 		}
 		// the order number is saved into the session to make sure that the correct cart is emptied with the payment notification
 		$_cart->order_number=$_orderData->order_number;
