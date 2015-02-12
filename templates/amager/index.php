@@ -1,27 +1,31 @@
 <?php
 // No direct access.
 defined('_JEXEC') or die;
+//Detect mobile
 session_start();
-//jimport('joomla.filesystem.file');
-
-// check modules
-//$showRightColumn	= ($this->countModules('position-3') or $this->countModules('position-6') or $this->countModules('position-8'));
-
-//JHtml::_('behavior.framework', true);
-
-// get params
-$doc				= JFactory::getDocument();
-//$app				= JFactory::getApplication();
-//$color				= $this->params->get('templatecolor');
-//$logo				= $this->params->get('logo');
-//$templateparams		= $app->getTemplate(true)->params;
-$tmplURL=JURI::base().'templates/'.$this->template."/";
+$config =& JFactory::getConfig();
+$showPhone = $config->getValue( 'config.show_phone' );
+$enablePhone = $config->getValue( 'config.enable_phone' );
+require_once 'Mobile_Detect.php';
+$detect = new Mobile_Detect;
+if(!isset($_SESSION['mobile'])){
+	if($detect->isMobile()){
+		$_SESSION['mobile'] = true;
+	}
+}
+if($showPhone){
+	$_SESSION['mobile'] = $showPhone;
+}
+if ( ($showPhone || $detect->isMobile()) && ($enablePhone) && ($_SESSION['mobile'])) {
+    include('index_mobile.php');
+    return;
+}
+//Detect mobile end
+$doc = JFactory::getDocument();
+$tmplURL = JURI::base().'templates/'.$this->template."/";
 $user = JFactory::getUser();
 $user = JUser::getInstance($user->id);
-//$doc->addStyleSheet($this->baseurl.'/templates/'.$this->template.'/css/layout.css', $type = 'text/css', $media = 'screen,projection');
-//$doc->addStyleSheet($this->baseurl.'/templates/'.$this->template.'/css/print.css', $type = 'text/css', $media = 'print');
 
-//$doc->addScript($this->baseurl.'/templates/'.$this->template.'/javascript/hide.js', 'text/javascript');
 $opt=JRequest::getVar('option');
 $view=JRequest::getVar('view');
 
@@ -421,6 +425,9 @@ jQuery(document).ready( function(){
     <div id="w-footer-bottom">
         <jdoc:include type="modules" name="footer" />
         <div class="clear"></div>
+		<?php if($detect->isMobile()){?>
+		<a class="btnGotosite" href="<?php echo JURI::base();?>index.php?option=com_virtuemart&controller=virtuemart&task=set_mobile_session&value=1&url=<?php echo base64_encode(JURI::current());?>">TIL MOBILSIDEN</a>
+		<?php }?>
     </div>
     <!--#w-footer-bottom--> 
 </div>

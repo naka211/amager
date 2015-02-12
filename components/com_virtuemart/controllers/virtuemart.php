@@ -54,5 +54,15 @@ class VirtueMartControllerVirtuemart extends JController
         $_SESSION['cookieinfo1']=1;
         return true;
     }
+	
+	function set_mobile_session(){
+        session_start();
+		if(JRequest::getVar('value')){
+			$_SESSION['mobile'] = true;
+		} else {
+			$_SESSION['mobile'] = false;
+		}
+        $this->setRedirect(base64_decode(JRequest::getVar('url')));
+    }
 }
  //pure php no closing tag
