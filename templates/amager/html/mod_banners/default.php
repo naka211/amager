@@ -9,6 +9,27 @@
 // no direct access
 defined('_JEXEC') or die;
 
+//Detect mobile
+session_start();
+$config =& JFactory::getConfig();
+$showPhone = $config->getValue( 'config.show_phone' );
+$enablePhone = $config->getValue( 'config.enable_phone' );
+require_once 'Mobile_Detect.php';
+$detect = new Mobile_Detect;
+if(!isset($_SESSION['mobile'])){
+	if($detect->isMobile()){
+		$_SESSION['mobile'] = true;
+	}
+}
+if($showPhone){
+	$_SESSION['mobile'] = $showPhone;
+}
+if ( ($showPhone || $detect->isMobile()) && ($enablePhone) && ($_SESSION['mobile'])) {
+    include('default_mobile.php');
+    return;
+}
+//Detect mobile end
+
 //require_once JPATH_ROOT . '/components/com_banners/helpers/banner.php';
 $baseurl = JURI::base();
 ?>

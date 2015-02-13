@@ -310,7 +310,7 @@ abstract class JHtmlBehavior
 			self::framework();
 
 			// Load the javascript and css
-			JHtml::_('script', 'system/modal.js', true, true);
+			//JHtml::_('script', 'system/modal.js', true, true);
 			JHtml::_('stylesheet', 'system/modal.css', array(), true);
 		}
 
@@ -343,7 +343,7 @@ abstract class JHtmlBehavior
 		$options = JHtmlBehavior::_getJSObject($opt);
 
 		// Attach modal behavior to document
-		$document
+		/*$document
 			->addScriptDeclaration(
 			"
 		window.addEvent('domready', function() {
@@ -353,7 +353,7 @@ abstract class JHtmlBehavior
 				parse: 'rel'
 			});
 		});"
-		);
+		);*/
 
 		// Set static array
 		self::$loaded[__METHOD__][$sig] = true;

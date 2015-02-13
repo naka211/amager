@@ -1,31 +1,12 @@
 <?php // no direct access
 defined('_JEXEC') or die('Restricted access');
-//Detect mobile
-session_start();
-$config =& JFactory::getConfig();
-$showPhone = $config->getValue( 'config.show_phone' );
-$enablePhone = $config->getValue( 'config.enable_phone' );
-require_once 'Mobile_Detect.php';
-$detect = new Mobile_Detect;
-if(!isset($_SESSION['mobile'])){
-	if($detect->isMobile()){
-		$_SESSION['mobile'] = true;
-	}
-}
-if($showPhone){
-	$_SESSION['mobile'] = $showPhone;
-}
-if ( ($showPhone || $detect->isMobile()) && ($enablePhone) && ($_SESSION['mobile'])) {
-    include('default_mobile.php');
-    return;
-}
-//Detect mobile end
+$tmplURL=JURI::base().'templates/amager/mobile/';
 $text=JRequest::getVar("keyword","Hvad søger du efter…");
 ?>
 <!--BEGIN Search Box -->
 <form id="vm_mod_search" class="search2" action="<?php echo JRoute::_('index.php?option=com_virtuemart&view=search&search=true&limitstart=0&virtuemart_category_id='.$category_id ); ?>" method="get">
-<div>
-<?php $output = '<input name="keyword" id="mod_virtuemart_search" alt="'.$button_text.'" class="inputbox'.$moduleclass_sfx.'" type="text" size="'.$width.'" value="'.$text.'"  onblur="if(this.value==\'\') this.value=\''.$text.'\';" onfocus="if(this.value==\''.$text.'\') this.value=\'\';" />';
+<div class="wrapSearch">
+<?php $output = '<input name="keyword" id="mod_virtuemart_search" alt="'.$button_text.'" class="txtip" type="text" size="'.$width.'" value="'.$text.'"  onblur="if(this.value==\'\') this.value=\''.$text.'\';" onfocus="if(this.value==\''.$text.'\') this.value=\'\';" />';
  $image = JURI::base().'components/com_virtuemart/assets/images/vmgeneral/search.png' ;
 
 			if ($button) :
@@ -60,10 +41,10 @@ $text=JRequest::getVar("keyword","Hvad søger du efter…");
 			
 			echo $output;
 ?>
+<a href="javascript:document.getElementById('vm_mod_search').submit()"><img src="<?php echo $tmplURL?>img/iconSearch.png"></a>
 </div>
-<div class="bnt-go btn"><a href="javascript:document.getElementById('vm_mod_search').submit()">go&gt;</a></div>
-		<input type="hidden" name="limitstart" value="0" />
-		<input type="hidden" name="option" value="com_virtuemart" />
-		<input type="hidden" name="view" value="search" />
-	</form>
+	<input type="hidden" name="limitstart" value="0" />
+	<input type="hidden" name="option" value="com_virtuemart" />
+	<input type="hidden" name="view" value="search" />
+</form>
 <!-- End Search Box -->
